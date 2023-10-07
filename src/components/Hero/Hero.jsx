@@ -1,4 +1,5 @@
-import React from 'react';
+// import React, { useState } from 'react';
+import { HeroFilter } from '../HeroFilter/HeroFilter';
 
 export const Hero = () => {
   return (
@@ -15,12 +16,7 @@ export const Hero = () => {
             <button className="secondary-button">Стати учнем</button>
           </div>
         </div>
-        <form className="filter">
-          <input type="text" placeholder="Поиск по ключевому слову"></input>
-          <input type="text" placeholder="Фильтр по категории"></input>
-          <input type="checkbox"></input>
-          <button className="filter-button">Найти</button>
-        </form>
+        <HeroFilter />
       </section>
     </>
   );
