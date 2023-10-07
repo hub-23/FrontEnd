@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
-  width: 356px;
+  width: 330px;
   height: 60px;
 
   /* border: 1px solid rgba(45, 45, 45, 1); */
@@ -19,16 +19,19 @@ const StyledButton = styled.button`
     color: ${(props) => props.color || props.theme.colors.black};
     background: ${(props) => props.background || props.theme.colors.white};
     border: 1px solid ${(props) => props.border || props.theme.colors.black};
+    width: ${(props) => props.width || '356px'};
     `}
   ${(props) => props.secondary && css`
     color: ${(props) => props.color || props.theme.colors.white};
     background: ${(props) => props.background || props.theme.colors.black};
     border: 1px solid ${(props) => props.border || props.theme.colors.black};
+    width: ${(props) => props.width || '329px'};
     `}
     ${(props) => props.pink && css`
     color: ${(props) => props.color || props.theme.colors.white};
     background: ${(props) => props.background || props.theme.colors.liner_pink};
     border: 1px solid ${(props) => props.border || 'transparent'};
+    width: ${(props) => props.width || '329px'};
     `}
     ${(props) => props.blue && css`
     color: ${(props) => props.color || props.theme.colors.white};

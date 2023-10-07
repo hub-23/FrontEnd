@@ -1,63 +1,89 @@
 import React from 'react';
-import Button from '../common/Button';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ButtonsWrapper = styled.div`
+import Button from '../common/button/Button';
+import Input from '../common/input/Input';
+import Segment from '../common/segment/Segment';
+
+import * as S from './RegistrationForm.style.js';
+
+const StyledCheckBox = styled.div`
 display: flex;
+flex-direction: row;
 align-items: center;
-justify-content: center;
-gap: 1.25rem;
+justify-content:start;
+/* padding-bottom:30px; */
+height: 90px;
+width: 100%;
+  height: 60px;
+  border-radius: 20px 0px 20px 0px;
+  border: 1px;
+  border: 1px solid #2D2D2D33;
+  /* font-family: ${(props) => props.fontFamily || props.theme.fontFamily.primary}; */
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-left: 30px;
+  background:  #FFFFFF;
+  outline: none;
+  gap: 10px;
+  &:input {
+  margin-left:10px;
+  }
 `;
 
 const RegistrationForm = () => {
   return (
-    <div className='overlay'>
-      <div className="orm-content">
+    <S.Overlay className='overlay'>
+      <S.Modal className="form-content">
         <form
           action=''
           name='registrationForm'
         >
-          <div className='left-content'>
-            <ButtonsWrapper>
+          <Segment >
+            <S.ButtonsWrapper>
               <Button primary >Вхід</Button>
               <Button secondary >Реєстрація</Button>
-            </ButtonsWrapper>
+            </S.ButtonsWrapper>
 
-            <input
+            <Input
               type='email'
               name='userEmail'
               placeholder='Ваш e-mail'
+            // errors=' Більше 8 символів, велика літера, цифри і спеціальний знак'
             />
-            <p className='input-error_message'>
-              Більше 8 символів, велика літера, цифри і спеціальний знак
-            </p>
-            <input
+            <Input
               type='email'
               name='userEmail'
               placeholder='Ваш e-mail'
+              errors='Email є обовязковим поле'
             />
-            <p className='input-error_message'>Email є обовязковим полем</p>
-            <input
+            <Input
               type='password'
               name='userPassword'
               placeholder='Придумайте пароль'
+              errors='Password є обовязковим полем'
             />
-            <p className='input-error_message'>Password є обовязковим полем</p>
-            <input
+            <Input
               type='password'
               name='confirmUserPassword'
               placeholder='Повторіть пароль'
+              errors='Password не співпадає'
             />
-            <p className='input-error_message'>Password не співпадає</p>
-            <label htmlFor='isRobotCheckbox'>
+            <StyledCheckBox>
               <input
                 type='checkbox'
                 name='isRobotCheckbox'
                 id='isRobotCheckbox'
               />
-              I’m not robot
-              <span className='capta'></span>
-            </label>
+              <label htmlFor='isRobotCheckbox'>
+                I’m not robot
+              </label>
+            </StyledCheckBox>
+
 
             <label htmlFor='confidentPolicy'>
               <input
@@ -67,21 +93,25 @@ const RegistrationForm = () => {
               />
               Я приймаю Політика конфіденційності та Умови використання
             </label>
-            <ButtonsWrapper>
+            <S.ButtonsWrapper>
               <Button pink>Стати викладачем</Button>
               <Button blue>Стати учнем</Button>
-              <Button grey>Стати учнем</Button>
-              <Button blue width='705px'>Стати учнем</Button>
-            </ButtonsWrapper>
+            </S.ButtonsWrapper>
             <p className='form-description'>
               Цей сайт захищено технологією reCAPTCHA, до нього застосовуються
-              Політика конфіденційності та Умови використання Google.
+              {' '}
+              <Link href="/" target='_blank'>Політика конфіденційност</Link>
+              і та
+              {' '}
+              <Link href="/node_modules" target='_blank'>Умови використання</Link>
+              {' '}
+              Google.
             </p>
-          </div>
+          </Segment>
           <div className='right-content'></div>
         </form>
-      </div>
-    </div>
+      </S.Modal>
+    </S.Overlay>
   );
 };
 
