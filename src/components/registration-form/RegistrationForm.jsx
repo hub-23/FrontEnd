@@ -11,13 +11,18 @@ import google from '../../assets/registration-form/google.png';
 import * as S from './RegistrationForm.style.js';
 
 const RegistrationForm = ( { onClose } ) => {
+  const handleFormSubmit = ( e ) => {
+    e.preventDefault();
+    console.log( 'onSubmit' );
+  };
+
   return (
     <S.Overlay className='overlay'>
       <S.Modal className="form-content">
         <S.StyledForm
           action=''
           name='registrationForm'
-          onSubmit={ () => console.log( 'onSubmit' ) }
+          onSubmit={ handleFormSubmit }
         >
           <Segment >
             <S.Flex>

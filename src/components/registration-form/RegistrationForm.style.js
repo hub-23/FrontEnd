@@ -108,7 +108,7 @@ export const Typography = styled.p`
 `;
 
 export const RadioButton = styled.div`
-  & label {
+    & label {
     display: grid;
     grid-template-columns: 1em auto;
     gap: 0.5em;
@@ -117,12 +117,11 @@ export const RadioButton = styled.div`
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 0em;
-    text-align: left;
-    color: #2D2D2D;
+    text-align: left;     color: #2D2D2D;
     margin-top: 1em;
     cursor: pointer;
-  };
-  & input[type="radio"] {
+      };
+    & input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
   background-color: #ffffff;
@@ -135,9 +134,8 @@ export const RadioButton = styled.div`
   border-radius: 50%;
   transform: translateY(-0.075em);
   display: grid;
-  place-content: center;
-  position: relative;
-  };
+  place-content: center;   position: relative;
+    };
   & input[type="radio"]:before {
   content: "";
   width: 12px;
@@ -147,9 +145,10 @@ export const RadioButton = styled.div`
   transform: scale(0);
   transition: 120ms transform ease-in-out;
   background-color: #E3669C;
-};
-  & input[type="radio"]:checked::before {
+    };
+
+    & input[type="radio"]:checked::before {
   transform: scale(1);
-};
-}
+    }; 
 `;
+
