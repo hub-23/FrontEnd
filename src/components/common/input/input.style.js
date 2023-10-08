@@ -5,12 +5,12 @@ display: flex;
 flex-direction: column;
 /* padding-bottom:30px; */
 height: 90px;
-
+width: 100%;
 /* margin-bottom:30px; */
 `;
 
 export const StyledInput = styled.input`
-  width: 701px;
+  width: 100%;
   height: 60px;
   border-radius: 20px 0px 20px 0px;
   border: 1px;

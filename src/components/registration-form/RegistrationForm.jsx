@@ -113,15 +113,18 @@ const RegistrationForm = ( { onClose } ) => {
             <Button transparent align='end' onClick={ onClose }>
               <img src={ cross } alt="cross" />
             </Button>
-            <p>
+            < S.GoogleRegistration>
+              <S.Typography size='20px'>
               або
-              <span>
+                <span>
                 Увійти за допомогою
-              </span>
-            </p>
-            <Button grey>
-              <img src={ google } alt="google" />
-            </Button>
+                </span>
+              </S.Typography>
+              <Button grey>
+                <img src={ google } alt="google" />
+              </Button>
+            </S.GoogleRegistration>
+
           </Segment>
         </S.StyledForm>
       </S.Modal>

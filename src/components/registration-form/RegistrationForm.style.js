@@ -54,7 +54,7 @@ width: 100%;
   line-height: 20px;
   letter-spacing: 0em;
   text-align: left;
-  padding-left: 30px;
+  padding-left: 20px;
   background:  #FFFFFF;
   outline: none;
   gap: 10px;
@@ -92,7 +92,7 @@ margin-right:10px;
 
 export const Typography = styled.p`
   font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.secondary};
-  font-size: 14px;
+  font-size: ${( props ) => props.size || '14px'};
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0em;
@@ -105,6 +105,17 @@ export const Typography = styled.p`
   color: #151414;
   text-decoration: underline;
 };
+
+& span {
+  display: block;
+  font-family: 'Nunito';
+font-size: 20px;
+font-weight: 600;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
+color: #000000;
+}
 `;
 
 export const RadioButton = styled.div`
@@ -152,3 +163,16 @@ export const RadioButton = styled.div`
     }; 
 `;
 
+export const GoogleRegistration = styled.div`
+  margin-top:40px;
+  & p {
+  margin-top: 20px;
+  }
+  & span {
+  margin-top: 20px;
+  }
+
+  & button {
+    margin-top: 40px;
+  }
+`;
