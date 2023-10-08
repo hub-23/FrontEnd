@@ -6,9 +6,9 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import Button from '../common/button/Button';
 import Input from '../common/input/Input';
 import Segment from '../common/segment/Segment';
+import GoogleLoginButton from './components/GoogleLoginButton';
 
 import cross from '../../assets/registration-form/cross.png';
-import google from '../../assets/registration-form/google.png';
 
 import * as S from './RegistrationForm.style.js';
 
@@ -17,10 +17,13 @@ const RegistrationForm = ( { onClose } ) => {
   const handleFormSubmit = ( e ) => {
     e.preventDefault();
     const token = captchaRef.current.getValue();
+
     captchaRef.current.reset();
+
     console.log( 'onSubmit' );
     console.log( 'token', token );
   };
+
 
   return (
     <S.Overlay className='overlay'>
@@ -122,13 +125,12 @@ const RegistrationForm = ( { onClose } ) => {
                 Увійти за допомогою
                 </span>
               </S.Typography>
-              <Button grey>
-                <img src={ google } alt="google" />
-              </Button>
+              <GoogleLoginButton/>
             </S.GoogleRegistration>
 
           </Segment>
         </S.StyledForm>
+;
       </S.Modal>
     </S.Overlay >
   );
