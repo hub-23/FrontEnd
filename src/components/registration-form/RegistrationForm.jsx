@@ -1,5 +1,7 @@
-import React from 'react';
+/* eslint-disable react/no-unknown-property */
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import Button from '../common/button/Button';
 import Input from '../common/input/Input';
@@ -11,9 +13,13 @@ import google from '../../assets/registration-form/google.png';
 import * as S from './RegistrationForm.style.js';
 
 const RegistrationForm = ( { onClose } ) => {
+  const captchaRef = useRef( null );
   const handleFormSubmit = ( e ) => {
     e.preventDefault();
+    const token = captchaRef.current.getValue();
+    captchaRef.current.reset();
     console.log( 'onSubmit' );
+    console.log( 'token', token );
   };
 
   return (
@@ -69,16 +75,12 @@ const RegistrationForm = ( { onClose } ) => {
               placeholder='Повторіть пароль'
               errors='Password не співпадає'
             />
-            <S.StyledCheckBox>
-              <input
-                type='checkbox'
-                name='isRobotCheckbox'
-                id='isRobotCheckbox'
-              />
-              <label htmlFor='isRobotCheckbox'>
-                I’m not robot
-              </label>
-            </S.StyledCheckBox>
+
+            <ReCAPTCHA style={ { backgroundColor: 'red' } }
+              sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
+              ref={ captchaRef }
+
+            />
 
 
             <S.StyledBox htmlFor='confidentPolicy'>
