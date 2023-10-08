@@ -41,11 +41,16 @@ const StyledButton = styled.button`
     `}
 ${(props) => props.grey && css`
     width: 217px; 
-    height: 60px;
     color: ${(props) => props.color || props.theme.colors.white};
     border: 1px solid ${(props) => props.color || props.theme.colors.grey};
     background: ${(props) => props.background || props.theme.colors.grey};
-
+    `}
+    ${(props) => props.transparent && css`
+    color: ${(props) => props.color || props.theme.colors.black};
+    border: 1px solid ${(props) => props.color || '#E3669C'};
+    background: ${(props) => props.background || props.theme.colors.white};
+    width: ${(props) => props.width || '60px'};
+    align-self: ${(props) => props.align || 'center'};
     `}
 `;
 

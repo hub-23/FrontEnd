@@ -16,12 +16,13 @@ const theme = {
   },
   fontFamily: {
     primary: 'Nunito',
+    secondary: 'Manrope',
   },
 };
 
-const Theme = ({ children }) => {
+const Theme = ( { children } ) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={ theme }>
       {children}
     </ThemeProvider>
   );

@@ -1,53 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 import Button from '../common/button/Button';
 import Input from '../common/input/Input';
 import Segment from '../common/segment/Segment';
 
+import cross from '../../assets/registration-form/cross.png';
+import google from '../../assets/registration-form/google.png';
+
 import * as S from './RegistrationForm.style.js';
 
-const StyledCheckBox = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content:start;
-/* padding-bottom:30px; */
-height: 90px;
-width: 100%;
-  height: 60px;
-  border-radius: 20px 0px 20px 0px;
-  border: 1px;
-  border: 1px solid #2D2D2D33;
-  /* font-family: ${(props) => props.fontFamily || props.theme.fontFamily.primary}; */
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: 0em;
-  text-align: left;
-  padding-left: 30px;
-  background:  #FFFFFF;
-  outline: none;
-  gap: 10px;
-  &:input {
-  margin-left:10px;
-  }
-`;
-
-const RegistrationForm = () => {
+const RegistrationForm = ( { onClose } ) => {
   return (
     <S.Overlay className='overlay'>
       <S.Modal className="form-content">
-        <form
+        <S.StyledForm
           action=''
           name='registrationForm'
+          onSubmit={ () => console.log( 'onSubmit' ) }
         >
           <Segment >
-            <S.ButtonsWrapper>
+            <S.Flex>
               <Button primary >Вхід</Button>
               <Button secondary >Реєстрація</Button>
-            </S.ButtonsWrapper>
+            </S.Flex>
+
+            <S.Flex justify='center' gap='30px'>
+              <S.RadioButton>
+                <label htmlFor="student">
+                  <input type="radio" name="role" id="student" checked/>
+                Я учень
+                </label>
+              </S.RadioButton>
+              <S.RadioButton>
+                <label htmlFor="teacher">
+                  <input type="radio" name="role" id="teacher" />
+                Я викладач
+                </label>
+              </S.RadioButton>
+            </S.Flex>
 
             <Input
               type='email'
@@ -73,7 +64,7 @@ const RegistrationForm = () => {
               placeholder='Повторіть пароль'
               errors='Password не співпадає'
             />
-            <StyledCheckBox>
+            <S.StyledCheckBox>
               <input
                 type='checkbox'
                 name='isRobotCheckbox'
@@ -82,22 +73,27 @@ const RegistrationForm = () => {
               <label htmlFor='isRobotCheckbox'>
                 I’m not robot
               </label>
-            </StyledCheckBox>
+            </S.StyledCheckBox>
 
 
-            <label htmlFor='confidentPolicy'>
+            <S.StyledBox htmlFor='confidentPolicy'>
               <input
                 type='checkbox'
                 name='confidentPolicy'
                 id='confidentPolicy'
               />
-              Я приймаю Політика конфіденційності та Умови використання
-            </label>
-            <S.ButtonsWrapper>
-              <Button pink>Стати викладачем</Button>
-              <Button blue>Стати учнем</Button>
-            </S.ButtonsWrapper>
-            <p className='form-description'>
+              Я приймаю
+              {' '}
+              <Link href="/" target='_blank'>Політика конфіденційності</Link>
+              {' '}
+              та
+              {' '}
+              <Link href="/node_modules" target='_blank'>Умови використання</Link>
+            </S.StyledBox>
+            <S.Flex>
+              <Button blue width='100%' type='submit'>Зареєструватись</Button>
+            </S.Flex>
+            <S.Typography>
               Цей сайт захищено технологією reCAPTCHA, до нього застосовуються
               {' '}
               <Link href="/" target='_blank'>Політика конфіденційност</Link>
@@ -106,12 +102,25 @@ const RegistrationForm = () => {
               <Link href="/node_modules" target='_blank'>Умови використання</Link>
               {' '}
               Google.
-            </p>
+            </S.Typography>
           </Segment>
-          <div className='right-content'></div>
-        </form>
+          <Segment>
+            <Button transparent align='end' onClick={ onClose }>
+              <img src={ cross } alt="cross" />
+            </Button>
+            <p>
+              або
+              <span>
+                Увійти за допомогою
+              </span>
+            </p>
+            <Button grey>
+              <img src={ google } alt="google" />
+            </Button>
+          </Segment>
+        </S.StyledForm>
       </S.Modal>
-    </S.Overlay>
+    </S.Overlay >
   );
 };
 

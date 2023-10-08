@@ -1,9 +1,9 @@
 import React from 'react';
 import StyledSegment from './segment.style.js';
 
-const Segment = ({ children, ...props }) => {
+const Segment = ( { children, ...props } ) => {
   return (
-    <StyledSegment {...props}>
+    <StyledSegment { ...props }>
       {children}
     </StyledSegment>
   );
