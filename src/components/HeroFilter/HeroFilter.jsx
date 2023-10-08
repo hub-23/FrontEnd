@@ -15,7 +15,8 @@ export const HeroFilter = () => {
     switch (e.target.id) {
       case 'subject':
         setSubjectValue(text);
-        filtered = classes.filter((item) => item.toLowerCase().includes(text.toLowerCase()));
+        filtered = classes.filter((item) => item.toLowerCase().charAt(0) === text.toLowerCase());
+
         setFilteredSuggestions(filtered);
         break;
       case 'city':
@@ -57,8 +58,19 @@ export const HeroFilter = () => {
     const subject = document.getElementById('subject').value;
     const city = document.getElementById('city').value;
     const online = document.getElementById('radio').checked;
+    if (!subject) {
+      alert('оберіть уроки');
+      return;
+    } else if (!city) {
+      alert('оберіть місто');
+      return;
+    }
 
-    console.log('Предмет или занятие:', subject);
+    e.target.reset();
+    setCityValue('');
+    setSubjectValue('');
+
+    console.log('Предмет або заняття:', subject);
     console.log('Місто:', city);
     console.log('Онлайн:', online);
   };
@@ -72,6 +84,7 @@ export const HeroFilter = () => {
         onFocus={handleFocus}
         value={subjectValue}
         id="subject"
+        autoComplete="off"
       ></input>
       {focusInput === 'subject' && filteredSuggestions.length > 0 && (
         <ul>
@@ -89,6 +102,7 @@ export const HeroFilter = () => {
         onFocus={handleFocus}
         value={cityValue}
         id="city"
+        autoComplete="off"
       ></input>
       {focusInput === 'city' && filteredSuggestions.length > 0 && (
         <ul>
