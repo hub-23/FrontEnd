@@ -130,7 +130,6 @@ const RegistrationForm = ( { onClose } ) => {
 
           </Segment>
         </S.StyledForm>
-;
       </S.Modal>
     </S.Overlay >
   );
