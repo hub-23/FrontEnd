@@ -2,19 +2,28 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { Controller } from 'react-hook-form';
 
 import Button from '../common/button/Button';
 import Input from '../common/input/Input';
 import Segment from '../common/segment/Segment';
-import GoogleLoginButton from './components/GoogleLoginButton';
+import GoogleLoginButton from './components/googleLoginButton/GoogleLoginButton';
+import RadioButton from './components/RadioButton/RadioButton';
 import { useAppForm } from '../../hooks/hooks.js';
+
 import cross from '../../assets/registration-form/cross.png';
+
 import DEFAULT_REGISTRATION_PAYLOAD from './common/constants.js';
 // eslint-disable-next-line max-len
 import { registration as registrationValidationSchema } from '../../validation-schemas/validation-schemas.js';
 import { UserPayloadKey } from '../../common/emuns/enums.js';
 
 import * as S from './RegistrationForm.style.js';
+
+const options = [
+  { value: 'student', label: 'Я учень' },
+  { value: 'teacher', label: 'Я викладач' },
+];
 
 const RegistrationForm = ( { onClose } ) => {
   const captchaRef = useRef( null );
@@ -24,13 +33,15 @@ const RegistrationForm = ( { onClose } ) => {
     validationSchema: registrationValidationSchema,
   } );
 
-  const handleRegister = ( ) => {
+  const handleRegister = ( data ) => {
     const token = captchaRef.current.getValue();
 
     captchaRef.current.reset();
 
     console.log( 'onSubmit' );
     console.log( 'token', token );
+    console.log( 'data', data );
+    onClose();
   };
 
 
@@ -49,18 +60,23 @@ const RegistrationForm = ( { onClose } ) => {
             </S.Flex>
 
             <S.Flex justify='center' gap='30px'>
-              <S.RadioButton>
-                <label htmlFor="student">
-                  <input type="radio" name="role" id="student" checked/>
-                Я учень
-                </label>
-              </S.RadioButton>
-              <S.RadioButton>
-                <label htmlFor="teacher">
-                  <input type="radio" name="role" id="teacher" />
-                Я викладач
-                </label>
-              </S.RadioButton>
+
+              <Controller
+                control={ control }
+                name='role'
+                render={ ( { field: { onChange, ...props } } ) =>
+                  options.map( ( option, index ) => (
+
+                    <RadioButton
+                      key={ index }
+                      { ...props }
+                      onChange={ onChange }
+                      value={ option.value }
+                      label={ option.label }
+                    />
+                  ) )
+                }
+              />
             </S.Flex>
             <Input
               type='email'
@@ -124,12 +140,12 @@ const RegistrationForm = ( { onClose } ) => {
             </Button>
             < S.GoogleRegistration>
               <S.Typography size='20px'>
-              або
+                або
                 <span>
-                Увійти за допомогою
+                  Увійти за допомогою
                 </span>
               </S.Typography>
-              <GoogleLoginButton/>
+              <GoogleLoginButton />
             </S.GoogleRegistration>
 
           </Segment>

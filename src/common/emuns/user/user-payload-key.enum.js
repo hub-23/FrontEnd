@@ -3,6 +3,7 @@ const UserPayloadKey = {
   EMAIL: 'email',
   PASSWORD: 'password',
   CONFIRMPASSWORD: 'confirmPassword',
+  ROLE: 'role',
   // STATUS: 'status',
 };
 

@@ -26,12 +26,12 @@ const registration = Joi.object( {
         'string.min': UserValidationMessage.PASSWORD_MIN_LENGTH,
         'string.max': UserValidationMessage.PASSWORD_MAX_LENGTH,
       } ),
+  [ UserPayloadKey.ROLE ]: Joi.any()
+      .required(),
   // [ UserPayloadKey.CONFIRMPASSWORD ]: Joi.any()
   //     .valid( Joi.ref( UserPayloadKey.PASSWORD ) )
   //     .required()
-  //     .messages( {
-  //       'any.required': UserValidationMessage.PASSWORD_REQUIRE,
-  //     } ),
+  //     options({ messages: { 'any.only': '{{#label}} does not match'} }),
 } );
 
 
