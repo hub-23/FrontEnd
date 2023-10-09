@@ -22,6 +22,7 @@ export const GoogleLoginButton = () => {
       width="100%"
       logo_alignment='left'
       type='icon'
+      shape='circle'
       containerProps={ {
         style: {
           height: '60px',

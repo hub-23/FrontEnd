@@ -53,13 +53,6 @@ const RegistrationForm = ( { onClose } ) => {
                 </label>
               </S.RadioButton>
             </S.Flex>
-
-            <Input
-              type='email'
-              name='userEmail'
-              placeholder='Ваш e-mail'
-            // errors=' Більше 8 символів, велика літера, цифри і спеціальний знак'
-            />
             <Input
               type='email'
               name='userEmail'
@@ -79,10 +72,9 @@ const RegistrationForm = ( { onClose } ) => {
               errors='Password не співпадає'
             />
 
-            <ReCAPTCHA style={ { backgroundColor: 'red' } }
+            <ReCAPTCHA style={ { marginBottom: '30px' } }
               sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
               ref={ captchaRef }
-
             />
 
 
