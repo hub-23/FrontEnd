@@ -7,6 +7,11 @@ flex-direction: column;
 height: 90px;
 width: 100%;
 /* margin-bottom:30px; */
+
+& input[aria-invalid='true'] {
+  outline:  1px solid #E3669C;
+      /* border: 1px solid #E3669C; */
+}
 `;
 
 export const StyledInput = styled.input`
@@ -28,16 +33,15 @@ export const StyledInput = styled.input`
       outline:  1px solid #0360AB;
       };
 
-    /* &:valid {
+    &:valid {
       outline:  1px solid #A4D5BE;
-      border: 1px solid #A4D5BE;
-      }; */
+      /* border: 1px solid #A4D5BE; */
+      };
 
     &:invalid {
       outline:  1px solid #E3669C;
-      border: 1px solid #E3669C;
+      /* border: 1px solid #E3669C; */
       };
-
   `;
 
 export const Errors = styled.span`

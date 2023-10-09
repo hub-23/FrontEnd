@@ -24,6 +24,7 @@ const Input = ( {
         type={ type }
         disabled={ disabled }
         placeholder={ placeholder }
+        aria-invalid={ errors[ name ]?.message ? 'true' : 'false' }
       />
 
       <S.Errors>

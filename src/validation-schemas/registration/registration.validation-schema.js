@@ -26,7 +26,8 @@ const registration = Joi.object( {
         'string.min': UserValidationMessage.PASSWORD_MIN_LENGTH,
         'string.max': UserValidationMessage.PASSWORD_MAX_LENGTH,
       } ),
-  [ UserPayloadKey.ROLE ]: Joi.any()
+  [ UserPayloadKey.ROLE ]: Joi.string()
+      .trim()
       .required(),
   // [ UserPayloadKey.CONFIRMPASSWORD ]: Joi.any()
   //     .valid( Joi.ref( UserPayloadKey.PASSWORD ) )
