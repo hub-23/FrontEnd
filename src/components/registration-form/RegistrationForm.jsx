@@ -7,15 +7,24 @@ import Button from '../common/button/Button';
 import Input from '../common/input/Input';
 import Segment from '../common/segment/Segment';
 import GoogleLoginButton from './components/GoogleLoginButton';
-
+import { useAppForm } from '../../hooks/hooks.js';
 import cross from '../../assets/registration-form/cross.png';
+import DEFAULT_REGISTRATION_PAYLOAD from './common/constants.js';
+// eslint-disable-next-line max-len
+import { registration as registrationValidationSchema } from '../../validation-schemas/validation-schemas.js';
+import { UserPayloadKey } from '../../common/emuns/enums.js';
 
 import * as S from './RegistrationForm.style.js';
 
 const RegistrationForm = ( { onClose } ) => {
   const captchaRef = useRef( null );
-  const handleFormSubmit = ( e ) => {
-    e.preventDefault();
+  // const [ isLoading, setIsLoading ] = useState( false );
+  const { control, errors, handleSubmit } = useAppForm( {
+    defaultValues: DEFAULT_REGISTRATION_PAYLOAD,
+    validationSchema: registrationValidationSchema,
+  } );
+
+  const handleRegister = ( ) => {
     const token = captchaRef.current.getValue();
 
     captchaRef.current.reset();
@@ -31,7 +40,7 @@ const RegistrationForm = ( { onClose } ) => {
         <S.StyledForm
           action=''
           name='registrationForm'
-          onSubmit={ handleFormSubmit }
+          onSubmit={ handleSubmit( handleRegister ) }
         >
           <Segment >
             <S.Flex>
@@ -55,22 +64,25 @@ const RegistrationForm = ( { onClose } ) => {
             </S.Flex>
             <Input
               type='email'
-              name='userEmail'
+              name={ UserPayloadKey.EMAIL }
               placeholder='Ваш e-mail'
-              errors='Email є обовязковим поле'
+              control={ control }
+              errors={ errors }
             />
             <Input
               type='password'
-              name='userPassword'
+              name={ UserPayloadKey.PASSWORD }
               placeholder='Придумайте пароль'
-              errors='Password є обовязковим полем'
+              control={ control }
+              errors={ errors }
             />
-            <Input
+            {/* <Input
               type='password'
-              name='confirmUserPassword'
+              name={ UserPayloadKey.CONFIRMPASSWORD }
               placeholder='Повторіть пароль'
-              errors='Password не співпадає'
-            />
+              control={ control }
+              errors={ errors }
+            /> */}
 
             <ReCAPTCHA style={ { marginBottom: '30px' } }
               sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
