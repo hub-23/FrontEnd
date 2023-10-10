@@ -2,14 +2,13 @@
 import { UserValidationRule } from './user-validation-rule.enum.js';
 
 const UserValidationMessage = {
-  USERNAME_REQUIRE: 'Username is required',
-  USERNAME_MIN_LENGTH: `Username must be at least ${UserValidationRule.USERNAME_MIN_LENGTH} characters long`,
-  USERNAME_MAX_LENGTH: `Username must be at most ${UserValidationRule.USERNAME_MAX_LENGTH} characters long`,
-  EMAIL_REQUIRE: 'Email is required',
-  EMAIL_WRONG: 'Email is wrong',
-  PASSWORD_REQUIRE: 'Password is required',
-  PASSWORD_MIN_LENGTH: `Password must be at least ${UserValidationRule.PASSWORD_MIN_LENGTH} characters long`,
-  PASSWORD_MAX_LENGTH: `Password must be at most ${UserValidationRule.PASSWORD_MAX_LENGTH} characters long`,
+  EMAIL_REQUIRE: 'Email є обовя\'зковим',
+  EMAIL_WRONG: 'Email неправильний',
+  PASSWORD_REQUIRE: 'Пароль є обовя\'зковим',
+  PASSWORD_WRONG: 'Пароль неправильний',
+  PASSWORD_MIN_LENGTH: `Пароль повинен бути як мінімум ${UserValidationRule.PASSWORD_MIN_LENGTH} символів довжиною`,
+  PASSWORD_MAX_LENGTH: `Пароль повинен бути максимум ${UserValidationRule.PASSWORD_MAX_LENGTH} символів довжиною`,
+  STRING_PATTERN: `Більше ${UserValidationRule.PASSWORD_MIN_LENGTH} символів, велика літера, цифри і спеціальний знак`,
 };
 
 export { UserValidationMessage };

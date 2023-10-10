@@ -5,6 +5,8 @@ import {
   UserValidationRule,
 } from '../../common/emuns/enums.js';
 
+const regExp = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{9,}$/;
+
 const registration = Joi.object( {
   [ UserPayloadKey.EMAIL ]: Joi.string()
       .trim()
@@ -17,6 +19,7 @@ const registration = Joi.object( {
       } ),
   [ UserPayloadKey.PASSWORD ]: Joi.string()
       .trim()
+      .regex( regExp )
       .min( UserValidationRule.PASSWORD_MIN_LENGTH )
       .max( UserValidationRule.PASSWORD_MAX_LENGTH )
       .required()
@@ -25,6 +28,7 @@ const registration = Joi.object( {
         'any.required': UserValidationMessage.PASSWORD_REQUIRE,
         'string.min': UserValidationMessage.PASSWORD_MIN_LENGTH,
         'string.max': UserValidationMessage.PASSWORD_MAX_LENGTH,
+        'string.pattern.base': UserValidationMessage.STRING_PATTERN,
       } ),
   [ UserPayloadKey.ROLE ]: Joi.string()
       .trim()
