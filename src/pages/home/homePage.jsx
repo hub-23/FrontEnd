@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RegistrationForm from '../../components/registration-form/RegistrationForm';
+import AuthModal from '../../components/authModal/AuthModal';
 
 const HomePage = () => {
   const [ isOpen, setIsOpen ] = useState( false );
@@ -14,7 +14,7 @@ const HomePage = () => {
     <>
       <div>Home page!</div>
       <button onClick={ handleOpenRegistrationForm }>Sing in</button>
-      {isOpen && <RegistrationForm onClose={ handleCloseRegistrationForm } />}
+      {isOpen && <AuthModal onClose={ handleCloseRegistrationForm } />}
     </>
   );
 };

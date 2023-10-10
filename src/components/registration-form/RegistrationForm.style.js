@@ -7,34 +7,9 @@ justify-content:${( props ) => props.justify || 'space-between'};
 gap: ${( props ) => props.gap || '1.25rem'};
 margin-bottom:30px;
 width:${( props ) => props.width || '100%'};
-max-width:${( props ) => props.maxWidth || '100%'};
+max-width:${( props ) => props.maxwidth || '100%'};
 `;
 
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  background-color: rgba(0 0 0 / 60%);
-  overflow: auto;`;
-
-export const Modal = styled.div`
-  margin-top: 75px;
-  padding: 50px;
-  border-radius: 0.28rem;
-  background: #fff;
-  width: 100%;
-  border-radius: 20px 0px 20px 0px;
-  max-width:1120px;
-`;
 
 export const StyledCheckBox = styled.div`
 display: flex;
@@ -72,6 +47,7 @@ gap:100px;
 `;
 
 export const StyledBox = styled.label`
+display: block;
 margin-bottom:30px;
 margin-left:30px;
 font-family: ${ ( props ) => props.fontFamily || props.theme.fontFamily.secondary};
@@ -163,16 +139,4 @@ export const RadioButton = styled.div`
     }; 
 `;
 
-export const GoogleRegistration = styled.div`
-  margin-top:40px;
-  & p {
-  margin-top: 20px;
-  }
-  & span {
-  margin-top: 20px;
-  }
 
-  & button {
-    margin-top: 40px;
-  }
-`;

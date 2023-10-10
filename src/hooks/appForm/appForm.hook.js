@@ -11,7 +11,7 @@ const useAppForm = ( { validationSchema, defaultValues, mode } ) => {
   } = useForm( {
     defaultValues,
     resolver: validationSchema ? joiResolver( validationSchema ) : undefined,
-    mode: mode ?? 'onChange',
+    mode: mode ?? 'onSubmit',
   } );
 
   return {
