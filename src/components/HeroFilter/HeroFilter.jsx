@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { StyledCheckbox, StyledInput, StyledInputs, StyledLabel } from './HeroFilter.styled';
+
+import { StyledHeroButton } from '../HeroButton/HeroButton.styled';
 
 const classes = ['piano', 'drums', 'guitar', 'duduk', 'darbuka'];
 const cities = ['Kyiv', 'Kharkov', 'Korsun', 'Steblev'];
@@ -77,47 +80,52 @@ export const HeroFilter = () => {
 
   return (
     <form className="filter" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Предмет або заняття"
-        onChange={handleInputChange}
-        onFocus={handleFocus}
-        value={subjectValue}
-        id="subject"
-        autoComplete="off"
-      ></input>
-      {focusInput === 'subject' && filteredSuggestions.length > 0 && (
-        <ul>
-          {filteredSuggestions.map((suggestion, index) => (
-            <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-              {suggestion}
-            </li>
-          ))}
-        </ul>
-      )}
-      <input
-        type="text"
-        placeholder="Місто"
-        onChange={handleInputChange}
-        onFocus={handleFocus}
-        value={cityValue}
-        id="city"
-        autoComplete="off"
-      ></input>
-      {focusInput === 'city' && filteredSuggestions.length > 0 && (
-        <ul>
-          {filteredSuggestions.map((suggestion, index) => (
-            <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-              {suggestion}
-            </li>
-          ))}
-        </ul>
-      )}
-      <input type="checkbox" id="radio"></input>
-      <label htmlFor="radio">Онлайн</label>
-      <button type="submit" className="filter-button">
-        Найти
-      </button>
+      <StyledInputs>
+        <StyledInput
+          type="text"
+          placeholder="Предмет або заняття"
+          onChange={handleInputChange}
+          onFocus={handleFocus}
+          value={subjectValue}
+          id="subject"
+          autoComplete="off"
+        ></StyledInput>
+        {focusInput === 'subject' && filteredSuggestions.length > 0 && (
+          <ul>
+            {filteredSuggestions.map((suggestion, index) => (
+              <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                {suggestion}
+              </li>
+            ))}
+          </ul>
+        )}
+        <StyledInput
+          type="text"
+          placeholder="Місто"
+          onChange={handleInputChange}
+          onFocus={handleFocus}
+          value={cityValue}
+          id="city"
+          autoComplete="off"
+        ></StyledInput>
+        {focusInput === 'city' && filteredSuggestions.length > 0 && (
+          <ul>
+            {filteredSuggestions.map((suggestion, index) => (
+              <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                {suggestion}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <StyledLabel htmlFor="radio">
+          <StyledCheckbox type="checkbox" id="radio"></StyledCheckbox>
+          Онлайн{' '}
+          <StyledHeroButton type="submit" className="filter-button">
+            Найти
+          </StyledHeroButton>
+        </StyledLabel>
+      </StyledInputs>
     </form>
   );
 };
