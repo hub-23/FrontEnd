@@ -1,10 +1,15 @@
 import { UserPayloadKey } from '../../../common/emuns/enums.js';
 
-const DEFAULT_REGISTRATION_PAYLOAD = {
+export const DEFAULT_REGISTRATION_PAYLOAD = {
   [ UserPayloadKey.EMAIL ]: '',
   [ UserPayloadKey.PASSWORD ]: '',
-  [ UserPayloadKey.ROLE ]: 'Я учень',
+  [ UserPayloadKey.ROLE ]: '',
   // [ UserPayloadKey.CONFIRMPASSWORD ]: '',
 };
 
-export default DEFAULT_REGISTRATION_PAYLOAD;
+
+export const RADIO_OPTIONS = [
+  { value: 'teacher', label: 'Я викладач' },
+  { value: 'student', label: 'Я учень' },
+];
+

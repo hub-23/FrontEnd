@@ -32,7 +32,10 @@ const AuthModal = ( { onClose } ) => {
               <Button primary='true' onClick={ ()=>setIsRegistration( false ) }>Вхід</Button>
               <Button secondary='true' onClick={ ()=>setIsRegistration( true ) }>Реєстрація</Button>
             </S.Flex>
-            {isRegistration ? <RegistrationForm/> : <h2>LoginForm</h2> }
+            {isRegistration
+            ? <RegistrationForm onClose={ onClose }/>
+            : <h2>LoginForm</h2>
+            }
           </Segment>
           <Segment>
             <Button transparent='true' align='end' onClick={ onClose }>

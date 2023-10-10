@@ -33,10 +33,14 @@ const registration = Joi.object( {
   [ UserPayloadKey.ROLE ]: Joi.string()
       .trim()
       .required(),
-  // [ UserPayloadKey.CONFIRMPASSWORD ]: Joi.any()
-  //     .valid( Joi.ref( UserPayloadKey.PASSWORD ) )
-  //     .required()
-  //     options({ messages: { 'any.only': '{{#label}} does not match'} }),
+  [ UserPayloadKey.CONFIRMPASSWORD ]: Joi.string()
+      .trim()
+      .valid( Joi.ref( UserPayloadKey.PASSWORD ) )
+      .required()
+      .messages( {
+        'any.only': UserValidationMessage.CONFIRM_PASSWORD_MATCH,
+        'any.required': UserValidationMessage.CONFIRM_PASSWORD_REQUIRE,
+      } ),
 } );
 
 

@@ -9,17 +9,13 @@ import Input from '../common/input/Input';
 import RadioButton from './components/RadioButton/RadioButton';
 import { useAppForm } from '../../hooks/hooks.js';
 
-import DEFAULT_REGISTRATION_PAYLOAD from './common/constants.js';
+import { DEFAULT_REGISTRATION_PAYLOAD, RADIO_OPTIONS } from './common/constants.js';
 // eslint-disable-next-line max-len
 import { registration as registrationValidationSchema } from '../../validation-schemas/validation-schemas.js';
 import { UserPayloadKey } from '../../common/emuns/enums.js';
 
 import * as S from './RegistrationForm.style.js';
 
-const options = [
-  { value: 'teacher', label: 'Я викладач' },
-  { value: 'student', label: 'Я учень' },
-];
 
 const RegistrationForm = ( { onClose } ) => {
   const captchaRef = useRef( null );
@@ -54,7 +50,7 @@ const RegistrationForm = ( { onClose } ) => {
           control={ control }
           name='role'
           render={ ( { field: { onChange, ...props } } ) =>
-            options.map( ( option, index ) => (
+            RADIO_OPTIONS?.map( ( option, index ) => (
 
               <RadioButton
                 key={ index }
@@ -81,13 +77,13 @@ const RegistrationForm = ( { onClose } ) => {
         control={ control }
         errors={ errors }
       />
-      {/* <Input
-              type='password'
-              name={ UserPayloadKey.CONFIRMPASSWORD }
-              placeholder='Повторіть пароль'
-              control={ control }
-              errors={ errors }
-            /> */}
+      <Input
+        type='password'
+        name={ UserPayloadKey.CONFIRMPASSWORD }
+        placeholder='Повторіть пароль'
+        control={ control }
+        errors={ errors }
+      />
 
       <ReCAPTCHA style={ { marginBottom: '30px' } }
         sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
