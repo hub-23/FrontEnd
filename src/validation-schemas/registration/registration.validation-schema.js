@@ -33,6 +33,13 @@ const registration = Joi.object( {
   [ UserPayloadKey.ROLE ]: Joi.string()
       .trim()
       .required(),
+  [ UserPayloadKey.CONFIDENTPOLICY ]: Joi.boolean()
+      .invalid( false )
+      .required()
+      .messages( {
+        'any.invalid': UserValidationMessage.CONFIDENT_POLICY,
+        'any.required': UserValidationMessage.CONFIRM_PASSWORD_REQUIRE,
+      } ),
   [ UserPayloadKey.CONFIRMPASSWORD ]: Joi.string()
       .trim()
       .valid( Joi.ref( UserPayloadKey.PASSWORD ) )

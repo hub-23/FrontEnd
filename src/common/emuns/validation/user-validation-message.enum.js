@@ -11,6 +11,7 @@ const UserValidationMessage = {
   PASSWORD_MAX_LENGTH: `Пароль повинен бути максимум ${UserValidationRule.PASSWORD_MAX_LENGTH} символів довжиною`,
   STRING_PATTERN: `Більше ${UserValidationRule.PASSWORD_MIN_LENGTH} символів, велика літера, цифри і спеціальний знак`,
   CONFIRM_PASSWORD_MATCH: 'Підтвердження паролю та пароль повинні співпадати',
+  CONFIDENT_POLICY: 'Поле є обовя\'зковим',
 };
 
 export { UserValidationMessage };

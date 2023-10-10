@@ -4,7 +4,7 @@ const UserPayloadKey = {
   PASSWORD: 'password',
   CONFIRMPASSWORD: 'confirmPassword',
   ROLE: 'role',
-  // STATUS: 'status',
+  CONFIDENTPOLICY: 'confidentPolicy',
 };
 
 export { UserPayloadKey };

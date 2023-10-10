@@ -4,7 +4,8 @@ export const DEFAULT_REGISTRATION_PAYLOAD = {
   [ UserPayloadKey.EMAIL ]: '',
   [ UserPayloadKey.PASSWORD ]: '',
   [ UserPayloadKey.ROLE ]: '',
-  // [ UserPayloadKey.CONFIRMPASSWORD ]: '',
+  [ UserPayloadKey.CONFIDENTPOLICY ]: false,
+  [ UserPayloadKey.CONFIRMPASSWORD ]: '',
 };
 
 

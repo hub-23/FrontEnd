@@ -1,7 +1,15 @@
 import React from 'react';
 import { StyledRadioButton } from './RadioButton.style.js';
 
-const RadioButton = ( { value, label, onChange, name, ...props } ) => {
+// eslint-disable-next-line react/display-name
+const RadioButton = React.forwardRef( ( {
+  value,
+  label,
+  onChange,
+  name,
+  selected,
+  ...props
+}, forwardedRef ) => {
   return (
     <StyledRadioButton>
       <label htmlFor={ name }>
@@ -11,10 +19,14 @@ const RadioButton = ( { value, label, onChange, name, ...props } ) => {
           value={ value }
           aria-label={ label }
           onChange={ () => onChange( value ) }
-          { ...props } />
+          selected={ selected }
+          { ...props }
+        />
         {label}
       </label>
     </StyledRadioButton>
   );
-};
+} );
+
 export default RadioButton;
+

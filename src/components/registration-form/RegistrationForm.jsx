@@ -6,7 +6,7 @@ import { Controller } from 'react-hook-form';
 
 import Button from '../common/button/Button';
 import Input from '../common/input/Input';
-import RadioButton from './components/RadioButton/RadioButton';
+import RadioButton from './components/radioButton/RadioButton';
 import { useAppForm } from '../../hooks/hooks.js';
 
 import { DEFAULT_REGISTRATION_PAYLOAD, RADIO_OPTIONS } from './common/constants.js';
@@ -15,6 +15,7 @@ import { registration as registrationValidationSchema } from '../../validation-s
 import { UserPayloadKey } from '../../common/emuns/enums.js';
 
 import * as S from './RegistrationForm.style.js';
+import Checkbox from './components/checkbox/CheckBox';
 
 
 const RegistrationForm = ( { onClose } ) => {
@@ -49,7 +50,7 @@ const RegistrationForm = ( { onClose } ) => {
         <Controller
           control={ control }
           name='role'
-          render={ ( { field: { onChange, ...props } } ) =>
+          render={ ( { field: { onChange, value, ...props } } ) =>
             RADIO_OPTIONS?.map( ( option, index ) => (
 
               <RadioButton
@@ -58,6 +59,7 @@ const RegistrationForm = ( { onClose } ) => {
                 onChange={ onChange }
                 value={ option.value }
                 label={ option.label }
+                selected={ value }
               />
             ) )
           }
@@ -90,18 +92,12 @@ const RegistrationForm = ( { onClose } ) => {
         ref={ captchaRef }
       />
       <S.StyledBox htmlFor='confidentPolicy'>
-        <input
-          type='checkbox'
-          name='confidentPolicy'
-          id='confidentPolicy'
+        <Checkbox
+          name={ UserPayloadKey.CONFIDENTPOLICY }
+          errors={ errors }
+          control={ control }
         />
-              Я приймаю
-        {' '}
-        <Link href="/" target='_blank'>Політика конфіденційності</Link>
-        {' '}
-              та
-        {' '}
-        <Link href="/node_modules" target='_blank'>Умови використання</Link>
+
       </S.StyledBox>
       <S.Flex>
         <Button blue='true' width='100%' type='submit'>Зареєструватись</Button>
