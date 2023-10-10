@@ -16,7 +16,6 @@ const Input = ( {
   const { field } = useController( { name, control } );
 
   const error = errors[ name ]?.message;
-  console.log( 'error', errors[ name ] );
   const hasError = Boolean( error );
   return (
     <S.Flex >

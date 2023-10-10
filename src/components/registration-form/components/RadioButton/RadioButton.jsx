@@ -17,8 +17,4 @@ const RadioButton = ( { value, label, onChange, name, ...props } ) => {
     </StyledRadioButton>
   );
 };
-{/* <label htmlFor="student">
-                  <input type="radio" name="role" value="student" id="student" checked />
-                  Я учень
-                </label> */}
 export default RadioButton;

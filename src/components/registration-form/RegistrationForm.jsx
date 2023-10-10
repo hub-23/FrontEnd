@@ -17,8 +17,8 @@ import { UserPayloadKey } from '../../common/emuns/enums.js';
 import * as S from './RegistrationForm.style.js';
 
 const options = [
-  { value: 'student', label: 'Я учень' },
   { value: 'teacher', label: 'Я викладач' },
+  { value: 'student', label: 'Я учень' },
 ];
 
 const RegistrationForm = ( { onClose } ) => {
@@ -49,7 +49,7 @@ const RegistrationForm = ( { onClose } ) => {
       onSubmit=
         { handleSubmit( handleRegister ) }>
 
-      <S.Flex justify='center' gap='30px'>
+      <S.Flex justify='center' gap='100px'>
         <Controller
           control={ control }
           name='role'
