@@ -6,7 +6,8 @@ align-items:  ${( props ) => props.align || 'center'};
 justify-content:${( props ) => props.justify || 'space-between'};
 gap: ${( props ) => props.gap || '1.25rem'};
 margin-bottom:30px;
-width:100%;
+width:${( props ) => props.width || '100%'};
+max-width:${( props ) => props.maxWidth || '100%'};
 `;
 
 export const Overlay = styled.div`

@@ -48,51 +48,52 @@ const RegistrationForm = ( { onClose } ) => {
   return (
     <S.Overlay className='overlay'>
       <S.Modal className="form-content">
-        <S.StyledForm
-          action=''
-          name='registrationForm'
-          onSubmit={ handleSubmit( handleRegister ) }
-        >
-          <Segment >
+        <S.Flex align='start' gap='100px'>
+          <Segment maxWidth='705px'>
             <S.Flex>
               <Button primary >Вхід</Button>
               <Button secondary >Реєстрація</Button>
             </S.Flex>
+            <form className=""
+              action=''
+              name='registrationForm'
+              onSubmit=
+                { handleSubmit( handleRegister ) }>
 
-            <S.Flex justify='center' gap='30px'>
+              <S.Flex justify='center' gap='30px'>
 
-              <Controller
+                <Controller
+                  control={ control }
+                  name='role'
+                  render={ ( { field: { onChange, ...props } } ) =>
+                    options.map( ( option, index ) => (
+
+                      <RadioButton
+                        key={ index }
+                        { ...props }
+                        onChange={ onChange }
+                        value={ option.value }
+                        label={ option.label }
+                      />
+                    ) )
+                  }
+                />
+              </S.Flex>
+              <Input
+                type='email'
+                name={ UserPayloadKey.EMAIL }
+                placeholder='Ваш e-mail'
                 control={ control }
-                name='role'
-                render={ ( { field: { onChange, ...props } } ) =>
-                  options.map( ( option, index ) => (
-
-                    <RadioButton
-                      key={ index }
-                      { ...props }
-                      onChange={ onChange }
-                      value={ option.value }
-                      label={ option.label }
-                    />
-                  ) )
-                }
+                errors={ errors }
               />
-            </S.Flex>
-            <Input
-              type='email'
-              name={ UserPayloadKey.EMAIL }
-              placeholder='Ваш e-mail'
-              control={ control }
-              errors={ errors }
-            />
-            <Input
-              type='password'
-              name={ UserPayloadKey.PASSWORD }
-              placeholder='Придумайте пароль'
-              control={ control }
-              errors={ errors }
-            />
-            {/* <Input
+              <Input
+                type='password'
+                name={ UserPayloadKey.PASSWORD }
+                placeholder='Придумайте пароль'
+                control={ control }
+                errors={ errors }
+              />
+              {/* <Input
               type='password'
               name={ UserPayloadKey.CONFIRMPASSWORD }
               placeholder='Повторіть пароль'
@@ -100,39 +101,38 @@ const RegistrationForm = ( { onClose } ) => {
               errors={ errors }
             /> */}
 
-            <ReCAPTCHA style={ { marginBottom: '30px' } }
-              sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
-              ref={ captchaRef }
-            />
-
-
-            <S.StyledBox htmlFor='confidentPolicy'>
-              <input
-                type='checkbox'
-                name='confidentPolicy'
-                id='confidentPolicy'
+              <ReCAPTCHA style={ { marginBottom: '30px' } }
+                sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
+                ref={ captchaRef }
               />
+              <S.StyledBox htmlFor='confidentPolicy'>
+                <input
+                  type='checkbox'
+                  name='confidentPolicy'
+                  id='confidentPolicy'
+                />
               Я приймаю
-              {' '}
-              <Link href="/" target='_blank'>Політика конфіденційності</Link>
-              {' '}
+                {' '}
+                <Link href="/" target='_blank'>Політика конфіденційності</Link>
+                {' '}
               та
-              {' '}
-              <Link href="/node_modules" target='_blank'>Умови використання</Link>
-            </S.StyledBox>
-            <S.Flex>
-              <Button blue width='100%' type='submit'>Зареєструватись</Button>
-            </S.Flex>
-            <S.Typography>
+                {' '}
+                <Link href="/node_modules" target='_blank'>Умови використання</Link>
+              </S.StyledBox>
+              <S.Flex>
+                <Button blue width='100%' type='submit'>Зареєструватись</Button>
+              </S.Flex>
+              <S.Typography>
               Цей сайт захищено технологією reCAPTCHA, до нього застосовуються
-              {' '}
-              <Link href="/" target='_blank'>Політика конфіденційност</Link>
+                {' '}
+                <Link href="/" target='_blank'>Політика конфіденційност</Link>
               і та
-              {' '}
-              <Link href="/node_modules" target='_blank'>Умови використання</Link>
-              {' '}
+                {' '}
+                <Link href="/node_modules" target='_blank'>Умови використання</Link>
+                {' '}
               Google.
-            </S.Typography>
+              </S.Typography>
+            </form>
           </Segment>
           <Segment>
             <Button transparent align='end' onClick={ onClose }>
@@ -149,7 +149,7 @@ const RegistrationForm = ( { onClose } ) => {
             </S.GoogleRegistration>
 
           </Segment>
-        </S.StyledForm>
+        </S.Flex>
       </S.Modal>
     </S.Overlay >
   );
