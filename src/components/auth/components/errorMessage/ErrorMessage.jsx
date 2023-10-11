@@ -1,8 +1,8 @@
 import React from 'react';
 import star from '../../../../assets/registration-form/star.png';
-import * as S from './errorMessage.style.js';
+import * as S from './ErrorMessage.styled.js';
 
-const ErrorMessage = ( { error } ) => {
+export const ErrorMessage = ( { error } ) => {
   return (
     <S.Errors>
 
@@ -16,4 +16,3 @@ const ErrorMessage = ( { error } ) => {
   );
 };
 
-export default ErrorMessage;

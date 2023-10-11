@@ -1,7 +1,7 @@
 import React from 'react';
-import StyledButton from './button.style.js';
+import StyledButton from './Button.styled.js';
 
-const Button = ( { children, type = 'button', color, size, ...props } ) => {
+export const Button = ( { children, type = 'button', color, size, ...props } ) => {
   return (
     <StyledButton
       type={ type }
@@ -12,4 +12,3 @@ const Button = ( { children, type = 'button', color, size, ...props } ) => {
     </StyledButton> );
 };
 
-export default Button;

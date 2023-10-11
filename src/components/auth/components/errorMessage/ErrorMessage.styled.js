@@ -16,4 +16,8 @@ gap:10px;
 
 /* margin-left: 20px; */
 margin: 10px 0px 10px 20px;
+& img {
+height: 16px;
+width: 16px;
+}
 `;

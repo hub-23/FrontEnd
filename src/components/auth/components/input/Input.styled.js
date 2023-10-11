@@ -4,7 +4,7 @@ export const Flex = styled.div`
 display: flex;
 flex-direction: column;
 /* padding-bottom:30px; */
-height: 90px;
+height: 98px;
 width: 100%;
 position: relative;
 /* margin-bottom:30px; */

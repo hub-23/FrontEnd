@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Controller } from 'react-hook-form';
 
-import Button from '../../common/button/Button';
-import Input from '../components/input/Input';
-import Checkbox from '../components/checkbox/CheckBox';
-import RadioButton from '../components/radioButton/RadioButton';
+import { Button } from '../../common/button/Button';
+import { Input } from '../components/input/Input';
+import { Checkbox } from '../components/checkbox/CheckBox';
+import { RadioButton } from '../components/radioButton/RadioButton';
 
 import { useAppForm } from '../hooks/hooks.js';
 
@@ -16,13 +16,12 @@ import { DEFAULT_REGISTRATION_PAYLOAD, RADIO_OPTIONS } from '../common/constants
 import { registration as registrationValidationSchema } from '../validation-schemas/validation-schemas.js';
 import { UserPayloadKey } from '../common/enums/enums.js';
 
-import * as S from './RegistrationForm.style.js';
+import * as S from './RegistrationForm.styled.js';
 
-
-const RegistrationForm = ( { onClose } ) => {
+export const RegistrationForm = ( { onClose } ) => {
   const captchaRef = useRef( null );
   // const [ isLoading, setIsLoading ] = useState( false );
-  const { control, errors, handleSubmit } = useAppForm( {
+  const { control, errors, handleSubmit, reset } = useAppForm( {
     defaultValues: DEFAULT_REGISTRATION_PAYLOAD,
     validationSchema: registrationValidationSchema,
   } );
@@ -35,9 +34,9 @@ const RegistrationForm = ( { onClose } ) => {
     console.log( 'onSubmit' );
     console.log( 'token', token );
     console.log( 'data', data );
+    reset();
     onClose();
   };
-
 
   return (
     <form
@@ -53,7 +52,6 @@ const RegistrationForm = ( { onClose } ) => {
           name='role'
           render={ ( { field: { onChange, value, ...props } } ) =>
             RADIO_OPTIONS?.map( ( option, index ) => (
-
               <RadioButton
                 key={ index }
                 { ...props }
@@ -87,20 +85,15 @@ const RegistrationForm = ( { onClose } ) => {
         control={ control }
         errors={ errors }
       />
-
       <ReCAPTCHA style={ { marginBottom: '30px' } }
         sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
         ref={ captchaRef }
       />
-
-
       <Checkbox
         name={ UserPayloadKey.CONFIDENTPOLICY }
         errors={ errors }
         control={ control }
       />
-
-
       <S.Flex>
         <Button
           variant='blue'
@@ -124,4 +117,3 @@ const RegistrationForm = ( { onClose } ) => {
   );
 };
 
-export default RegistrationForm;

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useController } from 'react-hook-form';
-import showEye from '../../../../assets/registration-form/sow-eye.png';
-import hideEye from '../../../../assets/registration-form/hide-password.png';
-import * as S from './input.style.js';
-import ErrorMessage from '../errorMessage/ErrorMessage.jsx';
+
+import { ErrorMessage } from '../errorMessage/ErrorMessage.jsx';
 import { UserPayloadKey } from '../../common/enums/enums';
 
-const Input = ( {
+import showEye from '../../../../assets/registration-form/sow-eye.png';
+import hideEye from '../../../../assets/registration-form/hide-password.png';
+
+import * as S from './Input.styled.js';
+
+
+export const Input = ( {
   name,
   type,
   errors,
@@ -29,7 +33,7 @@ const Input = ( {
         type={
            type === UserPayloadKey.PASSWORD
            && name === UserPayloadKey.PASSWORD
-           && showPassword ? 'text' : 'password'
+           ? showPassword ? 'text' : 'password' : type
         }
         disabled={ disabled }
         placeholder={ placeholder }
@@ -54,5 +58,3 @@ const Input = ( {
 
   );
 };
-
-export default Input;

@@ -4,7 +4,7 @@ export const StyledRadioButton = styled.div`
     & label {
     display: grid;
     grid-template-columns: 1em auto;
-    gap: 0.5em;
+    gap: 20px;
     font-family: 'Nunito';
     font-size: 20px;
     font-weight: 400;

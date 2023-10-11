@@ -1,7 +1,7 @@
 import React from 'react';
-import StyledSegment from './segment.style.js';
+import StyledSegment from './Segment.styled.js';
 
-const Segment = ( { children, ...props } ) => {
+export const Segment = ( { children, ...props } ) => {
   return (
     <StyledSegment { ...props }>
       {children}
@@ -9,5 +9,3 @@ const Segment = ( { children, ...props } ) => {
   );
 };
 
-
-export default Segment;

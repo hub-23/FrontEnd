@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyledRadioButton } from './RadioButton.style.js';
+import { StyledRadioButton } from './RadioButton.styled.js';
 
 // eslint-disable-next-line react/display-name
-const RadioButton = React.forwardRef( ( {
+export const RadioButton = React.forwardRef( ( {
   value,
   label,
   onChange,
@@ -28,5 +28,4 @@ const RadioButton = React.forwardRef( ( {
   );
 } );
 
-export default RadioButton;
 

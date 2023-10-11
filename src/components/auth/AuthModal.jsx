@@ -1,15 +1,15 @@
 import React, { useRef, useState, useCallback } from 'react';
 
-import Button from '../common/button/Button';
-import Segment from './components/segment/Segment';
-import GoogleLoginButton from './components/googleLoginButton/GoogleLoginButton';
-import RegistrationForm from './registrationForm/RegistrationForm';
+import { Button } from '../common/button/Button';
+import { Segment } from './components/segment/Segment';
+import { GoogleLoginButton } from './components/googleLoginButton/GoogleLoginButton';
+import { RegistrationForm } from './registrationForm/RegistrationForm';
 
 import cross from '../../assets/registration-form/cross.png';
 
-import * as S from './authModal.style.js';
+import * as S from './AuthModal.styled.js';
 
-const AuthModal = ( { onClose } ) => {
+export const AuthModal = ( { onClose } ) => {
   const [ isRegistration, setIsRegistration ] = useState( true );
   const outline = useRef( null );
 
@@ -68,5 +68,3 @@ const AuthModal = ( { onClose } ) => {
     </S.Overlay >
   );
 };
-
-export default AuthModal;

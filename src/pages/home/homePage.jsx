@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AuthModal from '../../components/auth/AuthModal';
+import { AuthModal } from '../../components/auth/AuthModal';
 
 const HomePage = () => {
   const [ isOpen, setIsOpen ] = useState( false );

@@ -10,8 +10,9 @@ const UserValidationMessage = {
   PASSWORD_MIN_LENGTH: `Пароль повинен бути як мінімум ${UserValidationRule.PASSWORD_MIN_LENGTH} символів довжиною`,
   PASSWORD_MAX_LENGTH: `Пароль повинен бути максимум ${UserValidationRule.PASSWORD_MAX_LENGTH} символів довжиною`,
   STRING_PATTERN: `Більше ${UserValidationRule.PASSWORD_MIN_LENGTH} символів, велика літера, цифри і спеціальний знак`,
-  CONFIRM_PASSWORD_MATCH: 'Підтвердження паролю та пароль повинні співпадати',
+  CONFIRM_PASSWORD_MATCH: 'Password entries do not match',
   CONFIDENT_POLICY: 'Поле є обовя\'зковим',
+  CAPTCHA: 'Please complete the Captcha check again',
 };
 
 export { UserValidationMessage };
