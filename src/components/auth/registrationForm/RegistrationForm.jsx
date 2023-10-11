@@ -63,29 +63,6 @@ export const RegistrationForm = ( { onClose } ) => {
             ) )
           }
         />
-        {/* <Controller
-          name="role"
-          control={ control }
-          defaultValue=""
-          render={ ( { field } ) => (
-            <>
-              <input
-                type="radio"
-                value="option1"
-                { ...field }
-                defaultChecked
-              />
-              <label>Option 1</label>
-
-              <input
-                type="radio"
-                value="option2"
-                { ...field }
-              />
-              <label>Option 2</label>
-            </>
-          ) }
-        /> */}
       </S.Flex>
       <Input
         type='email'
