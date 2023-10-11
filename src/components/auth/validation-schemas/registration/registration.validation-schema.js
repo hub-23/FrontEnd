@@ -3,7 +3,7 @@ import {
   UserPayloadKey,
   UserValidationMessage,
   UserValidationRule,
-} from '../../common/emuns/enums.js';
+} from '../../common/enums/enums.js';
 
 const regExp = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{9,}$/;
 

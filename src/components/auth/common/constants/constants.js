@@ -1,4 +1,4 @@
-import { UserPayloadKey } from '../../../common/emuns/enums.js';
+import { UserPayloadKey } from '../enums/enums.js';
 
 export const DEFAULT_REGISTRATION_PAYLOAD = {
   [ UserPayloadKey.EMAIL ]: '',

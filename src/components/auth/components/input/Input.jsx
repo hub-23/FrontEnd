@@ -3,7 +3,7 @@ import { useController } from 'react-hook-form';
 
 import * as S from './input.style.js';
 
-import star from '../../../assets/registration-form/star.png';
+import star from '../../../../assets/registration-form/star.png';
 
 const Input = ( {
   name,

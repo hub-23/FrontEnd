@@ -1,14 +1,14 @@
 import React, { useRef, useState, useCallback } from 'react';
 
 import Button from '../common/button/Button';
-import Segment from '../common/segment/Segment';
+import Segment from './components/segment/Segment';
 import GoogleLoginButton from './components/googleLoginButton/GoogleLoginButton';
+import RegistrationForm from './registrationForm/RegistrationForm';
 
 import cross from '../../assets/registration-form/cross.png';
 
 
 import * as S from './authModal.style.js';
-import RegistrationForm from '../registration-form/RegistrationForm';
 
 const AuthModal = ( { onClose } ) => {
   const [ isRegistration, setIsRegistration ] = useState( true );

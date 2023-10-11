@@ -4,18 +4,19 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Controller } from 'react-hook-form';
 
-import Button from '../common/button/Button';
-import Input from '../common/input/Input';
-import RadioButton from './components/radioButton/RadioButton';
-import { useAppForm } from '../../hooks/hooks.js';
+import Button from '../../common/button/Button';
+import Input from '../components/input/Input';
+import Checkbox from '../components/checkbox/CheckBox';
+import RadioButton from '../components/radioButton/RadioButton';
 
-import { DEFAULT_REGISTRATION_PAYLOAD, RADIO_OPTIONS } from './common/constants.js';
+import { useAppForm } from '../hooks/hooks.js';
+
+import { DEFAULT_REGISTRATION_PAYLOAD, RADIO_OPTIONS } from '../common/constants/constants.js';
 // eslint-disable-next-line max-len
-import { registration as registrationValidationSchema } from '../../validation-schemas/validation-schemas.js';
-import { UserPayloadKey } from '../../common/emuns/enums.js';
+import { registration as registrationValidationSchema } from '../validation-schemas/validation-schemas.js';
+import { UserPayloadKey } from '../common/enums/enums.js';
 
 import * as S from './RegistrationForm.style.js';
-import Checkbox from './components/checkbox/CheckBox';
 
 
 const RegistrationForm = ( { onClose } ) => {
