@@ -32,13 +32,33 @@ const StyledButton = styled.button`
     background: ${( props ) => props.background || props.theme.colors.liner_pink};
     border: 1px solid ${( props ) => props.border || 'transparent'};
     width: ${( props ) => props.width || '329px'};
+      &:hover{
+      background: linear-gradient(267.92deg, #B92759 0%, #E3669C 100%);
+      };
+      &:active{
+        background: rgba(227, 102, 156, 1);
+      };
+      &:disabled{
+        background: rgba(213, 213, 213, 1);
+      }
     `}
     ${( props ) => props.blue && css`
     color: ${( props ) => props.color || props.theme.colors.white};
     background: ${( props ) => props.background || props.theme.colors.liner_blue};
     border: 1px solid ${( props ) => props.border || 'transparent'};
     width: ${( props ) => props.width || '356px'};
+
+      &:hover{
+        background: linear-gradient(267.92deg, #09194D 0%, #234890 100%);
+      };
+      &:active{
+        background: rgba(17, 50, 104, 1);
+      };
+      &:disabled{
+        background: rgba(213, 213, 213, 1);
+      }
     `}
+    
 ${( props ) => props.grey && css`
     width: 217px; 
     color: ${( props ) => props.color || props.theme.colors.white};
