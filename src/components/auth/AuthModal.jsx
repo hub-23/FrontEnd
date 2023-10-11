@@ -26,7 +26,7 @@ export const AuthModal = ( { onClose } ) => {
     <S.Overlay className='overlay' raf={ outline } onClick={ handleOutsideClick }>
       <S.Modal className="form-content">
         <S.Flex align='start' gap='100px'>
-          <Segment maxwidth='705px'>
+          <Segment >
             <S.Flex>
               <Button
                 variant='primary'

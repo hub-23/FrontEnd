@@ -5,6 +5,7 @@ const UserPayloadKey = {
   CONFIRMPASSWORD: 'confirmPassword',
   ROLE: 'role',
   CONFIDENTPOLICY: 'confidentPolicy',
+  RECAPTCHA: 'recaptcha',
 };
 
 export { UserPayloadKey };

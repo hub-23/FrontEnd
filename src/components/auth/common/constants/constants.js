@@ -6,6 +6,7 @@ export const DEFAULT_REGISTRATION_PAYLOAD = {
   [ UserPayloadKey.ROLE ]: 'student',
   [ UserPayloadKey.CONFIDENTPOLICY ]: false,
   [ UserPayloadKey.CONFIRMPASSWORD ]: '',
+  [ UserPayloadKey.RECAPTCHA ]: false,
 };
 
 

@@ -40,6 +40,13 @@ const registration = Joi.object( {
         'any.invalid': UserValidationMessage.CONFIDENT_POLICY,
         'any.required': UserValidationMessage.CONFIRM_PASSWORD_REQUIRE,
       } ),
+  [ UserPayloadKey.RECAPTCHA ]: Joi.boolean()
+      .invalid( false )
+      .required()
+      .messages( {
+        'any.invalid': UserValidationMessage.CONFIDENT_POLICY,
+        'any.required': UserValidationMessage.RECAPTCHA,
+      } ),
   [ UserPayloadKey.CONFIRMPASSWORD ]: Joi.string()
       .trim()
       .valid( Joi.ref( UserPayloadKey.PASSWORD ) )

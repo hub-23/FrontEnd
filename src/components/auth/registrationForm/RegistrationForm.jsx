@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ReCAPTCHA from 'react-google-recaptcha';
+
 import { Controller } from 'react-hook-form';
 
 import { Button } from '../../common/button/Button';
@@ -17,6 +17,7 @@ import { registration as registrationValidationSchema } from '../validation-sche
 import { UserPayloadKey } from '../common/enums/enums.js';
 
 import * as S from './RegistrationForm.styled.js';
+import { Recaptcha } from '../components/recaptcha/Recaptcha';
 
 export const RegistrationForm = ( { onClose } ) => {
   const captchaRef = useRef( null );
@@ -39,7 +40,7 @@ export const RegistrationForm = ( { onClose } ) => {
   };
 
   return (
-    <form
+    <form styles={ { maxWidth: '100%' } }
       autoComplete='off'
       action=''
       name='registrationForm'
@@ -85,9 +86,11 @@ export const RegistrationForm = ( { onClose } ) => {
         control={ control }
         errors={ errors }
       />
-      <ReCAPTCHA style={ { marginBottom: '30px' } }
-        sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
-        ref={ captchaRef }
+      <Recaptcha
+        captchaRef={ captchaRef }
+        name={ UserPayloadKey.RECAPTCHA }
+        control={ control }
+        errors={ errors }
       />
       <Checkbox
         name={ UserPayloadKey.CONFIDENTPOLICY }

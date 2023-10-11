@@ -13,6 +13,7 @@ const UserValidationMessage = {
   CONFIRM_PASSWORD_MATCH: 'Password entries do not match',
   CONFIDENT_POLICY: 'Поле є обовя\'зковим',
   CAPTCHA: 'Please complete the Captcha check again',
+  RECAPTCHA: 'Please complete the Captcha check again',
 };
 
 export { UserValidationMessage };
