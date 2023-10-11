@@ -5,8 +5,8 @@ import { StyledRadioButton } from './RadioButton.styled.js';
 export const RadioButton = React.forwardRef( ( {
   value,
   label,
+  onChange,
   name,
-  selected,
   ...props
 }, forwardedRef ) => {
   return (
@@ -15,7 +15,9 @@ export const RadioButton = React.forwardRef( ( {
         <input
           name={ name }
           type="radio"
+          value={ value }
           aria-label={ label }
+          onChange={ () => onChange( value ) }
           id={ label }
           { ...props }
         />

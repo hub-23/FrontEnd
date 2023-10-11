@@ -3,7 +3,7 @@ import { UserPayloadKey } from '../enums/enums.js';
 export const DEFAULT_REGISTRATION_PAYLOAD = {
   [ UserPayloadKey.EMAIL ]: '',
   [ UserPayloadKey.PASSWORD ]: '',
-  [ UserPayloadKey.ROLE ]: '',
+  [ UserPayloadKey.ROLE ]: 'student',
   [ UserPayloadKey.CONFIDENTPOLICY ]: false,
   [ UserPayloadKey.CONFIRMPASSWORD ]: '',
 };
