@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 
 
-export const Errors = styled.span`
-font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};;
+export const StyledLabel = styled.label`
+display: block;
+margin-bottom:30px;
+margin-left:30px;
+font-family: ${ ( props ) => props.fontFamily || props.theme.fontFamily.secondary};
 font-size: 14px;
-font-weight: 400;
+font-weight: 500;
 line-height: 16px;
 letter-spacing: 0em;
-text-align: left;
-color: #343232;
-
-display:flex;
-align-items:center;
-justify-content:start;
-gap:10px;
-
-/* margin-left: 20px; */
-margin: 10px 0px 10px 20px;
+color: #151414;
+& a {
+  color: #151414;
+  text-decoration: underline;
+};
+& input {
+margin-right:10px;
+  };
 `;

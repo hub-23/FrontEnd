@@ -1,25 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as S from './checkbox.style.js';
 import { useController } from 'react-hook-form';
 
-import star from '../../../../assets/registration-form/star.png';
+import ErrorMessage from '../errorMessage/ErrorMessage';
+
+import * as S from './checkbox.style.js';
 // eslint-disable-next-line react/display-name
 const Checkbox = ( { name, control, errors } ) => {
   const { field } = useController( { name, control } );
   const error = errors[ name ]?.message;
   const hasError = Boolean( error );
-
   return (
     <>
-
-      <label htmlFor={ name }>
+      <S.StyledLabel htmlFor={ name }>
         <input
           { ...field }
           name={ name }
           type="checkbox"
         />
-
               Я приймаю
         {' '}
         <Link href="/" target='_blank'>Політика конфіденційності</Link>
@@ -27,19 +25,12 @@ const Checkbox = ( { name, control, errors } ) => {
               та
         {' '}
         <Link href="/node_modules" target='_blank'>Умови використання</Link>
-      </label>
-
-
-      <S.Errors>
-        { hasError
+      </S.StyledLabel>
+      { hasError
           && (
-            <>
-              <img src={ star } alt="star" />
-              <span>{error}</span>
-            </>
+            <ErrorMessage error={ error }/>
           )
-        }
-      </S.Errors>
+      }
     </>
   );
 };

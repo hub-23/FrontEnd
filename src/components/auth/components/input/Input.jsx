@@ -2,8 +2,7 @@ import React from 'react';
 import { useController } from 'react-hook-form';
 
 import * as S from './input.style.js';
-
-import star from '../../../../assets/registration-form/star.png';
+import ErrorMessage from '../errorMessage/ErrorMessage.jsx';
 
 const Input = ( {
   name,
@@ -27,16 +26,12 @@ const Input = ( {
         aria-invalid={ errors[ name ]?.message ? 'true' : 'false' }
       />
 
-      <S.Errors>
-        { hasError
+
+      { hasError
           && (
-            <>
-              <img src={ star } alt="star" />
-              <span>{error}</span>
-            </>
+            <ErrorMessage error={ error }/>
           )
-        }
-      </S.Errors>
+      }
     </S.Flex >
 
   );

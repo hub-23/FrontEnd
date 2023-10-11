@@ -7,7 +7,6 @@ import RegistrationForm from './registrationForm/RegistrationForm';
 
 import cross from '../../assets/registration-form/cross.png';
 
-
 import * as S from './authModal.style.js';
 
 const AuthModal = ( { onClose } ) => {
@@ -29,8 +28,17 @@ const AuthModal = ( { onClose } ) => {
         <S.Flex align='start' gap='100px'>
           <Segment maxwidth='705px'>
             <S.Flex>
-              <Button primary='true' onClick={ ()=>setIsRegistration( false ) }>Вхід</Button>
-              <Button secondary='true' onClick={ ()=>setIsRegistration( true ) }>Реєстрація</Button>
+              <Button
+                variant='primary'
+                onClick={ ()=>setIsRegistration( false ) }>
+                Вхід
+              </Button>
+              <Button
+                variant='secondary'
+                onClick={ ()=>setIsRegistration( true ) }
+              >
+                Реєстрація
+              </Button>
             </S.Flex>
             {isRegistration
             ? <RegistrationForm onClose={ onClose }/>
@@ -38,7 +46,11 @@ const AuthModal = ( { onClose } ) => {
             }
           </Segment>
           <Segment>
-            <Button transparent='true' align='end' onClick={ onClose }>
+            <Button
+              variant='transparent'
+              size='small'
+              alginSelf='end'
+              onClick={ onClose }>
               <img src={ cross } alt="cross" />
             </Button>
             < S.GoogleRegistration>
@@ -50,7 +62,6 @@ const AuthModal = ( { onClose } ) => {
               </S.Typography>
               <GoogleLoginButton />
             </S.GoogleRegistration>
-
           </Segment>
         </S.Flex>
       </S.Modal>

@@ -1,11 +1,12 @@
 import React from 'react';
 import StyledButton from './button.style.js';
 
-const Button = ( { children, type = 'button', bg, ...props } ) => {
+const Button = ( { children, type = 'button', color, size, ...props } ) => {
   return (
     <StyledButton
       type={ type }
-      color={ bg }
+      color={ color }
+      size={ size }
       { ...props }>
       {children}
     </StyledButton> );

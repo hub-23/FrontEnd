@@ -92,16 +92,22 @@ const RegistrationForm = ( { onClose } ) => {
         sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
         ref={ captchaRef }
       />
-      <S.StyledBox htmlFor='confidentPolicy'>
-        <Checkbox
-          name={ UserPayloadKey.CONFIDENTPOLICY }
-          errors={ errors }
-          control={ control }
-        />
 
-      </S.StyledBox>
+
+      <Checkbox
+        name={ UserPayloadKey.CONFIDENTPOLICY }
+        errors={ errors }
+        control={ control }
+      />
+
+
       <S.Flex>
-        <Button blue='true' width='100%' type='submit'>Зареєструватись</Button>
+        <Button
+          variant='blue'
+          size='large'
+          type='submit'>
+          Зареєструватись
+        </Button>
       </S.Flex>
       <S.Typography>
               Цей сайт захищено технологією reCAPTCHA, до нього застосовуються
