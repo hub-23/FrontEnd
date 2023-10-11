@@ -50,15 +50,14 @@ export const RegistrationForm = ( { onClose } ) => {
         <Controller
           control={ control }
           name='role'
-          render={ ( { field: { onChange, value, ...props } } ) =>
+          render={ ( { field } ) =>
             RADIO_OPTIONS?.map( ( option, index ) => (
               <RadioButton
                 key={ index }
-                { ...props }
-                onChange={ onChange }
                 value={ option.value }
                 label={ option.label }
-                selected={ value }
+                { ...field }
+                defaultChecked
               />
             ) )
           }

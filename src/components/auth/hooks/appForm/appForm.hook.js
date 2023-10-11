@@ -13,7 +13,6 @@ const useAppForm = ( { validationSchema, defaultValues, mode } ) => {
     resolver: validationSchema ? joiResolver( validationSchema ) : undefined,
     mode: mode ?? 'onBlur',
   } );
-
   return {
     control,
     errors,

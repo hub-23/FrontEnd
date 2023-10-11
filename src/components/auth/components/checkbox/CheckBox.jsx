@@ -10,10 +10,11 @@ export const Checkbox = ( { name, control, errors } ) => {
   const { field } = useController( { name, control } );
   const error = errors[ name ]?.message;
   const hasError = Boolean( error );
+
   return (
     <>
       <S.Flex>
-        <S.StyledLabel htmlFor={ name }>
+        <S.StyledLabel>
           <input
             { ...field }
             name={ name }
