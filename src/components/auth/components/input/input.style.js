@@ -6,12 +6,14 @@ flex-direction: column;
 /* padding-bottom:30px; */
 height: 90px;
 width: 100%;
+position: relative;
 /* margin-bottom:30px; */
 
 & input[aria-invalid='true'] {
   outline:  1px solid #E3669C;
       /* border: 1px solid #E3669C; */
 }
+
 `;
 
 export const StyledInput = styled.input`
@@ -44,4 +46,24 @@ export const StyledInput = styled.input`
       };
   `;
 
+export const StyledButton = styled.button`
+ position: absolute;
+top: 0;
+right: 20px;
+bottom: 0;
+width:25px;
+height:25px;
+background-color: transparent;
+display: flex;
+justify-content: center;
+border: none;
+outline: none;
+align-items: center;
+object-fit: cover;
+max-width: 100%;
+transform: translate(-50%, 50%);
+& img {
+ max-width: 100%;
+}
+`;
 
