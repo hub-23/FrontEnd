@@ -4,6 +4,7 @@ import { ErrorMessage } from '../errorMessage/ErrorMessage';
 import { useController } from 'react-hook-form';
 import * as S from './Recaptcha.styled.js';
 
+
 export const Recaptcha = ( { captchaRef, name, control, errors } ) => {
   const { field } = useController( { name, control } );
 
@@ -13,7 +14,7 @@ export const Recaptcha = ( { captchaRef, name, control, errors } ) => {
     <S.Flex>
       <ReCAPTCHA
         { ...field }
-        sitekey={ process.env.REACT_APP_SITE_KEY || 'wweew' }
+        sitekey={ process.env.REACT_APP_SITE_KEY }
         ref={ captchaRef }
       />
       { hasError

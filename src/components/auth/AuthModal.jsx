@@ -49,7 +49,7 @@ export const AuthModal = ( { onClose } ) => {
             <Button
               variant='transparent'
               size='small'
-              alginSelf='end'
+              alginself='end'
               onClick={ onClose }>
               <img src={ cross } alt="cross" />
             </Button>

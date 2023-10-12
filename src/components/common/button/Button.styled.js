@@ -22,7 +22,7 @@ const StyledButton = styled.button`
   /* border: 1px solid rgba(45, 45, 45, 1); */
   border-radius: 20px 0px 20px 0px;
   font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-  align-self: ${( props ) => props.alginSelf || 'center'};
+  align-self: ${( props ) => props.alginself || 'center'};
 
   font-size: 26px;
   font-weight: 600;
