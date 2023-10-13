@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { StyledCheckbox, StyledInput, StyledInputs, StyledLabel } from './HeroFilter.styled';
+import {
+  StyledCheckbox,
+  StyledInput,
+  StyledInputs,
+  StyledLabel,
+} from './HeroFilter.styled';
 
 import { StyledHeroButton } from '../HeroButton/HeroButton.styled';
 
@@ -12,19 +17,35 @@ export const HeroFilter = () => {
   const [focusInput, setFocusInput] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
+    for (let i = 0; i < e.target.value.length; i++) {
+      const letter = e.target.value.charAt(i);
+      console.log(
+        !((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))
+      );
+      if (
+        !((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))
+      ) {
+        alert('можна тільки букви');
+        return;
+      }
+    }
     const text = e.target.value;
     let filtered = [];
     switch (e.target.id) {
       case 'subject':
         setSubjectValue(text);
-        filtered = classes.filter((item) => item.toLowerCase().charAt(0) === text.toLowerCase());
+        filtered = classes.filter(
+          item => item.toLowerCase().charAt(0) === text.toLowerCase()
+        );
 
         setFilteredSuggestions(filtered);
         break;
       case 'city':
         setCityValue(text);
-        filtered = cities.filter((item) => item.toLowerCase().includes(text.toLowerCase()));
+        filtered = cities.filter(item =>
+          item.toLowerCase().includes(text.toLowerCase())
+        );
         setFilteredSuggestions(filtered);
         break;
 
@@ -35,7 +56,7 @@ export const HeroFilter = () => {
     e.target.value === '' && setFilteredSuggestions([]);
   };
 
-  const handleSuggestionClick = (suggestion) => {
+  const handleSuggestionClick = suggestion => {
     switch (focusInput) {
       case 'subject':
         setSubjectValue(suggestion);
@@ -51,24 +72,20 @@ export const HeroFilter = () => {
     }
   };
 
-  const handleFocus = (e) => {
+  const handleFocus = e => {
     setFocusInput(e.target.id);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     const subject = document.getElementById('subject').value;
     const city = document.getElementById('city').value;
     const online = document.getElementById('radio').checked;
-    if (!subject) {
-      alert('оберіть уроки');
-      return;
-    } else if (!city) {
-      alert('оберіть місто');
+    if (!subject && !city) {
+      alert('оберіть щось');
       return;
     }
-
     e.target.reset();
     setCityValue('');
     setSubjectValue('');
@@ -121,7 +138,11 @@ export const HeroFilter = () => {
         <StyledLabel htmlFor="radio">
           <StyledCheckbox type="checkbox" id="radio"></StyledCheckbox>
           Онлайн{' '}
-          <StyledHeroButton type="submit" className="filter-button">
+          <StyledHeroButton
+            color="black"
+            type="submit"
+            className="filter-button"
+          >
             Найти
           </StyledHeroButton>
         </StyledLabel>

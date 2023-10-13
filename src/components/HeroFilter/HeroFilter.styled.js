@@ -16,7 +16,13 @@ export const StyledInputs = styled.div`
 export const StyledInput = styled.input`
   all: unset;
   flex-grow: 1;
-  background-image: url(${searchImg});
+  background-image: ${(props) => {
+    if (props.id === 'subject') {
+      return `url(${searchImg})`;
+    } else if (props.id === 'city') {
+      return `url(${locationImg})`;
+    }
+  }};
   background-repeat: no-repeat;
   background-position: 16px center;
   border-right: 1px solid black;
@@ -33,6 +39,7 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledCheckbox = styled.input`
+  position: relative;
   appearance: none; /* Убираем стандартный стиль браузера */
   width: 24px;
   height: 24px;
@@ -42,9 +49,17 @@ export const StyledCheckbox = styled.input`
   cursor: pointer;
   padding-left: 20px;
 
-  /* Стили для "галочки" при выборе */
   &:checked {
-    background-color: #3498db;
-    border-color: #3498db;
+    &::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background-color: #e3669c;
+      border-radius: 50%; /* Создаем еще один внутренний круг */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 `;

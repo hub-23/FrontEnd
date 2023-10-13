@@ -26,8 +26,10 @@ export const Hero = () => {
                 конкуренцію в своїй ніші
               </StyledText>
               <StyledButtContainer>
-                <HeroButton size="big">Стати викладачем</HeroButton>
-                <HeroButton size="big" color="second">
+                <HeroButton size="big" color="blue">
+                  Стати викладачем
+                </HeroButton>
+                <HeroButton size="big" color="crimson">
                   Стати учнем
                 </HeroButton>
               </StyledButtContainer>
