@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/FrontEnd/static/js/main.afe64ab0.js",
+    "index.html": "/FrontEnd/index.html",
+    "main.afe64ab0.js.map": "/FrontEnd/static/js/main.afe64ab0.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.afe64ab0.js"
+  ]
+}
