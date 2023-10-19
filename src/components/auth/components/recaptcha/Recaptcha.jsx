@@ -14,7 +14,7 @@ export const Recaptcha = ( { captchaRef, name, control, errors } ) => {
     <S.Flex>
       <ReCAPTCHA
         { ...field }
-        sitekey={ process.env.REACT_APP_SITE_KEY }
+        sitekey={ process.env.REACT_APP_SITE_KEY || '' }
         ref={ captchaRef }
       />
       { hasError
