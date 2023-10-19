@@ -19,8 +19,6 @@ export const GoogleLoginButton = () => {
       onFailure={ onGoogleError }
       text=""
       theme="outline"
-      width="100%"
-      logo_alignment='left'
       type='icon'
       shape='circle'
       containerProps={ {
