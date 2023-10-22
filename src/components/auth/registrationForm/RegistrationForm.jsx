@@ -96,7 +96,15 @@ export const RegistrationForm = ( { onClose } ) => {
         name={ UserPayloadKey.CONFIDENTPOLICY }
         errors={ errors }
         control={ control }
-      />
+      >
+            Я приймаю
+        {' '}
+        <Link href="/" target='_blank'>Політика конфіденційності</Link>
+        {' '}
+              та
+        {' '}
+        <Link href="/node_modules" target='_blank'>Умови використання</Link>
+      </Checkbox>
       <S.Flex>
         <Button
           variant='blue'

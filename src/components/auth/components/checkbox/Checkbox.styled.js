@@ -25,7 +25,7 @@ display: flex;
 flex-direction: column;
 /* padding-bottom:30px; */
 height: 60px;
-width: 100%;
+width:  ${( props ) => props.size === 'md' ? '75%' : '100%'};
 position: relative;
 /* margin-bottom:30px; */
 `;

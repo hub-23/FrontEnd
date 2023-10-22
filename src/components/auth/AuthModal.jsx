@@ -8,6 +8,7 @@ import { RegistrationForm } from './registrationForm/RegistrationForm';
 import cross from '../../assets/registration-form/cross.png';
 
 import * as S from './AuthModal.styled.js';
+import { LoginForm } from './loginForm/LoginForm';
 
 export const AuthModal = ( { onClose } ) => {
   const [ isRegistration, setIsRegistration ] = useState( true );
@@ -42,7 +43,7 @@ export const AuthModal = ( { onClose } ) => {
             </S.Flex>
             {isRegistration
             ? <RegistrationForm onClose={ onClose }/>
-            : <h2>LoginForm</h2>
+            : <LoginForm onClose={ onClose }/>
             }
           </Segment>
           <Segment>
