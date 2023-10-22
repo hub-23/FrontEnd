@@ -22,7 +22,7 @@ export const LoginForm = ( { onClose } ) => {
     validationSchema: loginValidationSchema,
   } );
 
-  const handleRegister = ( data ) => {
+  const handleLogin = ( data ) => {
     console.log( 'data', data );
     reset();
     onClose();
@@ -34,7 +34,7 @@ export const LoginForm = ( { onClose } ) => {
       action=''
       name='registrationForm'
       onSubmit=
-        { handleSubmit( handleRegister ) }>
+        { handleSubmit( handleLogin ) }>
       <Input
         type='email'
         name={ UserPayloadKey.EMAIL }

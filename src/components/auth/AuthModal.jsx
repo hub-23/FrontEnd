@@ -42,7 +42,7 @@ export const AuthModal = ( { onClose } ) => {
               </Button>
             </S.Flex>
             {isRegistration
-            ? <RegistrationForm onClose={ onClose }/>
+            ? <RegistrationForm onClose={ onClose } setIsRegistration={ setIsRegistration }/>
             : <LoginForm onClose={ onClose }/>
             }
           </Segment>

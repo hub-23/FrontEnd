@@ -19,7 +19,7 @@ import { UserPayloadKey } from '../common/enums/enums.js';
 import * as S from './RegistrationForm.styled.js';
 import { Recaptcha } from '../components/recaptcha/Recaptcha';
 
-export const RegistrationForm = ( { onClose } ) => {
+export const RegistrationForm = ( { onClose, setIsRegistration } ) => {
   const captchaRef = useRef( null );
   // const [ isLoading, setIsLoading ] = useState( false );
   const { control, errors, handleSubmit, reset } = useAppForm( {
@@ -36,7 +36,8 @@ export const RegistrationForm = ( { onClose } ) => {
     console.log( 'token', token );
     console.log( 'data', data );
     reset();
-    onClose();
+    setIsRegistration( false );
+    // onClose();
   };
 
   return (
