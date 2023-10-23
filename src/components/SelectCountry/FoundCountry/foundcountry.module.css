@@ -1,0 +1,32 @@
+.block{
+    text-align: left;
+}
+
+
+.blocktitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.title{
+
+}
+
+.exit{
+    width: 40px;
+    transform: rotate(45deg);
+}
+
+
+.input{
+    margin-top: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px 0 10px 0;
+    padding: 1em 15em 1em 0.5em;
+}
+
+.input:focus{
+    border: 1px solid #09194D;
+}
