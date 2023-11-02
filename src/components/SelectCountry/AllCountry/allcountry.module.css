@@ -1,0 +1,14 @@
+.all_country{
+    height: 130px;
+    margin-top: 30px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: start;
+    grid-column-gap: 22mm;
+    margin-bottom: 10px;
+}
+
+.county_list{
+    margin-bottom: 10px;
+}
