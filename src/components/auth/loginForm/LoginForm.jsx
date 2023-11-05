@@ -58,7 +58,7 @@ export const LoginForm = ( { onClose } ) => {
         </UncontrolledCheckbox>
         <S.StyledLink>
           <Link to="/" >
-      Забули пароль?
+      Forgot password?
           </Link>
         </S.StyledLink>
       </S.Flex>
