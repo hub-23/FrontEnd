@@ -11,7 +11,7 @@ const App = () => {
       <GeneralStyles />
       <Theme>
         <Routes>
-          <Route exact path='/' element={ <Home /> } />
+          <Route exact path='/*' element={ <Home /> } />
         </Routes>
       </Theme>
     </>
