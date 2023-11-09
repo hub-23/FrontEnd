@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { AuthModal } from '../../components/auth/AuthModal';
-import Header from '../../components/Header/Header';
-import TopTeachers from '../../components/top-teachers/TopTeachers';
+import React, { useState } from 'react'
+import { AuthModal } from '../../components/auth/AuthModal'
+import Header from '../../components/Header/Header'
+// import TopTeachers from '../../components/top-teachers/TopTeachers';
 
 const HomePage = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -18,7 +18,7 @@ const HomePage = () => {
             <div>Home page!</div>
             <button onClick={handleOpenRegistrationForm}>Sing in</button>
             {isOpen && <AuthModal onClose={handleCloseRegistrationForm} />}
-            <TopTeachers />
+            {/* <TopTeachers /> */}
         </>
     )
 }
