@@ -1,26 +1,27 @@
-import React, { useState } from 'react'
-import { AuthModal } from '../../components/auth/AuthModal'
-import Header from '../../components/Header/Header'
-// import TopTeachers from '../../components/top-teachers/TopTeachers';
+import React, { useState } from 'react';
+import { AuthModal } from '../../components/auth/AuthModal';
+import Header from '../../components/Header/Header';
+import TopTeachers from '../../components/top-teachers/TopTeachers';
 
 const HomePage = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
     const handleOpenRegistrationForm = () => {
-        setIsOpen(true)
-    }
+        setIsOpen(true);
+    };
 
     const handleCloseRegistrationForm = () => {
-        setIsOpen(false)
-    }
+        setIsOpen(false);
+    };
     return (
         <>
             <Header />
             <div>Home page!</div>
             <button onClick={handleOpenRegistrationForm}>Sing in</button>
             {isOpen && <AuthModal onClose={handleCloseRegistrationForm} />}
-            {/* <TopTeachers /> */}
+            <TopTeachers />
+            <div>Footer</div>
         </>
-    )
-}
+    );
+};
 
-export default HomePage
+export default HomePage;

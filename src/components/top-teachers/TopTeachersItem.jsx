@@ -1,53 +1,31 @@
-// import React, { useEffect, useState } from 'react';
-// import { FaStar } from 'react-icons/fa6';
 import React from 'react';
-// const createArray = ( length ) => [
-//   ...Array( length ),
-// ];
+import {
+    StyledContainer,
+    StaledImage,
+    StyledInfo,
+} from './TopTeachers.styled.js';
+import Ratenig from './components/ratening/Ratenig.jsx';
 
-// function Star( { selected = false, onSelect } ) {
-// 	return <FaStar color={ selected ? 'yellow' : 'grey' } onSelect={ onSelect } />;
-// }
-
-// function StarRating( { totalStars } ) {
-// const [ selectedStars, setSelectedStars ] = useState(0);
-// 	return 
-// 		<>
-// 			{createArray(totalStars).map((n, i) => (<Star key={i} 
-// 			selected={selectedStars > i}  onSelect ={() => setSelectedStars(i + 1)}/>))	}
-// 			<p>{selectedStars} of {totalStars}</p>
-// 		</>
-// }
-
-// function Rating() {
-// 	return <StarRating totalStars={ 5 }/>;
-// }
-
-// useEffect( () => {
-//   fetch( `http://api.github.com.users`
-//       .then( ( response ) => response.json() )
-//       .then( setData ) );
-// } );
-
-const TopTeachersItem = ( { imgUrl, imgTitle } ) => {
-  return (
-    <>
-      <div className='carousel-item'>
-        <div className='carousel-image'>
-          <img src={ imgUrl } alt={ imgTitle }/>
-        </div>
-        <div className='text'></div>
-        <div className='info1'>
-          {/* <Rating/> */}
-          <div className='city'>Місто</div>
-        </div>
-        <div className='info2'>
-          <div className='full-name'>ПІБ</div>
-          <div className='subject'>Предмет</div>
-        </div>
-      </div>
-    </>
-  );
+const TopTeachersItem = ({ teacher }) => {
+    return (
+        <>
+            <StyledContainer>
+                <Flex>
+                    <StyledImage>{teacher.image}</StyledImage>
+                    <StyledInfo>
+                        <Flex>
+                            <Ratenig />
+                            <div className="location">{teacher.location}</div>
+                        </Flex>
+                        <Flex>
+                            <div className="name">{teacher.name}</div>
+                            <div className="subject">{teacher.subject}</div>
+                        </Flex>
+                    </StyledInfo>
+                </Flex>
+            </StyledContainer>
+        </>
+    );
 };
 
 export default TopTeachersItem;

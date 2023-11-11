@@ -1,16 +1,37 @@
-import React from 'react'
-import TopTeachersList from './TopTeachersList'
+import React from 'react';
+import TopTeachersList from './TopTeachersList';
+import { TopTeachersButton } from './components/button/TopTeachersButton';
 
-import * as S from './TopTeachers.styled.js'
+import {
+    StyledSection,
+    StyledContainer,
+    StyledTitle,
+    StyledCarousel,
+    StyledBtnContainer,
+    Flex,
+} from './TopTeachers.styled.js';
 
 const TopTeachers = () => {
     return (
-        <S.Layout className="teachers-block">
-            <S.Title> Топові викладачі </S.Title>
-            <S.Button> Обрати викладача </S.Button>
-            <S.ButtonPause> Стоп / Продовжити </S.ButtonPause>
-            <TopTeachersList />
-        </S.Layout>
-    )
-}
-export default TopTeachers
+        <>
+            <StyledSection className="teachers-block">
+                <Flex direction="column" align="stretch">
+                    <StyledContainer>
+                        <Flex>
+                            <StyledTitle> Топові викладачі </StyledTitle>
+                            <StyledBtnContainer>
+                                <TopTeachersButton />
+                                <div>Pause</div>
+                            </StyledBtnContainer>
+                        </Flex>
+                    </StyledContainer>
+                    <StyledCarousel>
+                        <TopTeachersList />
+                    </StyledCarousel>
+                </Flex>
+            </StyledSection>
+        </>
+    );
+};
+
+export default TopTeachers;

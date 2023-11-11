@@ -35,8 +35,7 @@
         "linebreak-style": ["error", "windows"],
         "operator-linebreak": ["error", "before"],
         "max-len": ["error", { "code": 100 }],
-        "react/prop-types": "off",
-        "endOfLine": "auto"
+        "react/prop-types": "off"
     },
     "overrides": [
         {

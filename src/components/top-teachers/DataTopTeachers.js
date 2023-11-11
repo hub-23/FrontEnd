@@ -1,109 +1,121 @@
-export const PropsTopTeachers = [
+import image1 from '../../assets/top-teachers/image1.png';
+import image2 from '../../assets/top-teachers/image2.png';
+import image3 from '../../assets/top-teachers/image3.png';
+import image4 from '../../assets/top-teachers/image4.png';
+import image5 from '../../assets/top-teachers/image5.png';
+import image6 from '../../assets/top-teachers/image6.png';
+import image7 from '../../assets/top-teachers/image7.png';
+import image8 from '../../assets/top-teachers/image8.png';
+import image9 from '../../assets/top-teachers/image9.png';
+import image10 from '../../assets/top-teachers/image10.png';
+import image11 from '../../assets/top-teachers/image11.png';
+import image12 from '../../assets/top-teachers/image12.png';
+
+export const teachers = [
     {
-        city: 'Івано-Франківськ',
+        id: 1,
+        rate: true,
+        location: 'Івано-Франківськ',
         name: 'Тетяна Валеріївна',
-        lesson: 'Англійська мова',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Англійська мова',
+        image: { image1 },
     },
 
     {
-        city: 'Київ',
+        id: 2,
+        rate: true,
+        location: 'Київ',
         name: 'Марина Олександрівна',
-        lesson: 'Математика',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Математика',
+        image: { image2 },
     },
-
     {
-        city: 'Онлайн',
+        id: 3,
+        rate: true,
+        location: 'Онлайн',
         name: 'Олександр Олександрович',
-        lesson: 'Німецька мова',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Німецька мова',
+        image: { image3 },
     },
 
     {
-        city: 'Івано-Франківськ',
+        id: 4,
+        rate: true,
+        location: 'Івано-Франківськ',
         name: 'Іванна Василівна',
-        lesson: 'Стрейчинг',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Стрейчинг',
+        image: { image4 },
     },
 
     {
-        city: 'Харків',
+        id: 5,
+        rate: true,
+        location: 'Харків',
         name: 'Олена Валеріївна',
-        lesson: 'Малювання фарбами',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Малювання фарбами',
+        image: { image5 },
     },
 
     {
-        city: 'Львів',
+        id: 6,
+        rate: true,
+        location: 'Львів',
         name: 'Артем Ігоревич',
-        lesson: 'Гра на гітарі',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Гра на гітарі',
+        image: { image6 },
     },
 
     {
-        city: 'Чернігів',
+        id: 7,
+        rate: true,
+        location: 'Чернігів',
         name: 'Олександра Олександрівна',
-        lesson: 'Математика',
-        icon: 'Вокал',
-        image: true,
-        has_icon: true,
+        subject: 'Математика',
+        image: { image7 },
     },
 
     {
-        city: 'Ужгород',
+        id: 8,
+        rate: true,
+        location: 'Ужгород',
         name: '	Кіра Юріївна',
-        lesson: 'Акторська майстерність',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Акторська майстерність',
+        image: { image8 },
     },
 
     {
-        city: 'Київ',
+        id: 9,
+        rate: true,
+        location: 'Київ',
         name: 'Вікторія Олегівна',
-        lesson: 'Йога',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Йога',
+        image: { image9 },
     },
 
     {
-        city: 'Луцьк',
+        id: 10,
+        rate: true,
+        location: 'Луцьк',
         name: 'Віталій Васильович',
-        lesson: 'Ліпка з глини',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Ліпка з глини',
+        image: { image10 },
     },
 
     {
-        city: 'Житомир',
+        id: 11,
+        rate: true,
+        location: 'Житомир',
         name: 'Надія Петрівна',
-        lesson: 'Фізика',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Фізика',
+        image: { image11 },
     },
 
     {
-        city: 'Онлайн',
+        id: 12,
+        rate: true,
+        location: 'Онлайн',
         name: 'Валентина Іванівна',
-        lesson: 'Польська мова',
-        icon: 'Star_large',
-        image: true,
-        has_icon: true,
+        subject: 'Польська мова',
+        image: { image12 },
     },
-]
+];
