@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 export const StyledButton = styled.button`
     width: Hug (230px);
     height: Hug (48px);
