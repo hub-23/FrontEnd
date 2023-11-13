@@ -1,52 +1,43 @@
 import React from 'react';
 import {
-  StyledContainer,
+  StyledCard,
   StyledPhoto,
-  StyledInfo,
-  StyledRatingContainer,
+  StyledContent,
+  StyledRating,
   StyledLocation,
-  StyledInfoContainer,
+  StyledInfo,
   StyledName,
   StyledSubject,
-  Flex,
+  Photo,
+  Typography,
 } from './TopTeachersCard.styled.js';
-import { teachers } from '../../topTeachersData.js';
 import Rating from '../Rating/Rating.jsx';
-import Photo from './Photo.jsx';
+
 
 const TopTeachersCard = ( { teacher } ) => {
   return (
     <>
-      <StyledContainer>
-        <Flex>
-          {teachers.map( ( teacher ) => (
-            <div key={ teacher.id }>
-              {/* <Photo> */}
-                <img
-                  src={ teacher.src }
-                  alt={ teacher.alt }
-                  className="photo"
-                />
-              {/* </Photo> */}
-              <StyledInfo>
-                <StyledRatingContainer>
-                  <Rating />
-                  <StyledLocation>
-                    {teacher.location}
-                  </StyledLocation>
-                </StyledRatingContainer>
-
-                <StyledInfoContainer>
-                  <StyledName>{teacher.name}</StyledName>
-                  <StyledSubject>
-                    {teacher.subject}
-                  </StyledSubject>
-                </StyledInfoContainer>
-              </StyledInfo>
-            </div>
-          ) )}
-        </Flex>
-      </StyledContainer>
+      <StyledCard>
+        <StyledPhoto>
+          <Photo src={ teacher.src } alt="photo" />
+        </StyledPhoto>
+        <StyledContent>
+          <StyledRating>
+            <Rating />
+            <StyledLocation>
+              <Typography weight='300'>{teacher.location}</Typography>
+            </StyledLocation>
+          </StyledRating>
+          <StyledInfo>
+            <StyledName>
+              <Typography size='20px' line='28px'>{teacher.name}</Typography>
+            </StyledName>
+            <StyledSubject>
+              <Typography>{teacher.subject}</Typography>
+            </StyledSubject>
+          </StyledInfo>
+        </StyledContent>
+      </StyledCard>
     </>
   );
 };

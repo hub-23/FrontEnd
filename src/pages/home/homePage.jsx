@@ -15,7 +15,6 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <div>Home page!</div>
       <button onClick={ handleOpenRegistrationForm }>Sing in</button>
       {isOpen && <AuthModal onClose={ handleCloseRegistrationForm } />}
       <TopTeachersCarousel />

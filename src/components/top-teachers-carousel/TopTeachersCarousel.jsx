@@ -11,12 +11,13 @@ import {
   StyledBtnContainer,
   Flex,
 } from './TopTeachersCarousel.styled.js';
+import { teachers } from './topTeachersData.js';
 
 const TopTeachersCarousel = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
@@ -36,7 +37,9 @@ const TopTeachersCarousel = () => {
             </Flex>
           </StyledContainer>
           <Slider { ...settings }>
-            <TopTeachersCard />
+            {teachers.map( ( teacher ) => (
+              <TopTeachersCard key={ teacher.id } teacher= { teacher }/>
+            ) )}
           </Slider>
         </Flex>
       </StyledSection>
