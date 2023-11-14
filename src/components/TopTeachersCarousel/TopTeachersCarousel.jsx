@@ -13,7 +13,7 @@ import {
 } from './TopTeachersCarousel.styled.js';
 import { teachers } from './topTeachersData.js';
 
-const TopTeachersCarousel = () => {
+export const TopTeachersCarousel = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -47,4 +47,3 @@ const TopTeachersCarousel = () => {
   );
 };
 
-export default TopTeachersCarousel;
