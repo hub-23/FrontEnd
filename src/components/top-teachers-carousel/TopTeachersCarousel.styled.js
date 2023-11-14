@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledSection = styled.section`
     width: 1440px;
     height: 720px;
-    top: 2036px;
+    margin-top: 2036px;
     background: #113268;
     border: mixed solid;
     color: #ffffff;
