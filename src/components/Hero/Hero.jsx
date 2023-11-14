@@ -1,9 +1,10 @@
-import { HeroButton, StyledButton } from '../HeroButton/HeroButton';
+import React from 'react';
+import { HeroButton } from '../HeroButton/HeroButton';
 import { HeroFilter } from '../HeroFilter/HeroFilter';
 import {
   StyledButtContainer,
   StyledContainer,
-  StyledGardient,
+  StyledGradient,
   StyledSection,
   StyledText,
   StyledTitle,
@@ -13,16 +14,21 @@ export const Hero = () => {
   return (
     <>
       <StyledSection className="section-hero">
-        <StyledGardient>
+        <StyledGradient>
           <StyledContainer>
             <div className="hero-content">
               <StyledTitle>
                 ПРОСТІР
-                <br /> ТАЛАНОВИТИХ
-                <br /> ЛЮДЕЙ
+                <br />
+                {' '}
+ТАЛАНОВИТИХ
+                <br />
+                {' '}
+ЛЮДЕЙ
               </StyledTitle>
               <StyledText>
-                Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до команди вчителів та склади
+                Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до команди
+                вчителів та склади
                 конкуренцію в своїй ніші
               </StyledText>
               <StyledButtContainer>
@@ -36,7 +42,7 @@ export const Hero = () => {
             </div>
             <HeroFilter />
           </StyledContainer>
-        </StyledGardient>
+        </StyledGradient>
       </StyledSection>
     </>
   );

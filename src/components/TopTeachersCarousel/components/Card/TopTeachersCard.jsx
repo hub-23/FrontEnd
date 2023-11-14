@@ -6,7 +6,7 @@ import {
   StyledRating,
   StyledLocation,
   StyledInfo,
-  StyledName,
+  StyledNameBox,
   StyledSubject,
   Photo,
   Typography,
@@ -25,13 +25,14 @@ const TopTeachersCard = ( { teacher } ) => {
           <StyledRating>
             <Rating />
             <StyledLocation>
-              <Typography weight='300'>{teacher.location}</Typography>
+              <Typography fontWeight='300'>{teacher.location}</Typography>
             </StyledLocation>
           </StyledRating>
           <StyledInfo>
-            <StyledName>
-              <Typography size='20px' line='28px'>{teacher.name}</Typography>
-            </StyledName>
+            <StyledNameBox>
+              <Typography size='20px'>{teacher.name}</Typography>
+            </StyledNameBox>
+            <br></br>
             <StyledSubject>
               <Typography>{teacher.subject}</Typography>
             </StyledSubject>
