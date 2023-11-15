@@ -16,11 +16,11 @@ import { teachers } from './topTeachersData.js';
 export const TopTeachersCarousel = () => {
   const settings = {
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 500,
     adaptiveHeight: true,
     className: 'slider',
   };
