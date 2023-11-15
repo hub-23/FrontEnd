@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const Flex = styled.div`
 display: flex;
 flex-direction :${( props ) => props.direction || 'row'};
@@ -119,4 +120,11 @@ export const RadioButton = styled.div`
     }; 
 `;
 
-
+export const StyledLink = styled.div`
+font-family: "Nunito";
+font-size: 14px;
+font-weight: 400;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: left;
+`;

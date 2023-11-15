@@ -9,6 +9,11 @@ export const DEFAULT_REGISTRATION_PAYLOAD = {
   [ UserPayloadKey.RECAPTCHA ]: false,
 };
 
+export const DEFAULT_LOGIN_PAYLOAD = {
+  [ UserPayloadKey.EMAIL ]: '',
+  [ UserPayloadKey.PASSWORD ]: '',
+};
+
 
 export const RADIO_OPTIONS = [
   { value: 'teacher', label: 'Я викладач' },
