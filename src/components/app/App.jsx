@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router';
 import Theme from '../../theme/Theme';
-import Home from '../../pages/Home';
+import Home from '../../pages/HomePage';
 
 import GeneralStyles from '../../generalStyles';
 
