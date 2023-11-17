@@ -20,7 +20,7 @@ export const TopTeachersCarousel = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 500,
+    autoplaySpeed: 2000,
     adaptiveHeight: true,
     className: 'slider',
   };
