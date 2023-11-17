@@ -1,0 +1,15 @@
+import React from 'react';
+import { StyledStar, StarImage } from './Rating.styled';
+import star from '../../../../assets/top-teachers/star.png';
+
+const Star = () => {
+  return (
+    <>
+      <StyledStar>
+        <StarImage src={ star } alt="star" />
+      </StyledStar>
+    </>
+  );
+};
+
+export default Star;
