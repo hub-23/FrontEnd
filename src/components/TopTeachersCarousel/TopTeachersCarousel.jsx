@@ -10,6 +10,7 @@ import {
   StyledTitle,
   StyledBtnContainer,
   Flex,
+  StyledTitleTypography,
 } from './TopTeachersCarousel.styled.js';
 import { teachers } from './topTeachersData.js';
 
@@ -22,15 +23,18 @@ export const TopTeachersCarousel = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     adaptiveHeight: true,
-    className: 'slider',
+    // className: 'slider',
   };
+
   return (
     <>
-      <StyledSection className="teachers-block">
-        <Flex direction="column" align="stretch">
+      <StyledSection>
+        <Flex direction='column' align='stretch'>
           <StyledContainer>
             <Flex>
-              <StyledTitle> Топові викладачі </StyledTitle>
+              <StyledTitle>
+                <StyledTitleTypography>Топові викладачі</StyledTitleTypography>
+              </StyledTitle>
               <StyledBtnContainer>
                 <TopTeachersButton />
                 <button>Pause</button>
@@ -47,4 +51,3 @@ export const TopTeachersCarousel = () => {
     </>
   );
 };
-

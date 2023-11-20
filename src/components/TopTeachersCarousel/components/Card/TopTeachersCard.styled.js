@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 export const StyledCard = styled.div`
-    width: 360px;
+    max-width: 360px;
     height: 460px;
     // top: 2218px;
     display: flex;
     flex-direction: column;
-    padding-left: 5px;
-    margin-left: 12px;
+    width: 100%;
+    padding: 5px;
+    margin: 12px;
+    overflow: hidden;
 `;
 
 export const Typography = styled.p`
@@ -18,24 +20,33 @@ export const Typography = styled.p`
     text-align: left;
     letter-spacing: 0.01em;
     color: #ffffff;
+    white-space: nowrap;
 `;
 
 export const StyledPhoto = styled.div`
-    display: flex;
-    margin: 0 auto;
+    // max-width: 360px;
+    // max-height: 360px;
+    // wi
 `;
 
 export const Photo = styled.img`
-    width: 360px;
-    height: 360px;
-    border-radius: 0px, 20px, 0px, 20px;
+    max-width: 360px;
+    max-height: 360px;
+    object-fit: cover;
+    padding: 0px 5px 0px;
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 20px 0px 20px;
 `;
 
 export const StyledRating = styled.div`
-    width: 360px;
+    max-width: 360px;
     height: 22px;
     display: flex;
     justify-content: space-between;
+    width: 100%;
 `;
 
 export const StyledLocation = styled.div`
@@ -47,6 +58,7 @@ export const StyledContent = styled.div`
     height: 100px;
     display: flex;
     flex-direction: column;
+    width: 100%;
 `;
 
 export const StyledInfo = styled.div`

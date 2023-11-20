@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import { Hero } from '../../components/Hero/Hero';
 import TopTeachersCarousel from '../../components/TopTeachersCarousel';
 
+
 export const HomePage = () => {
   const [ isOpen, setIsOpen ] = useState( false );
   const handleOpenRegistrationForm = () => {
@@ -24,4 +25,3 @@ export const HomePage = () => {
     </>
   );
 };
-

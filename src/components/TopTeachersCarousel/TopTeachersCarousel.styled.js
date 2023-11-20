@@ -7,6 +7,7 @@ export const StyledSection = styled.section`
     background: #113268;
     border: mixed solid;
     color: #ffffff;
+    height: 100%;
 `;
 
 export const Flex = styled.div`
@@ -23,7 +24,14 @@ export const StyledTitle = styled.div`
     width: 399px;
     height: 62px;
     top: 2116px;
-    left: 160px;
+    //padding-left: 160px;
+`;
+
+export const StyledBtnContainer = styled.div``;
+
+export const StyledContainer = styled.div``;
+
+export const StyledTitleTypography = styled.h2`
     font-family: Nunito;
     font-size: 48px;
     font-weight: 600;
@@ -31,24 +39,6 @@ export const StyledTitle = styled.div`
     letter-spacing: 0.01em;
     text-align: left;
     color: #ffffff;
+    white-space: nowrap;
+    padding-left: 160px;
 `;
-
-export const StyledBtnContainer = styled.div``;
-
-export const StyledContainer = styled.div``;
-
-// export const StyledSlider = styled.div`
-//     margin: 0 auto;
-//     width: 100%;
-//     height: 80vh;
-// `;
-
-// export const StyledTitleTypography = styled.h2`
-//     font-family: Nunito;
-//     font-size: 48px;
-//     font-weight: 600;
-//     line-height: 62px;
-//     letter-spacing: 0.01em;
-//     text-align: left;
-//     color: #ffffff;
-// `;

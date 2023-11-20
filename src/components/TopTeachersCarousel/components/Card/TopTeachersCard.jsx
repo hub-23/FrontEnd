@@ -19,7 +19,7 @@ const TopTeachersCard = ( { teacher } ) => {
     <>
       <StyledCard>
         <StyledPhoto>
-          <Photo src={ teacher.src } alt="photo" />
+          <Photo src={ teacher.imgPath } alt={ teacher.name } />
         </StyledPhoto>
         <StyledContent>
           <StyledRating>
@@ -32,7 +32,6 @@ const TopTeachersCard = ( { teacher } ) => {
             <StyledNameBox>
               <Typography size='20px'>{teacher.name}</Typography>
             </StyledNameBox>
-            <br></br>
             <StyledSubject>
               <Typography>{teacher.subject}</Typography>
             </StyledSubject>
