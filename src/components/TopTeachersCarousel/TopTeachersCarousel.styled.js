@@ -4,6 +4,7 @@ export const StyledSection = styled.section`
     width: 1440px;
     height: 720px;
     margin-top: 2036px;
+    // margin: 0 auto;
     background: #113268;
     border: mixed solid;
     color: #ffffff;

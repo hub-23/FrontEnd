@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const StyledCard = styled.div`
     max-width: 360px;
-    height: 460px;
+    max-height: 460px;
     // top: 2218px;
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
     padding: 5px;
     margin: 12px;
     overflow: hidden;
@@ -24,9 +25,7 @@ export const Typography = styled.p`
 `;
 
 export const StyledPhoto = styled.div`
-    // max-width: 360px;
-    // max-height: 360px;
-    // wi
+    height: 100%;
 `;
 
 export const Photo = styled.img`
@@ -37,7 +36,7 @@ export const Photo = styled.img`
     display: flex;
     margin: 0 auto;
     width: 100%;
-    height: 100%;
+    height: 100vw;
     border-radius: 0px 20px 0px 20px;
 `;
 
