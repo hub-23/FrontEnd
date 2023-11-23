@@ -1,13 +1,11 @@
 import React from 'react';
-import { StyledTopTeachersButton } from './StyledTopTeachersButton';
+import { ButtonTypography, StyledTopTeachersButton } from './TopTeachersButton';
 
-export const TopTeachersButton = ( { children, size, color } ) => {
+export const TopTeachersButton = () => {
   return (
     <>
-      <StyledTopTeachersButton size={ size } color={ color }>
-        { children }
-        {/* <StyledButton> Обрати викладача </StyledButton>
-            <StyledButtonPause> Стоп / Продовжити </StyledButtonPause> */}
+      <StyledTopTeachersButton >
+        <ButtonTypography>Обрати викладача</ButtonTypography>
       </StyledTopTeachersButton>
     </>
   );

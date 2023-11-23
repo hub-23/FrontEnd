@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const StyledSection = styled.section`
-    width: 1440px;
-    height: 720px;
+    max-width: 1440px;
+    width: 100%;
+    max-height: 720px;
+    height: 100%;
     margin-top: 2036px;
     // margin: 0 auto;
+    overflow: hidden;
     background: #113268;
     border: mixed solid;
     color: #ffffff;
-    height: 100%;
 `;
 
 export const Flex = styled.div`

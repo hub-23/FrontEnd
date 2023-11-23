@@ -1,5 +1,5 @@
 import React from 'react';
-import play from '../../assets/top-teachers/play.png';
+import play from '../../../../assets/top-teachers/Play.svg';
 
 const Play = ( { handlePlay } ) => {
   return (

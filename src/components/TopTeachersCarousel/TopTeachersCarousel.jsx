@@ -13,7 +13,7 @@ import {
   StyledTitleTypography,
 } from './TopTeachersCarousel.styled.js';
 import { teachers } from './topTeachersData.js';
-import Play from './Play.jsx';
+import Play from './components/Button/Play.jsx';
 import Pause from './components/Button/Pause.jsx';
 
 export const TopTeachersCarousel = () => {
@@ -21,7 +21,7 @@ export const TopTeachersCarousel = () => {
   const sliderRef = useRef();
   const handlePlay = () => {
     sliderRef.current.slickPlay();
-    setAutoPlay( autoPlay );
+    setAutoPlay( !autoPlay );
   };
   const handlePause = () => {
     sliderRef.current.slickPause();
@@ -51,8 +51,7 @@ export const TopTeachersCarousel = () => {
               </StyledTitle>
               <StyledBtnContainer>
                 <TopTeachersButton />
-                <Play handlePlay={ handlePlay } />
-                <Pause handlePause={ handlePause }/>
+                {autoPlay ? <Pause handlePause={ handlePause } /> : <Play handlePlay={ handlePlay } /> }
               </StyledBtnContainer>
             </Flex>
           </StyledContainer>

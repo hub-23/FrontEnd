@@ -1,5 +1,5 @@
 import React from 'react';
-import pause from '../../assets/top-teachers/pause.png';
+import pause from '../../../../assets/top-teachers/Pause.svg';
 
 const Pause = ( { handlePause } ) => {
   return (
