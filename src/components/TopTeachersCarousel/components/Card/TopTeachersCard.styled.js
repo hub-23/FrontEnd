@@ -12,6 +12,12 @@ export const StyledCard = styled.div`
     flex-direction: column;
     margin: 12px;
     overflow: hidden;
+    &:hover {
+        opacity: 0.7;
+        div {
+            display: block;
+        }
+    }
 `;
 
 export const Typography = styled.p`
@@ -28,6 +34,7 @@ export const Typography = styled.p`
 export const StyledPhoto = styled.div`
     height: 100%;
     overflow: hidden;
+    // position: relative;
 `;
 
 export const Photo = styled.img`
@@ -76,4 +83,10 @@ export const StyledNameBox = styled.div`
 export const StyledSubject = styled.div`
     width: 125px;
     height: 22px;
+`;
+
+export const StyledHoverCard = styled.div`
+    display: none;
+    position: absolute;
+    margin: 150px 50px;
 `;

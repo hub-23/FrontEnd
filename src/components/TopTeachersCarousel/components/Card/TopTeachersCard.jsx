@@ -8,10 +8,12 @@ import {
   StyledInfo,
   StyledNameBox,
   StyledSubject,
+  StyledHoverCard,
   Photo,
   Typography,
 } from './TopTeachersCard.styled.js';
 import Rating from '../Rating/Rating.jsx';
+import { Button } from '../Button/Button.jsx';
 
 
 const TopTeachersCard = ( { teacher } ) => {
@@ -21,6 +23,9 @@ const TopTeachersCard = ( { teacher } ) => {
         <StyledPhoto>
           <Photo src={ teacher.imgPath } alt={ teacher.name } />
         </StyledPhoto>
+        < StyledHoverCard>
+            <div><Button /></div>
+          </StyledHoverCard>
         <StyledContent>
           <StyledRating>
             <Rating />
@@ -37,6 +42,9 @@ const TopTeachersCard = ( { teacher } ) => {
             </StyledSubject>
           </StyledInfo>
         </StyledContent>
+        {/* < StyledHoverCard>
+          <div><Button /></div>
+        </StyledHoverCard> */}
       </StyledCard>
     </>
   );
