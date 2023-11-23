@@ -8,7 +8,6 @@ import {
   StyledSection,
   StyledContainer,
   StyledTitle,
-  StyledBtnContainer,
   Flex,
   StyledTitleTypography,
 } from './TopTeachersCarousel.styled.js';
@@ -37,7 +36,7 @@ export const TopTeachersCarousel = () => {
     autoplaySpeed: 1,
     adaptiveHeight: true,
     pauseOnHover: false,
-    cssEase: 'linear',
+    // cssEase: 'linear',
   };
 
   return (
@@ -49,10 +48,12 @@ export const TopTeachersCarousel = () => {
               <StyledTitle>
                 <StyledTitleTypography>Топові викладачі</StyledTitleTypography>
               </StyledTitle>
-              <StyledBtnContainer>
+              {/* <StyledBtnContainer> */}
+              <Flex justify='flex-end'>
                 <TopTeachersButton />
                 {autoPlay ? <Pause handlePause={ handlePause } /> : <Play handlePlay={ handlePlay } /> }
-              </StyledBtnContainer>
+              </Flex>
+              {/* </StyledBtnContainer> */}
             </Flex>
           </StyledContainer>
           <Slider ref={ sliderRef } { ...settings }>

@@ -26,35 +26,12 @@ export const ButtonTypography = styled.p`
     white-space: nowrap;
 `;
 
-// export const ButtonPause = styled.button`
-//   width: 32px;
-//   height: 32px;
-//   top: 2142px;
-//   left: 1344px;
-//   &  {
-//     width: 32px;
-//     height: 32px;
-//     background: #FFFFFF;
-//     & union {
-//       width: 6px;
-//       height: 11px;
-//       top: 10.5px;
-//       left: 13px;
-//       background: #FFFFFF;
-//     }
-//     & ellipse {
-//       width: 32px;
-//       height: 32px;
-//       border: 2px;
-//       background: #FFFFFF;
-//       border: 2px solid #FFFFFF;
-//     }
-//     & polygon {
-//       width: 10.39px;
-//       height: 9px;
-//       top: 10.8px;
-//       left: 21px;
-//       angle: -90 deg;
-//       background: #FFFFFF;
-//     }
-// `;
+export const ButtonToggle = styled.button`
+    border: none;
+    width: 32px;
+    height: 32px;
+    top: 2142px;
+    left: 1344px;
+    background: #113268;
+    color: #ffffff;
+`;

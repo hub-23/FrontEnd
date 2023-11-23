@@ -3,10 +3,9 @@ import styled from 'styled-components';
 export const StyledSection = styled.section`
     max-width: 1440px;
     width: 100%;
-    max-height: 720px;
-    height: 100%;
-    margin-top: 2036px;
-    // margin: 0 auto;
+    height: 720px;
+    max-height: 100%;
+    margin: 2036px auto 78px;
     overflow: hidden;
     background: #113268;
     border: mixed solid;
@@ -27,12 +26,12 @@ export const StyledTitle = styled.div`
     width: 399px;
     height: 62px;
     top: 2116px;
-    //padding-left: 160px;
+    padding-left: 160px;
 `;
 
-export const StyledBtnContainer = styled.div``;
-
-export const StyledContainer = styled.div``;
+export const StyledContainer = styled.div`
+    margin-top: 80px;
+`;
 
 export const StyledTitleTypography = styled.h2`
     font-family: Nunito;
@@ -43,5 +42,5 @@ export const StyledTitleTypography = styled.h2`
     text-align: left;
     color: #ffffff;
     white-space: nowrap;
-    padding-left: 160px;
+    // padding-left: 160px;
 `;

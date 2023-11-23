@@ -1,11 +1,12 @@
 import React from 'react';
 import play from '../../../../assets/top-teachers/Play.svg';
+import { ButtonToggle } from './TopTeachersButton';
 
 const Play = ( { handlePlay } ) => {
   return (
-    <button onClick={ handlePlay }>
+    <ButtonToggle onClick={ handlePlay }>
       <img src={ play } alt='play' />
-    </button>
+    </ButtonToggle>
   );
 };
 

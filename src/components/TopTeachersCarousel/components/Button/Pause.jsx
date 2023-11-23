@@ -1,11 +1,12 @@
 import React from 'react';
 import pause from '../../../../assets/top-teachers/Pause.svg';
+import { ButtonToggle } from './TopTeachersButton';
 
 const Pause = ( { handlePause } ) => {
   return (
-    <button onClick={ handlePause }>
+    <ButtonToggle onClick={ handlePause }>
       <img src={ pause } alt='pause' />
-    </button>
+    </ButtonToggle>
   );
 };
 
