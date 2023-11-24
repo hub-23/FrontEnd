@@ -22,10 +22,12 @@ const TopTeachersCard = ( { teacher } ) => {
       <StyledCard>
         <StyledPhoto>
           <Photo src={ teacher.imgPath } alt={ teacher.name } />
+          <div>
+            <StyledHoverCard>
+              <Button />
+            </StyledHoverCard>
+          </div>
         </StyledPhoto>
-        < StyledHoverCard>
-            <div><Button /></div>
-          </StyledHoverCard>
         <StyledContent>
           <StyledRating>
             <Rating />
@@ -42,9 +44,6 @@ const TopTeachersCard = ( { teacher } ) => {
             </StyledSubject>
           </StyledInfo>
         </StyledContent>
-        {/* < StyledHoverCard>
-          <div><Button /></div>
-        </StyledHoverCard> */}
       </StyledCard>
     </>
   );

@@ -42,5 +42,4 @@ export const StyledTitleTypography = styled.h2`
     text-align: left;
     color: #ffffff;
     white-space: nowrap;
-    // padding-left: 160px;
 `;

@@ -7,17 +7,11 @@ export const StyledCard = styled.div`
     height: 100%;
     top: 2218px;
     margin: 170px 8px 66px;
-    padding: 10px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
     margin: 12px;
     overflow: hidden;
-    &:hover {
-        opacity: 0.7;
-        div {
-            display: block;
-        }
-    }
 `;
 
 export const Typography = styled.p`
@@ -31,10 +25,26 @@ export const Typography = styled.p`
     white-space: nowrap;
 `;
 
+export const StyledHoverCard = styled.div`
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    left: 10%;
+    z-index: 10;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+`;
+
 export const StyledPhoto = styled.div`
     height: 100%;
-    overflow: hidden;
-    // position: relative;
+    position: relative;
+    &:hover {
+        ${StyledHoverCard} {
+            display: block;
+        }
+    }
 `;
 
 export const Photo = styled.img`
@@ -47,6 +57,10 @@ export const Photo = styled.img`
     width: 100%;
     height: 100vw;
     border-radius: 0px 20px 0px 20px;
+    &:hover {
+        background-color: transparent;
+        opacity: 0.6;
+    }
 `;
 
 export const StyledRating = styled.div`
@@ -83,10 +97,4 @@ export const StyledNameBox = styled.div`
 export const StyledSubject = styled.div`
     width: 125px;
     height: 22px;
-`;
-
-export const StyledHoverCard = styled.div`
-    display: none;
-    position: absolute;
-    margin: 150px 50px;
 `;

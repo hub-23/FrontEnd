@@ -4,7 +4,7 @@
 /*    background: none;*/
 /*    color: #113268;*/
 /*    border: 4px solid #113268;*/
-/*    border-radius: 20px 0 20px 0; !* Закругление углов *!*/
+/*    border-radius: 20px 0 20px 0; */
 /*    cursor: pointer;*/
 /*    text-align: center;*/
 /*    text-decoration: none;*/
@@ -24,4 +24,3 @@
     color: white;
     background-color: #113268 ;
 }
-
