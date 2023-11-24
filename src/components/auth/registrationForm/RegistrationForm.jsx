@@ -19,7 +19,7 @@ import { UserPayloadKey } from '../common/enums/enums.js';
 import * as S from './RegistrationForm.styled.js';
 import { Recaptcha } from '../components/recaptcha/Recaptcha';
 
-export const RegistrationForm = ( { onClose } ) => {
+export const RegistrationForm = ( { onClose, setIsRegistration } ) => {
   const captchaRef = useRef( null );
   // const [ isLoading, setIsLoading ] = useState( false );
   const { control, errors, handleSubmit, reset } = useAppForm( {
@@ -36,7 +36,8 @@ export const RegistrationForm = ( { onClose } ) => {
     console.log( 'token', token );
     console.log( 'data', data );
     reset();
-    onClose();
+    setIsRegistration( false );
+    // onClose();
   };
 
   return (
@@ -96,7 +97,15 @@ export const RegistrationForm = ( { onClose } ) => {
         name={ UserPayloadKey.CONFIDENTPOLICY }
         errors={ errors }
         control={ control }
-      />
+      >
+            Я приймаю
+        {' '}
+        <Link href="/" target='_blank'>Політика конфіденційності</Link>
+        {' '}
+              та
+        {' '}
+        <Link href="/node_modules" target='_blank'>Умови використання</Link>
+      </Checkbox>
       <S.Flex>
         <Button
           variant='blue'
