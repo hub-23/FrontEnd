@@ -7,7 +7,7 @@ export const StyledRating = styled.div`
 `;
 
 export const StyledStar = styled.div`
-    margin: 2px;
+    margin: 1px 4px;
 `;
 
 export const StarImage = styled.img`

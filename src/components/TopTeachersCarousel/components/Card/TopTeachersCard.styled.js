@@ -2,23 +2,27 @@ import styled from 'styled-components';
 
 export const StyledCard = styled.div`
     max-width: 360px;
-    width: 100%;
-    max-height: 460px;
-    height: 100%;
+    min-width: 100%;
+    height: 460px;
+    min-height: 100%;
     top: 2218px;
     margin: 170px 8px 66px;
     padding: 8px;
     display: flex;
     flex-direction: column;
     margin: 12px;
-    overflow: hidden;
+    @media (max-width: 768px) {
+        width: 240px;
+        height: 314px;
+        margin: 32px 10px;
+    }
 `;
 
-export const Typography = styled.p`
+export const Typography = styled.div`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.secondary};
-    font-size: ${( props ) => props.size || '16px'};
-    font-weight: ${( props ) => props.weight || '400'};
-    line-height: ${( props ) => props.height || '22px'};
+    font-size: ${( props ) => props.fontSize || '16px'};
+    font-weight: ${( props ) => props.fontWeight || '400'};
+    line-height: ${( props ) => props.lineHeight || '22px'};
     text-align: left;
     letter-spacing: 0.01em;
     color: #ffffff;
@@ -30,11 +34,8 @@ export const StyledHoverCard = styled.div`
     position: absolute;
     width: 100%;
     top: 40%;
-    left: 10%;
+    left: 20%;
     z-index: 10;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
 `;
 
 export const StyledPhoto = styled.div`
@@ -43,23 +44,24 @@ export const StyledPhoto = styled.div`
     &:hover {
         ${StyledHoverCard} {
             display: block;
-        }
-    }
+        },
+    },
 `;
 
 export const Photo = styled.img`
     max-width: 360px;
     max-height: 360px;
-    object-fit: cover;
     padding: 0px 5px 0px;
-    display: flex;
-    margin: 0 auto;
     width: 100%;
     height: 100vw;
     border-radius: 0px 20px 0px 20px;
     &:hover {
         background-color: transparent;
         opacity: 0.6;
+    }
+    @media (max-width: 768px) {
+        width: 240px;
+        height: 240px;
     }
 `;
 
@@ -68,12 +70,21 @@ export const StyledRating = styled.div`
     height: 22px;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    min-width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    @media (max-width: 768px) {
+        width: 240px;
+        height: 17px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
 `;
 
 export const StyledLocation = styled.div`
     width: 134px;
     height: 22px;
+    display: inline-block;
 `;
 
 export const StyledContent = styled.div`
@@ -92,9 +103,17 @@ export const StyledInfo = styled.div`
 export const StyledNameBox = styled.div`
     width: 174px;
     height: 28px;
+    @media (max-width: 768px) {
+        width: 139px;
+        height: 22px;
+    }
 `;
 
 export const StyledSubject = styled.div`
     width: 125px;
     height: 22px;
+    @media (max-width: 768px) {
+        width: 95px;
+        height: 17px;
+    }
 `;

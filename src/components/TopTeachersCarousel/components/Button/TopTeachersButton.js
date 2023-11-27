@@ -13,6 +13,10 @@ export const StyledTopTeachersButton = styled.button`
     border-radius: 20px 0px;
     border: 4px solid #ffffff;
     background: #ffffff;
+    @media (max-width: 850px) {
+        position: absolute;
+        min-width: 100%;
+    }
 `;
 
 export const ButtonTypography = styled.p`
@@ -34,4 +38,8 @@ export const ButtonToggle = styled.button`
     left: 1344px;
     background: #113268;
     color: #ffffff;
+    margin: 0px 60px;
+    @media (max-width: 850px) {
+        margin: 0px 20px;
+    }
 `;

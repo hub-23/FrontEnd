@@ -6,17 +6,21 @@ import TopTeachersCard from './components/Card/TopTeachersCard.jsx';
 import { TopTeachersButton } from './components/Button/TopTeachersButton.jsx';
 import {
   StyledSection,
-  StyledContainer,
+  StyledWrapper,
+  StyledContent,
   StyledTitle,
-  Flex,
   StyledTitleTypography,
+  ContainerButtons,
+  StyledBtnContainer,
 } from './TopTeachersCarousel.styled.js';
 import { teachers } from './topTeachersData.js';
 import Play from './components/Button/Play.jsx';
 import Pause from './components/Button/Pause.jsx';
 
+
 export const TopTeachersCarousel = () => {
   const [ autoPlay, setAutoPlay ] = useState( true );
+  const [ defaultSpeed, setDefaultSpeed ] = useState( true );
   const sliderRef = useRef();
   const handlePlay = () => {
     sliderRef.current.slickPlay();
@@ -27,32 +31,36 @@ export const TopTeachersCarousel = () => {
     setAutoPlay( !autoPlay );
   };
 
+  const changeDefaultSpeed = ( defaultSpeed ) => {
+    setDefaultSpeed( defaultSpeed );
+  };
+
   const settings = {
     infinite: true,
-    speed: 2000,
+    speed: defaultSpeed ? 1000 : 6000,
+    initialSlide: 0,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1,
-    adaptiveHeight: true,
+    autoplaySpeed: 0,
     pauseOnHover: false,
     responsive: [
       {
-        breakpoint: 1200,
+        breakpoint: 1150,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 900,
+        breakpoint: 767,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -64,26 +72,26 @@ export const TopTeachersCarousel = () => {
   return (
     <>
       <StyledSection>
-        <Flex direction='column' align='stretch'>
-          <StyledContainer>
-            <Flex>
-              <StyledTitle>
-                <StyledTitleTypography>Топові викладачі</StyledTitleTypography>
-              </StyledTitle>
-              {/* <StyledBtnContainer> */}
-              <Flex justify='flex-end'>
-                <TopTeachersButton />
-                {autoPlay ? <Pause handlePause={ handlePause } /> : <Play handlePlay={ handlePlay } /> }
-              </Flex>
-              {/* </StyledBtnContainer> */}
-            </Flex>
-          </StyledContainer>
+        <StyledWrapper>
+          <StyledContent>
+            <StyledTitle>
+              <StyledTitleTypography>Топові викладачі</StyledTitleTypography>
+            </StyledTitle>
+            <ContainerButtons>
+              <TopTeachersButton />
+              {autoPlay ? <Pause handlePause={ handlePause } /> : <Play handlePlay={ handlePlay } /> }
+            </ContainerButtons>
+          </StyledContent>
           <Slider ref={ sliderRef } { ...settings }>
             {teachers.map( ( teacher ) => (
-              <TopTeachersCard key={ teacher.id } teacher= { teacher }/>
+              <TopTeachersCard key={ teacher.id } teacher={ teacher }
+                changeDefaultSpeed={ changeDefaultSpeed } />
             ) )}
           </Slider>
-        </Flex>
+        </StyledWrapper>
+        <StyledBtnContainer>
+          <TopTeachersButton />
+        </StyledBtnContainer>
       </StyledSection>
     </>
   );
