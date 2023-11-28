@@ -20,7 +20,7 @@ import Pause from './components/Button/Pause.jsx';
 
 export const TopTeachersCarousel = () => {
   const [ autoPlay, setAutoPlay ] = useState( true );
-  const [ defaultSpeed, setDefaultSpeed ] = useState( true );
+
   const sliderRef = useRef();
   const handlePlay = () => {
     sliderRef.current.slickPlay();
@@ -31,19 +31,15 @@ export const TopTeachersCarousel = () => {
     setAutoPlay( !autoPlay );
   };
 
-  const changeDefaultSpeed = ( defaultSpeed ) => {
-    setDefaultSpeed( defaultSpeed );
-  };
-
   const settings = {
     infinite: true,
-    speed: defaultSpeed ? 1000 : 6000,
+    speed: 1000,
     initialSlide: 0,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 0,
-    pauseOnHover: false,
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1150,
@@ -72,7 +68,7 @@ export const TopTeachersCarousel = () => {
   return (
     <>
       <StyledSection>
-        <StyledWrapper>
+        <StyledWrapper >
           <StyledContent>
             <StyledTitle>
               <StyledTitleTypography>Топові викладачі</StyledTitleTypography>
@@ -84,8 +80,7 @@ export const TopTeachersCarousel = () => {
           </StyledContent>
           <Slider ref={ sliderRef } { ...settings }>
             {teachers.map( ( teacher ) => (
-              <TopTeachersCard key={ teacher.id } teacher={ teacher }
-                changeDefaultSpeed={ changeDefaultSpeed } />
+              <TopTeachersCard key={ teacher.id } teacher={ teacher } />
             ) )}
           </Slider>
         </StyledWrapper>

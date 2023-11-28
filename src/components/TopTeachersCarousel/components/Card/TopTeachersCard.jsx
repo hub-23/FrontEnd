@@ -16,13 +16,12 @@ import Rating from '../Rating/Rating.jsx';
 import { Button } from '../Button/Button.jsx';
 
 
-const TopTeachersCard = ( { teacher, changeDefaultSpeed } ) => {
+const TopTeachersCard = ( { teacher } ) => {
   return (
     <>
       <StyledCard>
         <StyledPhoto>
-          <Photo src={ teacher.imgPath } alt={ teacher.name } onMouseEnter={ changeDefaultSpeed( false ) }
-            onMouseLeave={ changeDefaultSpeed( true ) }/>
+          <Photo src={ teacher.imgPath } alt={ teacher.name } />
           <StyledHoverCard>
             <Button />
           </StyledHoverCard>

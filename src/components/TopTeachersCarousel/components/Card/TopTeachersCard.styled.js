@@ -2,17 +2,16 @@ import styled from 'styled-components';
 
 export const StyledCard = styled.div`
     max-width: 360px;
-    min-width: 100%;
     height: 460px;
     min-height: 100%;
     top: 2218px;
     margin: 170px 8px 66px;
-    padding: 8px;
     display: flex;
     flex-direction: column;
-    margin: 12px;
+    margin: 10px;
+
     @media (max-width: 768px) {
-        width: 240px;
+        max-width: 240px;
         height: 314px;
         margin: 32px 10px;
     }
@@ -39,8 +38,10 @@ export const StyledHoverCard = styled.div`
 `;
 
 export const StyledPhoto = styled.div`
+    max-width: 360px;
     height: 100%;
     position: relative;
+
     &:hover {
         ${StyledHoverCard} {
             display: block;
@@ -51,16 +52,18 @@ export const StyledPhoto = styled.div`
 export const Photo = styled.img`
     max-width: 360px;
     max-height: 360px;
-    padding: 0px 5px 0px;
+    object-fit: cover;
     width: 100%;
     height: 100vw;
     border-radius: 0px 20px 0px 20px;
+
     &:hover {
         background-color: transparent;
         opacity: 0.6;
     }
+
     @media (max-width: 768px) {
-        width: 240px;
+        max-width: 240px;
         height: 240px;
     }
 `;
@@ -70,11 +73,12 @@ export const StyledRating = styled.div`
     height: 22px;
     display: flex;
     justify-content: space-between;
-    min-width: 100%;
+    width: 100%;
     margin-top: 12px;
     margin-bottom: 12px;
+
     @media (max-width: 768px) {
-        width: 240px;
+        max-width: 240px;
         height: 17px;
         margin-top: 8px;
         margin-bottom: 8px;
@@ -82,38 +86,39 @@ export const StyledRating = styled.div`
 `;
 
 export const StyledLocation = styled.div`
-    width: 134px;
+    max-width: 134px;
     height: 22px;
     display: inline-block;
 `;
 
 export const StyledContent = styled.div`
-    height: 100px;
+    max-height: 100px;
     display: flex;
     flex-direction: column;
-    width: 100%;
 `;
 
 export const StyledInfo = styled.div`
-    width: 187px;
+    max-width: 187px;
     height: 54px;
     padding: 8px 0px 0px 8px;
 `;
 
 export const StyledNameBox = styled.div`
-    width: 174px;
+    max-width: 174px;
     height: 28px;
+
     @media (max-width: 768px) {
-        width: 139px;
+        max-width: 139px;
         height: 22px;
     }
 `;
 
 export const StyledSubject = styled.div`
-    width: 125px;
+    max-width: 125px;
     height: 22px;
+
     @media (max-width: 768px) {
-        width: 95px;
+        max-width: 95px;
         height: 17px;
     }
 `;

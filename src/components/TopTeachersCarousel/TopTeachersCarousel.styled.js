@@ -10,6 +10,8 @@ export const StyledSection = styled.section`
     overflow: hidden;
     background: #113268;
     color: #ffffff;
+    padding-bottom: 78px;
+
     @media (max-width: 768px) {
         max-width: 360px;
         min-width: 100%;
@@ -23,12 +25,14 @@ export const StyledWrapper = styled.div`
     flex-direction: column;
     align-items: stretch;
     width: 100%;
+    height: 100%;
 `;
 
 export const StyledContent = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 80px;
+
     @media (max-width: 768px) {
         margin-top: 48px;
     }
@@ -39,9 +43,11 @@ export const StyledTitle = styled.div`
     height: 62px;
     top: 2116px;
     padding-left: 160px;
+
     @media (max-width: 970px) {
         padding-left: 40px;
     }
+
     @media (max-width: 768px) {
         width: 200px;
         height: 31px;
@@ -66,19 +72,11 @@ export const ContainerButtons = styled.div`
 `;
 
 export const StyledBtnContainer = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 1.25rem;
-    max-width: 100%;
-    @media (min-width: 768px) {
-        display: block;
-        min-width: 100%;
-    }
+    display: none;
 
-    // display: none;
-    // @media (min-width: 768px) {
-    //     display: block;
-    //     min-width: 100%;
-    // }
+    @media (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;
