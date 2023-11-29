@@ -11,10 +11,21 @@ export const StyledTopTeachersButton = styled.button`
     padding: 14px 24px;
     gap: 10px;
     border-radius: 20px 0px;
-    border: 4px solid #ffffff;
     background: #ffffff;
 
-    @media (min-width: 0px) and (max-width:768px) {
+    &:hover {
+        border: 4px solid #ffffff;
+    }
+
+    &:active {
+        box-shadow: 2px 2px 12px 0px rgba(255, 255, 255, 0.24), -2px -2px 12px 0px rgba(255, 255, 255, 0.24);
+    }
+
+    &:disabled {
+        background: #d5d5d5;
+    }
+
+    @media (min-width: 0px) and (max-width: 768px) {
         position: absolute;
         min-width: 100%;
     }
@@ -41,7 +52,7 @@ export const ButtonToggle = styled.button`
     color: #ffffff;
     margin: 0px 60px;
 
-   @media (min-width: 0px) and (max-width:768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         margin: 0px 20px;
     }
 `;

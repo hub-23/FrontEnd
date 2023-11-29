@@ -16,6 +16,7 @@ import {
 import { teachers } from './topTeachersData.js';
 import Play from './components/Button/Play.jsx';
 import Pause from './components/Button/Pause.jsx';
+import { Button } from '../../components/common/button/Button.jsx';
 
 
 export const TopTeachersCarousel = () => {
@@ -74,7 +75,8 @@ export const TopTeachersCarousel = () => {
               <StyledTitleTypography>Топові викладачі</StyledTitleTypography>
             </StyledTitle>
             <ContainerButtons>
-              <TopTeachersButton />
+              {/* <TopTeachersButton /> */}
+              <Button>Обрати викладача</Button>
               {autoPlay ? <Pause handlePause={ handlePause } /> : <Play handlePlay={ handlePlay } /> }
             </ContainerButtons>
           </StyledContent>

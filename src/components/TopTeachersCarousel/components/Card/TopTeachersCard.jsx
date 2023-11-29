@@ -13,7 +13,7 @@ import {
   Typography,
 } from './TopTeachersCard.styled.js';
 import Rating from '../Rating/Rating.jsx';
-import { Button } from '../Button/Button.jsx';
+import { Button } from '../../../common/button/Button.jsx';
 
 
 const TopTeachersCard = ( { teacher } ) => {
@@ -23,7 +23,7 @@ const TopTeachersCard = ( { teacher } ) => {
         <StyledPhoto>
           <Photo src={ teacher.imgPath } alt={ teacher.name } />
           <StyledHoverCard>
-            <Button />
+            <Button variant='primary'> Переглянути профіль</Button>
           </StyledHoverCard>
         </StyledPhoto>
         <StyledContent>
