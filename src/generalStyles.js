@@ -13,6 +13,12 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     text-decoration: unset;
   }
+
+  ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 `;
 
 export default GlobalStyles;
