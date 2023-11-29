@@ -34,7 +34,7 @@
         "eol-last": ["error", "always"],
         "linebreak-style": ["error", "windows"],
         "operator-linebreak": ["error", "before"],
-        "max-len": ["error", { "code": 100 }],
+        "max-len": ["error", { "code": 110 }],
         "react/prop-types": "off"
     },
     "overrides": [
