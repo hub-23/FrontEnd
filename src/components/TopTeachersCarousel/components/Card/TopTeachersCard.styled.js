@@ -10,7 +10,7 @@ export const StyledCard = styled.div`
     flex-direction: column;
     margin: 10px;
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         max-width: 240px;
         height: 314px;
         margin: 32px 10px;
@@ -62,7 +62,7 @@ export const Photo = styled.img`
         opacity: 0.6;
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         max-width: 240px;
         height: 240px;
     }
@@ -77,7 +77,7 @@ export const StyledRating = styled.div`
     margin-top: 12px;
     margin-bottom: 12px;
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         max-width: 240px;
         height: 17px;
         margin-top: 8px;
@@ -107,7 +107,7 @@ export const StyledNameBox = styled.div`
     max-width: 174px;
     height: 28px;
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         max-width: 139px;
         height: 22px;
     }
@@ -117,7 +117,7 @@ export const StyledSubject = styled.div`
     max-width: 125px;
     height: 22px;
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         max-width: 95px;
         height: 17px;
     }

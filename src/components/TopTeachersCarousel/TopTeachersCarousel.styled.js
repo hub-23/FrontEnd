@@ -12,7 +12,7 @@ export const StyledSection = styled.section`
     color: #ffffff;
     padding-bottom: 78px;
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         max-width: 360px;
         min-width: 100%;
         height: 555px;
@@ -33,7 +33,7 @@ export const StyledContent = styled.div`
     justify-content: space-between;
     margin-top: 80px;
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         margin-top: 48px;
     }
 `;
@@ -44,11 +44,11 @@ export const StyledTitle = styled.div`
     top: 2116px;
     padding-left: 160px;
 
-    @media (max-width: 970px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         padding-left: 40px;
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         width: 200px;
         height: 31px;
         padding-left: 20px;
@@ -64,6 +64,10 @@ export const StyledTitleTypography = styled.h2`
     text-align: left;
     color: #ffffff;
     white-space: nowrap;
+
+    @media (min-width: 0px) and (max-width: 768px) {
+        word-break: break-all;
+    }
 `;
 
 export const ContainerButtons = styled.div`
@@ -74,7 +78,7 @@ export const ContainerButtons = styled.div`
 export const StyledBtnContainer = styled.div`
     display: none;
 
-    @media (max-width: 768px) {
+    @media (min-width: 0px) and (max-width: 768px) {
         display: flex;
         justify-content: center;
         align-items: center;
