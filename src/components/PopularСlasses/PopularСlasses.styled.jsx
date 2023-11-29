@@ -55,7 +55,7 @@ export const TopLessons = styled.ul`
     border: 1px solid ${accent};
     background-color: ${white};
 
-    @media (max-width: 360px) {
+    @media (max-width: 1440px) {
       &:not(:last-child) {
         margin-bottom: 16px;
       }

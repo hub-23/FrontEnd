@@ -6,6 +6,7 @@ import {
   TopLessons,
 } from './PopularСlasses.styled';
 import sprite from './sprite.svg';
+import { dataTopLessons as data } from './backend_temp';
 
 export const PopularСlasses = () => {
   return (
@@ -13,23 +14,25 @@ export const PopularСlasses = () => {
       <Title>Популярні заняття</Title>
 
       <TopLessons>
-        <li>
-          <h2>Німецька мова</h2>
+        {data.map(({ nameLesson, numTeach }) => (
+          <li>
+            <h2>{nameLesson}</h2>
 
-          <div>
-            <p>1 021 викладач</p>
+            <div>
+              <p>{numTeach} викладач</p>
 
-            <Button
-              onClick={() => {
-                console.log('click on Item lesson');
-              }}
-            >
-              <svg width="24px" height="24px">
-                <use href={`${sprite}#icon-arrow`}></use>
-              </svg>
-            </Button>
-          </div>
-        </li>
+              <Button
+                onClick={() => {
+                  console.log('click on Item lesson');
+                }}
+              >
+                <svg width="24px" height="24px">
+                  <use href={`${sprite}#icon-arrow`}></use>
+                </svg>
+              </Button>
+            </div>
+          </li>
+        ))}
       </TopLessons>
 
       <SeeMore>
