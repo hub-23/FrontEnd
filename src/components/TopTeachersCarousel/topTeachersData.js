@@ -1,7 +1,7 @@
 export const teachers = [
   {
     id: 1,
-    imgPath: require( '../../assets/top-teachers/image1.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image1.png' ),
     alt: 'Photo',
     location: 'Івано-Франківськ',
     name: 'Тетяна Валеріївна',
@@ -10,7 +10,7 @@ export const teachers = [
 
   {
     id: 2,
-    imgPath: require( '../../assets/top-teachers/image2.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image2.png' ),
     alt: 'Photo',
     location: 'Київ',
     name: 'Марина Олександрівна',
@@ -18,7 +18,7 @@ export const teachers = [
   },
   {
     id: 3,
-    imgPath: require( '../../assets/top-teachers/image3.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image3.png' ),
     alt: 'Photo',
     location: 'Онлайн',
     name: 'Олександр Олександрович',
@@ -27,7 +27,7 @@ export const teachers = [
 
   {
     id: 4,
-    imgPath: require( '../../assets/top-teachers/image4.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image4.png' ),
     alt: 'Photo',
     location: 'Івано-Франківськ',
     name: 'Іванна Василівна',
@@ -36,7 +36,7 @@ export const teachers = [
 
   {
     id: 5,
-    imgPath: require( '../../assets/top-teachers/image5.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image5.png' ),
     alt: 'Photo',
     location: 'Харків',
     name: 'Олена Валеріївна',
@@ -45,7 +45,7 @@ export const teachers = [
 
   {
     id: 6,
-    imgPath: require( '../../assets/top-teachers/image6.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image6.png' ),
     alt: 'Photo',
     location: 'Львів',
     name: 'Артем Ігоревич',
@@ -54,7 +54,7 @@ export const teachers = [
 
   {
     id: 7,
-    imgPath: require( '../../assets/top-teachers/image7.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image7.png' ),
     alt: 'Photo',
     location: 'Чернігів',
     name: 'Олександра Олександрівна',
@@ -63,7 +63,7 @@ export const teachers = [
 
   {
     id: 8,
-    imgPath: require( '../../assets/top-teachers/image8.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image8.png' ),
     alt: 'Photo',
     location: 'Ужгород',
     name: 'Кіра Юріївна',
@@ -72,7 +72,7 @@ export const teachers = [
 
   {
     id: 9,
-    imgPath: require( '../../assets/top-teachers/image9.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image9.png' ),
     alt: 'Photo',
     location: 'Київ',
     name: 'Вікторія Олегівна',
@@ -81,7 +81,7 @@ export const teachers = [
 
   {
     id: 10,
-    imgPath: require( '../../assets/top-teachers/image10.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image10.png' ),
     alt: 'Photo',
     location: 'Луцьк',
     name: 'Віталій Васильович',
@@ -90,7 +90,7 @@ export const teachers = [
 
   {
     id: 11,
-    imgPath: require( '../../assets/top-teachers/image11.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image11.png' ),
     alt: 'Photo',
     location: 'Житомир',
     name: 'Надія Петрівна',
@@ -99,7 +99,7 @@ export const teachers = [
 
   {
     id: 12,
-    imgPath: require( '../../assets/top-teachers/image12.png' ),
+    imgPath: require( '../../assets/home/top-teachers/image12.png' ),
     alt: 'Photo',
     location: 'Онлайн',
     name: 'Валентина Іванівна',

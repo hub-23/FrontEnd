@@ -1,5 +1,5 @@
 import React from 'react';
-import play from '../../../../assets/top-teachers/Play.svg';
+import play from '../../../../assets/home/top-teachers/Play.svg';
 import { ButtonToggle } from './TopTeachersButton';
 
 const Play = ( { handlePlay } ) => {
