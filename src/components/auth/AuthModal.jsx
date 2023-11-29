@@ -5,7 +5,7 @@ import { Segment } from './components/segment/Segment';
 import { GoogleLoginButton } from './components/googleLoginButton/GoogleLoginButton';
 import { RegistrationForm } from './registrationForm/RegistrationForm';
 
-import cross from '../../assets/registration-form/cross.png';
+import cross from '../../assets/home/registration-form/cross.png';
 
 import * as S from './AuthModal.styled.js';
 
