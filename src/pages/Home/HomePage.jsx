@@ -6,19 +6,19 @@ import TopTeachersCarousel from '../../components/TopTeachersCarousel';
 import { PopularСlasses } from '../../components/PopularСlasses/PopularСlasses';
 
 export const HomePage = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [ isOpen, setIsOpen ] = useState( false );
   const handleOpenRegistrationForm = () => {
-    setIsOpen(true);
+    setIsOpen( true );
   };
 
   const handleCloseRegistrationForm = () => {
-    setIsOpen(false);
+    setIsOpen( false );
   };
   return (
     <>
       <Header />
-      <button onClick={handleOpenRegistrationForm}>Sing in</button>
-      {isOpen && <AuthModal onClose={handleCloseRegistrationForm} />}
+      <button onClick={ handleOpenRegistrationForm }>Sing in</button>
+      {isOpen && <AuthModal onClose={ handleCloseRegistrationForm } />}
       <Hero />
       <PopularСlasses />
       <TopTeachersCarousel />
