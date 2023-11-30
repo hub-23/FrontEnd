@@ -29,12 +29,24 @@ export const Typography = styled.div`
 `;
 
 export const StyledHoverCard = styled.div`
+    width: 230px;
+    height: 48px;
+    padding: 14px 24px;
     display: none;
     position: absolute;
     width: 100%;
     top: 40%;
     left: 20%;
     z-index: 10;
+
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #113268;
+    white-space: nowrap;
 `;
 
 export const StyledPhoto = styled.div`

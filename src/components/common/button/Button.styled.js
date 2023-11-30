@@ -15,8 +15,10 @@ const handleSizeType = ( size ) => {
 };
 
 const StyledButton = styled.button`
-    width: ${( { size } ) => handleSizeType( size )};
-    height: 60px;
+    width: ${( props ) => props.width || '230px'};
+    height: ${( props ) => props.height || '48px'};
+    // width: ${( { size } ) => handleSizeType( size )};
+    // height: 60px;
 
     /* border: 1px solid rgba(45, 45, 45, 1); */
     border-radius: ${( props ) => props.borderRadius || '20px 0px'};
@@ -24,10 +26,10 @@ const StyledButton = styled.button`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     align-self: ${( props ) => props.alginself || 'center'};
     // padding: 14px 24px;
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 26px;
-    letter-spacing: 0.01em;
+    // font-size: 26px;
+    // font-weight: 600;
+    // line-height: 26px;
+    // letter-spacing: 0.01em;
     text-align: center;
     outline: none;
     cursor: pointer;
