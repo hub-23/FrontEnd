@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledStar, StarImage } from './Rating.styled';
-import star from '../../../../assets/top-teachers/star.png';
+import star from '../../../../assets/home/top-teachers/star.png';
 
 const Star = () => {
   return (

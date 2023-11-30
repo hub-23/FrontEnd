@@ -4,8 +4,8 @@ import { useController } from 'react-hook-form';
 import { ErrorMessage } from '../errorMessage/ErrorMessage.jsx';
 import { UserPayloadKey } from '../../common/enums/enums';
 
-import showEye from '../../../../assets/registration-form/sow-eye.png';
-import hideEye from '../../../../assets/registration-form/hide-password.png';
+import showEye from '../../../../assets/home/registration-form/sow-eye.png';
+import hideEye from '../../../../assets/home/registration-form/hide-password.png';
 
 import * as S from './Input.styled.js';
 
