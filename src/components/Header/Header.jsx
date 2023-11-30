@@ -5,7 +5,6 @@ import Nav from './Navigation/Nav';
 import Button from '../button/button';
 import Select from './Select/Select';
 
-
 const Header = () => {
   return (
     <div className={ styles.header }>
