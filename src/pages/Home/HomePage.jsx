@@ -3,6 +3,7 @@ import { AuthModal } from '../../components/auth/AuthModal';
 import Header from '../../components/Header/Header';
 import { Hero } from '../../components/Hero/Hero';
 import TopTeachersCarousel from '../../components/TopTeachersCarousel';
+import { Feedback } from '../../components/Feedbacks/Feedbacks';
 
 
 export const HomePage = () => {
@@ -21,6 +22,7 @@ export const HomePage = () => {
       {isOpen && <AuthModal onClose={ handleCloseRegistrationForm } />}
       <Hero />
       <TopTeachersCarousel />
+        <Feedback/>
       <div>Footer</div>
     </>
   );
