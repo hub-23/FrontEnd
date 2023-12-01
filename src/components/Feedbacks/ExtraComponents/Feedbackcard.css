@@ -1,0 +1,68 @@
+.feedbackCard_container{
+    max-width: 360px;
+    max-height: 240px;
+    padding: 32px 24px 24px 24px;
+    border-radius: 0  20px  0 20px;
+    border: #113268 2px solid;
+    gap: 18px;
+}
+.feedbackCard_teacherImg{
+    object-fit: cover;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    border: #113268 2px solid;
+    margin-top: -110px;
+    margin-left: 170px;
+
+}
+.feedbackCard_inner{
+
+
+}
+.feedbackCard_Name{
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    text-align: left;
+
+}
+.feedbackCard_star{
+    width: 17px;
+    height: 16px;
+
+}
+.feedbackCard_commentator{
+    color: #113268;
+//styleName: Body/B6;
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    text-align: left;
+
+}
+.feedbackCard_feedback{
+//styleName: Body/B4;
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+.feedbackCard_date{
+//styleName: Body/B5;
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    text-align: left;
+
+}
