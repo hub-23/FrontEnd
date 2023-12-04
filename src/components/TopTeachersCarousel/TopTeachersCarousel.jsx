@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import TopTeachersCard from './components/Card/TopTeachersCard.jsx';
-import { TopTeachersButton } from './components/Button/TopTeachersButton.jsx';
 import {
   StyledSection,
   StyledWrapper,
@@ -11,7 +10,9 @@ import {
   StyledTitle,
   StyledTitleTypography,
   ContainerButtons,
-  StyledBtnContainer,
+  StyledBtnContainer1,
+  StyledBtnContainer2,
+  ButtonTypography,
 } from './TopTeachersCarousel.styled.js';
 import { teachers } from './topTeachersData.js';
 import Play from './components/Button/Play.jsx';
@@ -75,8 +76,11 @@ export const TopTeachersCarousel = () => {
               <StyledTitleTypography>Топові викладачі</StyledTitleTypography>
             </StyledTitle>
             <ContainerButtons>
-              {/* <TopTeachersButton /> */}
-              <Button>Обрати викладача</Button>
+              <StyledBtnContainer1>
+                <Button variant='secondary' background='white'>
+                  <ButtonTypography>Обрати викладача</ButtonTypography>
+                </Button>
+              </StyledBtnContainer1>
               {autoPlay ? <Pause handlePause={ handlePause } /> : <Play handlePlay={ handlePlay } /> }
             </ContainerButtons>
           </StyledContent>
@@ -86,9 +90,11 @@ export const TopTeachersCarousel = () => {
             ) )}
           </Slider>
         </StyledWrapper>
-        <StyledBtnContainer>
-          <TopTeachersButton />
-        </StyledBtnContainer>
+        <StyledBtnContainer2>
+          <Button variant='secondary' background='white'>
+            <ButtonTypography>Обрати викладача</ButtonTypography>
+          </Button>
+        </StyledBtnContainer2>
       </StyledSection>
     </>
   );

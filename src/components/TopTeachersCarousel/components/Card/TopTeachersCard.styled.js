@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../../../styles/device';
 
 export const StyledCard = styled.div`
     max-width: 360px;
@@ -10,7 +11,7 @@ export const StyledCard = styled.div`
     flex-direction: column;
     margin: 10px;
 
-    @media (min-width: 0px) and (max-width: 768px) {
+    @media ${device.sm} {
         max-width: 240px;
         height: 314px;
         margin: 32px 10px;
@@ -36,7 +37,7 @@ export const StyledHoverCard = styled.div`
     position: absolute;
     width: 100%;
     top: 40%;
-    left: 20%;
+    left: 10%;
     z-index: 10;
 
     font-family: Nunito;
@@ -47,6 +48,16 @@ export const StyledHoverCard = styled.div`
     letter-spacing: 0.2px;
     color: #113268;
     white-space: nowrap;
+
+    // @media ${device.sm} {
+    //     width: 100px;
+    //     height: 26px;
+    //     position: absolute;
+    //     top: 40%;
+    //     right: 10%;
+    //     width: 70%;
+    //     left: 0%;
+    // }
 `;
 
 export const StyledPhoto = styled.div`
@@ -57,7 +68,7 @@ export const StyledPhoto = styled.div`
     &:hover {
         ${StyledHoverCard} {
             display: block;
-        },
+        },   
     },
 `;
 
@@ -74,7 +85,7 @@ export const Photo = styled.img`
         opacity: 0.6;
     }
 
-    @media (min-width: 0px) and (max-width: 768px) {
+    @media ${device.sm} {
         max-width: 240px;
         height: 240px;
     }
@@ -89,7 +100,7 @@ export const StyledRating = styled.div`
     margin-top: 12px;
     margin-bottom: 12px;
 
-    @media (min-width: 0px) and (max-width: 768px) {
+    @media ${device.sm} {
         max-width: 240px;
         height: 17px;
         margin-top: 8px;
@@ -101,6 +112,12 @@ export const StyledLocation = styled.div`
     max-width: 134px;
     height: 22px;
     display: inline-block;
+
+    @media ${device.sm} {
+        width: 100px;
+        height: 17px;
+        font-size: 12px;
+    }
 `;
 
 export const StyledContent = styled.div`
@@ -113,15 +130,25 @@ export const StyledInfo = styled.div`
     max-width: 187px;
     height: 54px;
     padding: 8px 0px 0px 8px;
+    @media ${device.sm} {
+        width: 139px;
+        height: 41px;
+    }
 `;
 
 export const StyledNameBox = styled.div`
     max-width: 174px;
     height: 28px;
 
-    @media (min-width: 0px) and (max-width: 768px) {
+    @media ${device.sm} {
         max-width: 139px;
         height: 22px;
+        font-family: Nunito;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 22.4px */
+        letter-spacing: 0.16px;
     }
 `;
 
@@ -129,8 +156,14 @@ export const StyledSubject = styled.div`
     max-width: 125px;
     height: 22px;
 
-    @media (min-width: 0px) and (max-width: 768px) {
+    @media ${device.sm} {
         max-width: 95px;
         height: 17px;
+        font-family: Nunito;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 16.8px */
+        letter-spacing: 0.12px;
     }
 `;

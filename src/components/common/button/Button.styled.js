@@ -64,7 +64,9 @@ const StyledButton = styled.button`
             // background: ${( props ) => props.background || props.theme.colors.black};
             border: 1px solid ${( props ) => props.border || props.theme.colors.black};
             &:hover {
-                background: linear-gradient(267.92deg, #09194d 0%, #234890 100%);
+                // background: linear-gradient(267.92deg, #09194d 0%, #234890 100%);
+                background: #113268;
+                color: #ffffff;
                 border: 4px solid #ffffff;
                 transition: all 0.5s ease;
             }
