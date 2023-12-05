@@ -30,8 +30,10 @@ export const Typography = styled.div`
 `;
 
 export const StyledHoverCard = styled.div`
-    width: 230px;
-    height: 48px;
+    // width: 230px;
+    // height: 48px;
+    width: 209px;
+    height: 28px;
     padding: 14px 24px;
     display: none;
     position: absolute;
@@ -58,6 +60,9 @@ export const StyledHoverCard = styled.div`
     //     width: 70%;
     //     left: 0%;
     // }
+    // position: absolute;
+    // left: 50px;
+    // top: 152px;
 `;
 
 export const StyledPhoto = styled.div`
