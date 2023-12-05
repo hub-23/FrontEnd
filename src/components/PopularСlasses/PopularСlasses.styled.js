@@ -47,7 +47,7 @@ export const Title = styled.h2`
 
     @media ${device.md} {
         font-size: 28px;
-        line-height: calc(33px / 28pxpx);
+        line-height: calc(33px / 28px);
         letter-spacing: 0.26px;
     }
 
