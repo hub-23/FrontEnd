@@ -29,7 +29,8 @@ const StyledButton = styled.button`
     // font-size: 26px;
     // font-weight: 600;
     // line-height: 26px;
-    // letter-spacing: 0.01em;
+    font-style: normal;
+    letter-spacing: 0.01em;
     text-align: center;
     outline: none;
     cursor: pointer;

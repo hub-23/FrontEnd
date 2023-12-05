@@ -10,7 +10,9 @@ import {
   StyledSubject,
   StyledHoverCard,
   Photo,
-  Typography,
+  TypographyLocation,
+  TypographyName,
+  TypographySubject,
 } from './TopTeachersCard.styled.js';
 import Rating from '../Rating/Rating.jsx';
 import { Button } from '../../../common/button/Button.jsx';
@@ -23,22 +25,22 @@ const TopTeachersCard = ( { teacher } ) => {
         <StyledPhoto>
           <Photo src={ teacher.imgPath } alt={ teacher.name } />
           <StyledHoverCard>
-            <Button variant='primary'> Переглянути профіль</Button>
+            <Button className='btn' variant='primary'>Переглянути профіль</Button>
           </StyledHoverCard>
         </StyledPhoto>
         <StyledContent>
           <StyledRating>
             <Rating />
             <StyledLocation>
-              <Typography fontWeight='300'>{teacher.location}</Typography>
+              <TypographyLocation>{teacher.location}</TypographyLocation>
             </StyledLocation>
           </StyledRating>
           <StyledInfo>
             <StyledNameBox>
-              <Typography fontSize='20px'>{teacher.name}</Typography>
+              <TypographyName>{teacher.name}</TypographyName>
             </StyledNameBox>
             <StyledSubject>
-              <Typography>{teacher.subject}</Typography>
+              <TypographySubject>{teacher.subject}</TypographySubject>
             </StyledSubject>
           </StyledInfo>
         </StyledContent>
