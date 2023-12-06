@@ -1,18 +1,23 @@
 import React from 'react';
-import styles from './header.module.css';
+import { Link } from 'react-router-dom';
 import Logo from './logo/Logo';
-import Nav from './Navigation/Nav';
-import Button from '../button/button';
-import Select from './Select/Select';
+import Language from './Select/Language/Language';
+import { StyledHeader } from './Header.styled';
 
 const Header = () => {
   return (
-    <div className={ styles.header }>
-      <Logo/>
-      <Nav/>
-      <Select/>
-      <Button>Вхід</Button>
-    </div>
+    <StyledHeader>
+      <Link to='logo'>
+        <Logo />
+      </Link>
+      <Link to='/teacher'>Викладачі</Link>
+      <Link to='/about'>Про нас</Link>
+      <Link to='/feedback'>Відгуки</Link>
+      <Link to='/language'>
+        <Language />
+      </Link>
+      <Link to='/signIn'>Вхід</Link>
+    </StyledHeader>
   );
 };
 
