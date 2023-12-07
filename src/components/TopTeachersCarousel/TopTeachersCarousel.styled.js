@@ -8,10 +8,10 @@ export const StyledSection = styled.section`
     min-height: 100%;
     margin-top: 2036px;
     margin-bottom: 30px;
+    padding-bottom: 78px;
     overflow: hidden;
     background: #113268;
     color: #ffffff;
-    padding-bottom: 78px;
 
     @media ${device.sm} {
         max-width: 360px;
@@ -23,19 +23,19 @@ export const StyledSection = styled.section`
 `;
 
 export const StyledWrapper = styled.div`
+    min-width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    min-width: 100%;
     overflow: hidden;
-    height: 100%;
 `;
 
 export const StyledContent = styled.div`
-    display: flex;
-    justify-content: space-between;
     width: 100%;
     margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
 
     @media ${device.lg} {
         margin-top: 48px;
@@ -68,7 +68,7 @@ export const StyledTitleTypography = styled.h2`
     font-family: Nunito;
     font-size: 48px;
     font-weight: 600;
-    line-height: 130%; /* 62.4px */
+    line-height: 130%;
     letter-spacing: 0.48px;
     line-height: 62px;
     letter-spacing: 0.01em;
@@ -82,7 +82,7 @@ export const StyledTitleTypography = styled.h2`
     }
     @media ${device.sm} {
         font-size: 24px;
-        line-height: 130%; /* 31.2px */
+        line-height: 130%;
         letter-spacing: 0.24px;
     }
 `;
@@ -106,20 +106,21 @@ export const ButtonTypography = styled.p`
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
-    line-height: 100%; /* 20px */
+    line-height: 100%;
     letter-spacing: 0.2px;
     white-space: nowrap;
 
-    @media ${device.lg} and ${device.lg} {
+    @media ${device.lg} {
         font-size: 24px;
-        line-height: 130%; /* 31.2px */
+        line-height: 130%;
     }
 
-    // font-size: 16px;
-    // font-style: normal;
-    // font-weight: 500;
-    // line-height: 140%; /* 22.4px */
-    // letter-spacing: 0.16px;
+    @media ${device.sm} {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 140%;
+        letter-spacing: 0.16px;
+    }
 `;
 export const StyledBtnContainer2 = styled.div`
     display: none;

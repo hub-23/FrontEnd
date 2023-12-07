@@ -16,19 +16,17 @@ export const StyledCard = styled.div`
     @media ${device.sm} {
         max-width: 240px;
         height: 314px;
-        margin: 32px 10px;
     }
 `;
 
 export const StyledHoverCard = styled.div`
     width: 209px;
     height: 28px;
-    padding: 14px 24px;
     display: none;
     position: absolute;
     width: 100%;
     top: 40%;
-    // left: 10%;
+    left: 5%;
     z-index: 10;
     font-size: 20px;
     font-weight: 600;
@@ -37,13 +35,16 @@ export const StyledHoverCard = styled.div`
     color: #113268;
     white-space: nowrap;
 
+    @media ${device.xxxl} {
+        position: absolute;
+        left: 15%;
+        top: 40%;
+    }
+
     .btn {
-       
-        @media ${device.sm} {
-            // width: 100px;
-            // height: 26px;
+        @media ${device.lg} {
             max-width: 209px;
-            height: 28px;
+        }
     }
 `;
 
@@ -60,11 +61,11 @@ export const StyledPhoto = styled.div`
 `;
 
 export const Photo = styled.img`
+    width: 100%;
+    height: 100vw;
     max-width: 360px;
     max-height: 360px;
     object-fit: cover;
-    width: 100%;
-    height: 100vw;
     border-radius: 0px 20px 0px 20px;
 
     &:hover {
@@ -80,11 +81,11 @@ export const Photo = styled.img`
 
 export const StyledRating = styled.div`
     max-width: 360px;
+    width: 100%;
     height: 22px;
+    margin: 12px 0px;
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin: 12px 0px;
 
     @media ${device.sm} {
         max-width: 240px;
@@ -108,14 +109,13 @@ export const TypographyLocation = styled.div`
     font-size: 16px;
     font-weight: 300;
     text-align: left;
+    line-height: 140%;
+    letter-spacing: 0.16px;
     color: #ffffff;
     white-space: nowrap;
-    line-height: 140%; /* 22.4px */
-    letter-spacing: 0.16px;
 
     @media ${device.sm} {
         font-size: 12px;
-        line-height: 140%; /* 16.8px */
         letter-spacing: 0.12px;
     }
 `;
@@ -150,16 +150,14 @@ export const StyledNameBox = styled.div`
 export const TypographyName = styled.div`
     font-size: 20px;
     font-weight: 400;
-    line-height: ${( props ) => props.lineHeight || '22px'};
+    letter-spacing: 0.2px;
+    line-height: 140%;
     text-align: left;
     color: #ffffff;
     white-space: nowrap;
-    line-height: 140%; /* 28px */
-    letter-spacing: 0.2px;
 
     @media ${device.sm} {
         font-size: 16px;
-        line-height: 140%; /* 22.4px */
         letter-spacing: 0.16px;
     }
 `;
@@ -176,14 +174,13 @@ export const StyledSubject = styled.div`
 export const TypographySubject = styled.div`
     font-size: 16px;
     font-weight: 400;
-    line-height: 140%; /* 22.4px */
+    line-height: 140%;
     text-align: left;
     color: #ffffff;
     white-space: nowrap;
 
     @media ${device.sm} {
         font-size: 12px;
-        line-height: 140%; /* 16.8px */
         letter-spacing: 0.12px;
     }
 `;

@@ -44,7 +44,7 @@ export const TopTeachersCarousel = () => {
     pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1050,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -86,7 +86,7 @@ export const TopTeachersCarousel = () => {
           </StyledContent>
           <Slider ref={ sliderRef } { ...settings }>
             {teachers.map( ( teacher ) => (
-              <TopTeachersCard key={ teacher.id } teacher={ teacher } />
+              <TopTeachersCard key={ teacher.id } teacher={ teacher }/>
             ) )}
           </Slider>
         </StyledWrapper>

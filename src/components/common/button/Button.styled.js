@@ -24,7 +24,7 @@ const StyledButton = styled.button`
     border-radius: ${( props ) => props.borderRadius || '20px 0px'};
     // border-radius: 20px 0px 20px 0px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    align-self: ${( props ) => props.alginself || 'center'};
+    align-self: ${( props ) => props.alignself || 'center'};
     // padding: 14px 24px;
     // font-size: 26px;
     // font-weight: 600;
