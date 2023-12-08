@@ -16,6 +16,7 @@ export const teachers = [
     name: 'Марина Олександрівна',
     subject: 'Математика',
   },
+
   {
     id: 3,
     imgPath: require( '../../assets/home/top-teachers/image3.png' ),
