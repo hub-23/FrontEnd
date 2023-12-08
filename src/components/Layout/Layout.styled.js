@@ -10,3 +10,7 @@ export const StyledWrapper = styled.section`
     flex-direction: column;
     overflow: hidden;
 `;
+
+export const StyledContent = styled.section`
+    flex-grow: 1;
+`;
