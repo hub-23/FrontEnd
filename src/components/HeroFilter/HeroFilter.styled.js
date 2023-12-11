@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
-import searchImg from '../../images/search.svg';
-import locationImg from '../../images/location.svg';
+import searchImg from '../../assets/home/search.svg';
+import locationImg from '../../assets/home/location.svg';
 
 export const StyledInputs = styled.div`
-    width: 1120px;
+    max-width: 1120px;
     height: 80px;
     border-radius: 20px 0px;
     border: 1px solid #d5d5d5;
     display: flex;
     overflow: hidden;
     background: #fff;
+    // backdrop-filter: blur(4px);
 `;
 
 export const StyledInput = styled.input`

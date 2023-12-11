@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import image from '../../images/bg-image.jpg';
-import image2x from '../../images/bg-image-2x.jpg';
+import image from '../../assets/home/hero/bg-image.jpg';
+import image2x from '../../assets/home/hero/bg-image-2x.jpg';
 
 export const StyledSection = styled.section`
     position: relative;
@@ -11,7 +11,7 @@ export const StyledSection = styled.section`
 `;
 
 export const StyledContainer = styled.div`
-    padding: 180px 160px 145px 160px;
+    padding: 100px 160px 145px 160px;
     height: 100%;
 `;
 
@@ -20,32 +20,48 @@ export const StyledGradient = styled.div`
     top: 0;
     width: 100%;
     height: 900px;
-    background: linear-gradient(
-        270deg,
-        rgba(255, 255, 255, 0.64) 0%,
-        rgba(255, 255, 255, 0.13) 100%
-    );
-    /* background: linear-gradient(270deg, rgba(255, 255, 255, 0.64) 0%,
-     rgba(255, 255, 255, 0.13) 100%); */
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.13) 100%);
 `;
 
 export const StyledTitle = styled.h1`
+    width: 333px;
+    height: 156px;
     font-family: Montserrat;
     font-size: 40px;
     font-style: normal;
     font-weight: 600;
-    line-height: 52px; /* 52px */
+    line-height: 130%;
     text-transform: uppercase;
     margin-bottom: 20px;
 `;
 
 export const StyledText = styled.p`
     width: 600px;
+    height: 102px;
     margin-bottom: 40px;
+    color: #2d2d2d;
+    font-family: Nunito;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
 `;
 
-export const StyledButtContainer = styled.div`
+export const StyledBtnContainer1 = styled.div`
     display: flex;
-    gap: 30px;
+    gap: 40px;
     margin-bottom: 120px;
+
+    .btn {
+        width: 294px;
+        height: 56px;
+    }
+`;
+
+export const ButtonTypography = styled.p`
+    color: #f9f9f9;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 0.24px;
 `;

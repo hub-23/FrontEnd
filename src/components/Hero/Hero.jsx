@@ -1,13 +1,15 @@
 import React from 'react';
-import { HeroButton } from '../HeroButton/HeroButton';
+import { Button } from '../common/button/Button';
 import { HeroFilter } from '../HeroFilter/HeroFilter';
 import {
-  StyledButtContainer,
-  StyledContainer,
-  StyledGradient,
   StyledSection,
+  StyledGradient,
+  StyledContainer,
+  StyledBtnContainer1,
   StyledText,
   StyledTitle,
+  ButtonTypography,
+
 } from './Hero.styled';
 
 export const Hero = () => {
@@ -31,14 +33,18 @@ export const Hero = () => {
                 вчителів та склади
                 конкуренцію в своїй ніші
               </StyledText>
-              <StyledButtContainer>
-                <HeroButton size="big" color="blue">
-                  Стати викладачем
-                </HeroButton>
-                <HeroButton size="big" color="crimson">
-                  Стати учнем
-                </HeroButton>
-              </StyledButtContainer>
+              <StyledBtnContainer1>
+                <Button className='btn' variant='blue'>
+                  <ButtonTypography>
+                    Стати викладачем
+                  </ButtonTypography>
+                </Button>
+                <Button className='btn' variant='pink'>
+                  <ButtonTypography>
+                    Стати учнем
+                  </ButtonTypography>
+                </Button>
+              </StyledBtnContainer1>
             </div>
             <HeroFilter />
           </StyledContainer>
