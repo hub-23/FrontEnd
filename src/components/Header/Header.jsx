@@ -1,18 +1,23 @@
 import React from 'react';
-import styles from './header.module.css';
-import Logo from './logo/Logo';
-import Nav from './Navigation/Nav';
-import Button from '../button/button';
-import Select from './Select/Select';
+import { Link } from 'react-router-dom';
+import Language from './Select/Language/Language';
+import { StyledHeader } from './Header.styled';
+import logo from '../../assets/home/logo.svg';
 
 const Header = () => {
   return (
-    <div className={ styles.header }>
-      <Logo/>
-      <Nav/>
-      <Select/>
-      <Button>Вхід</Button>
-    </div>
+    <StyledHeader>
+      <Link to='/'>
+        <img src={ logo } alt='HUB23'/>
+      </Link>
+      <Link to='/teacher'>Викладачі</Link>
+      <Link to='/about'>Про нас</Link>
+      <Link to='/feedback'>Відгуки</Link>
+      <Link to='/language'>
+        <Language />
+      </Link>
+      <Link to='/signIn'>Вхід</Link>
+    </StyledHeader>
   );
 };
 
