@@ -86,6 +86,8 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
               errors: { name, email, phone, password, capcha },
               touched,
             } = formik;
+            const isCheckCapcha = formik.values.capcha;
+            const isDataUser = formik.initialValues.phone === formik.values.phone;
 
             return (
               <FormEmail autoComplete="on">
@@ -110,7 +112,12 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                 </LabelFormUser>
 
                 <LabelFormUser htmlFor="phone">
-                  <Input type="tel" name="phone" $error={ phone && touched.phone } />
+                  <Input
+                    type="tel"
+                    name="phone"
+                    $isDataUser={ isDataUser }
+                    $error={ phone && touched.phone }
+                  />
                   <FormError name="phone" />
                 </LabelFormUser>
 
@@ -132,7 +139,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                 </LabelFormUser>
 
                 <div>
-                  <WrappCapcha $error={ capcha && touched.capcha }>
+                  <WrappCapcha $error={ capcha && touched.capcha } $accept={ isCheckCapcha }>
                     <LabelCheckbox>
                       <InputCheckbox type="checkbox" name="capcha" />
                       <span></span>

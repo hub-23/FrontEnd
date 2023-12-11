@@ -84,9 +84,10 @@ export const Input = styled( Field )`
 
     border-width: 1px;
     border-style: solid;
-    border-color: ${borderGreen};
+    /* border-color: ${borderGreen}; */
 
     border-radius: 20px 0px;
+    border-color: ${( { $isDataUser } ) => ( $isDataUser ? grayStroke : borderGreen )};
     border-color: ${( { $error } ) => $error && `${borderError}`};
     color: ${black};
     background-color: ${white};
@@ -134,6 +135,7 @@ export const WrappCapcha = styled.div`
     border-style: solid;
 
     border-radius: 20px 0px;
+    border-color: ${( { $accept } ) => ( $accept ? borderGreen : grayStroke )};
     border-color: ${( { $error } ) => $error && `${borderError}`};
     color: ${grayText};
     background-color: ${white};
