@@ -3,7 +3,7 @@ import { AuthModal } from '../../components/auth/AuthModal';
 import Header from '../../components/Header/Header';
 import { Hero } from '../../components/Hero/Hero';
 import TopTeachersCarousel from '../../components/TopTeachersCarousel';
-
+import { PeopleTrust } from '../../components/PeopleTrust/PeopleTrust';
 
 export const HomePage = () => {
   const [ isOpen, setIsOpen ] = useState( false );
@@ -21,6 +21,7 @@ export const HomePage = () => {
       {isOpen && <AuthModal onClose={ handleCloseRegistrationForm } />}
       <Hero />
       <TopTeachersCarousel />
+      <PeopleTrust />
       <div>Footer</div>
     </>
   );
