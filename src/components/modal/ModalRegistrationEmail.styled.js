@@ -10,6 +10,9 @@ import {
   white,
 } from '../../utils/variables.styled';
 import { Field, Form } from 'formik';
+import { Link } from 'react-router-dom';
+import checkbox0 from '../../assets/home/modal/checkbox0.svg';
+import checkbox1 from '../../assets/home/modal/checkbox1.svg';
 
 export const ModalWrapp = styled.div`
     position: relative;
@@ -27,6 +30,10 @@ export const ModalWrapp = styled.div`
 
         cursor: pointer;
     }
+`;
+
+export const Article = styled.article`
+    width: 480px;
 `;
 
 export const Title = styled.div`
@@ -55,6 +62,12 @@ export const FormEmail = styled( Form )`
     display: flex;
     flex-direction: column;
     gap: 20px;
+`;
+
+export const LabelFormUser = styled.label`
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 `;
 
 export const Input = styled( Field )`
@@ -88,13 +101,30 @@ export const Input = styled( Field )`
     }
 `;
 
+export const ErrorPasswordWrapp = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 23px;
+`;
+
+export const ErrorPassword = styled.p`
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(15.82px / 14px);
+
+    color: ${( { $color } ) => ( $color ? accent : black )};
+`;
+
 export const WrappCapcha = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     margin-top: 26px;
-    margin-bottom: 3px;
+    margin-bottom: 7px;
 
     width: 480px;
     height: 60px;
@@ -102,7 +132,6 @@ export const WrappCapcha = styled.div`
 
     border-width: 1px;
     border-style: solid;
-    border-color: ${borderGreen};
 
     border-radius: 20px 0px;
     border-color: ${( { $error } ) => $error && `${borderError}`};
@@ -114,8 +143,9 @@ export const WrappCapcha = styled.div`
     }
 `;
 
-export const LabelCapcha = styled.label`
+export const LabelCheckbox = styled.label`
     display: flex;
+    align-items: center;
     gap: 9px;
 
     font-family: Nunito;
@@ -126,44 +156,54 @@ export const LabelCapcha = styled.label`
     letter-spacing: 0.2px;
 `;
 
-export const LabelAccept = styled.label`
-    display: flex;
-    gap: 9px;
-    margin-bottom: 5px;
+export const InputCheckbox = styled( Field )`
+    appearance: none;
+    position: absolute;
+    border-color: yellow;
 
-    & > p {
-        color: ${black};
+    & + span {
+        width: 24px;
+        height: 24px;
+        background-image: url(${checkbox0});
     }
 
-    & > p,
-    :link {
-        font-family: Nunito;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: (15.82px / 14px);
-
-        /* color: ${black}; */
-    }
-
-    & > p :link {
-        font-weight: 500;
-        text-decoration-line: underline;
-        text-decoration-color: ${black};
-    }
-
-    & > p :visited {
-        color: ${black};
+    &:checked + span {
+        background-image: url(${checkbox1});
     }
 `;
 
-export const ErrorText = styled.p`
-    display: inline;
+export const WrappPolicy = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+`;
 
-    color: ${accent};
+export const TextPolicy = styled.p`
     font-family: Nunito;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 113%; /* 15.82px */
+    line-height: (15.82px / 14px);
+
+    color: ${black};
+`;
+
+export const LinkPolicy = styled( Link )`
+    font-weight: 500;
+    text-decoration-line: underline;
+
+    color: ${black};
+`;
+
+export const ErrorText = styled.p`
+    display: inline;
+    margin-left: 19px;
+
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: (15.82px / 14px);
+
+    color: ${accent};
 `;

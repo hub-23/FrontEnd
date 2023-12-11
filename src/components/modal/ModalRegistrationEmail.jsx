@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, ErrorMessage, Field } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 
 import {
@@ -7,14 +7,20 @@ import {
   ErrorText,
   FormEmail,
   Input,
-  LabelCapcha,
   ModalWrapp,
   Title,
-  LabelAccept,
+  Article,
+  LabelFormUser,
+  ErrorPassword,
+  ErrorPasswordWrapp,
+  TextPolicy,
+  LinkPolicy,
+  InputCheckbox,
+  LabelCheckbox,
+  WrappPolicy,
 } from './ModalRegistrationEmail.styled';
 import sprite from '../../assets/sprite.svg';
 import reCapcha from '../../assets/home/modal/recapcha.png';
-import { Link } from 'react-router-dom';
 import { BtnRegistration } from './BtnRegistration';
 import { bgColorGradientBtn, white } from '../../utils/variables.styled';
 
@@ -38,6 +44,8 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
             'Пароль має містити більше 8 символів, велику літеру, цифри і спеціальний знак',
         )
         .required( 'Більше 8 символів, велика літера, цифри і спеціальний знак' ),
+    capcha: string().required( 'Виконайте перевірку reCAPTCHA' ),
+    accept: string().required( 'Політики мають бути погоджені' ),
   } );
 
   const initialValues = {
@@ -46,10 +54,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
     phone: '+38 ',
     password: '',
     capcha: '',
-    accepr: '',
+    accept: '',
   };
 
-  // Функція повертає помилку
   const FormError = ( { name } ) => {
     return <ErrorMessage name={ name } render={ ( message ) => <ErrorText>{message}</ErrorText> } />;
   };
@@ -60,6 +67,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
     console.log( 'values from dataUserRegister :>> ', dataUserRegister );
 
     resetForm();
+    onActiveModal();
   };
 
   return (
@@ -68,24 +76,20 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
         <use href={ `${sprite}#icon-close` }></use>
       </svg>
 
-      <article>
+      <Article>
         <Title>
           <p>Реєстрація</p>
         </Title>
-
         <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
           {( formik ) => {
             const {
-              errors: { name, email, phone, password },
+              errors: { name, email, phone, password, capcha },
               touched,
             } = formik;
 
             return (
               <FormEmail autoComplete="on">
-                <label
-                  htmlFor="name"
-                  style={ { display: 'flex', flexDirection: 'column', gap: '15px' } }
-                >
+                <LabelFormUser htmlFor="name">
                   <Input
                     type="text"
                     name="name"
@@ -93,8 +97,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     $error={ name && touched.name }
                   />
                   <FormError name="name" />
-                </label>
-                <label htmlFor="email">
+                </LabelFormUser>
+
+                <LabelFormUser htmlFor="email">
                   <Input
                     type="email"
                     name="email"
@@ -102,45 +107,63 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     $error={ email && touched.email }
                   />
                   <FormError name="email" />
-                </label>
-                <label htmlFor="phone">
+                </LabelFormUser>
+
+                <LabelFormUser htmlFor="phone">
                   <Input type="tel" name="phone" $error={ phone && touched.phone } />
                   <FormError name="phone" />
-                </label>
-                <label htmlFor="password">
+                </LabelFormUser>
+
+                <LabelFormUser htmlFor="password" style={ { gap: '11px' } }>
                   <Input
                     type="password"
                     name="password"
                     placeholder="Придумайте пароль"
                     $error={ password && touched.password }
                   />
-                  <FormError name="password" />
-                </label>
+                  <ErrorPasswordWrapp>
+                    <svg width="24px" height="24px" onClick={ onActiveModal }>
+                      <use href={ `${sprite}#icon-star-marker` }></use>
+                    </svg>
+                    <ErrorPassword $color={ password && touched.password }>
+                                            Більше 8 символів, велика літера, цифри і спеціальний знак
+                    </ErrorPassword>
+                  </ErrorPasswordWrapp>
+                </LabelFormUser>
 
-                <WrappCapcha>
-                  <LabelCapcha htmlFor="capcha">
-                    <Field type="checkbox" name="capcha" />
-                                        I’m not robot
-                    <FormError name="capcha" />
-                  </LabelCapcha>
-                  <img src={ reCapcha } width="40" height="38" alt="re Capcha"></img>
-                </WrappCapcha>
+                <div>
+                  <WrappCapcha $error={ capcha && touched.capcha }>
+                    <LabelCheckbox>
+                      <InputCheckbox type="checkbox" name="capcha" />
+                      <span></span>
+                                            I’m not robot
+                    </LabelCheckbox>
 
-                <LabelAccept htmlFor="accept">
-                  <Field type="checkbox" name="accept" />
-                  <p>
-                                        Я приймаю
-                    {' '}
-                    <span>
-                      <Link>Політика конфіденційності </Link>
-                    </span>
-                                        та
-                    <span>
-                      <Link> Умови використання</Link>
-                    </span>
-                  </p>
+                    <img src={ reCapcha } width="40" height="38" alt="re Capcha"></img>
+                  </WrappCapcha>
+                  <FormError name="capcha" />
+                </div>
+
+                <WrappPolicy>
+                  <LabelCheckbox>
+                    <InputCheckbox type="checkbox" name="accept" />
+                    <span></span>
+
+                    <TextPolicy>
+                                            Я приймаю
+                      {' '}
+                      <span>
+                        <LinkPolicy>Політика конфіденційності </LinkPolicy>
+                      </span>
+                                            та
+                      <span>
+                        <LinkPolicy> Умови використання</LinkPolicy>
+                      </span>
+                    </TextPolicy>
+                  </LabelCheckbox>
+
                   <FormError name="accept" />
-                </LabelAccept>
+                </WrappPolicy>
 
                 <BtnRegistration
                   marginBottom="30px"
@@ -156,7 +179,21 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
             );
           }}
         </Formik>
-      </article>
+
+        <TextPolicy>
+                    Цей сайт захищено технологією reCAPTCHA, до нього застосовуються
+          {' '}
+          <span>
+            <LinkPolicy style={ { fontWeight: '600' } }>Політика конфіденційності </LinkPolicy>
+          </span>
+                    та
+          <span>
+            <LinkPolicy style={ { fontWeight: '600' } }> Умови використання</LinkPolicy>
+          </span>
+          {' '}
+                    Google.
+        </TextPolicy>
+      </Article>
     </ModalWrapp>
   );
 };
