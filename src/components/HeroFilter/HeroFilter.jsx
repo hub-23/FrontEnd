@@ -6,7 +6,7 @@ import {
   StyledLabel,
 } from './HeroFilter.styled';
 
-import { StyledHeroButton } from '../HeroButton/HeroButton.styled';
+import { Button } from '../../components/common/button/Button';
 
 const classes = [ 'piano', 'drums', 'guitar', 'duduk', 'darbuka' ];
 const cities = [ 'Kyiv', 'Kharkov', 'Korsun', 'Steblev' ];
@@ -139,13 +139,13 @@ export const HeroFilter = () => {
           <StyledCheckbox type="checkbox" id="radio"></StyledCheckbox>
           Онлайн
           {' '}
-          <StyledHeroButton
+          <Button
             color="black"
             type="submit"
             className="filter-button"
           >
             Найти
-          </StyledHeroButton>
+          </Button>
         </StyledLabel>
       </StyledInputs>
     </form>
