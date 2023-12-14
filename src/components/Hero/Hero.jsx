@@ -18,34 +18,32 @@ export const Hero = () => {
       <StyledSection className="section-hero">
         <StyledGradient>
           <StyledContainer>
-            <div className="hero-content">
-              <StyledTitle>
-                ПРОСТІР
-                <br />
-                {' '}
+            <StyledTitle>
+              ПРОСТІР
+              <br />
+              {' '}
 ТАЛАНОВИТИХ
-                <br />
-                {' '}
+              <br />
+              {' '}
 ЛЮДЕЙ
-              </StyledTitle>
-              <StyledText>
+            </StyledTitle>
+            <StyledText>
                 Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до команди
                 вчителів та склади
                 конкуренцію в своїй ніші
-              </StyledText>
-              <StyledBtnContainer1>
-                <Button className='btn' variant='blue'>
-                  <ButtonTypography>
-                    Стати викладачем
-                  </ButtonTypography>
-                </Button>
-                <Button className='btn' variant='pink'>
-                  <ButtonTypography>
-                    Стати учнем
-                  </ButtonTypography>
-                </Button>
-              </StyledBtnContainer1>
-            </div>
+            </StyledText>
+            <StyledBtnContainer1>
+              <Button className='btn' variant='blue'>
+                <ButtonTypography>
+                  Стати викладачем
+                </ButtonTypography>
+              </Button>
+              <Button className='btn' variant='pink'>
+                <ButtonTypography>
+                  Стати учнем
+                </ButtonTypography>
+              </Button>
+            </StyledBtnContainer1>
             <HeroFilter />
           </StyledContainer>
         </StyledGradient>

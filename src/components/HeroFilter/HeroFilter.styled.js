@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-
 import searchImg from '../../assets/home/search.svg';
 import locationImg from '../../assets/home/location.svg';
+import { device } from '../../styles/device';
 
 export const StyledInputs = styled.div`
     max-width: 1120px;
@@ -12,6 +12,18 @@ export const StyledInputs = styled.div`
     overflow: hidden;
     background: #fff;
     // backdrop-filter: blur(4px);
+
+    @media ${device.sm} {
+        max-width: 320px;
+        height: 270px;
+    }
+
+    // padding-top: 68px;
+    // padding-top: 132;
+    // width: 280px;
+    // height: 0px;
+    // stroke-width: 1px;
+    // color: #D5D5D5;
 `;
 
 export const StyledInput = styled.input`
@@ -64,3 +76,86 @@ export const StyledCheckbox = styled.input`
         }
     }
 `;
+
+// color: #797979;
+// font-family: Nunito;
+// font-size: 20px;
+// font-style: normal;
+// font-weight: 400;
+// line-height: 140%;
+// letter-spacing: 0.2px;
+// 202*28(24*34,5ж12ж202*28)
+
+// mob:
+// font-size: 16px;
+// letter-spacing: 0.16px;
+// 162*22
+
+// color: #797979;
+// font-family: Nunito;
+// font-size: 20px;
+// font-style: normal;
+// font-weight: 400;
+// line-height: 140%;
+// letter-spacing: 0.2px;
+// 109*56(24*24ж12ж53*28)
+
+// mob:
+// font-size: 16px;
+// letter-spacing: 0.16px;
+// 42*22
+
+// color: #2D2D2D;
+// font-family: Nunito;
+// font-size: 20px;
+// font-style: normal;
+// font-weight: 400;
+// line-height: 140%;
+// letter-spacing: 0.2px;
+// 130*56(24*24ж12ж74*28)
+
+// mob:
+// font-size: 16px;
+// letter-spacing: 0.16px;
+// 60*22
+
+// button
+
+// width: 134px;
+// height: 48px;
+// margin-top: 16px;
+// margin-bottom: 16px;
+// margin-right: 32px;
+// border-radius: 20px 0px;
+// background: #2D2D2D;
+// 70*20
+// color: #FFF;
+// font-family: Nunito;
+// font-size: 20px;
+// font-style: normal;
+// font-weight: 600;
+// line-height: 100%;
+// letter-spacing: 0.2px;
+
+// button mob:
+
+// width: 280px;
+// height: 50px;
+// padding: 14px 32px;
+// justify-content: center;
+// align-items: center;
+// gap: 10px;
+// 56*22
+// color: #ffffff;
+
+// mob:
+// font-family: Nunito;
+// font-size: 16px;
+// font-style: normal;
+// font-weight: 500;
+// line-height: 140%;
+// letter-spacing: 0.16px;
+// backdrop-filter: blur(2px);
+
+// modal:
+// margin-bottom: 25px;

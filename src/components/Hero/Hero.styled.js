@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import image from '../../assets/home/hero/bg-image.jpg';
 import image2x from '../../assets/home/hero/bg-image-2x.jpg';
+import { device } from '../../styles/device';
 
 export const StyledSection = styled.section`
     position: relative;
@@ -32,7 +33,20 @@ export const StyledTitle = styled.h1`
     font-weight: 600;
     line-height: 130%;
     text-transform: uppercase;
+    color: #2d2d2d;
     margin-bottom: 20px;
+
+    @media ${device.lg} {
+        max-width: 266px;
+        height: 126px;
+        font-size: 32px;
+    }
+
+    @media ${device.sm} {
+        max-width: 200px;
+        height: 93px;
+        font-size: 24px;
+    }
 `;
 
 export const StyledText = styled.p`
@@ -45,6 +59,20 @@ export const StyledText = styled.p`
     font-style: normal;
     font-weight: 500;
     line-height: 140%;
+
+    @media ${device.lg} {
+        max-width: 320px;
+        height: 88px;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    @media ${device.sm} {
+        max-width: 320px;
+        height: 60px;
+        font-weight: 400;
+        font-size: 14px;
+    }
 `;
 
 export const StyledBtnContainer1 = styled.div`
@@ -55,13 +83,27 @@ export const StyledBtnContainer1 = styled.div`
     .btn {
         width: 294px;
         height: 56px;
+
+        @media ${device.sm} {
+            width: 320px;
+        }
     }
 `;
 
 export const ButtonTypography = styled.p`
-    color: #f9f9f9;
+    font-family: Nunito;
     font-size: 24px;
     font-weight: 600;
     line-height: 100%;
+    font-style: normal;
     letter-spacing: 0.24px;
+    color: #f9f9f9;
+
+    @media ${device.sm} {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 140%;
+        letter-spacing: 0.16px;
+    }
 `;
