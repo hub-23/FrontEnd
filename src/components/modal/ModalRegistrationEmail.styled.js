@@ -22,15 +22,20 @@ export const ModalWrapp = styled.div`
 
     border-radius: 20px 0px;
     background-color: ${white};
-
-    & > svg {
-        position: absolute;
-        top: 40px;
-        right: 50px;
-
-        cursor: pointer;
-    }
 `;
+
+// export const BtnCloseSt = styled.button`
+//     position: absolute;
+//     top: 40px;
+//     right: 50px;
+
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+
+//     border: none;
+//     background-color: initial;
+// `;
 
 export const Article = styled.article`
     width: 480px;
@@ -65,6 +70,7 @@ export const FormEmail = styled( Form )`
 `;
 
 export const LabelFormUser = styled.label`
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 7px;

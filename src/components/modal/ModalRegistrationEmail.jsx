@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 
@@ -19,12 +19,16 @@ import {
   LabelCheckbox,
   WrappPolicy,
 } from './ModalRegistrationEmail.styled';
-import sprite from '../../assets/sprite.svg';
 import reCapcha from '../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
 import { bgColorGradientBtn, white } from '../../utils/variables.styled';
+import { IconSvg } from '../common/IconSvg';
+import { BtnEye } from '../common/BtnEye';
+import { BtnClose } from '../common/BtnClose';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
+  const [ showPassword, setSowPassword ] = useState( true );
+
   const schema = object( {
     name: string()
         .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
@@ -41,7 +45,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
     password: string()
         .matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[A-Z]){1})((?=.*[a-z]){1}).*$/,
-            'Пароль має містити більше 8 символів, велику та малу літеру, цифри і спеціальний знак',
+            'Пароль має містити більше 8 символів, велику та малу літеру латиницею, цифри і спеціальний знак',
         )
         .required( 'Пароль обов‘язковий' ),
     capcha: string().required( 'Виконайте перевірку reCAPTCHA' ),
@@ -77,9 +81,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
   return (
     <ModalWrapp>
-      <svg width="60px" height="60px" onClick={ onActiveModal }>
-        <use href={ `${sprite}#icon-close` }></use>
-      </svg>
+      <BtnClose right="50px" top="40px" click={ onActiveModal } />
 
       <Article>
         <Title>
@@ -128,20 +130,34 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                 <LabelFormUser htmlFor="password" style={ { gap: '11px' } }>
                   <Input
-                    type="password"
+                    type={ showPassword ? 'password' : 'text' }
                     name="password"
                     placeholder="Придумайте пароль"
                     $error={ password && touched.password }
                   />
+
+                  <BtnEye
+                    right="36px"
+                    top="16px"
+                    click={ () => setSowPassword( !showPassword ) }
+                  >
+                    {showPassword ? (
+                                            <IconSvg width="24px" height="24px" icon="icon-eye-slash" />
+                                        ) : (
+                                            <IconSvg width="24px" height="24px" icon="icon-eye" />
+                                        )}
+                    {' '}
+                  </BtnEye>
+
                   <ErrorPasswordWrapp>
-                    <svg width="24px" height="24px" onClick={ onActiveModal }>
-                      <use href={ `${sprite}#icon-star-marker` }></use>
-                    </svg>
+                    <IconSvg width="24px" height="24px" icon="icon-star-marker" />
+
                     {!password && (
                       <ErrorPassword $color={ password && touched.password }>
                                                 Більше 8 символів, велика літера, цифри і спеціальний знак
                       </ErrorPassword>
                     )}
+
                     {password && <FormError name="password" />}
                   </ErrorPasswordWrapp>
                 </LabelFormUser>
