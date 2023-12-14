@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { white } from '../../utils/variables.styled';
 
 export const StyledHeroButton = styled.button`
     border: 1px solid black;
@@ -18,4 +19,5 @@ export const StyledHeroButton = styled.button`
     }
   }};
     width: ${( props ) => ( props.size === 'big' ? '295px' : '' )};
+    color: ${white};
 `;
