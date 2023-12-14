@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Map } from './Map';
 import {
   StyledContainer,
   StyledTextWrapper,
@@ -15,10 +16,10 @@ import {
 
 export const PeopleTrust = () => {
   // data from backend
-  const teachers = 5300; // 5000
+  const teachers = 5375; // 5000
   const countries = 57; // 50
-  const students = 15400; // 15000
-  const ukrCities = 201; // 200
+  const students = 15423; // 15000
+  const ukrCities = 241; // 200
 
   const roundDownToNearestBase = ( number ) => {
     let base = null;
@@ -83,6 +84,7 @@ export const PeopleTrust = () => {
             знайдемо його для вас.
           </StyledText>
         </StyledTextWrapper>
+        <Map />
         <StyledStatisticsWrapper>
           <StyledStatisticsList>
             <StyledStatUnit>

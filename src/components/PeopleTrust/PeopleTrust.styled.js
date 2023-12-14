@@ -2,11 +2,10 @@ import styled from 'styled-components';
 import { device } from '../../styles/device';
 
 export const StyledContainer = styled.div`
-    border: 1px solid green;
+    /* border: 1px solid green; */
 `;
 
 export const StyledTextWrapper = styled.div`
-    border: 1px solid violet;
     padding: 120px 160px;
     @media ${device.xxl} { 
         padding: 80px 20px;

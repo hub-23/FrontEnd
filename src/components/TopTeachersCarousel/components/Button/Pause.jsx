@@ -1,6 +1,6 @@
 import React from 'react';
 import pause from '../../../../assets/home/top-teachers/Pause.svg';
-import { ButtonToggle } from './TopTeachersButton';
+import { ButtonToggle } from './ButtonToggle';
 
 const Pause = ( { handlePause } ) => {
   return (
