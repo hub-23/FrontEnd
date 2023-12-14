@@ -40,10 +40,10 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
         .required( 'Вкажіть ваш номер телефону' ),
     password: string()
         .matches(
-            /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[A-z]){1}).*$/,
-            'Пароль має містити більше 8 символів, велику літеру, цифри і спеціальний знак',
+            /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[A-Z]){1})((?=.*[a-z]){1}).*$/,
+            'Пароль має містити більше 8 символів, велику та малу літеру, цифри і спеціальний знак',
         )
-        .required( 'Більше 8 символів, велика літера, цифри і спеціальний знак' ),
+        .required( 'Пароль обов‘язковий' ),
     capcha: string().required( 'Виконайте перевірку reCAPTCHA' ),
     accept: string().required( 'Політики мають бути погоджені' ),
   } );
@@ -57,8 +57,13 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
     accept: '',
   };
 
-  const FormError = ( { name } ) => {
-    return <ErrorMessage name={ name } render={ ( message ) => <ErrorText>{message}</ErrorText> } />;
+  const FormError = ( { name, isMarginLeft } ) => {
+    return (
+      <ErrorMessage
+        name={ name }
+        render={ ( message ) => <ErrorText $isMarginLeft={ isMarginLeft }>{message}</ErrorText> }
+      />
+    );
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
@@ -98,7 +103,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     placeholder="Ім’я та прізвище"
                     $error={ name && touched.name }
                   />
-                  <FormError name="name" />
+                  <FormError name="name" isMarginLeft={ true } />
                 </LabelFormUser>
 
                 <LabelFormUser htmlFor="email">
@@ -108,7 +113,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     placeholder="Електронна адреса"
                     $error={ email && touched.email }
                   />
-                  <FormError name="email" />
+                  <FormError name="email" isMarginLeft={ true } />
                 </LabelFormUser>
 
                 <LabelFormUser htmlFor="phone">
@@ -118,7 +123,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     $isDataUser={ isDataUser }
                     $error={ phone && touched.phone }
                   />
-                  <FormError name="phone" />
+                  <FormError name="phone" isMarginLeft={ true } />
                 </LabelFormUser>
 
                 <LabelFormUser htmlFor="password" style={ { gap: '11px' } }>
@@ -132,9 +137,12 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     <svg width="24px" height="24px" onClick={ onActiveModal }>
                       <use href={ `${sprite}#icon-star-marker` }></use>
                     </svg>
-                    <ErrorPassword $color={ password && touched.password }>
-                                            Більше 8 символів, велика літера, цифри і спеціальний знак
-                    </ErrorPassword>
+                    {!password && (
+                      <ErrorPassword $color={ password && touched.password }>
+                                                Більше 8 символів, велика літера, цифри і спеціальний знак
+                      </ErrorPassword>
+                    )}
+                    {password && <FormError name="password" />}
                   </ErrorPasswordWrapp>
                 </LabelFormUser>
 
@@ -148,7 +156,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                     <img src={ reCapcha } width="40" height="38" alt="re Capcha"></img>
                   </WrappCapcha>
-                  <FormError name="capcha" />
+                  <FormError name="capcha" isMarginLeft={ true } />
                 </div>
 
                 <WrappPolicy>
@@ -169,7 +177,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     </TextPolicy>
                   </LabelCheckbox>
 
-                  <FormError name="accept" />
+                  <FormError name="accept" isMarginLeft={ true } />
                 </WrappPolicy>
 
                 <BtnRegistration

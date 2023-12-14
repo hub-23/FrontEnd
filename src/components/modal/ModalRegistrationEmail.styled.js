@@ -199,7 +199,7 @@ export const LinkPolicy = styled( Link )`
 
 export const ErrorText = styled.p`
     display: inline;
-    margin-left: 19px;
+    margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
 
     font-family: Nunito;
     font-size: 14px;
