@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
 import L from 'leaflet';
-import pinIcon from '../../images/pinIcon.svg';
-import circleIcon from '../../images/circleIcon.svg';
+import pinIcon from '../../assets/home/map/pinIcon.svg';
+import circleIcon from '../../assets/home/map/circleIcon.svg';
 import { fetchCountry } from './api';
 
 
