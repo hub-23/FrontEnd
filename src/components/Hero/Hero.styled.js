@@ -9,11 +9,26 @@ export const StyledSection = styled.section`
     width: 100%;
     height: 900px;
     background-size: cover;
+
+    @media ${device.lg} {
+        height: 728px;
+    }
 `;
 
 export const StyledContainer = styled.div`
     padding: 100px 160px 145px 160px;
     height: 100%;
+
+    @media ${device.lg} {
+        padding: 40px 80px 154px 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    @media ${device.sm} {
+        padding: 20px 20px 154px 20px;
+    }
 `;
 
 export const StyledGradient = styled.div`
@@ -22,6 +37,10 @@ export const StyledGradient = styled.div`
     width: 100%;
     height: 900px;
     background: linear-gradient(270deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.13) 100%);
+
+    @media ${device.lg} {
+        height: 728px;
+    }
 `;
 
 export const StyledTitle = styled.h1`
@@ -63,14 +82,14 @@ export const StyledText = styled.p`
     @media ${device.lg} {
         max-width: 320px;
         height: 88px;
+        margin-bottom: 20px;
         font-weight: 400;
         font-size: 16px;
     }
 
     @media ${device.sm} {
-        max-width: 320px;
+        max-width: 300px;
         height: 60px;
-        font-weight: 400;
         font-size: 14px;
     }
 `;
@@ -80,12 +99,23 @@ export const StyledBtnContainer1 = styled.div`
     gap: 40px;
     margin-bottom: 120px;
 
+    @media ${device.lg} {
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 60px;
+        gap: 24px;
+    }
+
+    @media ${device.lg} {
+        margin-bottom: 20px;
+    }
+
     .btn {
         width: 294px;
         height: 56px;
 
         @media ${device.sm} {
-            width: 320px;
+            max-width: 290px;
         }
     }
 `;
@@ -95,7 +125,6 @@ export const ButtonTypography = styled.p`
     font-size: 24px;
     font-weight: 600;
     line-height: 100%;
-    font-style: normal;
     letter-spacing: 0.24px;
     color: #f9f9f9;
 

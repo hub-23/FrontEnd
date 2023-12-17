@@ -10,12 +10,18 @@ export const StyledInputs = styled.div`
     border: 1px solid #d5d5d5;
     display: flex;
     overflow: hidden;
-    background: #fff;
+    background: #ffffff;
     // backdrop-filter: blur(4px);
 
-    @media ${device.sm} {
-        max-width: 320px;
+    @media ${device.lg} {
+        width: 320px;
         height: 270px;
+        flex-direction: column;
+        padding: 25px 20px 0px;
+    }
+
+    @media ${device.sm} {
+        max-width: 290px;
     }
 
     // padding-top: 68px;
@@ -40,6 +46,17 @@ export const StyledInput = styled.input`
     background-position: 16px center;
     border-right: 1px solid black;
     padding-left: 56px;
+
+    // @media ${device.lg} {
+    //     .input {
+    //         &::before {
+    //             content: '';
+    //             width: 280px;
+    //             height: 1px;
+    //             background-color: #d5d5d5;
+    //         }
+    //     }
+    // }
 `;
 
 export const StyledLabel = styled.label`
@@ -49,16 +66,38 @@ export const StyledLabel = styled.label`
     flex-grow: 1;
     cursor: pointer;
     font-size: 16px;
+
+    @media ${device.lg} {
+        flex-direction: column;
+    }
+
+    .filter-button {
+        color: #ffffff;
+        background: #2d2d2d;
+    }
+`;
+
+export const StyledCheckboxWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+
+    @media ${device.lg} {
+        align-self: flex-start;
+        flex-direction: row;
+        padding-left: 20px;
+    }
 `;
 
 export const StyledCheckbox = styled.input`
     position: relative;
-    appearance: none; /* Убираем стандартный стиль браузера */
+    appearance: none;
     width: 24px;
     height: 24px;
     border: 2px solid #e3669c;
     border-radius: 50%;
-    outline: none; /* Убираем обводку при фокусе */
+    outline: none;
     cursor: pointer;
     padding-left: 20px;
 
@@ -68,12 +107,18 @@ export const StyledCheckbox = styled.input`
             width: 12px;
             height: 12px;
             background-color: #e3669c;
-            border-radius: 50%; /* Создаем еще один внутренний круг */
+            border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
+    }
+`;
+
+export const StyledText = styled.p`
+    @media ${device.lg} {
+        display: inline-block;
     }
 `;
 

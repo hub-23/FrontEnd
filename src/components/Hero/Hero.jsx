@@ -5,11 +5,10 @@ import {
   StyledSection,
   StyledGradient,
   StyledContainer,
-  StyledBtnContainer1,
-  StyledText,
   StyledTitle,
+  StyledText,
+  StyledBtnContainer1,
   ButtonTypography,
-
 } from './Hero.styled';
 
 export const Hero = () => {

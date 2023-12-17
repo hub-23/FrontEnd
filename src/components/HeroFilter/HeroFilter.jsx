@@ -4,6 +4,8 @@ import {
   StyledInput,
   StyledInputs,
   StyledLabel,
+  StyledCheckboxWrapper,
+  StyledText,
 } from './HeroFilter.styled';
 
 import { Button } from '../../components/common/button/Button';
@@ -117,6 +119,7 @@ export const HeroFilter = () => {
           </ul>
         )}
         <StyledInput
+          className='input'
           type="text"
           placeholder="Місто"
           onChange={ handleInputChange }
@@ -136,9 +139,15 @@ export const HeroFilter = () => {
         )}
 
         <StyledLabel htmlFor="radio">
-          <StyledCheckbox type="checkbox" id="radio"></StyledCheckbox>
-          Онлайн
-          {' '}
+          <StyledCheckboxWrapper>
+            <StyledCheckbox type="checkbox" id="radio"></StyledCheckbox>
+            <StyledText>
+                Онлайн
+              {' '}
+            </StyledText>
+            {/* Онлайн
+            {' '} */}
+          </StyledCheckboxWrapper>
           <Button
             color="black"
             type="submit"
