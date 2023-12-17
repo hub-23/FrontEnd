@@ -33,7 +33,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
     name: string()
         .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
         .max( 30, 'Вкажіть мініімум 2 літери, але не більше 30' )
-        .matches( /^[А-я\s/A-z\s/\-/_/.]+$/, 'Ім’я має містити українські або англійскі літери' )
+        .matches( /^[А-яЁёЇїІіЄєҐґ'\s/A-z\s/\-/_/.]+$/, 'Ім’я має містити українські або англійскі літери' )
         .required( 'Вкажіть ваше ім’я' ),
     email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
     phone: string()
@@ -71,9 +71,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
-    const phone = { phone: values.phone.replaceAll( ' ', '' ) }; // Чистим пробіли в рядку
+    const phone = { phone: values.phone.replaceAll( ' ', '' ) }; // Чистимо пробіли в рядку
     const dataUserRegister = { ...values, ...phone };
-    console.log( 'values from dataUserRegister :>> ', dataUserRegister );
+    console.log( 'registrationEmailData to Backend  :>> ', dataUserRegister );
 
     resetForm();
     onActiveModal();
@@ -154,7 +154,8 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                     {!password && (
                       <ErrorPassword $color={ password && touched.password }>
-                                                Більше 8 символів, велика літера, цифри і спеціальний знак
+                                                Більше 8 символів, велика та мала літера, цифри і спеціальний
+                                                знак
                       </ErrorPassword>
                     )}
 
