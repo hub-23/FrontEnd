@@ -6,6 +6,7 @@ import {
   StyledLabel,
   StyledCheckboxWrapper,
   StyledText,
+  StyledStroke,
 } from './HeroFilter.styled';
 
 import { Button } from '../../components/common/button/Button';
@@ -118,6 +119,7 @@ export const HeroFilter = () => {
             ) )}
           </ul>
         )}
+        <StyledStroke></StyledStroke>
         <StyledInput
           className='input'
           type="text"
@@ -137,6 +139,7 @@ export const HeroFilter = () => {
             ) )}
           </ul>
         )}
+        <StyledStroke></StyledStroke>
 
         <StyledLabel htmlFor="radio">
           <StyledCheckboxWrapper>

@@ -32,7 +32,7 @@ export const Hero = () => {
 
   return (
     <>
-      <StyledSection className="section-hero">
+      <StyledSection>
         <StyledGradient>
           <StyledContainer>
             <StyledTitle>
@@ -53,7 +53,7 @@ export const Hero = () => {
               <Button
                 className='btn'
                 variant='blue'
-                dataStatus="teacher"
+                dataStatus='teacher'
                 onActiveModal={ toggleModal }>
                 <ButtonTypography>
                   Стати викладачем
@@ -62,7 +62,7 @@ export const Hero = () => {
               <Button
                 className='btn'
                 variant='pink'
-                dataStatus="student"
+                dataStatus='student'
                 onActiveModal={ toggleModal }>
                 <ButtonTypography>
                   Стати учнем

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import searchImg from '../../assets/home/search.svg';
 import locationImg from '../../assets/home/location.svg';
+import stroke from '../../assets/home/stroke.svg';
 import { device } from '../../styles/device';
 
 export const StyledInputs = styled.div`
@@ -14,14 +15,27 @@ export const StyledInputs = styled.div`
     // backdrop-filter: blur(4px);
 
     @media ${device.lg} {
+        width: 700px;
+        height: 306px;
+        flex-direction: column;
+        padding: 25px 40px 0px;
+        // backdrop-filter: blur(2px);
+    }
+
+    @media ${device.md} {
         width: 320px;
         height: 270px;
-        flex-direction: column;
-        padding: 25px 20px 0px;
+        // flex-direction: column;
+        // padding: 25px 40px 0px;
+        // backdrop-filter: blur(2px);
     }
 
     @media ${device.sm} {
         max-width: 290px;
+        // width: 320px;
+        height: 270px;
+        flex-direction: column;
+        padding: 25px 20px 0px;
     }
 
     // padding-top: 68px;
@@ -46,6 +60,10 @@ export const StyledInput = styled.input`
     background-position: 16px center;
     border-right: 1px solid black;
     padding-left: 56px;
+
+    @media ${device.lg} {
+        border-right: none;
+    }
 
     // @media ${device.lg} {
     //     .input {
@@ -113,6 +131,19 @@ export const StyledCheckbox = styled.input`
             left: 50%;
             transform: translate(-50%, -50%);
         }
+    }
+`;
+
+export const StyledStroke = styled.div`
+    @media ${device.lg} {
+        //background-image: ${stroke};
+        background-color: #d5d5d5;
+        max-width: 714px;
+        height: 1px;
+    }
+
+    @media ${device.sm} {
+        width: 250px;
     }
 `;
 
