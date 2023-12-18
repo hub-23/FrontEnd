@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { accent, black, white } from './variables.styled';
+import { accent, black, white } from '../../utils/variables.styled';
 import { device } from '../../styles/device';
 
 const gapItem = 20;
@@ -8,8 +8,6 @@ const gapItemMd = 15;
 const numberItemMd = 2;
 
 export const Container = styled.section`
-    /* outline: 2px solid green; */
-
     width: 100%;
     max-width: 1440px;
     margin-left: auto;

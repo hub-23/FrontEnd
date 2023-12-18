@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, SeeMore, Title, TopLessons } from './PopularСlasses.styled';
-import sprite from './sprite.svg';
+import sprite from '../../assets/sprite.svg';
 import { dataTopLessons } from './backend_temp';
 
 export const PopularСlasses = () => {
