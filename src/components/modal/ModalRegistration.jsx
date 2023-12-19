@@ -6,6 +6,7 @@ import { BtnRegistration } from './BtnRegistration';
 import { black, gray, grayStroke, white } from '../../utils/variables.styled';
 import { BtnClose } from '../common/BtnClose';
 import { IconSvg } from '../common/IconSvg';
+import { useGoogleLogin } from '@react-oauth/google';
 
 export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status } ) => {
   console.log( 'status :>> ', status );
@@ -22,11 +23,21 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
     onActiveModalEmail();
   };
 
-  const registerWithGoogle = () => {
-    console.log( 'Go to Register with Google' );
-  };
-
   const goToLogin = () => console.log( 'Go to Login' );
+
+  const login = useGoogleLogin( {
+    onSuccess: ( tokenResponse ) => console.log( 'Success', tokenResponse ),
+    onError: ( onError ) => console.log( 'Error', onError ),
+  } );
+
+  // const autoRegistr = useGoogleOneTapLogin( {
+  //   onSuccess: ( credentialResponse ) => {
+  //     console.log( credentialResponse );
+  //   },
+  //   onError: () => {
+  //     console.log( 'Login Failed' );
+  //   },
+  // } );
 
   return (
     <ModalWrapp>
@@ -47,7 +58,6 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
 Я учень
               </Label>
             </LabelWrapp>
-
             <BtnRegistration
               marginBottom="30px"
               color={ black }
@@ -60,7 +70,6 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
               <IconSvg width="24px" height="24px" icon="icon-mail" />
               <p> Продовжити з e-mail</p>
             </BtnRegistration>
-
             <BtnRegistration
               marginBottom="50px"
               color={ black }
@@ -68,7 +77,8 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
               strokeColor={ grayStroke }
               width="420px"
               height="60px"
-              onRegister={ registerWithGoogle }
+              onRegister={ () => login() }
+              // onRegister={ () => autoRegistr() }
             >
               <IconSvg width="24px" height="24px" icon="icon-google" />
               <p>Продовжити з Google</p>
