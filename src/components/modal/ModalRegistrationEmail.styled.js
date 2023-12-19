@@ -24,19 +24,6 @@ export const ModalWrapp = styled.div`
     background-color: ${white};
 `;
 
-// export const BtnCloseSt = styled.button`
-//     position: absolute;
-//     top: 40px;
-//     right: 50px;
-
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-
-//     border: none;
-//     background-color: initial;
-// `;
-
 export const Article = styled.article`
     width: 480px;
 `;
@@ -90,7 +77,6 @@ export const Input = styled( Field )`
 
     border-width: 1px;
     border-style: solid;
-    /* border-color: ${borderGreen}; */
 
     border-radius: 20px 0px;
     border-color: ${( { $isDataUser } ) => ( $isDataUser ? grayStroke : borderGreen )};

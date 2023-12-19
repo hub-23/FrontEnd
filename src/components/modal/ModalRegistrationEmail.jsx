@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+import countries from '../../assets/countries.json';
 
 import {
   WrappCapcha,
@@ -25,20 +26,26 @@ import { bgColorGradientBtn, white } from '../../utils/variables.styled';
 import { IconSvg } from '../common/IconSvg';
 import { BtnEye } from '../common/BtnEye';
 import { BtnClose } from '../common/BtnClose';
+import { PhoneSelect } from '../common/PhoneSelect';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
+  const [ codeCountry, setCodeCountry ] = useState( '' );
 
   const schema = object( {
     name: string()
         .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
         .max( 30, 'Вкажіть мініімум 2 літери, але не більше 30' )
-        .matches( /^[А-яЁёЇїІіЄєҐґ'\s/A-z\s/\-/_/.]+$/, 'Ім’я має містити українські або англійскі літери' )
+        .matches(
+            /^[А-яЁёЇїІіЄєҐґ'\s/A-z\s/\-/_/.]+$/,
+            'Ім’я має містити українські або англійські літери',
+        )
         .required( 'Вкажіть ваше ім’я' ),
     email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
     phone: string()
         .matches(
-            /^\+]?3?[\s]?8?[\s]?\(?0\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
+            // /^\+]?3?[\s]?8?[\s]?\(?0\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
+            /^\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
             'Невірно вказаний номер',
         )
         .required( 'Вкажіть ваш номер телефону' ),
@@ -55,7 +62,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   const initialValues = {
     name: '',
     email: '',
-    phone: '+38 ',
+    phone: '',
     password: '',
     capcha: '',
     accept: '',
@@ -71,12 +78,17 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
-    const phone = { phone: values.phone.replaceAll( ' ', '' ) }; // Чистимо пробіли в рядку
+    const phone = { phone: `${codeCountry}${values.phone.replaceAll( ' ', '' )}` };
     const dataUserRegister = { ...values, ...phone };
+
     console.log( 'registrationEmailData to Backend  :>> ', dataUserRegister );
 
     resetForm();
     onActiveModal();
+  };
+
+  const handleGetSelected = ( values ) => {
+    setCodeCountry( values );
   };
 
   return (
@@ -87,6 +99,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
         <Title>
           <p>Реєстрація</p>
         </Title>
+
         <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
           {( formik ) => {
             const {
@@ -107,7 +120,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   />
                   <FormError name="name" isMarginLeft={ true } />
                 </LabelFormUser>
-
                 <LabelFormUser htmlFor="email">
                   <Input
                     type="email"
@@ -117,17 +129,24 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   />
                   <FormError name="email" isMarginLeft={ true } />
                 </LabelFormUser>
-
-                <LabelFormUser htmlFor="phone">
+                <LabelFormUser htmlFor="phone" style={ { paddingTop: '2px' } }>
                   <Input
                     type="tel"
                     name="phone"
                     $isDataUser={ isDataUser }
                     $error={ phone && touched.phone }
+                    style={ { paddingLeft: '160px' } }
                   />
-                  <FormError name="phone" isMarginLeft={ true } />
-                </LabelFormUser>
 
+                  <FormError name="phone" isMarginLeft={ true } />
+
+                  <PhoneSelect
+                    data={ countries }
+                    valueSelect={ handleGetSelected }
+                    widthList="480px"
+                    heightList="280px"
+                  />
+                </LabelFormUser>
                 <LabelFormUser htmlFor="password" style={ { gap: '11px' } }>
                   <Input
                     type={ showPassword ? 'password' : 'text' }
@@ -154,15 +173,13 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                     {!password && (
                       <ErrorPassword $color={ password && touched.password }>
-                                                Більше 8 символів, велика та мала літера, цифри і спеціальний
-                                                знак
+                                                Більше 8 символів, велика літера, цифри і спеціальний знак
                       </ErrorPassword>
                     )}
 
                     {password && <FormError name="password" />}
                   </ErrorPasswordWrapp>
                 </LabelFormUser>
-
                 <div>
                   <WrappCapcha $error={ capcha && touched.capcha } $accept={ isCheckCapcha }>
                     <LabelCheckbox>
@@ -175,7 +192,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   </WrappCapcha>
                   <FormError name="capcha" isMarginLeft={ true } />
                 </div>
-
                 <WrappPolicy>
                   <LabelCheckbox>
                     <InputCheckbox type="checkbox" name="accept" />
@@ -196,7 +212,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                   <FormError name="accept" isMarginLeft={ true } />
                 </WrappPolicy>
-
                 <BtnRegistration
                   marginBottom="30px"
                   color={ white }

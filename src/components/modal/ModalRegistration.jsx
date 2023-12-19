@@ -19,7 +19,6 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
   };
 
   const registerWithEmail = () => {
-    console.log( 'Go to Register with E-Mail' );
     onActiveModalEmail();
   };
 
