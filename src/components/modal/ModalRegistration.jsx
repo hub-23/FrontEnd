@@ -2,9 +2,10 @@ import React from 'react';
 import { Formik } from 'formik';
 
 import { FormRadio, Input, Label, LabelWrapp, Login, ModalWrapp, Title } from './ModalRegistration.styled';
-import sprite from '../../assets/sprite.svg';
 import { BtnRegistration } from './BtnRegistration';
 import { black, gray, grayStroke, white } from '../../utils/variables.styled';
+import { BtnClose } from '../common/BtnClose';
+import { IconSvg } from '../common/IconSvg';
 
 export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status } ) => {
   console.log( 'status :>> ', status );
@@ -18,7 +19,6 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
   };
 
   const registerWithEmail = () => {
-    console.log( 'Go to Register with E-Mail' );
     onActiveModalEmail();
   };
 
@@ -30,9 +30,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
 
   return (
     <ModalWrapp>
-      <svg width="60px" height="60px" onClick={ onActiveModal }>
-        <use href={ `${sprite}#icon-close` }></use>
-      </svg>
+      <BtnClose right="30px" top="30px" click={ onActiveModal } />
 
       <article>
         <Title>Реєстрація</Title>
@@ -59,9 +57,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
               height="60px"
               onRegister={ registerWithEmail }
             >
-              <svg width="24px" height="24px">
-                <use href={ `${sprite}#icon-mail` }></use>
-              </svg>
+              <IconSvg width="24px" height="24px" icon="icon-mail" />
               <p> Продовжити з e-mail</p>
             </BtnRegistration>
 
@@ -74,9 +70,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
               height="60px"
               onRegister={ registerWithGoogle }
             >
-              <svg width="24px" height="24px">
-                <use href={ `${sprite}#icon-google` }></use>
-              </svg>
+              <IconSvg width="24px" height="24px" icon="icon-google" />
               <p>Продовжити з Google</p>
             </BtnRegistration>
           </FormRadio>
