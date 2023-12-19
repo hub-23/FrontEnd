@@ -1,15 +1,26 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
 
-export const StyledContainer = styled.div`
-    /* border: 1px solid green; */
+export const StyledMapContainer = styled.div`
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: 1441px) { // від
+        padding: 120px 205px;
+    }
+    @media ${device.xxl} { // до 1440
+        padding: 120px 85px;
+    }
+    @media ${device.xl} { // до 1200
+        padding: 80px 20px;
+        
+    }
 `;
 
-export const StyledTextWrapper = styled.div`
-    padding: 120px 160px;
-    @media ${device.xxl} { 
-        padding: 80px 20px;
-    }
+export const StyledWrapper = styled.div`
+    max-width: 1030px;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
 export const StyledTitle = styled.h2`
@@ -21,16 +32,30 @@ export const StyledTitle = styled.h2`
     letter-spacing: 0.24px;
     color: rgba(45, 45, 45, 1);
     @media ${device.xxl} { 
-        margin-bottom: 32px;
+        margin-bottom: 0px;
     }
 `;
 
 export const StyledText = styled.p`
+    margin-bottom: 50px;
     font-family: Nunito;
     font-size: 16px;
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: rgba(45, 45, 45, 1);
+    @media screen and (max-width: 1090px) { 
+        margin-bottom: 0;
+    }
+`;
+
+export const StyledMapWrapper = styled.div`
+    @media screen and (min-width: 1090px) { 
+        display: block;
+        width: 1030px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    display: none;
 `;
 
 export const StyledStatisticsWrapper = styled.div`
@@ -42,6 +67,9 @@ export const StyledStatisticsWrapper = styled.div`
 `;
 
 export const StyledStatisticsList = styled.ul`
+    max-width: 1440px; 
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     gap: 20px;
     justify-content: center;

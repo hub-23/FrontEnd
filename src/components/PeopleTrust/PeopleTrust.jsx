@@ -2,10 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { Map } from './Map';
 import {
-  StyledContainer,
-  StyledTextWrapper,
+  StyledMapContainer,
+  StyledWrapper,
   StyledTitle,
   StyledText,
+  StyledMapWrapper,
   StyledStatisticsWrapper,
   StyledStatisticsList,
   StyledStatUnit,
@@ -30,12 +31,10 @@ export const PeopleTrust = () => {
       case 2:
         base = 10;
         break;
-      case 3:
-        base = 100;
-        break;
-      case 4: // or
+      case 3: // or
+      case 4:
       case 5:
-        base = 1000;
+        base = 100;
         break;
       case 6:
         base = 10000;
@@ -68,64 +67,66 @@ export const PeopleTrust = () => {
   );
 
   return (
-    <section style={ { border: '3px solid red' } }>
-      <StyledContainer>
-        <StyledTextWrapper>
+    <section style={ { borderTop: '3px solid red' } }>
+      <StyledMapContainer>
+        <StyledWrapper>
           <StyledTitle>Нам довіряють</StyledTitle>
           <StyledText>
-            Наші викладачі знаходяться по всьому
-            світу, переважна їх кількість в Україні.
-            Вони надають послуги, як на місці, так і
-            онлайн. Тому, якщо ви знаходитесь у
-            Варшаві чи у Києві, перевірте там може
-            бути викладач, який прийме вас офлайн.
-            А якщо вам зручніше онлайн, вводьте
-            “дистанційно” в пошуковику і ми
-            знайдемо його для вас.
+              Наші викладачі знаходяться по всьому
+              світу, переважна їх кількість в Україні.
+              Вони надають послуги, як на місці, так і
+              онлайн. Тому, якщо ви знаходитесь у
+              Варшаві чи у Києві, перевірте там може
+              бути викладач, який прийме вас офлайн.
+              А якщо вам зручніше онлайн, вводьте
+              “дистанційно” в пошуковику і ми
+              знайдемо його для вас.
           </StyledText>
-        </StyledTextWrapper>
-        <Map />
-        <StyledStatisticsWrapper>
-          <StyledStatisticsList>
-            <StyledStatUnit>
-              <StyledStatValue>
-                {teachers.toString() === teachersNumber.replace( /\s/g, '' )
-                  ? teachersNumber
-                  : `${teachersNumber} +`
-                }
-              </StyledStatValue>
-              <StyledStatHeader>Викладачів</StyledStatHeader>
-            </StyledStatUnit>
-            <StyledStatUnit>
-              <StyledStatValue>
-                {countries.toString() === countriesNumber
-                  ? countriesNumber
-                  : `${countriesNumber} +`
-                }
-              </StyledStatValue>
-              <StyledStatHeader>Країн світу</StyledStatHeader>
-            </StyledStatUnit>
-            <StyledStatUnit>
-              <StyledStatValue>
-                {students.toString() === studentsNumber.replace( /\s/g, '' )
-                  ? studentsNumber
-                  : `${studentsNumber} +`
-                }
-              </StyledStatValue>
-              <StyledStatHeader>Учнів</StyledStatHeader>
-            </StyledStatUnit>
-            <StyledStatUnit>
-              <StyledStatValue>
-                {ukrCities.toString() === ukrCitiesNumber.replace( /\s/g, '' )
-                  ? ukrCitiesNumber
-                  : `${ukrCitiesNumber} +`
-                }
-              </StyledStatValue>
-              <StyledStatHeader>Міст України</StyledStatHeader>
-            </StyledStatUnit>
-          </StyledStatisticsList>
-        </StyledStatisticsWrapper>
-      </StyledContainer>
+          <StyledMapWrapper>
+            <Map />
+          </StyledMapWrapper>
+        </StyledWrapper>
+      </StyledMapContainer>
+      <StyledStatisticsWrapper>
+        <StyledStatisticsList>
+          <StyledStatUnit>
+            <StyledStatValue>
+              {teachers.toString() === teachersNumber.replace( /\s/g, '' )
+                ? teachersNumber
+                : `${teachersNumber} +`
+              }
+            </StyledStatValue>
+            <StyledStatHeader>Викладачів</StyledStatHeader>
+          </StyledStatUnit>
+          <StyledStatUnit>
+            <StyledStatValue>
+              {countries.toString() === countriesNumber
+                ? countriesNumber
+                : `${countriesNumber} +`
+              }
+            </StyledStatValue>
+            <StyledStatHeader>Країн світу</StyledStatHeader>
+          </StyledStatUnit>
+          <StyledStatUnit>
+            <StyledStatValue>
+              {students.toString() === studentsNumber.replace( /\s/g, '' )
+                ? studentsNumber
+                : `${studentsNumber} +`
+              }
+            </StyledStatValue>
+            <StyledStatHeader>Учнів</StyledStatHeader>
+          </StyledStatUnit>
+          <StyledStatUnit>
+            <StyledStatValue>
+              {ukrCities.toString() === ukrCitiesNumber.replace( /\s/g, '' )
+                ? ukrCitiesNumber
+                : `${ukrCitiesNumber} +`
+              }
+            </StyledStatValue>
+            <StyledStatHeader>Міст України</StyledStatHeader>
+          </StyledStatUnit>
+        </StyledStatisticsList>
+      </StyledStatisticsWrapper>
     </section>
   );
 };
