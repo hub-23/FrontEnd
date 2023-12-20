@@ -67,7 +67,7 @@ export const PeopleTrust = () => {
   );
 
   return (
-    <section style={ { borderTop: '3px solid red' } }>
+    <section>
       <StyledMapContainer>
         <StyledWrapper>
           <StyledTitle>Нам довіряють</StyledTitle>

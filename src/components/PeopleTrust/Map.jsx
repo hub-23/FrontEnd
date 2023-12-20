@@ -105,7 +105,7 @@ export const Map = () => {
           center={ [ 44.0, 10.09 ] }
           zoom={ 2 }
           minZoom={ 2 }
-          // maxZoom={ 2 }
+          maxZoom={ 2 }
           maxBounds={ maxBounds }
           maxBoundsViscosity= { 1.0 }
           scrollWheelZoom={ false }
