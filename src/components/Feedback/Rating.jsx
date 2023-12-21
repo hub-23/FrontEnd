@@ -24,7 +24,7 @@ export const Rating = ( { rating } ) => {
     <StyledStarList>
       { stars.length > 0
           && stars.map( ( star, index ) => (
-            <li key={ index }>{star}</li>
+            <li key={ index } style={ { height: '16px' } }>{star}</li>
           ) )
       }
     </StyledStarList>

@@ -21,6 +21,13 @@ export const StyledContainer = styled.div`
         padding-right: 20px;
     }
 `;
+export const StyledContent = styled.div`
+    border: 1px solid violet;
+    margin: 0 auto;
+    max-width: 1120px;
+    /* @media ${device.sm} {
+    } */
+`;
 
 export const StyledTitle = styled.h2`
     margin-bottom: 64px;
@@ -82,8 +89,15 @@ export const StyledStarList = styled.ul`
     margin-bottom: 8px;
 `;
 
-export const StyledTeacherName = styled.p`
+export const StyledTeacherNameWrapper = styled.div`
+    display: flex;
+    gap: 8px;
     margin-bottom: 8px;
+    align-items: center;
+`;
+
+export const StyledTeacherName = styled.p`
+    cursor: pointer;
     font-family: Nunito;
     font-size: 16px;
     font-weight: 500;
@@ -105,6 +119,12 @@ export const StyledFeedback = styled.p`
     overflow: hidden; 
 `;
 
+export const StyledCardFooter = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
 export const StyledDate = styled.span`
     font-family: Nunito;
     font-size: 16px;
@@ -112,6 +132,16 @@ export const StyledDate = styled.span`
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: rgba(45, 45, 45, 1);
+`;
+
+export const StyledDetailed = styled.p`
+    cursor: pointer;
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.16px;
+    color: rgba(17, 50, 104, 1);
 `;
 
 // const size = {
