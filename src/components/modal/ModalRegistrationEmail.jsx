@@ -12,13 +12,13 @@ import {
   Title,
   Article,
   LabelFormUser,
-  ErrorPassword,
-  ErrorPasswordWrapp,
   TextPolicy,
   LinkPolicy,
   InputCheckbox,
   LabelCheckbox,
   WrappPolicy,
+  TextErrPassword,
+  WrappErrTextPassword,
 } from './ModalRegistrationEmail.styled';
 import reCapcha from '../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
@@ -30,7 +30,7 @@ import { PhoneSelect } from '../common/PhoneSelect';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
-  const [ codeCountry, setCodeCountry ] = useState( '' );
+  const [ codeCountry, setCodeCountry ] = useState( '+380' );
 
   const schema = object( {
     name: string()
@@ -109,6 +109,12 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
             const isCheckCapcha = formik.values.capcha;
             const isDataUser = formik.initialValues.phone === formik.values.phone;
 
+            const errName = name && touched.name;
+            const errPassword = password && touched.password;
+            const errEmail = email && touched.email;
+            const errPhone = phone && touched.phone;
+            const errCapcha = capcha && touched.capcha;
+
             return (
               <FormEmail autoComplete="on">
                 <LabelFormUser htmlFor="name">
@@ -116,25 +122,27 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     type="text"
                     name="name"
                     placeholder="Ім’я та прізвище"
-                    $error={ name && touched.name }
+                    $error={ errName }
                   />
                   <FormError name="name" isMarginLeft={ true } />
                 </LabelFormUser>
+
                 <LabelFormUser htmlFor="email">
                   <Input
                     type="email"
                     name="email"
                     placeholder="Електронна адреса"
-                    $error={ email && touched.email }
+                    $error={ errEmail }
                   />
                   <FormError name="email" isMarginLeft={ true } />
                 </LabelFormUser>
+
                 <LabelFormUser htmlFor="phone" style={ { paddingTop: '2px' } }>
                   <Input
                     type="tel"
                     name="phone"
                     $isDataUser={ isDataUser }
-                    $error={ phone && touched.phone }
+                    $error={ errPhone }
                     style={ { paddingLeft: '160px' } }
                   />
 
@@ -147,12 +155,13 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     heightList="280px"
                   />
                 </LabelFormUser>
+
                 <LabelFormUser htmlFor="password" style={ { gap: '11px' } }>
                   <Input
                     type={ showPassword ? 'password' : 'text' }
                     name="password"
                     placeholder="Придумайте пароль"
-                    $error={ password && touched.password }
+                    $error={ errPassword }
                   />
 
                   <BtnEye
@@ -165,23 +174,19 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                                         ) : (
                                             <IconSvg width="24px" height="24px" icon="icon-eye" />
                                         )}
-                    {' '}
                   </BtnEye>
 
-                  <ErrorPasswordWrapp>
+                  <WrappErrTextPassword>
                     <IconSvg width="24px" height="24px" icon="icon-star-marker" />
 
-                    {!password && (
-                      <ErrorPassword $color={ password && touched.password }>
-                                                Більше 8 символів, велика літера, цифри і спеціальний знак
-                      </ErrorPassword>
-                    )}
-
-                    {password && <FormError name="password" />}
-                  </ErrorPasswordWrapp>
+                    <TextErrPassword $color={ errPassword }>
+                                            Більше 8 символів, велика літера, цифри і спеціальний знак
+                    </TextErrPassword>
+                  </WrappErrTextPassword>
                 </LabelFormUser>
+
                 <div>
-                  <WrappCapcha $error={ capcha && touched.capcha } $accept={ isCheckCapcha }>
+                  <WrappCapcha $error={ errCapcha } $accept={ isCheckCapcha }>
                     <LabelCheckbox>
                       <InputCheckbox type="checkbox" name="capcha" />
                       <span></span>
@@ -192,6 +197,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   </WrappCapcha>
                   <FormError name="capcha" isMarginLeft={ true } />
                 </div>
+
                 <WrappPolicy>
                   <LabelCheckbox>
                     <InputCheckbox type="checkbox" name="accept" />
@@ -199,7 +205,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                     <TextPolicy>
                                             Я приймаю
-                      {' '}
                       <span>
                         <LinkPolicy>Політика конфіденційності </LinkPolicy>
                       </span>
@@ -212,6 +217,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                   <FormError name="accept" isMarginLeft={ true } />
                 </WrappPolicy>
+
                 <BtnRegistration
                   marginBottom="30px"
                   color={ white }
@@ -229,7 +235,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
         <TextPolicy>
                     Цей сайт захищено технологією reCAPTCHA, до нього застосовуються
-          {' '}
           <span>
             <LinkPolicy style={ { fontWeight: '600' } }>Політика конфіденційності </LinkPolicy>
           </span>
@@ -237,7 +242,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
           <span>
             <LinkPolicy style={ { fontWeight: '600' } }> Умови використання</LinkPolicy>
           </span>
-          {' '}
                     Google.
         </TextPolicy>
       </Article>

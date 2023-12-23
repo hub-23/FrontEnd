@@ -58,6 +58,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
 Я учень
               </Label>
             </LabelWrapp>
+
             <BtnRegistration
               marginBottom="30px"
               color={ black }
@@ -70,6 +71,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
               <IconSvg width="24px" height="24px" icon="icon-mail" />
               <p> Продовжити з e-mail</p>
             </BtnRegistration>
+
             <BtnRegistration
               marginBottom="50px"
               color={ black }
