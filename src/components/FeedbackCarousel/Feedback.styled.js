@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { device } from '../../styles/device';
 
 export const StyledSection = styled.section`
-    border: 3px solid red;
     padding-top: 120px;
     padding-bottom: 96px;
     @media ${device.sm} {
@@ -12,49 +11,66 @@ export const StyledSection = styled.section`
 `;
 
 export const StyledContainer = styled.div`
-    border: 1px solid green;
     margin: 0 auto;
     padding-left: 160px;
     padding-right: 160px;  
-    @media ${device.sm} {
+    @media ${device.xxl} {
         padding-left: 20px;
         padding-right: 20px;
     }
 `;
+
 export const StyledContent = styled.div`
-    border: 1px solid violet;
     margin: 0 auto;
     max-width: 1120px;
-    /* @media ${device.sm} {
-    } */
-`;
-
-export const StyledTitle = styled.h2`
-    margin-bottom: 64px;
-    font-family: Nunito;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: 0.24px;
-    color: rgba(45, 45, 45, 1);
-`;
-
-export const StyledCardsList = styled.ul`
-    display: flex;
-    gap: 20px;
-    @media ${device.sm} {
-        display: block;
+    padding-bottom: 20px;
+    @media ${device.xxl} {  // '1440px',
+        max-width: 1000px;
+        padding-bottom: 0;
+    }
+    @media screen and (max-width: 1040px) { 
+        max-width: 670px;
+        padding-bottom: 0;
+    }
+    @media screen and (max-width: 710px) {
+        max-width: 360px;
+        padding-bottom: 23px;
     }
 `;
 
-export const StyledCard = styled.li`
+export const StyledTitle = styled.h2`
+    margin-bottom: 44px;
+    font-family: Nunito;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.48px;
+    color: rgba(45, 45, 45, 1);
+    @media ${device.xxl} {
+        margin-bottom: 24px;
+        font-size: 24px;
+        letter-spacing: 0.24px;
+    }
+`;
+
+export const StyledCard = styled.div`
     position: relative;
     width: 360px;
     height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px 24px 24px 24px;
     border-radius: 0px 20px;
     border: 2px solid #113268;
-    background: #F9F9F9;
-    padding: 32px 24px 24px 24px;
+    background-color: #F9F9F9;
+    @media ${device.xxl} { 
+        width: 320px;
+        height: 218px;
+        padding: 20px;
+    }
+    @media screen and (max-width: 710px) {
+        margin-bottom: 56px; // треба прибрати останній відступ
+    }
 `;
 
 export const StyledStudentName = styled.h4`
@@ -65,6 +81,10 @@ export const StyledStudentName = styled.h4`
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: rgba(45, 45, 45, 1);
+    @media ${device.xxl} {
+        font-size: 16px;
+        letter-spacing: 0.16px;
+    }
 `;
 
 export const StyledPhoto = styled.img`
@@ -76,11 +96,9 @@ export const StyledPhoto = styled.img`
     max-width: 80px;
     max-height: 80px;
     object-fit: cover;
-
-    /* @media ${device.sm} {
-        max-width: 240px;
-        height: 240px;
-    }  */
+    @media ${device.xxl} {
+        right: 40px;
+    }
 `;
 
 export const StyledStarList = styled.ul`
@@ -104,19 +122,24 @@ export const StyledTeacherName = styled.p`
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: rgba(17, 50, 104, 1);
+    @media ${device.xxl} {
+        font-size: 14px;
+        letter-spacing: 0.14px;
+    }
 `;
 
 export const StyledFeedback = styled.p`
+    height: 66px;
     margin-bottom: 8px;
     font-family: Nunito;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.4;
     color: rgba(45, 45, 45, 1);
-    display: -webkit-box;
-    -webkit-line-clamp: 3; 
-    -webkit-box-orient: vertical;
-    overflow: hidden; 
+    @media ${device.xxl} {
+        font-size: 14px;
+        height: 61px;
+    }
 `;
 
 export const StyledCardFooter = styled.div`
@@ -132,6 +155,10 @@ export const StyledDate = styled.span`
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: rgba(45, 45, 45, 1);
+    @media ${device.xxl} {
+        font-size: 12px;
+        letter-spacing: 0.16px;
+    }
 `;
 
 export const StyledDetailed = styled.p`
@@ -142,24 +169,42 @@ export const StyledDetailed = styled.p`
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: rgba(17, 50, 104, 1);
+    @media ${device.xxl} {
+        font-size: 14px;
+        letter-spacing: 0.14px;
+    }
 `;
 
-// const size = {
-//     xs: 0,
-//     sm: '576px',
-//     md: '768px',
-//     lg: '992px',
-//     xl: '1200px',
-//     xxl: '1440px',
-//     xxxl: '2560',
-//   };
+export const StyledControlBtns = styled.ul`
+    display: flex; 
+    gap: 12px;
+    justify-content: center;
+    @media screen and (max-width: 710px) {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+`;
 
-//   export const device = {
-//     xs: `(max-width: ${size.xs})`,
-//     sm: `(max-width: ${size.sm})`,
-//     md: `(max-width: ${size.md})`,
-//     lg: `(max-width: ${size.lg})`,
-//     xl: `(max-width: ${size.xl})`,
-//     xxl: `(max-width: ${size.xxl})`,
-//     xxxl: `(max-width: ${size.xxl})`,
-//   };
+export const StyledControlBtn = styled.button`
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+`;
+
+export const StyledBtnIcon = styled.svg`
+  fill: rgba(255, 255, 255, 1);
+  stroke: rgba(17, 50, 104, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+   :focus {
+        stroke: rgba(121, 121, 121, 1);
+        & path {
+            fill: rgba(121, 121, 121, 1);
+        }
+   }
+  path {
+    fill: rgba(17, 50, 104, 1);
+  }
+`;

@@ -12,7 +12,7 @@ export const Rating = ( { rating } ) => {
           height="16px"
           style={ {
             fill: ( i < rating ) ? '#FECC01' : 'transparent',
-            stroke: ( i < rating ) ? 'transparent' : '#FECC01',
+            stroke: '#FECC01',
           } }
         >
           <use href={ `${sprite}#icon-star` }></use>

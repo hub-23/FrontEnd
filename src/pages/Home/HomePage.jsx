@@ -3,7 +3,7 @@ import { AuthModal } from '../../components/auth/AuthModal';
 import { Hero } from '../../components/Hero/Hero';
 import TopTeachersCarousel from '../../components/TopTeachersCarousel';
 import { PopularСlasses } from '../../components/PopularСlasses/PopularСlasses';
-import { Feedback } from '../../components/Feedback/Feedback';
+import { FeedbackCarousel } from '../../components/FeedbackCarousel/FeedbackCarousel';
 
 export const HomePage = () => {
   const [ isOpen, setIsOpen ] = useState( false );
@@ -21,7 +21,7 @@ export const HomePage = () => {
       <Hero />
       <PopularСlasses />
       <TopTeachersCarousel />
-      <Feedback />
+      <FeedbackCarousel />
     </>
   );
 };
