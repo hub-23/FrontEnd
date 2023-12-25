@@ -1,12 +1,20 @@
 import React from 'react';
 
-import { IconSvg } from './IconSvg';
 import { Button } from './BtnClose.styled';
 
-export const BtnClose = ( { right, top, click } ) => {
+export const BtnClose = ( { children, xlTop, xlRight, mdTop, mdRight, smTop, smRight, click } ) => {
   return (
-    <Button type="button" $right={ right } $top={ top } onClick={ click }>
-      <IconSvg width="60px" height="60px" icon="icon-close" />
+    <Button
+      type="button"
+      $xlRight={ xlRight }
+      $xlTop={ xlTop }
+      $mdRight={ mdRight }
+      $mdTop={ mdTop }
+      $smRight={ smRight }
+      $smTop={ smTop }
+      onClick={ click }
+    >
+      {children}
     </Button>
   );
 };

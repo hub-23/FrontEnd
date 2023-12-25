@@ -1,42 +1,77 @@
 import styled from 'styled-components';
 import { accent, black, grayText, white } from '../../utils/variables.styled';
 import { Field, Form } from 'formik';
+import { device } from '../../styles/device';
 
-export const ModalWrapp = styled.div`
+export const Modal = styled.div`
     position: relative;
 
     width: 775px;
-    /* min-height: 449px; */
-    padding: 64px 30px 50px 30px;
+    margin: 0 20px;
+    padding: 64px 50px 50px 50px;
 
     border-radius: 20px 0px;
     background-color: ${white};
+
+    @media ${device.md} {
+        padding: 50px;
+    }
+
+    @media ${device.sm} {
+        margin: 0 15px;
+        padding: 40px 24px 46px 24px;
+    }
+`;
+
+export const Article = styled.article`
+    /* outline: 1px solid salmon; */
+
+    margin: 0 auto;
+    max-width: 420px;
+
+    @media ${device.sm} {
+        max-width: initial;
+    }
 `;
 
 export const Title = styled.p`
     text-align: center;
     margin-bottom: 37px;
 
-    font-family: Nunito;
     font-size: 26px;
-    font-style: normal;
     font-weight: 600;
-    line-height: calc(26px / 26px);
     letter-spacing: 0.26px;
 
     color: ${black};
+
+    @media ${device.md} {
+        margin-bottom: 42px;
+    }
+
+    @media ${device.sm} {
+        margin-bottom: 40px;
+    }
 `;
 
-export const FormRadio = styled( Form )`
+export const FormRigistration = styled( Form )`
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
 
-export const LabelWrapp = styled.div`
+export const RadioBtn = styled.div`
     display: flex;
     gap: 100px;
-    margin-bottom: 34px;
+    margin-bottom: 32px;
+
+    @media ${device.md} {
+        margin-bottom: 42px;
+    }
+
+    @media ${device.sm} {
+        gap: 30px;
+        margin-bottom: 28px;
+    }
 `;
 
 export const Label = styled.label`
@@ -44,14 +79,15 @@ export const Label = styled.label`
     align-items: center;
     gap: 10px;
 
-    font-family: Nunito;
     font-size: 20px;
-    font-style: normal;
     font-weight: 400;
-    line-height: calc(20px / 20px);
 
     color: ${black};
     cursor: pointer;
+
+    @media ${device.sm} {
+        font-size: 18px;
+    }
 `;
 
 export const Input = styled( Field )`
@@ -92,17 +128,25 @@ export const Input = styled( Field )`
     }
 `;
 
+export const BtnText = styled.p`
+    font-size: 20px;
+    font-weight: 400;
+
+    color: ${black};
+
+    @media ${device.sm} {
+        font-size: 16px;
+    }
+`;
+
 export const Login = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 
-    font-family: Nunito;
     font-size: 20px;
-    font-style: normal;
     font-weight: 600;
-    line-height: calc(20px / 20px);
 
     & > p {
         font-family: inherit;
@@ -124,5 +168,12 @@ export const Login = styled.div`
         border: none;
         color: ${black};
         background-color: initial;
+    }
+
+    @media ${device.sm} {
+        flex-direction: column;
+        gap: 12px;
+
+        font-size: 16px;
     }
 `;

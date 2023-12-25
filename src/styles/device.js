@@ -1,4 +1,4 @@
-const size = {
+export const size = {
   xs: 0,
   sm: '576px',
   md: '768px',
