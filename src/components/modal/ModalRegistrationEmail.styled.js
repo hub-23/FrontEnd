@@ -94,14 +94,14 @@ export const Input = styled( Field )`
     }
 `;
 
-export const ErrorPasswordWrapp = styled.div`
+export const WrappErrTextPassword = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
     margin-left: 23px;
 `;
 
-export const ErrorPassword = styled.p`
+export const TextErrPassword = styled.p`
     font-family: Nunito;
     font-size: 14px;
     font-style: normal;

@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-  GoogleLogin,
-} from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 
 export const GoogleLoginButton = () => {
   const onGoogleSuccess = ( tokenResponse ) => {
@@ -19,8 +17,8 @@ export const GoogleLoginButton = () => {
       onFailure={ onGoogleError }
       text=""
       theme="outline"
-      type='icon'
-      shape='circle'
+      type="icon"
+      shape="circle"
       containerProps={ {
         style: {
           height: '60px',
