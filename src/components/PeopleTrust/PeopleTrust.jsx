@@ -17,10 +17,10 @@ import {
 
 export const PeopleTrust = () => {
   // data from backend
-  const teachers = 5375; // 5000
-  const countries = 57; // 50
-  const students = 15423; // 15000
-  const ukrCities = 241; // 200
+  const teachers = 5375; // 5000 (треба 100)
+  const countries = 57; // 50  (треба 10)
+  const students = 15423; // 15000 (треба 100)
+  const ukrCities = 241; // 200 (треба 10)
 
   const roundDownToNearestBase = ( number ) => {
     let base = null;
@@ -28,19 +28,15 @@ export const PeopleTrust = () => {
       case 1:
         base = 1;
         break;
-      case 2:
+      case 2: // or
+      case 3:
         base = 10;
         break;
-      case 3: // or
       case 4:
       case 5:
-        base = 100;
-        break;
       case 6:
-        base = 10000;
-        break;
       case 7:
-        base = 100000;
+        base = 100;
         break;
       default:
         console.log( 'Invalid number' );
