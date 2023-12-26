@@ -11,14 +11,6 @@ export const ModalWrapp = styled.div`
 
     border-radius: 20px 0px;
     background-color: ${white};
-
-    & > svg {
-        position: absolute;
-        top: 30px;
-        right: 30px;
-
-        cursor: pointer;
-    }
 `;
 
 export const Title = styled.p`

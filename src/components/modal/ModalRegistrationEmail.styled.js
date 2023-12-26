@@ -22,14 +22,6 @@ export const ModalWrapp = styled.div`
 
     border-radius: 20px 0px;
     background-color: ${white};
-
-    & > svg {
-        position: absolute;
-        top: 40px;
-        right: 50px;
-
-        cursor: pointer;
-    }
 `;
 
 export const Article = styled.article`
@@ -65,6 +57,7 @@ export const FormEmail = styled( Form )`
 `;
 
 export const LabelFormUser = styled.label`
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 7px;
@@ -84,7 +77,6 @@ export const Input = styled( Field )`
 
     border-width: 1px;
     border-style: solid;
-    /* border-color: ${borderGreen}; */
 
     border-radius: 20px 0px;
     border-color: ${( { $isDataUser } ) => ( $isDataUser ? grayStroke : borderGreen )};
@@ -102,14 +94,14 @@ export const Input = styled( Field )`
     }
 `;
 
-export const ErrorPasswordWrapp = styled.div`
+export const WrappErrTextPassword = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
     margin-left: 23px;
 `;
 
-export const ErrorPassword = styled.p`
+export const TextErrPassword = styled.p`
     font-family: Nunito;
     font-size: 14px;
     font-style: normal;
@@ -199,7 +191,7 @@ export const LinkPolicy = styled( Link )`
 
 export const ErrorText = styled.p`
     display: inline;
-    margin-left: 19px;
+    margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
 
     font-family: Nunito;
     font-size: 14px;

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+import countries from '../../assets/countries.json';
 
 import {
   WrappCapcha,
@@ -11,39 +12,49 @@ import {
   Title,
   Article,
   LabelFormUser,
-  ErrorPassword,
-  ErrorPasswordWrapp,
   TextPolicy,
   LinkPolicy,
   InputCheckbox,
   LabelCheckbox,
   WrappPolicy,
+  TextErrPassword,
+  WrappErrTextPassword,
 } from './ModalRegistrationEmail.styled';
-import sprite from '../../assets/sprite.svg';
 import reCapcha from '../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
 import { bgColorGradientBtn, white } from '../../utils/variables.styled';
+import { IconSvg } from '../common/IconSvg';
+import { BtnEye } from '../common/BtnEye';
+import { BtnClose } from '../common/BtnClose';
+import { PhoneSelect } from '../common/PhoneSelect';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
+  const [ showPassword, setSowPassword ] = useState( true );
+  const [ codeCountry, setCodeCountry ] = useState( '+380' );
+
   const schema = object( {
     name: string()
         .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
         .max( 30, 'Вкажіть мініімум 2 літери, але не більше 30' )
-        .matches( /^[А-я\s/A-z\s/\-/_/.]+$/, 'Ім’я має містити українські або англійскі літери' )
+        .matches(
+            /^[А-яЁёЇїІіЄєҐґ'\s/A-z\s/\-/_/.]+$/,
+            'Ім’я має містити українські або англійські літери',
+        )
         .required( 'Вкажіть ваше ім’я' ),
     email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
     phone: string()
         .matches(
-            /^\+]?3?[\s]?8?[\s]?\(?0\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
+            // /^\+]?3?[\s]?8?[\s]?\(?0\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
+            /^\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
             'Невірно вказаний номер',
         )
         .required( 'Вкажіть ваш номер телефону' ),
     password: string()
         .matches(
-            /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[A-z]){1}).*$/,
-            'Пароль має містити більше 8 символів, велику літеру, цифри і спеціальний знак',
+            /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[A-Z]){1})((?=.*[a-z]){1}).*$/,
+            'Пароль має містити більше 8 символів, велику та малу літеру латиницею, цифри і спеціальний знак',
         )
-        .required( 'Більше 8 символів, велика літера, цифри і спеціальний знак' ),
+        .required( 'Пароль обов‘язковий' ),
     capcha: string().required( 'Виконайте перевірку reCAPTCHA' ),
     accept: string().required( 'Політики мають бути погоджені' ),
   } );
@@ -51,35 +62,44 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   const initialValues = {
     name: '',
     email: '',
-    phone: '+38 ',
+    phone: '',
     password: '',
     capcha: '',
     accept: '',
   };
 
-  const FormError = ( { name } ) => {
-    return <ErrorMessage name={ name } render={ ( message ) => <ErrorText>{message}</ErrorText> } />;
+  const FormError = ( { name, isMarginLeft } ) => {
+    return (
+      <ErrorMessage
+        name={ name }
+        render={ ( message ) => <ErrorText $isMarginLeft={ isMarginLeft }>{message}</ErrorText> }
+      />
+    );
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
-    const phone = { phone: values.phone.replaceAll( ' ', '' ) }; // Чистим пробіли в рядку
+    const phone = { phone: `${codeCountry}${values.phone.replaceAll( ' ', '' )}` };
     const dataUserRegister = { ...values, ...phone };
-    console.log( 'values from dataUserRegister :>> ', dataUserRegister );
+
+    console.log( 'registrationEmailData to Backend  :>> ', dataUserRegister );
 
     resetForm();
     onActiveModal();
   };
 
+  const handleGetSelected = ( values ) => {
+    setCodeCountry( values );
+  };
+
   return (
     <ModalWrapp>
-      <svg width="60px" height="60px" onClick={ onActiveModal }>
-        <use href={ `${sprite}#icon-close` }></use>
-      </svg>
+      <BtnClose right="50px" top="40px" click={ onActiveModal } />
 
       <Article>
         <Title>
           <p>Реєстрація</p>
         </Title>
+
         <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
           {( formik ) => {
             const {
@@ -89,6 +109,12 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
             const isCheckCapcha = formik.values.capcha;
             const isDataUser = formik.initialValues.phone === formik.values.phone;
 
+            const errName = name && touched.name;
+            const errPassword = password && touched.password;
+            const errEmail = email && touched.email;
+            const errPhone = phone && touched.phone;
+            const errCapcha = capcha && touched.capcha;
+
             return (
               <FormEmail autoComplete="on">
                 <LabelFormUser htmlFor="name">
@@ -96,9 +122,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     type="text"
                     name="name"
                     placeholder="Ім’я та прізвище"
-                    $error={ name && touched.name }
+                    $error={ errName }
                   />
-                  <FormError name="name" />
+                  <FormError name="name" isMarginLeft={ true } />
                 </LabelFormUser>
 
                 <LabelFormUser htmlFor="email">
@@ -106,40 +132,61 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     type="email"
                     name="email"
                     placeholder="Електронна адреса"
-                    $error={ email && touched.email }
+                    $error={ errEmail }
                   />
-                  <FormError name="email" />
+                  <FormError name="email" isMarginLeft={ true } />
                 </LabelFormUser>
 
-                <LabelFormUser htmlFor="phone">
+                <LabelFormUser htmlFor="phone" style={ { paddingTop: '2px' } }>
                   <Input
                     type="tel"
                     name="phone"
                     $isDataUser={ isDataUser }
-                    $error={ phone && touched.phone }
+                    $error={ errPhone }
+                    style={ { paddingLeft: '160px' } }
                   />
-                  <FormError name="phone" />
+
+                  <FormError name="phone" isMarginLeft={ true } />
+
+                  <PhoneSelect
+                    data={ countries }
+                    valueSelect={ handleGetSelected }
+                    widthList="480px"
+                    heightList="280px"
+                  />
                 </LabelFormUser>
 
                 <LabelFormUser htmlFor="password" style={ { gap: '11px' } }>
                   <Input
-                    type="password"
+                    type={ showPassword ? 'password' : 'text' }
                     name="password"
                     placeholder="Придумайте пароль"
-                    $error={ password && touched.password }
+                    $error={ errPassword }
                   />
-                  <ErrorPasswordWrapp>
-                    <svg width="24px" height="24px" onClick={ onActiveModal }>
-                      <use href={ `${sprite}#icon-star-marker` }></use>
-                    </svg>
-                    <ErrorPassword $color={ password && touched.password }>
+
+                  <BtnEye
+                    right="36px"
+                    top="16px"
+                    click={ () => setSowPassword( !showPassword ) }
+                  >
+                    {showPassword ? (
+                                            <IconSvg width="24px" height="24px" icon="icon-eye-slash" />
+                                        ) : (
+                                            <IconSvg width="24px" height="24px" icon="icon-eye" />
+                                        )}
+                  </BtnEye>
+
+                  <WrappErrTextPassword>
+                    <IconSvg width="24px" height="24px" icon="icon-star-marker" />
+
+                    <TextErrPassword $color={ errPassword }>
                                             Більше 8 символів, велика літера, цифри і спеціальний знак
-                    </ErrorPassword>
-                  </ErrorPasswordWrapp>
+                    </TextErrPassword>
+                  </WrappErrTextPassword>
                 </LabelFormUser>
 
                 <div>
-                  <WrappCapcha $error={ capcha && touched.capcha } $accept={ isCheckCapcha }>
+                  <WrappCapcha $error={ errCapcha } $accept={ isCheckCapcha }>
                     <LabelCheckbox>
                       <InputCheckbox type="checkbox" name="capcha" />
                       <span></span>
@@ -148,7 +195,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                     <img src={ reCapcha } width="40" height="38" alt="re Capcha"></img>
                   </WrappCapcha>
-                  <FormError name="capcha" />
+                  <FormError name="capcha" isMarginLeft={ true } />
                 </div>
 
                 <WrappPolicy>
@@ -158,7 +205,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                     <TextPolicy>
                                             Я приймаю
-                      {' '}
                       <span>
                         <LinkPolicy>Політика конфіденційності </LinkPolicy>
                       </span>
@@ -169,7 +215,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     </TextPolicy>
                   </LabelCheckbox>
 
-                  <FormError name="accept" />
+                  <FormError name="accept" isMarginLeft={ true } />
                 </WrappPolicy>
 
                 <BtnRegistration
@@ -189,7 +235,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
         <TextPolicy>
                     Цей сайт захищено технологією reCAPTCHA, до нього застосовуються
-          {' '}
           <span>
             <LinkPolicy style={ { fontWeight: '600' } }>Політика конфіденційності </LinkPolicy>
           </span>
@@ -197,7 +242,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
           <span>
             <LinkPolicy style={ { fontWeight: '600' } }> Умови використання</LinkPolicy>
           </span>
-          {' '}
                     Google.
         </TextPolicy>
       </Article>
