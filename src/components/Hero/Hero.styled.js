@@ -149,25 +149,21 @@ export const StyledBtnContainer1 = styled.div`
         width: 294px;
         height: 56px;
 
+        font-family: Nunito;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 100%;
+        letter-spacing: 0.24px;
+        color: #f9f9f9;
+
         @media ${device.sm} {
             max-width: 290px;
+
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 140%;
+            letter-spacing: 0.16px;
         }
-    }
-`;
-
-export const ButtonTypography = styled.p`
-    font-family: Nunito;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 100%;
-    letter-spacing: 0.24px;
-    color: #f9f9f9;
-
-    @media ${device.sm} {
-        color: #ffffff;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 140%;
-        letter-spacing: 0.16px;
     }
 `;

@@ -8,7 +8,6 @@ import {
   StyledTitle,
   StyledText,
   StyledBtnContainer1,
-  ButtonTypography,
 } from './Hero.styled';
 import { Modal } from '../modal/Modal';
 import { ModalRegistration } from '../modal/ModalRegistration';
@@ -55,18 +54,14 @@ export const Hero = () => {
                 variant='blue'
                 dataStatus='teacher'
                 onActiveModal={ toggleModal }>
-                <ButtonTypography>
                   Стати викладачем
-                </ButtonTypography>
               </Button>
               <Button
                 className='btn'
                 variant='pink'
                 dataStatus='student'
                 onActiveModal={ toggleModal }>
-                <ButtonTypography>
                   Стати учнем
-                </ButtonTypography>
               </Button>
             </StyledBtnContainer1>
             <HeroFilter />

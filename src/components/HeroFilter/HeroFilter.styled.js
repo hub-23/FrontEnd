@@ -66,7 +66,7 @@ export const StyledInput = styled.input`
     }
 
     // @media ${device.lg} {
-    //     .input {
+    //     .input-city {
     //         &::before {
     //             content: '';
     //             width: 280px;
@@ -90,8 +90,17 @@ export const StyledLabel = styled.label`
     }
 
     .filter-button {
+        width: 134px;
+        height: 48px;
+
         color: #ffffff;
         background: #2d2d2d;
+        font-family: Nunito;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 100%; /* 20px */
+        letter-spacing: 0.2px;
     }
 `;
 

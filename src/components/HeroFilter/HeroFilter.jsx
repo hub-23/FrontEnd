@@ -102,13 +102,14 @@ export const HeroFilter = () => {
     <form className="filter" onSubmit={ handleSubmit }>
       <StyledInputs>
         <StyledInput
-          type="text"
-          placeholder="Предмет або заняття"
+          className='input-subject'
+          type='text'
+          placeholder='Предмет або заняття'
           onChange={ handleInputChange }
           onFocus={ handleFocus }
           value={ subjectValue }
-          id="subject"
-          autoComplete="off"
+          id='subject'
+          autoComplete='off'
         ></StyledInput>
         {focusInput === 'subject' && filteredSuggestions.length > 0 && (
           <ul>
@@ -121,14 +122,14 @@ export const HeroFilter = () => {
         )}
         <StyledStroke></StyledStroke>
         <StyledInput
-          className='input'
-          type="text"
-          placeholder="Місто"
+          className='input-city'
+          type='text'
+          placeholder='Місто'
           onChange={ handleInputChange }
           onFocus={ handleFocus }
           value={ cityValue }
-          id="city"
-          autoComplete="off"
+          id='city'
+          autoComplete='off'
         ></StyledInput>
         {focusInput === 'city' && filteredSuggestions.length > 0 && (
           <ul>
@@ -141,9 +142,9 @@ export const HeroFilter = () => {
         )}
         <StyledStroke></StyledStroke>
 
-        <StyledLabel htmlFor="radio">
+        <StyledLabel htmlFor='radio'>
           <StyledCheckboxWrapper>
-            <StyledCheckbox type="checkbox" id="radio"></StyledCheckbox>
+            <StyledCheckbox type='checkbox' id='radio'></StyledCheckbox>
             <StyledText>
                 Онлайн
               {' '}
@@ -152,9 +153,8 @@ export const HeroFilter = () => {
             {' '} */}
           </StyledCheckboxWrapper>
           <Button
-            color="black"
-            type="submit"
-            className="filter-button"
+            type='submit'
+            className='filter-button'
           >
             Найти
           </Button>
