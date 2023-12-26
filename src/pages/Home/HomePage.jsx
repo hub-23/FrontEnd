@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AuthModal } from '../../components/auth/AuthModal';
 import { Hero } from '../../components/Hero/Hero';
 import TopTeachersCarousel from '../../components/TopTeachersCarousel';
+import { PeopleTrust } from '../../components/PeopleTrust/PeopleTrust';
 import { PopularСlasses } from '../../components/PopularСlasses/PopularСlasses';
 
 export const HomePage = () => {
@@ -20,6 +21,8 @@ export const HomePage = () => {
       <Hero />
       <PopularСlasses />
       <TopTeachersCarousel />
+      <PeopleTrust />
+      <div>Footer</div>
     </>
   );
 };
