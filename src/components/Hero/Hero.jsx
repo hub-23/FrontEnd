@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import { HeroButton } from '../HeroButton/HeroButton';
+import { Button } from '../common/button/Button';
 import { HeroFilter } from '../HeroFilter/HeroFilter';
 import {
-  StyledButtContainer,
-  StyledContainer,
-  StyledGradient,
   StyledSection,
-  StyledText,
+  StyledGradient,
+  StyledContainer,
   StyledTitle,
+  StyledText,
+  StyledBtnContainer1,
 } from './Hero.styled';
 import { Modal } from '../modal/Modal';
 import { ModalRegistration } from '../modal/ModalRegistration';
 import { ModalRegistrationEmail } from '../modal/ModalRegistrationEmail';
 
 export const Hero = () => {
-  // 💙💛 Kostiantyn ==============================================================
   const [ showModalRegister, setShowModalRegister ] = useState( false );
   const [ showModalRegisterEmail, setShowModalRegisterEmail ] = useState( false );
   const [ status, setStatus ] = useState( '' );
@@ -32,49 +31,45 @@ export const Hero = () => {
 
   return (
     <>
-      <StyledSection className="section-hero">
+      <StyledSection>
         <StyledGradient>
           <StyledContainer>
-            <div className="hero-content">
-              <StyledTitle>
-                                ПРОСТІР
-                <br />
-                {' '}
-ТАЛАНОВИТИХ
-                <br />
-                {' '}
-ЛЮДЕЙ
-              </StyledTitle>
-              <StyledText>
-                                Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до
-                                команди вчителів та склади конкуренцію в своїй ніші
-              </StyledText>
-              <StyledButtContainer>
-                <HeroButton
-                  size="big"
-                  color="blue"
-                  dataStatus="teacher"
-                  onActiveModal={ toggleModal }
-                >
-                                    Стати викладачем
-                </HeroButton>
-                <HeroButton
-                  size="big"
-                  color="crimson"
-                  dataStatus="student"
-                  onActiveModal={ toggleModal }
-                >
-                                    Стати учнем
-                </HeroButton>
-              </StyledButtContainer>
-            </div>
+            <StyledTitle>
+              ПРОСТІР
+              <br />
+              {' '}
+              ТАЛАНОВИТИХ
+              <br />
+              {' '}
+              ЛЮДЕЙ
+            </StyledTitle>
+            <StyledText>
+                Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до команди
+                вчителів та склади
+                конкуренцію в своїй ніші
+            </StyledText>
+            <StyledBtnContainer1>
+              <Button
+                className='btn'
+                variant='blue'
+                dataStatus='teacher'
+                onActiveModal={ toggleModal }>
+                  Стати викладачем
+              </Button>
+              <Button
+                className='btn'
+                variant='pink'
+                dataStatus='student'
+                onActiveModal={ toggleModal }>
+                  Стати учнем
+              </Button>
+            </StyledBtnContainer1>
             <HeroFilter />
           </StyledContainer>
         </StyledGradient>
       </StyledSection>
 
       {showModalRegister && (
-      // 💙💛 Kostiantyn ==============================================================
         <Modal onActiveModal={ toggleModal }>
           <ModalRegistration
             onActiveModal={ toggleModal }

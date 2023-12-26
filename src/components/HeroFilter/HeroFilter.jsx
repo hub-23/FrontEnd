@@ -4,9 +4,12 @@ import {
   StyledInput,
   StyledInputs,
   StyledLabel,
+  StyledCheckboxWrapper,
+  StyledText,
+  StyledStroke,
 } from './HeroFilter.styled';
 
-import { StyledHeroButton } from '../HeroButton/HeroButton.styled';
+import { Button } from '../../components/common/button/Button';
 
 const classes = [ 'piano', 'drums', 'guitar', 'duduk', 'darbuka' ];
 const cities = [ 'Kyiv', 'Kharkov', 'Korsun', 'Steblev' ];
@@ -96,16 +99,17 @@ export const HeroFilter = () => {
   };
 
   return (
-    <form className="filter" onSubmit={ handleSubmit }>
+    <form className='filter' onSubmit={ handleSubmit }>
       <StyledInputs>
         <StyledInput
-          type="text"
-          placeholder="Предмет або заняття"
+          className='input-subject'
+          type='text'
+          placeholder='Предмет або заняття'
           onChange={ handleInputChange }
           onFocus={ handleFocus }
           value={ subjectValue }
-          id="subject"
-          autoComplete="off"
+          id='subject'
+          autoComplete='off'
         ></StyledInput>
         {focusInput === 'subject' && filteredSuggestions.length > 0 && (
           <ul>
@@ -116,14 +120,16 @@ export const HeroFilter = () => {
             ) )}
           </ul>
         )}
+        <StyledStroke></StyledStroke>
         <StyledInput
-          type="text"
-          placeholder="Місто"
+          className='input-city'
+          type='text'
+          placeholder='Місто'
           onChange={ handleInputChange }
           onFocus={ handleFocus }
           value={ cityValue }
-          id="city"
-          autoComplete="off"
+          id='city'
+          autoComplete='off'
         ></StyledInput>
         {focusInput === 'city' && filteredSuggestions.length > 0 && (
           <ul>
@@ -134,18 +140,24 @@ export const HeroFilter = () => {
             ) )}
           </ul>
         )}
+        <StyledStroke></StyledStroke>
 
-        <StyledLabel htmlFor="radio">
-          <StyledCheckbox type="checkbox" id="radio"></StyledCheckbox>
-          Онлайн
-          {' '}
-          <StyledHeroButton
-            color="black"
-            type="submit"
-            className="filter-button"
+        <StyledLabel htmlFor='radio'>
+          <StyledCheckboxWrapper>
+            <StyledCheckbox type='checkbox' id='radio'></StyledCheckbox>
+            <StyledText>
+                Онлайн
+              {' '}
+            </StyledText>
+            {/* Онлайн
+            {' '} */}
+          </StyledCheckboxWrapper>
+          <Button
+            type='submit'
+            className='filter-button'
           >
-            Найти
-          </StyledHeroButton>
+            Знайти
+          </Button>
         </StyledLabel>
       </StyledInputs>
     </form>

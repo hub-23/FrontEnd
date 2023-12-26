@@ -9,7 +9,7 @@ const theme = {
     primary: '#113268',
     accent: '#E3669C',
     grey: '#2D2D2D33',
-    liner_pink: 'linear-gradient(267.92deg, #E3669C 0%, #B82658 100%)',
+    liner_pink: 'linear-gradient(88deg, #B92759 0%, #E3669C 100%)',
     liner_blue: 'linear-gradient(87.92deg, #09194D 0%, #234890 100%)',
     // eslint-disable-next-line max-len
     liner_grey: 'linear-gradient(0deg, rgba(45, 45, 45, 0.2), rgba(45, 45, 45, 0.2)), linear- gradient(0deg, rgba(221, 221, 221, 0.866667), rgba(221, 221, 221, 0.866667))',

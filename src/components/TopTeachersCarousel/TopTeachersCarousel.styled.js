@@ -6,8 +6,6 @@ export const StyledSection = styled.section`
     max-width: 1440px;
     max-height: 720px;
     min-height: 100%;
-    margin-top: 2036px;
-    margin-bottom: 30px;
     padding-bottom: 78px;
     overflow: hidden;
     background: #113268;
