@@ -99,7 +99,7 @@ export const HeroFilter = () => {
   };
 
   return (
-    <form className="filter" onSubmit={ handleSubmit }>
+    <form className='filter' onSubmit={ handleSubmit }>
       <StyledInputs>
         <StyledInput
           className='input-subject'
@@ -156,7 +156,7 @@ export const HeroFilter = () => {
             type='submit'
             className='filter-button'
           >
-            Найти
+            Знайти
           </Button>
         </StyledLabel>
       </StyledInputs>
