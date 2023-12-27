@@ -1,26 +1,29 @@
 import styled from 'styled-components';
+import { device } from '../../styles/device';
 
 export const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-bottom: ${( { $marginBottom } ) => $marginBottom};
-    width: ${( { $width } ) => $width};
-    height: ${( { $height } ) => $height};
+
+    margin-bottom: ${( { $xlMarginBottom } ) => $xlMarginBottom};
+    width: 100%;
+    height: ${( { $xlHeight } ) => $xlHeight};
 
     border-radius: 20px 0px;
     border: 1px solid ${( { $strokeColor } ) => $strokeColor};
+    color: ${( { $color } ) => $color};
     background-color: ${( { $bgColor } ) => $bgColor};
     background: linear-gradient(${( { $bgColorGradient } ) => $bgColorGradient});
 
-    & p {
-        font-family: Nunito;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(20px / 20px);
+    @media ${device.md} {
+        margin-bottom: ${( { $mdMarginBottom } ) => $mdMarginBottom};
+        height: ${( { $mdHeight } ) => $mdHeight};
+    }
 
-        color: ${( { $color } ) => $color};
+    @media ${device.sm} {
+        margin-bottom: ${( { $smMarginBottom } ) => $smMarginBottom};
+        height: ${( { $smHeight } ) => $smHeight};
     }
 `;

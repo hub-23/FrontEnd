@@ -8,7 +8,6 @@ import {
   ErrorText,
   FormEmail,
   Input,
-  ModalWrapp,
   Title,
   Article,
   LabelFormUser,
@@ -19,6 +18,8 @@ import {
   WrappPolicy,
   TextErrPassword,
   WrappErrTextPassword,
+  Modal,
+  BtnText,
 } from './ModalRegistrationEmail.styled';
 import reCapcha from '../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
@@ -92,8 +93,26 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   };
 
   return (
-    <ModalWrapp>
-      <BtnClose right="50px" top="40px" click={ onActiveModal } />
+    <Modal>
+      <BtnClose
+        xlRight="50px"
+        xlTop="40px"
+        mdRight="15px"
+        mdTop="15px"
+        smRight="10px"
+        smTop="10px"
+        click={ onActiveModal }
+      >
+        <IconSvg
+          xlWidth="60px"
+          xlHeight="60px"
+          mdWidth="36px"
+          mdHeight="36px"
+          smWidth="24px"
+          smHeight="24px"
+          icon="icon-close"
+        />
+      </BtnClose>
 
       <Article>
         <Title>
@@ -151,8 +170,8 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   <PhoneSelect
                     data={ countries }
                     valueSelect={ handleGetSelected }
-                    widthList="480px"
-                    heightList="280px"
+                    xlHeightList="275px"
+                    smHeightList="245px"
                   />
                 </LabelFormUser>
 
@@ -165,14 +184,28 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   />
 
                   <BtnEye
-                    right="36px"
-                    top="16px"
+                    xlRight="36px"
+                    xlTop="16px"
+                    smRight="20px"
+                    smTop="13px"
                     click={ () => setSowPassword( !showPassword ) }
                   >
                     {showPassword ? (
-                                            <IconSvg width="24px" height="24px" icon="icon-eye-slash" />
+                                            <IconSvg
+                                              xlWidth="24px"
+                                              xlHeight="24px"
+                                              smWidth="20px"
+                                              smHeight="20px"
+                                              icon="icon-eye-slash"
+                                            />
                                         ) : (
-                                            <IconSvg width="24px" height="24px" icon="icon-eye" />
+                                            <IconSvg
+                                              xlWidth="24px"
+                                              xlHeight="24px"
+                                              smWidth="20px"
+                                              smHeight="20px"
+                                              icon="icon-eye"
+                                            />
                                         )}
                   </BtnEye>
 
@@ -204,11 +237,11 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     <span></span>
 
                     <TextPolicy>
-                                            Я приймаю
+                      {'Я приймаю '}
                       <span>
-                        <LinkPolicy>Політика конфіденційності </LinkPolicy>
+                        <LinkPolicy>Політика конфіденційності</LinkPolicy>
                       </span>
-                                            та
+                      {' та '}
                       <span>
                         <LinkPolicy> Умови використання</LinkPolicy>
                       </span>
@@ -219,14 +252,14 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                 </WrappPolicy>
 
                 <BtnRegistration
-                  marginBottom="30px"
+                  xlMarginBottom="30px"
                   color={ white }
-                  width="480px"
-                  height="56px"
-                  // onRegister={ 'callback' }
+                  xlHeight="60px"
+                  smHeight="45px"
                   bgColorGradient={ bgColorGradientBtn }
+                  // onRegister={ 'callback' }
                 >
-                  <p> Зареєструватись</p>
+                  <BtnText> Зареєструватись</BtnText>
                 </BtnRegistration>
               </FormEmail>
             );
@@ -234,17 +267,17 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
         </Formik>
 
         <TextPolicy>
-                    Цей сайт захищено технологією reCAPTCHA, до нього застосовуються
+          {'Цей сайт захищено технологією reCAPTCHA, до нього застосовуються '}
           <span>
-            <LinkPolicy style={ { fontWeight: '600' } }>Політика конфіденційності </LinkPolicy>
+            <LinkPolicy style={ { fontWeight: '600' } }>Політика конфіденційності</LinkPolicy>
           </span>
-                    та
+          {' та '}
           <span>
-            <LinkPolicy style={ { fontWeight: '600' } }> Умови використання</LinkPolicy>
+            <LinkPolicy style={ { fontWeight: '600' } }>Умови використання</LinkPolicy>
           </span>
-                    Google.
+          {' Google.'}
         </TextPolicy>
       </Article>
-    </ModalWrapp>
+    </Modal>
   );
 };

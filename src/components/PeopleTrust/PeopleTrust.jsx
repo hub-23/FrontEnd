@@ -14,7 +14,6 @@ import {
   StyledStatHeader,
 } from './PeopleTrust.styled';
 
-
 export const PeopleTrust = () => {
   // data from backend
   const teachers = 5375; // 5000 (треба 100)
@@ -42,23 +41,24 @@ export const PeopleTrust = () => {
         console.log( 'Invalid number' );
     }
 
-    if ( base === 1 ) { // under 10
+    if ( base === 1 ) {
+      // under 10
       return number;
     } else {
       return Math.floor( number / base ) * base;
     }
   };
 
-  const [ teachersNumber /* , setTeachersNumber */ ] = useState(
+  const [ teachersNumber /* , setTeachersNumber */] = useState(
       roundDownToNearestBase( teachers ).toLocaleString( 'en-US' ).replace( ',', ' ' ).replace( ',', ' ' ),
   );
-  const [ countriesNumber /* , setCountriesNumber */ ] = useState(
+  const [ countriesNumber /* , setCountriesNumber */] = useState(
       roundDownToNearestBase( countries ).toLocaleString( 'en-US' ),
   );
-  const [ studentsNumber /* , setStudentsNumber */ ] = useState(
+  const [ studentsNumber /* , setStudentsNumber */] = useState(
       roundDownToNearestBase( students ).toLocaleString( 'en-US' ).replace( ',', ' ' ).replace( ',', ' ' ),
   );
-  const [ ukrCitiesNumber /* , setUkrCitiesNumber */ ] = useState(
+  const [ ukrCitiesNumber /* , setUkrCitiesNumber */] = useState(
       roundDownToNearestBase( ukrCities ).toLocaleString( 'en-US' ).replace( ',', ' ' ),
   );
 
@@ -68,15 +68,10 @@ export const PeopleTrust = () => {
         <StyledWrapper>
           <StyledTitle>Нам довіряють</StyledTitle>
           <StyledText>
-              Наші викладачі знаходяться по всьому
-              світу, переважна їх кількість в Україні.
-              Вони надають послуги, як на місці, так і
-              онлайн. Тому, якщо ви знаходитесь у
-              Варшаві чи у Києві, перевірте там може
-              бути викладач, який прийме вас офлайн.
-              А якщо вам зручніше онлайн, вводьте
-              “дистанційно” в пошуковику і ми
-              знайдемо його для вас.
+                        Наші викладачі знаходяться по всьому світу, переважна їх кількість в Україні. Вони
+                        надають послуги, як на місці, так і онлайн. Тому, якщо ви знаходитесь у Варшаві чи у
+                        Києві, перевірте там може бути викладач, який прийме вас офлайн. А якщо вам зручніше
+                        онлайн, вводьте “дистанційно” в пошуковику і ми знайдемо його для вас.
           </StyledText>
           <StyledMapWrapper>
             <Map />
@@ -88,36 +83,32 @@ export const PeopleTrust = () => {
           <StyledStatUnit>
             <StyledStatValue>
               {teachers.toString() === teachersNumber.replace( /\s/g, '' )
-                ? teachersNumber
-                : `${teachersNumber} +`
-              }
+                                ? teachersNumber
+                                : `${teachersNumber} +`}
             </StyledStatValue>
             <StyledStatHeader>Викладачів</StyledStatHeader>
           </StyledStatUnit>
           <StyledStatUnit>
             <StyledStatValue>
               {countries.toString() === countriesNumber
-                ? countriesNumber
-                : `${countriesNumber} +`
-              }
+                                ? countriesNumber
+                                : `${countriesNumber} +`}
             </StyledStatValue>
             <StyledStatHeader>Країн світу</StyledStatHeader>
           </StyledStatUnit>
           <StyledStatUnit>
             <StyledStatValue>
               {students.toString() === studentsNumber.replace( /\s/g, '' )
-                ? studentsNumber
-                : `${studentsNumber} +`
-              }
+                                ? studentsNumber
+                                : `${studentsNumber} +`}
             </StyledStatValue>
             <StyledStatHeader>Учнів</StyledStatHeader>
           </StyledStatUnit>
           <StyledStatUnit>
             <StyledStatValue>
               {ukrCities.toString() === ukrCitiesNumber.replace( /\s/g, '' )
-                ? ukrCitiesNumber
-                : `${ukrCitiesNumber} +`
-              }
+                                ? ukrCitiesNumber
+                                : `${ukrCitiesNumber} +`}
             </StyledStatValue>
             <StyledStatHeader>Міст України</StyledStatHeader>
           </StyledStatUnit>

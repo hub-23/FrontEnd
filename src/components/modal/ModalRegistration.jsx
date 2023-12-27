@@ -1,7 +1,17 @@
 import React from 'react';
 import { Formik } from 'formik';
 
-import { FormRadio, Input, Label, LabelWrapp, Login, ModalWrapp, Title } from './ModalRegistration.styled';
+import {
+  Article,
+  BtnText,
+  FormRigistration,
+  Input,
+  Label,
+  Login,
+  Modal,
+  RadioBtn,
+  Title,
+} from './ModalRegistration.styled';
 import { BtnRegistration } from './BtnRegistration';
 import { black, gray, grayStroke, white } from '../../utils/variables.styled';
 import { BtnClose } from '../common/BtnClose';
@@ -40,15 +50,33 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
   // } );
 
   return (
-    <ModalWrapp>
-      <BtnClose right="30px" top="30px" click={ onActiveModal } />
+    <Modal>
+      <BtnClose
+        xlRight="30px"
+        xlTop="30px"
+        mdRight="15px"
+        mdTop="15px"
+        smRight="10px"
+        smTop="10px"
+        click={ onActiveModal }
+      >
+        <IconSvg
+          xlWidth="60px"
+          xlHeight="60px"
+          mdWidth="36px"
+          mdHeight="36px"
+          smWidth="24px"
+          smHeight="24px"
+          icon="icon-close"
+        />
+      </BtnClose>
 
-      <article>
+      <Article>
         <Title>Реєстрація</Title>
 
         <Formik initialValues={ initialValues } onSubmit={ handleSubmit }>
-          <FormRadio>
-            <LabelWrapp>
+          <FormRigistration>
+            <RadioBtn>
               <Label>
                 <Input type="radio" name="statusUser" value="teacher" />
 Я викладач
@@ -57,35 +85,43 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
                 <Input type="radio" name="statusUser" value="student" />
 Я учень
               </Label>
-            </LabelWrapp>
+            </RadioBtn>
 
             <BtnRegistration
-              marginBottom="30px"
-              color={ black }
+              xlMarginBottom="30px"
+              mdMarginBottom="20px"
+              smMarginBottom="15px"
               bgColor={ white }
               strokeColor={ black }
-              width="420px"
-              height="60px"
+              xlHeight="60px"
+              smHeight="45px"
               onRegister={ registerWithEmail }
             >
-              <IconSvg width="24px" height="24px" icon="icon-mail" />
-              <p> Продовжити з e-mail</p>
+              <IconSvg
+                xlWidth="24px"
+                xlHeight="24px"
+                smWidth="26px"
+                smHeight="26px"
+                icon="icon-mail"
+              />
+              <BtnText> Продовжити з e-mail</BtnText>
             </BtnRegistration>
 
             <BtnRegistration
-              marginBottom="50px"
-              color={ black }
+              xlMarginBottom="50px"
+              mdMarginBottom="40px"
+              smMarginBottom="31px"
               bgColor={ gray }
               strokeColor={ grayStroke }
-              width="420px"
-              height="60px"
+              xlHeight="60px"
+              smHeight="45px"
               onRegister={ () => login() }
               // onRegister={ () => autoRegistr() }
             >
-              <IconSvg width="24px" height="24px" icon="icon-google" />
-              <p>Продовжити з Google</p>
+              <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-google" />
+              <BtnText>Продовжити з Google</BtnText>
             </BtnRegistration>
-          </FormRadio>
+          </FormRigistration>
         </Formik>
 
         <Login>
@@ -94,7 +130,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
                         Увійти
           </button>
         </Login>
-      </article>
-    </ModalWrapp>
+      </Article>
+    </Modal>
   );
 };
