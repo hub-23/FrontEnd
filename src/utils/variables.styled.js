@@ -11,4 +11,4 @@ export const borderGreen = '#01A47F';
 export const borderError = '#E3669C';
 export const bgColorGradientBtn = '268deg, #234890 0%, #08184c 100%';
 
-export const transition = '250ms cubic-bezier(0.4, 0, 0.2, 1) 0s';
+export const transition = '500ms cubic-bezier(0.4, 0, 0.2, 1) 0s';

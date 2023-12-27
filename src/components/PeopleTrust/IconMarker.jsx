@@ -3,6 +3,7 @@ import { Marker, Tooltip } from 'react-leaflet';
 import L from 'leaflet';
 import pinIcon from '../../assets/home/map/pinIcon.svg';
 import circleIcon from '../../assets/home/map/circleIcon.svg';
+import { transition } from '../../utils/variables.styled';
 
 const placeMarkers = ( dotContainerClass, pinContainerClass, circleContainerClass, number, order ) => {
   const cumulativeDelay = 300 * order;
@@ -39,7 +40,7 @@ export const IconMarker = ( { countryData } ) => {
                          width: 5px; 
                          height: 5px; 
                          opacity: 0; 
-                         transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                         transition: opacity ${transition};
                          background-image: url(${circleIcon});
                          background-repeat: no-repeat";
                 >
@@ -51,7 +52,7 @@ export const IconMarker = ( { countryData } ) => {
                            height: 20px; 
                            top: -15px;
                            opacity: 0; 
-                           transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                           transition: opacity ${transition};
                            background-image: url(${pinIcon});
                            background-repeat: no-repeat";
                 >
@@ -64,7 +65,7 @@ export const IconMarker = ( { countryData } ) => {
                            top: -42px; 
                            left: -12px; 
                            opacity: 0; 
-                           transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                           transition: opacity ${transition};
                            background-image: url(${circleIcon});
                            background-repeat: no-repeat"
                 >
