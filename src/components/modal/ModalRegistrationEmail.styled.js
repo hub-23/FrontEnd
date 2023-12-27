@@ -32,14 +32,14 @@ export const Modal = styled.div`
     @media ${device.sm} {
         margin: 0 15px;
         padding: 40px 23px;
+        max-height: calc(100vh - 40px);
+
+        overflow-y: auto;
+        scroll-behavior: smooth;
     }
 `;
 
 export const Article = styled.article`
-    /* outline: 1px solid blueviolet; */
-
-    /* width: 480px; */
-
     margin: 0 auto;
     max-width: 480px;
 
@@ -62,7 +62,6 @@ export const Title = styled.div`
     align-items: center;
 
     margin-bottom: 30px;
-    /* width: 480px; */
     width: 100%;
     height: 60px;
 
@@ -81,14 +80,14 @@ export const Title = styled.div`
     }
 
     @media ${device.md} {
-        mask-border: 38px;
+        margin-bottom: 38px;
         height: initial;
         border-radius: initial;
         background: initial;
     }
 
     @media ${device.sm} {
-        mask-border: 30px;
+        margin-bottom: 30px;
     }
 `;
 
@@ -111,7 +110,6 @@ export const LabelFormUser = styled.label`
 `;
 
 export const Input = styled( Field )`
-    /* width: 480px; */
     width: 100%;
     height: 60px;
     padding: 16px 32px;
@@ -178,7 +176,6 @@ export const WrappCapcha = styled.div`
     margin-top: 26px;
     margin-bottom: 7px;
 
-    /* width: 480px; */
     width: 100%;
     height: 60px;
     padding: 16px 32px;
@@ -230,7 +227,6 @@ export const LabelCheckbox = styled.label`
 export const InputCheckbox = styled( Field )`
     appearance: none;
     position: absolute;
-    /* border-color: yellow; */
 
     & + span {
         width: 24px;
@@ -243,8 +239,6 @@ export const InputCheckbox = styled( Field )`
     }
 
     @media ${device.sm} {
-        /* padding: 15px 20px; */
-
         & + span {
             padding-right: 15px;
         }
@@ -263,8 +257,6 @@ export const WrappPolicy = styled.div`
 `;
 
 export const TextPolicy = styled.p`
-    /* text-align: center; */
-
     font-size: 14px;
     font-weight: 400;
     line-height: (15.82 / 14);
@@ -290,4 +282,17 @@ export const ErrorText = styled.p`
     line-height: (15.82px / 14px);
 
     color: ${accent};
+`;
+
+export const BtnText = styled.p`
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.24px;
+
+    color: ${white};
+
+    @media ${device.sm} {
+        font-size: 18px;
+        letter-spacing: 0.18px;
+    }
 `;

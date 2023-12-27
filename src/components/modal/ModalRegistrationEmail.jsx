@@ -19,6 +19,7 @@ import {
   TextErrPassword,
   WrappErrTextPassword,
   Modal,
+  BtnText,
 } from './ModalRegistrationEmail.styled';
 import reCapcha from '../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
@@ -169,8 +170,8 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   <PhoneSelect
                     data={ countries }
                     valueSelect={ handleGetSelected }
-                    widthList="100%"
-                    heightList="280px"
+                    xlHeightList="275px"
+                    smHeightList="245px"
                   />
                 </LabelFormUser>
 
@@ -252,15 +253,13 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
                 <BtnRegistration
                   xlMarginBottom="30px"
-                  mdMarginBottom="20px"
-                  smMarginBottom="30px"
                   color={ white }
                   xlHeight="60px"
                   smHeight="45px"
                   bgColorGradient={ bgColorGradientBtn }
                   // onRegister={ 'callback' }
                 >
-                  <p> Зареєструватись</p>
+                  <BtnText> Зареєструватись</BtnText>
                 </BtnRegistration>
               </FormEmail>
             );

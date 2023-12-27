@@ -7,7 +7,7 @@ export const PhoneCode = styled.div`
     left: 32px;
     top: 16px;
 
-    /* width: 100%; */
+    width: 100%;
 
     z-index: 1;
     cursor: pointer;
@@ -46,11 +46,10 @@ export const TextCode = styled.p`
 
 export const List = styled.ul`
     margin-top: 20px;
-    /* margin-left: -32px; */
+    margin-left: -32px;
     padding: 20px 32px;
-    /* width: calc(100% - 32px); */
-    /* width: ${( { $widthList } ) => $widthList}; */
-    height: ${( { $height } ) => $height};
+    width: 100%;
+    height: ${( { $xlHeight } ) => $xlHeight};
 
     font-family: Nunito;
     font-size: 16px;
@@ -70,6 +69,14 @@ export const List = styled.ul`
 
     & > :not(:last-child) {
         margin-bottom: 12px;
+    }
+
+    @media ${device.md} {
+        height: ${( { $mdHeight } ) => $mdHeight};
+    }
+
+    @media ${device.sm} {
+        height: ${( { $smHeight } ) => $smHeight};
     }
 `;
 
