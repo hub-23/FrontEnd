@@ -1,6 +1,6 @@
 import React from 'react';
 import sprite from '../../assets/sprite.svg';
-import { StyledStarList } from './Feedback.styled';
+import * as S from './Feedback.styled';
 
 export const Rating = ( { rating } ) => {
   const stars = [];
@@ -21,12 +21,12 @@ export const Rating = ( { rating } ) => {
   }
 
   return (
-    <StyledStarList>
+    <S.StarList>
       { stars.length > 0
           && stars.map( ( star, index ) => (
             <li key={ index } style={ { height: '16px' } }>{star}</li>
           ) )
       }
-    </StyledStarList>
+    </S.StarList>
   );
 };

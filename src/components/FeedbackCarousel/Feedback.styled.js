@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
+import { transition } from '../../utils/variables.styled';
 
-export const StyledSection = styled.section`
-    padding-top: 120px;
-    padding-bottom: 96px;
+export const Section = styled.section`
+    padding-top: 118px;
+    padding-bottom: 98px;
     @media ${device.sm} {
         padding-top: 80px;
         padding-bottom: 80px;
     }
 `;
 
-export const StyledContainer = styled.div`
+export const Container = styled.div`
     margin: 0 auto;
     padding-left: 160px;
     padding-right: 160px;  
@@ -20,7 +21,7 @@ export const StyledContainer = styled.div`
     }
 `;
 
-export const StyledContent = styled.div`
+export const Content = styled.div`
     margin: 0 auto;
     max-width: 1120px;
     padding-bottom: 20px;
@@ -38,14 +39,14 @@ export const StyledContent = styled.div`
     }
 `;
 
-export const StyledTitle = styled.h2`
+export const Title = styled.h2`
     margin-bottom: 44px;
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 48px;
     font-weight: 600;
     line-height: 1.3;
     letter-spacing: 0.48px;
-    color: rgba(45, 45, 45, 1);
+    color: ${( props ) => props.color || props.theme.colors.black};
     @media ${device.xxl} {
         margin-bottom: 24px;
         font-size: 24px;
@@ -53,7 +54,7 @@ export const StyledTitle = styled.h2`
     }
 `;
 
-export const StyledCard = styled.div`
+export const Card = styled.div`
     position: relative;
     width: 360px;
     height: 240px;
@@ -73,21 +74,21 @@ export const StyledCard = styled.div`
     }
 `;
 
-export const StyledStudentName = styled.h4`
+export const StudentName = styled.h4`
     margin-bottom: 4px;
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 20px;
     font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0.2px;
-    color: rgba(45, 45, 45, 1);
+    color: ${( props ) => props.color || props.theme.colors.black};
     @media ${device.xxl} {
         font-size: 16px;
         letter-spacing: 0.16px;
     }
 `;
 
-export const StyledPhoto = styled.img`
+export const Photo = styled.img`
     position: absolute;
     top: -40px;
     right: 80px;
@@ -101,81 +102,81 @@ export const StyledPhoto = styled.img`
     }
 `;
 
-export const StyledStarList = styled.ul`
+export const StarList = styled.ul`
     display: flex;
     gap: 8px; 
     margin-bottom: 8px;
 `;
 
-export const StyledTeacherNameWrapper = styled.div`
+export const TeacherNameWrapper = styled.div`
     display: flex;
     gap: 8px;
     margin-bottom: 8px;
     align-items: center;
 `;
 
-export const StyledTeacherName = styled.p`
+export const TeacherName = styled.p`
     cursor: pointer;
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
     font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0.16px;
-    color: rgba(17, 50, 104, 1);
+    color: ${( props ) => props.color || props.theme.colors.primary};
     @media ${device.xxl} {
         font-size: 14px;
         letter-spacing: 0.14px;
     }
 `;
 
-export const StyledFeedback = styled.p`
+export const Feedback = styled.p`
     height: 66px;
     margin-bottom: 8px;
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
     font-weight: 400;
     line-height: 1.4;
-    color: rgba(45, 45, 45, 1);
+    color: ${( props ) => props.color || props.theme.colors.black};
     @media ${device.xxl} {
         font-size: 14px;
         height: 61px;
     }
 `;
 
-export const StyledCardFooter = styled.div`
+export const CardFooter = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
 
-export const StyledDate = styled.span`
-    font-family: Nunito;
+export const Date = styled.span`
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
     font-weight: 300;
     line-height: 1.4;
     letter-spacing: 0.16px;
-    color: rgba(45, 45, 45, 1);
+    color: ${( props ) => props.color || props.theme.colors.black};
     @media ${device.xxl} {
         font-size: 12px;
         letter-spacing: 0.16px;
     }
 `;
 
-export const StyledDetailed = styled.p`
+export const Detailed = styled.p`
     cursor: pointer;
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
     font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0.16px;
-    color: rgba(17, 50, 104, 1);
+    color: ${( props ) => props.color || props.theme.colors.primary};
     @media ${device.xxl} {
         font-size: 14px;
         letter-spacing: 0.14px;
     }
 `;
 
-export const StyledControlBtns = styled.ul`
+export const ControlBtns = styled.ul`
     display: flex; 
     gap: 12px;
     justify-content: center;
@@ -186,17 +187,17 @@ export const StyledControlBtns = styled.ul`
     }
 `;
 
-export const StyledControlBtn = styled.button`
+export const ControlBtn = styled.button`
   width: 24px;
   height: 24px;
   background-color: transparent;
   border: none;
 `;
 
-export const StyledBtnIcon = styled.svg`
-  fill: rgba(255, 255, 255, 1);
-  stroke: rgba(17, 50, 104, 1);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+export const BtnIcon = styled.svg`
+  fill: ${( props ) => props.color || props.theme.colors.white};
+  stroke: ${( props ) => props.color || props.theme.colors.primary};
+  transition: fill ${transition}, stroke ${transition};
   &:hover,
    :focus {
         stroke: rgba(121, 121, 121, 1);
@@ -205,6 +206,6 @@ export const StyledBtnIcon = styled.svg`
         }
    }
   path {
-    fill: rgba(17, 50, 104, 1);
+    fill: ${( props ) => props.color || props.theme.colors.primary};
   }
 `;
