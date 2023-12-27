@@ -5,13 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { feedbackData } from './data';
 import { FeedbackCard } from './FeedbackCard';
 import { ControlBtn } from './ControlBtn';
-import {
-  StyledSection,
-  StyledContainer,
-  StyledContent,
-  StyledTitle,
-  StyledControlBtns,
-} from './Feedback.styled';
+import * as S from './Feedback.styled';
 import './slider.css';
 
 
@@ -67,16 +61,16 @@ export const FeedbackCarousel = () => {
   };
 
   return (
-    <StyledSection>
-      <StyledContainer>
-        <StyledContent>
-          <StyledTitle>Ваші відгуки</StyledTitle>
+    <S.Section>
+      <S.Container>
+        <S.Content>
+          <S.Title>Ваші відгуки</S.Title>
           <Slider ref={ sliderRef } { ...settings }>
             {feedbackData.map( ( feedback ) => (
               <FeedbackCard key={ feedback.id } feedback={ feedback } />
             ) )}
           </Slider>
-          <StyledControlBtns>
+          <S.ControlBtns>
             <ControlBtn
               handlePlay={ handlePlayPrev }
               pathD="M13.2754 17.2812L8.71011 12.5281C8.42996 12.2364 8.42996 11.7636 8.71011
@@ -92,10 +86,9 @@ export const FeedbackCarousel = () => {
               7.77501C9.42996 7.48333 9.42996 7.01043 9.71011 6.71876C9.99026 6.42708
               10.4445 6.42708 10.7246 6.71876Z"
             />
-          </StyledControlBtns>
-        </StyledContent>
-      </StyledContainer>
-    </StyledSection>
-
+          </S.ControlBtns>
+        </S.Content>
+      </S.Container>
+    </S.Section>
   );
 };

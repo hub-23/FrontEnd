@@ -11,8 +11,8 @@ export const HomePage = () => {
       <Hero />
       <PopularСlasses />
       <TopTeachersCarousel />
-      <FeedbackCarousel />
       <PeopleTrust />
+      <FeedbackCarousel />
     </>
   );
 };
