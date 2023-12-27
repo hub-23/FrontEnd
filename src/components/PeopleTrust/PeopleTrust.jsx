@@ -1,25 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 import { Map } from './Map';
-import {
-  StyledMapContainer,
-  StyledWrapper,
-  StyledTitle,
-  StyledText,
-  StyledMapWrapper,
-  StyledStatisticsWrapper,
-  StyledStatisticsList,
-  StyledStatUnit,
-  StyledStatValue,
-  StyledStatHeader,
-} from './PeopleTrust.styled';
+import * as S from './PeopleTrust.styled';
 
 export const PeopleTrust = () => {
   // data from backend
-  const teachers = 5375; // 5000 (треба 100)
-  const countries = 57; // 50  (треба 10)
-  const students = 15423; // 15000 (треба 100)
-  const ukrCities = 241; // 200 (треба 10)
+  const teachers = 5375; // 5300+
+  const countries = 57; // 50+
+  const students = 15423; // 15400+
+  const ukrCities = 241; // 240+
 
   const roundDownToNearestBase = ( number ) => {
     let base = null;
@@ -64,56 +53,65 @@ export const PeopleTrust = () => {
 
   return (
     <section>
-      <StyledMapContainer>
-        <StyledWrapper>
-          <StyledTitle>Нам довіряють</StyledTitle>
-          <StyledText>
-                        Наші викладачі знаходяться по всьому світу, переважна їх кількість в Україні. Вони
-                        надають послуги, як на місці, так і онлайн. Тому, якщо ви знаходитесь у Варшаві чи у
-                        Києві, перевірте там може бути викладач, який прийме вас офлайн. А якщо вам зручніше
-                        онлайн, вводьте “дистанційно” в пошуковику і ми знайдемо його для вас.
-          </StyledText>
-          <StyledMapWrapper>
+      <S.MapContainer>
+        <S.Wrapper>
+          <S.Title>Нам довіряють</S.Title>
+          <S.Text>
+              Наші викладачі знаходяться по всьому
+              світу, переважна їх кількість в Україні.
+              Вони надають послуги, як на місці, так і
+              онлайн. Тому, якщо ви знаходитесь у
+              Варшаві чи у Києві, перевірте там може
+              бути викладач, який прийме вас офлайн.
+              А якщо вам зручніше онлайн, вводьте
+              “дистанційно” в пошуковику і ми
+              знайдемо його для вас.
+          </S.Text>
+          <S.MapWrapper>
             <Map />
-          </StyledMapWrapper>
-        </StyledWrapper>
-      </StyledMapContainer>
-      <StyledStatisticsWrapper>
-        <StyledStatisticsList>
-          <StyledStatUnit>
-            <StyledStatValue>
+          </S.MapWrapper>
+        </S.Wrapper>
+      </S.MapContainer>
+      <S.StatisticsWrapper>
+        <S.StatisticsList>
+          <S.StatUnit>
+            <S.StatValue>
               {teachers.toString() === teachersNumber.replace( /\s/g, '' )
-                                ? teachersNumber
-                                : `${teachersNumber} +`}
-            </StyledStatValue>
-            <StyledStatHeader>Викладачів</StyledStatHeader>
-          </StyledStatUnit>
-          <StyledStatUnit>
-            <StyledStatValue>
+                ? teachersNumber
+                : `${teachersNumber} +`
+              }
+            </S.StatValue>
+            <S.StatHeader>Викладачів</S.StatHeader>
+          </S.StatUnit>
+          <S.StatUnit>
+            <S.StatValue>
               {countries.toString() === countriesNumber
-                                ? countriesNumber
-                                : `${countriesNumber} +`}
-            </StyledStatValue>
-            <StyledStatHeader>Країн світу</StyledStatHeader>
-          </StyledStatUnit>
-          <StyledStatUnit>
-            <StyledStatValue>
+                ? countriesNumber
+                : `${countriesNumber} +`
+              }
+            </S.StatValue>
+            <S.StatHeader>Країн світу</S.StatHeader>
+          </S.StatUnit>
+          <S.StatUnit>
+            <S.StatValue>
               {students.toString() === studentsNumber.replace( /\s/g, '' )
-                                ? studentsNumber
-                                : `${studentsNumber} +`}
-            </StyledStatValue>
-            <StyledStatHeader>Учнів</StyledStatHeader>
-          </StyledStatUnit>
-          <StyledStatUnit>
-            <StyledStatValue>
+                ? studentsNumber
+                : `${studentsNumber} +`
+              }
+            </S.StatValue>
+            <S.StatHeader>Учнів</S.StatHeader>
+          </S.StatUnit>
+          <S.StatUnit>
+            <S.StatValue>
               {ukrCities.toString() === ukrCitiesNumber.replace( /\s/g, '' )
-                                ? ukrCitiesNumber
-                                : `${ukrCitiesNumber} +`}
-            </StyledStatValue>
-            <StyledStatHeader>Міст України</StyledStatHeader>
-          </StyledStatUnit>
-        </StyledStatisticsList>
-      </StyledStatisticsWrapper>
+                ? ukrCitiesNumber
+                : `${ukrCitiesNumber} +`
+              }
+            </S.StatValue>
+            <S.StatHeader>Міст України</S.StatHeader>
+          </S.StatUnit>
+        </S.StatisticsList>
+      </S.StatisticsWrapper>
     </section>
   );
 };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
 
-export const StyledMapContainer = styled.div`
+export const MapContainer = styled.div`
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
@@ -17,38 +17,38 @@ export const StyledMapContainer = styled.div`
     }
 `;
 
-export const StyledWrapper = styled.div`
+export const Wrapper = styled.div`
     max-width: 1030px;
     margin-left: auto;
     margin-right: auto;
 `;
 
-export const StyledTitle = styled.h2`
+export const Title = styled.h2`
     margin-bottom: 40px;
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 24px;
     font-weight: 600;
     line-height: 1.3;
     letter-spacing: 0.24px;
-    color: rgba(45, 45, 45, 1);
+    color: ${( props ) => props.color || props.theme.colors.black};
     @media ${device.xxl} { 
-        margin-bottom: 0px;
+        margin-bottom: 32px;
     }
 `;
 
-export const StyledText = styled.p`
+export const Text = styled.p`
     margin-bottom: 50px;
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
     line-height: 1.4;
     letter-spacing: 0.16px;
-    color: rgba(45, 45, 45, 1);
+    color: ${( props ) => props.color || props.theme.colors.black};
     @media screen and (max-width: 1090px) { 
         margin-bottom: 0;
     }
 `;
 
-export const StyledMapWrapper = styled.div`
+export const MapWrapper = styled.div`
     @media screen and (min-width: 1090px) { 
         display: block;
         width: 1030px;
@@ -58,15 +58,15 @@ export const StyledMapWrapper = styled.div`
     display: none;
 `;
 
-export const StyledStatisticsWrapper = styled.div`
-    background-color: rgba(17, 50, 104, 1);
+export const StatisticsWrapper = styled.div`
+    background-color: ${( props ) => props.color || props.theme.colors.primary};
     padding: 80px 160px;
     @media ${device.xxl} { 
         padding: 40px 20px;
     }
 `;
 
-export const StyledStatisticsList = styled.ul`
+export const StatisticsList = styled.ul`
     max-width: 1440px; 
     margin-left: auto;
     margin-right: auto;
@@ -83,12 +83,12 @@ export const StyledStatisticsList = styled.ul`
     }
 `;
 
-export const StyledStatUnit = styled.li`
+export const StatUnit = styled.li`
     list-style: none;
     width: 265px;
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     line-height: 1.4;
-    color: rgba(255, 255, 255, 1);
+    color: ${( props ) => props.color || props.theme.colors.white};
     text-align: center;
     &:nth-of-type(2) {
         order: 1;
@@ -117,7 +117,7 @@ export const StyledStatUnit = styled.li`
     }
 `;
 
-export const StyledStatHeader = styled.p`
+export const StatHeader = styled.p`
     font-size: 24px;
     font-weight: 500;
     @media ${device.xxl} { 
@@ -126,7 +126,7 @@ export const StyledStatHeader = styled.p`
     }
 `;
 
-export const StyledStatValue = styled.span`
+export const StatValue = styled.span`
     display: block; 
     font-size: 36px;
     font-weight: 700;
