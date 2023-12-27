@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 import { black, grayStroke, white } from '../../utils/variables.styled';
+import { device } from '../../styles/device';
 
 export const PhoneCode = styled.div`
     position: absolute;
     left: 32px;
     top: 16px;
 
+    /* width: 100%; */
+
     z-index: 1;
     cursor: pointer;
+
+    @media ${device.sm} {
+        top: 9px;
+    }
 `;
 
 export const TextWrapp = styled.div`
@@ -25,17 +32,24 @@ export const TextCode = styled.p`
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: calc(20px / 28px);
+    line-height: calc(20 / 28);
     letter-spacing: 0.2px;
 
     color: ${black};
+
+    @media ${device.sm} {
+        font-size: 16px;
+        line-height: calc(22.4 / 16);
+        letter-spacing: 0.16px;
+    }
 `;
 
 export const List = styled.ul`
     margin-top: 20px;
-    margin-left: -32px;
+    /* margin-left: -32px; */
     padding: 20px 32px;
-    width: ${( { $widthList } ) => $widthList};
+    /* width: calc(100% - 32px); */
+    /* width: ${( { $widthList } ) => $widthList}; */
     height: ${( { $height } ) => $height};
 
     font-family: Nunito;

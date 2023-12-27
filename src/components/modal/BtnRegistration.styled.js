@@ -13,6 +13,7 @@ export const Button = styled.button`
 
     border-radius: 20px 0px;
     border: 1px solid ${( { $strokeColor } ) => $strokeColor};
+    color: ${( { $color } ) => $color};
     background-color: ${( { $bgColor } ) => $bgColor};
     background: linear-gradient(${( { $bgColorGradient } ) => $bgColorGradient});
 

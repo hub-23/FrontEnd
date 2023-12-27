@@ -19,7 +19,7 @@ export const Modal = styled.div`
 
     @media ${device.sm} {
         margin: 0 15px;
-        padding: 40px 24px 46px 24px;
+        padding: 40px 23px 46px 23px;
     }
 `;
 

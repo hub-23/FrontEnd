@@ -13,19 +13,47 @@ import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import checkbox0 from '../../assets/home/modal/checkbox0.svg';
 import checkbox1 from '../../assets/home/modal/checkbox1.svg';
+import { device } from '../../styles/device';
 
-export const ModalWrapp = styled.div`
+export const Modal = styled.div`
     position: relative;
 
-    width: 720px;
-    padding: 40px 50px;
+    max-width: 720px;
+    margin: 0 20px;
+    padding: 40px 190px 40px 50px;
 
     border-radius: 20px 0px;
     background-color: ${white};
+
+    @media ${device.md} {
+        padding: 50px;
+    }
+
+    @media ${device.sm} {
+        margin: 0 15px;
+        padding: 40px 23px;
+    }
 `;
 
 export const Article = styled.article`
-    width: 480px;
+    /* outline: 1px solid blueviolet; */
+
+    /* width: 480px; */
+
+    margin: 0 auto;
+    max-width: 480px;
+
+    @media ${device.md} {
+        max-width: 419px;
+
+        & > :last-child {
+            text-align: center;
+        }
+    }
+
+    @media ${device.sm} {
+        max-width: initial;
+    }
 `;
 
 export const Title = styled.div`
@@ -34,19 +62,33 @@ export const Title = styled.div`
     align-items: center;
 
     margin-bottom: 30px;
-    width: 480px;
+    /* width: 480px; */
+    width: 100%;
     height: 60px;
 
     border-radius: 20px 0px;
     background: ${black};
 
     & p {
-        font-family: Nunito;
         font-size: 26px;
-        font-style: normal;
         font-weight: 600;
         letter-spacing: 0.26px;
         color: ${white};
+
+        @media ${device.md} {
+            color: ${black};
+        }
+    }
+
+    @media ${device.md} {
+        mask-border: 38px;
+        height: initial;
+        border-radius: initial;
+        background: initial;
+    }
+
+    @media ${device.sm} {
+        mask-border: 30px;
     }
 `;
 
@@ -54,6 +96,10 @@ export const FormEmail = styled( Form )`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @media ${device.sm} {
+        gap: 25px;
+    }
 `;
 
 export const LabelFormUser = styled.label`
@@ -61,18 +107,18 @@ export const LabelFormUser = styled.label`
     display: flex;
     flex-direction: column;
     gap: 7px;
+    width: 100%;
 `;
 
 export const Input = styled( Field )`
-    width: 480px;
+    /* width: 480px; */
+    width: 100%;
     height: 60px;
     padding: 16px 32px;
 
-    font-family: Nunito;
     font-size: 20px;
-    font-style: normal;
     font-weight: 400;
-    line-height: (28px / 20px);
+    line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
     border-width: 1px;
@@ -83,6 +129,15 @@ export const Input = styled( Field )`
     border-color: ${( { $error } ) => $error && `${borderError}`};
     color: ${black};
     background-color: ${white};
+
+    @media ${device.sm} {
+        padding: 15px 20px;
+        height: 45px;
+
+        font-size: 16px;
+        line-height: calc(22.4 / 16);
+        letter-spacing: 0.16px;
+    }
 
     &:focus {
         outline: 1px solid ${borderBlue};
@@ -99,6 +154,10 @@ export const WrappErrTextPassword = styled.div`
     align-items: center;
     gap: 8px;
     margin-left: 23px;
+
+    @media ${device.md} {
+        margin-left: 0;
+    }
 `;
 
 export const TextErrPassword = styled.p`
@@ -106,7 +165,7 @@ export const TextErrPassword = styled.p`
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: calc(15.82px / 14px);
+    line-height: calc(15.82 / 14);
 
     color: ${( { $color } ) => ( $color ? accent : black )};
 `;
@@ -119,7 +178,8 @@ export const WrappCapcha = styled.div`
     margin-top: 26px;
     margin-bottom: 7px;
 
-    width: 480px;
+    /* width: 480px; */
+    width: 100%;
     height: 60px;
     padding: 16px 32px;
 
@@ -135,6 +195,19 @@ export const WrappCapcha = styled.div`
     &:focus {
         outline: 1px solid ${borderBlue};
     }
+
+    @media ${device.md} {
+        margin-top: 0px;
+    }
+
+    @media ${device.sm} {
+        height: 45px;
+        padding: 15px 20px;
+
+        & img {
+            display: none;
+        }
+    }
 `;
 
 export const LabelCheckbox = styled.label`
@@ -146,14 +219,18 @@ export const LabelCheckbox = styled.label`
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: (28px / 20px);
+    line-height: calc(28 / 20);
     letter-spacing: 0.2px;
+
+    @media ${device.sm} {
+        font-size: 16px;
+    }
 `;
 
 export const InputCheckbox = styled( Field )`
     appearance: none;
     position: absolute;
-    border-color: yellow;
+    /* border-color: yellow; */
 
     & + span {
         width: 24px;
@@ -164,20 +241,33 @@ export const InputCheckbox = styled( Field )`
     &:checked + span {
         background-image: url(${checkbox1});
     }
+
+    @media ${device.sm} {
+        /* padding: 15px 20px; */
+
+        & + span {
+            padding-right: 15px;
+        }
+    }
 `;
 
 export const WrappPolicy = styled.div`
     display: flex;
     flex-direction: column;
     gap: 7px;
+
+    @media ${device.sm} {
+        margin-top: 3px;
+        margin-bottom: 5px;
+    }
 `;
 
 export const TextPolicy = styled.p`
-    font-family: Nunito;
+    /* text-align: center; */
+
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: (15.82px / 14px);
+    line-height: (15.82 / 14);
 
     color: ${black};
 `;
