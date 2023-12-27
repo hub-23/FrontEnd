@@ -87,7 +87,6 @@ const StyledButton = styled.button`
             border: 1px solid ${( props ) => props.border || 'transparent'};
             &:hover {
                 background: linear-gradient(267.92deg, #b92759 0%, #e3669c 100%);
-                // background: linear-gradient(267.92deg, #B92759 0%, #E3669C 100%);
                 transition: all 0.5s ease;
             }
             &:active {
