@@ -3,25 +3,31 @@ import { Button } from './BtnRegistration.styled';
 
 export const BtnRegistration = ( {
   children,
-  marginBottom,
+  xlMarginBottom,
+  mdMarginBottom,
+  smMarginBottom,
   color,
   bgColor,
   strokeColor,
   bgColorGradient,
-  width,
-  height,
+  xlHeight,
+  mdHeight,
+  smHeight,
   onRegister,
 } ) => {
   return (
     <Button
       type="submit"
-      $marginBottom={ marginBottom }
+      $xlMarginBottom={ xlMarginBottom }
+      $mdMarginBottom={ mdMarginBottom }
+      $smMarginBottom={ smMarginBottom }
       $color={ color }
       $bgColor={ bgColor }
       $strokeColor={ strokeColor }
       $bgColorGradient={ bgColorGradient }
-      $width={ width }
-      $height={ height }
+      $xlHeight={ xlHeight }
+      $mdHeight={ mdHeight }
+      $smHeight={ smHeight }
       onClick={ onRegister }
     >
       {children}

@@ -1,17 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Rating } from './Rating';
 import sprite from '../../assets/sprite.svg';
-import {
-  StyledCard,
-  StyledStudentName,
-  StyledPhoto,
-  StyledTeacherNameWrapper,
-  StyledTeacherName,
-  StyledFeedback,
-  StyledCardFooter,
-  StyledDate,
-  StyledDetailed,
-} from './Feedback.styled';
+import * as S from './Feedback.styled';
 
 
 export const FeedbackCard = ( { feedback } ) => {
@@ -34,29 +24,29 @@ export const FeedbackCard = ( { feedback } ) => {
   }, [] );
 
   return (
-    <StyledCard>
-      <StyledStudentName>{studentName}</StyledStudentName>
-      <StyledPhoto src={ photo } alt={ studentName } />
+    <S.Card>
+      <S.StudentName>{studentName}</S.StudentName>
+      <S.Photo src={ photo } alt={ studentName } />
       <Rating rating={ rating } />
-      <StyledTeacherNameWrapper>
+      <S.TeacherNameWrapper>
         <svg width="24px" height="24px">
           <use href={ `${sprite}#icon-hat-graduation` }></use>
         </svg>
-        <StyledTeacherName>{teacherName}</StyledTeacherName>
-      </StyledTeacherNameWrapper>
-      <StyledFeedback
+        <S.TeacherName>{teacherName}</S.TeacherName>
+      </S.TeacherNameWrapper>
+      <S.Feedback
         ref={ pRef }
         style={ isOverflowing ? overflowStyles : {} }
       >
         {feedbackText}
-      </StyledFeedback>
+      </S.Feedback>
       { isOverflowing
-        ? <StyledCardFooter>
-          <StyledDate>{date}</StyledDate>
-          <StyledDetailed>Детальніше</StyledDetailed>
-        </StyledCardFooter>
-        : <StyledDate>{date}</StyledDate>
+        ? <S.CardFooter>
+          <S.Date>{date}</S.Date>
+          <S.Detailed>Детальніше</S.Detailed>
+        </S.CardFooter>
+        : <S.Date>{date}</S.Date>
       }
-    </StyledCard>
+    </S.Card>
   );
 };

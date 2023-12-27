@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Item, List, PhoneCode, TextCode, TextWrapp, Title } from './PhoneSelect.styled';
 import { IconSvg } from './IconSvg';
 
-export const PhoneSelect = ( { valueSelect, data, widthList, heightList } ) => {
+export const PhoneSelect = ( { valueSelect, data, xlHeightList, mdHeightList, smHeightList } ) => {
   const [ showSelect, setShowSelect ] = useState( false );
 
   const handleShowList = () => {
@@ -27,7 +27,7 @@ export const PhoneSelect = ( { valueSelect, data, widthList, heightList } ) => {
       </TextWrapp>
 
       {showSelect && (
-        <List $widthList={ widthList } $height={ heightList }>
+        <List $xlHeight={ xlHeightList } $mdHeight={ mdHeightList } $smHeight={ smHeightList }>
           {data.map( ( { code, dialCode, flag, name } ) => {
             return (
               <Item

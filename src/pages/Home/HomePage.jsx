@@ -13,7 +13,6 @@ export const HomePage = () => {
       <TopTeachersCarousel />
       <PeopleTrust />
       <FeedbackCarousel />
-      <div>Footer</div>
     </>
   );
 };

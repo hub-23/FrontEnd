@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Map } from './Map';
 import * as S from './PeopleTrust.styled';
 
-
 export const PeopleTrust = () => {
   // data from backend
   const teachers = 5375; // 5300+
@@ -31,23 +30,24 @@ export const PeopleTrust = () => {
         console.log( 'Invalid number' );
     }
 
-    if ( base === 1 ) { // under 10
+    if ( base === 1 ) {
+      // under 10
       return number;
     } else {
       return Math.floor( number / base ) * base;
     }
   };
 
-  const [ teachersNumber /* , setTeachersNumber */ ] = useState(
+  const [ teachersNumber /* , setTeachersNumber */] = useState(
       roundDownToNearestBase( teachers ).toLocaleString( 'en-US' ).replace( ',', ' ' ).replace( ',', ' ' ),
   );
-  const [ countriesNumber /* , setCountriesNumber */ ] = useState(
+  const [ countriesNumber /* , setCountriesNumber */] = useState(
       roundDownToNearestBase( countries ).toLocaleString( 'en-US' ),
   );
-  const [ studentsNumber /* , setStudentsNumber */ ] = useState(
+  const [ studentsNumber /* , setStudentsNumber */] = useState(
       roundDownToNearestBase( students ).toLocaleString( 'en-US' ).replace( ',', ' ' ).replace( ',', ' ' ),
   );
-  const [ ukrCitiesNumber /* , setUkrCitiesNumber */ ] = useState(
+  const [ ukrCitiesNumber /* , setUkrCitiesNumber */] = useState(
       roundDownToNearestBase( ukrCities ).toLocaleString( 'en-US' ).replace( ',', ' ' ),
   );
 
