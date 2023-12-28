@@ -70,7 +70,7 @@ export const Card = styled.div`
         padding: 20px;
     }
     @media screen and (max-width: 710px) {
-        margin-bottom: 56px; // треба прибрати останній відступ
+        margin-bottom: 56px;
     }
 `;
 
@@ -130,7 +130,7 @@ export const TeacherName = styled.p`
 `;
 
 export const Feedback = styled.p`
-    height: 66px;
+    height: 67px;
     margin-bottom: 8px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;

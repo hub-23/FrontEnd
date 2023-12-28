@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useLayoutEffect } from 'react';
 import { Rating } from './Rating';
 import sprite from '../../assets/sprite.svg';
 import * as S from './Feedback.styled';
@@ -8,7 +8,7 @@ export const FeedbackCard = ( { feedback } ) => {
   const { studentName, photo, rating, teacherName, feedbackText, date } = feedback;
   const pRef = useRef();
   const [ isOverflowing, setIsOverflowing ] = useState( false );
-
+  console.log( studentName, isOverflowing );
   const overflowStyles = {
     display: '-webkit-box',
     WebkitLineClamp: 3,
@@ -16,11 +16,14 @@ export const FeedbackCard = ( { feedback } ) => {
     overflow: 'hidden',
   };
 
-  useEffect( () => {
-    const feedbackTextElement = pRef.current;
-    const isContentOverflowing = feedbackTextElement.scrollHeight > feedbackTextElement.clientHeight;
-    // без переповнення: scrollHeight === clientHeight
-    setIsOverflowing( isContentOverflowing );
+  useLayoutEffect( () => {
+    const checkOverflow = () => {
+      const feedbackTextElement = pRef.current;
+      const isContentOverflowing = feedbackTextElement.scrollHeight > feedbackTextElement.clientHeight;
+      setIsOverflowing( isContentOverflowing );
+    };
+
+    setTimeout( checkOverflow, 0 );
   }, [] );
 
   return (
