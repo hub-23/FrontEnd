@@ -25,6 +25,11 @@ export const Modal = styled.div`
     margin: 0 20px;
     padding: 40px 50px;
 
+    max-height: calc(100vh - 40px);
+
+    overflow-y: auto;
+    scroll-behavior: smooth;
+
     border-radius: 20px 0px;
     background-color: ${white};
 
