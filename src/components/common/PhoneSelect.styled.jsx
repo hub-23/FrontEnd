@@ -7,7 +7,7 @@ export const PhoneCode = styled.div`
     left: 32px;
     top: 16px;
 
-    width: 100%;
+    width: ${( { $isShow } ) => $isShow && '100%'};
 
     z-index: 1;
     cursor: pointer;

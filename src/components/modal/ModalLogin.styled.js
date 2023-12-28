@@ -17,36 +17,41 @@ import { device } from '../../styles/device';
 
 export const Modal = styled.div`
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 72px;
 
-    max-width: 720px;
+    /* width: 869px; */
     margin: 0 20px;
-    padding: 40px 190px 40px 50px;
-
-    max-height: calc(100vh - 40px);
-
-    overflow-y: auto;
-    scroll-behavior: smooth;
+    padding: 40px 50px;
 
     border-radius: 20px 0px;
     background-color: ${white};
 
     @media ${device.md} {
-        max-height: calc(100vh - 50px);
-        padding: 50px;
+        display: initial;
+
+        width: 520px;
+        padding: 56px 50px 50px 50px;
     }
 
     @media ${device.sm} {
         margin: 0 15px;
-        padding: 40px 23px;
-        /* max-height: calc(100vh - 40px); */
+        padding: 40px 23px 47px 23px;
+        width: 430px;
+        max-height: calc(100vh - 40px);
+
+        overflow-y: auto;
+        scroll-behavior: smooth;
     }
 `;
 
 export const Article = styled.article`
     margin: 0 auto;
-    max-width: 480px;
+    width: 480px;
 
     @media ${device.md} {
+        width: initial;
         max-width: 419px;
 
         & > :last-child {
@@ -69,24 +74,20 @@ export const Title = styled.div`
     height: 60px;
 
     border-radius: 20px 0px;
-    background: ${black};
+    border: 1px solid ${black};
 
     & p {
         font-size: 26px;
         font-weight: 600;
         letter-spacing: 0.26px;
-        color: ${white};
-
-        @media ${device.md} {
-            color: ${black};
-        }
+        color: ${black};
     }
 
     @media ${device.md} {
-        margin-bottom: 38px;
+        margin-bottom: 48px;
         height: initial;
         border-radius: initial;
-        background: initial;
+        border: initial;
     }
 
     @media ${device.sm} {
@@ -94,14 +95,9 @@ export const Title = styled.div`
     }
 `;
 
-export const FormEmail = styled( Form )`
+export const FormLogin = styled( Form )`
     display: flex;
     flex-direction: column;
-    gap: 20px;
-
-    @media ${device.sm} {
-        gap: 25px;
-    }
 `;
 
 export const LabelFormUser = styled.label`
@@ -110,10 +106,35 @@ export const LabelFormUser = styled.label`
     flex-direction: column;
     gap: 7px;
     width: 100%;
+
+    &:first-child {
+        margin-bottom: 25px;
+
+        @media ${device.md} {
+            margin-bottom: 30px;
+        }
+
+        @media ${device.sm} {
+            margin-bottom: 25px;
+        }
+    }
+
+    &:nth-child(2) {
+        margin-bottom: 24px;
+
+        @media ${device.md} {
+            margin-bottom: 22px;
+        }
+
+        @media ${device.sm} {
+            margin-bottom: 24px;
+        }
+    }
 `;
 
 export const Input = styled( Field )`
     width: 100%;
+
     height: 60px;
     padding: 16px 32px;
 
@@ -127,12 +148,17 @@ export const Input = styled( Field )`
 
     border-radius: 20px 0px;
     border-color: ${( { $isDataUser } ) => ( $isDataUser ? grayStroke : borderGreen )};
-    border-color: ${( { $error } ) => $error && `${borderError}`};
+
+    border-color: ${( { $error } ) => $error && borderError};
+
     color: ${black};
     background-color: ${white};
 
+    @media ${device.md} {
+        width: 100%;
+    }
+
     @media ${device.sm} {
-        padding: 15px 20px;
         height: 45px;
 
         font-size: 16px;
@@ -150,74 +176,12 @@ export const Input = styled( Field )`
     }
 `;
 
-export const WrappErrTextPassword = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: 23px;
-
-    @media ${device.md} {
-        margin-left: 0;
-    }
-`;
-
-export const TextErrPassword = styled.p`
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: calc(15.82 / 14);
-
-    color: ${( { $color } ) => ( $color ? accent : black )};
-`;
-
-export const WrappCapcha = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-top: 26px;
-    margin-bottom: 7px;
-
-    width: 100%;
-    height: 60px;
-    padding: 16px 32px;
-
-    border-width: 1px;
-    border-style: solid;
-
-    border-radius: 20px 0px;
-    border-color: ${( { $accept } ) => ( $accept ? borderGreen : grayStroke )};
-    border-color: ${( { $error } ) => $error && `${borderError}`};
-    color: ${grayText};
-    background-color: ${white};
-
-    &:focus {
-        outline: 1px solid ${borderBlue};
-    }
-
-    @media ${device.md} {
-        margin-top: 0px;
-    }
-
-    @media ${device.sm} {
-        height: 45px;
-        padding: 15px 20px;
-
-        & img {
-            display: none;
-        }
-    }
-`;
-
 export const LabelCheckbox = styled.label`
     display: flex;
     align-items: center;
-    gap: 9px;
+    /* gap: 3px; */
 
-    font-family: Nunito;
     font-size: 20px;
-    font-style: normal;
     font-weight: 400;
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
@@ -248,27 +212,37 @@ export const InputCheckbox = styled( Field )`
     }
 `;
 
-export const WrappPolicy = styled.div`
+export const WrappCheckPass = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: 7px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+
+    margin-bottom: 22px;
+
+    @media ${device.md} {
+        margin-bottom: 32px;
+    }
 
     @media ${device.sm} {
-        margin-top: 3px;
-        margin-bottom: 5px;
+        margin-bottom: 35px;
     }
 `;
 
-export const TextPolicy = styled.p`
+export const TextCheckbox = styled.p`
+    margin-left: 2px;
+
     font-size: 14px;
-    font-weight: 400;
-    line-height: (15.82 / 14);
+    font-weight: 500;
+    line-height: calc(19.6 / 14);
 
     color: ${black};
 `;
 
-export const LinkPolicy = styled( Link )`
+export const LinkForget = styled( Link )`
+    font-size: 14px;
     font-weight: 500;
+    line-height: (15.82 / 14);
     text-decoration-line: underline;
 
     color: ${black};
@@ -276,26 +250,119 @@ export const LinkPolicy = styled( Link )`
 
 export const ErrorText = styled.p`
     display: inline;
-    margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
 
     font-family: Nunito;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: (15.82px / 14px);
+    line-height: calc(15.82 / 14);
 
     color: ${accent};
+
+    @media ${device.sm} {
+        margin-left: 32px;
+    }
 `;
 
 export const BtnText = styled.p`
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
     letter-spacing: 0.24px;
 
-    color: ${white};
+    color: ${( { $color } ) => $color};
 
     @media ${device.sm} {
         font-size: 18px;
         letter-spacing: 0.18px;
     }
+`;
+
+export const BtnGoogleOne = styled.div`
+    display: none;
+
+    @media ${device.md} {
+        display: initial;
+    }
+`;
+
+export const BtnGoogleTwo = styled.div`
+    max-width: 217px;
+
+    & p {
+        font-size: 20px;
+        font-weight: 600;
+
+        &:first-child {
+            margin-bottom: 20px;
+            color: ${grayText};
+        }
+        &:nth-child(2) {
+            margin-bottom: 40px;
+            color: ${black};
+        }
+    }
+
+    @media ${device.md} {
+        display: none;
+    }
+`;
+
+export const BtnTextGoogle = styled.p`
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.24px;
+
+    color: ${( { $color } ) => $color};
+
+    @media ${device.sm} {
+        font-size: 18px;
+        letter-spacing: 0.18px;
+    }
+`;
+
+export const Text = styled.p`
+    display: none;
+
+    @media ${device.md} {
+        display: initial;
+        margin-bottom: 15px;
+
+        font-size: 20px;
+        text-align: center;
+        font-weight: 600;
+
+        color: ${grayText};
+    }
+
+    @media ${device.sm} {
+        margin-bottom: 13px;
+    }
+`;
+
+export const WrappTextRegistr = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 11px;
+
+    @media ${device.sm} {
+        display: initial;
+    }
+`;
+
+export const TextRegistr = styled.p`
+    font-size: 16px;
+    font-weight: 600;
+
+    color: ${grayText};
+
+    @media ${device.sm} {
+        margin-bottom: 15px;
+    }
+`;
+
+export const LinkRegistr = styled.p`
+    font-size: 16px;
+    font-weight: 600;
+
+    color: ${black};
 `;
