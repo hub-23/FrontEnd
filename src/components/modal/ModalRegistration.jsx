@@ -121,7 +121,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
               strokeColor={ grayStroke }
               xlHeight="60px"
               smHeight="45px"
-              onRegister={ () => loginWithGoogle() }
+              onRegister={ loginWithGoogle }
               // onRegister={ () => autoRegistr() }
             >
               <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-google" />

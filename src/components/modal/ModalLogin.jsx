@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
+
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 
@@ -29,9 +31,11 @@ import { bgColorGradientBtn, black, gray, grayStroke, white } from '../../utils/
 import { IconSvg } from '../common/IconSvg';
 import { BtnEye } from '../common/BtnEye';
 import { BtnClose } from '../common/BtnClose';
+import { useHubContext } from '../../redux/Context';
 
 export const ModalLogin = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
+  const { setShowModalLogin } = useHubContext();
 
   const schema = object( {
     email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
@@ -61,9 +65,10 @@ export const ModalLogin = ( { onActiveModal } ) => {
     onActiveModal();
   };
 
-  // const handleGetSelected = ( values ) => {
-  //   setCodeCountry( values );
-  // };
+  const loginWithGoogle = useGoogleLogin( {
+    onSuccess: ( tokenResponse ) => console.log( 'Success', tokenResponse ),
+    onError: ( onError ) => console.log( 'Error', onError ),
+  } );
 
   return (
     <Modal>
@@ -184,7 +189,9 @@ export const ModalLogin = ( { onActiveModal } ) => {
                     strokeColor={ grayStroke }
                     xlHeight="60px"
                     smHeight="45px"
-                    onRegister={ () => console.log( 'loginWithGoogle()' ) }
+                    onRegister={ () => {
+                      loginWithGoogle(), setShowModalLogin( ( prev ) => !prev );
+                    } }
                     // onRegister={ () => autoRegistr() }
                   >
                     <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-google" />
@@ -212,8 +219,9 @@ export const ModalLogin = ( { onActiveModal } ) => {
           strokeColor={ grayStroke }
           xlHeight="60px"
           smHeight="45px"
-          onRegister={ () => console.log( 'loginWithGoogle()' ) }
-          // onRegister={ () => autoRegistr() }
+          onRegister={ () => {
+            loginWithGoogle(), setShowModalLogin( ( prev ) => !prev );
+          } }
         >
           <IconSvg xlWidth="32px" xlHeight="32px" icon="icon-google" />
         </BtnRegistration>
