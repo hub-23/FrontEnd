@@ -12,7 +12,7 @@ export const PhoneSelect = ( { valueSelect, data, xlHeightList, mdHeightList, sm
   const [ dataCountry, setDataCountry ] = useState( { flag: '🇺🇦', code: '+380' } );
 
   return (
-    <PhoneCode onClick={ handleShowList }>
+    <PhoneCode $isShow={ showSelect } onClick={ handleShowList }>
       <TextWrapp>
         <Title>{dataCountry.flag}</Title>
 

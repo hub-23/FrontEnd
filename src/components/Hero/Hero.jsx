@@ -12,21 +12,36 @@ import {
 import { Modal } from '../modal/Modal';
 import { ModalRegistration } from '../modal/ModalRegistration';
 import { ModalRegistrationEmail } from '../modal/ModalRegistrationEmail';
+import { ModalLogin } from '../modal/ModalLogin';
+import { useHubContext } from '../../redux/Context';
 
 export const Hero = () => {
-  const [ showModalRegister, setShowModalRegister ] = useState( false );
-  const [ showModalRegisterEmail, setShowModalRegisterEmail ] = useState( false );
+  const docVisible = ( document.body.style.overflow = 'visible' ); // re scroll
+  const {
+    showModalRegister,
+    setShowModalRegister,
+    showModalRegisterEmail,
+    setShowModalRegisterEmail,
+    showModalLogin,
+    setShowModalLogin,
+  } = useHubContext();
+
   const [ status, setStatus ] = useState( '' );
 
   const toggleModal = ( evt ) => {
     setShowModalRegister( !showModalRegister );
-    document.body.style.overflow = 'visible'; // re scroll
+    docVisible;
     setStatus( evt?.target.dataset.status );
   };
 
   const toggleModalEmail = () => {
     setShowModalRegisterEmail( !showModalRegisterEmail );
-    document.body.style.overflow = 'visible'; // re scroll
+    docVisible;
+  };
+
+  const toggleModalLogin = () => {
+    setShowModalLogin( !showModalLogin );
+    docVisible;
   };
 
   return (
@@ -35,33 +50,32 @@ export const Hero = () => {
         <StyledGradient>
           <StyledContainer>
             <StyledTitle>
-              ПРОСТІР
+                            ПРОСТІР
               <br />
-              {' '}
-              ТАЛАНОВИТИХ
+                            ТАЛАНОВИТИХ
               <br />
-              {' '}
-              ЛЮДЕЙ
+                            ЛЮДЕЙ
             </StyledTitle>
             <StyledText>
-                Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до команди
-                вчителів та склади
-                конкуренцію в своїй ніші
+                            Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до
+                            команди вчителів та склади конкуренцію в своїй ніші
             </StyledText>
             <StyledBtnContainer1>
               <Button
-                className='btn'
-                variant='blue'
-                dataStatus='teacher'
-                onActiveModal={ toggleModal }>
-                  Стати викладачем
+                className="btn"
+                variant="blue"
+                dataStatus="teacher"
+                onActiveModal={ toggleModal }
+              >
+                                Стати викладачем
               </Button>
               <Button
-                className='btn'
-                variant='pink'
-                dataStatus='student'
-                onActiveModal={ toggleModal }>
-                  Стати учнем
+                className="btn"
+                variant="pink"
+                dataStatus="student"
+                onActiveModal={ toggleModal }
+              >
+                                Стати учнем
               </Button>
             </StyledBtnContainer1>
             <HeroFilter />
@@ -82,6 +96,12 @@ export const Hero = () => {
       {showModalRegisterEmail && (
         <Modal onActiveModal={ toggleModalEmail }>
           <ModalRegistrationEmail onActiveModal={ toggleModalEmail } />
+        </Modal>
+      )}
+
+      {showModalLogin && (
+        <Modal onActiveModal={ toggleModalLogin }>
+          <ModalLogin onActiveModal={ toggleModalLogin } />
         </Modal>
       )}
     </>

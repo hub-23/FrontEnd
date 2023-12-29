@@ -17,8 +17,11 @@ import { black, gray, grayStroke, white } from '../../utils/variables.styled';
 import { BtnClose } from '../common/BtnClose';
 import { IconSvg } from '../common/IconSvg';
 import { useGoogleLogin } from '@react-oauth/google';
+import { useHubContext } from '../../redux/Context';
 
 export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status } ) => {
+  const { showModalRegister, setShowModalRegister, showModalLogin, setShowModalLogin } = useHubContext();
+
   console.log( 'status :>> ', status );
   const initialValues = {
     statusUser: `${status}`,
@@ -33,9 +36,12 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
     onActiveModalEmail();
   };
 
-  const goToLogin = () => console.log( 'Go to Login' );
+  const goToLogin = () => {
+    setShowModalLogin( !showModalLogin );
+    setShowModalRegister( !showModalRegister );
+  };
 
-  const login = useGoogleLogin( {
+  const loginWithGoogle = useGoogleLogin( {
     onSuccess: ( tokenResponse ) => console.log( 'Success', tokenResponse ),
     onError: ( onError ) => console.log( 'Error', onError ),
   } );
@@ -115,7 +121,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
               strokeColor={ grayStroke }
               xlHeight="60px"
               smHeight="45px"
-              onRegister={ () => login() }
+              onRegister={ loginWithGoogle }
               // onRegister={ () => autoRegistr() }
             >
               <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-google" />
