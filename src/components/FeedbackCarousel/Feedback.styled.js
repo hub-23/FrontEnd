@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from '../../styles/device';
 import { transition } from '../../utils/variables.styled';
 
@@ -72,6 +72,11 @@ export const Card = styled.div`
     @media screen and (max-width: 710px) {
         margin-bottom: 56px;
     }
+    @media screen and (max-width: 417px) {
+        width: 250px;
+        height: 170px;
+        padding: 15px;
+    }
 `;
 
 export const StudentName = styled.h4`
@@ -85,6 +90,9 @@ export const StudentName = styled.h4`
     @media ${device.xxl} {
         font-size: 16px;
         letter-spacing: 0.16px;
+    }
+    @media screen and (max-width: 417px) {
+        font-size: 16px;
     }
 `;
 
@@ -100,12 +108,32 @@ export const Photo = styled.img`
     @media ${device.xxl} {
         right: 40px;
     }
+    @media screen and (max-width: 417px) {
+        max-width: 60px;
+        max-height: 60px;
+        top: -30px;
+        right: 35px;
+    }
 `;
 
 export const StarList = styled.ul`
     display: flex;
     gap: 8px; 
     margin-bottom: 8px;
+    @media screen and (max-width: 417px) {
+        gap: 4px; 
+        margin-bottom: 2px;
+    }
+`;
+
+export const StarItem = styled.li`
+    height: '16px';
+    @media screen and (max-width: 417px) {
+        & > svg {
+            width: 13px;
+            height: 12px;
+        }
+    }
 `;
 
 export const TeacherNameWrapper = styled.div`
@@ -113,6 +141,13 @@ export const TeacherNameWrapper = styled.div`
     gap: 8px;
     margin-bottom: 8px;
     align-items: center;
+`;
+
+export const HatIcon = styled.svg`
+    @media screen and (max-width: 417px) {
+        width: 18px;
+        height: 18px;
+    }
 `;
 
 export const TeacherName = styled.p`
@@ -127,19 +162,41 @@ export const TeacherName = styled.p`
         font-size: 14px;
         letter-spacing: 0.14px;
     }
+    @media screen and (max-width: 417px) {
+        font-size: 14px;
+    }
 `;
 
 export const Feedback = styled.p`
     height: 67px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
     font-weight: 400;
     line-height: 1.4;
     color: ${( props ) => props.color || props.theme.colors.black};
+
+    ${( props ) => props.$overflow && css`
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;    
+    `};
+
     @media ${device.xxl} {
         font-size: 14px;
         height: 61px;
+    }
+    @media screen and (max-width: 700px) {
+        height: 55px;
+    }
+    @media screen and (max-width: 417px) {
+        font-size: 13px;
+        height: 33px;
+        line-height: 1.3;
+        ${( props ) => props.$overflow && css`
+            -webkit-line-clamp: 2;
+        `};
     }
 `;
 
@@ -160,6 +217,9 @@ export const Date = styled.span`
         font-size: 12px;
         letter-spacing: 0.16px;
     }
+    @media screen and (max-width: 417px) {
+        font-size: 11px;
+    }
 `;
 
 export const Detailed = styled.p`
@@ -173,6 +233,9 @@ export const Detailed = styled.p`
     @media ${device.xxl} {
         font-size: 14px;
         letter-spacing: 0.14px;
+    }
+    @media screen and (max-width: 417px) {
+        font-size: 12px;
     }
 `;
 
