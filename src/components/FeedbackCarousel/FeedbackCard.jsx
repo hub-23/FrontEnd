@@ -13,8 +13,10 @@ export const FeedbackCard = ( { feedback } ) => {
   useLayoutEffect( () => {
     const checkOverflow = () => {
       const feedbackTextElement = pRef.current;
-      const isContentOverflowing = feedbackTextElement.scrollHeight > feedbackTextElement.clientHeight;
-      setIsOverflowing( isContentOverflowing );
+      if ( feedbackTextElement ) {
+        const isContentOverflowing = feedbackTextElement.scrollHeight > feedbackTextElement.clientHeight;
+        setIsOverflowing( isContentOverflowing );
+      }
     };
 
     setTimeout( checkOverflow, 0 );
