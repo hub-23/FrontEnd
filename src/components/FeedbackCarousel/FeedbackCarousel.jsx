@@ -49,8 +49,6 @@ export const FeedbackCarousel = () => {
       {
         breakpoint: 710, // 711 - вже 2
         settings: {
-          rows: 3,
-          slidesPerRow: 1,
           slidesToShow: 1,
           slidesToScroll: 1,
           swipe: true,
