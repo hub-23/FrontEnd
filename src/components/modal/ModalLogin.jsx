@@ -36,6 +36,7 @@ import { useHubContext } from '../../redux/Context';
 export const ModalLogin = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
   const { setShowModalLogin } = useHubContext();
+  const { setShowModalRegister } = useHubContext();
 
   const schema = object( {
     email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
@@ -205,7 +206,16 @@ export const ModalLogin = ( { onActiveModal } ) => {
 
         <WrappTextRegistr>
           <TextRegistr>Я ще не зареєстрваний</TextRegistr>
-          <LinkRegistr>Зареєструватись</LinkRegistr>
+
+          <LinkRegistr
+            type="button"
+            onClick={ () => {
+              setShowModalRegister( ( prev ) => !prev );
+              setShowModalLogin( ( prev ) => !prev );
+            } }
+          >
+                        Зареєструватись
+          </LinkRegistr>
         </WrappTextRegistr>
       </Article>
 

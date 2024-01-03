@@ -365,7 +365,10 @@ export const TextRegistr = styled.p`
     }
 `;
 
-export const LinkRegistr = styled.p`
+export const LinkRegistr = styled.button`
+    border: none;
+    background: initial;
+
     font-size: 16px;
     font-weight: 600;
 

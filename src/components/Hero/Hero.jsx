@@ -28,7 +28,7 @@ export const Hero = () => {
 
   const [ status, setStatus ] = useState( '' );
 
-  const toggleModal = ( evt ) => {
+  const toggleModalRegister = ( evt ) => {
     setShowModalRegister( !showModalRegister );
     docVisible;
     setStatus( evt?.target.dataset.status );
@@ -65,7 +65,7 @@ export const Hero = () => {
                 className="btn"
                 variant="blue"
                 dataStatus="teacher"
-                onActiveModal={ toggleModal }
+                onActiveModal={ toggleModalRegister }
               >
                                 Стати викладачем
               </Button>
@@ -73,7 +73,7 @@ export const Hero = () => {
                 className="btn"
                 variant="pink"
                 dataStatus="student"
-                onActiveModal={ toggleModal }
+                onActiveModal={ toggleModalRegister }
               >
                                 Стати учнем
               </Button>
@@ -84,9 +84,9 @@ export const Hero = () => {
       </StyledSection>
 
       {showModalRegister && (
-        <Modal onActiveModal={ toggleModal }>
+        <Modal onActiveModal={ toggleModalRegister }>
           <ModalRegistration
-            onActiveModal={ toggleModal }
+            onActiveModal={ toggleModalRegister }
             onActiveModalEmail={ toggleModalEmail }
             status={ status }
           />
