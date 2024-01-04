@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
 import { Link } from 'react-router-dom';
 
@@ -107,11 +107,18 @@ export const FormBtn = styled.button`
 `;
 
 export const TermsRightsWrapper = styled.div`
-    margin-top: 125px;
+    margin-top: 126px;
     text-align: center;
     & > div {
         width: 390px;
         margin: 0 auto 12px auto;
+        position: relative;
+        & > svg {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 164px;
+        }
     }
 `;
 
@@ -122,6 +129,9 @@ export const Terms = styled.a`
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.white};
+    ${( props ) => props.$first && css`
+        margin-right: 17px; 
+    `};
 `;
 
 export const Rights = styled.p`

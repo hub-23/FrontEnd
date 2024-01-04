@@ -47,8 +47,10 @@ export const Footer = () => {
         </S.ContentOrganizer>
         <S.TermsRightsWrapper>
           <div>
-            <S.Terms href="">Політика конфіденційності</S.Terms>
-            <span>|</span>
+            <S.Terms href="" $first>Політика конфіденційності</S.Terms>
+            <svg width="17" height="20">
+              <line x1="9" y1="0" x2="9" y2="20" stroke="#fff" strokeWidth="1" />
+            </svg>
             <S.Terms href="">Умови використання</S.Terms>
           </div>
           <S.Rights>Усі права захищені 2023</S.Rights>
