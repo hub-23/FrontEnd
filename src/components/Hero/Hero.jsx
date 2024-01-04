@@ -14,6 +14,8 @@ import { ModalRegistration } from '../modal/ModalRegistration';
 import { ModalRegistrationEmail } from '../modal/ModalRegistrationEmail';
 import { ModalLogin } from '../modal/ModalLogin';
 import { useHubContext } from '../../redux/Context';
+import { ModalLastStep } from '../modal/ModalLastStep';
+import { ModalConfirmEmail } from '../modal/ModalConfirmEmail';
 
 export const Hero = () => {
   const docVisible = ( document.body.style.overflow = 'visible' ); // re scroll
@@ -24,6 +26,10 @@ export const Hero = () => {
     setShowModalRegisterEmail,
     showModalLogin,
     setShowModalLogin,
+    showModalLastStep,
+    setShowModalLastStep,
+    showModalConfirmEmail,
+    setShowModalConfirmEmail,
   } = useHubContext();
 
   const [ status, setStatus ] = useState( '' );
@@ -41,6 +47,16 @@ export const Hero = () => {
 
   const toggleModalLogin = () => {
     setShowModalLogin( !showModalLogin );
+    docVisible;
+  };
+
+  const toggleModalLastStep = () => {
+    setShowModalLastStep( !showModalLastStep );
+    docVisible;
+  };
+
+  const toggleModalConfirmEmail = () => {
+    setShowModalConfirmEmail( !showModalConfirmEmail );
     docVisible;
   };
 
@@ -102,6 +118,18 @@ export const Hero = () => {
       {showModalLogin && (
         <Modal onActiveModal={ toggleModalLogin }>
           <ModalLogin onActiveModal={ toggleModalLogin } />
+        </Modal>
+      )}
+
+      {showModalLastStep && (
+        <Modal onActiveModal={ toggleModalLastStep }>
+          <ModalLastStep onActiveModal={ toggleModalLastStep } />
+        </Modal>
+      )}
+
+      {showModalConfirmEmail && (
+        <Modal onActiveModal={ toggleModalConfirmEmail }>
+          <ModalConfirmEmail onActiveModal={ toggleModalConfirmEmail } />
         </Modal>
       )}
     </>

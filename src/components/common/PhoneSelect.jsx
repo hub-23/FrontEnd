@@ -9,7 +9,7 @@ export const PhoneSelect = ( { valueSelect, data, xlHeightList, mdHeightList, sm
     setShowSelect( !showSelect );
   };
 
-  const [ dataCountry, setDataCountry ] = useState( { flag: '🇺🇦', code: '+380' } );
+  const [ dataCountry, setDataCountry ] = useState( { flag: '🇺🇦', code: '+38' } );
 
   return (
     <PhoneCode $isShow={ showSelect } onClick={ handleShowList }>

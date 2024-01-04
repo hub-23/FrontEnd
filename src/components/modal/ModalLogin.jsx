@@ -35,8 +35,7 @@ import { useHubContext } from '../../redux/Context';
 
 export const ModalLogin = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
-  const { setShowModalLogin } = useHubContext();
-  const { setShowModalRegister } = useHubContext();
+  const { setShowModalLogin, setShowModalRegister, setShowModalLastStep } = useHubContext();
 
   const schema = object( {
     email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
@@ -64,6 +63,7 @@ export const ModalLogin = ( { onActiveModal } ) => {
 
     resetForm();
     onActiveModal();
+    setShowModalLastStep( ( prev ) => !prev );
   };
 
   const loginWithGoogle = useGoogleLogin( {
@@ -174,7 +174,7 @@ export const ModalLogin = ( { onActiveModal } ) => {
                   xlHeight="60px"
                   smHeight="45px"
                   bgColorGradient={ bgColorGradientBtn }
-                  // onRegister={ 'callback' }
+                  // onRegister={ toggleModalLastStep }
                 >
                   <BtnText $color={ white }> Увійти</BtnText>
                 </BtnRegistration>
