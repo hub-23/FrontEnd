@@ -24,32 +24,53 @@ export const Footer = () => {
             <S.ContactsWrapper>
               <S.Header>Контакти</S.Header>
               <S.ContactsItem>
-                <IconSvg xlWidth='24px' xlHeight='24px' icon='icon-clock' />
-                <S.Contacts>Пн-Нд // 9:00 - 20:00</S.Contacts>
+                <IconSvg
+                  xlWidth='24px'
+                  xlHeight='24px'
+                  icon='icon-clock'
+                />
+                <S.Schedule>Пн-Нд // 9:00 - 20:00</S.Schedule>
               </S.ContactsItem>
-              <S.ContactsItem>
-                <IconSvg xlWidth='24px' xlHeight='24px' icon='icon-envelope' />
-                <S.Email href="mailto:hub23project@gmail.com">hub23project@gmail.com</S.Email>
-              </S.ContactsItem>
+              <S.Email href="mailto:hub23project@gmail.com">
+                <IconSvg
+                  xlWidth='24px'
+                  xlHeight='24px'
+                  icon='icon-envelope'
+                />
+                hub23project@gmail.com
+              </S.Email>
             </S.ContactsWrapper>
 
             <S.Header>Слідкуй за нами</S.Header>
             <S.SocList>
-              <li><IconSvg xlWidth='24px' xlHeight='24px' icon='icon-youtube' /></li>
-              <li><IconSvg xlWidth='24px' xlHeight='24px' icon='icon-facebook' /></li>
+              <li>
+                <IconSvg
+                  xlWidth='24px'
+                  xlHeight='24px'
+                  icon='icon-youtube'
+                  style={ { width: '24px', height: '24px' } }
+                />
+              </li>
+              <li>
+                <IconSvg
+                  xlWidth='24px'
+                  xlHeight='24px'
+                  icon='icon-facebook'
+                />
+              </li>
             </S.SocList>
           </div>
 
-          <div>
+          <S.FormBtnWrapper>
             <S.Header>Залишились питання?</S.Header>
             <S.FormBtn>Заповнити форму</S.FormBtn>
-          </div>
+          </S.FormBtnWrapper>
         </S.ContentOrganizer>
         <S.TermsRightsWrapper>
           <div>
             <S.Terms href="" $first>Політика конфіденційності</S.Terms>
-            <svg width="17" height="20">
-              <line x1="9" y1="0" x2="9" y2="20" stroke="#fff" strokeWidth="1" />
+            <svg width="1" height="20">
+              <line x1="1" y1="0" x2="1" y2="20" stroke="#fff" strokeWidth="1" />
             </svg>
             <S.Terms href="">Умови використання</S.Terms>
           </div>
