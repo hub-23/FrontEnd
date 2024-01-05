@@ -1,5 +1,6 @@
 import React from 'react';
-// import { BtnClose } from '../common/BtnClose';
+
+import { BtnClose } from '../common/BtnClose';
 import { IconSvg } from '../common/IconSvg';
 import {
   Article,
@@ -17,7 +18,7 @@ export const ModalConfirmEmail = ( { onActiveModal } ) => {
 
   return (
     <Modal>
-      {/* <BtnClose
+      <BtnClose
         xlRight="30px"
         xlTop="30px"
         mdRight="15px"
@@ -35,7 +36,7 @@ export const ModalConfirmEmail = ( { onActiveModal } ) => {
           smHeight="24px"
           icon="icon-close"
         />
-      </BtnClose> */}
+      </BtnClose>
       <button
         style={ { position: 'absolute', left: '20px', top: '20px' } }
         type="button"
