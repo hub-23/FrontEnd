@@ -1,5 +1,5 @@
 import React from 'react';
-import { BtnClose } from '../common/BtnClose';
+// import { BtnClose } from '../common/BtnClose';
 import { IconSvg } from '../common/IconSvg';
 import {
   Article,
@@ -10,18 +10,20 @@ import {
   Title,
   WrappRegister,
 } from './ModalConfirmEmail.styled';
+import { useHubContext } from '../../redux/Context';
 
 export const ModalConfirmEmail = ( { onActiveModal } ) => {
+  const { setShowModalThanksForJoining } = useHubContext();
+
   return (
     <Modal>
-      <BtnClose
+      {/* <BtnClose
         xlRight="30px"
         xlTop="30px"
         mdRight="15px"
         mdTop="15px"
         smRight="10px"
         smTop="10px"
-        // click={ () => setShowModalConfirmEmail( ( prev ) => !prev ) }
         click={ onActiveModal }
       >
         <IconSvg
@@ -33,7 +35,17 @@ export const ModalConfirmEmail = ( { onActiveModal } ) => {
           smHeight="24px"
           icon="icon-close"
         />
-      </BtnClose>
+      </BtnClose> */}
+      <button
+        style={ { position: 'absolute', left: '20px', top: '20px' } }
+        type="button"
+        onClick={ () => {
+          onActiveModal();
+          setShowModalThanksForJoining( ( prev ) => !prev );
+        } }
+      >
+                Show ModalThanksForJoining
+      </button>
 
       <Article>
         <IconSvg xlWidth="64px" xlHeight="64px" smWidth="40px" smHeight="40px" icon="icon-mail" />

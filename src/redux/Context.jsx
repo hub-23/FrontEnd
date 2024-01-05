@@ -9,6 +9,7 @@ export const Context = ( { children } ) => {
   const [ showModalLogin, setShowModalLogin ] = useState( false );
   const [ showModalLastStep, setShowModalLastStep ] = useState( false );
   const [ showModalConfirmEmail, setShowModalConfirmEmail ] = useState( false );
+  const [ showModalThanksForJoining, setShowModalThanksForJoining ] = useState( false );
 
   return (
     <HubContext.Provider
@@ -23,6 +24,8 @@ export const Context = ( { children } ) => {
         setShowModalLastStep,
         showModalConfirmEmail,
         setShowModalConfirmEmail,
+        showModalThanksForJoining,
+        setShowModalThanksForJoining,
       } }
     >
       {children}
