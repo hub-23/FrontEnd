@@ -102,9 +102,11 @@ export const Photo = styled.img`
     right: 80px;
     width: 100%;
     height: 100vw;
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 76px;
+    max-height: 76px;
     object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid ${( props ) => props.color || props.theme.colors.primary};
     @media ${device.xxl} {
         right: 40px;
     }
@@ -188,7 +190,7 @@ export const Feedback = styled.p`
         height: 61px;
     }
     @media screen and (max-width: 700px) {
-        height: 55px;
+        height: 59px;
     }
     @media screen and (max-width: 417px) {
         font-size: 13px;
