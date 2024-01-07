@@ -9,9 +9,11 @@ export const Footer = () => {
     <S.FooterSection>
       <S.FooterContainer>
         <S.ContentOrganizer>
+
           <Link to='/'>
             <S.Logo />
           </Link>
+
           <S.NavWrapper>
             <S.Header>Інформація</S.Header>
             <ul>
@@ -20,6 +22,7 @@ export const Footer = () => {
               <S.NavItem><S.NavLink to='/feedback'>Відгуки</S.NavLink></S.NavItem>
             </ul>
           </S.NavWrapper>
+
           <div>
             <S.ContactsWrapper>
               <S.Header>Контакти</S.Header>
@@ -66,6 +69,7 @@ export const Footer = () => {
             <S.FormBtn>Заповнити форму</S.FormBtn>
           </S.FormBtnWrapper>
         </S.ContentOrganizer>
+
         <S.TermsRightsWrapper>
           <div>
             <S.Terms href="" $first>Політика конфіденційності</S.Terms>
