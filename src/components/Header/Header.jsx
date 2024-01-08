@@ -4,11 +4,17 @@ import { Language } from './Select/Language/Language';
 import { MobileMenu } from './MobileMenu/MobileMenu';
 import * as S from './Header.styled';
 import { IconSvg } from '../common/IconSvg';
+import { useHubContext } from '../../redux/Context';
 
 
 export const Header = () => {
   const [ isDropdownOpen, setIsDropdownOpen ] = useState( false );
   const selectedCountry = 'Україна';
+  const { showModalLogin, setShowModalLogin } = useHubContext();
+
+  const goToLogin = () => {
+    setShowModalLogin( !showModalLogin );
+  };
 
   return (
     <S.Header>
@@ -47,7 +53,7 @@ export const Header = () => {
 
           <S.SignInBtn
             to='/signIn'
-            onClick={ () => console.log( 'sign in' ) }
+            onClick={ goToLogin }
           >
             Вхід
           </S.SignInBtn>
