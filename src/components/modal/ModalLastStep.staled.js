@@ -17,13 +17,10 @@ import { device } from '../../styles/device';
 
 export const Modal = styled.div`
     position: relative;
-    display: flex;
-    align-items: center;
-    gap: 72px;
 
-    /* width: 869px; */
+    max-width: 775px;
     margin: 0 20px;
-    padding: 40px 50px;
+    padding: 54px 148px 50px 148px;
 
     max-height: calc(100vh - 40px);
 
@@ -34,29 +31,21 @@ export const Modal = styled.div`
     background-color: ${white};
 
     @media ${device.md} {
-        display: initial;
-
-        width: 520px;
-        padding: 56px 50px 50px 50px;
+        max-height: calc(100vh - 50px);
+        padding: 50px;
     }
 
     @media ${device.sm} {
         margin: 0 15px;
-        padding: 40px 23px 47px 23px;
-        width: 430px;
-        max-height: calc(100vh - 40px);
-
-        overflow-y: auto;
-        scroll-behavior: smooth;
+        padding: 40px 23px;
     }
 `;
 
 export const Article = styled.article`
     margin: 0 auto;
-    width: 480px;
+    max-width: 480px;
 
     @media ${device.md} {
-        width: initial;
         max-width: 419px;
 
         & > :last-child {
@@ -69,30 +58,19 @@ export const Article = styled.article`
     }
 `;
 
-export const Title = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+export const Title = styled.p`
     margin-bottom: 30px;
     width: 100%;
-    height: 60px;
 
-    border-radius: 20px 0px;
-    border: 1px solid ${black};
+    text-align: center;
 
-    & p {
-        font-size: 26px;
-        font-weight: 600;
-        letter-spacing: 0.26px;
-        color: ${black};
-    }
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.26px;
+    color: ${black};
 
     @media ${device.md} {
-        margin-bottom: 48px;
-        height: initial;
-        border-radius: initial;
-        border: initial;
+        margin-bottom: 38px;
     }
 
     @media ${device.sm} {
@@ -100,7 +78,7 @@ export const Title = styled.div`
     }
 `;
 
-export const FormLogin = styled( Form )`
+export const FormLastStep = styled( Form )`
     display: flex;
     flex-direction: column;
 `;
@@ -111,37 +89,12 @@ export const LabelFormUser = styled.label`
     flex-direction: column;
     gap: 7px;
     width: 100%;
-
-    &:first-child {
-        margin-bottom: 25px;
-
-        @media ${device.md} {
-            margin-bottom: 30px;
-        }
-
-        @media ${device.sm} {
-            margin-bottom: 25px;
-        }
-    }
-
-    &:nth-child(2) {
-        margin-bottom: 24px;
-
-        @media ${device.md} {
-            margin-bottom: 22px;
-        }
-
-        @media ${device.sm} {
-            margin-bottom: 24px;
-        }
-    }
 `;
 
 export const Input = styled( Field )`
     width: 100%;
-
     height: 60px;
-    padding: 16px 32px;
+    padding: 16px 32px 16px 160px;
 
     font-size: 20px;
     font-weight: 400;
@@ -153,17 +106,13 @@ export const Input = styled( Field )`
 
     border-radius: 20px 0px;
     border-color: ${( { $isDataUser } ) => ( $isDataUser ? grayStroke : borderGreen )};
-
-    border-color: ${( { $error } ) => $error && borderError};
-
+    border-color: ${( { $error } ) => $error && `${borderError}`};
     color: ${black};
     background-color: ${white};
 
-    @media ${device.md} {
-        width: 100%;
-    }
-
     @media ${device.sm} {
+        padding: 15px 20px;
+        padding: 15px 20px 15px 145px;
         height: 45px;
 
         font-size: 16px;
@@ -181,12 +130,32 @@ export const Input = styled( Field )`
     }
 `;
 
+export const WrappPolicy = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 34px;
+    margin-bottom: 20px;
+
+    @media ${device.md} {
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    @media ${device.sm} {
+        margin-top: 22px;
+        margin-bottom: 25px;
+    }
+`;
+
 export const LabelCheckbox = styled.label`
     display: flex;
     align-items: center;
-    /* gap: 3px; */
+    gap: 9px;
 
+    font-family: Nunito;
     font-size: 20px;
+    font-style: normal;
     font-weight: 400;
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
@@ -217,37 +186,16 @@ export const InputCheckbox = styled( Field )`
     }
 `;
 
-export const WrappCheckPass = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-
-    margin-bottom: 22px;
-
-    @media ${device.md} {
-        margin-bottom: 32px;
-    }
-
-    @media ${device.sm} {
-        margin-bottom: 35px;
-    }
-`;
-
-export const TextCheckbox = styled.p`
-    margin-left: 2px;
-
+export const TextPolicy = styled.p`
     font-size: 14px;
-    font-weight: 500;
-    line-height: calc(19.6 / 14);
+    font-weight: 400;
+    line-height: (15.82 / 14);
 
     color: ${black};
 `;
 
-export const LinkForget = styled( Link )`
-    font-size: 14px;
+export const LinkPolicy = styled( Link )`
     font-weight: 500;
-    line-height: (15.82 / 14);
     text-decoration-line: underline;
 
     color: ${black};
@@ -255,18 +203,15 @@ export const LinkForget = styled( Link )`
 
 export const ErrorText = styled.p`
     display: inline;
+    margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
 
     font-family: Nunito;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: calc(15.82 / 14);
+    line-height: (15.82px / 14px);
 
     color: ${accent};
-
-    @media ${device.sm} {
-        margin-left: 32px;
-    }
 `;
 
 export const BtnText = styled.p`
@@ -274,7 +219,7 @@ export const BtnText = styled.p`
     font-weight: 600;
     letter-spacing: 0.24px;
 
-    color: ${( { $color } ) => $color};
+    color: ${white};
 
     @media ${device.sm} {
         font-size: 18px;
@@ -282,95 +227,36 @@ export const BtnText = styled.p`
     }
 `;
 
-export const BtnGoogleOne = styled.div`
-    display: none;
-
-    @media ${device.md} {
-        display: initial;
-    }
-`;
-
-export const BtnGoogleTwo = styled.div`
-    max-width: 217px;
-
-    & p {
-        font-size: 20px;
-        font-weight: 600;
-
-        &:first-child {
-            margin-bottom: 20px;
-            color: ${grayText};
-        }
-        &:nth-child(2) {
-            margin-bottom: 40px;
-            color: ${black};
-        }
-    }
-
-    @media ${device.md} {
-        display: none;
-    }
-`;
-
-export const BtnTextGoogle = styled.p`
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0.24px;
-
-    color: ${( { $color } ) => $color};
-
-    @media ${device.sm} {
-        font-size: 18px;
-        letter-spacing: 0.18px;
-    }
-`;
-
-export const Text = styled.p`
-    display: none;
-
-    @media ${device.md} {
-        display: initial;
-        margin-bottom: 15px;
-
-        font-size: 20px;
-        text-align: center;
-        font-weight: 600;
-
-        color: ${grayText};
-    }
-
-    @media ${device.sm} {
-        margin-bottom: 13px;
-    }
-`;
-
-export const WrappTextRegistr = styled.div`
+export const WrappRegister = styled.div`
     display: flex;
     justify-content: center;
-    gap: 11px;
+    gap: 10px;
 
     @media ${device.sm} {
-        display: initial;
+        flex-direction: column;
     }
 `;
 
-export const TextRegistr = styled.p`
-    font-size: 16px;
+export const RegisterText = styled.p`
+    color: ${grayText};
+    font-size: 20px;
     font-weight: 600;
 
-    color: ${grayText};
-
     @media ${device.sm} {
-        margin-bottom: 15px;
+        font-size: 16px;
     }
 `;
 
-export const LinkRegistr = styled.button`
+export const BtnLogin = styled.button`
     border: none;
     background: initial;
 
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
 
     color: ${black};
+
+    @media ${device.sm} {
+        font-size: 16px;
+    }
 `;

@@ -14,6 +14,9 @@ import { ModalRegistration } from '../modal/ModalRegistration';
 import { ModalRegistrationEmail } from '../modal/ModalRegistrationEmail';
 import { ModalLogin } from '../modal/ModalLogin';
 import { useHubContext } from '../../redux/Context';
+import { ModalLastStep } from '../modal/ModalLastStep';
+import { ModalConfirmEmail } from '../modal/ModalConfirmEmail';
+import { ModalThanksForJoining } from '../modal/ModalThanksForJoining';
 
 export const Hero = () => {
   const docVisible = ( document.body.style.overflow = 'visible' ); // re scroll
@@ -24,11 +27,17 @@ export const Hero = () => {
     setShowModalRegisterEmail,
     showModalLogin,
     setShowModalLogin,
+    showModalLastStep,
+    setShowModalLastStep,
+    showModalConfirmEmail,
+    setShowModalConfirmEmail,
+    showModalThanksForJoining,
+    setShowModalThanksForJoining,
   } = useHubContext();
 
   const [ status, setStatus ] = useState( '' );
 
-  const toggleModal = ( evt ) => {
+  const toggleModalRegister = ( evt ) => {
     setShowModalRegister( !showModalRegister );
     docVisible;
     setStatus( evt?.target.dataset.status );
@@ -41,6 +50,21 @@ export const Hero = () => {
 
   const toggleModalLogin = () => {
     setShowModalLogin( !showModalLogin );
+    docVisible;
+  };
+
+  const toggleModalLastStep = () => {
+    setShowModalLastStep( !showModalLastStep );
+    docVisible;
+  };
+
+  const toggleModalConfirmEmail = () => {
+    setShowModalConfirmEmail( !showModalConfirmEmail );
+    docVisible;
+  };
+
+  const toggleModalThanksForJoining = () => {
+    setShowModalThanksForJoining( !showModalThanksForJoining );
     docVisible;
   };
 
@@ -65,7 +89,7 @@ export const Hero = () => {
                 className="btn"
                 variant="blue"
                 dataStatus="teacher"
-                onActiveModal={ toggleModal }
+                onActiveModal={ toggleModalRegister }
               >
                                 Стати викладачем
               </Button>
@@ -73,7 +97,7 @@ export const Hero = () => {
                 className="btn"
                 variant="pink"
                 dataStatus="student"
-                onActiveModal={ toggleModal }
+                onActiveModal={ toggleModalRegister }
               >
                                 Стати учнем
               </Button>
@@ -84,9 +108,9 @@ export const Hero = () => {
       </StyledSection>
 
       {showModalRegister && (
-        <Modal onActiveModal={ toggleModal }>
+        <Modal onActiveModal={ toggleModalRegister }>
           <ModalRegistration
-            onActiveModal={ toggleModal }
+            onActiveModal={ toggleModalRegister }
             onActiveModalEmail={ toggleModalEmail }
             status={ status }
           />
@@ -102,6 +126,24 @@ export const Hero = () => {
       {showModalLogin && (
         <Modal onActiveModal={ toggleModalLogin }>
           <ModalLogin onActiveModal={ toggleModalLogin } />
+        </Modal>
+      )}
+
+      {showModalLastStep && (
+        <Modal onActiveModal={ toggleModalLastStep }>
+          <ModalLastStep onActiveModal={ toggleModalLastStep } />
+        </Modal>
+      )}
+
+      {showModalConfirmEmail && (
+        <Modal onActiveModal={ toggleModalConfirmEmail }>
+          <ModalConfirmEmail onActiveModal={ toggleModalConfirmEmail } />
+        </Modal>
+      )}
+
+      {showModalThanksForJoining && (
+        <Modal onActiveModal={ toggleModalThanksForJoining }>
+          <ModalThanksForJoining onActiveModal={ toggleModalThanksForJoining } />
         </Modal>
       )}
     </>
