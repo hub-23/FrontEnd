@@ -1,15 +1,27 @@
-import React from 'react';
-import styles from './language.module.css';
+import React, { useState } from 'react';
+import * as S from './Language.styled';
 
-const Language = () => {
-//   const [ active, setActive ] = useState( true );
+export const Language = () => {
+  const [ active, setActive ] = useState( 'UA' );
+  // console.log( 'active:', active );
+
   return (
-    <div className={ styles.language }>
-      <p>UA</p>
-      <div className={ styles.divider }></div>
-      <p>EN</p>
-    </div>
+    <S.LanguageWrapper>
+      <S.LanguageBtn
+        type='button'
+        onClick={ () => setActive( 'UA' ) }
+        $active={ active === 'UA' ? 'true' : 'false' }
+      >
+        UA
+      </S.LanguageBtn>
+      <S.Divider></S.Divider>
+      <S.LanguageBtn
+        type='button'
+        onClick={ () => setActive( 'EN' ) }
+        $active={ active === 'EN' ? 'true' : 'false' }
+      >
+        EN
+      </S.LanguageBtn>
+    </S.LanguageWrapper>
   );
 };
-
-export default Language;
