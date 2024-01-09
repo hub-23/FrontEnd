@@ -5,23 +5,20 @@ import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
 import { transition } from '../../utils/variables.styled';
 
 export const Header = styled.header`
-    padding-bottom: 4px;
-    @media ${device.lg} {
-        padding-bottom: 0;
-    }
-`;
-
-export const HeaderContainer = styled.div`
-    padding: 16px 0;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: ${( props ) => props.color || props.theme.colors.white};
     box-shadow: 0 4px 4px rgba(45, 45, 45, 0.20);
     @media ${device.lg} {
-        padding: 15px 0 0 0;
         background-color: transparent;
         box-shadow: none;
     }
 `;
 
-export const Content = styled.div`
+export const HeaderContainer = styled.div`
     width: 1440px;
     display: flex;
     align-items: center;

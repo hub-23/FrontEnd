@@ -18,43 +18,41 @@ export const Header = () => {
   return (
     <S.Header>
       <S.HeaderContainer>
-        <S.Content>
-          <S.LogoLink to='/'>
-            <S.Logo alt='HUB23' />
-          </S.LogoLink>
+        <S.LogoLink to='/'>
+          <S.Logo alt='HUB23' />
+        </S.LogoLink>
 
-          <S.SearchBtn
-            type='button'
-            aria-label='magnifying glass'
-            onClick={ () => console.log( 'Click on magnifying glass' ) }
-          >
-            <IconSvg
-              xlWidth='24px'
-              xlHeight='24px'
-              icon='icon-magnifying-glass'
-            />
-          </S.SearchBtn>
+        <S.SearchBtn
+          type='button'
+          aria-label='magnifying glass'
+          onClick={ () => console.log( 'Click on magnifying glass' ) }
+        >
+          <IconSvg
+            xlWidth='24px'
+            xlHeight='24px'
+            icon='icon-magnifying-glass'
+          />
+        </S.SearchBtn>
 
-          <S.NavWrapper>
-            <Navigation />
-          </S.NavWrapper>
+        <S.NavWrapper>
+          <Navigation />
+        </S.NavWrapper>
 
-          <S.CountryMenuWrapper>
-            <CountryMenu />
-          </S.CountryMenuWrapper>
+        <S.CountryMenuWrapper>
+          <CountryMenu />
+        </S.CountryMenuWrapper>
 
-          {/* <Link to='/language'> */}
-          <S.LanguageWrapper>
-            <Language />
-          </S.LanguageWrapper>
-          {/* </Link> */}
+        {/* <Link to='/language'> */}
+        <S.LanguageWrapper>
+          <Language />
+        </S.LanguageWrapper>
+        {/* </Link> */}
 
-          <S.SignInBtn onClick={ goToLogin }>
-            {/* to='/signIn' */}
-            Вхід
-          </S.SignInBtn>
+        <S.SignInBtn onClick={ goToLogin }>
+          {/* to='/signIn' */}
+          Вхід
+        </S.SignInBtn>
 
-        </S.Content>
       </S.HeaderContainer>
     </S.Header>
   );

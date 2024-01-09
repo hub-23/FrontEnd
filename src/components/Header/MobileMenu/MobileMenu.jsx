@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './MobileMenu.styled';
+import { Link } from 'react-router-dom';
 import { IconSvg } from '../../common/IconSvg';
 import { CountryMenu } from '../CountryMenu/CountryMenu';
 import { Navigation } from '../Navigation/Navigation';
@@ -17,9 +18,9 @@ export const MobileMenu = ( { onActiveModal } ) => {
   return (
     <S.MobileMenuContainer>
       <S.HeaderWrapper>
-        <S.LogoLink to='/'>
+        <Link to='/'>
           <S.Logo alt='HUB23' />
-        </S.LogoLink>
+        </Link>
         <S.CrossBtn
           type="button"
           aria-expanded="true"
@@ -35,25 +36,26 @@ export const MobileMenu = ( { onActiveModal } ) => {
         </S.CrossBtn>
       </S.HeaderWrapper>
 
-      <S.CountryMenuWrapper>
-        <CountryMenu />
-      </S.CountryMenuWrapper>
+      <S.Content>
+        <S.CountryMenuWrapper>
+          <CountryMenu />
+        </S.CountryMenuWrapper>
 
-      <S.NavWrapper>
-        <Navigation />
-      </S.NavWrapper>
+        <S.NavWrapper>
+          <Navigation />
+        </S.NavWrapper>
 
-      <S.SignInBtn onClick={ goToLogin }>
-        {/* to='/signIn' */}
-        Вхід
-      </S.SignInBtn>
+        <S.SignInBtn onClick={ goToLogin }>
+          {/* to='/signIn' */}
+          Вхід
+        </S.SignInBtn>
 
-      {/* <Link to='/language'> */}
-      <S.LanguageWrapper>
-        <Language />
-      </S.LanguageWrapper>
-      {/* </Link> */}
-
+        {/* <Link to='/language'> */}
+        <S.LanguageWrapper>
+          <Language />
+        </S.LanguageWrapper>
+        {/* </Link> */}
+      </S.Content>
     </S.MobileMenuContainer>
   );
 };

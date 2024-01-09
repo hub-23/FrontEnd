@@ -19,20 +19,31 @@ export const BurgerBtn = styled.button`
 `;
 
 export const MobileMenuContainer = styled.div`
-    width: 360px;
-    height: 728px;
-    padding: 16px 20px 32px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 16px;
+    padding-bottom: 32px;
     background: rgba(255, 255, 255, 0.80);
     backdrop-filter: blur(6px);
+`;
+
+export const Content = styled.div`
+    width: 360px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const HeaderWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-`;
-
-export const LogoLink = styled( Link )`
-    /* margin-right: auto; */
+    padding-left: 20px;
+    padding-right: 20px;
 `;
 
 export const Logo = styled( LogoSvg )`
@@ -94,7 +105,6 @@ export const SignInBtn = styled( Link )`
   align-items: center;
   width: 100%;
   height: 50px;
-  margin-bottom: 258px;
   padding: 14px 32px;
   color: ${( props ) => props.color || props.theme.colors.primary};
   position: relative;
@@ -117,6 +127,10 @@ export const SignInBtn = styled( Link )`
 `;
 
 export const LanguageWrapper = styled.div`
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
     > div > button {
         font-size: 16px;
         letter-spacing: 0.16px;
