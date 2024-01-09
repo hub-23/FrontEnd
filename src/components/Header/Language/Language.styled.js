@@ -1,22 +1,16 @@
 import styled from 'styled-components';
-import { device } from '../../../../styles/device';
 
 export const LanguageWrapper = styled.div`
     display: flex;
-    justify-content: space-around;
-    @media ${device.lg} {
-        display: none;
-    }
+    justify-content: center;
 `;
 
 export const LanguageBtn = styled.button`
     background-color: transparent;
     border: none;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 20px;
     font-weight: 400;
     line-height: 1.4;
-    letter-spacing: 0.2px;
     color: ${( props ) => ( props.$active === 'true' ? '#797979' : props.theme.colors.black )};
 `;
 

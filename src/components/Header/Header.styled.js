@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { device } from '../../styles/device';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
 import { transition } from '../../utils/variables.styled';
 
@@ -40,7 +40,7 @@ export const Content = styled.div`
     }
     @media ${device.lg} { // 992  - до - моб меню
         width: 768px;
-        justify-content: space-between;
+        /* justify-content: space-between; */
     }
     @media ${device.md} { // 768
         width: 576px;
@@ -59,7 +59,7 @@ export const LogoLink = styled( Link )`
         margin-right: 50px;
     }
     @media ${device.lg} {
-        margin-right: 0;
+        margin-right: auto;
     }
 `;
 
@@ -72,53 +72,59 @@ export const Logo = styled( LogoSvg )`
     }
 `;
 
-export const NavList = styled.nav`
-    display: flex;
-    align-items: center;
-    gap: 46px;
-    margin-right: 127px;
-    @media ${device.xl} {
-        gap: 40px;
-        margin-right: 69px;
-    }
+export const SearchBtn = styled.button`
+    display: none;
     @media ${device.lg} {
+        margin-right: 17px;
+        background-color: transparent;
+        border: none;
         display: block;
-        margin-right: 0;
+        fill: none;
+        stroke: ${( props ) => props.color || props.theme.colors.black};
+        &:hover,
+        &:focus {
+            stroke: ${( props ) => props.color || '#797979'};
+        }
     }
 `;
 
-export const NavItem = styled( NavLink )`
-    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.4;
-    letter-spacing: 0.2px;
-    color: ${( props ) => props.color || props.theme.colors.black};
-    padding-top: 0;
-    padding-bottom: 0;
-    &:hover,
-    &:focus {
-        color: #797979;
-    }
-    &:active {
-        text-decoration: underline;
-    }
-    @media ${device.lg} {
-        display: none;
+export const NavWrapper = styled.div`
+    > nav {
+        display: flex;
+        align-items: center;
+        gap: 46px;
+        margin-right: 127px;
+        @media ${device.xl} {
+            gap: 40px;
+            margin-right: 69px;
+        }
+        @media ${device.lg} {
+            display: block;
+            margin-right: 0;
+        }
+        > a {
+            font-size: 20px;
+            letter-spacing: 0.2px;
+            @media ${device.lg} {
+                display: none;
+            }
+        }
     }
 `;
 
-export const CountryMenu = styled.div`
-    display: flex;
-    align-items: center;
+export const CountryMenuWrapper = styled.div`
     margin-right: 23px;
-    > p {
-        font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};;
+    > div {
+        gap: 8px;
+    }
+    > div > p {
         font-size: 20px;
-        font-weight: 400;
         line-height: 1.4;
-        letter-spacing: 0.2px;
-        color: ${( props ) => props.color || props.theme.colors.black};        
+        letter-spacing: 0.2px;      
+    }
+    > div > button {
+        width: 12px;
+        height: 28px;
     }
     @media ${device.xl} {
         margin-right: 15px;
@@ -128,21 +134,13 @@ export const CountryMenu = styled.div`
     }
 `;
 
-export const CountryMenuBtn = styled.button`
-    width: 40px;
-    height: 40px;
-    padding-bottom: 4px;
-    background-color: transparent;
-    border: none;
-    fill: ${( props ) => props.color || props.theme.colors.black};
-    -webkit-transition: rotate ${transition};
-    transition: rotate ${transition};
-    ${( props ) => props.$rotate && css` 
-        transform: rotate(180deg); 
-    `};
-    &:hover,
-    &:focus {
-        stroke: #797979;
+export const LanguageWrapper = styled.div`
+    > div > button {
+        font-size: 20px;
+        letter-spacing: 0.2px;
+    }
+    @media ${device.lg} {
+        display: none;
     }
 `;
 

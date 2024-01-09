@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { Link } from 'react-router-dom';
-import { Language } from './Select/Language/Language';
-import { MobileMenu } from './MobileMenu/MobileMenu';
+import { CountryMenu } from './CountryMenu/CountryMenu';
+import { Language } from './Language/Language';
+import { Navigation } from './Navigation/Navigation';
 import * as S from './Header.styled';
 import { IconSvg } from '../common/IconSvg';
 import { useHubContext } from '../../redux/Context';
 
 
 export const Header = () => {
-  const [ isDropdownOpen, setIsDropdownOpen ] = useState( false );
-  const selectedCountry = 'Україна';
   const { showModalLogin, setShowModalLogin } = useHubContext();
 
   const goToLogin = () => {
@@ -24,39 +23,37 @@ export const Header = () => {
             <S.Logo alt='HUB23' />
           </S.LogoLink>
 
-          <S.NavList>
-            <S.NavItem to='/teacher'>Викладачі</S.NavItem>
-            <S.NavItem to='/about'>Про нас</S.NavItem>
-            <S.NavItem to='/feedback'>Відгуки</S.NavItem>
-            <MobileMenu />
-          </S.NavList>
+          <S.SearchBtn
+            type='button'
+            aria-label='magnifying glass'
+            onClick={ () => console.log( 'Click on magnifying glass' ) }
+          >
+            <IconSvg
+              xlWidth='24px'
+              xlHeight='24px'
+              icon='icon-magnifying-glass'
+            />
+          </S.SearchBtn>
 
-          <S.CountryMenu>
-            <p>{selectedCountry}</p>
-            <S.CountryMenuBtn
-              type='button'
-              aria-label='dropdown-menu'
-              onClick={ () => setIsDropdownOpen( !isDropdownOpen ) }
-              $rotate={ isDropdownOpen }
-            >
-              <IconSvg
-                xlWidth='11px'
-                xlHeight='6px'
-                icon='icon-arrow-down'
-              />
-            </S.CountryMenuBtn>
-          </S.CountryMenu>
+          <S.NavWrapper>
+            <Navigation />
+          </S.NavWrapper>
+
+          <S.CountryMenuWrapper>
+            <CountryMenu />
+          </S.CountryMenuWrapper>
 
           {/* <Link to='/language'> */}
-          <Language />
+          <S.LanguageWrapper>
+            <Language />
+          </S.LanguageWrapper>
           {/* </Link> */}
 
-          <S.SignInBtn
-            to='/signIn'
-            onClick={ goToLogin }
-          >
+          <S.SignInBtn onClick={ goToLogin }>
+            {/* to='/signIn' */}
             Вхід
           </S.SignInBtn>
+
         </S.Content>
       </S.HeaderContainer>
     </S.Header>
