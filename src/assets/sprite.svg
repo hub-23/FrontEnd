@@ -83,6 +83,7 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M23 12.25C23 11.8358 22.5234 11.5 21.9355 11.5H2.06452C1.47661 11.5 1 11.8358 1 12.25C1 12.6642 1.47661 13 2.06452 13H21.9355C22.5234 13 23 12.6642 23 12.25Z" />
 <path fill-rule="evenodd" clip-rule="evenodd" d="M23 4.75C23 4.33579 22.5234 4 21.9355 4H2.06452C1.47661 4 1 4.33579 1 4.75C1 5.16421 1.47661 5.5 2.06452 5.5H21.9355C22.5234 5.5 23 5.16421 23 4.75Z" />
 <path fill-rule="evenodd" clip-rule="evenodd" d="M23 19.75C23 19.3358 22.5234 19 21.9355 19H2.06452C1.47661 19 1 19.3358 1 19.75C1 20.1642 1.47661 20.5 2.06452 20.5H21.9355C22.5234 20.5 23 20.1642 23 19.75Z" />
+</symbol>
 <symbol id="icon-envelope" viewBox="0 0 24 24">
 <path d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
