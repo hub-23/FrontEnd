@@ -7,7 +7,6 @@ import { MobileMenu } from './MobileMenu';
 
 export const MobileMenuBtn = () => {
   const [ isModalOpen, setIsModalOpen ] = useState( false );
-  console.log( 'isModalOpen', isModalOpen );
 
   const toggleModal = ( e ) => {
     setIsModalOpen( !isModalOpen );
@@ -22,7 +21,6 @@ export const MobileMenuBtn = () => {
         aria-controls="mobile-menu"
         aria-label='toggle mobile menu'
         onClick={ () => setIsModalOpen( !isModalOpen ) }
-        // $open={ isDropdownOpen }
       >
         { isModalOpen
         ? (

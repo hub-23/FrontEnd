@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import { CountryMenu } from './CountryMenu/CountryMenu';
+import { CountryFilterBtn } from './CountryFilter/CountryFilterBtn';
 import { Language } from './Language/Language';
 import { Navigation } from './Navigation/Navigation';
 import * as S from './Header.styled';
@@ -39,7 +39,7 @@ export const Header = () => {
         </S.NavWrapper>
 
         <S.CountryMenuWrapper>
-          <CountryMenu />
+          <CountryFilterBtn />
         </S.CountryMenuWrapper>
 
         {/* <Link to='/language'> */}

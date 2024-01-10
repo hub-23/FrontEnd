@@ -31,7 +31,7 @@ export const MobileMenuContainer = styled.div`
 `;
 
 export const Content = styled.div`
-    width: 360px;
+    max-width: 360px;
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
@@ -61,7 +61,7 @@ export const CrossBtn = styled.button`
     }
 `;
 
-export const CountryMenuWrapper = styled.div`
+export const CountryFilterWrapper = styled.div`
     margin-top: 16px;
     margin-bottom: 102px;
     display: flex;

@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './MobileMenu.styled';
 import { Link } from 'react-router-dom';
 import { IconSvg } from '../../common/IconSvg';
-import { CountryMenu } from '../CountryMenu/CountryMenu';
+import { CountryFilterBtn } from '../CountryFilter/CountryFilterBtn';
 import { Navigation } from '../Navigation/Navigation';
 import { useHubContext } from '../../../redux/Context';
 import { Language } from '../Language/Language';
@@ -37,9 +37,9 @@ export const MobileMenu = ( { onActiveModal } ) => {
       </S.HeaderWrapper>
 
       <S.Content>
-        <S.CountryMenuWrapper>
-          <CountryMenu />
-        </S.CountryMenuWrapper>
+        <S.CountryFilterWrapper>
+          <CountryFilterBtn />
+        </S.CountryFilterWrapper>
 
         <S.NavWrapper>
           <Navigation />
