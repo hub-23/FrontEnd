@@ -3,12 +3,9 @@ import { device } from '../../styles/device';
 
 export const StyledSection = styled.section`
     min-width: 100%;
-    max-width: 1440px;
     max-height: 380px;
     min-height: 100%;
-    padding-bottom: 78px;
     overflow: hidden;
-
     color: #ffffff;
 
     @media ${device.sm} {

@@ -12,8 +12,8 @@ import {
   ContainerButtons,
 } from './OurTeachersCarousel.styled.js';
 import { teachers } from './ourTeachersData.js';
-import Play from '../../components/TopTeachersCarousel/components/Button/Play.jsx';
-import Pause from '../../components/TopTeachersCarousel/components/Button/Pause.jsx';
+import Play from '../OurTeachersCarousel/Button/Play.jsx';
+import Pause from '../OurTeachersCarousel/Button/Pause.jsx';
 
 export const OurTeachersCarousel = () => {
   const [ autoPlay, setAutoPlay ] = useState( true );
@@ -33,14 +33,13 @@ export const OurTeachersCarousel = () => {
     centerMode: true,
     infinite: true,
     centerPadding: '180px',
-    slidesToShow: 24,
+    slidesToShow: 14,
     speed: 1000,
     autoplay: true,
     autoplaySpeed: 0,
     pauseOnHover: true,
     rows: 3,
     slidesPerRow: 1,
-    gap: '10px',
   };
     //   const settings = {
     //     infinite: true,
