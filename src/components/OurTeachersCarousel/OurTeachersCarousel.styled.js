@@ -9,11 +9,9 @@ export const StyledSection = styled.section`
     color: #ffffff;
 
     @media ${device.sm} {
-        // max-width: 360px;
         min-width: 100%;
         max-height: 555px;
         min-height: 100%;
-        padding-bottom: 28px;
     }
 `;
 

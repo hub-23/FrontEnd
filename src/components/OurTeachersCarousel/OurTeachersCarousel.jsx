@@ -32,7 +32,7 @@ export const OurTeachersCarousel = () => {
     className: 'center',
     centerMode: true,
     infinite: true,
-    centerPadding: '180px',
+    // centerPadding: '180px',
     slidesToShow: 14,
     speed: 1000,
     autoplay: true,
@@ -44,21 +44,35 @@ export const OurTeachersCarousel = () => {
       {
         breakpoint: 1050,
         settings: {
-          slidesToShow: 8,
+          slidesToShow: 14,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 10,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 750,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 8,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 6,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
