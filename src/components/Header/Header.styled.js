@@ -70,8 +70,7 @@ export const Logo = styled( LogoSvg )`
 export const SearchBtn = styled.button`
     display: none;
     @media screen and (max-width: 360px) {
-        display: block; // +
-        /* display: ${( props ) => ( props.$heroFilterShown === true ? 'none' : 'block' ) }; */
+        display: block;
         margin-right: 17px;
         background-color: transparent;
         border: none;

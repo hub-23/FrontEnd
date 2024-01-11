@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  StyledForm,
   StyledCheckbox,
   StyledInput,
   StyledInputs,
@@ -8,6 +9,7 @@ import {
   StyledText,
   StyledStroke,
 } from './HeroFilter.styled';
+import { useHubContext } from '../../redux/Context';
 
 import { Button } from '../../components/common/button/Button';
 
@@ -19,6 +21,7 @@ export const HeroFilter = () => {
   const [ cityValue, setCityValue ] = useState( '' );
   const [ focusInput, setFocusInput ] = useState( '' );
   const [ filteredSuggestions, setFilteredSuggestions ] = useState( [] );
+  const { isHeroFilterShown } = useHubContext();
 
   const handleInputChange = ( e ) => {
     for ( let i = 0; i < e.target.value.length; i++ ) {
@@ -99,7 +102,7 @@ export const HeroFilter = () => {
   };
 
   return (
-    <form className='filter' onSubmit={ handleSubmit }>
+    <StyledForm className='filter' onSubmit={ handleSubmit } $heroFilterShown={ isHeroFilterShown } >
       <StyledInputs>
         <StyledInput
           className='input-subject'
@@ -160,6 +163,6 @@ export const HeroFilter = () => {
           </Button>
         </StyledLabel>
       </StyledInputs>
-    </form>
+    </StyledForm>
   );
 };

@@ -12,19 +12,24 @@ export const MobileMenu = ( { onActiveModal } ) => {
 
   return (
     <S.MobileMenuContainer>
-      <S.CrossBtn
-        type="button"
-        aria-expanded="true"
-        aria-controls="mobile-menu"
-        aria-label='toggle mobile menu'
-        onClick={ () => onActiveModal() }
-      >
-        <IconSvg
-          xlWidth='24px'
-          xlHeight='24px'
-          icon='icon-cross'
-        />
-      </S.CrossBtn>
+      <S.MobileMenuHeder>
+        <S.LogoLink to='/'>
+          <S.Logo alt='HUB23' />
+        </S.LogoLink>
+        <S.CrossBtn
+          type="button"
+          aria-expanded="true"
+          aria-controls="mobile-menu"
+          aria-label='toggle mobile menu'
+          onClick={ () => onActiveModal() }
+        >
+          <IconSvg
+            xlWidth='24px'
+            xlHeight='24px'
+            icon='icon-cross'
+          />
+        </S.CrossBtn>
+      </S.MobileMenuHeder>
 
       <S.Content>
         <S.CountryFilterWrapper>
