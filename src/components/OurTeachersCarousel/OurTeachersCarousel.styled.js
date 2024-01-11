@@ -3,17 +3,17 @@ import { device } from '../../styles/device';
 
 export const StyledSection = styled.section`
     min-width: 100%;
-    max-height: 380px;
+    max-height: 400px;
     min-height: 100%;
     overflow: hidden;
     color: #ffffff;
 
     @media ${device.sm} {
-        max-width: 360px;
+        // max-width: 360px;
         min-width: 100%;
         max-height: 555px;
         min-height: 100%;
-        padding-bottom: 48px;
+        padding-bottom: 28px;
     }
 `;
 
@@ -29,11 +29,17 @@ export const StyledWrapper = styled.div`
 export const StyledContent = styled.div`
     width: 100%;
     margin-top: 80px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
 
     @media ${device.lg} {
         margin-top: 48px;
+    }
+
+    @media ${device.sm} {
+        margin-top: 28px;
+        margin-bottom: 14px;
     }
 `;
 

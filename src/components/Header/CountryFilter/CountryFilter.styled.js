@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { transition } from '../../../utils/variables.styled';
 
-export const CountryFilterWrapper = styled.div`
+export const CountryFilterWrapper = styled.div` // comment
     display: flex;
     align-items: center;
     > p {
