@@ -7,7 +7,7 @@ import { device } from '../../styles/device';
 
 export const StyledForm = styled.form`
     @media screen and (max-width: 360px) {
-        display: ${( props ) => ( props.$heroFilterShown === true ? 'none' : 'block' ) };
+        display: ${( props ) => ( props.$heroFilterShown === true ? 'block' : 'none' ) };
     }
 `;
 
