@@ -1,8 +1,9 @@
 import React from 'react';
 import { Hero } from '../../components/Hero/Hero';
+import { PopularСlasses } from '../../components/PopularСlasses/PopularСlasses';
 import TopTeachersCarousel from '../../components/TopTeachersCarousel';
 import { PeopleTrust } from '../../components/PeopleTrust/PeopleTrust';
-import { PopularСlasses } from '../../components/PopularСlasses/PopularСlasses';
+import OurTeachersCarousel from '../../components/OurTeachersCarousel';
 import { FeedbackCarousel } from '../../components/FeedbackCarousel/FeedbackCarousel';
 
 export const HomePage = () => {
@@ -12,6 +13,7 @@ export const HomePage = () => {
       <PopularСlasses />
       <TopTeachersCarousel />
       <PeopleTrust />
+      <OurTeachersCarousel />
       <FeedbackCarousel />
     </>
   );
