@@ -33,7 +33,6 @@ export const Hero = () => {
     setShowModalConfirmEmail,
     showModalThanksForJoining,
     setShowModalThanksForJoining,
-    isHeroFilterShown,
   } = useHubContext();
 
   const [ status, setStatus ] = useState( '' );
@@ -103,9 +102,7 @@ export const Hero = () => {
                                 Стати учнем
               </Button>
             </StyledBtnContainer1>
-            {isHeroFilterShown && (
-              <HeroFilter />
-            )}
+            <HeroFilter />
           </StyledContainer>
         </StyledGradient>
       </StyledSection>
