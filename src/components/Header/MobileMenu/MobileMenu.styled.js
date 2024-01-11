@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ReactComponent as LogoSvg } from '../../../assets/home/logo.svg';
 import { transition } from '../../../utils/variables.styled';
 
 
@@ -76,6 +75,13 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+export const Content = styled.div`
+    /* max-width: 360px; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const CountryFilterWrapper = styled.div`
