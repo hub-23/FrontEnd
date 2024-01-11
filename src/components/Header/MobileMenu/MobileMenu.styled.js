@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import { device } from '../../../styles/device';
 import { Link } from 'react-router-dom';
-import { ReactComponent as LogoSvg } from '../../../assets/home/logo.svg';
 import { transition } from '../../../utils/variables.styled';
 
 export const BurgerBtn = styled.button`
     display: none;
-    @media ${device.lg} { // 992  - до - моб меню
+    @media screen and (max-width: 834px) { // до - моб меню
         display: block;
         fill: ${( props ) => props.color || props.theme.colors.black};
         background-color: transparent;
@@ -21,37 +19,18 @@ export const BurgerBtn = styled.button`
 export const MobileMenuContainer = styled.div`
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 456px;
     height: 100%;
-    padding-top: 16px;
-    padding-bottom: 32px;
+    padding: 50px 128px;
     background: rgba(255, 255, 255, 0.80);
     backdrop-filter: blur(6px);
 `;
 
-export const Content = styled.div`
-    max-width: 360px;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-    flex-direction: column;
-`;
-
-export const HeaderWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-`;
-
-export const Logo = styled( LogoSvg )`
-    width: 93px;
-    height: 23px;
-`;
-
 export const CrossBtn = styled.button`
+    position: absolute;
+    top: 24px;
+    right: 40px;
     background-color: transparent;
     border: none;
     fill: ${( props ) => props.color || props.theme.colors.black};
@@ -61,8 +40,14 @@ export const CrossBtn = styled.button`
     }
 `;
 
+export const Content = styled.div`
+    /* max-width: 360px; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+`;
+
 export const CountryFilterWrapper = styled.div`
-    margin-top: 16px;
     margin-bottom: 102px;
     display: flex;
     justify-content: center;
