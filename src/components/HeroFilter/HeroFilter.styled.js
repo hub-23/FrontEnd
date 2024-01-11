@@ -4,6 +4,13 @@ import locationImg from '../../assets/home/location.svg';
 import stroke from '../../assets/home/stroke.svg';
 import { device } from '../../styles/device';
 
+
+export const StyledForm = styled.form`
+    @media screen and (max-width: 360px) {
+        display: ${( props ) => ( props.$heroFilterShown === true ? 'none' : 'block' ) };
+    }
+`;
+
 export const StyledInputs = styled.div`
     max-width: 1120px;
     height: 80px;

@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './Header.styled';
-// import { Link } from 'react-router-dom';
 import { CountryFilterBtn } from './CountryFilter/CountryFilterBtn';
 import { Language } from './Language/Language';
 import { Navigation } from './Navigation/Navigation';
@@ -26,7 +25,6 @@ export const Header = () => {
           type='button'
           aria-label='magnifying glass'
           onClick={ () => setIsHeroFilterShown( !isHeroFilterShown ) }
-          // $heroFilterShown = { isHeroFilterShown }
         >
           <IconSvg
             xlWidth='24px'
