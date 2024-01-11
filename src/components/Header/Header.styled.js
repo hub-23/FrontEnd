@@ -12,7 +12,7 @@ export const Header = styled.header`
     padding-bottom: 16px;
     background-color: ${( props ) => props.color || props.theme.colors.white};
     box-shadow: 0 4px 4px rgba(45, 45, 45, 0.20);
-    @media ${device.lg} {
+    @media screen and (max-width: 834px) {
         background-color: transparent;
         box-shadow: none;
     }
@@ -32,30 +32,28 @@ export const HeaderContainer = styled.div`
     }
     @media ${device.xl} { // 1200
         width: 992px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    @media ${device.lg} { // 992  
+        width: 835px;
+    }
+    @media screen and (max-width: 834px) { // до - моб меню
+        width: 100%;
         padding-left: 20px;
         padding-right: 20px;
-    }
-    @media ${device.lg} { // 992  - до - моб меню
-        width: 768px;
-        /* justify-content: space-between; */
-    }
-    @media ${device.md} { // 768
-        width: 576px;
-    }
-    @media ${device.sm} { // 576
-        width: 360px;
-    }
-    @media screen and (max-width: 360px) { // 360
-        width: 100%;
     }
 `;
 
 export const LogoLink = styled( Link )`
-    margin-right: 140px;
+    margin-right: 142px;
     @media ${device.xl} {
         margin-right: 50px;
     }
     @media ${device.lg} {
+        margin-right: 40px;
+    }
+    @media screen and (max-width: 834px) {
         margin-right: auto;
     }
 `;
@@ -63,7 +61,7 @@ export const LogoLink = styled( Link )`
 export const Logo = styled( LogoSvg )`
     width: 152px;
     height: 40px;
-    @media ${device.lg} {
+    @media screen and (max-width: 360px) {
         width: 93px;
         height: 23px;
     }
@@ -71,11 +69,12 @@ export const Logo = styled( LogoSvg )`
 
 export const SearchBtn = styled.button`
     display: none;
-    @media ${device.lg} {
+    @media screen and (max-width: 360px) {
+        display: block; // +
+        /* display: ${( props ) => ( props.$heroFilterShown === true ? 'none' : 'block' ) }; */
         margin-right: 17px;
         background-color: transparent;
         border: none;
-        display: block;
         fill: none;
         stroke: ${( props ) => props.color || props.theme.colors.black};
         &:hover,
@@ -89,20 +88,26 @@ export const NavWrapper = styled.div`
     > nav {
         display: flex;
         align-items: center;
-        gap: 46px;
-        margin-right: 127px;
+        gap: 48px;
+        margin-right: 143px;
         @media ${device.xl} {
-            gap: 40px;
-            margin-right: 69px;
+            gap: 35px;
+            margin-right: 61px;
         }
         @media ${device.lg} {
-            display: block;
+            gap: 25px;
+            margin-right: 40px;
+        }
+        @media screen and (max-width: 834px) {
             margin-right: 0;
         }
         > a {
             font-size: 20px;
             letter-spacing: 0.2px;
             @media ${device.lg} {
+                font-size: 16px;
+            }
+            @media screen and (max-width: 834px) {
                 display: none;
             }
         }
@@ -117,26 +122,36 @@ export const CountryMenuWrapper = styled.div`
     > div > p {
         font-size: 20px;
         line-height: 1.4;
-        letter-spacing: 0.2px;      
+        letter-spacing: 0.2px;
+        @media ${device.lg} {
+            font-size: 16px;
+        }      
     }
     > div > button {
         width: 12px;
         height: 28px;
     }
-    @media ${device.xl} {
+    @media ${device.lg} {
         margin-right: 15px;
     }
-    @media ${device.lg} {
+    @media screen and (max-width: 834px) {
         display: none;
     }
 `;
 
 export const LanguageWrapper = styled.div`
+    margin-right: 40px; 
     > div > button {
         font-size: 20px;
         letter-spacing: 0.2px;
+        @media ${device.lg} {
+            font-size: 16px;
+        }
     }
     @media ${device.lg} {
+        margin-right: 35px;
+    }
+    @media screen and (max-width: 834px) {
         display: none;
     }
 `;
@@ -148,7 +163,6 @@ export const SignInBtn = styled( Link )`
   width: 107px;
   height: 48px;
   padding: 14px 32px;
-  margin-left: 40px; 
   color: ${( props ) => props.color || props.theme.colors.primary};
   background: linear-gradient(white, white) padding-box,
               linear-gradient(87.92deg, #09194D 0%, #234890 100%) border-box;
@@ -160,14 +174,18 @@ export const SignInBtn = styled( Link )`
   line-height: 1;
   letter-spacing: 0.2px;
   transition: background ${transition}, border-color ${transition}, color ${transition};
-
   &:hover,
   &:focus {
     background: ${( props ) => props.color || props.theme.colors.primary};
     border-color: ${( props ) => props.color || props.theme.colors.primary};
     color: ${( props ) => props.color || props.theme.colors.white};
   }
-  @media ${device.lg} {
+  @media ${device.xl} {
+    width: 98px;
+    height: 43px;
+    font-size: 16px;
+  }
+  @media screen and (max-width: 834px) {
     display: none;
   }
 `;
