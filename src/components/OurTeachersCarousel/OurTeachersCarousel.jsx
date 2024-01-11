@@ -40,40 +40,30 @@ export const OurTeachersCarousel = () => {
     pauseOnHover: true,
     rows: 3,
     slidesPerRow: 1,
+    responsive: [
+      {
+        breakpoint: 1050,
+        settings: {
+          slidesToShow: 8,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-    //   const settings = {
-    //     infinite: true,
-    //     speed: 1000,
-    //     initialSlide: 0,
-    //     slidesToShow: 4,
-    //     slidesToScroll: 1,
-    //     autoplay: true,
-    //     autoplaySpeed: 0,
-    //     pauseOnHover: true,
-    //     responsive: [
-    //       {
-    //         breakpoint: 1050,
-    //         settings: {
-    //           slidesToShow: 3,
-    //           slidesToScroll: 1,
-    //         },
-    //       },
-    //       {
-    //         breakpoint: 750,
-    //         settings: {
-    //           slidesToShow: 2,
-    //           slidesToScroll: 1,
-    //         },
-    //       },
-    //       {
-    //         breakpoint: 480,
-    //         settings: {
-    //           slidesToShow: 1,
-    //           slidesToScroll: 1,
-    //         },
-    //       },
-    //     ],
-    //   };
 
   return (
     <>
