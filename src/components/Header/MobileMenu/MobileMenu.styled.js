@@ -24,7 +24,7 @@ export const MobileMenuContainer = styled.div`
     right: 0;
     width: 456px;
     height: 100%;
-    padding: 96px 20px 80px 20px;
+    padding: 24px 40px 80px 40px;
     background: rgba(255, 255, 255, 0.80);
     backdrop-filter: blur(6px);
     @media screen and (max-width: 455px) {
@@ -36,8 +36,9 @@ export const MobileMenuContainer = styled.div`
 `;
 
 export const MobileMenuHeder = styled.div`
+    display: flex;
+    justify-content: end;
     @media screen and (max-width: 360px) {
-        display: flex;
         justify-content: space-between;
         margin-bottom: 16px;
     }
@@ -56,18 +57,14 @@ export const Logo = styled( LogoSvg )`
 `;
 
 export const CrossBtn = styled.button`
-    position: absolute;
-    top: 24px;
-    right: 40px;
+    display: flex;
+    align-items: center;
     background-color: transparent;
     border: none;
     fill: ${( props ) => props.color || props.theme.colors.black};
     &:hover,
     &:focus {
         fill: ${( props ) => props.color || '#797979'};
-    }
-    @media screen and (max-width: 360px) {
-        position: static;
     }
 `;
 

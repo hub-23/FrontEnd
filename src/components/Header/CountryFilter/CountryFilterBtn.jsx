@@ -6,12 +6,17 @@ import { CountrySelect } from './CountrySelect';
 
 
 export const CountryFilterBtn = () => {
-  const selectedCountry = 'Україна';
+  // const selectedCountry = 'Україна';
   const [ isModalOpen, setIsModalOpen ] = useState( false );
+  const [ selectedCountry, setSelectedCountry ] = useState( 'Україна' );
 
   const toggleModal = ( e ) => {
     setIsModalOpen( !isModalOpen );
     document.body.style.overflow = 'visible';
+  };
+
+  const handleCountrySelect = ( country ) => {
+    setSelectedCountry( country );
   };
 
   return (
@@ -33,7 +38,7 @@ export const CountryFilterBtn = () => {
       </S.CountryFilterWrapper>
       { isModalOpen && (
         <Modal onActiveModal={ toggleModal }>
-          <CountrySelect onActiveModal={ toggleModal } />
+          <CountrySelect onActiveModal={ toggleModal } onCountrySelect={ handleCountrySelect } />
         </Modal>
       )}
     </>
