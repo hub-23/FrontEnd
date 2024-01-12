@@ -131,7 +131,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
         </Formik>
 
         <Login>
-          <p>Я вже зареєстрваний</p>
+          <p>Я вже зареєстрований</p>
           <button type="button" onClick={ goToLogin }>
                         Увійти
           </button>
