@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import searchImg from '../../assets/home/search.svg';
 import locationImg from '../../assets/home/location.svg';
-import stroke from '../../assets/home/stroke.svg';
 import { device } from '../../styles/device';
-
 
 export const StyledForm = styled.form`
     @media screen and (max-width: 360px) {
-        display: ${( props ) => ( props.$heroFilterShown === true ? 'block' : 'none' ) };
+        display: ${( props ) => ( props.$heroFilterShown === true ? 'block' : 'none' )};
     }
 `;
 
@@ -19,15 +17,12 @@ export const StyledInputs = styled.div`
     display: flex;
     overflow: hidden;
     background: #ffffff;
-    // backdrop-filter: blur(4px);
 
     @media ${device.lg} {
         width: 700px;
         height: 306px;
         flex-direction: column;
         padding: 25px 40px 0px;
-        // backdrop-filter: blur(2px);
-        // margin-bottom: 25px;
     }
 
     @media ${device.md} {
@@ -37,18 +32,10 @@ export const StyledInputs = styled.div`
 
     @media ${device.sm} {
         max-width: 290px;
-        // width: 320px;
         height: 270px;
         flex-direction: column;
         padding: 25px 20px 0px;
     }
-
-    // padding-top: 68px;
-    // padding-top: 132;
-    // width: 280px;
-    // height: 0px;
-    // stroke-width: 1px;
-    // color: #D5D5D5;
 `;
 
 export const StyledInput = styled.input`
@@ -76,7 +63,7 @@ export const StyledInput = styled.input`
 
     &.input-subject {
         @media ${device.xl} {
-            width: 180px;
+            width: 205px;
         }
     }
 
@@ -139,7 +126,11 @@ export const StyledLabel = styled.label`
             font-weight: 500;
             line-height: 140%;
             letter-spacing: 0.16px;
-            // backdrop-filter: blur(2px);
+        }
+
+        @media ${device.md} {
+            width: 260px;
+            margin-left: 10px;
         }
     }
 `;
@@ -185,10 +176,13 @@ export const StyledCheckbox = styled.input`
 
 export const StyledStroke = styled.div`
     @media ${device.lg} {
-        //background-image: ${stroke};
         background-color: #d5d5d5;
         max-width: 714px;
         height: 1px;
+    }
+
+    @media ${device.md} {
+        width: 270px;
     }
 
     @media ${device.sm} {
