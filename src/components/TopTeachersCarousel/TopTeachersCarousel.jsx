@@ -35,7 +35,7 @@ export const TopTeachersCarousel = () => {
 
   const settings = {
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     initialSlide: 0,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -44,14 +44,14 @@ export const TopTeachersCarousel = () => {
     pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1050,
+        breakpoint: 1100,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 750,
+        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
