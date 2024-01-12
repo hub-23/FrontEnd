@@ -3,7 +3,11 @@ import { IconSvg } from '../../common/IconSvg';
 import * as S from './CountryFilter.styled';
 import { CrossBtn } from '../MobileMenu/MobileMenu.styled';
 
-export const CountrySelect = ( { onActiveModal } ) => {
+export const CountrySelect = ( { onActiveModal, onCountrySelect } ) => {
+  const staticCountries = [ 'Україна', 'Польща', 'Чехія', 'Франція', 'Швейцарія',
+    'Німеччина', 'Велика Британія', 'Латвія', 'Литва', 'Швеція',
+    'Канада', 'США', 'Словаччина', 'Австрія', 'Угорщина' ];
+
   return (
     <S.CountrySelectContainer>
       <S.HeaderWrapper>
@@ -31,23 +35,13 @@ export const CountrySelect = ( { onActiveModal } ) => {
         // onChange={handleChange}
       />
       <S.CountriesList>
-        <li>Україна</li>
-        <li>Канада</li>
-        <li>Англія</li>
-        <li>Чехія</li>
-        <li>Словакія</li>
-        <li>Литва</li>
-        <li>Угорщина</li>
-        <li>Норвегія</li>
-        <li>Німеччина</li>
-        <li>Польща</li>
-        <li>США</li>
-        <li>Латвія</li>
-        <li>Франція</li>
-        <li>Австрія</li>
-        <li>Швейцарія</li>
-        <li>Швеція</li>
+        {staticCountries.map( ( country ) => (
+          <li key={ country } onClick={ () => onCountrySelect( country ) }>
+            <p>{country}</p>
+          </li>
+        ) )}
       </S.CountriesList>
+
       <S.NoteWrapper>
         <S.Divider></S.Divider>
         <S.Note>

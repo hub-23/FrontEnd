@@ -100,7 +100,7 @@ export const HeroFilter = () => {
     console.log( 'Місто:', city );
     console.log( 'Онлайн:', online );
   };
-  console.log( isHeroFilterShown );
+
   return (
     <StyledForm className='filter' onSubmit={ handleSubmit } $heroFilterShown={ isHeroFilterShown } >
       <StyledInputs>
