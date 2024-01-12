@@ -35,18 +35,18 @@ export const StyledContainer = styled.div`
     overflow: hidden;
 
     @media ${device.lg} {
-        padding: 40px 141px 154px 40px;
+        padding: 100px 141px 154px 40px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
     }
 
     @media ${device.md} {
-        padding: 40px 141px 154px;
+        padding: 100px 141px 154px;
     }
 
     @media ${device.sm} {
-        padding: 20px 20px 154px 20px;
+        padding: 100px 20px 154px 20px;
     }
 `;
 
