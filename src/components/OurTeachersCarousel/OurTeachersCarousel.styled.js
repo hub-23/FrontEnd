@@ -74,7 +74,7 @@ export const StyledTitleTypography = styled.h2`
     white-space: nowrap;
 
     @media ${device.lg} {
-        font-size: 40px;
+        font-size: 32px;
         line-height: 50px;
     }
     @media ${device.sm} {

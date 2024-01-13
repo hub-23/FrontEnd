@@ -6,7 +6,6 @@ export const StyledSection = styled.section`
     max-width: 1440px;
     max-height: 720px;
     min-height: 100%;
-    /* margin-top: 2036px; */
     padding-bottom: 78px;
     overflow: hidden;
     background: #113268;
@@ -92,10 +91,11 @@ export const ContainerButtons = styled.div`
 `;
 
 export const StyledBtnContainer1 = styled.div`
-    @media ${device.lg} {
+    @media ${device.md} {
         display: none;
     }
-    @media ${device.lg} {
+
+    @media ${device.md} {
         position: absolute;
         min-width: 100%;
     }
@@ -124,7 +124,7 @@ export const ButtonTypography = styled.p`
 export const StyledBtnContainer2 = styled.div`
     display: none;
 
-    @media ${device.lg} and ${device.lg} {
+    @media ${device.md} and ${device.md} {
         width: 320px;
         display: flex;
         justify-content: center;
