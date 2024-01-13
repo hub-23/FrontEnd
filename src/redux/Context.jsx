@@ -11,6 +11,7 @@ export const Context = ( { children } ) => {
   const [ showModalConfirmEmail, setShowModalConfirmEmail ] = useState( false );
   const [ showModalThanksForJoining, setShowModalThanksForJoining ] = useState( false );
   const [ isHeroFilterShown, setIsHeroFilterShown ] = useState( false );
+  const [ selectedCountry, setSelectedCountry ] = useState( 'Україна' );
 
   return (
     <HubContext.Provider
@@ -29,6 +30,8 @@ export const Context = ( { children } ) => {
         setShowModalThanksForJoining,
         isHeroFilterShown,
         setIsHeroFilterShown,
+        selectedCountry,
+        setSelectedCountry,
       } }
     >
       {children}

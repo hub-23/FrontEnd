@@ -2,12 +2,17 @@ import React from 'react';
 import { IconSvg } from '../../common/IconSvg';
 import * as S from './CountryFilter.styled';
 import { CrossBtn } from '../MobileMenu/MobileMenu.styled';
+import { useHubContext } from '../../../redux/Context';
 
-export const CountrySelect = ( { onActiveModal, onCountrySelect } ) => {
+export const CountrySelect = ( { onActiveModal } ) => {
+  const { selectedCountry, setSelectedCountry } = useHubContext();
   const staticCountries = [ 'Україна', 'Польща', 'Чехія', 'Франція', 'Швейцарія',
     'Німеччина', 'Велика Британія', 'Латвія', 'Литва', 'Швеція',
-    'Канада', 'США', 'Словаччина', 'Австрія', 'Угорщина' ];
+    'Канада', 'США', 'Словаччина', 'Австрія', 'Угорщина', 'Антигуа і Барбуда' ];
 
+  const handleChange = ( { target: { value } } ) => {
+    console.log( value );
+  };
   return (
     <S.CountrySelectContainer>
       <S.HeaderWrapper>
@@ -28,17 +33,18 @@ export const CountrySelect = ( { onActiveModal, onCountrySelect } ) => {
       </S.HeaderWrapper>
 
       <S.Input
-        type="search" // 'text' witout reset
+        type="search" // 'text' - without reset
         name="filter"
         placeholder='Введіть назву країни'
         // value={filter} - ролі не грає
-        // onChange={handleChange}
+        onChange={ handleChange }
       />
       <S.CountriesList>
         {staticCountries.map( ( country ) => (
-          <li key={ country } onClick={ () => onCountrySelect( country ) }>
+          <S.CountryItem key={ country } onClick={ () => setSelectedCountry( country ) }>
+            {selectedCountry === country && <S.Mark></S.Mark>}
             <p>{country}</p>
-          </li>
+          </S.CountryItem>
         ) )}
       </S.CountriesList>
 

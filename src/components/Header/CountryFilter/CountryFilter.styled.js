@@ -48,6 +48,19 @@ export const HeaderWrapper = styled.div`
     margin-bottom: 15px;
 `;
 
+export const CountryItem = styled.li`
+    display: flex;
+    gap: 8px;
+    align-items: center;
+`;
+
+export const Mark = styled.div`
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: ${( props ) => props.color || props.theme.colors.accent};
+`;
+
 export const Title = styled.p`
     align-items: center;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
