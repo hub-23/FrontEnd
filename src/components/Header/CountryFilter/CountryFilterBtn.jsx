@@ -18,16 +18,22 @@ export const CountryFilterBtn = ( { onCountryOverflow } ) => {
   };
 
   useEffect( () => {
+    localStorage.setItem( 'selectedCountry', selectedCountry );
+
     const checkOverflow = () => {
       const countryName = ref.current;
+
       if ( countryName && onCountryOverflow ) {
-        if ( countryName.scrollWidth > 74 ) {
+        if ( countryName.scrollWidth < 74 ) {
+          onCountryOverflow( 0 );
+        } else if ( countryName.scrollWidth > 74 && countryName.scrollWidth <= 175 ) {
           const overflowSize = countryName.scrollWidth - 74;
           onCountryOverflow( overflowSize );
+        } else if ( countryName.scrollWidth > 175 ) {
+          onCountryOverflow( 101 );
         }
       }
     };
-
     setTimeout( checkOverflow, 0 );
 
     const handleResize = () => checkOverflow();

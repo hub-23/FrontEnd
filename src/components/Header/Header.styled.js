@@ -56,10 +56,10 @@ export const LogoLink = styled( Link )`
     @media ${device.xl} {
         ${( props ) => props.$overflow
         ? css`
-            margin-right: 30px;
+            margin-right: ${80 - props.$overflow}px; // 30px;
             `
         : css`
-            margin-right: 50px;
+            margin-right: 70px;
         `};
     }
     @media ${device.lg} {
@@ -111,11 +111,11 @@ export const NavWrapper = styled.div`
             ${( props ) => props.$overflow
             ? css`
                 gap: 23px;
-                margin-right: 35px;
+                margin-right: ${91 - props.$overflow}px;
                 `
             : css`
-                gap: 30px;
-                margin-right: 61px;
+                gap: 32px;
+                margin-right: 71px;
             `};
         }
         @media ${device.lg} {
@@ -128,6 +128,7 @@ export const NavWrapper = styled.div`
         > a {
             font-size: 20px;
             letter-spacing: 0.2px;
+            white-space: nowrap;
             @media ${device.lg} {
                 font-size: 16px;
             }
@@ -139,25 +140,22 @@ export const NavWrapper = styled.div`
 `;
 
 export const CountryMenuWrapper = styled.div`
-    margin-right: auto;
+    margin-right: 23px;
     > div {
         gap: 8px;
     }
     > div > p {
-        /* background-color: greenyellow; */
         font-size: 20px;
         line-height: 1.4;
         letter-spacing: 0.2px;
         white-space: nowrap;
         min-width: 50px;
-        @media ${device.xl} {
-            max-width: 180px;
-            overflow: hidden; 
-            text-overflow: ellipsis;
-        }
+        max-width: 180px;
+        overflow: hidden; 
+        text-overflow: ellipsis;
         @media ${device.lg} {
             font-size: 16px;
-            max-width: 60px;
+            max-width: 73px;
         }
     }
     > div > button {

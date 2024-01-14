@@ -47,7 +47,7 @@ export const Header = () => {
           <CountryFilterBtn onCountryOverflow={ handleCountryOverflow } />
         </S.CountryMenuWrapper>
 
-        <S.LanguageWrapper $overflow={ overflow > 0 && overflow }>
+        <S.LanguageWrapper $overflow={ overflow > 0 && overflow } >
           <Language />
         </S.LanguageWrapper>
 
