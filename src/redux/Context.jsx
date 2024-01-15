@@ -12,6 +12,9 @@ export const Context = ( { children } ) => {
   const [ showModalThanksForJoining, setShowModalThanksForJoining ] = useState( false );
   const [ isHeroFilterShown, setIsHeroFilterShown ] = useState( false );
 
+  const storedCountry = localStorage.getItem( 'selectedCountry' ) || 'Україна';
+  const [ selectedCountry, setSelectedCountry ] = useState( storedCountry );
+
   return (
     <HubContext.Provider
       value={ {
@@ -29,6 +32,8 @@ export const Context = ( { children } ) => {
         setShowModalThanksForJoining,
         isHeroFilterShown,
         setIsHeroFilterShown,
+        selectedCountry,
+        setSelectedCountry,
       } }
     >
       {children}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './Header.styled';
 import { CountryFilterBtn } from './CountryFilter/CountryFilterBtn';
 import { Language } from './Language/Language';
@@ -9,15 +9,21 @@ import { useHubContext } from '../../redux/Context';
 
 export const Header = () => {
   const { showModalLogin, setShowModalLogin, isHeroFilterShown, setIsHeroFilterShown } = useHubContext();
+  const [ overflow, setOverflow ] = useState( 0 );
 
   const goToLogin = () => {
     setShowModalLogin( !showModalLogin );
   };
 
+  const handleCountryOverflow = ( overflowSize ) => {
+    setOverflow( overflowSize );
+  };
+
   return (
     <S.Header>
       <S.HeaderContainer>
-        <S.LogoLink to='/'>
+        <S.LogoLink to='/'
+          $overflow={ overflow > 0 && Math.ceil( overflow / 2 ) } >
           <S.Logo alt='HUB23' />
         </S.LogoLink>
 
@@ -33,15 +39,15 @@ export const Header = () => {
           />
         </S.SearchBtn>
 
-        <S.NavWrapper>
+        <S.NavWrapper $overflow={ overflow > 0 && Math.ceil( overflow / 2 ) } >
           <Navigation />
         </S.NavWrapper>
 
-        <S.CountryMenuWrapper>
-          <CountryFilterBtn />
+        <S.CountryMenuWrapper >
+          <CountryFilterBtn onCountryOverflow={ handleCountryOverflow } />
         </S.CountryMenuWrapper>
 
-        <S.LanguageWrapper>
+        <S.LanguageWrapper $overflow={ overflow > 0 && overflow } >
           <Language />
         </S.LanguageWrapper>
 

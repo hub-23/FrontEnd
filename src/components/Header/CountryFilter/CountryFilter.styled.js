@@ -48,6 +48,19 @@ export const HeaderWrapper = styled.div`
     margin-bottom: 15px;
 `;
 
+export const CountryItem = styled.li`
+    display: flex;
+    gap: 8px;
+    align-items: center;
+`;
+
+export const Mark = styled.div`
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: ${( props ) => props.color || props.theme.colors.accent};
+`;
+
 export const Title = styled.p`
     align-items: center;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
@@ -66,6 +79,10 @@ export const Title = styled.p`
     }
 `;
 
+export const InputWrapper = styled.div`
+    position: relative;
+`;
+
 export const Input = styled.input`
     border-radius: 8px 0px;
     border: none;
@@ -80,6 +97,32 @@ export const Input = styled.input`
     color: ${( props ) => props.color || '#797979' };
     @media screen and (max-width: 360px) {
         margin-bottom: 24px;
+        font-size: 14px;
+    }
+`;
+
+export const Autocomplete = styled.div`
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0px 8px;
+    border: none;
+    outline: 1px solid #D5D5D5;
+    padding: 8px 12px;
+    background-color: ${( props ) => props.color || props.theme.colors.white};
+    > p {
+        font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+        color: ${( props ) => props.color || '#797979' }; 
+        &:hover,
+        &:focus {
+            color: ${( props ) => props.color || props.theme.colors.primary };  
+        }      
+    }
+    @media screen and (max-width: 360px) {
         font-size: 14px;
     }
 `;

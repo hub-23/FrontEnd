@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from '../../styles/device';
 import { Link } from 'react-router-dom';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
@@ -46,9 +46,21 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoLink = styled( Link )`
-    margin-right: 142px;
+    ${( props ) => props.$overflow
+      ? css`
+          margin-right: ${142 - props.$overflow}px;
+        `
+      : css`
+          margin-right: 142px;
+    `};
     @media ${device.xl} {
-        margin-right: 50px;
+        ${( props ) => props.$overflow
+        ? css`
+            margin-right: ${80 - props.$overflow}px; // 30px;
+            `
+        : css`
+            margin-right: 70px;
+        `};
     }
     @media ${device.lg} {
         margin-right: 40px;
@@ -88,10 +100,23 @@ export const NavWrapper = styled.div`
         display: flex;
         align-items: center;
         gap: 48px;
-        margin-right: 143px;
+        ${( props ) => props.$overflow
+        ? css`
+            margin-right: ${143 - props.$overflow}px;
+            `
+        : css`
+          margin-right: 143px;
+        `};
         @media ${device.xl} {
-            gap: 35px;
-            margin-right: 61px;
+            ${( props ) => props.$overflow
+            ? css`
+                gap: 23px;
+                margin-right: ${91 - props.$overflow}px;
+                `
+            : css`
+                gap: 32px;
+                margin-right: 71px;
+            `};
         }
         @media ${device.lg} {
             gap: 25px;
@@ -103,6 +128,7 @@ export const NavWrapper = styled.div`
         > a {
             font-size: 20px;
             letter-spacing: 0.2px;
+            white-space: nowrap;
             @media ${device.lg} {
                 font-size: 16px;
             }
@@ -122,9 +148,15 @@ export const CountryMenuWrapper = styled.div`
         font-size: 20px;
         line-height: 1.4;
         letter-spacing: 0.2px;
+        white-space: nowrap;
+        min-width: 50px;
+        max-width: 180px;
+        overflow: hidden; 
+        text-overflow: ellipsis;
         @media ${device.lg} {
             font-size: 16px;
-        }      
+            max-width: 73px;
+        }
     }
     > div > button {
         width: 12px;
@@ -147,8 +179,14 @@ export const LanguageWrapper = styled.div`
             font-size: 16px;
         }
     }
-    @media ${device.lg} {
-        margin-right: 35px;
+    @media ${device.xl} {
+        ${( props ) => props.$overflow
+        ? css`
+            margin-right: 25px;
+        `
+        : css`
+            margin-right: 35px;
+        `};
     }
     @media screen and (max-width: 834px) {
         display: none;
