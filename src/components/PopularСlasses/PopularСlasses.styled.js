@@ -7,26 +7,6 @@ const numberItem = 3;
 const gapItemMd = 15;
 const numberItemMd = 2;
 
-export const Container = styled.section`
-    width: 100%;
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 120px 160px;
-
-    @media ${device.xl} {
-        padding: 100px 80px;
-    }
-
-    @media ${device.md} {
-        padding: 80px 40px;
-    }
-
-    @media ${device.sm} {
-        padding: 80px 20px;
-    }
-`;
-
 export const Title = styled.h2`
     margin-bottom: 32px;
     font-family: Nunito;

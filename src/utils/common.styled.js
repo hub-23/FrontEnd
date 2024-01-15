@@ -1,6 +1,7 @@
 import { Field } from 'formik';
 import styled from 'styled-components';
 import { accent } from './variables.styled';
+import { device } from '../styles/device';
 
 export const InputСircle = styled( Field )`
     display: flex;
@@ -36,5 +37,27 @@ export const InputСircle = styled( Field )`
     }
     &:checked::before {
         transform: scale(1);
+    }
+`;
+
+export const Container = styled.section`
+    outline: 1px solid salmon;
+
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 120px 160px;
+
+    @media ${device.xl} {
+        padding: 100px 80px;
+    }
+
+    @media ${device.md} {
+        padding: 80px 40px;
+    }
+
+    @media ${device.sm} {
+        padding: 80px 20px;
     }
 `;

@@ -11,19 +11,31 @@ export const FormSearch = styled( Form )`
     align-items: center;
     position: relative;
 
-    padding: 0 31px;
+    padding: 12px 31px;
     width: 100%;
-    height: 80px;
+    /* height: 80px; */
 
     border-radius: 20px 0px;
     border: 1px solid ${grayStroke};
     background-color: ${white};
     backdrop-filter: blur(4px);
+
+    @media ${device.md} {
+        flex-direction: column;
+        padding: 40px 32px;
+        border-radius: 32px 0px;
+    }
+    @media ${device.sm} {
+        padding: 25px 20px 20px 20px;
+        border-radius: 32px 0px;
+    }
 `;
 
 export const Label = styled.label`
     display: flex;
     align-items: center;
+
+    padding: 14px 0;
 
     font-size: 20px;
     font-weight: 400;
@@ -31,6 +43,41 @@ export const Label = styled.label`
     letter-spacing: 0.2px;
 
     color: ${black};
+
+    &:not(:first-child) {
+        border-left: 1px solid ${grayStroke};
+    }
+
+    @media ${device.md} {
+        width: 100%;
+        padding: 14px 0 16px 0;
+        padding: 0;
+
+        &:not(:first-child) {
+            border-left: none;
+            border-top: 1px solid ${grayStroke};
+            padding-left: 0;
+            padding-top: 20px;
+        }
+        &:not(:nth-child(3)) {
+            padding-bottom: 16px;
+        }
+        &:nth-child(3) {
+            padding-bottom: 20px;
+        }
+    }
+
+    @media ${device.sm} {
+        &:not(:first-child) {
+            padding-top: 21px;
+        }
+        &:not(:nth-child(3)) {
+            padding-bottom: 21px;
+        }
+        &:nth-child(3) {
+            padding-bottom: 25px;
+        }
+    }
 `;
 
 export const Input = styled( Field )`
@@ -65,14 +112,7 @@ export const InputCheckbox = styled( InputСircle )`
     margin-right: 12px;
 `;
 
-export const Stroke = styled.div`
-    margin-right: 20px;
-    height: 56px;
-    border-left: 1px solid ${grayStroke};
-`;
-
 export const ErrorText = styled.p`
-    /* display: inline; */
     position: absolute;
     left: 30px;
     bottom: 0;
@@ -87,7 +127,6 @@ export const ErrorText = styled.p`
 `;
 
 export const BtnSubmit = styled.button`
-    display: inline-flex;
     padding: 10px 32px;
 
     font-size: 20px;
@@ -99,4 +138,11 @@ export const BtnSubmit = styled.button`
 
     color: ${white};
     background: ${black};
+
+    @media ${device.md} {
+        width: 280px;
+    }
+    @media ${device.sm} {
+        width: 100%;
+    }
 `;
