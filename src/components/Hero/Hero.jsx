@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../common/button/Button';
-import { HeroFilter } from '../HeroFilter/HeroFilter';
+// import { HeroFilter } from '../HeroFilter/HeroFilter';
 import {
   StyledSection,
   StyledGradient,
@@ -17,6 +17,7 @@ import { useHubContext } from '../../redux/Context';
 import { ModalLastStep } from '../modal/ModalLastStep';
 import { ModalConfirmEmail } from '../modal/ModalConfirmEmail';
 import { ModalThanksForJoining } from '../modal/ModalThanksForJoining';
+import { HeroField } from '../HeroField/HeroField';
 
 export const Hero = () => {
   const docVisible = ( document.body.style.overflow = 'visible' ); // re scroll
@@ -102,7 +103,9 @@ export const Hero = () => {
                                 Стати учнем
               </Button>
             </StyledBtnContainer1>
-            <HeroFilter />
+
+            {/* <HeroFilter /> */}
+            <HeroField />
           </StyledContainer>
         </StyledGradient>
       </StyledSection>
