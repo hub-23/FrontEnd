@@ -18,7 +18,7 @@ export const CountryFilterBtn = ( { onCountryOverflow } ) => {
   };
 
   useEffect( () => {
-    localStorage.setItem( 'selectedCountry', selectedCountry );
+    localStorage.setItem( 'selectedCountry', JSON.stringify( selectedCountry ) );
 
     const checkOverflow = () => {
       const countryName = ref.current;
