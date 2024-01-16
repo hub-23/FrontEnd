@@ -3,7 +3,6 @@ import { Field, Form } from 'formik';
 import { device } from '../../styles/device';
 import { accent, black, borderBlue, grayStroke, grayText, white } from '../../utils/variables.styled';
 import { InputСircle } from '../../utils/common.styled';
-// import { InputСircle } from '../../utils/common.styled';
 
 export const FormSearch = styled( Form )`
     display: flex;
@@ -13,18 +12,18 @@ export const FormSearch = styled( Form )`
 
     padding: 12px 31px;
     width: 100%;
-    /* height: 80px; */
 
     border-radius: 20px 0px;
     border: 1px solid ${grayStroke};
     background-color: ${white};
     backdrop-filter: blur(4px);
 
-    @media ${device.md} {
+    @media ${device.xl} {
         flex-direction: column;
         padding: 40px 32px;
         border-radius: 32px 0px;
     }
+
     @media ${device.sm} {
         padding: 25px 20px 20px 20px;
         border-radius: 32px 0px;
@@ -46,9 +45,10 @@ export const Label = styled.label`
 
     &:not(:first-child) {
         border-left: 1px solid ${grayStroke};
+        padding-left: 20px;
     }
 
-    @media ${device.md} {
+    @media ${device.xl} {
         width: 100%;
         padding: 14px 0 16px 0;
         padding: 0;
@@ -89,11 +89,6 @@ export const Input = styled( Field )`
     color: inherit;
 
     border: none;
-
-    @media ${device.md} {
-    }
-    @media ${device.sm} {
-    }
 
     &:focus {
         outline: 1px solid ${borderBlue};

@@ -9,8 +9,6 @@ const numberItemMd = 2;
 
 export const Title = styled.h2`
     margin-bottom: 32px;
-    font-family: Nunito;
-    font-style: normal;
     font-weight: 600;
 
     font-size: 48px;
@@ -20,7 +18,7 @@ export const Title = styled.h2`
     color: ${black};
 
     @media ${device.xl} {
-        font-size: 44px;
+        /* font-size: 44px; */
     }
 
     @media ${device.md} {
@@ -84,24 +82,22 @@ export const TopLessons = styled.ul`
 
     & h2 {
         margin-bottom: 4px;
-        font-family: Nunito;
-        font-style: normal;
         font-weight: 500;
         letter-spacing: 0.16px;
         font-size: 24px;
-        line-height: calc(33.6px / 24px);
+        line-height: calc(33.6 / 24);
 
         color: ${black};
 
         @media ${device.md} {
             font-size: 18px;
-            line-height: calc(23px / 18px);
+            line-height: calc(23 / 18);
         }
 
         @media ${device.sm} {
             margin-bottom: 2px;
             font-size: 16px;
-            line-height: calc(22.4px / 16px);
+            line-height: calc(22.4 / 16);
         }
     }
 
@@ -112,23 +108,21 @@ export const TopLessons = styled.ul`
     }
 
     & p {
-        font-family: Nunito;
-        font-style: normal;
         font-weight: 300;
         font-size: 16px;
-        line-height: calc(22.4px / 16px);
+        line-height: calc(22.4 / 16);
         letter-spacing: 0.16px;
         color: ${black};
 
         @media ${device.md} {
             font-size: 14px;
-            line-height: calc(17px / 14px);
+            line-height: calc(17 / 14);
             letter-spacing: 0.14px;
         }
 
         @media ${device.sm} {
             font-size: 12px;
-            line-height: calc(16.8px / 12px);
+            line-height: calc(16.8 / 12);
             letter-spacing: 0.12px;
         }
     }
@@ -142,23 +136,21 @@ export const SeeMore = styled.div`
 
     & p {
         margin-bottom: 4px;
-        font-family: Nunito;
-        font-style: normal;
         font-weight: 500;
         letter-spacing: 0.16px;
         font-size: 20px;
-        line-height: calc(33.6px / 24px);
+        line-height: calc(33.6 / 24);
         color: ${black};
 
         @media ${device.md} {
             font-size: 18px;
-            line-height: calc(26px / 18px);
+            line-height: calc(26 / 18);
         }
 
         @media ${device.sm} {
             margin-bottom: 2px;
             font-size: 16px;
-            line-height: calc(22.4px / 16px);
+            line-height: calc(22.4 / 16);
         }
     }
 `;

@@ -41,17 +41,11 @@ export const InputСircle = styled( Field )`
 `;
 
 export const Container = styled.section`
-    outline: 1px solid salmon;
-
     width: 100%;
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
     padding: 120px 160px;
-
-    @media ${device.xl} {
-        padding: 100px 80px;
-    }
 
     @media ${device.md} {
         padding: 80px 40px;

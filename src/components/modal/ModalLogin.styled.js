@@ -350,7 +350,8 @@ export const WrappTextRegistr = styled.div`
     gap: 11px;
 
     @media ${device.sm} {
-        display: initial;
+        flex-direction: column;
+        gap: initial;
     }
 `;
 
