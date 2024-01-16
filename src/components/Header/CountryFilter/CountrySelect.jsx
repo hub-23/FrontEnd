@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import _ from 'lodash';
 import { IconSvg } from '../../common/IconSvg';
 import * as S from './CountryFilter.styled';
@@ -12,22 +12,22 @@ export const CountrySelect = ( { onActiveModal } ) => {
   const defaultCountries = [
     'Україна', 'Польща', 'Чехія', 'Франція', 'Швейцарія',
     'Німеччина', 'Велика Британія', 'Латвія', 'Литва', 'Швеція',
-    'Канада', 'США', 'Словаччина', 'Австрія', 'Угорщина', 'Найдовша в світі назва країни',
+    'Канада', 'США', 'Словаччина', 'Австрія', 'Угорщина',
   ];
-  let storedCountries = defaultCountries;
-  try {
-    storedCountries = JSON.parse( localStorage.getItem( 'countries' ) ) || defaultCountries;
-  } catch ( error ) {
-    error.message;
-  }
+  // let storedCountries = defaultCountries;
+  // try {
+  //   storedCountries = JSON.parse( localStorage.getItem( 'countries' ) ) || defaultCountries;
+  // } catch ( error ) {
+  //   error.message;
+  // }
 
-  const [ countries, setCountries ] = useState( storedCountries );
+  // const [ countries, setCountries ] = useState( storedCountries );
   const [ autocomplete, setAutocomplete ] = useState( '' );
-  console.log( 'countries:', countries );
+  const [ warning, setWarning ] = useState( '' );
 
-  useEffect( () => {
-    localStorage.setItem( 'countries', JSON.stringify( countries ) );
-  }, [ countries ] );
+  // useEffect( () => {
+  //   localStorage.setItem( 'countries', JSON.stringify( countries ) );
+  // }, [ countries ] );
 
   const fetchData = async ( inputData ) => {
     try {
@@ -39,19 +39,24 @@ export const CountrySelect = ( { onActiveModal } ) => {
 
       if ( startsWithInputData ) {
         setAutocomplete( receivedData );
-      } else {
-        console.log( `There is no country that starts with ${inputData}` );
       }
     } catch ( error ) {
       console.error( error.message );
+      setAutocomplete( '' );
+      setWarning( `Країну ${inputData} не знайдено` );
     }
   };
   const fetchDataDebounced = _.debounce( fetchData, 500 );
 
   const handleChange = ( { target: { value } } ) => {
-    console.log( value.trim() );
     if ( value.trim().length >= 3 ) {
       fetchDataDebounced( value.trim() );
+      setWarning( '' );
+    } else if ( value.trim().length >= 1 ) {
+      setWarning( 'Введіть щонайменше перші три літери A-Z/a-z' );
+      setAutocomplete( '' );
+    } else {
+      setWarning( '' );
     }
   };
 
@@ -59,21 +64,25 @@ export const CountrySelect = ( { onActiveModal } ) => {
     setSelectedCountry( country );
     setTimeout( () => onActiveModal(), 800 );
   };
-  // console.log( staticCountries );
+
   const handleAutocompleteClick = ( autocomplete ) => {
     handleCountrySelect( autocomplete );
-    setCountries( ( prevCountries ) => {
-      const countryClone = prevCountries.find( ( country ) => {
-        return country === autocomplete;
-      } );
-      if ( !countryClone ) {
-        console.log( 'додаємо' );
-        // prevCountries.push( autocomplete );
-        return [ ...prevCountries, autocomplete ];
-      }
-      console.log( 'клон => виходимо' );
-      return prevCountries;
-    } );
+    // setCountries( ( prevCountries ) => {
+    //   const countryClone = prevCountries.find( ( country ) => {
+    //     return country === autocomplete;
+    //   } );
+    //   if ( !countryClone ) {
+    //     return [ ...prevCountries, autocomplete ];
+    //   }
+    //   return prevCountries;
+    // } );
+  };
+
+  const handleKeyPress = ( e ) => {
+    if ( /[0-9$%^&*()_+={}[\]:;<>,.?~\\/"`|!@#]/.test( e.key ) ) {
+      e.preventDefault();
+      setWarning( 'Цифри та символи не допустимі' );
+    }
   };
 
   return (
@@ -100,9 +109,11 @@ export const CountrySelect = ( { onActiveModal } ) => {
           type="search" // 'text' - without reset
           name="filter"
           placeholder='Введіть назву країни'
-          // value={ inputValue }
           onChange={ handleChange }
-          list="autocomplete-options"
+          onKeyDown={ handleKeyPress }
+          pattern="[A-Za-z]{3,}"
+          title="Введіть щонайменше перші три літери A-Z/a-z"
+          autoComplete='off'
           autoFocus
         />
         {autocomplete
@@ -110,16 +121,20 @@ export const CountrySelect = ( { onActiveModal } ) => {
             <p>{autocomplete}</p>
           </S.Autocomplete>
         }
+        {warning && <S.WarningText><p>{warning}</p></S.WarningText>}
       </S.InputWrapper>
-
-      <S.CountriesList>
-        {countries.map( ( country ) => (
-          <S.CountryItem key={ country } onClick={ () => handleCountrySelect( country ) }>
-            {selectedCountry === country && <S.Mark></S.Mark>}
-            <p>{country}</p>
-          </S.CountryItem>
-        ) )}
-      </S.CountriesList>
+      <S.CountriesListWrapper>
+        <S.CountriesList>
+          {defaultCountries.map( ( country ) => (
+            <S.CountryItem key={ country } onClick={ () => handleCountrySelect( country ) }>
+              <S.MarkerPlace>
+                {selectedCountry === country && <S.Mark></S.Mark>}
+              </S.MarkerPlace>
+              <S.CountryName>{country}</S.CountryName>
+            </S.CountryItem>
+          ) )}
+        </S.CountriesList>
+      </S.CountriesListWrapper>
 
       <S.NoteWrapper>
         <S.Divider></S.Divider>
