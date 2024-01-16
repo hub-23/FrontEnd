@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 import { IconSvg } from '../../common/IconSvg';
 import * as S from './CountryFilter.styled';
@@ -9,23 +9,25 @@ import { fetchCountry } from '../../PeopleTrust/api';
 
 export const CountrySelect = ( { onActiveModal } ) => {
   const { selectedCountry, setSelectedCountry } = useHubContext();
-  // const staticCountriesList = [
-  //   'Україна', 'Польща', 'Чехія', 'Франція', 'Швейцарія',
-  //   'Німеччина', 'Велика Британія', 'Латвія', 'Литва', 'Швеція',
-  //   'Канада', 'США', 'Словаччина', 'Австрія', 'Угорщина', 'Найдовша в світі назва країни',
-  // ];
-  // const storedCountriesList = localStorage.getItem( 'staticCountriesList' ) || staticCountriesList;
-  // const [ staticCountries, setStaticCountries ] = useState( storedCountriesList );
-  const [ staticCountries, setStaticCountries ] = useState( [
+  const defaultCountries = [
     'Україна', 'Польща', 'Чехія', 'Франція', 'Швейцарія',
     'Німеччина', 'Велика Британія', 'Латвія', 'Литва', 'Швеція',
     'Канада', 'США', 'Словаччина', 'Австрія', 'Угорщина', 'Найдовша в світі назва країни',
-  ] );
-  const [ autocomplete, setAutocomplete ] = useState( '' );
+  ];
+  let storedCountries = defaultCountries;
+  try {
+    storedCountries = JSON.parse( localStorage.getItem( 'countries' ) ) || defaultCountries;
+  } catch ( error ) {
+    error.message;
+  }
 
-  // useEffect( () => {
-  //   localStorage.setItem( 'staticCountriesList', staticCountriesList );
-  // }, [ staticCountries ] );
+  const [ countries, setCountries ] = useState( storedCountries );
+  const [ autocomplete, setAutocomplete ] = useState( '' );
+  console.log( 'countries:', countries );
+
+  useEffect( () => {
+    localStorage.setItem( 'countries', JSON.stringify( countries ) );
+  }, [ countries ] );
 
   const fetchData = async ( inputData ) => {
     try {
@@ -60,7 +62,18 @@ export const CountrySelect = ( { onActiveModal } ) => {
   // console.log( staticCountries );
   const handleAutocompleteClick = ( autocomplete ) => {
     handleCountrySelect( autocomplete );
-    setStaticCountries( ( prevCountries ) => [ ...prevCountries, autocomplete ] );
+    setCountries( ( prevCountries ) => {
+      const countryClone = prevCountries.find( ( country ) => {
+        return country === autocomplete;
+      } );
+      if ( !countryClone ) {
+        console.log( 'додаємо' );
+        // prevCountries.push( autocomplete );
+        return [ ...prevCountries, autocomplete ];
+      }
+      console.log( 'клон => виходимо' );
+      return prevCountries;
+    } );
   };
 
   return (
@@ -100,7 +113,7 @@ export const CountrySelect = ( { onActiveModal } ) => {
       </S.InputWrapper>
 
       <S.CountriesList>
-        {staticCountries.map( ( country ) => (
+        {countries.map( ( country ) => (
           <S.CountryItem key={ country } onClick={ () => handleCountrySelect( country ) }>
             {selectedCountry === country && <S.Mark></S.Mark>}
             <p>{country}</p>

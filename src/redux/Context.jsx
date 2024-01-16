@@ -11,8 +11,13 @@ export const Context = ( { children } ) => {
   const [ showModalConfirmEmail, setShowModalConfirmEmail ] = useState( false );
   const [ showModalThanksForJoining, setShowModalThanksForJoining ] = useState( false );
   const [ isHeroFilterShown, setIsHeroFilterShown ] = useState( false );
+  let storedCountry = 'Україна';
+  try {
+    storedCountry = JSON.parse( localStorage.getItem( 'selectedCountry' ) ) || 'Україна';
+  } catch ( error ) {
+    console.log( error.message );
+  }
 
-  const storedCountry = localStorage.getItem( 'selectedCountry' ) || 'Україна';
   const [ selectedCountry, setSelectedCountry ] = useState( storedCountry );
 
   return (
