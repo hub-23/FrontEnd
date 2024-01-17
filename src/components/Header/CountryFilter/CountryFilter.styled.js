@@ -48,19 +48,6 @@ export const HeaderWrapper = styled.div`
     margin-bottom: 15px;
 `;
 
-export const CountryItem = styled.li`
-    display: flex;
-    gap: 8px;
-    align-items: center;
-`;
-
-export const Mark = styled.div`
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: ${( props ) => props.color || props.theme.colors.accent};
-`;
-
 export const Title = styled.p`
     align-items: center;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
@@ -127,10 +114,46 @@ export const Autocomplete = styled.div`
     }
 `;
 
-export const CountriesList = styled.ul`
-    column-count: 3;
-    column-gap: 20px;
+export const WarningText = styled.div`
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    > p {
+        font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+        font-size: 14px;
+        font-weight: 400;
+        line-height: normal;
+        color: red;
+    }
+`;
+
+export const CountriesListWrapper = styled.div`
+    max-height: 65%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
     margin-bottom: 20px;
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(18, 20, 23, 0.05); 
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(18, 20, 23, 0.1); 
+    }
+`;
+
+export const CountriesList = styled.ul`
+    width: 376px;
+    column-count: 3;
+    column-gap: 10px; 
+    margin: 0 auto;
     > li {
         margin-bottom: 12px;
         font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
@@ -140,21 +163,74 @@ export const CountriesList = styled.ul`
         letter-spacing: 0.14px;
         color: ${( props ) => props.color || props.theme.colors.black};
         cursor: pointer;
-        @media screen and (max-width: 360px) {
+        @media screen and (max-width: 455px) {
             font-size: 14px;
             font-weight: 500;
         }
     }
-    @media screen and (max-width: 360px) {
+    @media screen and (max-width: 455px) {
         column-count: 2;
+        width: 320px;
+    }
+    @media screen and (max-width: 400px) {
+        width: 300px;
+    }
+    @media screen and (max-width: 360px) {
+        width: 280px;
+    }
+    @media screen and (max-width: 310px) {
+        width: 250px;
+    }
+`;
+
+export const CountryItem = styled.li`
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+`;
+
+export const MarkerPlace = styled.div`
+    width: 13px;
+    height: 13px;
+`;
+
+export const Mark = styled.div`
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: ${( props ) => props.color || props.theme.colors.accent};
+`;
+
+export const CountryName = styled.p`
+    width: 98px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    &:hover {
+        overflow: visible;
+        white-space: wrap;
+    }
+    @media screen and (max-width: 455px) {
+        width: 135px;
+    }
+    @media screen and (max-width: 360px) {
+        width: 114px;
+    }
+    @media screen and (max-width: 360px) {
+        width: 99px;
     }
 `;
 
 export const NoteWrapper = styled.div`
     width: 100%;
-    @media screen and (max-width: 360px) {
+    @media screen and (max-width: 455px) {
         position: absolute;
         bottom: 20px;
+        max-width: 360px;
+    }
+    @media screen and (max-width: 390px) {
+        max-width: 320px;
     }
 `;
 
@@ -163,7 +239,13 @@ export const Divider = styled.div`
     height: 1px;
     background-color: #D5D5D5;
     margin-bottom: 8px;
-    @media screen and (max-width: 360px) { 
+    @media screen and (max-width: 455px) { 
+        width: 370px;
+    }
+    @media screen and (max-width: 430px) { 
+        width: 330px;
+    }
+    @media screen and (max-width: 400px) { 
         width: 300px;
     }
     @media screen and (max-width: 340px) { 
