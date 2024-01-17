@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from './BtnClose.styled';
 
-export const BtnClose = ( { children, xlTop, xlRight, mdTop, mdRight, smTop, smRight, click } ) => {
+export const BtnClose = ( { children, xlTop, xlRight, mdTop, mdRight, smTop, smRight, click, ...props } ) => {
   return (
     <Button
       type="button"
@@ -12,6 +12,7 @@ export const BtnClose = ( { children, xlTop, xlRight, mdTop, mdRight, smTop, smR
       $mdTop={ mdTop }
       $smRight={ smRight }
       $smTop={ smTop }
+      { ...props }
       onClick={ click }
     >
       {children}

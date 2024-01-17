@@ -5,7 +5,6 @@ import {
   Article,
   BtnText,
   FormRigistration,
-  Input,
   Label,
   Login,
   Modal,
@@ -18,6 +17,7 @@ import { BtnClose } from '../common/BtnClose';
 import { IconSvg } from '../common/IconSvg';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useHubContext } from '../../redux/Context';
+import { InputСircle } from '../../utils/common.styled';
 
 export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status } ) => {
   const { showModalRegister, setShowModalRegister, showModalLogin, setShowModalLogin } = useHubContext();
@@ -84,11 +84,11 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
           <FormRigistration>
             <RadioBtn>
               <Label>
-                <Input type="radio" name="statusUser" value="teacher" />
+                <InputСircle type="radio" name="statusUser" value="teacher" />
 Я викладач
               </Label>
               <Label>
-                <Input type="radio" name="statusUser" value="student" />
+                <InputСircle type="radio" name="statusUser" value="student" />
 Я учень
               </Label>
             </RadioBtn>
@@ -131,7 +131,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
         </Formik>
 
         <Login>
-          <p>Я вже зареєстрваний</p>
+          <p>Я вже зареєстрований</p>
           <button type="button" onClick={ goToLogin }>
                         Увійти
           </button>
