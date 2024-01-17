@@ -6,6 +6,8 @@ import imageTablet from '../../assets/home/hero/imageTablet.png';
 import { device } from '../../styles/device';
 
 export const StyledSection = styled.section`
+    outline: 1px solid green;
+
     position: relative;
     background-image: image-set(url(${image}) 1x, url(${image2x}) 2x);
     width: 100%;

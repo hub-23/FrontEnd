@@ -4,6 +4,8 @@ import { device } from '../../styles/device';
 export const Svg = styled.svg`
     width: ${( { $xlWidth } ) => $xlWidth};
     height: ${( { $xlHeight } ) => $xlHeight};
+    stroke: ${( { $stroke } ) => $stroke};
+    fill: ${( { $fill } ) => $fill};
 
     @media ${device.md} {
         width: ${( { $mdWidth } ) => $mdWidth};

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, SeeMore, Title, TopLessons } from './PopularСlasses.styled';
+import { Button, SeeMore, Title, TopLessons } from './PopularСlasses.styled';
 import sprite from '../../assets/sprite.svg';
 import { dataTopLessons } from './backend_temp';
+import { Container } from '../../utils/common.styled';
 
 export const PopularСlasses = () => {
   const [ data, setData ] = useState( [] );

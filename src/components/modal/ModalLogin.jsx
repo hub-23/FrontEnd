@@ -205,7 +205,7 @@ export const ModalLogin = ( { onActiveModal } ) => {
         </Formik>
 
         <WrappTextRegistr>
-          <TextRegistr>Я ще не зареєстрваний</TextRegistr>
+          <TextRegistr>Я ще не зареєстрований</TextRegistr>
 
           <LinkRegistr
             type="button"
