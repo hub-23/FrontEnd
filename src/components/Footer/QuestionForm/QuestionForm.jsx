@@ -1,10 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
+import { Formik, ErrorMessage } from 'formik';
+import { object, string } from 'yup';
+import { PhoneSelect } from '../../common/PhoneSelect';
+import countries from '../../../assets/countries.json';
 import * as S from './QuestionForm.styled';
 
 
 export const QuestionForm = ( { onActiveModal } ) => {
+  const [ codeCountry, setCodeCountry ] = useState( '+380' );
+
+  const schema = object( {
+    name: string()
+        .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
+        .max( 30, 'Вкажіть мініімум 2 літери, але не більше 30' )
+        .matches(
+            /^[А-яЁёЇїІіЄєҐґ'\s/A-z\s/\-/_/.]+$/,
+            'Ім’я має містити українські або англійські літери',
+        )
+        .required( 'Вкажіть ваше ім’я' ),
+    email: string().email( 'Невірно вказано e-mail' ),
+    // .required( 'Вкажіть ваш e-mail' ),
+    phone: string()
+        .matches(
+            /^\d{3}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
+            'Невірно вказаний номер',
+        ),
+    // .required( 'Вкажіть ваш номер телефону' ),
+  } );
+
+  const initialValues = {
+    name: '',
+    email: '',
+    phone: '',
+  };
+
+  const FormError = ( { name, isMarginLeft } ) => {
+    return (
+      <ErrorMessage
+        name={ name }
+        render={ ( message ) => <S.ErrorText $isMarginLeft={ isMarginLeft }>{message}</S.ErrorText> }
+      />
+    );
+  };
+
+  const handleSubmit = ( values, { resetForm } ) => {
+    const phone = { phone: `${codeCountry}${values.phone.replaceAll( ' ', '' )}` };
+    const questionFormData = { ...values, ...phone };
+
+    console.log( 'Data from QuestionForm to Backend  :>> ', questionFormData );
+
+    resetForm();
+    onActiveModal();
+  };
+
+  const handleGetSelected = ( values ) => {
+    setCodeCountry( values );
+  };
+
   return (
     <S.QuestionFormContainer>
       <BtnClose
@@ -34,36 +88,84 @@ export const QuestionForm = ( { onActiveModal } ) => {
       </S.Text>
       {/* <S.InputWrapper> */}
       <div>
-        <form>
-          <input type="text" placeholder='Ім&#39;я' />
-          <input type="text" placeholder='Електронна адреса' />
-          <input type="text" />
-          <input type="text" placeholder='Тема повідомлення' />
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-          <div>
-            {/* icon */}
-            <p>Ці поля є обов&apos;язковими до заповнення</p>
-            <S.SubmitBtn
-              type='submit'
-              variant='blue'
-              width='100%'
-              height='60px' // моб - '50px'
-              borderRadius='16px 0' // моб - '20px 0'
-              onClick={ onActiveModal }
-            >
-              Надіслати
-            </S.SubmitBtn>
-          </div>
-        </form>
-        {/* <S.Input
-          type="search" // 'text' - without reset
-          name="filter"
-          placeholder='Введіть назву країни'
-          // value={ inputValue }
-          // onChange={ handleChange }
-          list="autocomplete-options"
-          autoFocus
-        /> */}
+        <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
+          {( formik ) => {
+            const {
+              errors: { name, email, phone },
+              touched,
+            } = formik;
+            const isDataUser = formik.initialValues.phone === formik.values.phone;
+
+            const errName = name && touched.name;
+            const errEmail = email && touched.email;
+            const errPhone = phone && touched.phone;
+
+            return (
+              <S.FormFild autoComplete="on">
+                <S.LabelFormUser htmlFor="name">
+                  <S.Input
+                    type="text"
+                    name="name"
+                    placeholder="Ім’я"
+                    $error={ errName }
+                  />
+                  <FormError name="name" isMarginLeft={ true } />
+                </S.LabelFormUser>
+
+                <S.LabelFormUser htmlFor="email">
+                  <S.Input
+                    type="email"
+                    name="email"
+                    placeholder="Електронна адреса"
+                    $error={ errEmail }
+                  />
+                  <FormError name="email" isMarginLeft={ true } />
+                </S.LabelFormUser>
+
+                <S.LabelFormUser htmlFor="phone" style={ { paddingTop: '2px' } }>
+                  <S.Input
+                    type="tel"
+                    name="phone"
+                    $isDataUser={ isDataUser }
+                    $error={ errPhone }
+                    style={ { paddingLeft: '160px' } }
+                  />
+
+                  <FormError name="phone" isMarginLeft={ true } />
+
+                  <PhoneSelect
+                    data={ countries }
+                    valueSelect={ handleGetSelected }
+                    xlHeightList="275px"
+                    smHeightList="245px"
+                  />
+                </S.LabelFormUser>
+                <input type="text" placeholder='Тема повідомлення' />
+                <textarea name="" id="" cols="30" rows="10" placeholder='Повідомлення'></textarea>
+                <S.WrappWarningText>
+                  <IconSvg width="24px" height="24px" icon="icon-star-marker" />
+
+                  <S.WarningText $color={ errName }>
+                        Ці поля є обов&apos;язковими до заповнення
+                  </S.WarningText>
+                </S.WrappWarningText>
+
+                <S.SubmitBtn
+                  type='submit'
+                  variant='blue'
+                  width='100%'
+                  height='60px'
+                  smHeight='50px'
+                  borderRadius='16px 0'
+                  smBorderRadius='20px 0'
+                  onClick={ onActiveModal }
+                >
+                Надіслати
+                </S.SubmitBtn>
+              </S.FormFild>
+            );
+          }}
+        </Formik>
       </div>
       {/* </S.InputWrapper> */}
     </S.QuestionFormContainer>

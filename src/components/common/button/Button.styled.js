@@ -35,6 +35,11 @@ const StyledButton = styled.button`
     outline: none;
     cursor: pointer;
 
+    @media screen and (max-width: 480px) {
+      height: ${( props ) => props.smHeight};
+      border-radius: ${( props ) => props.smBorderRadius};
+    }
+
     ${switchProp( 'variant', {
     primary: css`
             color: ${( props ) => props.color || props.theme.colors.white};
