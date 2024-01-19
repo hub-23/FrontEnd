@@ -152,8 +152,4 @@ export const SubmitBtn = styled( Button )`
     font-weight: 600;
     line-height: 1.4;
     /* letter-spacing: 0.2px; */
-    /* @media screen and (max-width: 480px) {
-        height: 50px;
-        border-radius: 20px 0;
-    } */
 `;
