@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { ErrorMessage, Formik } from 'formik';
-import { BtnSubmit, ErrorText, FormSearch, InputCheckbox, InputSearch, Label } from './HeroField.styled';
+import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+
+import { BtnSubmit, ErrorText, FormSearch, InputCheckbox, InputSearch, Label } from './HeroField.styled';
 import { IconSvg } from '../common/IconSvg';
 import { black } from '../../utils/variables.styled';
+import dataSubject from '../../dataTemp/dataSubject';
+import { HeroFieldSelect } from './HeroFieldSelect';
 
 export const HeroField = () => {
   const schema = object( {
@@ -29,7 +32,8 @@ export const HeroField = () => {
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
-    console.log( 'sent onLine ::>>>', values );
+    console.log( '💙💛 Sent Form search >>>', values );
+
     resetForm();
   };
 
@@ -44,34 +48,75 @@ export const HeroField = () => {
 
   return (
     <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
-      <FormSearch>
-        <Label>
-          <IconSvg xlWidth="24px" xlHeight="24px" $fill="none" $stroke={ black } icon="icon-search" />
+      {( formik ) => {
+        const { subject_or_occupation: subjectValue, sity: sityValue } = formik.values;
+        const { setFieldValue } = formik;
 
-          <InputSearch type="text" name="subject_or_occupation" placeholder="Предмет або заняття" />
-          <FormError name="subject_or_occupation" />
-        </Label>
+        const handleGetValueSelected = ( value ) => {
+          const { nameLesson, sity } = value;
+          const keys = Object.keys( value )[ 0 ];
 
-        <Label>
-          <IconSvg
-            xlWidth="24px"
-            xlHeight="24px"
-            $fill="none"
-            $stroke={ black }
-            icon="icon-location"
-          />
+          if ( keys === 'nameLesson' ) setFieldValue( 'subject_or_occupation', nameLesson );
+          if ( keys === 'sity' ) setFieldValue( 'sity', sity );
+        };
 
-          <InputSearch type="text" name="sity" placeholder="Місто" />
-          <FormError name="sity" />
-        </Label>
+        return (
+          <FormSearch>
+            <Label>
+              <IconSvg
+                xlWidth="24px"
+                xlHeight="24px"
+                $fill="none"
+                $stroke={ black }
+                icon="icon-search"
+              />
+              <InputSearch
+                type="text"
+                name="subject_or_occupation"
+                autoComplete="off"
+                placeholder="Предмет або заняття"
+                onBlur={ () => {
+                  console.log( 'BLUR' );
+                } }
+              />
+              <FormError name="subject_or_occupation" />
 
-        <Label>
-          <InputCheckbox type="checkbox" name="is_online" />
-                    Онлайн
-        </Label>
+              <HeroFieldSelect
+                data={ dataSubject }
+                valueInput={ subjectValue }
+                filterProperty="nameLesson"
+                submit={ handleGetValueSelected }
+              />
+            </Label>
 
-        <BtnSubmit type="submit">Знайти</BtnSubmit>
-      </FormSearch>
+            <Label>
+              <IconSvg
+                xlWidth="24px"
+                xlHeight="24px"
+                $fill="none"
+                $stroke={ black }
+                icon="icon-location"
+              />
+              <InputSearch type="text" name="sity" autoComplete="off" placeholder="Місто" />
+              <FormError name="sity" />
+
+              <HeroFieldSelect
+                data={ dataSubject }
+                valueInput={ sityValue }
+                filterProperty="sity"
+                submit={ handleGetValueSelected }
+              />
+            </Label>
+
+            <Label>
+              <InputCheckbox type="checkbox" name="is_online" />
+                            Онлайн
+            </Label>
+
+            <BtnSubmit type="submit">Знайти</BtnSubmit>
+          </FormSearch>
+        );
+      }}
     </Formik>
   );
 };

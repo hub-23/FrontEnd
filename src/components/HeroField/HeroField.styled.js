@@ -31,6 +31,7 @@ export const FormSearch = styled( Form )`
 `;
 
 export const Label = styled.label`
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -91,7 +92,8 @@ export const Input = styled( Field )`
     border: none;
 
     &:focus {
-        outline: 1px solid ${borderBlue};
+        /* outline: 1px solid ${borderBlue}; */
+        outline: none;
     }
 
     &:placeholder-shown {
