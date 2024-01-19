@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './Footer.styled';
 import { IconSvg } from '../common/IconSvg';
+import { Modal } from '../modal/Modal';
+import { QuestionForm } from './QuestionForm/QuestionForm';
 
 
 export const Footer = () => {
+  const [ isModalOpen, setIsModalOpen ] = useState( false );
+
+  const toggleModal = ( e ) => {
+    setIsModalOpen( !isModalOpen );
+    document.body.style.overflow = 'visible';
+  };
+
   return (
     <S.FooterSection>
       <S.FooterContainer>
@@ -66,9 +75,19 @@ export const Footer = () => {
 
           <S.FormBtnWrapper>
             <S.Header>Залишились питання?</S.Header>
-            <S.FormBtn>Заповнити форму</S.FormBtn>
+            <S.FormBtn
+              type='button'
+              onClick={ () => setIsModalOpen( !isModalOpen ) }
+            >
+              Заповнити форму
+            </S.FormBtn>
           </S.FormBtnWrapper>
         </S.ContentOrganizer>
+        { isModalOpen && (
+          <Modal onActiveModal={ toggleModal }>
+            <QuestionForm onActiveModal={ toggleModal } />
+          </Modal>
+        )}
 
         <S.TermsRightsWrapper>
           <div>
