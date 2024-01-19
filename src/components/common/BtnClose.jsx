@@ -12,8 +12,8 @@ export const BtnClose = ( { children, xlTop, xlRight, mdTop, mdRight, smTop, smR
       $mdTop={ mdTop }
       $smRight={ smRight }
       $smTop={ smTop }
-      { ...props }
       onClick={ click }
+      { ...props }
     >
       {children}
     </Button>
