@@ -16,7 +16,10 @@ export const StyledSection = styled.section`
 `;
 
 export const StyledWrapper = styled.div`
-    min-width: 100%;
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -25,7 +28,7 @@ export const StyledWrapper = styled.div`
 `;
 
 export const StyledContent = styled.div`
-    width: 100%;
+    // width: 100%;
     margin-top: 80px;
     margin-bottom: 20px;
     display: flex;

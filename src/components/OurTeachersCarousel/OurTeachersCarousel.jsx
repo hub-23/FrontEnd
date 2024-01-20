@@ -32,7 +32,6 @@ export const OurTeachersCarousel = () => {
     className: 'center',
     centerMode: true,
     infinite: true,
-    // centerPadding: '180px',
     slidesToShow: 14,
     speed: 2000,
     autoplay: true,
