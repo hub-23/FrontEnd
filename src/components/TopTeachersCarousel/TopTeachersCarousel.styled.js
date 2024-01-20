@@ -3,7 +3,6 @@ import { device } from '../../styles/device';
 
 export const StyledSection = styled.section`
     min-width: 100%;
-    max-width: 1440px;
     max-height: 720px;
     min-height: 100%;
     padding-bottom: 78px;
@@ -21,7 +20,10 @@ export const StyledSection = styled.section`
 `;
 
 export const StyledWrapper = styled.div`
-    min-width: 100%;
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
     display: flex;
     flex-direction: column;
