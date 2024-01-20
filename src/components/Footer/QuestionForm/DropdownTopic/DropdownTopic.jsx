@@ -4,7 +4,8 @@ import * as S from './DropdownTopic.styled';
 import { Input } from '../QuestionForm.styled';
 
 
-export const DropdownTopic = () => {
+export const DropdownTopic = ( { valueSelect } ) => {
+  const [ notificationTopic, setNotificationTopic ] = useState( '' );
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
   ];
@@ -16,6 +17,7 @@ export const DropdownTopic = () => {
         <Input
           type="text"
           placeholder='Тема повідомлення'
+          value={ notificationTopic }
         />
         <S.DropdownBtn
           type='button'
@@ -34,7 +36,13 @@ export const DropdownTopic = () => {
         <S.Dropdown>
           <ul>
             {notificationTopics.map( ( topic ) => (
-              <S.DropdownItem key={ topic }>
+              <S.DropdownItem
+                key={ topic }
+                onClick={ () => {
+                  valueSelect( topic );
+                  setNotificationTopic( topic );
+                } }
+              >
                 <p>{topic}</p>
               </S.DropdownItem>
             ) )}

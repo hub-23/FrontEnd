@@ -11,6 +11,7 @@ import * as S from './QuestionForm.styled';
 
 export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
+  const [ questionTopic, setQuestionTopic ] = useState( '' );
 
   const schema = object( {
     name: string()
@@ -21,20 +22,22 @@ export const QuestionForm = ( { onActiveModal } ) => {
             'Ім’я має містити українські або англійські літери',
         )
         .required( 'Вкажіть ваше ім’я' ),
-    email: string().email( 'Невірно вказано e-mail' ),
-    // .required( 'Вкажіть ваш e-mail' ),
+    email: string().email( 'Невірно вказано e-mail' )
+        .required( 'Вкажіть ваш e-mail' ),
     phone: string()
         .matches(
             /^\d{3}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
             'Невірно вказаний номер',
-        ),
-    // .required( 'Вкажіть ваш номер телефону' ),
+        )
+        .required( 'Вкажіть ваш номер телефону' ),
+    topic: string().required( 'Вкажіть тему' ),
   } );
 
   const initialValues = {
     name: '',
     email: '',
     phone: '',
+    topic: '',
   };
 
   const FormError = ( { name, isMarginLeft } ) => {
@@ -48,7 +51,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
   const handleSubmit = ( values, { resetForm } ) => {
     const phone = { phone: `${codeCountry}${values.phone.replaceAll( ' ', '' )}` };
-    const questionFormData = { ...values, ...phone };
+    const topic = { topic: questionTopic };
+    const questionFormData = { ...values, ...phone, ...topic };
 
     console.log( 'Data from QuestionForm to Backend  :>> ', questionFormData );
 
@@ -58,6 +62,10 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
   const handleGetSelected = ( values ) => {
     setCodeCountry( values );
+  };
+
+  const handleTopicSelect = ( value ) => {
+    setQuestionTopic( value );
   };
 
   return (
@@ -141,7 +149,12 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     smHeightList="245px"
                   />
                 </S.LabelFormUser>
-                <DropdownTopic />
+
+                <DropdownTopic
+                  valueSelect={ handleTopicSelect }
+                  name="topic"
+                />
+
                 <textarea name="" id="" cols="30" rows="10" placeholder='Повідомлення'></textarea>
                 <S.WrappWarningText>
                   <IconSvg width="24px" height="24px" icon="icon-star-marker" />
@@ -157,8 +170,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   width='100%'
                   height='60px'
                   smHeight='50px'
-                  borderRadius='16px 0'
-                  smBorderRadius='20px 0'
+                  //   borderRadius='16px 0'
+                  //   smBorderRadius='20px 0'
                   onClick={ onActiveModal }
                 >
                 Надіслати
