@@ -4,6 +4,7 @@ import { IconSvg } from '../../common/IconSvg';
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import { PhoneSelect } from '../../common/PhoneSelect';
+import { DropdownTopic } from './DropdownTopic/DropdownTopic';
 import countries from '../../../assets/countries.json';
 import * as S from './QuestionForm.styled';
 
@@ -140,7 +141,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     smHeightList="245px"
                   />
                 </S.LabelFormUser>
-                <input type="text" placeholder='Тема повідомлення' />
+                <DropdownTopic />
                 <textarea name="" id="" cols="30" rows="10" placeholder='Повідомлення'></textarea>
                 <S.WrappWarningText>
                   <IconSvg width="24px" height="24px" icon="icon-star-marker" />
