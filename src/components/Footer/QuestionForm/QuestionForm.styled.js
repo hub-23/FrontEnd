@@ -67,7 +67,7 @@ export const FormFild = styled( Form )`
     }
 `;
 
-export const LabelFormUser = styled.label`
+export const LabelForm = styled.label`
     position: relative;
     display: flex;
     flex-direction: column;

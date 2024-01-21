@@ -4,20 +4,18 @@ import * as S from './DropdownTopic.styled';
 import { Input } from '../QuestionForm.styled';
 
 
-export const DropdownTopic = ( { valueSelect } ) => {
+export const DropdownTopic = ( { data, valueSelect, error } ) => {
   const [ notificationTopic, setNotificationTopic ] = useState( '' );
-  const notificationTopics = [
-    'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
-  ];
-
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
   return (
     <div>
       <S.InputWrapper>
         <Input
           type="text"
+          name="topic"
           placeholder='Тема повідомлення'
           value={ notificationTopic }
+          $error={ error }
         />
         <S.DropdownBtn
           type='button'
@@ -35,7 +33,7 @@ export const DropdownTopic = ( { valueSelect } ) => {
       {isDropdownShown && (
         <S.Dropdown>
           <ul>
-            {notificationTopics.map( ( topic ) => (
+            {data.map( ( topic ) => (
               <S.DropdownItem
                 key={ topic }
                 onClick={ () => {
