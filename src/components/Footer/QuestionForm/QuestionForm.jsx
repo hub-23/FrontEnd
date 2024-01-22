@@ -1,32 +1,41 @@
 import React, { useState } from 'react';
+import { Formik, ErrorMessage } from 'formik';
+import { object, string, mixed } from 'yup';
 import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
-import { Formik, Field, ErrorMessage } from 'formik';
-import { object, string } from 'yup';
 import { PhoneSelect } from '../../common/PhoneSelect';
-import { DropdownTopic } from './DropdownTopic/DropdownTopic';
+import { DropdownTopic } from './DropdownTopic';
 import countries from '../../../assets/countries.json';
 import * as S from './QuestionForm.styled';
 
 
 export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
-  const [ questionTopic, setQuestionTopic ] = useState( '' );
+  const [ isDropdownShown, setIsDropdownShown ] = useState( false );
 
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
   ];
 
+  const allowedFileFormats = [
+    'image/jpeg',
+    'image/png',
+    'image/gif',
+    'image/webp',
+  ];
+
   const schema = object( {
     name: string()
-        .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
-        .max( 30, 'Вкажіть мініімум 2 літери, але не більше 30' )
+        .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
+        .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
         .matches(
             /^[А-яЁёЇїІіЄєҐґ'\s/A-z\s/\-/_/.]+$/,
             'Ім’я має містити українські або англійські літери',
         )
         .required( 'Вкажіть ваше ім’я' ),
-    email: string().email( 'Невірно вказано e-mail' )
+    email: string()
+        .email( 'Невірно вказано e-mail' )
+        .trim()
         .required( 'Вкажіть ваш e-mail' ),
     phone: string()
         .matches(
@@ -34,7 +43,19 @@ export const QuestionForm = ( { onActiveModal } ) => {
             'Невірно вказаний номер',
         )
         .required( 'Вкажіть ваш номер телефону' ),
-    topic: string().required( 'Вкажіть тему' ).oneOf( notificationTopics ),
+    topic: string()
+        .oneOf( notificationTopics )
+        .required( 'Вкажіть тему повідомлення' ),
+    message: string()
+        .required( 'Опишіть проблему' ),
+    file: mixed()
+        .test(
+            'isFileValid',
+            'Invalid file format',
+            ( value ) => value === null || (
+              value instanceof File && allowedFileFormats.includes( value.type )
+            ),
+        ),
   } );
 
   const initialValues = {
@@ -42,6 +63,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
     email: '',
     phone: '',
     topic: '',
+    message: '',
+    file: null,
   };
 
   const FormError = ( { name, isMarginLeft } ) => {
@@ -55,8 +78,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
   const handleSubmit = ( values, { resetForm } ) => {
     const phone = { phone: `${codeCountry}${values.phone.replaceAll( ' ', '' )}` };
-    const topic = { topic: questionTopic };
-    const questionFormData = { ...values, ...phone, ...topic };
+    const questionFormData = { ...values, ...phone };
 
     console.log( 'Data from QuestionForm to Backend  :>> ', questionFormData );
 
@@ -68,8 +90,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
     setCodeCountry( values );
   };
 
-  const handleTopicSelect = ( value ) => {
-    setQuestionTopic( value );
+  const handleTopicSelect = ( formik, value ) => {
+    formik.setFieldValue( 'topic', value );
+    setIsDropdownShown( !isDropdownShown );
   };
 
   return (
@@ -100,22 +123,19 @@ export const QuestionForm = ( { onActiveModal } ) => {
         Напишіть своє повідомлення використовуючи форму або зверніться напряму за електронною адресою
       </S.Text>
       <div>
-        <Formik
-          initialValues={ initialValues }
-          validationSchema={ schema }
-          onSubmit={ handleSubmit }
-        >
+        <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit } >
           {( formik ) => {
             const {
-              errors: { name, email, phone, topic },
+              errors: { name, email, phone, topic, message }, // повідомлення про помилки зі схеми
               touched,
             } = formik;
             const isDataUser = formik.initialValues.phone === formik.values.phone;
 
-            const errName = name && touched.name;
+            const errName = name && touched.name; // при розфокусуванні поля touched.name = true
             const errEmail = email && touched.email;
             const errPhone = phone && touched.phone;
             const errTopic = topic && touched.topic;
+            const errMessage = message && touched.message;
 
             return (
               <S.FormFild autoComplete="on">
@@ -158,29 +178,53 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   />
                 </S.LabelForm>
 
-                {/* <S.LabelForm htmlFor="topic">
-                  <DropdownTopic
-                    data={ notificationTopics }
-                    valueSelect={ handleTopicSelect }
-                    // name="topic"
-                    error={ errTopic }
-                  />
-                  <FormError name="topic" isMarginLeft={ true } />
-                </S.LabelForm> */}
-
                 <S.LabelForm htmlFor="topic">
-                  <Field
+                  <S.Input
+                    type="text"
                     name="topic"
-                    as={ DropdownTopic }
                     placeholder="Тема повідомлення"
-                    data={ notificationTopics }
-                    valueSelect={ handleTopicSelect }
-                    error={ errTopic }
+                    $error={ errTopic }
                   />
+                  <S.DropdownBtn
+                    type='button'
+                    aria-label='dropdown-menu'
+                    onClick={ () => setIsDropdownShown( !isDropdownShown ) }
+                    $rotate={ isDropdownShown }
+                  >
+                    <IconSvg
+                      xlWidth='11px'
+                      xlHeight='6px'
+                      icon='icon-arrow-down'
+                    />
+                  </S.DropdownBtn>
                   <FormError name="topic" isMarginLeft={ true } />
                 </S.LabelForm>
+                {isDropdownShown
+                  && <DropdownTopic
+                    data={ notificationTopics }
+                    handleTopicSelect={ ( formik, value ) => handleTopicSelect( formik, value ) }
+                    formik={ formik }
+                  />
+                }
 
-                <textarea name="" id="" cols="30" rows="10" placeholder='Повідомлення'></textarea>
+                <S.LabelForm htmlFor="message">
+                  <S.Textarea
+                    name="message"
+                    as="textarea"
+                    rows="10"
+                    placeholder="Повідомлення"
+                    $error={ errMessage }
+                  />
+                  <FormError name="message" isMarginLeft={ true } />
+                </S.LabelForm>
+
+                <S.LabelForm htmlFor="file">
+                  <S.Input
+                    name="file"
+                    type='file'
+                  />
+                </S.LabelForm>
+
                 <S.WrappWarningText>
                   <IconSvg width="24px" height="24px" icon="icon-star-marker" />
 
@@ -197,7 +241,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   smHeight='50px'
                   //   borderRadius='16px 0'
                   //   smBorderRadius='20px 0'
-                  onClick={ onActiveModal }
                 >
                 Надіслати
                 </S.SubmitBtn>

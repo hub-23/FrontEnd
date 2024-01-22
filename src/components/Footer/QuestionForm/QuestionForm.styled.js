@@ -11,15 +11,33 @@ import {
   grayStroke,
   grayText,
   white,
+  transition,
 } from '../../../utils/variables.styled';
 
 export const QuestionFormContainer = styled.div`
     position: absolute;
     width: 516px;
-    /* height: 100%; */
+    max-height: 95%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
     padding: 48px;
     background: ${( props ) => props.color || props.theme.colors.white};
     border-radius: 20px 0px;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(18, 20, 23, 0.05); 
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(18, 20, 23, 0.1); 
+    }
     /* @media screen and (max-width: 455px) {
         width: 100%;
     }
@@ -89,9 +107,8 @@ export const Input = styled( Field )`
     border-style: solid;
 
     border-radius: 20px 0px;
-    border-color: ${( { $isDataUser } ) => ( $isDataUser ? grayStroke : borderGreen )};
-    border-color: ${( { $error } ) => $error && `${borderError}`};
-    color: ${black};
+    border-color: ${( props ) =>
+    ( props.$error ? `${borderError}` : props.$isDataUser ? grayStroke : borderGreen )};
     background-color: ${white};
 
     @media ${device.sm} {
@@ -113,6 +130,26 @@ export const Input = styled( Field )`
     }
 `;
 
+export const Textarea = styled( Input )`
+    height: 120px;
+    overflow-y: auto;
+    /* max-height: 270px; */
+    resize: vertical;
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(18, 20, 23, 0.05); 
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(18, 20, 23, 0.1); 
+    }
+`;
+
 export const ErrorText = styled.p`
     display: inline;
     margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
@@ -126,6 +163,45 @@ export const ErrorText = styled.p`
     color: ${accent};
 `;
 
+export const DropdownBtn = styled.button`
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%) ${ ( props ) => ( props.$rotate ? 'rotate(180deg)' : '' ) };
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    fill: ${( props ) => props.color || props.theme.colors.black};
+    -webkit-transition: rotate ${transition};
+    transition: rotate ${transition};
+`;
+
+export const Dropdown = styled.div`
+    background-color: ${( props ) => props.color || props.theme.colors.white};
+    position: absolute;
+    top: 500px;
+    z-index: 1;
+    margin-top: 4px;
+    padding: 15px 0;
+    width: 420px;
+    border-radius: 16px 0px;
+    box-shadow: 0px -1px 4px 0px rgba(45, 45, 45, 0.05),
+                 4px 4px 4px 0px rgba(45, 45, 45, 0.20),
+                 -2px 0px 4px 0px rgba(45, 45, 45, 0.05);                 
+    & > ul > li {
+        padding: 5px 36px;
+        font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: ${( props ) => props.color || props.theme.colors.black};
+        &:not(:last-child) {
+           margin-bottom: 2px; 
+        }
+    }
+`;
+
 export const WrappWarningText = styled.div`
     display: flex;
     align-items: center;
@@ -134,6 +210,14 @@ export const WrappWarningText = styled.div`
 
     @media ${device.md} {
         margin-left: 0;
+    }
+`;
+
+export const DropdownItem = styled.li`
+    cursor: pointer;
+    &:hover,
+     :focus {
+        background-color: #F9F9F9;
     }
 `;
 
