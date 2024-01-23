@@ -51,14 +51,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
         .required( 'Вкажіть тему повідомлення' ),
     message: string()
         .required( 'Опишіть проблему' ),
-    file: mixed()
-        .test(
-            'isFileValid',
-            'Invalid file format',
-            ( value ) => value === null || (
-              value instanceof File && allowedFileFormats.includes( value.type )
-            ),
-        ),
+    // file: string(),
+    file: mixed(),
   } );
 
   const initialValues = {
@@ -67,7 +61,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
     phone: '',
     topic: '',
     message: '',
-    file: null,
+    file: '',
   };
 
   const FormError = ( { name, isMarginLeft } ) => {
@@ -104,8 +98,15 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
   const handleImageSelect = ( value ) => {
     // formik.setFieldValue( 'file', value );
-    // console.log( value );
     setImages( value );
+  };
+
+  const handleImageDelete = ( image ) => {
+    if ( images.includes( image ) ) {
+      const idxToDelete = images.indexOf( image );
+      images.splice( idxToDelete, 1 );
+      setImages( [ ...images ] );
+    }
   };
 
   return (
@@ -224,7 +225,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   <S.InputWrapper>
                     <S.Textarea
                       name="message"
-                      as="textarea"
+                      component="textarea"
                       rows="10"
                       placeholder="Повідомлення"
                       $error={ errMessage }
@@ -249,9 +250,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   </S.ClipBtn>
                   {isUploadNoticeShown
                     && <UploadNotice
-                      handleUploadNoticeShown={ handleUploadNoticeShown }
                       allowedFileFormats={ allowedFileFormats }
                       handleImageSelect={ handleImageSelect }
+                      formik={ formik }
                     />
                   }
                   { images && (
@@ -262,7 +263,11 @@ export const QuestionForm = ( { onActiveModal } ) => {
                             src={ image }
                             alt="uploaded file"
                           />
-                          <S.ImgDeleteBtn>
+                          <S.ImgDeleteBtn
+                            type='button'
+                            aria-label='image-delete'
+                            onClick={ () => handleImageDelete( image ) }
+                          >
                             <IconSvg
                               xlWidth="16px"
                               xlHeight="16px"

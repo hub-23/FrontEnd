@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import { useField } from 'formik';
 import { IconSvg } from '../../../common/IconSvg';
 import * as S from './UploadNotice.styled';
 
-export const UploadNotice = ( { handleUploadNoticeShown, allowedFileFormats, handleImageSelect } ) => {
+export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
   const [ inputActive, setInputActive ] = useState( false );
   const [ imageSources, setImageSources ] = useState( [] );
 
@@ -34,12 +33,12 @@ export const UploadNotice = ( { handleUploadNoticeShown, allowedFileFormats, han
     reader.onload = function( event ) {
       setImageSources( ( prevImageSources ) => [ ...prevImageSources, event.target.result ] );
     };
-
     reader.readAsDataURL( inputFile );
 
     // const formData = new FormData();
     // if ( inputFile ) formData.set( 'file', inputFile );
   };
+
   useEffect( () => {
     handleImageSelect( imageSources );
   }, [ imageSources ] );
@@ -67,10 +66,7 @@ export const UploadNotice = ( { handleUploadNoticeShown, allowedFileFormats, han
         <S.Input
           name="file"
           type='file'
-          onChange={ ( e ) => {
-            handleFileChange( e );
-            // handleUploadNoticeShown();
-          } }
+          onChange={ handleFileChange }
           accept='image/jpeg,image/png,image/gif,image/webp'
         />
       )}
