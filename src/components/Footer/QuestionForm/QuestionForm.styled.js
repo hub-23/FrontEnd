@@ -85,12 +85,17 @@ export const FormFild = styled( Form )`
     }
 `;
 
-export const LabelForm = styled.label`
+// export const LabelForm = styled.label`
+export const InputWrapper = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 7px;
     width: 100%;
+`;
+
+export const TextareaWrapper = styled.div`
+    position: relative;
 `;
 
 export const Input = styled( Field )`
@@ -219,6 +224,41 @@ export const DropdownItem = styled.li`
      :focus {
         background-color: #F9F9F9;
     }
+`;
+
+export const ClipBtn = styled.button`
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: initial;
+`;
+
+export const ImagesList = styled.ul`
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+`;
+
+export const Image = styled.img`
+    width: 77px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px 0px;
+`;
+
+export const ImgDeleteBtn = styled.button`
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: initial;
 `;
 
 export const WarningText = styled.p`

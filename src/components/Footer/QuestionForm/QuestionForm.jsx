@@ -4,14 +4,17 @@ import { object, string, mixed } from 'yup';
 import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
-import { DropdownTopic } from './DropdownTopic';
 import countries from '../../../assets/countries.json';
+import { DropdownTopic } from './DropdownTopic';
+import { UploadNotice } from './UploadNotice/UploadNotice';
 import * as S from './QuestionForm.styled';
 
 
 export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
+  const [ isUploadNoticeShown, setIsUploadNoticeShown ] = useState( false );
+  const [ images, setImages ] = useState( [] );
 
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
@@ -95,6 +98,16 @@ export const QuestionForm = ( { onActiveModal } ) => {
     setIsDropdownShown( !isDropdownShown );
   };
 
+  const handleUploadNoticeShown = () => {
+    setIsUploadNoticeShown( !isUploadNoticeShown );
+  };
+
+  const handleImageSelect = ( value ) => {
+    // formik.setFieldValue( 'file', value );
+    // console.log( value );
+    setImages( value );
+  };
+
   return (
     <S.QuestionFormContainer>
       <BtnClose
@@ -138,8 +151,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
             const errMessage = message && touched.message;
 
             return (
-              <S.FormFild autoComplete="on">
-                <S.LabelForm htmlFor="name">
+              <S.FormFild autoComplete="off">
+                <S.InputWrapper>
                   <S.Input
                     type="text"
                     name="name"
@@ -147,9 +160,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     $error={ errName }
                   />
                   <FormError name="name" isMarginLeft={ true } />
-                </S.LabelForm>
+                </S.InputWrapper>
 
-                <S.LabelForm htmlFor="email">
+                <S.InputWrapper>
                   <S.Input
                     type="email"
                     name="email"
@@ -157,9 +170,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     $error={ errEmail }
                   />
                   <FormError name="email" isMarginLeft={ true } />
-                </S.LabelForm>
+                </S.InputWrapper>
 
-                <S.LabelForm htmlFor="phone" style={ { paddingTop: '2px' } }>
+                <S.InputWrapper htmlFor="phone" style={ { paddingTop: '2px' } }>
                   <S.Input
                     type="tel"
                     name="phone"
@@ -176,9 +189,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     xlHeightList="275px"
                     smHeightList="245px"
                   />
-                </S.LabelForm>
+                </S.InputWrapper>
 
-                <S.LabelForm htmlFor="topic">
+                <S.InputWrapper>
                   <S.Input
                     type="text"
                     name="topic"
@@ -198,7 +211,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     />
                   </S.DropdownBtn>
                   <FormError name="topic" isMarginLeft={ true } />
-                </S.LabelForm>
+                </S.InputWrapper>
                 {isDropdownShown
                   && <DropdownTopic
                     data={ notificationTopics }
@@ -207,23 +220,65 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   />
                 }
 
-                <S.LabelForm htmlFor="message">
-                  <S.Textarea
-                    name="message"
-                    as="textarea"
-                    rows="10"
-                    placeholder="Повідомлення"
-                    $error={ errMessage }
-                  />
-                  <FormError name="message" isMarginLeft={ true } />
-                </S.LabelForm>
+                <S.TextareaWrapper>
+                  <S.InputWrapper>
+                    <S.Textarea
+                      name="message"
+                      as="textarea"
+                      rows="10"
+                      placeholder="Повідомлення"
+                      $error={ errMessage }
+                    />
+                    <FormError name="message" isMarginLeft={ true } />
+                  </S.InputWrapper>
 
-                <S.LabelForm htmlFor="file">
-                  <S.Input
-                    name="file"
-                    type='file'
-                  />
-                </S.LabelForm>
+                  <S.ClipBtn
+                    type='button'
+                    aria-label='paper-clip'
+                    onClick={ handleUploadNoticeShown }
+                  >
+                    <IconSvg
+                      xlWidth="24px"
+                      xlHeight="24px"
+                      mdWidth="24px"
+                      mdHeight="24px"
+                      smWidth="24px"
+                      smHeight="24px"
+                      icon="icon-paper-clip"
+                    />
+                  </S.ClipBtn>
+                  {isUploadNoticeShown
+                    && <UploadNotice
+                      handleUploadNoticeShown={ handleUploadNoticeShown }
+                      allowedFileFormats={ allowedFileFormats }
+                      handleImageSelect={ handleImageSelect }
+                    />
+                  }
+                  { images && (
+                    <S.ImagesList>
+                      {images.map( ( image ) => (
+                        <li key={ image } style={ { position: 'relative' } }>
+                          <S.Image
+                            src={ image }
+                            alt="uploaded file"
+                          />
+                          <S.ImgDeleteBtn>
+                            <IconSvg
+                              xlWidth="16px"
+                              xlHeight="16px"
+                              mdWidth="16px"
+                              mdHeight="16px"
+                              smWidth="16px"
+                              smHeight="16px"
+                              icon="icon-image-delete"
+                            />
+                          </S.ImgDeleteBtn>
+                        </li>
+                      ) )}
+                    </S.ImagesList>
+                  )}
+                </S.TextareaWrapper>
+
 
                 <S.WrappWarningText>
                   <IconSvg width="24px" height="24px" icon="icon-star-marker" />
