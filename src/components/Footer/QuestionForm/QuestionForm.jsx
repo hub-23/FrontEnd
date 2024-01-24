@@ -5,7 +5,7 @@ import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
 import countries from '../../../assets/countries.json';
-import { DropdownTopic } from './DropdownTopic';
+import { DropdownTopic } from './DropdownTopic/DropdownTopic';
 import { UploadNotice } from './UploadNotice/UploadNotice';
 import * as S from './QuestionForm.styled';
 
@@ -109,6 +109,17 @@ export const QuestionForm = ( { onActiveModal } ) => {
     }
   };
 
+  const [ textareaValue, setTextareaValue ] = useState( '' );
+
+  const handleTextAreaChange = ( event ) => {
+    event.target.style.height = event.target.scrollHeight;
+
+    console.log( 'height: ', event.target.style.minHeight );
+    setTextareaValue( event.target.value );
+    console.log( 'scrollHeight:', event.target.scrollHeight );
+    // console.log( event.target.clientHeight );
+  };
+
   return (
     <S.QuestionFormContainer>
       <BtnClose
@@ -192,7 +203,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   />
                 </S.InputWrapper>
 
-                <S.InputWrapper>
+                <S.InputWrapper style={ { position: 'relative' } }>
                   <S.Input
                     type="text"
                     name="topic"
@@ -212,14 +223,15 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     />
                   </S.DropdownBtn>
                   <FormError name="topic" isMarginLeft={ true } />
+                  {isDropdownShown
+                    && <DropdownTopic
+                      data={ notificationTopics }
+                      handleTopicSelect={ ( formik, value ) => handleTopicSelect( formik, value ) }
+                      formik={ formik }
+                    />
+                  }
                 </S.InputWrapper>
-                {isDropdownShown
-                  && <DropdownTopic
-                    data={ notificationTopics }
-                    handleTopicSelect={ ( formik, value ) => handleTopicSelect( formik, value ) }
-                    formik={ formik }
-                  />
-                }
+
 
                 <S.TextareaWrapper>
                   <S.InputWrapper>
@@ -229,6 +241,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       rows="10"
                       placeholder="Повідомлення"
                       $error={ errMessage }
+                      value={ textareaValue }
+                      onChange={ handleTextAreaChange }
                     />
                     <FormError name="message" isMarginLeft={ true } />
                   </S.InputWrapper>
