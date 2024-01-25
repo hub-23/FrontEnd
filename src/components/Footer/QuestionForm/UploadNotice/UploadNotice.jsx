@@ -3,12 +3,12 @@ import { IconSvg } from '../../../common/IconSvg';
 import * as S from './UploadNotice.styled';
 
 export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
-  const [ inputActive, setInputActive ] = useState( false );
   const [ imageSources, setImageSources ] = useState( [] );
 
   //   const [ , , helpers ] = useField( 'file' );
 
   const handleFileChange = ( e ) => {
+    console.log( 'click' );
     const inputFile = e.target.files[ 0 ];
     // helpers.setValue( inputFile );
 
@@ -48,7 +48,6 @@ export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
       <S.UploadBtn
         type='button'
         aria-label='upload'
-        onClick={ () => setInputActive( !inputActive ) }
       >
         <IconSvg
           xlWidth="24px"
@@ -60,16 +59,13 @@ export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
           icon="icon-upload"
         />
       </S.UploadBtn>
+      <S.Input
+        name="file"
+        type='file'
+        onChange={ handleFileChange }
+        accept='image/jpeg,image/png,image/gif,image/webp'
+      />
       <S.Text>Завантажити з комп’ютера</S.Text>
-
-      {inputActive && (
-        <S.Input
-          name="file"
-          type='file'
-          onChange={ handleFileChange }
-          accept='image/jpeg,image/png,image/gif,image/webp'
-        />
-      )}
     </S.Wrapper>
   );
 };

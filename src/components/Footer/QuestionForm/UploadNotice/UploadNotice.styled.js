@@ -38,7 +38,6 @@ export const Input = styled( Field )`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: blueviolet;
     opacity: 0;
     cursor: pointer;
     z-index: 10;
