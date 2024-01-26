@@ -8,7 +8,6 @@ export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
   //   const [ , , helpers ] = useField( 'file' );
 
   const handleFileChange = ( e ) => {
-    console.log( 'click' );
     const inputFile = e.target.files[ 0 ];
     // helpers.setValue( inputFile );
 

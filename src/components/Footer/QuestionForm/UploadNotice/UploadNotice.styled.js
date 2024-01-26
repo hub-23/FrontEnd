@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
     border-radius: 12px 0px;
     box-shadow: 4px 4px 4px 0px rgba(45, 45, 45, 0.20), 0px 2px 4px 0px rgba(45, 45, 45, 0.20);
     background-color: ${( props ) => props.color || props.theme.colors.white};
+    z-index: 11;
 `;
 
 export const UploadBtn = styled.button`
@@ -40,5 +41,4 @@ export const Input = styled( Field )`
     height: 100%;
     opacity: 0;
     cursor: pointer;
-    z-index: 10;
 `;
