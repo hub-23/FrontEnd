@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { Input } from '../QuestionForm.styled';
 // import { device } from '../../../styles/device';
+import { borderError, borderGreen } from '../../../../utils/variables.styled';
 
 
 export const TextareaWrapper = styled.div`
     position: relative;
+    background-color: yellowgreen;
 `;
 
 export const Textarea = styled( Input )`
@@ -13,6 +15,8 @@ export const Textarea = styled( Input )`
     /* max-height: 270px; */
     resize: vertical;
     padding-right: 56px;
+    border-color: ${( props ) => props.$error ? borderError : borderGreen };
+
     /* &::-webkit-scrollbar {
         width: 8px;
     }

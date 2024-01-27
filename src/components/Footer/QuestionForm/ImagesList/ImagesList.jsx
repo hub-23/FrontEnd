@@ -3,7 +3,7 @@ import { IconSvg } from '../../../common/IconSvg';
 import * as S from './ImagesList.styled';
 
 
-export const ImagesList = ( { images, handleImagesSaving } ) => {
+export const ImagesList = ( { images, handleImagesSaving, errMessage } ) => {
   const handleImageDelete = ( image ) => {
     if ( images.includes( image ) ) {
       const idxToDelete = images.indexOf( image );
@@ -13,9 +13,9 @@ export const ImagesList = ( { images, handleImagesSaving } ) => {
   };
 
   return (
-    <S.ImagesList>
+    <S.ImagesList $error={ errMessage }>
       {images.map( ( image ) => (
-        <li key={ image } style={ { position: 'relative' } }>
+        <S.ImageItem key={ image } style={ { position: 'relative' } }>
           <S.Image
             src={ image }
             alt="uploaded file"
@@ -35,7 +35,7 @@ export const ImagesList = ( { images, handleImagesSaving } ) => {
               icon="icon-image-delete"
             />
           </S.ImgDeleteBtn>
-        </li>
+        </S.ImageItem>
       ) )}
     </S.ImagesList>
   );

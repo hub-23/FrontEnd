@@ -196,7 +196,10 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   }
                 </S.InputWrapper>
 
-                <Message errMessage={ errMessage } allowedFileFormats={ allowedFileFormats } />
+                <Message
+                  allowedFileFormats={ allowedFileFormats }
+                  errMessage={ errMessage }
+                />
 
                 <S.WrappWarningText>
                   <IconSvg width="24px" height="24px" icon="icon-star-marker" />
