@@ -117,10 +117,13 @@ export const QuestionForm = ( { onActiveModal } ) => {
             const {
               errors: { name, email, phone, topic, message }, // повідомлення про помилки зі схеми
               touched,
+              handleChange,
+              values,
             } = formik;
             const isDataUser = formik.initialValues.phone === formik.values.phone;
 
-            const errName = name && touched.name; // при розфокусуванні поля touched.name = true
+            const errName = name && touched.name;
+            // при розфокусуванні поля touched.name = true; коли є вміст - undefined
             const errEmail = email && touched.email;
             const errPhone = phone && touched.phone;
             const errTopic = topic && touched.topic;
@@ -199,6 +202,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                 <Message
                   allowedFileFormats={ allowedFileFormats }
                   errMessage={ errMessage }
+                  handleChange={ handleChange }
+                  values={ values }
                 />
 
                 <S.WrappWarningText>

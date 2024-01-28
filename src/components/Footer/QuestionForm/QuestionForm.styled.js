@@ -10,7 +10,7 @@ import {
   borderGreen,
   grayStroke,
   grayText,
-  white,
+  //   white,
   transition,
 } from '../../../utils/variables.styled';
 
@@ -109,7 +109,7 @@ export const Input = styled( Field )`
     border-radius: 20px 0px;
     border-color: ${( props ) =>
     ( props.$error ? `${borderError}` : props.$isDataUser ? grayStroke : borderGreen )};
-    background-color: ${white};
+    background-color: ${( props ) => props.color || props.theme.colors.white};
 
     @media ${device.sm} {
         padding: 15px 20px;

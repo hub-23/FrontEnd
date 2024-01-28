@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
 export const ImagesList = styled.ul`
-    position: absolute;
-    left: 32px;
-    bottom: ${( props ) => props.$error ? '43px' : '16px' };
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    background-color:  yellowgreen;
+    padding: 0 45px 16px 32px;
 `;
 
 export const ImageItem = styled.li`

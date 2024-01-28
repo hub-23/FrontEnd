@@ -1,23 +1,51 @@
 import styled from 'styled-components';
-import { Input } from '../QuestionForm.styled';
-// import { device } from '../../../styles/device';
-import { borderError, borderGreen } from '../../../../utils/variables.styled';
+import { Field } from 'formik';
+import { device } from '../../../../styles/device';
+import {
+  borderBlue,
+  borderError,
+  borderGreen,
+  grayStroke,
+  grayText,
+  white,
+} from '../../../../utils/variables.styled';
 
 
-export const TextareaWrapper = styled.div`
+export const InputWrapper = styled.div`
     position: relative;
-    background-color: yellowgreen;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${( { $error, $value } ) => $value
+      ? borderGreen
+      : ( $error ? borderError : grayStroke )};
+    
+    background-color: ${white};
+    border-radius: 20px 0px;
+    &:focus-within {
+        border-color: ${borderBlue};
+    }
 `;
 
-export const Textarea = styled( Input )`
-    min-height: 60px; // 120px
-    overflow-y: hidden; 
-    /* max-height: 270px; */
+export const Textarea = styled( Field )`
+    width: 100%;
+    min-height: 104px;
+    overflow-y: auto; 
     resize: vertical;
-    padding-right: 56px;
-    border-color: ${( props ) => props.$error ? borderError : borderGreen };
+    padding: 16px 56px 16px 32px;
+    background-color: white;
+    border-radius: 20px 0px;
+    border: none;
+    outline: none;
 
-    /* &::-webkit-scrollbar {
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+    font-size: 20px;
+    font-weight: 400;
+    line-height: calc(28 / 20);
+    letter-spacing: 0.2px;
+    color: ${( props ) => props.color || props.theme.colors.black};
+
+    &::-webkit-scrollbar {
         width: 8px;
     }
     &::-webkit-scrollbar-track {
@@ -29,7 +57,14 @@ export const Textarea = styled( Input )`
     }
     &::-webkit-scrollbar-thumb:hover {
         background: rgba(18, 20, 23, 0.1); 
-    } */
+    }
+
+    &:placeholder-shown {
+        color: ${grayText};
+    }
+
+    @media ${device.sm} {
+    }
 `;
 
 export const ClipBtn = styled.button`
