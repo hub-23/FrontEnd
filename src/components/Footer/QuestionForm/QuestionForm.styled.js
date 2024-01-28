@@ -10,7 +10,7 @@ import {
   borderGreen,
   grayStroke,
   grayText,
-  white,
+  //   white,
   transition,
 } from '../../../utils/variables.styled';
 
@@ -93,10 +93,6 @@ export const InputWrapper = styled.div`
     width: 100%;
 `;
 
-export const TextareaWrapper = styled.div`
-    position: relative;
-`;
-
 export const Input = styled( Field )`
     width: 100%;
     height: 60px;
@@ -113,7 +109,7 @@ export const Input = styled( Field )`
     border-radius: 20px 0px;
     border-color: ${( props ) =>
     ( props.$error ? `${borderError}` : props.$isDataUser ? grayStroke : borderGreen )};
-    background-color: ${white};
+    background-color: ${( props ) => props.color || props.theme.colors.white};
 
     @media ${device.sm} {
         padding: 15px 20px;
@@ -132,40 +128,6 @@ export const Input = styled( Field )`
         color: ${grayText};
         border-color: ${( { $error } ) => ( $error ? borderError : grayStroke )};
     }
-`;
-
-export const Textarea = styled( Input )`
-    min-height: 120px;
-    overflow-y: auto;
-    /* max-height: 270px; */
-    resize: vertical;
-    padding-right: 56px;
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
-    &::-webkit-scrollbar-track {
-        border-radius: 10px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background: rgba(18, 20, 23, 0.05); 
-        border-radius: 10px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-        background: rgba(18, 20, 23, 0.1); 
-    }
-`;
-
-export const ErrorText = styled.p`
-    display: inline;
-    margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
-
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: (15.82px / 14px);
-
-    color: ${accent};
 `;
 
 export const DropdownBtn = styled.button`
@@ -191,41 +153,6 @@ export const WrappWarningText = styled.div`
     @media ${device.md} {
         margin-left: 0;
     }
-`;
-
-export const ClipBtn = styled.button`
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: initial;
-`;
-
-export const ImagesList = styled.ul`
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-`;
-
-export const Image = styled.img`
-    width: 77px;
-    height: 48px;
-    object-fit: cover;
-    border-radius: 8px 0px;
-`;
-
-export const ImgDeleteBtn = styled.button`
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: initial;
 `;
 
 export const WarningText = styled.p`

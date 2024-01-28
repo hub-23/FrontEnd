@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import { object, string, mixed } from 'yup';
+import { FormError } from './FormError/FormError';
 import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
 import countries from '../../../assets/countries.json';
 import { DropdownTopic } from './DropdownTopic/DropdownTopic';
-import { UploadNotice } from './UploadNotice/UploadNotice';
+import { Message } from './Message/Message';
 import * as S from './QuestionForm.styled';
 
 
 export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
-  const [ isUploadNoticeShown, setIsUploadNoticeShown ] = useState( false );
-  const [ images, setImages ] = useState( [] );
+
 
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
@@ -64,14 +64,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
     file: '',
   };
 
-  const FormError = ( { name, isMarginLeft } ) => {
-    return (
-      <ErrorMessage
-        name={ name }
-        render={ ( message ) => <S.ErrorText $isMarginLeft={ isMarginLeft }>{message}</S.ErrorText> }
-      />
-    );
-  };
 
   const handleSubmit = ( values, { resetForm } ) => {
     const phone = { phone: `${codeCountry}${values.phone.replaceAll( ' ', '' )}` };
@@ -90,34 +82,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
   const handleTopicSelect = ( formik, value ) => {
     formik.setFieldValue( 'topic', value );
     setIsDropdownShown( !isDropdownShown );
-  };
-
-  const handleUploadNoticeShown = () => {
-    setIsUploadNoticeShown( !isUploadNoticeShown );
-  };
-
-  const handleImageSelect = ( value ) => {
-    // formik.setFieldValue( 'file', value );
-    setImages( value );
-  };
-
-  const handleImageDelete = ( image ) => {
-    if ( images.includes( image ) ) {
-      const idxToDelete = images.indexOf( image );
-      images.splice( idxToDelete, 1 );
-      setImages( [ ...images ] );
-    }
-  };
-
-  const [ textareaValue, setTextareaValue ] = useState( '' );
-
-  const handleTextAreaChange = ( event ) => {
-    event.target.style.height = event.target.scrollHeight;
-
-    console.log( 'height: ', event.target.style.minHeight );
-    setTextareaValue( event.target.value );
-    console.log( 'scrollHeight:', event.target.scrollHeight );
-    // console.log( event.target.clientHeight );
   };
 
   return (
@@ -153,10 +117,13 @@ export const QuestionForm = ( { onActiveModal } ) => {
             const {
               errors: { name, email, phone, topic, message }, // повідомлення про помилки зі схеми
               touched,
+              handleChange,
+              values,
             } = formik;
             const isDataUser = formik.initialValues.phone === formik.values.phone;
 
-            const errName = name && touched.name; // при розфокусуванні поля touched.name = true
+            const errName = name && touched.name;
+            // при розфокусуванні поля touched.name = true; коли є вміст - undefined
             const errEmail = email && touched.email;
             const errPhone = phone && touched.phone;
             const errTopic = topic && touched.topic;
@@ -232,72 +199,12 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   }
                 </S.InputWrapper>
 
-
-                <S.TextareaWrapper>
-                  <S.InputWrapper>
-                    <S.Textarea
-                      name="message"
-                      component="textarea"
-                      rows="10"
-                      placeholder="Повідомлення"
-                      $error={ errMessage }
-                      value={ textareaValue }
-                      onChange={ handleTextAreaChange }
-                    />
-                    <FormError name="message" isMarginLeft={ true } />
-                  </S.InputWrapper>
-
-                  <S.ClipBtn
-                    type='button'
-                    aria-label='paper-clip'
-                    onClick={ handleUploadNoticeShown }
-                  >
-                    <IconSvg
-                      xlWidth="24px"
-                      xlHeight="24px"
-                      mdWidth="24px"
-                      mdHeight="24px"
-                      smWidth="24px"
-                      smHeight="24px"
-                      icon="icon-paper-clip"
-                    />
-                  </S.ClipBtn>
-                  {isUploadNoticeShown
-                    && <UploadNotice
-                      allowedFileFormats={ allowedFileFormats }
-                      handleImageSelect={ handleImageSelect }
-                      formik={ formik }
-                    />
-                  }
-                  { images && (
-                    <S.ImagesList>
-                      {images.map( ( image ) => (
-                        <li key={ image } style={ { position: 'relative' } }>
-                          <S.Image
-                            src={ image }
-                            alt="uploaded file"
-                          />
-                          <S.ImgDeleteBtn
-                            type='button'
-                            aria-label='image-delete'
-                            onClick={ () => handleImageDelete( image ) }
-                          >
-                            <IconSvg
-                              xlWidth="16px"
-                              xlHeight="16px"
-                              mdWidth="16px"
-                              mdHeight="16px"
-                              smWidth="16px"
-                              smHeight="16px"
-                              icon="icon-image-delete"
-                            />
-                          </S.ImgDeleteBtn>
-                        </li>
-                      ) )}
-                    </S.ImagesList>
-                  )}
-                </S.TextareaWrapper>
-
+                <Message
+                  allowedFileFormats={ allowedFileFormats }
+                  errMessage={ errMessage }
+                  handleChange={ handleChange }
+                  values={ values }
+                />
 
                 <S.WrappWarningText>
                   <IconSvg width="24px" height="24px" icon="icon-star-marker" />
