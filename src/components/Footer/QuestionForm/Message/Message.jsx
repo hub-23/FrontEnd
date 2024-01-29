@@ -1,23 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormError } from '../FormError/FormError';
-import * as S from './Message.styled';
 import { IconSvg } from '../../../common/IconSvg';
-import { UploadNotice } from '../UploadNotice/UploadNotice';
+import { UploadPopup } from '../UploadPopup/UploadPopup';
 import { ImagesList } from '../ImagesList/ImagesList';
+import * as S from './Message.styled';
 
 
-export const Message = ( { errMessage, allowedFileFormats, handleChange, values } ) => {
-  const [ isUploadNoticeShown, setIsUploadNoticeShown ] = useState( false );
-  const [ images, setImages ] = useState( [] );
+export const Message = ( { errMessage, allowedFileFormats, values /* , handleFilesSelect */, formik } ) => {
+  const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
+  let storedImages = [];
+  try {
+    storedImages = JSON.parse( localStorage.getItem( 'question-form-images' ) ) || [];
+  } catch ( error ) {
+    console.log( error.message );
+  }
+  const [ images, setImages ] = useState( storedImages );
 
-  const handleUploadNoticeShown = () => {
-    setIsUploadNoticeShown( !isUploadNoticeShown );
-  };
 
   const handleImageSelect = ( value ) => {
-    // formik.setFieldValue( 'file', value );
     setImages( value );
+    // handleFilesSelect( formik, value );
+    // formik.setFieldValue( 'file', value );
   };
+
+  useEffect( () => {
+    const handleClickOutside = ( { target } ) => {
+      const tag = target.tagName;
+      if ( tag === 'TEXTAREA' || tag === 'DIV' || tag === 'FORM' || tag === 'UL' || tag === 'IMG' ) {
+        setUploadPopupVisible( false );
+      }
+    };
+    window.addEventListener( 'click', handleClickOutside );
+
+    return () => {
+      window.removeEventListener( 'click', handleClickOutside );
+    };
+  }, [ uploadPopupVisible ] );
 
   return (
     <div>
@@ -26,10 +44,9 @@ export const Message = ( { errMessage, allowedFileFormats, handleChange, values 
           name="message"
           component="textarea"
           placeholder="Повідомлення"
-          onChange={ handleChange }
           $error={ errMessage }
         />
-        { images && (
+        { images?.length > 0 && (
           <ImagesList
             images={ images }
             handleImagesSaving={ setImages }
@@ -39,7 +56,7 @@ export const Message = ( { errMessage, allowedFileFormats, handleChange, values 
         <S.ClipBtn
           type='button'
           aria-label='paper-clip'
-          onClick={ handleUploadNoticeShown }
+          onClick={ () => setUploadPopupVisible( !uploadPopupVisible ) }
         >
           <IconSvg
             xlWidth="24px"
@@ -51,13 +68,14 @@ export const Message = ( { errMessage, allowedFileFormats, handleChange, values 
             icon="icon-paper-clip"
           />
         </S.ClipBtn>
-        {isUploadNoticeShown
-          && <UploadNotice
+        {uploadPopupVisible && (
+          <UploadPopup
+            className="upload-notice-component"
             allowedFileFormats={ allowedFileFormats }
             handleImageSelect={ handleImageSelect }
-            // formik={ formik }
+            formik={ formik }
           />
-        }
+        ) }
       </S.InputWrapper>
       <FormError name="message" isMarginLeft={ true } />
     </div>

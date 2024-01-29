@@ -1,5 +1,14 @@
 import { Field } from 'formik';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const show = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Wrapper = styled.div`
     position: absolute;
@@ -9,11 +18,12 @@ export const Wrapper = styled.div`
     height: 52px;
     display: flex;
     gap: 8px;
+    animation: ${ show } 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;
     padding: 14px 24px;
     border-radius: 12px 0px;
     box-shadow: 4px 4px 4px 0px rgba(45, 45, 45, 0.20), 0px 2px 4px 0px rgba(45, 45, 45, 0.20);
     background-color: ${( props ) => props.color || props.theme.colors.white};
-    z-index: 11;
+    z-index: 1;
 `;
 
 export const UploadBtn = styled.button`

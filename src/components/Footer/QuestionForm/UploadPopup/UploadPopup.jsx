@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { IconSvg } from '../../../common/IconSvg';
-import * as S from './UploadNotice.styled';
+import * as S from './UploadPopup.styled';
 
-export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
-  const [ imageSources, setImageSources ] = useState( [] );
+export const UploadPopup = ( { allowedFileFormats, handleImageSelect, formik } ) => {
+  let storedImages = [];
+  try {
+    storedImages = JSON.parse( localStorage.getItem( 'question-form-images' ) ) || [];
+  } catch ( error ) {
+    console.log( error.message );
+  }
+  const [ imageSources, setImageSources ] = useState( storedImages );
 
-  //   const [ , , helpers ] = useField( 'file' );
-
-  const handleFileChange = ( e ) => {
+  const handleFileChange = ( formik, e ) => {
     const inputFile = e.target.files[ 0 ];
-    // helpers.setValue( inputFile );
 
     if ( !inputFile ) {
       return;
@@ -29,13 +32,18 @@ export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
     }
 
     const reader = new FileReader();
-    reader.onload = function( event ) {
-      setImageSources( ( prevImageSources ) => [ ...prevImageSources, event.target.result ] );
+    reader.onload = function( { target } ) {
+      handleImageSelect( formik, [ target.result ] );
+
+      setImageSources( ( prevImageSources ) => {
+        localStorage.setItem( 'question-form-images', JSON.stringify(
+            [ ...prevImageSources, target.result ],
+        ) );
+        // formik.setFieldValue( 'file', [ ...prevImageSources, target.result ] );
+        return [ ...prevImageSources, target.result ];
+      } );
     };
     reader.readAsDataURL( inputFile );
-
-    // const formData = new FormData();
-    // if ( inputFile ) formData.set( 'file', inputFile );
   };
 
   useEffect( () => {
@@ -61,7 +69,7 @@ export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
       <S.Input
         name="file"
         type='file'
-        onChange={ handleFileChange }
+        onChange={ ( e ) => handleFileChange( formik, e ) }
         accept='image/jpeg,image/png,image/gif,image/webp'
       />
       <S.Text>Завантажити з комп’ютера</S.Text>

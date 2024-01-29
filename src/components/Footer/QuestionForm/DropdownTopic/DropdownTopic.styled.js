@@ -4,7 +4,7 @@ export const Dropdown = styled.div`
     background-color: ${( props ) => props.color || props.theme.colors.white};
     position: absolute;
     top: 60px;
-    z-index: 1;
+    z-index: 2;
     margin-top: 4px;
     padding: 15px 0;
     width: 100%;

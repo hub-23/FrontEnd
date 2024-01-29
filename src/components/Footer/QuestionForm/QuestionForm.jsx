@@ -61,7 +61,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
     phone: '',
     topic: '',
     message: '',
-    file: '',
+    file: [],
   };
 
 
@@ -83,6 +83,10 @@ export const QuestionForm = ( { onActiveModal } ) => {
     formik.setFieldValue( 'topic', value );
     setIsDropdownShown( !isDropdownShown );
   };
+
+  // const handleFilesSelect = ( formik, value ) => {
+  //   formik.setFieldValue( 'file', value );
+  // };
 
   return (
     <S.QuestionFormContainer>
@@ -117,7 +121,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
             const {
               errors: { name, email, phone, topic, message }, // повідомлення про помилки зі схеми
               touched,
-              handleChange,
               values,
             } = formik;
             const isDataUser = formik.initialValues.phone === formik.values.phone;
@@ -202,8 +205,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
                 <Message
                   allowedFileFormats={ allowedFileFormats }
                   errMessage={ errMessage }
-                  handleChange={ handleChange }
                   values={ values }
+                  // handleFilesSelect={ ( formik, value ) => handleFilesSelect( formik, value ) }
+                  formik={ formik }
                 />
 
                 <S.WrappWarningText>

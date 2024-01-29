@@ -29,11 +29,10 @@ export const InputWrapper = styled.div`
 
 export const Textarea = styled( Field )`
     width: 100%;
-    min-height: 104px;
+    min-height: 60px;
     overflow-y: auto; 
     resize: vertical;
     padding: 16px 56px 16px 32px;
-    background-color: white;
     border-radius: 20px 0px;
     border: none;
     outline: none;

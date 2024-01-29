@@ -9,6 +9,7 @@ export const ImagesList = ( { images, handleImagesSaving, errMessage } ) => {
       const idxToDelete = images.indexOf( image );
       images.splice( idxToDelete, 1 );
       handleImagesSaving( [ ...images ] );
+      localStorage.setItem( 'question-form-images', JSON.stringify( [ ...images ] ) );
     }
   };
 
