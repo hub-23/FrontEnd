@@ -8,6 +8,7 @@ import { PhoneSelect } from '../../common/PhoneSelect';
 import countries from '../../../assets/countries.json';
 import { DropdownTopic } from './DropdownTopic/DropdownTopic';
 import { Message } from './Message/Message';
+import { SaveToLocalStorage } from './SaveToLocalStorage';
 import * as S from './QuestionForm.styled';
 
 
@@ -19,13 +20,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
   ];
-
-  const allowedFileFormats = [
-    'image/jpeg',
-    'image/png',
-    'image/gif',
-    'image/webp',
-  ];
+  const customErrorMessage = 'Оберіть одну із запропонованих тем';
 
   const schema = object( {
     name: string()
@@ -47,7 +42,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
         )
         .required( 'Вкажіть ваш номер телефону' ),
     topic: string()
-        .oneOf( notificationTopics )
+        .test( 'is-valid-topic', customErrorMessage, ( value ) => {
+          return notificationTopics.includes( value );
+        } )
         .required( 'Вкажіть тему повідомлення' ),
     message: string()
         .required( 'Опишіть проблему' ),
@@ -55,12 +52,12 @@ export const QuestionForm = ( { onActiveModal } ) => {
   } );
 
   const initialValues = {
-    name: '',
-    email: '',
-    phone: '',
-    topic: '',
-    message: '',
-    attachments: [],
+    name: localStorage.getItem( 'question-form-name' ) || '',
+    email: localStorage.getItem( 'question-form-email' ) || '',
+    phone: localStorage.getItem( 'question-form-phone' ) || '',
+    topic: localStorage.getItem( 'question-form-topic' ) || '',
+    message: localStorage.getItem( 'question-form-message' ) || '',
+    attachments: JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [],
   };
 
 
@@ -81,7 +78,11 @@ export const QuestionForm = ( { onActiveModal } ) => {
     }
     // console.log( ...formData );
 
-    localStorage.setItem( 'question-form-images', JSON.stringify( [] ) );
+    const formFieldKeys = [ 'name', 'email', 'phone', 'topic', 'message', 'attachments' ];
+    formFieldKeys.forEach( ( key ) => {
+      localStorage.removeItem( `question-form-${key}` );
+    } );
+
     resetForm();
     onActiveModal();
   };
@@ -135,8 +136,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
               values,
             } = formik;
 
-            const isDataUser = formik.initialValues.phone === formik.values.phone;
-
             const errName = name && touched.name;
             // при розфокусуванні поля touched.name = true; коли є вміст - undefined
             const errEmail = email && touched.email;
@@ -152,7 +151,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     name="name"
                     placeholder="Ім’я"
                     $error={ errName }
+                    $value={ values.name }
                   />
+                  <SaveToLocalStorage fieldName="name" />
                   <FormError name="name" isMarginLeft={ true } />
                 </S.InputWrapper>
 
@@ -162,19 +163,21 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     name="email"
                     placeholder="Електронна адреса"
                     $error={ errEmail }
+                    $value={ values.email }
                   />
+                  <SaveToLocalStorage fieldName="email" />
                   <FormError name="email" isMarginLeft={ true } />
                 </S.InputWrapper>
 
-                <S.InputWrapper htmlFor="phone" style={ { paddingTop: '2px' } }>
+                <S.InputWrapper style={ { paddingTop: '2px' } }>
                   <S.Input
                     type="tel"
                     name="phone"
-                    $isDataUser={ isDataUser }
+                    $value={ values.phone }
                     $error={ errPhone }
                     style={ { paddingLeft: '160px' } }
                   />
-
+                  <SaveToLocalStorage fieldName="phone" />
                   <FormError name="phone" isMarginLeft={ true } />
 
                   <PhoneSelect
@@ -191,6 +194,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     name="topic"
                     placeholder="Тема повідомлення"
                     $error={ errTopic }
+                    $value={ values.topic }
                   />
                   <S.DropdownBtn
                     type='button'
@@ -204,6 +208,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       icon='icon-arrow-down'
                     />
                   </S.DropdownBtn>
+                  <SaveToLocalStorage fieldName="topic" />
                   <FormError name="topic" isMarginLeft={ true } />
                   {isDropdownShown
                     && <DropdownTopic
@@ -215,11 +220,10 @@ export const QuestionForm = ( { onActiveModal } ) => {
                 </S.InputWrapper>
 
                 <Message
-                  allowedFileFormats={ allowedFileFormats }
-                  errMessage={ errMessage }
-                  values={ values }
                   handleAttachmenValue={ ( formik, value ) => handleAttachmenValue( formik, value ) }
                   formik={ formik }
+                  errMessage={ errMessage }
+                  values={ values }
                 />
 
                 <S.WrappWarningText>

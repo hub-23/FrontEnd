@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { IconSvg } from '../../../common/IconSvg';
 import * as S from './UploadPopup.styled';
 
-export const UploadPopup = ( { allowedFileFormats, handleImageSelect } ) => {
-  let storedImages = [];
-  try {
-    storedImages = JSON.parse( localStorage.getItem( 'question-form-images' ) ) || [];
-  } catch ( error ) {
-    console.log( error.message );
-  }
-  const [ imageSources, setImageSources ] = useState( storedImages );
+export const UploadPopup = ( { handleImageSelect } ) => {
+  // let storedImages = [];
+  // try {
+  //   storedImages = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
+  // } catch ( error ) {
+  //   console.log( error.message );
+  // }
+  const [ imageSources, setImageSources ] = useState( [] );
 
   const handleFileChange = ( e ) => {
     const inputFile = e.target.files[ 0 ];
@@ -24,6 +24,13 @@ export const UploadPopup = ( { allowedFileFormats, handleImageSelect } ) => {
       return;
     }
 
+    const allowedFileFormats = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+    ];
+
     if ( !allowedFileFormats.includes( inputFile.type ) ) {
       alert(
           'Такий формат файлу не підтримується. Оберіть файл з розширенням .jpg, .png, .gif or .webp.',
@@ -34,9 +41,9 @@ export const UploadPopup = ( { allowedFileFormats, handleImageSelect } ) => {
     const reader = new FileReader();
     reader.onload = function( { target } ) {
       setImageSources( ( prevImageSources ) => {
-        localStorage.setItem( 'question-form-images', JSON.stringify(
-            [ ...prevImageSources, target.result ],
-        ) );
+        // localStorage.setItem( 'question-form-attachments', JSON.stringify(
+        //     [ ...prevImageSources, target.result ],
+        // ) );
 
         return [ ...prevImageSources, target.result ];
       } );
@@ -65,7 +72,7 @@ export const UploadPopup = ( { allowedFileFormats, handleImageSelect } ) => {
         />
       </S.UploadBtn>
       <S.Input
-        name="file"
+        name="attachments"
         type='file'
         onChange={ handleFileChange }
         accept='image/jpeg,image/png,image/gif,image/webp'

@@ -3,14 +3,15 @@ import { FormError } from '../FormError/FormError';
 import { IconSvg } from '../../../common/IconSvg';
 import { UploadPopup } from '../UploadPopup/UploadPopup';
 import { ImagesList } from '../ImagesList/ImagesList';
+import { SaveToLocalStorage } from '../SaveToLocalStorage';
 import * as S from './Message.styled';
 
 
-export const Message = ( { errMessage, allowedFileFormats, values, handleAttachmenValue, formik } ) => {
+export const Message = ( { errMessage, values, handleAttachmenValue, formik } ) => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
   let storedImages = [];
   try {
-    storedImages = JSON.parse( localStorage.getItem( 'question-form-images' ) ) || [];
+    storedImages = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
   } catch ( error ) {
     console.log( error.message );
   }
@@ -23,6 +24,7 @@ export const Message = ( { errMessage, allowedFileFormats, values, handleAttachm
 
   useEffect( () => {
     handleAttachmenValue( formik, images );
+    localStorage.setItem( 'question-form-attachments', JSON.stringify( images ) );
   }, [ images ] );
 
   useEffect( () => {
@@ -73,11 +75,11 @@ export const Message = ( { errMessage, allowedFileFormats, values, handleAttachm
         {uploadPopupVisible && (
           <UploadPopup
             className="upload-notice-component"
-            allowedFileFormats={ allowedFileFormats }
             handleImageSelect={ handleImageSelect }
           />
         ) }
       </S.InputWrapper>
+      <SaveToLocalStorage fieldName="message" />
       <FormError name="message" isMarginLeft={ true } />
     </div>
   );
