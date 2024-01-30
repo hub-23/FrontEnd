@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { IconSvg } from '../../../common/IconSvg';
 import * as S from './UploadPopup.styled';
 
-export const UploadPopup = ( { allowedFileFormats, handleImageSelect, formik } ) => {
+export const UploadPopup = ( { allowedFileFormats, handleImageSelect } ) => {
   let storedImages = [];
   try {
     storedImages = JSON.parse( localStorage.getItem( 'question-form-images' ) ) || [];
@@ -11,7 +11,7 @@ export const UploadPopup = ( { allowedFileFormats, handleImageSelect, formik } )
   }
   const [ imageSources, setImageSources ] = useState( storedImages );
 
-  const handleFileChange = ( formik, e ) => {
+  const handleFileChange = ( e ) => {
     const inputFile = e.target.files[ 0 ];
 
     if ( !inputFile ) {
@@ -33,13 +33,11 @@ export const UploadPopup = ( { allowedFileFormats, handleImageSelect, formik } )
 
     const reader = new FileReader();
     reader.onload = function( { target } ) {
-      handleImageSelect( formik, [ target.result ] );
-
       setImageSources( ( prevImageSources ) => {
         localStorage.setItem( 'question-form-images', JSON.stringify(
             [ ...prevImageSources, target.result ],
         ) );
-        // formik.setFieldValue( 'file', [ ...prevImageSources, target.result ] );
+
         return [ ...prevImageSources, target.result ];
       } );
     };
@@ -69,7 +67,7 @@ export const UploadPopup = ( { allowedFileFormats, handleImageSelect, formik } )
       <S.Input
         name="file"
         type='file'
-        onChange={ ( e ) => handleFileChange( formik, e ) }
+        onChange={ handleFileChange }
         accept='image/jpeg,image/png,image/gif,image/webp'
       />
       <S.Text>Завантажити з комп’ютера</S.Text>

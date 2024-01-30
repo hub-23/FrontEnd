@@ -6,7 +6,7 @@ import { ImagesList } from '../ImagesList/ImagesList';
 import * as S from './Message.styled';
 
 
-export const Message = ( { errMessage, allowedFileFormats, values /* , handleFilesSelect */, formik } ) => {
+export const Message = ( { errMessage, allowedFileFormats, values, handleAttachmenValue, formik } ) => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
   let storedImages = [];
   try {
@@ -19,9 +19,11 @@ export const Message = ( { errMessage, allowedFileFormats, values /* , handleFil
 
   const handleImageSelect = ( value ) => {
     setImages( value );
-    // handleFilesSelect( formik, value );
-    // formik.setFieldValue( 'file', value );
   };
+
+  useEffect( () => {
+    handleAttachmenValue( formik, images );
+  }, [ images ] );
 
   useEffect( () => {
     const handleClickOutside = ( { target } ) => {
@@ -73,7 +75,6 @@ export const Message = ( { errMessage, allowedFileFormats, values /* , handleFil
             className="upload-notice-component"
             allowedFileFormats={ allowedFileFormats }
             handleImageSelect={ handleImageSelect }
-            formik={ formik }
           />
         ) }
       </S.InputWrapper>

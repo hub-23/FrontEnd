@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import { object, string, mixed } from 'yup';
+import { object, string, array } from 'yup';
 import { FormError } from './FormError/FormError';
 import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
@@ -51,8 +51,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
         .required( 'Вкажіть тему повідомлення' ),
     message: string()
         .required( 'Опишіть проблему' ),
-    // file: string(),
-    file: mixed(),
+    attachments: array(),
   } );
 
   const initialValues = {
@@ -61,7 +60,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
     phone: '',
     topic: '',
     message: '',
-    file: [],
+    attachments: [],
   };
 
 
@@ -71,6 +70,18 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
     console.log( 'Data from QuestionForm to Backend  :>> ', questionFormData );
 
+    const formData = new FormData;
+    formData.append( 'name', values.name );
+    formData.append( 'email', values.email );
+    formData.append( 'phone', phone.phone );
+    formData.append( 'topic', values.topic );
+    formData.append( 'message', values.message );
+    for ( let i = 0; i < values.attachments.length; i += 1 ) {
+      formData.append( 'attachments[]', values.attachments[ i ] );
+    }
+    // console.log( ...formData );
+
+    localStorage.setItem( 'question-form-images', JSON.stringify( [] ) );
     resetForm();
     onActiveModal();
   };
@@ -84,9 +95,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
     setIsDropdownShown( !isDropdownShown );
   };
 
-  // const handleFilesSelect = ( formik, value ) => {
-  //   formik.setFieldValue( 'file', value );
-  // };
+  const handleAttachmenValue = ( formik, value ) => {
+    formik.setFieldValue( 'attachments', value );
+  };
 
   return (
     <S.QuestionFormContainer>
@@ -123,6 +134,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
               touched,
               values,
             } = formik;
+
             const isDataUser = formik.initialValues.phone === formik.values.phone;
 
             const errName = name && touched.name;
@@ -206,7 +218,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   allowedFileFormats={ allowedFileFormats }
                   errMessage={ errMessage }
                   values={ values }
-                  // handleFilesSelect={ ( formik, value ) => handleFilesSelect( formik, value ) }
+                  handleAttachmenValue={ ( formik, value ) => handleAttachmenValue( formik, value ) }
                   formik={ formik }
                 />
 
