@@ -1,23 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormError } from '../FormError/FormError';
-import * as S from './Message.styled';
 import { IconSvg } from '../../../common/IconSvg';
-import { UploadNotice } from '../UploadNotice/UploadNotice';
+import { UploadPopup } from '../UploadPopup/UploadPopup';
 import { ImagesList } from '../ImagesList/ImagesList';
+import { SaveToLocalStorage } from '../SaveToLocalStorage';
+import * as S from './Message.styled';
 
 
-export const Message = ( { errMessage, allowedFileFormats, handleChange, values } ) => {
-  const [ isUploadNoticeShown, setIsUploadNoticeShown ] = useState( false );
-  const [ images, setImages ] = useState( [] );
+export const Message = ( { errMessage, values } ) => {
+  const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
+  const storedImages = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
+  const [ images, setImages ] = useState( storedImages );
 
-  const handleUploadNoticeShown = () => {
-    setIsUploadNoticeShown( !isUploadNoticeShown );
-  };
 
   const handleImageSelect = ( value ) => {
-    // formik.setFieldValue( 'file', value );
-    setImages( value );
+    setImages( ( prev ) => [ ...prev, value ] );
   };
+
+  const handleImageDelete = ( value ) => {
+    if ( images.includes( value ) ) {
+      const idxToDelete = images.indexOf( value );
+      const updatedImages = [ ...images ];
+      updatedImages.splice( idxToDelete, 1 );
+      setImages( [ ...updatedImages ] );
+    }
+  };
+
+  useEffect( () => {
+    localStorage.setItem( 'question-form-attachments', JSON.stringify( images ) );
+  }, [ images ] );
+
+  useEffect( () => {
+    const handleClickOutside = ( { target } ) => {
+      const tag = target.tagName;
+      if ( tag === 'TEXTAREA' || tag === 'DIV' || tag === 'FORM' || tag === 'UL' || tag === 'IMG' ) {
+        setUploadPopupVisible( false );
+      }
+    };
+    window.addEventListener( 'click', handleClickOutside );
+
+    return () => {
+      window.removeEventListener( 'click', handleClickOutside );
+    };
+  }, [ uploadPopupVisible ] );
 
   return (
     <div>
@@ -26,20 +51,19 @@ export const Message = ( { errMessage, allowedFileFormats, handleChange, values 
           name="message"
           component="textarea"
           placeholder="Повідомлення"
-          onChange={ handleChange }
           $error={ errMessage }
         />
-        { images && (
+        { images?.length > 0 && (
           <ImagesList
             images={ images }
-            handleImagesSaving={ setImages }
+            handleImageDelete={ handleImageDelete }
             errMessage={ errMessage }
           />
         )}
         <S.ClipBtn
           type='button'
           aria-label='paper-clip'
-          onClick={ handleUploadNoticeShown }
+          onClick={ () => setUploadPopupVisible( !uploadPopupVisible ) }
         >
           <IconSvg
             xlWidth="24px"
@@ -51,14 +75,11 @@ export const Message = ( { errMessage, allowedFileFormats, handleChange, values 
             icon="icon-paper-clip"
           />
         </S.ClipBtn>
-        {isUploadNoticeShown
-          && <UploadNotice
-            allowedFileFormats={ allowedFileFormats }
-            handleImageSelect={ handleImageSelect }
-            // formik={ formik }
-          />
-        }
+        {uploadPopupVisible && (
+          <UploadPopup handleImageSelect={ handleImageSelect } />
+        ) }
       </S.InputWrapper>
+      <SaveToLocalStorage fieldName="message" />
       <FormError name="message" isMarginLeft={ true } />
     </div>
   );

@@ -105,10 +105,7 @@ export const Input = styled( Field )`
 
     border-width: 1px;
     border-style: solid;
-
     border-radius: 20px 0px;
-    border-color: ${( props ) =>
-    ( props.$error ? `${borderError}` : props.$isDataUser ? grayStroke : borderGreen )};
     background-color: ${( props ) => props.color || props.theme.colors.white};
 
     @media ${device.sm} {
@@ -120,13 +117,18 @@ export const Input = styled( Field )`
         letter-spacing: 0.16px;
     }
 
-    &:focus {
-        outline: 1px solid ${borderBlue};
-    }
-
     &:placeholder-shown {
         color: ${grayText};
-        border-color: ${( { $error } ) => ( $error ? borderError : grayStroke )};
+        border-color: ${( { $error } ) => $error ? borderError : grayStroke };
+    }
+    &:not(:placeholder-shown) {
+        border-color: ${( { $error, $value } ) => $value
+        ? ( $error ? borderError : borderGreen )
+        : ( $error ? borderError : grayStroke )};
+    }
+    &:focus {
+        border-color: transparent;
+        outline: 1px solid ${borderBlue};
     }
 `;
 

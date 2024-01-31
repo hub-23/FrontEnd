@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { IconSvg } from '../../../common/IconSvg';
-import * as S from './UploadNotice.styled';
+import * as S from './UploadPopup.styled';
 
-export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
-  const [ imageSources, setImageSources ] = useState( [] );
-
-  //   const [ , , helpers ] = useField( 'file' );
-
+export const UploadPopup = ( { handleImageSelect } ) => {
   const handleFileChange = ( e ) => {
     const inputFile = e.target.files[ 0 ];
-    // helpers.setValue( inputFile );
 
     if ( !inputFile ) {
       return;
@@ -21,6 +16,13 @@ export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
       return;
     }
 
+    const allowedFileFormats = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+    ];
+
     if ( !allowedFileFormats.includes( inputFile.type ) ) {
       alert(
           'Такий формат файлу не підтримується. Оберіть файл з розширенням .jpg, .png, .gif or .webp.',
@@ -29,18 +31,11 @@ export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
     }
 
     const reader = new FileReader();
-    reader.onload = function( event ) {
-      setImageSources( ( prevImageSources ) => [ ...prevImageSources, event.target.result ] );
+    reader.onload = function( { target } ) {
+      handleImageSelect( target.result );
     };
     reader.readAsDataURL( inputFile );
-
-    // const formData = new FormData();
-    // if ( inputFile ) formData.set( 'file', inputFile );
   };
-
-  useEffect( () => {
-    handleImageSelect( imageSources );
-  }, [ imageSources ] );
 
   return (
     <S.Wrapper>
@@ -59,7 +54,7 @@ export const UploadNotice = ( { allowedFileFormats, handleImageSelect } ) => {
         />
       </S.UploadBtn>
       <S.Input
-        name="file"
+        name="attachments"
         type='file'
         onChange={ handleFileChange }
         accept='image/jpeg,image/png,image/gif,image/webp'

@@ -4,13 +4,12 @@ export const ImagesList = styled.ul`
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    padding: 0 45px 16px 32px;
+    padding: 16px 45px 16px 32px;
 `;
 
 export const ImageItem = styled.li`
     width: 77px;
     height: 48px;
-    z-index: 10;
 `;
 
 export const Image = styled.img`
