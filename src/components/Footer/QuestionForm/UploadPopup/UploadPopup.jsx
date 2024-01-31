@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { IconSvg } from '../../../common/IconSvg';
 import * as S from './UploadPopup.styled';
 
 export const UploadPopup = ( { handleImageSelect } ) => {
-  // let storedImages = [];
-  // try {
-  //   storedImages = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
-  // } catch ( error ) {
-  //   console.log( error.message );
-  // }
-  const [ imageSources, setImageSources ] = useState( [] );
-
   const handleFileChange = ( e ) => {
     const inputFile = e.target.files[ 0 ];
 
@@ -40,20 +32,10 @@ export const UploadPopup = ( { handleImageSelect } ) => {
 
     const reader = new FileReader();
     reader.onload = function( { target } ) {
-      setImageSources( ( prevImageSources ) => {
-        // localStorage.setItem( 'question-form-attachments', JSON.stringify(
-        //     [ ...prevImageSources, target.result ],
-        // ) );
-
-        return [ ...prevImageSources, target.result ];
-      } );
+      handleImageSelect( target.result );
     };
     reader.readAsDataURL( inputFile );
   };
-
-  useEffect( () => {
-    handleImageSelect( imageSources );
-  }, [ imageSources ] );
 
   return (
     <S.Wrapper>

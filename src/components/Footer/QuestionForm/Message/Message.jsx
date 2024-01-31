@@ -7,23 +7,26 @@ import { SaveToLocalStorage } from '../SaveToLocalStorage';
 import * as S from './Message.styled';
 
 
-export const Message = ( { errMessage, values, handleAttachmenValue, formik } ) => {
+export const Message = ( { errMessage, values } ) => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
-  let storedImages = [];
-  try {
-    storedImages = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
-  } catch ( error ) {
-    console.log( error.message );
-  }
+  const storedImages = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
   const [ images, setImages ] = useState( storedImages );
 
 
   const handleImageSelect = ( value ) => {
-    setImages( value );
+    setImages( ( prev ) => [ ...prev, value ] );
+  };
+
+  const handleImageDelete = ( value ) => {
+    if ( images.includes( value ) ) {
+      const idxToDelete = images.indexOf( value );
+      const updatedImages = [ ...images ];
+      updatedImages.splice( idxToDelete, 1 );
+      setImages( [ ...updatedImages ] );
+    }
   };
 
   useEffect( () => {
-    handleAttachmenValue( formik, images );
     localStorage.setItem( 'question-form-attachments', JSON.stringify( images ) );
   }, [ images ] );
 
@@ -53,7 +56,7 @@ export const Message = ( { errMessage, values, handleAttachmenValue, formik } ) 
         { images?.length > 0 && (
           <ImagesList
             images={ images }
-            handleImagesSaving={ setImages }
+            handleImageDelete={ handleImageDelete }
             errMessage={ errMessage }
           />
         )}
@@ -73,10 +76,7 @@ export const Message = ( { errMessage, values, handleAttachmenValue, formik } ) 
           />
         </S.ClipBtn>
         {uploadPopupVisible && (
-          <UploadPopup
-            className="upload-notice-component"
-            handleImageSelect={ handleImageSelect }
-          />
+          <UploadPopup handleImageSelect={ handleImageSelect } />
         ) }
       </S.InputWrapper>
       <SaveToLocalStorage fieldName="message" />

@@ -6,7 +6,6 @@ export const SaveToLocalStorage = ( { fieldName } ) => {
 
   useEffect( () => {
     const storedValue = localStorage.getItem( `question-form-${fieldName}` );
-
     if ( storedValue !== null ) {
       setFieldValue( fieldName, storedValue );
     }

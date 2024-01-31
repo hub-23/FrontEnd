@@ -16,7 +16,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
 
-
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
   ];
@@ -94,10 +93,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
   const handleTopicSelect = ( formik, value ) => {
     formik.setFieldValue( 'topic', value );
     setIsDropdownShown( !isDropdownShown );
-  };
-
-  const handleAttachmenValue = ( formik, value ) => {
-    formik.setFieldValue( 'attachments', value );
   };
 
   return (
@@ -220,8 +215,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
                 </S.InputWrapper>
 
                 <Message
-                  handleAttachmenValue={ ( formik, value ) => handleAttachmenValue( formik, value ) }
-                  formik={ formik }
                   errMessage={ errMessage }
                   values={ values }
                 />
@@ -239,7 +232,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   variant='blue'
                   width='100%'
                   height='60px'
-                  smHeight='50px'
+                  // smHeight='50px'
                   //   borderRadius='16px 0'
                   //   smBorderRadius='20px 0'
                 >
