@@ -3,14 +3,11 @@ import { Field, Form } from 'formik';
 import { device } from '../../../styles/device';
 import { Button } from '../../common/button/Button';
 import {
-  accent,
-  black,
   borderBlue,
   borderError,
   borderGreen,
   grayStroke,
   grayText,
-  //   white,
   transition,
 } from '../../../utils/variables.styled';
 
@@ -76,21 +73,23 @@ export const Text = styled.p`
 `;
 
 export const FormFild = styled( Form )`
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 
     @media ${device.sm} {
-        gap: 25px;
+        /* gap: 25px; */
     }
 `;
 
 export const InputWrapper = styled.div`
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
     width: 100%;
+`;
+
+export const InputLableBox = styled.div`
+    position: relative;
 `;
 
 export const Input = styled( Field )`
@@ -107,6 +106,7 @@ export const Input = styled( Field )`
     border-style: solid;
     border-radius: 20px 0px;
     background-color: ${( props ) => props.color || props.theme.colors.white};
+    caret-color: ${( props ) => props.$error ? props.theme.colors.accent : props.theme.colors.black };
 
     @media ${device.sm} {
         padding: 15px 20px;
@@ -117,8 +117,10 @@ export const Input = styled( Field )`
         letter-spacing: 0.16px;
     }
 
+    &::placeholder {
+        color: transparent;
+    }
     &:placeholder-shown {
-        color: ${grayText};
         border-color: ${( { $error } ) => $error ? borderError : grayStroke };
     }
     &:not(:placeholder-shown) {
@@ -126,10 +128,38 @@ export const Input = styled( Field )`
         ? ( $error ? borderError : borderGreen )
         : ( $error ? borderError : grayStroke )};
     }
+    &:not(:placeholder-shown) + label {
+        display: none;
+    }
     &:focus {
         border-color: transparent;
-        outline: 1px solid ${borderBlue};
+        outline-width: 1px;
+        outline-style: solid;
+        outline-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };       
     }
+    &:focus + label {
+        display: ${( { $topic, $value } ) => $topic
+        ? ( $value ? 'none' : 'block' )
+        : 'none'};
+    }
+`;
+
+export const Label = styled.label`
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: ${grayText};
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+    font-size: 20px;
+    font-weight: 400;
+    line-height: calc(28 / 20);
+    letter-spacing: 0.2px;
+`;
+
+export const IconContainer = styled.span`
+    position: absolute;
+    top: -4px;
 `;
 
 export const DropdownBtn = styled.button`
@@ -147,29 +177,31 @@ export const DropdownBtn = styled.button`
 `;
 
 export const WrappWarningText = styled.div`
+    position: absolute;
+    bottom: 85px;
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-left: 23px;
+    padding-left: 5px;
 
     @media ${device.md} {
-        margin-left: 0;
+        padding-left: 0;
     }
 `;
 
 export const WarningText = styled.p`
-    font-family: Nunito;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: calc(15.82 / 14);
-
-    color: ${( { $color } ) => ( $color ? accent : black )};
+    color: ${( props ) => props.color || props.theme.colors.black};
 `;
 
 export const SubmitBtn = styled( Button )`
     font-size: 20px;
     font-weight: 600;
     line-height: 1.4;
+    margin-top: 32px;
     /* letter-spacing: 0.2px; */
 `;

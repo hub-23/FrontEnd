@@ -15,6 +15,7 @@ import * as S from './QuestionForm.styled';
 export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
+  const [ images, setImages ] = useState( [] );
 
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
@@ -56,13 +57,14 @@ export const QuestionForm = ( { onActiveModal } ) => {
     phone: localStorage.getItem( 'question-form-phone' ) || '',
     topic: localStorage.getItem( 'question-form-topic' ) || '',
     message: localStorage.getItem( 'question-form-message' ) || '',
-    attachments: JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [],
+    attachments: images || [],
   };
 
 
   const handleSubmit = ( values, { resetForm } ) => {
-    const phone = { phone: `${codeCountry}${values.phone.replaceAll( ' ', '' )}` };
-    const questionFormData = { ...values, ...phone };
+    const phone = `${codeCountry}${values.phone.replaceAll( ' ', '' )}`;
+    const attachments = images;
+    const questionFormData = { ...values, phone, attachments };
 
     console.log( 'Data from QuestionForm to Backend  :>> ', questionFormData );
 
@@ -72,8 +74,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
     formData.append( 'phone', phone.phone );
     formData.append( 'topic', values.topic );
     formData.append( 'message', values.message );
-    for ( let i = 0; i < values.attachments.length; i += 1 ) {
-      formData.append( 'attachments[]', values.attachments[ i ] );
+    for ( let i = 0; i < images.length; i += 1 ) {
+      formData.append( 'attachments[]', images[ i ] );
     }
     // console.log( ...formData );
 
@@ -118,9 +120,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
         />
       </BtnClose>
 
-      <S.Title>Залишились запитання?</S.Title>
+      <S.Title>Залишились питання?</S.Title>
       <S.Text>
-        Напишіть своє повідомлення використовуючи форму або зверніться напряму за електронною адресою
+        Напишіть своє повідомлення, використовуючи форму, або зверніться безпосередньо за електронною адресою
       </S.Text>
       <div>
         <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit } >
@@ -140,57 +142,102 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
             return (
               <S.FormFild autoComplete="off">
-                <S.InputWrapper>
-                  <S.Input
-                    type="text"
-                    name="name"
-                    placeholder="Ім’я"
-                    $error={ errName }
-                    $value={ values.name }
-                  />
+                <S.InputWrapper >
+                  <S.InputLableBox>
+                    <S.Input
+                      type="text"
+                      name="name"
+                      placeholder="Ім’я"
+                      $error={ errName }
+                      $value={ values.name }
+                      id="name"
+                    />
+                    <S.Label htmlFor="name">
+                      Ім’я
+                      <S.IconContainer >
+                        <IconSvg
+                          xlWidth="10px"
+                          xlHeight="10px"
+                          icon="icon-star-marker"
+                          style={ { fill: '#797979' } }
+                        />
+                      </S.IconContainer>
+                    </S.Label>
+                  </S.InputLableBox>
                   <SaveToLocalStorage fieldName="name" />
                   <FormError name="name" isMarginLeft={ true } />
                 </S.InputWrapper>
 
                 <S.InputWrapper>
-                  <S.Input
-                    type="email"
-                    name="email"
-                    placeholder="Електронна адреса"
-                    $error={ errEmail }
-                    $value={ values.email }
-                  />
+                  <S.InputLableBox>
+                    <S.Input
+                      type="email"
+                      name="email"
+                      placeholder="Електронна адреса"
+                      $error={ errEmail }
+                      $value={ values.email }
+                      id="email"
+                    />
+                    <S.Label htmlFor="email">
+                      Електронна адреса
+                      <S.IconContainer >
+                        <IconSvg
+                          xlWidth="10px"
+                          xlHeight="10px"
+                          icon="icon-star-marker"
+                          style={ { fill: '#797979' } }
+                        />
+                      </S.IconContainer>
+                    </S.Label>
+                  </S.InputLableBox>
                   <SaveToLocalStorage fieldName="email" />
                   <FormError name="email" isMarginLeft={ true } />
                 </S.InputWrapper>
 
-                <S.InputWrapper style={ { paddingTop: '2px' } }>
-                  <S.Input
-                    type="tel"
-                    name="phone"
-                    $value={ values.phone }
-                    $error={ errPhone }
-                    style={ { paddingLeft: '160px' } }
-                  />
+                <S.InputWrapper>
+                  <div>
+                    <S.Input
+                      type="tel"
+                      name="phone"
+                      $value={ values.phone }
+                      $error={ errPhone }
+                      style={ { paddingLeft: '160px' } }
+                    />
+                    <PhoneSelect
+                      data={ countries }
+                      valueSelect={ handleGetSelected }
+                      xlHeightList="275px"
+                      smHeightList="245px"
+                    />
+                  </div>
                   <SaveToLocalStorage fieldName="phone" />
                   <FormError name="phone" isMarginLeft={ true } />
-
-                  <PhoneSelect
-                    data={ countries }
-                    valueSelect={ handleGetSelected }
-                    xlHeightList="275px"
-                    smHeightList="245px"
-                  />
                 </S.InputWrapper>
 
                 <S.InputWrapper style={ { position: 'relative' } }>
-                  <S.Input
-                    type="text"
-                    name="topic"
-                    placeholder="Тема повідомлення"
-                    $error={ errTopic }
-                    $value={ values.topic }
-                  />
+                  <S.InputLableBox>
+                    <S.Input
+                      type="text"
+                      name="topic"
+                      placeholder="Тема повідомлення"
+                      $error={ errTopic }
+                      $value={ values.topic }
+                      $topic
+                      readOnly
+                      id="topic"
+                    />
+                    <S.Label htmlFor="topic">
+                      Тема повідомлення
+                      <S.IconContainer >
+                        <IconSvg
+                          xlWidth="10px"
+                          xlHeight="10px"
+                          icon="icon-star-marker"
+                          style={ { fill: '#797979' } }
+                        />
+                      </S.IconContainer>
+                    </S.Label>
+                  </S.InputLableBox>
                   <S.DropdownBtn
                     type='button'
                     aria-label='dropdown-menu'
@@ -215,13 +262,18 @@ export const QuestionForm = ( { onActiveModal } ) => {
                 </S.InputWrapper>
 
                 <Message
+                  handleAttachmentsSelect={ setImages }
                   errMessage={ errMessage }
                   values={ values }
                 />
 
                 <S.WrappWarningText>
-                  <IconSvg width="24px" height="24px" icon="icon-star-marker" />
-
+                  <IconSvg
+                    xlWidth="24px"
+                    xlHeight="24px"
+                    icon="icon-star-marker"
+                    style={ { fill: '#e3669c' } }
+                  />
                   <S.WarningText $color={ errName }>
                         Ці поля є обов&apos;язковими до заповнення
                   </S.WarningText>
