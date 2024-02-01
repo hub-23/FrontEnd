@@ -4,10 +4,11 @@ import { IconSvg } from '../../../common/IconSvg';
 import { UploadPopup } from '../UploadPopup/UploadPopup';
 import { ImagesList } from '../ImagesList/ImagesList';
 import { SaveToLocalStorage } from '../SaveToLocalStorage';
+import { InputLableBox, IconContainer } from '../QuestionForm.styled';
 import * as S from './Message.styled';
 
 
-export const Message = ( { errMessage, values } ) => {
+export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
   const storedImages = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
   const [ images, setImages ] = useState( storedImages );
@@ -27,6 +28,7 @@ export const Message = ( { errMessage, values } ) => {
   };
 
   useEffect( () => {
+    handleAttachmentsSelect( images );
     localStorage.setItem( 'question-form-attachments', JSON.stringify( images ) );
   }, [ images ] );
 
@@ -47,12 +49,26 @@ export const Message = ( { errMessage, values } ) => {
   return (
     <div>
       <S.InputWrapper $error={ errMessage } $value={ values.message } >
-        <S.Textarea
-          name="message"
-          component="textarea"
-          placeholder="Повідомлення"
-          $error={ errMessage }
-        />
+        <InputLableBox>
+          <S.Textarea
+            name="message"
+            component="textarea"
+            placeholder="Повідомлення"
+            $error={ errMessage }
+            id="message"
+          />
+          <S.Label htmlFor="message">
+            Повідомлення
+            <IconContainer >
+              <IconSvg
+                xlWidth="10px"
+                xlHeight="10px"
+                icon="icon-star-marker"
+                style={ { fill: '#797979' } }
+              />
+            </IconContainer>
+          </S.Label>
+        </InputLableBox>
         { images?.length > 0 && (
           <ImagesList
             images={ images }

@@ -23,7 +23,10 @@ export const InputWrapper = styled.div`
     background-color: ${white};
     border-radius: 20px 0px;
     &:focus-within {
-        border-color: ${borderBlue};
+        border-color: transparent;
+        outline-width: 1px;
+        outline-style: solid;
+        outline-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };  
     }
 `;
 
@@ -43,7 +46,8 @@ export const Textarea = styled( Field )`
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.black};
-
+    caret-color: ${( props ) => props.$error ? props.theme.colors.accent : props.theme.colors.black };
+    
     &::-webkit-scrollbar {
         width: 8px;
     }
@@ -58,12 +62,30 @@ export const Textarea = styled( Field )`
         background: rgba(18, 20, 23, 0.1); 
     }
 
-    &:placeholder-shown {
-        color: ${grayText};
+    &::placeholder {
+        color: transparent;
+    }
+    &:not(:placeholder-shown) + label {
+        display: none;
+    }
+    &:focus + label {
+        display: none;
     }
 
     @media ${device.sm} {
     }
+`;
+
+export const Label = styled.label`
+    position: absolute;
+    left: 32px;
+    top: 15px;
+    color: ${grayText};
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+    font-size: 20px;
+    font-weight: 400;
+    line-height: calc(28 / 20);
+    letter-spacing: 0.2px;
 `;
 
 export const ClipBtn = styled.button`
