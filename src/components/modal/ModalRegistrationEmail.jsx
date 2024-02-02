@@ -23,7 +23,7 @@ import {
 } from './ModalRegistrationEmail.styled';
 import reCapcha from '../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
-import { bgColorGradientBtn, white } from '../../utils/variables.styled';
+import { accent, bgColorGradientBtn, white } from '../../utils/variables.styled';
 import { IconSvg } from '../common/IconSvg';
 import { BtnEye } from '../common/BtnEye';
 import { BtnClose } from '../common/BtnClose';
@@ -210,7 +210,12 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   </BtnEye>
 
                   <WrappErrTextPassword>
-                    <IconSvg width="24px" height="24px" icon="icon-star-marker" />
+                    <IconSvg
+                      width="24px"
+                      height="24px"
+                      icon="icon-star-marker"
+                      $fill={ accent }
+                    />
 
                     <TextErrPassword $color={ errPassword }>
                                             Більше 8 символів, велика літера, цифри і спеціальний знак
