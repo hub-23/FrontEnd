@@ -15,7 +15,11 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
 
 
   const handleImageSelect = ( value ) => {
-    setImages( ( prev ) => [ ...prev, value ] );
+    if ( !images.includes( value ) ) {
+      setImages( ( prev ) => [ ...prev, value ] );
+    } else {
+      alert( 'Поточне зображення вже додано.' );
+    }
   };
 
   const handleImageDelete = ( value ) => {

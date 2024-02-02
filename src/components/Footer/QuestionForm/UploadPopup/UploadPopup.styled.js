@@ -1,5 +1,6 @@
 import { Field } from 'formik';
 import styled, { keyframes } from 'styled-components';
+import { transition } from '../../../../utils/variables.styled';
 
 const show = keyframes`
   from {
@@ -23,16 +24,39 @@ export const Wrapper = styled.div`
     border-radius: 12px 0px;
     box-shadow: 4px 4px 4px 0px rgba(45, 45, 45, 0.20), 0px 2px 4px 0px rgba(45, 45, 45, 0.20);
     background-color: ${( props ) => props.color || props.theme.colors.white};
-    z-index: 1;
 `;
 
-export const UploadBtn = styled.button`
+export const UploadBtn = styled.div`
+    width: 24px;
+    height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    background-color: initial;
-    fill: none;
+    cursor: pointer;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px 0 4px 0;
+    border-color: ${( props ) => props.color || props.theme.colors.white};
+    background-color: ${( props ) => props.color || props.theme.colors.white};
+    transition: border-color ${transition}, background-color ${transition};
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+        border-radius: 4px 0 4px 0;
+        border-color: ${( props ) => props.color || props.theme.colors.primary};
+        background-color: ${( props ) => props.color || props.theme.colors.primary};
+        > svg {
+          stroke: ${( props ) => props.color || props.theme.colors.white};
+          transition: stroke ${transition};
+        }
+    }
+    > svg {
+      fill: none;
+      stroke: ${( props ) => props.color || props.theme.colors.black};
+      transition: stroke ${transition};
+    }
 `;
 
 export const Text = styled.p`
@@ -44,11 +68,5 @@ export const Text = styled.p`
 `;
 
 export const Input = styled( Field )`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
+    display: none;
 `;

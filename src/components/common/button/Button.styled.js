@@ -47,11 +47,11 @@ const StyledButton = styled.button`
             // color: ${( props ) => props.color || props.theme.colors.black};
             // background: ${( props ) => props.background || props.theme.colors.white};
             border: 1px solid ${( props ) => props.border || props.theme.colors.black};
+            transition: all 0.5s ease;
             &:hover {
                 color: #2d2d2d;
                 background: #ffffff;
                 border: 4px solid #113268;
-                transition: all 0.5s ease;
             }
             &:active {
                 color: #2d2d2d;
@@ -69,12 +69,12 @@ const StyledButton = styled.button`
             // color: ${( props ) => props.color || props.theme.colors.white};
             // background: ${( props ) => props.background || props.theme.colors.black};
             border: 1px solid ${( props ) => props.border || props.theme.colors.black};
+            transition: all 0.5s ease;
             &:hover {
                 // background: linear-gradient(267.92deg, #09194d 0%, #234890 100%);
                 background: #113268;
                 color: #ffffff;
                 border: 4px solid #ffffff;
-                transition: all 0.5s ease;
             }
             &:active {
                 // background: rgba(227, 102, 156, 1);
@@ -90,9 +90,9 @@ const StyledButton = styled.button`
             color: ${( props ) => props.color || props.theme.colors.white};
             background: ${( props ) => props.background || props.theme.colors.liner_pink};
             border: 1px solid ${( props ) => props.border || 'transparent'};
+            transition: all 0.5s ease;
             &:hover {
                 background: linear-gradient(267.92deg, #b92759 0%, #e3669c 100%);
-                transition: all 0.5s ease;
             }
             &:active {
                 background: rgba(227, 102, 156, 1);
@@ -105,9 +105,9 @@ const StyledButton = styled.button`
         color: ${( props ) => props.color || props.theme.colors.white};
         background: ${( props ) => props.background || props.theme.colors.liner_blue};
         border: 1px solid ${( props ) => props.border || 'transparent'};
+        transition: all 0.5s ease;
             &:hover{
               background: linear-gradient(267.92deg, #09194D 0%, #234890 100%);
-              transition: all 0.5s ease;
             };
             &:active{
               background: rgba(17, 50, 104, 1);

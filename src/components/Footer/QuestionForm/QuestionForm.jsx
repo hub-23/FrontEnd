@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string, array } from 'yup';
 import { FormError } from './FormError/FormError';
-import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
 import countries from '../../../assets/countries.json';
@@ -99,15 +98,10 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
   return (
     <S.QuestionFormContainer>
-      <BtnClose
-        xlRight="16px"
-        xlTop="16px"
-        mdRight="15px"
-        mdTop="15px"
-        smRight="12px"
-        smTop="12px"
-        aria-label='select country'
-        click={ onActiveModal }
+      <S.BtnClose
+        type='button'
+        aria-label='close'
+        onClick={ () => onActiveModal() }
       >
         <IconSvg
           xlWidth="36px"
@@ -116,9 +110,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
           mdHeight="36px"
           smWidth="24px"
           smHeight="24px"
-          icon="icon-close"
+          icon="icon-close-cross"
         />
-      </BtnClose>
+      </S.BtnClose>
 
       <S.Title>Залишились питання?</S.Title>
       <S.Text>
@@ -272,7 +266,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     xlWidth="24px"
                     xlHeight="24px"
                     icon="icon-star-marker"
-                    style={ { fill: '#e3669c' } }
+                    style={ { fill: '#B82658' } }
                   />
                   <S.WarningText $color={ errName }>
                         Ці поля є обов&apos;язковими до заповнення

@@ -11,6 +11,7 @@ import {
   transition,
 } from '../../../utils/variables.styled';
 
+
 export const QuestionFormContainer = styled.div`
     position: absolute;
     width: 516px;
@@ -41,6 +42,39 @@ export const QuestionFormContainer = styled.div`
     @media screen and (max-width: 370px) {
         padding: 16px 20px;
     } */
+`;
+
+export const BtnClose = styled.button`
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px 0 10px 0;
+    border-color: ${( props ) => props.color || props.theme.colors.accent};
+    background-color: ${( props ) => props.color || props.theme.colors.white};
+    transition: border-color ${transition}, background-color ${transition};
+    &:hover,
+    &:focus,
+    &:active {
+        border-radius: 10px 0 10px 0;
+        border-color: ${( props ) => props.color || props.theme.colors.accent};
+        background-color: ${( props ) => props.color || props.theme.colors.accent};
+        > svg {
+          stroke: ${( props ) => props.color || props.theme.colors.white};
+          transition: stroke ${transition};
+        }
+    }
+    > svg {
+      stroke: ${( props ) => props.color || props.theme.colors.black};
+      transition: stroke ${transition};
+    }
 `;
 
 export const Title = styled.h3`
@@ -107,6 +141,7 @@ export const Input = styled( Field )`
     border-radius: 20px 0px;
     background-color: ${( props ) => props.color || props.theme.colors.white};
     caret-color: ${( props ) => props.$error ? props.theme.colors.accent : props.theme.colors.black };
+    transition: caret-color ${transition}, border-color ${transition};
 
     @media ${device.sm} {
         padding: 15px 20px;
@@ -132,15 +167,11 @@ export const Input = styled( Field )`
         display: none;
     }
     &:focus {
-        border-color: transparent;
-        outline-width: 1px;
-        outline-style: solid;
-        outline-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };       
+        outline: none;
+        border-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };  
     }
     &:focus + label {
-        display: ${( { $topic, $value } ) => $topic
-        ? ( $value ? 'none' : 'block' )
-        : 'none'};
+        display: ${( { $topic, $value } ) => $topic ? ( $value ? 'none' : 'block' ) : 'none' };
     }
 `;
 
@@ -178,7 +209,7 @@ export const DropdownBtn = styled.button`
 
 export const WrappWarningText = styled.div`
     position: absolute;
-    bottom: 85px;
+    bottom: 75px;
     display: flex;
     align-items: center;
     gap: 8px;
