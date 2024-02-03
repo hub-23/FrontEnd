@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
-// import { device } from '../../../../styles/device';
+import { device } from '../../../../styles/device';
 import {
   borderBlue,
   borderError,
@@ -73,7 +73,7 @@ export const Textarea = styled( Field )`
         display: none;
     }
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         font-size: 16px;
         padding: 20px 56px 16px 24px;
     }
@@ -90,7 +90,7 @@ export const Label = styled.label`
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         left: 24px;
         font-size: 16px;
     }

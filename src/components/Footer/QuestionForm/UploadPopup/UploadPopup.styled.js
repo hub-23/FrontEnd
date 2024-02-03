@@ -1,6 +1,7 @@
 import { Field } from 'formik';
 import styled, { keyframes } from 'styled-components';
 import { transition } from '../../../../utils/variables.styled';
+import { device } from '../../../../styles/device';
 
 const show = keyframes`
   from {
@@ -26,7 +27,7 @@ export const Wrapper = styled.div`
     background-color: ${( props ) => props.color || props.theme.colors.white};
     z-index: 1;
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
       top: 44px;
       width: 276px;
       height: 48px;

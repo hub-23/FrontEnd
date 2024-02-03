@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { device } from '../../../../styles/device';
 
 const show = keyframes`
   from {
@@ -33,7 +34,7 @@ export const Dropdown = styled.div`
         }
     }
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         top: 48px;
     }
 `;

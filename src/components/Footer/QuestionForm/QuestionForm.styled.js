@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
-// import { device } from '../../../styles/device';
+import { device } from '../../../styles/device';
 import { Button } from '../../common/button/Button';
 import {
   borderBlue,
@@ -36,7 +36,7 @@ export const QuestionFormContainer = styled.div`
     &::-webkit-scrollbar-thumb:hover {
         background: rgba(18, 20, 23, 0.1); 
     }
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {  
         width: 360px;
         max-height: 100%;
         padding: 32px 20px;
@@ -76,7 +76,7 @@ export const BtnClose = styled.button`
       transition: stroke ${transition};
     }
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         top: 12px;
         right: 12px;
         width: 24px;
@@ -95,7 +95,7 @@ export const Title = styled.h3`
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.black};
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         font-size: 20px;
     }
 `;
@@ -109,7 +109,7 @@ export const Text = styled.p`
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.black};
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         font-size: 16px;
     }
 `;
@@ -147,7 +147,7 @@ export const Input = styled( Field )`
     caret-color: ${( props ) => props.$error ? props.theme.colors.accent : props.theme.colors.black };
     transition: caret-color ${transition}, border-color ${transition};
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         height: 48px;
         padding: 13px 24px;
 
@@ -191,7 +191,7 @@ export const Label = styled.label`
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         left: 24px;
         font-size: 16px;
         letter-spacing: 0%;
@@ -209,6 +209,9 @@ export const DropdownBtn = styled.button`
     top: 17px;
     width: 24px;
     height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transform: ${( props ) => ( props.$rotate ? 'rotate(180deg)' : '' ) };
     background-color: transparent;
     border: none;
@@ -216,7 +219,7 @@ export const DropdownBtn = styled.button`
     -webkit-transition: rotate ${transition};
     transition: rotate ${transition};
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         top: 12px;
     }
 `;
@@ -229,7 +232,7 @@ export const WrappWarningText = styled.div`
     gap: 8px;
     padding-left: 4px;
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         bottom: 65px;
         padding-left: 0;
     }
@@ -241,7 +244,7 @@ export const WarningText = styled.p`
     line-height: calc(15.82 / 14);
     color: ${( props ) => props.color || props.theme.colors.black};
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         font-size: 14px;
     }
 `;
@@ -257,7 +260,7 @@ export const SubmitBtn = styled( Button )`
     line-height: 1.4;
     letter-spacing: 1%;
 
-    @media screen and (max-width: 768px) {
+    @media ${device.md} {
         height: 50px;
         border-radius: 20px 0;
 

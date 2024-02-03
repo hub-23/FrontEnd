@@ -194,6 +194,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       name="phone"
                       $value={ values.phone }
                       $error={ errPhone }
+                      style={ { paddingLeft: '160px' } }
                     />
                     <PhoneSelect
                       data={ countries }
