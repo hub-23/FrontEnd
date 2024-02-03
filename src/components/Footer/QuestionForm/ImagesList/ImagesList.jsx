@@ -15,15 +15,11 @@ export const ImagesList = ( { images, handleImageDelete, errMessage } ) => {
           <S.ImgDeleteBtn
             type='button'
             aria-label='delete'
-            onClick={ ( e ) => handleImageDelete( image ) }
+            onClick={ () => handleImageDelete( image ) }
           >
             <IconSvg
               xlWidth="16px"
               xlHeight="16px"
-              mdWidth="16px"
-              mdHeight="16px"
-              smWidth="16px"
-              smHeight="16px"
               icon="icon-image-delete"
             />
           </S.ImgDeleteBtn>

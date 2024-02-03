@@ -24,6 +24,14 @@ export const Wrapper = styled.div`
     border-radius: 12px 0px;
     box-shadow: 4px 4px 4px 0px rgba(45, 45, 45, 0.20), 0px 2px 4px 0px rgba(45, 45, 45, 0.20);
     background-color: ${( props ) => props.color || props.theme.colors.white};
+    z-index: 1;
+
+    @media screen and (max-width: 768px) {
+      top: 44px;
+      width: 276px;
+      height: 48px;
+      padding: 13px 20px;
+    }
 `;
 
 export const UploadBtn = styled.div`
@@ -62,7 +70,6 @@ export const UploadBtn = styled.div`
 export const Text = styled.p`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
-    font-weight: 400;
     line-height: 1.4;
     color: ${( props ) => props.color || props.theme.colors.black};
 `;

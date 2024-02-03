@@ -5,11 +5,20 @@ export const ImagesList = styled.ul`
     gap: 8px;
     flex-wrap: wrap;
     padding: 16px 45px 16px 32px;
+
+    @media screen and (max-width: 768px) {
+        padding-left: 24px;
+    }
 `;
 
 export const ImageItem = styled.li`
     width: 77px;
     height: 48px;
+
+    @media screen and (max-width: 768px) {
+        width: 48px;
+        height: 48px;
+    }
 `;
 
 export const Image = styled.img`

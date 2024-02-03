@@ -15,10 +15,7 @@ export const ErrorText = styled.p`
     display: inline;
     margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
 
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     line-height: (15.82px / 14px);
 
     color: ${accent};

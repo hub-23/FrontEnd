@@ -1,4 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const show = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Dropdown = styled.div`
     background-color: ${( props ) => props.color || props.theme.colors.white};
@@ -6,22 +15,26 @@ export const Dropdown = styled.div`
     top: 60px;
     z-index: 2;
     margin-top: 4px;
-    padding: 15px 0;
+    padding: 20px 0;
     width: 100%;
-    border-radius: 16px 0px;
+    border-radius: 20px 0px;
     box-shadow: 0px -1px 4px 0px rgba(45, 45, 45, 0.05),
                  4px 4px 4px 0px rgba(45, 45, 45, 0.20),
-                 -2px 0px 4px 0px rgba(45, 45, 45, 0.05);                 
+                 -2px 0px 4px 0px rgba(45, 45, 45, 0.05);   
+    animation: ${ show } 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;              
     & > ul > li {
         padding: 5px 36px;
         font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
         font-size: 16px;
-        font-weight: 400;
         line-height: 1.4;
         color: ${( props ) => props.color || props.theme.colors.black};
         &:not(:last-child) {
            margin-bottom: 2px; 
         }
+    }
+
+    @media screen and (max-width: 768px) {
+        top: 48px;
     }
 `;
 

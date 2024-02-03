@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
-import { device } from '../../../../styles/device';
+// import { device } from '../../../../styles/device';
 import {
   borderBlue,
   borderError,
@@ -22,7 +22,7 @@ export const InputWrapper = styled.div`
       : ( $error ? borderError : grayStroke )};
     
     background-color: ${white};
-    border-radius: 20px 0px;
+    border-radius: 16px 0px;
     transition: caret-color ${transition}, border-color ${transition};
     
     &:focus-within {
@@ -37,7 +37,7 @@ export const Textarea = styled( Field )`
     overflow-y: auto; 
     resize: vertical;
     padding: 16px 56px 16px 32px;
-    border-radius: 20px 0px;
+    border-radius: 16px 0px;
     border: none;
     outline: none;
 
@@ -73,7 +73,9 @@ export const Textarea = styled( Field )`
         display: none;
     }
 
-    @media ${device.sm} {
+    @media screen and (max-width: 768px) {
+        font-size: 16px;
+        padding: 20px 56px 16px 24px;
     }
 `;
 
@@ -87,6 +89,11 @@ export const Label = styled.label`
     font-weight: 400;
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
+
+    @media screen and (max-width: 768px) {
+        left: 24px;
+        font-size: 16px;
+    }
 `;
 
 export const ClipBtn = styled.button`

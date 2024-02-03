@@ -8,6 +8,7 @@ import countries from '../../../assets/countries.json';
 import { DropdownTopic } from './DropdownTopic/DropdownTopic';
 import { Message } from './Message/Message';
 import { SaveToLocalStorage } from './SaveToLocalStorage';
+import { grayText, deepAccent } from '../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
 
 
@@ -106,17 +107,15 @@ export const QuestionForm = ( { onActiveModal } ) => {
         <IconSvg
           xlWidth="36px"
           xlHeight="36px"
-          mdWidth="36px"
-          mdHeight="36px"
-          smWidth="24px"
-          smHeight="24px"
+          mdWidth="24px"
+          mdHeight="24px"
           icon="icon-close-cross"
         />
       </S.BtnClose>
 
       <S.Title>Залишились питання?</S.Title>
       <S.Text>
-        Напишіть своє повідомлення, використовуючи форму, або зверніться безпосередньо за електронною адресою
+        Напишіть своє повідомлення, використовуючи форму, або зверніться напряму за електронною адресою
       </S.Text>
       <div>
         <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit } >
@@ -152,8 +151,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
+                          $fill={ grayText }
                           icon="icon-star-marker"
-                          style={ { fill: '#797979' } }
                         />
                       </S.IconContainer>
                     </S.Label>
@@ -178,8 +177,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
+                          $fill={ grayText }
                           icon="icon-star-marker"
-                          style={ { fill: '#797979' } }
                         />
                       </S.IconContainer>
                     </S.Label>
@@ -195,13 +194,12 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       name="phone"
                       $value={ values.phone }
                       $error={ errPhone }
-                      style={ { paddingLeft: '160px' } }
                     />
                     <PhoneSelect
                       data={ countries }
                       valueSelect={ handleGetSelected }
                       xlHeightList="275px"
-                      smHeightList="245px"
+                      mdHeightList="245px"
                     />
                   </div>
                   <SaveToLocalStorage fieldName="phone" />
@@ -226,8 +224,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
+                          $fill={ grayText }
                           icon="icon-star-marker"
-                          style={ { fill: '#797979' } }
                         />
                       </S.IconContainer>
                     </S.Label>
@@ -265,8 +263,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   <IconSvg
                     xlWidth="24px"
                     xlHeight="24px"
+                    $fill={ deepAccent }
                     icon="icon-star-marker"
-                    style={ { fill: '#B82658' } }
                   />
                   <S.WarningText $color={ errName }>
                         Ці поля є обов&apos;язковими до заповнення
@@ -276,11 +274,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
                 <S.SubmitBtn
                   type='submit'
                   variant='blue'
-                  width='100%'
-                  height='60px'
-                  // smHeight='50px'
-                  //   borderRadius='16px 0'
-                  //   smBorderRadius='20px 0'
                 >
                 Надіслати
                 </S.SubmitBtn>

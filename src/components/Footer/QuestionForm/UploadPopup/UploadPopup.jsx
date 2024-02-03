@@ -44,10 +44,6 @@ export const UploadPopup = ( { handleImageSelect } ) => {
           <IconSvg
             xlWidth="24px"
             xlHeight="24px"
-            mdWidth="24px"
-            mdHeight="24px"
-            smWidth="24px"
-            smHeight="24px"
             icon="icon-upload"
           />
         </S.UploadBtn>
