@@ -8,6 +8,7 @@ import {
   grayStroke,
   grayText,
   white,
+  transition,
 } from '../../../../utils/variables.styled';
 
 
@@ -21,12 +22,12 @@ export const InputWrapper = styled.div`
       : ( $error ? borderError : grayStroke )};
     
     background-color: ${white};
-    border-radius: 20px 0px;
+    border-radius: 16px 0px;
+    transition: caret-color ${transition}, border-color ${transition};
+    
     &:focus-within {
-        border-color: transparent;
-        outline-width: 1px;
-        outline-style: solid;
-        outline-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };  
+        outline: none;
+        border-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };
     }
 `;
 
@@ -36,7 +37,7 @@ export const Textarea = styled( Field )`
     overflow-y: auto; 
     resize: vertical;
     padding: 16px 56px 16px 32px;
-    border-radius: 20px 0px;
+    border-radius: 16px 0px;
     border: none;
     outline: none;
 
@@ -72,7 +73,9 @@ export const Textarea = styled( Field )`
         display: none;
     }
 
-    @media ${device.sm} {
+    @media ${device.md} {
+        font-size: 16px;
+        padding: 20px 56px 16px 24px;
     }
 `;
 
@@ -86,15 +89,44 @@ export const Label = styled.label`
     font-weight: 400;
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
+
+    @media ${device.md} {
+        left: 24px;
+        font-size: 16px;
+    }
 `;
 
 export const ClipBtn = styled.button`
     position: absolute;
     top: 16px;
     right: 16px;
+    width: 24px;
+    height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    background-color: initial;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px 0 4px 0;
+    border-color: ${( props ) => props.color || props.theme.colors.white};
+    background-color: ${( props ) => props.color || props.theme.colors.white};
+    transition: border-color ${transition}, background-color ${transition};
+    &:hover,
+    &:focus,
+    &:active {
+        border-radius: 4px 0 4px 0;
+        border-color: ${( props ) => props.color || props.theme.colors.primary};
+        background-color: ${( props ) => props.color || props.theme.colors.primary};
+        > svg {
+          fill: ${( props ) => props.color || props.theme.colors.white};
+          stroke: ${( props ) => props.color || props.theme.colors.white};
+          transition: stroke ${transition};
+        }
+    }
+    > svg {
+      fill: ${( props ) => props.color || props.theme.colors.black};
+      stroke: ${( props ) => props.color || props.theme.colors.black};
+      transition: stroke ${transition};
+    }
 `;

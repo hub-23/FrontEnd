@@ -1,7 +1,7 @@
 const size = {
   xs: 0,
   sm: '480px',
-  md: '834px',
+  md: '768px', // було 834
   lg: '992px',
   xl: '1200px',
   xxl: '1440px',

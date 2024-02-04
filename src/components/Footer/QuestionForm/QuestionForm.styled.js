@@ -11,16 +11,17 @@ import {
   transition,
 } from '../../../utils/variables.styled';
 
+
 export const QuestionFormContainer = styled.div`
     position: absolute;
     width: 516px;
     max-height: 95%;
+    padding: 48px;
+    border-radius: 20px 0px;
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    padding: 48px;
-    background: ${( props ) => props.color || props.theme.colors.white};
-    border-radius: 20px 0px;
+    background: ${( props ) => props.color || props.theme.colors.white};  
 
     &::-webkit-scrollbar {
         width: 8px;
@@ -35,31 +36,68 @@ export const QuestionFormContainer = styled.div`
     &::-webkit-scrollbar-thumb:hover {
         background: rgba(18, 20, 23, 0.1); 
     }
-    /* @media screen and (max-width: 455px) {
-        width: 100%;
+    @media ${device.md} {  
+        width: 360px;
+        max-height: 100%;
+        padding: 32px 20px;
+        border-radius: 0;
     }
-    @media screen and (max-width: 370px) {
-        padding: 16px 20px;
-    } */
+`;
+
+export const BtnClose = styled.button`
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px 0 10px 0;
+    border-color: ${( props ) => props.color || props.theme.colors.accent};
+    background-color: ${( props ) => props.color || props.theme.colors.white};
+    transition: border-color ${transition}, background-color ${transition};
+    &:hover,
+    &:focus,
+    &:active {
+        border-radius: 10px 0 10px 0;
+        border-color: ${( props ) => props.color || props.theme.colors.accent};
+        background-color: ${( props ) => props.color || props.theme.colors.accent};
+        > svg {
+          stroke: ${( props ) => props.color || props.theme.colors.white};
+          transition: stroke ${transition};
+        }
+    }
+    > svg {
+      stroke: ${( props ) => props.color || props.theme.colors.black};
+      transition: stroke ${transition};
+    }
+
+    @media ${device.md} {
+        top: 12px;
+        right: 12px;
+        width: 24px;
+        height: 24px;
+        border-radius: 8px 0 8px 0;
+    }
 `;
 
 export const Title = styled.h3`
     margin-bottom: 12px;
-    align-items: center;
+    text-align: center;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 24px;
     font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.black};
-    /* @media screen and (max-width: 455px) {
-        font-size: 16px;
-        margin-right: 15px;
+
+    @media ${device.md} {
+        font-size: 20px;
     }
-    @media screen and (max-width: 330px) {
-        font-size: 14px;
-        margin-right: 10px;
-    } */
 `;
 
 export const Text = styled.p`
@@ -70,6 +108,10 @@ export const Text = styled.p`
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.black};
+
+    @media ${device.md} {
+        font-size: 16px;
+    }
 `;
 
 export const FormFild = styled( Form )`
@@ -77,10 +119,6 @@ export const FormFild = styled( Form )`
     display: flex;
     flex-direction: column;
     gap: 24px;
-
-    @media ${device.sm} {
-        /* gap: 25px; */
-    }
 `;
 
 export const InputWrapper = styled.div`
@@ -104,13 +142,14 @@ export const Input = styled( Field )`
 
     border-width: 1px;
     border-style: solid;
-    border-radius: 20px 0px;
+    border-radius: 16px 0px;
     background-color: ${( props ) => props.color || props.theme.colors.white};
     caret-color: ${( props ) => props.$error ? props.theme.colors.accent : props.theme.colors.black };
+    transition: caret-color ${transition}, border-color ${transition};
 
-    @media ${device.sm} {
-        padding: 15px 20px;
-        height: 45px;
+    @media ${device.md} {
+        height: 48px;
+        padding: 13px 24px;
 
         font-size: 16px;
         line-height: calc(22.4 / 16);
@@ -132,15 +171,11 @@ export const Input = styled( Field )`
         display: none;
     }
     &:focus {
-        border-color: transparent;
-        outline-width: 1px;
-        outline-style: solid;
-        outline-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };       
+        outline: none;
+        border-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };  
     }
     &:focus + label {
-        display: ${( { $topic, $value } ) => $topic
-        ? ( $value ? 'none' : 'block' )
-        : 'none'};
+        display: ${( { $topic, $value } ) => $topic ? ( $value ? 'none' : 'block' ) : 'none' };
     }
 `;
 
@@ -155,6 +190,12 @@ export const Label = styled.label`
     font-weight: 400;
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
+
+    @media ${device.md} {
+        left: 24px;
+        font-size: 16px;
+        letter-spacing: 0%;
+    }
 `;
 
 export const IconContainer = styled.span`
@@ -166,42 +207,64 @@ export const DropdownBtn = styled.button`
     position: absolute;
     right: 16px;
     top: 17px;
-    transform: ${( props ) => ( props.$rotate ? 'rotate(180deg)' : '' ) };
     width: 24px;
     height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: ${( props ) => ( props.$rotate ? 'rotate(180deg)' : '' ) };
     background-color: transparent;
     border: none;
     fill: ${( props ) => props.color || props.theme.colors.black};
     -webkit-transition: rotate ${transition};
     transition: rotate ${transition};
+
+    @media ${device.md} {
+        top: 12px;
+    }
 `;
 
 export const WrappWarningText = styled.div`
     position: absolute;
-    bottom: 85px;
+    bottom: 75px;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding-left: 5px;
+    padding-left: 4px;
 
     @media ${device.md} {
+        bottom: 65px;
         padding-left: 0;
     }
 `;
 
 export const WarningText = styled.p`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
+    font-size: 16px;
     line-height: calc(15.82 / 14);
     color: ${( props ) => props.color || props.theme.colors.black};
+
+    @media ${device.md} {
+        font-size: 14px;
+    }
 `;
 
 export const SubmitBtn = styled( Button )`
+    width: 100%;
+    height: 60px;
+    margin-top: 32px;
+    border-radius: 16px 0;
+    
     font-size: 20px;
     font-weight: 600;
     line-height: 1.4;
-    margin-top: 32px;
-    /* letter-spacing: 0.2px; */
+    letter-spacing: 1%;
+
+    @media ${device.md} {
+        height: 50px;
+        border-radius: 20px 0;
+
+        font-size: 16px;
+        font-weight: 500;
+    }
 `;

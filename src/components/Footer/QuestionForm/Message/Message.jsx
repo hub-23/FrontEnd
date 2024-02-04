@@ -5,6 +5,7 @@ import { UploadPopup } from '../UploadPopup/UploadPopup';
 import { ImagesList } from '../ImagesList/ImagesList';
 import { SaveToLocalStorage } from '../SaveToLocalStorage';
 import { InputLableBox, IconContainer } from '../QuestionForm.styled';
+import { grayText } from '../../../../utils/variables.styled';
 import * as S from './Message.styled';
 
 
@@ -15,7 +16,11 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
 
 
   const handleImageSelect = ( value ) => {
-    setImages( ( prev ) => [ ...prev, value ] );
+    if ( !images.includes( value ) ) {
+      setImages( ( prev ) => [ ...prev, value ] );
+    } else {
+      alert( 'Поточне зображення вже додано.' );
+    }
   };
 
   const handleImageDelete = ( value ) => {
@@ -63,8 +68,8 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
               <IconSvg
                 xlWidth="10px"
                 xlHeight="10px"
+                $fill={ grayText }
                 icon="icon-star-marker"
-                style={ { fill: '#797979' } }
               />
             </IconContainer>
           </S.Label>
@@ -84,10 +89,6 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
           <IconSvg
             xlWidth="24px"
             xlHeight="24px"
-            mdWidth="24px"
-            mdHeight="24px"
-            smWidth="24px"
-            smHeight="24px"
             icon="icon-paper-clip"
           />
         </S.ClipBtn>

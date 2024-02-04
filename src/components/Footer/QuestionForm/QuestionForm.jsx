@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string, array } from 'yup';
 import { FormError } from './FormError/FormError';
-import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
 import countries from '../../../assets/countries.json';
 import { DropdownTopic } from './DropdownTopic/DropdownTopic';
 import { Message } from './Message/Message';
 import { SaveToLocalStorage } from './SaveToLocalStorage';
+import { grayText, deepAccent } from '../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
 
 
@@ -99,30 +99,23 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
   return (
     <S.QuestionFormContainer>
-      <BtnClose
-        xlRight="16px"
-        xlTop="16px"
-        mdRight="15px"
-        mdTop="15px"
-        smRight="12px"
-        smTop="12px"
-        aria-label='select country'
-        click={ onActiveModal }
+      <S.BtnClose
+        type='button'
+        aria-label='close'
+        onClick={ () => onActiveModal() }
       >
         <IconSvg
           xlWidth="36px"
           xlHeight="36px"
-          mdWidth="36px"
-          mdHeight="36px"
-          smWidth="24px"
-          smHeight="24px"
-          icon="icon-close"
+          mdWidth="24px"
+          mdHeight="24px"
+          icon="icon-close-cross"
         />
-      </BtnClose>
+      </S.BtnClose>
 
       <S.Title>Залишились питання?</S.Title>
       <S.Text>
-        Напишіть своє повідомлення, використовуючи форму, або зверніться безпосередньо за електронною адресою
+        Напишіть своє повідомлення, використовуючи форму, або зверніться напряму за електронною адресою
       </S.Text>
       <div>
         <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit } >
@@ -158,8 +151,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
+                          $fill={ grayText }
                           icon="icon-star-marker"
-                          style={ { fill: '#797979' } }
                         />
                       </S.IconContainer>
                     </S.Label>
@@ -184,8 +177,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
+                          $fill={ grayText }
                           icon="icon-star-marker"
-                          style={ { fill: '#797979' } }
                         />
                       </S.IconContainer>
                     </S.Label>
@@ -207,7 +200,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       data={ countries }
                       valueSelect={ handleGetSelected }
                       xlHeightList="275px"
-                      smHeightList="245px"
+                      mdHeightList="245px"
                     />
                   </div>
                   <SaveToLocalStorage fieldName="phone" />
@@ -232,8 +225,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
+                          $fill={ grayText }
                           icon="icon-star-marker"
-                          style={ { fill: '#797979' } }
                         />
                       </S.IconContainer>
                     </S.Label>
@@ -271,8 +264,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                   <IconSvg
                     xlWidth="24px"
                     xlHeight="24px"
+                    $fill={ deepAccent }
                     icon="icon-star-marker"
-                    style={ { fill: '#e3669c' } }
                   />
                   <S.WarningText $color={ errName }>
                         Ці поля є обов&apos;язковими до заповнення
@@ -282,11 +275,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
                 <S.SubmitBtn
                   type='submit'
                   variant='blue'
-                  width='100%'
-                  height='60px'
-                  // smHeight='50px'
-                  //   borderRadius='16px 0'
-                  //   smBorderRadius='20px 0'
                 >
                 Надіслати
                 </S.SubmitBtn>

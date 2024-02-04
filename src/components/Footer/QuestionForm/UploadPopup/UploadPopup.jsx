@@ -39,25 +39,21 @@ export const UploadPopup = ( { handleImageSelect } ) => {
 
   return (
     <S.Wrapper>
-      <S.UploadBtn
-        type='button'
-        aria-label='upload'
-      >
-        <IconSvg
-          xlWidth="24px"
-          xlHeight="24px"
-          mdWidth="24px"
-          mdHeight="24px"
-          smWidth="24px"
-          smHeight="24px"
-          icon="icon-upload"
-        />
-      </S.UploadBtn>
+      <label htmlFor="file-input">
+        <S.UploadBtn>
+          <IconSvg
+            xlWidth="24px"
+            xlHeight="24px"
+            icon="icon-upload"
+          />
+        </S.UploadBtn>
+      </label>
       <S.Input
         name="attachments"
         type='file'
         onChange={ handleFileChange }
         accept='image/jpeg,image/png,image/gif,image/webp'
+        id="file-input"
       />
       <S.Text>Завантажити з комп’ютера</S.Text>
     </S.Wrapper>

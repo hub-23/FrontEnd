@@ -1,6 +1,7 @@
 export const white = '#FFFFFF';
 export const black = '#2d2d2d';
 export const accent = '#E3669C';
+export const deepAccent = '#B82658';
 export const primary = '#113268';
 export const grayText = '#797979';
 export const bgModal = 'rgba( 0, 0, 0, 0.5 )';

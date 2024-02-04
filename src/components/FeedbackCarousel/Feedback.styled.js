@@ -264,7 +264,7 @@ export const BtnIcon = styled.svg`
   stroke: ${( props ) => props.color || props.theme.colors.primary};
   transition: fill ${transition}, stroke ${transition};
   &:hover,
-   :focus {
+  &:focus {
         stroke: rgba(121, 121, 121, 1);
         & path {
             fill: rgba(121, 121, 121, 1);
