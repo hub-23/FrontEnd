@@ -56,19 +56,32 @@ export const Footer = () => {
             <S.Header>Слідкуй за нами</S.Header>
             <S.SocList>
               <li>
-                <IconSvg
-                  xlWidth='24px'
-                  xlHeight='24px'
-                  icon='icon-youtube'
-                  style={ { width: '24px', height: '24px' } }
-                />
+                <a
+                  href="https://www.youtube.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="Відеохостинг YouTube"
+                >
+                  <IconSvg
+                    xlWidth='24px'
+                    xlHeight='24px'
+                    icon='icon-youtube'
+                  />
+                </a>
               </li>
               <li>
-                <IconSvg
-                  xlWidth='24px'
-                  xlHeight='24px'
-                  icon='icon-facebook'
-                />
+                <a
+                  href="https://www.facebook.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="Соціальна мережа Facebook"
+                >
+                  <IconSvg
+                    xlWidth='24px'
+                    xlHeight='24px'
+                    icon='icon-facebook'
+                  />
+                </a>
               </li>
             </S.SocList>
           </div>

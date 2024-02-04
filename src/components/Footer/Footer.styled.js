@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { transition } from '../../utils/variables.styled';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
 import { Link } from 'react-router-dom';
+import { grayText } from '../../utils/variables.styled';
 
 export const FooterSection = styled.footer`
     background-color:  ${( props ) => props.color || props.theme.colors.primary};
@@ -9,7 +10,7 @@ export const FooterSection = styled.footer`
     padding-bottom: 20px;
     @media screen and (min-width: 768px) {
         padding-top: 64px;
-        padding-bottom: 22px;
+        padding-bottom: 20px;
     }
 `;
 
@@ -27,10 +28,12 @@ export const FooterContainer = styled.div`
     @media screen and (min-width: 576px) {
         width: 576px;
     }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) { // з 768 - 991 - планшет
         width: 768px;
+        padding-left: 40px;
+        padding-right: 40px; 
     }
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 992px) { // з 992 - десктоп
         width: 992px;
         padding-left: 30px;
         padding-right: 30px; 
@@ -72,7 +75,7 @@ export const Logo = styled( LogoSvg )`
         margin-right: 300px;
     }
     @media screen and (min-width: 768px) {
-        margin-right: 500px;
+        margin-right: 114px;
     }
     @media screen and (min-width: 992px) {
         margin-right: 50px;
@@ -126,8 +129,6 @@ export const NavItem = styled.li`
 
 export const NavLink = styled( Link )`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 14px;
-    font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.white};     
@@ -171,8 +172,6 @@ export const ContactsItem = styled.div`
 
 export const Schedule = styled.p`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 14px;
-    font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.white};
@@ -185,8 +184,6 @@ export const Email = styled.a`
     display: flex;
     gap: 8px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 14px;
-    font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.white};
@@ -200,16 +197,23 @@ export const Email = styled.a`
     @media screen and (min-width: 576px) {
         font-size: 20px;
     }
-    &:hover > svg,
-    &:focus > svg {   
-        fill: ${( props ) => props.color || props.theme.colors.white};
-        stroke: ${( props ) => props.color || props.theme.colors.primary}; 
-        -webkit-transition: fill ${transition}, stroke ${transition};
-        transition: fill ${transition}, stroke ${transition};
-    }
     &:active {
         text-decoration: underline;
     }
+    > svg {
+        &:hover,
+        &:focus,
+        &:active {
+            fill: ${( props ) => props.color || props.theme.colors.white};
+            stroke: ${( props ) => props.color || props.theme.colors.primary}; 
+            -webkit-transition: fill ${transition}, stroke ${transition};
+            transition: fill ${transition}, stroke ${transition};            
+        }
+                &:disabled {
+            fill: ${( props ) => props.color || props.theme.colors.primary};
+            stroke: ${( props ) => props.color || grayText };
+        }
+    } 
 `;
 
 export const SocList = styled.ul`
@@ -224,22 +228,28 @@ export const SocList = styled.ul`
         margin-bottom: 0;
     }
     & svg {
-        cursor: pointer;
         fill: ${( props ) => props.color || props.theme.colors.primary};
         stroke: ${( props ) => props.color || props.theme.colors.white};
         stroke-width: 2;
         -webkit-transition: fill ${transition}, stroke ${transition};
         transition: fill ${transition}, stroke ${transition};
         &:hover,
-        &:focus {   
+        &:focus,
+        &:active {   
             fill: ${( props ) => props.color || props.theme.colors.white};
             stroke: ${( props ) => props.color || props.theme.colors.primary}; 
             stroke-width: 0;
-            -webkit-transition: fill ${transition}, stroke ${transition};
-            transition: fill ${transition}, stroke ${transition};
+        }
+        &:disabled {
+            fill: ${( props ) => props.color || props.theme.colors.primary};
+            stroke: ${( props ) => props.color || grayText };
         }        
-    }
+    }    
 `;
+
+// export const IconBtn = styled.button`
+
+// `;
 
 export const FormBtnWrapper = styled.div`
     text-align: center;

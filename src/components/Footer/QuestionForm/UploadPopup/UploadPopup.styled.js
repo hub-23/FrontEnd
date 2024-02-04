@@ -48,6 +48,7 @@ export const UploadBtn = styled.div`
     border-radius: 4px 0 4px 0;
     border-color: ${( props ) => props.color || props.theme.colors.white};
     background-color: ${( props ) => props.color || props.theme.colors.white};
+    -webkit-transition: border-color ${transition}, background-color ${transition};
     transition: border-color ${transition}, background-color ${transition};
     &:hover,
     &:focus,
