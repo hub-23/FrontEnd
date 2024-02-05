@@ -19,11 +19,9 @@ export const Footer = () => {
       <S.FooterContainer>
         <S.ContentOrganizer>
 
-          {/* <S.LinkWrapper> */}
           <Link to='/'>
             <S.Logo />
           </Link>
-          {/* </S.LinkWrapper> */}
 
           <S.NavWrapper>
             <S.Header>Інформація</S.Header>

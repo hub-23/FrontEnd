@@ -8,6 +8,7 @@ export const FooterSection = styled.footer`
     background-color:  ${( props ) => props.color || props.theme.colors.primary};
     padding-top: 40px;
     padding-bottom: 20px;
+    
     @media screen and (min-width: 768px) {
         padding-top: 64px;
         padding-bottom: 20px;
@@ -19,7 +20,7 @@ export const FooterContainer = styled.div`
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
-    border: 1px solid yellow;    
+
     @media screen and (min-width: 360px) {
         width: 360px;
     }
@@ -29,12 +30,12 @@ export const FooterContainer = styled.div`
     @media screen and (min-width: 576px) {
         width: 576px;
     }
-    @media screen and (min-width: 768px) { // з 768 - 991 - планшет
+    @media screen and (min-width: 768px) { 
         width: 768px;
         padding-left: 40px;
         padding-right: 40px; 
     }
-    @media screen and (min-width: 992px) { // з 992 - десктоп
+    @media screen and (min-width: 992px) { 
         width: 992px;
         padding-left: 30px;
         padding-right: 30px; 
@@ -54,7 +55,7 @@ export const FooterContainer = styled.div`
 export const ContentOrganizer = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: yellow;
+
     @media screen and (min-width: 400px) {
         flex-direction: row;
         flex-wrap: wrap; 
@@ -64,7 +65,10 @@ export const ContentOrganizer = styled.div`
         justify-content: end; 
     }
     @media screen and (min-width: 992px) { // з 992 - десктоп
-        justify-content: start; 
+        justify-content: space-between; 
+    }
+    @media screen and (min-width: 1440px) {
+        justify-content: start;
     }
 `;
 
@@ -72,7 +76,6 @@ export const Logo = styled( LogoSvg )`
     width: 93px;
     height: 24px;
     margin-bottom: 40px;
-    background-color: rebeccapurple;
 
     @media screen and (min-width: 400px) {
         margin-right: 200px;
@@ -86,7 +89,7 @@ export const Logo = styled( LogoSvg )`
         margin-right: 76px;
     }
     @media screen and (min-width: 992px) {
-        margin-right: 50px;
+        margin-right: 20px;
     }
     @media screen and (min-width: 1200px) {
         margin-right: 70px;
@@ -102,7 +105,7 @@ export const Logo = styled( LogoSvg )`
 export const NavWrapper = styled.div`
     margin-right: 0;
     margin-bottom: 40px;
-    background-color: teal;
+
     @media screen and (min-width: 400px) {
         margin-bottom: 0;
         height: fit-content;
@@ -110,9 +113,11 @@ export const NavWrapper = styled.div`
     @media screen and (min-width: 768px) {
         margin-right: 80px;
     }
-    @media screen and (min-width: 992px) {
-        margin-right: 60px;
-        margin-bottom: 40px;
+    @media screen and (min-width: 992px) { // -----------------------------------------------
+        margin-right: 20px;
+    }
+    @media screen and (min-width: 1200px) {
+        margin-right: 70px;
     }
     @media screen and (min-width: 1440px) {
         margin-right: 97px;
@@ -156,7 +161,7 @@ export const ContactsWrapper = styled.div`
     margin-right: 0;
     margin-bottom: 40px;
     font-size: 14px;
-    background-color: navajowhite;
+
     @media screen and (min-width: 400px) {
         margin-bottom: 30px;
     }
@@ -164,16 +169,14 @@ export const ContactsWrapper = styled.div`
         margin-bottom: 0;
         height: fit-content;
     }
-    @media screen and (min-width: 992px) {
-        margin-right: 60px;
-        margin-bottom: 32px;
-        height: auto;
+    @media screen and (min-width: 992px) {  // -----------------------------------------------
+        margin-right: 20px;
     }
     @media screen and (min-width: 1200px) {
         margin-right: 100px;
     }
     @media screen and (min-width: 1440px) {
-        margin-right: 140px;
+        margin-right: 143px;
     }
 `;
 
@@ -235,7 +238,7 @@ export const Email = styled.a`
 export const SocListWrapper = styled.div`
     margin-right: 0;
     margin-bottom: 40px;
-    background-color: hotpink;
+
     @media screen and (min-width: 400px) {
         margin-top: 20px;
         margin-bottom: 0; 
@@ -250,10 +253,17 @@ export const SocListWrapper = styled.div`
         margin-right: 34px;
         margin-left: 0;
     }  
-    @media screen and (min-width: 992px) { // з 992 - десктоп
+    @media screen and (min-width: 992px) {
+        order: 2;
         margin-top: 0;
-        margin-right: 145px;
-        margin-bottom: 40px
+        margin-right: 0;
+        margin-left: 380px;        
+    }
+    @media screen and (min-width: 1200px) {
+        margin-left: 405px;
+    }
+    @media screen and (min-width: 1440px) {
+        margin-left: 485px;
     }
 `;
 
@@ -289,15 +299,16 @@ export const SocLink = styled.a`
 
 export const FormBtnWrapper = styled.div`
     text-align: center;
-    background-color: firebrick;
+
     @media screen and (min-width: 400px) {
         padding-right: 20px;
     }
     @media screen and (min-width: 768px) {
         padding-right: 44px;
     }
-    @media screen and (min-width: 992px) { // з 992 - десктоп
+    @media screen and (min-width: 992px) {
         padding-right: 0;
+        height: fit-content;
     }
 `;
 
@@ -313,6 +324,7 @@ export const FormBtn = styled.button`
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.black};
+    
     @media screen and (min-width: 768px) {
         width: 223px;
         font-size: 20px;
@@ -362,7 +374,7 @@ export const TermsRightsWrapper = styled.div`
                 right: 242px;
             }
             @media screen and (min-width: 768px) {
-                right: 338px;
+                right: 318px;
             }
             @media screen and (min-width: 992px) {
                 right: 440px;
