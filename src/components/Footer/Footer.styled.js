@@ -2,14 +2,16 @@ import styled, { css } from 'styled-components';
 import { transition } from '../../utils/variables.styled';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
 import { Link } from 'react-router-dom';
+import { grayText } from '../../utils/variables.styled';
 
 export const FooterSection = styled.footer`
     background-color:  ${( props ) => props.color || props.theme.colors.primary};
     padding-top: 40px;
     padding-bottom: 20px;
+    
     @media screen and (min-width: 768px) {
         padding-top: 64px;
-        padding-bottom: 22px;
+        padding-bottom: 20px;
     }
 `;
 
@@ -17,7 +19,8 @@ export const FooterContainer = styled.div`
     width: 100%;
     margin: 0 auto;
     padding-left: 20px;
-    padding-right: 20px;    
+    padding-right: 20px;
+
     @media screen and (min-width: 360px) {
         width: 360px;
     }
@@ -27,10 +30,12 @@ export const FooterContainer = styled.div`
     @media screen and (min-width: 576px) {
         width: 576px;
     }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) { 
         width: 768px;
+        padding-left: 40px;
+        padding-right: 40px; 
     }
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 992px) { 
         width: 992px;
         padding-left: 30px;
         padding-right: 30px; 
@@ -50,9 +55,20 @@ export const FooterContainer = styled.div`
 export const ContentOrganizer = styled.div`
     display: flex;
     flex-direction: column;
+
     @media screen and (min-width: 400px) {
         flex-direction: row;
         flex-wrap: wrap; 
+        justify-content: space-between; 
+    }
+    @media screen and (min-width: 768px) { // з 768 - 991 - планшет
+        justify-content: end; 
+    }
+    @media screen and (min-width: 992px) { // з 992 - десктоп
+        justify-content: space-between; 
+    }
+    @media screen and (min-width: 1440px) {
+        justify-content: start;
     }
 `;
 
@@ -60,22 +76,20 @@ export const Logo = styled( LogoSvg )`
     width: 93px;
     height: 24px;
     margin-bottom: 40px;
-    path.text-path {
-        fill: #fff;
-    }
+
     @media screen and (min-width: 400px) {
         margin-right: 200px;
     }
     @media screen and (min-width: 576px) {
-        width: 152px;
-        height: 40px;
-        margin-right: 300px;
+        margin-right: auto;
     }
     @media screen and (min-width: 768px) {
-        margin-right: 500px;
+        width: 152px;
+        height: 40px;
+        margin-right: 76px;
     }
     @media screen and (min-width: 992px) {
-        margin-right: 50px;
+        margin-right: 20px;
     }
     @media screen and (min-width: 1200px) {
         margin-right: 70px;
@@ -83,20 +97,27 @@ export const Logo = styled( LogoSvg )`
     @media screen and (min-width: 1440px) {
         margin-right: 127px;
     }
+    path.text-path {
+        fill: #fff;
+    }
 `;
 
 export const NavWrapper = styled.div`
     margin-right: 0;
     margin-bottom: 40px;
+
     @media screen and (min-width: 400px) {
-        flex-basis: 44%; 
+        margin-bottom: 0;
+        height: fit-content;
     }
     @media screen and (min-width: 768px) {
-        flex-basis: 10%; 
         margin-right: 80px;
     }
-    @media screen and (min-width: 992px) {
-        margin-right: 60px;
+    @media screen and (min-width: 992px) { // -----------------------------------------------
+        margin-right: 20px;
+    }
+    @media screen and (min-width: 1200px) {
+        margin-right: 70px;
     }
     @media screen and (min-width: 1440px) {
         margin-right: 97px;
@@ -112,7 +133,8 @@ export const Header = styled.h4`
     letter-spacing: 0.16px;
     text-align: left;
     color: ${( props ) => props.color || props.theme.colors.white};
-    @media screen and (min-width: 576px) {
+
+    @media screen and (min-width: 768px) {
       font-size: 20px;
       letter-spacing: 0.2px;
     }
@@ -126,12 +148,11 @@ export const NavItem = styled.li`
 
 export const NavLink = styled( Link )`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 14px;
-    font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.2px;
-    color: ${( props ) => props.color || props.theme.colors.white};     
-    @media screen and (min-width: 576px) {
+    color: ${( props ) => props.color || props.theme.colors.white};
+
+    @media screen and (min-width: 768px) {
         font-size: 20px;
     }
 `;
@@ -140,24 +161,22 @@ export const ContactsWrapper = styled.div`
     margin-right: 0;
     margin-bottom: 40px;
     font-size: 14px;
+
     @media screen and (min-width: 400px) {
-        flex-basis: 44%; 
+        margin-bottom: 30px;
     }
     @media screen and (min-width: 576px) {
-        margin-bottom: 32px;
+        margin-bottom: 0;
+        height: fit-content;
     }
-    @media screen and (min-width: 768px) {
-        flex-basis: 10%; 
-        margin-right: 40px;
-    }
-    @media screen and (min-width: 992px) {
-        margin-right: 60px;
+    @media screen and (min-width: 992px) {  // -----------------------------------------------
+        margin-right: 20px;
     }
     @media screen and (min-width: 1200px) {
         margin-right: 100px;
     }
     @media screen and (min-width: 1440px) {
-        margin-right: 140px;
+        margin-right: 143px;
     }
 `;
 
@@ -171,12 +190,11 @@ export const ContactsItem = styled.div`
 
 export const Schedule = styled.p`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 14px;
-    font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.white};
-    @media screen and (min-width: 576px) {
+
+    @media screen and (min-width: 768px) {
         font-size: 20px;
     }
 `;
@@ -185,8 +203,6 @@ export const Email = styled.a`
     display: flex;
     gap: 8px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 14px;
-    font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.white};
@@ -197,54 +213,102 @@ export const Email = styled.a`
     &:not(:last-child) {
       margin-bottom: 12px;
     }
-    @media screen and (min-width: 576px) {
+    @media screen and (min-width: 768px) {
         font-size: 20px;
-    }
-    &:hover > svg,
-    &:focus > svg {   
-        fill: ${( props ) => props.color || props.theme.colors.white};
-        stroke: ${( props ) => props.color || props.theme.colors.primary}; 
-        -webkit-transition: fill ${transition}, stroke ${transition};
-        transition: fill ${transition}, stroke ${transition};
     }
     &:active {
         text-decoration: underline;
+    }
+    > svg {
+        &:hover,
+        &:focus,
+        &:active {
+            fill: ${( props ) => props.color || props.theme.colors.white};
+            stroke: ${( props ) => props.color || props.theme.colors.primary}; 
+            -webkit-transition: fill ${transition}, stroke ${transition};
+            transition: fill ${transition}, stroke ${transition};            
+        }
+        &:disabled {
+            fill: ${( props ) => props.color || props.theme.colors.primary};
+            stroke: ${( props ) => props.color || grayText };
+        }
+    } 
+`;
+
+export const SocListWrapper = styled.div`
+    margin-right: 0;
+    margin-bottom: 40px;
+
+    @media screen and (min-width: 400px) {
+        margin-top: 20px;
+        margin-bottom: 0; 
+    }
+    @media screen and (min-width: 576px) {
+        margin-left: auto;
+        margin-right: 39px;
+        margin-top: 23px; 
+    }
+    @media screen and (min-width: 768px) {
+        margin-top: 32px;        
+        margin-right: 34px;
+        margin-left: 0;
+    }  
+    @media screen and (min-width: 992px) {
+        order: 2;
+        margin-top: 0;
+        margin-right: 0;
+        margin-left: 380px;        
+    }
+    @media screen and (min-width: 1200px) {
+        margin-left: 405px;
+    }
+    @media screen and (min-width: 1440px) {
+        margin-left: 485px;
     }
 `;
 
 export const SocList = styled.ul`
     display: flex;
     gap: 12px;
-    margin-right: 0;
-    margin-bottom: 40px;
-    @media screen and (min-width: 576px) {
-        margin-right: 145px;
+    > li {
+        width: 24px;
+        height: 24px;
     }
-    @media screen and (min-width: 768px) {
-        margin-bottom: 0;
-    }
+`;
+
+export const SocLink = styled.a`
     & svg {
-        cursor: pointer;
         fill: ${( props ) => props.color || props.theme.colors.primary};
         stroke: ${( props ) => props.color || props.theme.colors.white};
         stroke-width: 2;
         -webkit-transition: fill ${transition}, stroke ${transition};
         transition: fill ${transition}, stroke ${transition};
         &:hover,
-        &:focus {   
+        &:focus,
+        &:active {   
             fill: ${( props ) => props.color || props.theme.colors.white};
             stroke: ${( props ) => props.color || props.theme.colors.primary}; 
             stroke-width: 0;
-            -webkit-transition: fill ${transition}, stroke ${transition};
-            transition: fill ${transition}, stroke ${transition};
+        }
+        &:disabled {
+            fill: ${( props ) => props.color || props.theme.colors.primary};
+            stroke: ${( props ) => props.color || grayText };
         }        
-    }
+    }  
 `;
 
 export const FormBtnWrapper = styled.div`
     text-align: center;
-    @media screen and (max-width: 576px) {
-        flex-basis: 100%; 
+
+    @media screen and (min-width: 400px) {
+        padding-right: 20px;
+    }
+    @media screen and (min-width: 768px) {
+        padding-right: 44px;
+    }
+    @media screen and (min-width: 992px) {
+        padding-right: 0;
+        height: fit-content;
     }
 `;
 
@@ -260,7 +324,8 @@ export const FormBtn = styled.button`
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.black};
-    @media screen and (min-width: 576px) {
+    
+    @media screen and (min-width: 768px) {
         width: 223px;
         font-size: 20px;
         font-weight: 600;
@@ -278,6 +343,10 @@ export const FormBtn = styled.button`
 export const TermsRightsWrapper = styled.div`
     margin-top: 66px;
     text-align: center;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 80px;
+    }
     @media screen and (min-width: 1440px) {
         margin-top: 126px;
     }
@@ -305,7 +374,7 @@ export const TermsRightsWrapper = styled.div`
                 right: 242px;
             }
             @media screen and (min-width: 768px) {
-                right: 338px;
+                right: 318px;
             }
             @media screen and (min-width: 992px) {
                 right: 440px;

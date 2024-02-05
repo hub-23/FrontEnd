@@ -32,46 +32,59 @@ export const Footer = () => {
             </ul>
           </S.NavWrapper>
 
-          <div>
-            <S.ContactsWrapper>
-              <S.Header>Контакти</S.Header>
-              <S.ContactsItem>
-                <IconSvg
-                  xlWidth='24px'
-                  xlHeight='24px'
-                  icon='icon-clock'
-                />
-                <S.Schedule>Пн-Нд // 9:00 - 20:00</S.Schedule>
-              </S.ContactsItem>
-              <S.Email href="mailto:hub23project@gmail.com">
-                <IconSvg
-                  xlWidth='24px'
-                  xlHeight='24px'
-                  icon='icon-envelope'
-                />
-                hub23project@gmail.com
-              </S.Email>
-            </S.ContactsWrapper>
+          <S.ContactsWrapper>
+            <S.Header>Контакти</S.Header>
+            <S.ContactsItem>
+              <IconSvg
+                xlWidth='24px'
+                xlHeight='24px'
+                icon='icon-clock'
+              />
+              <S.Schedule>Пн-Нд // 9:00 - 20:00</S.Schedule>
+            </S.ContactsItem>
+            <S.Email href="mailto:hub23project@gmail.com">
+              <IconSvg
+                xlWidth='24px'
+                xlHeight='24px'
+                icon='icon-envelope'
+              />
+              hub23project@gmail.com
+            </S.Email>
+          </S.ContactsWrapper>
 
+          <S.SocListWrapper>
             <S.Header>Слідкуй за нами</S.Header>
             <S.SocList>
               <li>
-                <IconSvg
-                  xlWidth='24px'
-                  xlHeight='24px'
-                  icon='icon-youtube'
-                  style={ { width: '24px', height: '24px' } }
-                />
+                <S.SocLink
+                  href="https://www.youtube.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="Відеохостинг YouTube"
+                >
+                  <IconSvg
+                    xlWidth='24px'
+                    xlHeight='24px'
+                    icon='icon-youtube'
+                  />
+                </S.SocLink>
               </li>
               <li>
-                <IconSvg
-                  xlWidth='24px'
-                  xlHeight='24px'
-                  icon='icon-facebook'
-                />
+                <S.SocLink
+                  href="https://www.facebook.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="Соціальна мережа Facebook"
+                >
+                  <IconSvg
+                    xlWidth='24px'
+                    xlHeight='24px'
+                    icon='icon-facebook'
+                  />
+                </S.SocLink>
               </li>
             </S.SocList>
-          </div>
+          </S.SocListWrapper>
 
           <S.FormBtnWrapper>
             <S.Header>Залишились питання?</S.Header>
@@ -81,13 +94,14 @@ export const Footer = () => {
             >
               Заповнити форму
             </S.FormBtn>
+            { isModalOpen && (
+              <Modal onActiveModal={ toggleModal }>
+                <QuestionForm onActiveModal={ toggleModal } />
+              </Modal>
+            )}
           </S.FormBtnWrapper>
         </S.ContentOrganizer>
-        { isModalOpen && (
-          <Modal onActiveModal={ toggleModal }>
-            <QuestionForm onActiveModal={ toggleModal } />
-          </Modal>
-        )}
+
 
         <S.TermsRightsWrapper>
           <div>
