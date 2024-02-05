@@ -19,9 +19,11 @@ export const Footer = () => {
       <S.FooterContainer>
         <S.ContentOrganizer>
 
+          {/* <S.LinkWrapper> */}
           <Link to='/'>
             <S.Logo />
           </Link>
+          {/* </S.LinkWrapper> */}
 
           <S.NavWrapper>
             <S.Header>Інформація</S.Header>
@@ -32,31 +34,31 @@ export const Footer = () => {
             </ul>
           </S.NavWrapper>
 
-          <div>
-            <S.ContactsWrapper>
-              <S.Header>Контакти</S.Header>
-              <S.ContactsItem>
-                <IconSvg
-                  xlWidth='24px'
-                  xlHeight='24px'
-                  icon='icon-clock'
-                />
-                <S.Schedule>Пн-Нд // 9:00 - 20:00</S.Schedule>
-              </S.ContactsItem>
-              <S.Email href="mailto:hub23project@gmail.com">
-                <IconSvg
-                  xlWidth='24px'
-                  xlHeight='24px'
-                  icon='icon-envelope'
-                />
-                hub23project@gmail.com
-              </S.Email>
-            </S.ContactsWrapper>
+          <S.ContactsWrapper>
+            <S.Header>Контакти</S.Header>
+            <S.ContactsItem>
+              <IconSvg
+                xlWidth='24px'
+                xlHeight='24px'
+                icon='icon-clock'
+              />
+              <S.Schedule>Пн-Нд // 9:00 - 20:00</S.Schedule>
+            </S.ContactsItem>
+            <S.Email href="mailto:hub23project@gmail.com">
+              <IconSvg
+                xlWidth='24px'
+                xlHeight='24px'
+                icon='icon-envelope'
+              />
+              hub23project@gmail.com
+            </S.Email>
+          </S.ContactsWrapper>
 
+          <S.SocListWrapper>
             <S.Header>Слідкуй за нами</S.Header>
             <S.SocList>
               <li>
-                <a
+                <S.SocLink
                   href="https://www.youtube.com/"
                   rel="noopener noreferrer"
                   target="_blank"
@@ -67,10 +69,10 @@ export const Footer = () => {
                     xlHeight='24px'
                     icon='icon-youtube'
                   />
-                </a>
+                </S.SocLink>
               </li>
               <li>
-                <a
+                <S.SocLink
                   href="https://www.facebook.com/"
                   rel="noopener noreferrer"
                   target="_blank"
@@ -81,10 +83,10 @@ export const Footer = () => {
                     xlHeight='24px'
                     icon='icon-facebook'
                   />
-                </a>
+                </S.SocLink>
               </li>
             </S.SocList>
-          </div>
+          </S.SocListWrapper>
 
           <S.FormBtnWrapper>
             <S.Header>Залишились питання?</S.Header>
@@ -94,13 +96,14 @@ export const Footer = () => {
             >
               Заповнити форму
             </S.FormBtn>
+            { isModalOpen && (
+              <Modal onActiveModal={ toggleModal }>
+                <QuestionForm onActiveModal={ toggleModal } />
+              </Modal>
+            )}
           </S.FormBtnWrapper>
         </S.ContentOrganizer>
-        { isModalOpen && (
-          <Modal onActiveModal={ toggleModal }>
-            <QuestionForm onActiveModal={ toggleModal } />
-          </Modal>
-        )}
+
 
         <S.TermsRightsWrapper>
           <div>

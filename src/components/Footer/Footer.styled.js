@@ -18,7 +18,8 @@ export const FooterContainer = styled.div`
     width: 100%;
     margin: 0 auto;
     padding-left: 20px;
-    padding-right: 20px;    
+    padding-right: 20px;
+    border: 1px solid yellow;    
     @media screen and (min-width: 360px) {
         width: 360px;
     }
@@ -53,9 +54,17 @@ export const FooterContainer = styled.div`
 export const ContentOrganizer = styled.div`
     display: flex;
     flex-direction: column;
+    background-color: yellow;
     @media screen and (min-width: 400px) {
         flex-direction: row;
         flex-wrap: wrap; 
+        justify-content: space-between; 
+    }
+    @media screen and (min-width: 768px) { // з 768 - 991 - планшет
+        justify-content: end; 
+    }
+    @media screen and (min-width: 992px) { // з 992 - десктоп
+        justify-content: start; 
     }
 `;
 
@@ -63,19 +72,18 @@ export const Logo = styled( LogoSvg )`
     width: 93px;
     height: 24px;
     margin-bottom: 40px;
-    path.text-path {
-        fill: #fff;
-    }
+    background-color: rebeccapurple;
+
     @media screen and (min-width: 400px) {
         margin-right: 200px;
     }
     @media screen and (min-width: 576px) {
-        width: 152px;
-        height: 40px;
-        margin-right: 300px;
+        margin-right: auto;
     }
     @media screen and (min-width: 768px) {
-        margin-right: 114px;
+        width: 152px;
+        height: 40px;
+        margin-right: 76px;
     }
     @media screen and (min-width: 992px) {
         margin-right: 50px;
@@ -86,20 +94,25 @@ export const Logo = styled( LogoSvg )`
     @media screen and (min-width: 1440px) {
         margin-right: 127px;
     }
+    path.text-path {
+        fill: #fff;
+    }
 `;
 
 export const NavWrapper = styled.div`
     margin-right: 0;
     margin-bottom: 40px;
+    background-color: teal;
     @media screen and (min-width: 400px) {
-        flex-basis: 44%; 
+        margin-bottom: 0;
+        height: fit-content;
     }
     @media screen and (min-width: 768px) {
-        flex-basis: 10%; 
         margin-right: 80px;
     }
     @media screen and (min-width: 992px) {
         margin-right: 60px;
+        margin-bottom: 40px;
     }
     @media screen and (min-width: 1440px) {
         margin-right: 97px;
@@ -115,7 +128,8 @@ export const Header = styled.h4`
     letter-spacing: 0.16px;
     text-align: left;
     color: ${( props ) => props.color || props.theme.colors.white};
-    @media screen and (min-width: 576px) {
+
+    @media screen and (min-width: 768px) {
       font-size: 20px;
       letter-spacing: 0.2px;
     }
@@ -131,8 +145,9 @@ export const NavLink = styled( Link )`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     line-height: 1.4;
     letter-spacing: 0.2px;
-    color: ${( props ) => props.color || props.theme.colors.white};     
-    @media screen and (min-width: 576px) {
+    color: ${( props ) => props.color || props.theme.colors.white};
+
+    @media screen and (min-width: 768px) {
         font-size: 20px;
     }
 `;
@@ -141,18 +156,18 @@ export const ContactsWrapper = styled.div`
     margin-right: 0;
     margin-bottom: 40px;
     font-size: 14px;
+    background-color: navajowhite;
     @media screen and (min-width: 400px) {
-        flex-basis: 44%; 
+        margin-bottom: 30px;
     }
     @media screen and (min-width: 576px) {
-        margin-bottom: 32px;
-    }
-    @media screen and (min-width: 768px) {
-        flex-basis: 10%; 
-        margin-right: 40px;
+        margin-bottom: 0;
+        height: fit-content;
     }
     @media screen and (min-width: 992px) {
         margin-right: 60px;
+        margin-bottom: 32px;
+        height: auto;
     }
     @media screen and (min-width: 1200px) {
         margin-right: 100px;
@@ -175,7 +190,8 @@ export const Schedule = styled.p`
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.white};
-    @media screen and (min-width: 576px) {
+
+    @media screen and (min-width: 768px) {
         font-size: 20px;
     }
 `;
@@ -194,7 +210,7 @@ export const Email = styled.a`
     &:not(:last-child) {
       margin-bottom: 12px;
     }
-    @media screen and (min-width: 576px) {
+    @media screen and (min-width: 768px) {
         font-size: 20px;
     }
     &:active {
@@ -209,24 +225,48 @@ export const Email = styled.a`
             -webkit-transition: fill ${transition}, stroke ${transition};
             transition: fill ${transition}, stroke ${transition};            
         }
-                &:disabled {
+        &:disabled {
             fill: ${( props ) => props.color || props.theme.colors.primary};
             stroke: ${( props ) => props.color || grayText };
         }
     } 
 `;
 
+export const SocListWrapper = styled.div`
+    margin-right: 0;
+    margin-bottom: 40px;
+    background-color: hotpink;
+    @media screen and (min-width: 400px) {
+        margin-top: 20px;
+        margin-bottom: 0; 
+    }
+    @media screen and (min-width: 576px) {
+        margin-left: auto;
+        margin-right: 39px;
+        margin-top: 23px; 
+    }
+    @media screen and (min-width: 768px) {
+        margin-top: 32px;        
+        margin-right: 34px;
+        margin-left: 0;
+    }  
+    @media screen and (min-width: 992px) { // з 992 - десктоп
+        margin-top: 0;
+        margin-right: 145px;
+        margin-bottom: 40px
+    }
+`;
+
 export const SocList = styled.ul`
     display: flex;
     gap: 12px;
-    margin-right: 0;
-    margin-bottom: 40px;
-    @media screen and (min-width: 576px) {
-        margin-right: 145px;
+    > li {
+        width: 24px;
+        height: 24px;
     }
-    @media screen and (min-width: 768px) {
-        margin-bottom: 0;
-    }
+`;
+
+export const SocLink = styled.a`
     & svg {
         fill: ${( props ) => props.color || props.theme.colors.primary};
         stroke: ${( props ) => props.color || props.theme.colors.white};
@@ -244,17 +284,20 @@ export const SocList = styled.ul`
             fill: ${( props ) => props.color || props.theme.colors.primary};
             stroke: ${( props ) => props.color || grayText };
         }        
-    }    
+    }  
 `;
-
-// export const IconBtn = styled.button`
-
-// `;
 
 export const FormBtnWrapper = styled.div`
     text-align: center;
-    @media screen and (max-width: 576px) {
-        flex-basis: 100%; 
+    background-color: firebrick;
+    @media screen and (min-width: 400px) {
+        padding-right: 20px;
+    }
+    @media screen and (min-width: 768px) {
+        padding-right: 44px;
+    }
+    @media screen and (min-width: 992px) { // з 992 - десктоп
+        padding-right: 0;
     }
 `;
 
@@ -270,7 +313,7 @@ export const FormBtn = styled.button`
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.black};
-    @media screen and (min-width: 576px) {
+    @media screen and (min-width: 768px) {
         width: 223px;
         font-size: 20px;
         font-weight: 600;
@@ -288,6 +331,10 @@ export const FormBtn = styled.button`
 export const TermsRightsWrapper = styled.div`
     margin-top: 66px;
     text-align: center;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 80px;
+    }
     @media screen and (min-width: 1440px) {
         margin-top: 126px;
     }
