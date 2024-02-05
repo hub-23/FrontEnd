@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
-import countries from '../../assets/countries.json';
+// import countries from '../../assets/countries.json';
 
 import {
   WrappCapcha,
@@ -168,10 +168,15 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   <FormError name="phone" isMarginLeft={ true } />
 
                   <PhoneSelect
-                    data={ countries }
+                    // data={ countries }
                     valueSelect={ handleGetSelected }
                     xlHeightList="275px"
                     smHeightList="245px"
+                    $positionTop="15px"
+                    $positionLeft="32px"
+                    $xlFontSizeList=""
+                    $mdFontSizeList=""
+                    $smFontSizeList=""
                   />
                 </LabelFormUser>
 
