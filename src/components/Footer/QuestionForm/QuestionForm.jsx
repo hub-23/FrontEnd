@@ -4,9 +4,10 @@ import { object, string, array } from 'yup';
 import { FormError } from './FormError/FormError';
 import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
-import countries from '../../../assets/countries.json';
 import { DropdownTopic } from './DropdownTopic/DropdownTopic';
 import { Message } from './Message/Message';
+import { Modal } from '../../modal/Modal';
+import { Notification } from './Notification/Notification';
 import { SaveToLocalStorage } from './SaveToLocalStorage';
 import { grayText, deepAccent } from '../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
@@ -16,6 +17,13 @@ export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
   const [ images, setImages ] = useState( [] );
+  const [ isNotificationShown, setIsNotificationShown ] = useState( false );
+
+  const toggleModal = () => {
+    setIsNotificationShown( !isNotificationShown );
+    document.body.style.overflow = 'visible';
+    console.log( 'inside' );
+  };
 
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
@@ -84,8 +92,11 @@ export const QuestionForm = ( { onActiveModal } ) => {
       localStorage.removeItem( `question-form-${key}` );
     } );
 
+    console.log( isNotificationShown );
     resetForm();
     onActiveModal();
+    setIsNotificationShown( !isNotificationShown );
+    console.log( isNotificationShown );
   };
 
   const handleGetSelected = ( values ) => {
@@ -105,10 +116,12 @@ export const QuestionForm = ( { onActiveModal } ) => {
         onClick={ () => onActiveModal() }
       >
         <IconSvg
-          xlWidth="36px"
-          xlHeight="36px"
-          mdWidth="24px"
-          mdHeight="24px"
+          xlWidth="56px"
+          xlHeight="56px"
+          mdWidth="36px"
+          mdHeight="36px"
+          smWidth="24px"
+          smHeight="24px"
           icon="icon-close-cross"
         />
       </S.BtnClose>
@@ -197,10 +210,14 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       style={ { paddingLeft: '160px' } }
                     />
                     <PhoneSelect
-                      data={ countries }
                       valueSelect={ handleGetSelected }
-                      xlHeightList="275px"
+                      xlHeightList="240px"
                       mdHeightList="245px"
+                      $positionTop="13px"
+                      $positionLeft="32px"
+                      $xlFontSizeList="20px"
+                      $mdFontSizeList="16px"
+                      // $smFontSizeList=""
                     />
                   </div>
                   <SaveToLocalStorage fieldName="phone" />
@@ -283,6 +300,11 @@ export const QuestionForm = ( { onActiveModal } ) => {
           }}
         </Formik>
       </div>
+      { isNotificationShown && (
+        <Modal onActiveModal={ toggleModal }>
+          <Notification onActiveModal={ toggleModal } />
+        </Modal>
+      ) }
     </S.QuestionFormContainer>
   );
 };

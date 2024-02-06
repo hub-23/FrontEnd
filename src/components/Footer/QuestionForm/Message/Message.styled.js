@@ -73,7 +73,7 @@ export const Textarea = styled( Field )`
         display: none;
     }
 
-    @media ${device.md} {
+    @media ${device.sm} {
         font-size: 16px;
         padding: 20px 56px 16px 24px;
     }
@@ -90,7 +90,7 @@ export const Label = styled.label`
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
-    @media ${device.md} {
+    @media ${device.sm} {
         left: 24px;
         font-size: 16px;
     }

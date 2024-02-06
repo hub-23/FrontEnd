@@ -14,9 +14,10 @@ import {
 
 export const QuestionFormContainer = styled.div`
     position: absolute;
-    width: 516px;
+    max-width: 800px;
+    margin: 0 20px;
     max-height: 95%;
-    padding: 48px;
+    padding: 48px 160px 50px 160px;
     border-radius: 20px 0px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -37,33 +38,35 @@ export const QuestionFormContainer = styled.div`
         background: rgba(18, 20, 23, 0.1); 
     }
     @media ${device.md} {  
-        width: 360px;
+        max-width: 516px;
+        padding: 48px;
+    }
+    @media ${device.sm} {  
+        max-width: 360px;
         max-height: 100%;
         padding: 32px 20px;
-        border-radius: 0;
     }
 `;
 
 export const BtnClose = styled.button`
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 36px;
-    height: 36px;
+    top: 50px;
+    right: 40px;
+    width: 56px;
+    height: 56px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     border-width: 1px;
     border-style: solid;
-    border-radius: 10px 0 10px 0;
+    border-radius: 20px 0;
     border-color: ${( props ) => props.color || props.theme.colors.accent};
     background-color: ${( props ) => props.color || props.theme.colors.white};
     transition: border-color ${transition}, background-color ${transition};
     &:hover,
     &:focus,
     &:active {
-        border-radius: 10px 0 10px 0;
         border-color: ${( props ) => props.color || props.theme.colors.accent};
         background-color: ${( props ) => props.color || props.theme.colors.accent};
         > svg {
@@ -76,12 +79,19 @@ export const BtnClose = styled.button`
       transition: stroke ${transition};
     }
 
-    @media ${device.md} {
+    @media ${device.md} {  
+        top: 16px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px 0;
+    }
+    @media ${device.sm} {
         top: 12px;
         right: 12px;
         width: 24px;
         height: 24px;
-        border-radius: 8px 0 8px 0;
+        border-radius: 8px 0;
     }
 `;
 
@@ -95,7 +105,7 @@ export const Title = styled.h3`
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.black};
 
-    @media ${device.md} {
+    @media ${device.sm} {
         font-size: 20px;
     }
 `;
@@ -109,7 +119,7 @@ export const Text = styled.p`
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.black};
 
-    @media ${device.md} {
+    @media ${device.sm} {
         font-size: 16px;
     }
 `;
@@ -147,7 +157,7 @@ export const Input = styled( Field )`
     caret-color: ${( props ) => props.$error ? props.theme.colors.accent : props.theme.colors.black };
     transition: caret-color ${transition}, border-color ${transition};
 
-    @media ${device.md} {
+    @media ${device.sm} {
         height: 48px;
         padding: 13px 24px;
 
@@ -191,7 +201,7 @@ export const Label = styled.label`
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
-    @media ${device.md} {
+    @media ${device.sm} {
         left: 24px;
         font-size: 16px;
         letter-spacing: 0%;
@@ -219,7 +229,7 @@ export const DropdownBtn = styled.button`
     -webkit-transition: rotate ${transition};
     transition: rotate ${transition};
 
-    @media ${device.md} {
+    @media ${device.sm} {
         top: 12px;
     }
 `;
@@ -232,7 +242,7 @@ export const WrappWarningText = styled.div`
     gap: 8px;
     padding-left: 4px;
 
-    @media ${device.md} {
+    @media ${device.sm} {
         bottom: 65px;
         padding-left: 0;
     }
@@ -244,7 +254,7 @@ export const WarningText = styled.p`
     line-height: calc(15.82 / 14);
     color: ${( props ) => props.color || props.theme.colors.black};
 
-    @media ${device.md} {
+    @media ${device.sm} {
         font-size: 14px;
     }
 `;
@@ -260,7 +270,7 @@ export const SubmitBtn = styled( Button )`
     line-height: 1.4;
     letter-spacing: 1%;
 
-    @media ${device.md} {
+    @media ${device.sm} {
         height: 50px;
         border-radius: 20px 0;
 
