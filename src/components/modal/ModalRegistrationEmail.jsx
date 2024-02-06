@@ -23,7 +23,7 @@ import {
 } from './ModalRegistrationEmail.styled';
 import reCapcha from '../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
-import { accent, bgColorGradientBtn, white } from '../../utils/variables.styled';
+import { bgColorGradientBtn, deepAccent, white } from '../../utils/variables.styled';
 import { IconSvg } from '../common/IconSvg';
 import { BtnEye } from '../common/BtnEye';
 import { BtnClose } from '../common/BtnClose';
@@ -219,7 +219,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                       width="24px"
                       height="24px"
                       icon="icon-star-marker"
-                      $fill={ accent }
+                      $fill={ deepAccent }
                     />
 
                     <TextErrPassword $color={ errPassword }>
