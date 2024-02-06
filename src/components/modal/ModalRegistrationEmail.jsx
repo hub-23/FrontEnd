@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
-import countries from '../../assets/countries.json';
+// import countries from '../../assets/countries.json';
 
 import {
   WrappCapcha,
@@ -23,7 +23,7 @@ import {
 } from './ModalRegistrationEmail.styled';
 import reCapcha from '../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
-import { accent, bgColorGradientBtn, white } from '../../utils/variables.styled';
+import { bgColorGradientBtn, deepAccent, white } from '../../utils/variables.styled';
 import { IconSvg } from '../common/IconSvg';
 import { BtnEye } from '../common/BtnEye';
 import { BtnClose } from '../common/BtnClose';
@@ -168,10 +168,15 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   <FormError name="phone" isMarginLeft={ true } />
 
                   <PhoneSelect
-                    data={ countries }
+                    // data={ countries }
                     valueSelect={ handleGetSelected }
                     xlHeightList="275px"
                     smHeightList="245px"
+                    $positionTop="15px"
+                    $positionLeft="32px"
+                    $xlFontSizeList=""
+                    $mdFontSizeList=""
+                    $smFontSizeList=""
                   />
                 </LabelFormUser>
 
@@ -214,7 +219,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                       width="24px"
                       height="24px"
                       icon="icon-star-marker"
-                      $fill={ accent }
+                      $fill={ deepAccent }
                     />
 
                     <TextErrPassword $color={ errPassword }>
