@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Item, List, PhoneCode, TextCode, TextWrapp, Title } from './PhoneSelect.styled';
 import { IconSvg } from './IconSvg';
+import data from '../../assets/countries.json';
 
-export const PhoneSelect = ( { valueSelect, data, xlHeightList, mdHeightList, smHeightList } ) => {
+export const PhoneSelect = ( { valueSelect, xlHeightList, mdHeightList, smHeightList, ...props } ) => {
   const [ showSelect, setShowSelect ] = useState( false );
 
   const handleShowList = () => {
@@ -12,7 +13,7 @@ export const PhoneSelect = ( { valueSelect, data, xlHeightList, mdHeightList, sm
   const [ dataCountry, setDataCountry ] = useState( { flag: '🇺🇦', code: '+38' } );
 
   return (
-    <PhoneCode $isShow={ showSelect } onClick={ handleShowList }>
+    <PhoneCode $isShow={ showSelect } onClick={ handleShowList } { ...props }>
       <TextWrapp>
         <Title>{dataCountry.flag}</Title>
 
@@ -36,6 +37,7 @@ export const PhoneSelect = ( { valueSelect, data, xlHeightList, mdHeightList, sm
                   valueSelect( dialCode );
                   setDataCountry( { flag: flag, code: dialCode } );
                 } }
+                { ...props }
               >
                 <p>{flag}</p>
                 <p>{dialCode}</p>

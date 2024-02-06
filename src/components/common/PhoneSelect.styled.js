@@ -4,11 +4,9 @@ import { device } from '../../styles/device';
 
 export const PhoneCode = styled.div`
     position: absolute;
-    left: 32px;
-    top: 16px;
-
+    top: ${( { $positionTop } ) => $positionTop};
+    left: ${( { $positionLeft } ) => $positionLeft};
     width: ${( { $isShow } ) => $isShow && '100%'};
-
     z-index: 1;
     cursor: pointer;
 
@@ -28,11 +26,9 @@ export const Title = styled.p`
 `;
 
 export const TextCode = styled.p`
-    font-family: Nunito;
     font-size: 20px;
-    font-style: normal;
     font-weight: 400;
-    line-height: calc(20 / 28);
+    line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
     color: ${black};
@@ -51,18 +47,11 @@ export const List = styled.ul`
     width: 100%;
     height: ${( { $xlHeight } ) => $xlHeight};
 
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: calc(16px / 22.4px);
-
     border-width: 1px;
     border-style: solid;
     border-radius: 20px 0px;
     border-color: ${grayStroke};
 
-    color: ${black};
     background-color: ${white};
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -84,9 +73,24 @@ export const Item = styled.li`
     display: flex;
     align-items: center;
 
+    & > p {
+        font-size: ${( { $xlFontSizeList } ) => $xlFontSizeList || '16px'};
+        font-weight: 400;
+        line-height: calc(22.4 / 16);
+        color: ${black};
+
+        @media ${device.md} {
+            font-size: ${( { $mdFontSizeList } ) => $mdFontSizeList || '16px'};
+        }
+
+        @media ${device.sm} {
+            font-size: ${( { $smFontSizeList } ) => $smFontSizeList || '16px'};
+        }
+    }
+
     & > :nth-child(1) {
         margin-right: 12px;
-        font-size: 18px;
+        font-size: 24px; // розмір відноситься до флагу
     }
 
     & > :nth-child(2) {
