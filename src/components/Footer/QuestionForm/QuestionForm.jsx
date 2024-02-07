@@ -284,7 +284,11 @@ export const QuestionForm = ( { onActiveModal } ) => {
       </div>
       { isNotificationShown && (
         <Modal onActiveModal={ handleCloseForm }>
-          <Notification onActiveModal={ handleCloseForm } />
+          <Notification
+            onActiveModal={ handleCloseForm }
+            success={ true }
+            // success={ false } // залежно від status code з бекенду
+          />
         </Modal>
       ) }
     </S.QuestionFormContainer>
