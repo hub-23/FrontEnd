@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string, array } from 'yup';
 import { FormError } from './FormError/FormError';
+import { BtnClose } from './BtnClose/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
 import { DropdownTopic } from './DropdownTopic/DropdownTopic';
@@ -18,12 +19,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
   const [ images, setImages ] = useState( [] );
   const [ isNotificationShown, setIsNotificationShown ] = useState( false );
-
-  const toggleModal = () => {
-    setIsNotificationShown( !isNotificationShown );
-    document.body.style.overflow = 'visible';
-    console.log( 'inside' );
-  };
 
   const notificationTopics = [
     'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
@@ -68,7 +63,6 @@ export const QuestionForm = ( { onActiveModal } ) => {
     attachments: images || [],
   };
 
-
   const handleSubmit = ( values, { resetForm } ) => {
     const phone = `${codeCountry}${values.phone.replaceAll( ' ', '' )}`;
     const attachments = images;
@@ -92,11 +86,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
       localStorage.removeItem( `question-form-${key}` );
     } );
 
-    console.log( isNotificationShown );
     resetForm();
-    onActiveModal();
-    setIsNotificationShown( !isNotificationShown );
-    console.log( isNotificationShown );
+    setIsNotificationShown( true );
   };
 
   const handleGetSelected = ( values ) => {
@@ -108,24 +99,15 @@ export const QuestionForm = ( { onActiveModal } ) => {
     setIsDropdownShown( !isDropdownShown );
   };
 
-  return (
-    <S.QuestionFormContainer>
-      <S.BtnClose
-        type='button'
-        aria-label='close'
-        onClick={ () => onActiveModal() }
-      >
-        <IconSvg
-          xlWidth="56px"
-          xlHeight="56px"
-          mdWidth="36px"
-          mdHeight="36px"
-          smWidth="24px"
-          smHeight="24px"
-          icon="icon-close-cross"
-        />
-      </S.BtnClose>
+  const handleCloseForm = () => {
+    onActiveModal();
+    setIsNotificationShown( !isNotificationShown );
+    document.body.style.overflow = 'visible';
+  };
 
+  return (
+    <S.QuestionFormContainer $isNotificationShown={ isNotificationShown }>
+      <BtnClose onActiveModal={ onActiveModal } />
       <S.Title>Залишились питання?</S.Title>
       <S.Text>
         Напишіть своє повідомлення, використовуючи форму, або зверніться напряму за електронною адресою
@@ -301,8 +283,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
         </Formik>
       </div>
       { isNotificationShown && (
-        <Modal onActiveModal={ toggleModal }>
-          <Notification onActiveModal={ toggleModal } />
+        <Modal onActiveModal={ handleCloseForm }>
+          <Notification onActiveModal={ handleCloseForm } />
         </Modal>
       ) }
     </S.QuestionFormContainer>
