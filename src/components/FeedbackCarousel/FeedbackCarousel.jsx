@@ -31,14 +31,14 @@ export const FeedbackCarousel = () => {
     lazyLoad: 'ondemand',
     responsive: [
       {
-        breakpoint: 1400,
+        breakpoint: 1440,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 1040, // 1041 - вже 3
+        breakpoint: 1200, // 1201 - вже 3
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -47,7 +47,7 @@ export const FeedbackCarousel = () => {
         },
       },
       {
-        breakpoint: 710, // 711 - вже 2
+        breakpoint: 834, // 834 - вже 2
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

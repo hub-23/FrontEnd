@@ -6,13 +6,8 @@
     padding-top: 40px;
     margin-bottom: 20px;
 }
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 768px) {
     .custom-slider > .slick-list {
         margin-bottom: 16px;
-    }
-}
-@media screen and (max-width: 710px) {
-    .custom-slider > .slick-list {
-        margin-bottom: -40px;
     }
 }

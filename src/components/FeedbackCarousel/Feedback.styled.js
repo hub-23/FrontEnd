@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 import { device } from '../../styles/device';
-import { transition } from '../../utils/variables.styled';
+import { lightGrey, transition } from '../../utils/variables.styled';
 
 export const Section = styled.section`
-    padding-top: 118px;
+    padding-top: 120px;
     padding-bottom: 98px;
-    @media ${device.sm} {
+
+    @media ${device.md} {
         padding-top: 80px;
         padding-bottom: 80px;
     }
@@ -15,7 +17,16 @@ export const Container = styled.div`
     margin: 0 auto;
     padding-left: 160px;
     padding-right: 160px;  
+
     @media ${device.xxl} {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    @media ${device.md} {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    @media ${device.sm} {
         padding-left: 20px;
         padding-right: 20px;
     }
@@ -25,17 +36,17 @@ export const Content = styled.div`
     margin: 0 auto;
     max-width: 1120px;
     padding-bottom: 20px;
-    @media ${device.xxl} {  // '1440px',
-        max-width: 1000px;
+
+    @media ${device.xl} {
+        max-width: 754px;
         padding-bottom: 0;
     }
-    @media screen and (max-width: 1040px) { 
-        max-width: 670px;
+    @media screen and (max-width: 834px) {
+        max-width: 390px;
         padding-bottom: 0;
     }
-    @media screen and (max-width: 710px) {
-        max-width: 360px;
-        padding-bottom: 23px;
+    @media ${device.sm} {
+        max-width: 340px;
     }
 `;
 
@@ -47,7 +58,12 @@ export const Title = styled.h2`
     line-height: 1.3;
     letter-spacing: 0.48px;
     color: ${( props ) => props.color || props.theme.colors.black};
-    @media ${device.xxl} {
+
+    @media ${device.md} { 
+        margin-bottom: 32px;
+        font-size: 32px;
+    }
+    @media ${device.sm} {
         margin-bottom: 24px;
         font-size: 24px;
         letter-spacing: 0.24px;
@@ -61,21 +77,19 @@ export const Card = styled.div`
     margin-left: auto;
     margin-right: auto;
     padding: 32px 24px 24px 24px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: ${( props ) => props.color || props.theme.colors.primary};
     border-radius: 0px 20px;
-    border: 2px solid #113268;
-    background-color: #F9F9F9;
-    @media ${device.xxl} { 
-        width: 320px;
-        height: 218px;
+    background-color: ${( props ) => props.color || lightGrey };
+
+    @media ${device.md} { 
+        max-width: 367px;
+    }
+    @media ${device.sm} { 
+        max-width: 320px;
+        max-height: 218px;
         padding: 20px;
-    }
-    @media screen and (max-width: 710px) {
-        margin-bottom: 56px;
-    }
-    @media screen and (max-width: 417px) {
-        width: 250px;
-        height: 170px;
-        padding: 15px;
     }
 `;
 
@@ -87,12 +101,10 @@ export const StudentName = styled.h4`
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: ${( props ) => props.color || props.theme.colors.black};
-    @media ${device.xxl} {
+
+    @media ${device.sm} {
         font-size: 16px;
         letter-spacing: 0.16px;
-    }
-    @media screen and (max-width: 417px) {
-        font-size: 16px;
     }
 `;
 
@@ -102,19 +114,14 @@ export const Photo = styled.img`
     right: 80px;
     width: 100%;
     height: 100vw;
-    max-width: 76px;
-    max-height: 76px;
+    max-width: 80px;
+    max-height: 80px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid ${( props ) => props.color || props.theme.colors.primary};
-    @media ${device.xxl} {
+
+    @media ${device.sm} {
         right: 40px;
-    }
-    @media screen and (max-width: 417px) {
-        max-width: 60px;
-        max-height: 60px;
-        top: -30px;
-        right: 35px;
     }
 `;
 
@@ -122,60 +129,62 @@ export const StarList = styled.ul`
     display: flex;
     gap: 8px; 
     margin-bottom: 8px;
-    @media screen and (max-width: 417px) {
-        gap: 4px; 
-        margin-bottom: 2px;
-    }
 `;
 
 export const StarItem = styled.li`
     height: '16px';
-    @media screen and (max-width: 417px) {
-        & > svg {
-            width: 13px;
-            height: 12px;
-        }
-    }
 `;
 
-export const TeacherNameWrapper = styled.div`
+export const TeacherNameWrapper = styled( Link )`
     display: flex;
     gap: 8px;
     margin-bottom: 8px;
     align-items: center;
-`;
+    cursor: pointer;
+    transition: fill ${transition};
 
-export const HatIcon = styled.svg`
-    @media screen and (max-width: 417px) {
-        width: 18px;
-        height: 18px;
+    svg.default {
+        fill: ${( props ) => props.color || props.theme.colors.primary};
+    }
+    svg.active {
+        display: none;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        svg.default {
+            display: none;
+        }
+        svg.active {
+            display: block;
+            fill: ${( props ) => props.color || props.theme.colors.primary};
+        }
+        p {
+            text-decoration: underline;
+        }
     }
 `;
 
 export const TeacherName = styled.p`
-    cursor: pointer;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
     font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.primary};
-    @media ${device.xxl} {
+
+    @media ${device.sm} {
         font-size: 14px;
         letter-spacing: 0.14px;
-    }
-    @media screen and (max-width: 417px) {
-        font-size: 14px;
     }
 `;
 
 export const Feedback = styled.p`
-    height: 67px;
-    margin-bottom: 6px;
+    height: 64px;
+    margin-bottom: 8px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.35;
     color: ${( props ) => props.color || props.theme.colors.black};
 
     ${( props ) => props.$overflow && css`
@@ -185,20 +194,10 @@ export const Feedback = styled.p`
         overflow: hidden;    
     `};
 
-    @media ${device.xxl} {
+    @media ${device.sm} {
+        height: 58px;
         font-size: 14px;
-        height: 61px;
-    }
-    @media screen and (max-width: 700px) {
-        height: 59px;
-    }
-    @media screen and (max-width: 417px) {
-        font-size: 13px;
-        height: 33px;
-        line-height: 1.3;
-        ${( props ) => props.$overflow && css`
-            -webkit-line-clamp: 2;
-        `};
+        line-height: 1.37;
     }
 `;
 
@@ -215,16 +214,13 @@ export const Date = styled.span`
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.black};
-    @media ${device.xxl} {
+
+    @media ${device.sm} {
         font-size: 12px;
-        letter-spacing: 0.16px;
-    }
-    @media screen and (max-width: 417px) {
-        font-size: 11px;
     }
 `;
 
-export const Detailed = styled.p`
+export const Detailed = styled( Link )`
     cursor: pointer;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 16px;
@@ -232,12 +228,14 @@ export const Detailed = styled.p`
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.primary};
-    @media ${device.xxl} {
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: underline;
+    }
+    @media ${device.sm} {
         font-size: 14px;
         letter-spacing: 0.14px;
-    }
-    @media screen and (max-width: 417px) {
-        font-size: 12px;
     }
 `;
 
@@ -245,11 +243,6 @@ export const ControlBtns = styled.ul`
     display: flex; 
     gap: 12px;
     justify-content: center;
-    @media screen and (max-width: 710px) {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
 `;
 
 export const ControlBtn = styled.button`

@@ -7,6 +7,7 @@ export const grayText = '#797979';
 export const bgModal = 'rgba( 0, 0, 0, 0.5 )';
 export const gray = 'rgba(221, 221, 221, 0.87)';
 export const grayStroke = '#D5D5D5';
+export const lightGrey = '#F9F9F9';
 export const borderBlue = '#0360AB';
 export const borderGreen = '#01A47F';
 export const borderError = '#E3669C';
