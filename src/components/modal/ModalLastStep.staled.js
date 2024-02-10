@@ -97,7 +97,6 @@ export const Input = styled( Field )`
     padding: 16px 32px 16px 160px;
 
     font-size: 20px;
-    font-weight: 400;
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
@@ -153,10 +152,7 @@ export const LabelCheckbox = styled.label`
     align-items: center;
     gap: 9px;
 
-    font-family: Nunito;
     font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
@@ -187,9 +183,7 @@ export const InputCheckbox = styled( Field )`
 `;
 
 export const TextPolicy = styled.p`
-    font-size: 14px;
-    font-weight: 400;
-    line-height: (15.82 / 14);
+    line-height: calc(15.82 / 14);
 
     color: ${black};
 `;
@@ -205,11 +199,7 @@ export const ErrorText = styled.p`
     display: inline;
     margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
 
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: (15.82px / 14px);
+    line-height: calc(15.82 / 14);
 
     color: ${accent};
 `;

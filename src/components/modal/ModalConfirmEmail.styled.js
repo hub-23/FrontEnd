@@ -80,7 +80,6 @@ export const TextDescr = styled.p`
 
     text-align: center;
     font-size: 20px;
-    font-weight: 400;
     letter-spacing: 0.32px;
 
     color: ${black};
