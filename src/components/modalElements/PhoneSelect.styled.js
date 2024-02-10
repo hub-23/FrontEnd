@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { black, grayStroke, white } from '../../../utils/variables.styled';
-import { device } from '../../../styles/device';
+import { black, grayStroke, white } from '../../utils/variables.styled';
+import { device } from '../../styles/device';
 
 export const PhoneCode = styled.div`
     position: absolute;

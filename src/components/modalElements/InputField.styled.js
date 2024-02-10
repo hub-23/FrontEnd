@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
-import { device } from '../../../styles/device';
+import { device } from '../../styles/device';
 import {
   black,
   borderBlue,
@@ -9,7 +9,7 @@ import {
   grayStroke,
   grayText,
   white,
-} from '../../../utils/variables.styled';
+} from '../../utils/variables.styled';
 
 export const Input = styled( Field )`
     width: 100%;

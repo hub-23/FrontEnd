@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { accent, black, grayText, white } from '../../utils/variables.styled';
+import { accent, black, grayText, white } from '../../../utils/variables.styled';
 import { Field, Form } from 'formik';
-import { device } from '../../styles/device';
+import { device } from '../../../styles/device';
 
 export const Modal = styled.div`
     position: relative;

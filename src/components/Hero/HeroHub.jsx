@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BtnWrapp, CountainerHero, Text, Title } from './HeroHub.styled';
-import { Modal } from '../modal/Modal';
-import { ModalRegistration } from '../modal/ModalRegistration';
-import { ModalRegistrationEmail } from '../modal/ModalRegistrationEmail';
-import { ModalLogin } from '../modal/ModalLogin';
-import { ModalLastStep } from '../modal/ModalLastStep';
-import { ModalConfirmEmail } from '../modal/ModalConfirmEmail';
-import { ModalThanksForJoining } from '../modal/ModalThanksForJoining';
+import { Modal } from '../../components/modalElements/Modal';
+import { ModalRegistration } from './modals/ModalRegistration';
+import { ModalRegistrationEmail } from './modals/ModalRegistrationEmail';
+import { ModalLogin } from './modals/ModalLogin';
+import { ModalLastStep } from './modals/ModalLastStep';
+import { ModalConfirmEmail } from './modals/ModalConfirmEmail';
+import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
 import { useHubContext } from '../../redux/Context';
 import { HeroField } from '../HeroField/HeroField';
 

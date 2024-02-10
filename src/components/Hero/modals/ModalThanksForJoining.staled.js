@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { device } from '../../styles/device';
-import { black, grayText, white } from '../../utils/variables.styled';
+import { device } from '../../../styles/device';
+import { black, grayText, white } from '../../../utils/variables.styled';
 
 export const Modal = styled.div`
     position: relative;

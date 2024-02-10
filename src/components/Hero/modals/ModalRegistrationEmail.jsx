@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 
 import * as S from './ModalRegistrationEmail.styled';
-import reCapcha from '../../assets/home/modal/recapcha.png';
+import reCapcha from '../../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
-import { bgColorGradientBtn, deepAccent, white } from '../../utils/variables.styled';
-import { IconSvg } from '../common/IconSvg';
-import { BtnEye } from '../common/BtnEye';
-import { BtnClose } from '../common/BtnClose';
-import { InputField } from './fildsForForms/InputField';
-import { registerScheme } from './schemes/registerScheme';
-import { InputFieldPhone } from './fildsForForms/InputFieldPhone';
+import { bgColorGradientBtn, deepAccent, white } from '../../../utils/variables.styled';
+import { IconSvg } from '../../common/IconSvg';
+import { BtnEye } from '../../common/BtnEye';
+import { BtnClose } from '../../common/BtnClose';
+import { InputField } from '../../modalElements/InputField';
+import { registerScheme } from '../../../schemes/modalSchemes/registerScheme';
+import { InputFieldPhone } from '../../modalElements/InputFieldPhone';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
