@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
 import checkbox0 from '../../assets/home/modal/checkbox0.svg';
 import checkbox1 from '../../assets/home/modal/checkbox1.svg';
 import { device } from '../../styles/device';
+import PhoneInputWithCountrySelect from 'react-phone-number-input';
+import PhoneInput from 'react-phone-number-input';
 
 export const Modal = styled.div`
     position: relative;
@@ -110,44 +112,6 @@ export const LabelFormUser = styled.label`
     flex-direction: column;
     gap: 7px;
     width: 100%;
-`;
-
-export const Input = styled( Field )`
-    width: 100%;
-    height: 60px;
-    padding: 16px 32px;
-
-    font-size: 20px;
-    font-weight: 400;
-    line-height: calc(28 / 20);
-    letter-spacing: 0.2px;
-
-    border-width: 1px;
-    border-style: solid;
-
-    border-radius: 20px 0px;
-    border-color: ${( { $isDataUser } ) => ( $isDataUser ? grayStroke : borderGreen )};
-    border-color: ${( { $error } ) => $error && `${borderError}`};
-    color: ${black};
-    background-color: ${white};
-
-    @media ${device.sm} {
-        padding: 15px 20px;
-        height: 45px;
-
-        font-size: 16px;
-        line-height: calc(22.4 / 16);
-        letter-spacing: 0.16px;
-    }
-
-    &:focus {
-        outline: 1px solid ${borderBlue};
-    }
-
-    &:placeholder-shown {
-        color: ${grayText};
-        border-color: ${( { $error } ) => ( $error ? borderError : grayStroke )};
-    }
 `;
 
 export const WrappErrTextPassword = styled.div`
@@ -274,19 +238,6 @@ export const LinkPolicy = styled( Link )`
     color: ${black};
 `;
 
-export const ErrorText = styled.p`
-    display: inline;
-    margin-left: ${( { $isMarginLeft } ) => ( $isMarginLeft ? '19px' : '0' )};
-
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: (15.82px / 14px);
-
-    color: ${accent};
-`;
-
 export const BtnText = styled.p`
     font-size: 20px;
     font-weight: 600;
@@ -297,5 +248,57 @@ export const BtnText = styled.p`
     @media ${device.sm} {
         font-size: 18px;
         letter-spacing: 0.18px;
+    }
+`;
+
+export const PhoneInputBasic = styled( PhoneInput )`
+    /* padding-left: 32px; */
+    padding: 0 32px;
+    /* border: 2px solid salmon; */
+    border-radius: 20px 0;
+    border-color: ${( { $isDataUser } ) => ( $isDataUser ? grayStroke : borderGreen )};
+    border-color: ${( { $error } ) => $error && `${borderError}`};
+    color: ${black};
+    background-color: ${white};
+
+    & input {
+        padding: 16px 0 16px 12px;
+        border: none;
+        /* outline: 1px solid green; */
+
+        font-size: 20px;
+        font-weight: 400;
+        line-height: calc(28 / 20);
+        letter-spacing: 0.2px;
+
+        &:placeholder-shown {
+            background-color: salmon;
+        }
+
+        &:focus {
+            outline: none;
+            outline: 2px solid green;
+        }
+    }
+`;
+
+export const PhoneInputNew = styled( PhoneInputWithCountrySelect )`
+    border: 2px solid salmon;
+    border-radius: 20px 0;
+    padding: 15px;
+
+    & input {
+        border: none;
+        outline: 1px solid gray;
+        padding: 20px;
+
+        &:placeholder-shown {
+            background-color: salmon;
+        }
+
+        &:focus {
+            outline: none;
+            outline: 2px solid green;
+        }
     }
 `;
