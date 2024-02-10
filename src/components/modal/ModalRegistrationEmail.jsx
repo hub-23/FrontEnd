@@ -72,8 +72,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
               setTouched,
             } = formik;
 
-            console.log( 'errors phone formik: ', phone );
-
             const isCheckCapcha = formik.values.capcha;
             const isDataUser = formik.initialValues.phone === formik.values.phone;
 
@@ -91,7 +89,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
               } ) );
               setTouched( { ...touched, phone: values.touched } );
 
-              console.log( '💙💛 handleGetPhone', values );
+              {
+                /* console.log( '💙💛 handleGetPhone', values ); */
+              }
             }; // значення з InputFieldPhone
 
             return (
