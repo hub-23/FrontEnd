@@ -7,10 +7,10 @@ import {
   grayStroke,
   grayText,
   white,
-} from '../../../utils/variables.styled';
+} from '../../utils/variables.styled';
 
 import 'react-phone-number-input/style.css';
-import { device } from '../../../styles/device';
+import { device } from '../../styles/device';
 
 export const Input = styled.input`
     width: 100%;

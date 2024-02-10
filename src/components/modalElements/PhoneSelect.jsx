@@ -1,7 +1,9 @@
+// Дляя використання в компоненті InputFieldPhone.jsx
+
 import React, { useState } from 'react';
 import { Item, List, PhoneCode, TextWrapp, Title } from './PhoneSelect.styled';
-import data from './countries.json';
-import { IconSvg } from '../../common/IconSvg';
+import data from '../modalElements/countries.json';
+import { IconSvg } from '../common/IconSvg';
 
 export const PhoneSelect = ( { valueSelect, xlHeightList, mdHeightList, smHeightList, ...props } ) => {
   const [ showSelect, setShowSelect ] = useState( false );

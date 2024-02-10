@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import * as S from './MobileMenu.styled';
 import { IconSvg } from '../../common/IconSvg';
-import { Modal } from '../../modal/Modal';
+import { Modal } from '../../../components/modalElements/Modal';
 import { MobileMenu } from './MobileMenu';
-
 
 export const MobileMenuBtn = () => {
   const [ isModalOpen, setIsModalOpen ] = useState( false );
@@ -19,26 +18,17 @@ export const MobileMenuBtn = () => {
         type="button"
         aria-expanded="false"
         aria-controls="mobile-menu"
-        aria-label='toggle mobile menu'
+        aria-label="toggle mobile menu"
         onClick={ () => setIsModalOpen( !isModalOpen ) }
       >
-        { isModalOpen
-        ? (
-          <IconSvg
-            xlWidth='24px'
-            xlHeight='24px'
-            icon='icon-cross'
-          />
-        ) : (
-          <IconSvg
-            xlWidth='24px'
-            xlHeight='24px'
-            icon='icon-burger'
-          />
-        )}
+        {isModalOpen ? (
+                    <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-cross" />
+                ) : (
+                    <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-burger" />
+                )}
       </S.BurgerBtn>
 
-      { isModalOpen && (
+      {isModalOpen && (
         <Modal onActiveModal={ toggleModal }>
           <MobileMenu onActiveModal={ toggleModal } />
         </Modal>

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { BtnClose } from '../common/BtnClose';
-import { IconSvg } from '../common/IconSvg';
+import { BtnClose } from '../../common/BtnClose';
+import { IconSvg } from '../../common/IconSvg';
 import {
   Article,
   BtnLogin,
@@ -11,7 +11,7 @@ import {
   Title,
   WrappRegister,
 } from './ModalConfirmEmail.styled';
-import { useHubContext } from '../../redux/Context';
+import { useHubContext } from '../../../redux/Context';
 
 export const ModalConfirmEmail = ( { onActiveModal } ) => {
   const { setShowModalThanksForJoining } = useHubContext();

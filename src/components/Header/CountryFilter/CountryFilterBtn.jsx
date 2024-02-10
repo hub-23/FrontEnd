@@ -2,10 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import _ from 'lodash';
 import { IconSvg } from '../../common/IconSvg';
 import * as S from './CountryFilter.styled';
-import { Modal } from '../../modal/Modal';
+import { Modal } from '../../modalElements/Modal';
 import { CountrySelect } from './CountrySelect';
 import { useHubContext } from '../../../redux/Context';
-
 
 export const CountryFilterBtn = ( { onCountryOverflow } ) => {
   const [ isModalOpen, setIsModalOpen ] = useState( false );
@@ -49,19 +48,15 @@ export const CountryFilterBtn = ( { onCountryOverflow } ) => {
       <S.CountryFilterWrapper>
         <p ref={ ref }>{selectedCountry}</p>
         <S.CountryFilterBtn
-          type='button'
-          aria-label='dropdown-menu'
+          type="button"
+          aria-label="dropdown-menu"
           onClick={ () => setIsModalOpen( !isModalOpen ) }
           $rotate={ isModalOpen }
         >
-          <IconSvg
-            xlWidth='11px'
-            xlHeight='7px'
-            icon='icon-arrow-down'
-          />
+          <IconSvg xlWidth="11px" xlHeight="7px" icon="icon-arrow-down" />
         </S.CountryFilterBtn>
       </S.CountryFilterWrapper>
-      { isModalOpen && (
+      {isModalOpen && (
         <Modal onActiveModal={ toggleModal }>
           <CountrySelect onActiveModal={ toggleModal } />
         </Modal>

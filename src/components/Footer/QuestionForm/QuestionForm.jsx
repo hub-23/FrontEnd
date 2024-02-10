@@ -7,12 +7,11 @@ import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
 import { DropdownTopic } from './DropdownTopic/DropdownTopic';
 import { Message } from './Message/Message';
-import { Modal } from '../../modal/Modal';
+import { Modal } from '../../modalElements/Modal';
 import { Notification } from './Notification/Notification';
 import { SaveToLocalStorage } from './SaveToLocalStorage';
 import { grayText, deepAccent } from '../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
-
 
 export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
@@ -21,7 +20,11 @@ export const QuestionForm = ( { onActiveModal } ) => {
   const [ isNotificationShown, setIsNotificationShown ] = useState( false );
 
   const notificationTopics = [
-    'Технічна підтримка', 'Співпраця і пропозиції', 'Реклама', 'Проблема з оплатою', 'Інше',
+    'Технічна підтримка',
+    'Співпраця і пропозиції',
+    'Реклама',
+    'Проблема з оплатою',
+    'Інше',
   ];
   const customErrorMessage = 'Оберіть одну із запропонованих тем';
 
@@ -34,23 +37,16 @@ export const QuestionForm = ( { onActiveModal } ) => {
             'Ім’я має містити українські або англійські літери',
         )
         .required( 'Вкажіть ваше ім’я' ),
-    email: string()
-        .email( 'Невірно вказано e-mail' )
-        .trim()
-        .required( 'Вкажіть ваш e-mail' ),
+    email: string().email( 'Невірно вказано e-mail' ).trim().required( 'Вкажіть ваш e-mail' ),
     phone: string()
-        .matches(
-            /^\d{3}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/,
-            'Невірно вказаний номер',
-        )
+        .matches( /^\d{3}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/, 'Невірно вказаний номер' )
         .required( 'Вкажіть ваш номер телефону' ),
     topic: string()
         .test( 'is-valid-topic', customErrorMessage, ( value ) => {
           return notificationTopics.includes( value );
         } )
         .required( 'Вкажіть тему повідомлення' ),
-    message: string()
-        .required( 'Опишіть проблему' ),
+    message: string().required( 'Опишіть проблему' ),
     attachments: array(),
   } );
 
@@ -70,7 +66,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
     console.log( 'Data from QuestionForm to Backend  :>> ', questionFormData );
 
-    const formData = new FormData;
+    const formData = new FormData();
     formData.append( 'name', values.name );
     formData.append( 'email', values.email );
     formData.append( 'phone', phone.phone );
@@ -110,10 +106,11 @@ export const QuestionForm = ( { onActiveModal } ) => {
       <BtnClose onActiveModal={ onActiveModal } />
       <S.Title>Залишились питання?</S.Title>
       <S.Text>
-        Напишіть своє повідомлення, використовуючи форму, або зверніться напряму за електронною адресою
+                Напишіть своє повідомлення, використовуючи форму, або зверніться напряму за електронною
+                адресою
       </S.Text>
       <div>
-        <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit } >
+        <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
           {( formik ) => {
             const {
               errors: { name, email, phone, topic, message }, // повідомлення про помилки зі схеми
@@ -130,7 +127,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
 
             return (
               <S.FormFild autoComplete="off">
-                <S.InputWrapper >
+                <S.InputWrapper>
                   <S.InputLableBox>
                     <S.Input
                       type="text"
@@ -141,8 +138,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       id="name"
                     />
                     <S.Label htmlFor="name">
-                      Ім’я
-                      <S.IconContainer >
+                                            Ім’я
+                      <S.IconContainer>
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
@@ -167,8 +164,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       id="email"
                     />
                     <S.Label htmlFor="email">
-                      Електронна адреса
-                      <S.IconContainer >
+                                            Електронна адреса
+                      <S.IconContainer>
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
@@ -219,8 +216,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       id="topic"
                     />
                     <S.Label htmlFor="topic">
-                      Тема повідомлення
-                      <S.IconContainer >
+                                            Тема повідомлення
+                      <S.IconContainer>
                         <IconSvg
                           xlWidth="10px"
                           xlHeight="10px"
@@ -231,26 +228,24 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     </S.Label>
                   </S.InputLableBox>
                   <S.DropdownBtn
-                    type='button'
-                    aria-label='dropdown-menu'
+                    type="button"
+                    aria-label="dropdown-menu"
                     onClick={ () => setIsDropdownShown( !isDropdownShown ) }
                     $rotate={ isDropdownShown }
                   >
-                    <IconSvg
-                      xlWidth='11px'
-                      xlHeight='6px'
-                      icon='icon-arrow-down'
-                    />
+                    <IconSvg xlWidth="11px" xlHeight="6px" icon="icon-arrow-down" />
                   </S.DropdownBtn>
                   <SaveToLocalStorage fieldName="topic" />
                   <FormError name="topic" isMarginLeft={ true } />
-                  {isDropdownShown
-                    && <DropdownTopic
+                  {isDropdownShown && (
+                    <DropdownTopic
                       data={ notificationTopics }
-                      handleTopicSelect={ ( formik, value ) => handleTopicSelect( formik, value ) }
+                      handleTopicSelect={ ( formik, value ) =>
+                        handleTopicSelect( formik, value )
+                      }
                       formik={ formik }
                     />
-                  }
+                  )}
                 </S.InputWrapper>
 
                 <Message
@@ -267,22 +262,19 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     icon="icon-star-marker"
                   />
                   <S.WarningText $color={ errName }>
-                        Ці поля є обов&apos;язковими до заповнення
+                                        Ці поля є обов&apos;язковими до заповнення
                   </S.WarningText>
                 </S.WrappWarningText>
 
-                <S.SubmitBtn
-                  type='submit'
-                  variant='blue'
-                >
-                Надіслати
+                <S.SubmitBtn type="submit" variant="blue">
+                                    Надіслати
                 </S.SubmitBtn>
               </S.FormFild>
             );
           }}
         </Formik>
       </div>
-      { isNotificationShown && (
+      {isNotificationShown && (
         <Modal onActiveModal={ handleCloseForm }>
           <Notification
             onActiveModal={ handleCloseForm }
@@ -290,7 +282,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
             // success={ false } // залежно від status code з бекенду
           />
         </Modal>
-      ) }
+      )}
     </S.QuestionFormContainer>
   );
 };

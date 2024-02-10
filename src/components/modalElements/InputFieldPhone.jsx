@@ -1,8 +1,10 @@
+// Дляя використання в формах створених в Formik
+
 import React, { useEffect, useState } from 'react';
 import { PhoneSelect } from './PhoneSelect';
 import * as S from './InputFieldPhone.styled';
 import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
-import { FormError } from '../FormError';
+import { FormError } from './FormError';
 
 export const InputFieldPhone = ( { name, valueInput, isDataUser, error, submitPhone, ...props } ) => {
   const [ codeLetter, setCodeLetter ] = useState( { code: '', dialCode: '' } );

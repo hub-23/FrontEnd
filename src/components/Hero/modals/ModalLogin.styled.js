@@ -8,12 +8,12 @@ import {
   grayStroke,
   grayText,
   white,
-} from '../../utils/variables.styled';
+} from '../../../utils/variables.styled';
 import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
-import checkbox0 from '../../assets/home/modal/checkbox0.svg';
-import checkbox1 from '../../assets/home/modal/checkbox1.svg';
-import { device } from '../../styles/device';
+import checkbox0 from '../../../assets/home/modal/checkbox0.svg';
+import checkbox1 from '../../../assets/home/modal/checkbox1.svg';
+import { device } from '../../../styles/device';
 
 export const Modal = styled.div`
     position: relative;
@@ -144,7 +144,6 @@ export const Input = styled( Field )`
     padding: 16px 32px;
 
     font-size: 20px;
-    font-weight: 400;
     line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
@@ -187,8 +186,6 @@ export const LabelCheckbox = styled.label`
     /* gap: 3px; */
 
     font-size: 20px;
-    font-weight: 400;
-    line-height: calc(28 / 20);
     letter-spacing: 0.2px;
 
     @media ${device.sm} {
@@ -237,7 +234,6 @@ export const WrappCheckPass = styled.div`
 export const TextCheckbox = styled.p`
     margin-left: 2px;
 
-    font-size: 14px;
     font-weight: 500;
     line-height: calc(19.6 / 14);
 
@@ -245,7 +241,6 @@ export const TextCheckbox = styled.p`
 `;
 
 export const LinkForget = styled( Link )`
-    font-size: 14px;
     font-weight: 500;
     line-height: (15.82 / 14);
     text-decoration-line: underline;
@@ -255,13 +250,7 @@ export const LinkForget = styled( Link )`
 
 export const ErrorText = styled.p`
     display: inline;
-
-    font-family: Nunito;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
     line-height: calc(15.82 / 14);
-
     color: ${accent};
 
     @media ${device.sm} {
@@ -314,7 +303,6 @@ export const BtnGoogleTwo = styled.div`
 
 export const BtnTextGoogle = styled.p`
     font-size: 20px;
-    font-weight: 400;
     letter-spacing: 0.24px;
 
     color: ${( { $color } ) => $color};

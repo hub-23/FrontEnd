@@ -27,11 +27,11 @@ import {
   BtnGoogleTwo,
 } from './ModalLogin.styled';
 import { BtnRegistration } from './BtnRegistration';
-import { bgColorGradientBtn, black, gray, grayStroke, white } from '../../utils/variables.styled';
-import { IconSvg } from '../common/IconSvg';
-import { BtnEye } from '../common/BtnEye';
-import { BtnClose } from '../common/BtnClose';
-import { useHubContext } from '../../redux/Context';
+import { bgColorGradientBtn, black, gray, grayStroke, white } from '../../../utils/variables.styled';
+import { IconSvg } from '../../common/IconSvg';
+import { BtnEye } from '../../common/BtnEye';
+import { BtnClose } from '../../common/BtnClose';
+import { useHubContext } from '../../../redux/Context';
 
 export const ModalLogin = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
