@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from '../../assets/home/logo.svg';
+import logo from '../../../assets/home/logo.svg';
 
 import { Article, BtnText, LogoImg, Modal, Text, TextDescr, Title } from './ModalThanksForJoining.staled';
 import { BtnRegistration } from './BtnRegistration';
-import { bgColorGradientBtn, white } from '../../utils/variables.styled';
+import { bgColorGradientBtn, white } from '../../../utils/variables.styled';
 
 export const ModalThanksForJoining = ( { onActiveModal } ) => {
   return (

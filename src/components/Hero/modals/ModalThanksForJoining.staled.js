@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { device } from '../../styles/device';
-import { black, grayText, white } from '../../utils/variables.styled';
+import { device } from '../../../styles/device';
+import { black, grayText, white } from '../../../utils/variables.styled';
 
 export const Modal = styled.div`
     position: relative;
@@ -84,14 +84,12 @@ export const TextDescr = styled.p`
 
     text-align: center;
     font-size: 20px;
-    font-weight: 400;
     letter-spacing: 0.2px;
 
     color: ${black};
 
     & > span {
         font-size: inherit;
-        font-weight: inherit;
         letter-spacing: inherit;
         font-weight: 600;
     }

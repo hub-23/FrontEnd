@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './Footer.styled';
 import { IconSvg } from '../common/IconSvg';
-import { Modal } from '../modal/Modal';
+import { Modal } from '../modalElements/Modal';
 import { QuestionForm } from './QuestionForm/QuestionForm';
-
 
 export const Footer = () => {
   const [ isModalOpen, setIsModalOpen ] = useState( false );
@@ -18,37 +17,34 @@ export const Footer = () => {
     <S.FooterSection>
       <S.FooterContainer>
         <S.ContentOrganizer>
-
-          <Link to='/'>
+          <Link to="/">
             <S.Logo />
           </Link>
 
           <S.NavWrapper>
             <S.Header>Інформація</S.Header>
             <ul>
-              <S.NavItem><S.NavLink to='/teacher'>Викладачі</S.NavLink></S.NavItem>
-              <S.NavItem><S.NavLink to='/about'>Про нас</S.NavLink></S.NavItem>
-              <S.NavItem><S.NavLink to='/feedback'>Відгуки</S.NavLink></S.NavItem>
+              <S.NavItem>
+                <S.NavLink to="/teacher">Викладачі</S.NavLink>
+              </S.NavItem>
+              <S.NavItem>
+                <S.NavLink to="/about">Про нас</S.NavLink>
+              </S.NavItem>
+              <S.NavItem>
+                <S.NavLink to="/feedback">Відгуки</S.NavLink>
+              </S.NavItem>
             </ul>
           </S.NavWrapper>
 
           <S.ContactsWrapper>
             <S.Header>Контакти</S.Header>
             <S.ContactsItem>
-              <IconSvg
-                xlWidth='24px'
-                xlHeight='24px'
-                icon='icon-clock'
-              />
+              <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-clock" />
               <S.Schedule>Пн-Нд // 9:00 - 20:00</S.Schedule>
             </S.ContactsItem>
             <S.Email href="mailto:hub23project@gmail.com">
-              <IconSvg
-                xlWidth='24px'
-                xlHeight='24px'
-                icon='icon-envelope'
-              />
-              hub23project@gmail.com
+              <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-envelope" />
+                            hub23project@gmail.com
             </S.Email>
           </S.ContactsWrapper>
 
@@ -62,11 +58,7 @@ export const Footer = () => {
                   target="_blank"
                   title="Відеохостинг YouTube"
                 >
-                  <IconSvg
-                    xlWidth='24px'
-                    xlHeight='24px'
-                    icon='icon-youtube'
-                  />
+                  <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-youtube" />
                 </S.SocLink>
               </li>
               <li>
@@ -76,11 +68,7 @@ export const Footer = () => {
                   target="_blank"
                   title="Соціальна мережа Facebook"
                 >
-                  <IconSvg
-                    xlWidth='24px'
-                    xlHeight='24px'
-                    icon='icon-facebook'
-                  />
+                  <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-facebook" />
                 </S.SocLink>
               </li>
             </S.SocList>
@@ -88,13 +76,10 @@ export const Footer = () => {
 
           <S.FormBtnWrapper>
             <S.Header>Залишились питання?</S.Header>
-            <S.FormBtn
-              type='button'
-              onClick={ () => setIsModalOpen( !isModalOpen ) }
-            >
-              Заповнити форму
+            <S.FormBtn type="button" onClick={ () => setIsModalOpen( !isModalOpen ) }>
+                            Заповнити форму
             </S.FormBtn>
-            { isModalOpen && (
+            {isModalOpen && (
               <Modal onActiveModal={ toggleModal }>
                 <QuestionForm onActiveModal={ toggleModal } />
               </Modal>
@@ -102,10 +87,11 @@ export const Footer = () => {
           </S.FormBtnWrapper>
         </S.ContentOrganizer>
 
-
         <S.TermsRightsWrapper>
           <div>
-            <S.Terms href="" $first>Політика конфіденційності</S.Terms>
+            <S.Terms href="" $first>
+                            Політика конфіденційності
+            </S.Terms>
             <svg width="1" height="20">
               <line x1="1" y1="0" x2="1" y2="20" stroke="#fff" strokeWidth="1" />
             </svg>

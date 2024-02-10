@@ -12,12 +12,12 @@ import {
   Title,
 } from './ModalRegistration.styled';
 import { BtnRegistration } from './BtnRegistration';
-import { black, gray, grayStroke, white } from '../../utils/variables.styled';
-import { BtnClose } from '../common/BtnClose';
-import { IconSvg } from '../common/IconSvg';
+import { black, gray, grayStroke, white } from '../../../utils/variables.styled';
+import { BtnClose } from '../../common/BtnClose';
+import { IconSvg } from '../../common/IconSvg';
 import { useGoogleLogin } from '@react-oauth/google';
-import { useHubContext } from '../../redux/Context';
-import { InputСircle } from '../../utils/common.styled';
+import { useHubContext } from '../../../redux/Context';
+import { InputСircle } from '../../../utils/common.styled';
 
 export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status } ) => {
   const { showModalRegister, setShowModalRegister, showModalLogin, setShowModalLogin } = useHubContext();
