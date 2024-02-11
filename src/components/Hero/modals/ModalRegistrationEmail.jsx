@@ -1,19 +1,37 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
+import { object, string } from 'yup';
 
+import { bgColorGradientBtn, deepAccent, nameExp, passwordExp, white } from '../../../utils/variables.styled';
+import { IconSvg } from '../../common/IconSvg';
 import * as S from './ModalRegistrationEmail.styled';
 import reCapcha from '../../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
-import { bgColorGradientBtn, deepAccent, white } from '../../../utils/variables.styled';
-import { IconSvg } from '../../common/IconSvg';
 import { BtnEye } from '../../common/BtnEye';
 import { BtnClose } from '../../common/BtnClose';
 import { InputField } from '../../modalElements/InputField';
-import { registerScheme } from '../../../schemes/modalSchemes/registerScheme';
 import { InputFieldPhone } from '../../modalElements/InputFieldPhone';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
+
+  const scheme = object( {
+    name: string()
+        .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
+        .max( 30, 'Вкажіть мініімум 2 літери, але не більше 30' )
+        .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
+        .required( 'Вкажіть ваше ім’я' ),
+    email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
+    phone: string().required( 'Вкажіть ваш номер телефону' ),
+    password: string()
+        .matches(
+            passwordExp,
+            'Пароль має містити більше 8 символів, велику та малу літеру латиницею, цифри і спеціальний знак',
+        )
+        .required( 'Пароль обов‘язковий' ),
+    capcha: string().required( 'Виконайте перевірку reCAPTCHA' ),
+    accept: string().required( 'Політики мають бути погоджені' ),
+  } );
 
   const initialValues = {
     name: '',
@@ -25,9 +43,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
-    const dataUserRegister = values;
-    console.log( '💙💛 registrationEmailData to Backend  :>> ', dataUserRegister );
-
+    console.log( '💙💛 send Data registrationEmail to Backend :>> ', values );
     resetForm();
     onActiveModal();
   };
@@ -59,11 +75,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
           <p>Реєстрація</p>
         </S.Title>
 
-        <Formik
-          initialValues={ initialValues }
-          validationSchema={ registerScheme }
-          onSubmit={ handleSubmit }
-        >
+        <Formik initialValues={ initialValues } validationSchema={ scheme } onSubmit={ handleSubmit }>
           {( formik ) => {
             const {
               errors: { name, email, phone, password, capcha },
@@ -87,11 +99,10 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                 ...prev,
                 phone: values.value,
               } ) );
+
               setTouched( { ...touched, phone: values.touched } );
 
-              {
-                /* console.log( '💙💛 handleGetPhone', values ); */
-              }
+              console.log( '💙💛 handleGetPhone', values );
             }; // значення з InputFieldPhone
 
             return (
