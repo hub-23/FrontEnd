@@ -1,5 +1,13 @@
-import styled from 'styled-components';
-import { accent } from '../../utils/variables.styled';
+import styled, { keyframes } from 'styled-components';
+import { accent, transitionB } from '../../utils/variables.styled';
+const show = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const ErrorText = styled.p`
     display: inline;
@@ -8,4 +16,5 @@ export const ErrorText = styled.p`
     line-height: (15.82 / 14);
 
     color: ${accent};
+    animation: ${show} ${transitionB};
 `;
