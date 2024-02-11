@@ -246,21 +246,25 @@ export const ControlBtns = styled.ul`
 `;
 
 export const ControlBtn = styled.button`
-  width: 24px;
-  height: 24px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
   background-color: transparent;
   border: none;
-`;
-
-export const BtnIcon = styled.svg`
+  
   fill: ${( props ) => props.color || props.theme.colors.white};
   stroke: ${( props ) => props.color || props.theme.colors.primary};
   transition: fill ${transition}, stroke ${transition};
   &:hover,
-  &:focus {
-        stroke: rgba(121, 121, 121, 1);
+  &:focus,
+  &:active {
+        transition: fill ${transition}, stroke ${transition};
+        fill: ${( props ) => props.color || props.theme.colors.primary};
         & path {
-            fill: rgba(121, 121, 121, 1);
+            fill: ${( props ) => props.color || props.theme.colors.white};
+            stroke: ${( props ) => props.color || props.theme.colors.white};
         }
    }
   path {
