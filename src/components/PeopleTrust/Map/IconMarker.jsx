@@ -1,9 +1,9 @@
 import React from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
 import L from 'leaflet';
-import pinIcon from '../../assets/home/map/pinIcon.svg';
-import circleIcon from '../../assets/home/map/circleIcon.svg';
-import { transition } from '../../utils/variables.styled';
+import pinIcon from '../../../assets/home/map/pinIcon.svg';
+import circleIcon from '../../../assets/home/map/circleIcon.svg';
+import { transition } from '../../../utils/variables.styled';
 
 const placeMarkers = ( dotContainerClass, pinContainerClass, circleContainerClass, number, order ) => {
   const cumulativeDelay = 300 * order;

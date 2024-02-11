@@ -4,7 +4,7 @@ import { IconSvg } from '../../common/IconSvg';
 import * as S from './CountryFilter.styled';
 import { CrossBtn } from '../MobileMenu/MobileMenu.styled';
 import { useHubContext } from '../../../redux/Context';
-import { fetchCountry } from '../../PeopleTrust/api';
+import { fetchCountry } from '../../PeopleTrust/Map/api';
 
 
 export const CountrySelect = ( { onActiveModal } ) => {

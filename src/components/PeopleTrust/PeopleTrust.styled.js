@@ -1,140 +1,95 @@
 import styled from 'styled-components';
 import { device } from '../../styles/device';
 
-export const MapContainer = styled.div`
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-    @media screen and (min-width: 1441px) { // від
-        padding: 120px 205px;
+
+export const MapSection = styled.section`
+    padding-top: 120px;
+    padding-bottom: 120px;
+
+    @media ${device.md} {
+        padding-top: 80px;
+        padding-bottom: 80px;
     }
-    @media ${device.xxl} { // до 1440
-        padding: 120px 85px;
+`;
+
+export const MapContainerr = styled.div`
+    margin: 0 auto;
+    padding-left: 160px;
+    padding-right: 160px;  
+
+    @media ${device.md} {
+        padding-left: 40px;
+        padding-right: 40px;
     }
-    @media ${device.xl} { // до 1200
-        padding: 80px 20px;
-        
+    @media ${device.sm} {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 `;
 
 export const Wrapper = styled.div`
-    max-width: 1030px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    @media ${device.md} {
+        max-width: 688px;
+    }
+    @media ${device.sm} {
+        max-width: 420px;
+    }
 `;
 
 export const Title = styled.h2`
     margin-bottom: 40px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 24px;
+    font-size: 48px;
     font-weight: 600;
     line-height: 1.3;
     letter-spacing: 0.24px;
     color: ${( props ) => props.color || props.theme.colors.black};
-    @media ${device.xxl} { 
+
+    @media ${device.md} { 
         margin-bottom: 32px;
+        font-size: 32px;
+    }
+    @media ${device.sm} { 
+        font-size: 24px;
     }
 `;
 
 export const Text = styled.p`
-    margin-bottom: 50px;
+    margin-bottom: 46px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 500;
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.black};
-    @media screen and (max-width: 1090px) { 
+
+    @media ${device.md} { 
+        margin-bottom: 20;
+    }
+    @media ${device.sm} { 
         margin-bottom: 0;
-    }
-`;
-
-export const MapWrapper = styled.div`
-    @media screen and (min-width: 1090px) { 
-        display: block;
-        width: 1030px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    display: none;
-`;
-
-export const StatisticsWrapper = styled.div`
-    background-color: ${( props ) => props.color || props.theme.colors.primary};
-    padding: 80px 160px;
-    @media ${device.xxl} { 
-        padding: 40px 20px;
-    }
-`;
-
-export const StatisticsList = styled.ul`
-    max-width: 1440px; 
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    @media ${device.md} { 
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 320px;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        gap: 0;
-    }
-`;
-
-export const StatUnit = styled.li`
-    list-style: none;
-    width: 265px;
-    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    line-height: 1.4;
-    color: ${( props ) => props.color || props.theme.colors.white};
-    text-align: center;
-    &:nth-of-type(2) {
-        order: 1;
-    }
-    &:last-of-type {
-        order: 3;
-    }
-    @media ${device.xxl} { 
-        width: 150px;
-    }
-    @media ${device.md} { 
-        -ms-flex-preferred-size: calc((100% - 20px) / 2);
-        flex-basis: calc((100% - 20px) / 2);
-        &:nth-of-type(odd) {
-            margin-right: 20px;
-        }
-        &:nth-of-type(1) {
-            margin-bottom: 32px; 
-        }
-        &:nth-of-type(2) {
-            margin-bottom: 32px;
-        }
-        &:nth-of-type(3) {
-            order: 2;
-        }
-    }
-`;
-
-export const StatHeader = styled.p`
-    font-size: 24px;
-    font-weight: 500;
-    @media ${device.xxl} { 
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 400;
     }
 `;
 
-export const StatValue = styled.span`
-    display: block; 
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: 0.36px;
-    margin-bottom: 4px;
-    @media ${device.xxl} {  
-        font-size: 20px;
-        line-height: 1.4;
-        letter-spacing: 0.2px;
+export const MapWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: '700px';
+    width: '1030px';
+    overflow: 'hidden';
+
+    @media ${device.md} { 
+        height: '400px';
+        width: '550px';
+    }
+
+    @media ${device.sm} { 
+        display: none;
     }
 `;

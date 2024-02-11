@@ -1,21 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
-import L from 'leaflet';
-import { IconMarker } from './IconMarker';
-import { fetchCountry } from './api';
-import 'leaflet/dist/leaflet.css';
-import './map.css'; // to override leaflet styles
+import React, { useState, useEffect } from 'react';
+import { TileLayer, GeoJSON } from 'react-leaflet';
 import geojsonData from './geojsonData.json';
+import { fetchCountry } from './api';
+import { IconMarker } from './IconMarker';
 
 
-export const Map = () => {
+export const MapContent = ( { markersVisible } ) => {
   const [ countryData, setCountryData ] = useState( [] );
-  const [ markersVisible, setMarkersVisible ] = useState( false );
-  const maxBounds = L.latLngBounds( // limiting map move at the max zoom out
-      L.latLng( -57, -160 ), // Southwest corner
-      L.latLng( 90, 180 ), // Northeast corner
-  );
-  const mapContainerRef = useRef( null );
 
   const fetchData = async ( backendData ) => {
     try {
@@ -38,7 +29,6 @@ export const Map = () => {
       console.error( error.message );
     }
   };
-
 
   useEffect( () => {
     // тут буде запит на бек за масивом всіх зареєстрованих викладачів - teachers:
@@ -71,56 +61,16 @@ export const Map = () => {
     fetchData( backendData );
   }, [] );
 
-
-  useEffect( () => {
-    const mapContainer = mapContainerRef.current;
-
-    const handleIntersection = ( entries ) => {
-      const [ entry ] = entries;
-      setMarkersVisible( entry.isIntersecting );
-    };
-
-    const observer = new IntersectionObserver( handleIntersection, {
-      root: null,
-      threshold: 0.5,
-    } );
-
-    if ( mapContainer ) {
-      observer.observe( mapContainer );
-    }
-
-    return () => {
-      if ( mapContainer ) {
-        observer.unobserve( mapContainer );
-      }
-    };
-  }, [] );
-
   return (
     <div>
-      <div
-        ref={ mapContainerRef } style={ { height: '700px', width: '1030px', overflow: 'hidden' } }
-      >
-        <MapContainer
-          center={ [ 44.0, 10.09 ] }
-          zoom={ 2 }
-          minZoom={ 2 }
-          maxZoom={ 2 }
-          maxBounds={ maxBounds }
-          maxBoundsViscosity= { 1.0 }
-          scrollWheelZoom={ false }
-          style={ { height: '700px', width: '1030px' } }
-        >
-          <TileLayer
-            attribution='&copy;
-            <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
-            | Made with <a href="https://www.naturalearthdata.com">Natural Earth</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <GeoJSON data={ geojsonData.features } />
-          { markersVisible && <IconMarker countryData={ countryData } /> }
-        </MapContainer>
-      </div>
+      <TileLayer
+        attribution='&copy;
+        <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
+        | Made with <a href="https://www.naturalearthdata.com">Natural Earth</a>'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <GeoJSON data={ geojsonData.features } />
+      { markersVisible && <IconMarker countryData={ countryData } /> }
     </div>
   );
 };
