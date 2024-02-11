@@ -1,17 +1,17 @@
 import React from 'react';
 import logo from '../../../assets/home/logo.svg';
 
-import { Article, BtnText, LogoImg, Modal, Text, TextDescr, Title } from './ModalThanksForJoining.staled';
+import * as S from './ModalThanksForJoining.staled';
 import { BtnRegistration } from './BtnRegistration';
 import { bgColorGradientBtn, white } from '../../../utils/variables.styled';
 
 export const ModalThanksForJoining = ( { onActiveModal } ) => {
   return (
-    <Modal>
-      <Article>
-        <LogoImg src={ logo } alt="HUB23" />
-        <Title>Дякуємо, що доєдналися</Title>
-        <TextDescr>Щоб продовжити реєстрацію, підтвердіть свою електронну пошту</TextDescr>
+    <S.Modal>
+      <S.Article>
+        <S.LogoImg src={ logo } alt="HUB23" />
+        <S.Title>Дякуємо, що доєдналися</S.Title>
+        <S.TextDescr>Щоб продовжити реєстрацію, підтвердіть свою електронну пошту</S.TextDescr>
 
         <BtnRegistration
           xlMarginBottom="30px"
@@ -26,14 +26,14 @@ export const ModalThanksForJoining = ( { onActiveModal } ) => {
             console.log( 'Підтвердити E-mail' );
           } }
         >
-          <BtnText>Підтвердити E-mail</BtnText>
+          <S.BtnText>Підтвердити E-mail</S.BtnText>
         </BtnRegistration>
 
-        <Text>
+        <S.Text>
                     Зверніть увагу, що посилання буде активне 24 години. Якщо ви не реєструвались на Hub23,
                     будь ласка, ігноруйте цей лист
-        </Text>
-      </Article>
-    </Modal>
+        </S.Text>
+      </S.Article>
+    </S.Modal>
   );
 };

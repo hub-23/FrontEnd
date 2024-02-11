@@ -1,37 +1,16 @@
 import React, { useState } from 'react';
+import { Formik } from 'formik';
 import { useGoogleLogin } from '@react-oauth/google';
-
-import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 
-import {
-  ErrorText,
-  FormLogin,
-  Input,
-  Title,
-  Article,
-  LabelFormUser,
-  TextCheckbox,
-  LinkForget,
-  InputCheckbox,
-  LabelCheckbox,
-  WrappCheckPass,
-  Modal,
-  BtnText,
-  Text,
-  LinkRegistr,
-  TextRegistr,
-  WrappTextRegistr,
-  BtnTextGoogle,
-  BtnGoogleOne,
-  BtnGoogleTwo,
-} from './ModalLogin.styled';
-import { BtnRegistration } from './BtnRegistration';
+import * as S from './ModalLogin.styled';
 import { bgColorGradientBtn, black, gray, grayStroke, white } from '../../../utils/variables.styled';
+import { BtnRegistration } from './BtnRegistration';
 import { IconSvg } from '../../common/IconSvg';
 import { BtnEye } from '../../common/BtnEye';
 import { BtnClose } from '../../common/BtnClose';
 import { useHubContext } from '../../../redux/Context';
+import { InputField } from '../../modalElements/InputField';
 
 export const ModalLogin = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
@@ -49,18 +28,8 @@ export const ModalLogin = ( { onActiveModal } ) => {
     accept: '',
   };
 
-  const FormError = ( { name, isMarginLeft } ) => {
-    return (
-      <ErrorMessage
-        name={ name }
-        render={ ( message ) => <ErrorText $isMarginLeft={ isMarginLeft }>{message}</ErrorText> }
-      />
-    );
-  };
-
   const handleSubmit = ( values, { resetForm } ) => {
-    console.log( 'Data Login to Backend  :>> ', values );
-
+    console.log( '💙💛 send Data Login to Backend  :>> ', values );
     resetForm();
     onActiveModal();
     setShowModalLastStep( ( prev ) => !prev );
@@ -72,7 +41,7 @@ export const ModalLogin = ( { onActiveModal } ) => {
   } );
 
   return (
-    <Modal>
+    <S.Modal>
       <BtnClose
         xlRight="50px"
         xlTop="40px"
@@ -93,10 +62,10 @@ export const ModalLogin = ( { onActiveModal } ) => {
         />
       </BtnClose>
 
-      <Article>
-        <Title>
+      <S.Article>
+        <S.Title>
           <p>Вхід</p>
-        </Title>
+        </S.Title>
 
         <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
           {( formik ) => {
@@ -109,24 +78,26 @@ export const ModalLogin = ( { onActiveModal } ) => {
             const errEmail = email && touched.email;
 
             return (
-              <FormLogin autoComplete="on">
-                <LabelFormUser htmlFor="email">
-                  <Input
+              <S.FormLogin autoComplete="on">
+                <S.LabelFormUser>
+                  <InputField
                     type="email"
                     name="email"
                     placeholder="Введіть ваш e-mail"
-                    $error={ errEmail }
+                    isStar={ true }
+                    error={ errEmail }
                   />
-                  <FormError name="email" isMarginLeft={ true } />
-                </LabelFormUser>
+                </S.LabelFormUser>
 
-                <LabelFormUser htmlFor="password">
-                  <Input
+                <S.LabelFormUser>
+                  <InputField
                     type={ showPassword ? 'password' : 'text' }
                     name="password"
                     placeholder="Введіть пароль"
+                    isStar={ true }
                     $error={ errPassword }
                   />
+
                   <BtnEye
                     xlRight="36px"
                     xlTop="16px"
@@ -152,20 +123,18 @@ export const ModalLogin = ( { onActiveModal } ) => {
                                             />
                                         )}
                   </BtnEye>
+                </S.LabelFormUser>
 
-                  <FormError name="password" isMarginLeft={ true } />
-                </LabelFormUser>
-
-                <WrappCheckPass>
-                  <LabelCheckbox>
-                    <InputCheckbox type="checkbox" name="accept" />
+                <S.WrappCheckPass>
+                  <S.LabelCheckbox>
+                    <S.InputCheckbox type="checkbox" name="accept" />
                     <span></span>
 
-                    <TextCheckbox>Залишитись в системі</TextCheckbox>
-                  </LabelCheckbox>
+                    <S.TextCheckbox>Залишитись в системі</S.TextCheckbox>
+                  </S.LabelCheckbox>
 
-                  <LinkForget>Забули пароль?</LinkForget>
-                </WrappCheckPass>
+                  <S.LinkForget>Забули пароль?</S.LinkForget>
+                </S.WrappCheckPass>
 
                 <BtnRegistration
                   xlMarginBottom="16px"
@@ -176,14 +145,13 @@ export const ModalLogin = ( { onActiveModal } ) => {
                   bgColorGradient={ bgColorGradientBtn }
                   // onRegister={ toggleModalLastStep }
                 >
-                  <BtnText $color={ white }> Увійти</BtnText>
+                  <S.BtnText $color={ white }> Увійти</S.BtnText>
                 </BtnRegistration>
 
-                <Text>або</Text>
+                <S.Text>або</S.Text>
 
-                <BtnGoogleOne>
+                <S.BtnGoogleOne>
                   <BtnRegistration
-                    // xlMarginBottom="50px"
                     mdMarginBottom="22px"
                     smMarginBottom="30px"
                     bgColor={ gray }
@@ -196,18 +164,18 @@ export const ModalLogin = ( { onActiveModal } ) => {
                     // onRegister={ () => autoRegistr() }
                   >
                     <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-google" />
-                    <BtnTextGoogle $color={ black }>Продовжити з Google</BtnTextGoogle>
+                    <S.BtnTextGoogle $color={ black }>Продовжити з Google</S.BtnTextGoogle>
                   </BtnRegistration>
-                </BtnGoogleOne>
-              </FormLogin>
+                </S.BtnGoogleOne>
+              </S.FormLogin>
             );
           }}
         </Formik>
 
-        <WrappTextRegistr>
-          <TextRegistr>Я ще не зареєстрований</TextRegistr>
+        <S.WrappTextRegistr>
+          <S.TextRegistr>Я ще не зареєстрований</S.TextRegistr>
 
-          <LinkRegistr
+          <S.LinkRegistr
             type="button"
             onClick={ () => {
               setShowModalRegister( ( prev ) => !prev );
@@ -215,11 +183,11 @@ export const ModalLogin = ( { onActiveModal } ) => {
             } }
           >
                         Зареєструватись
-          </LinkRegistr>
-        </WrappTextRegistr>
-      </Article>
+          </S.LinkRegistr>
+        </S.WrappTextRegistr>
+      </S.Article>
 
-      <BtnGoogleTwo>
+      <S.BtnGoogleTwo>
         <p>або</p>
         <p>Увійти за допомогою</p>
         <BtnRegistration
@@ -235,7 +203,7 @@ export const ModalLogin = ( { onActiveModal } ) => {
         >
           <IconSvg xlWidth="32px" xlHeight="32px" icon="icon-google" />
         </BtnRegistration>
-      </BtnGoogleTwo>
-    </Modal>
+      </S.BtnGoogleTwo>
+    </S.Modal>
   );
 };

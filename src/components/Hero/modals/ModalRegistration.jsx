@@ -1,22 +1,13 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { useGoogleLogin } from '@react-oauth/google';
 
-import {
-  Article,
-  BtnText,
-  FormRigistration,
-  Label,
-  Login,
-  Modal,
-  RadioBtn,
-  Title,
-} from './ModalRegistration.styled';
-import { BtnRegistration } from './BtnRegistration';
 import { black, gray, grayStroke, white } from '../../../utils/variables.styled';
+import * as S from './ModalRegistration.styled';
+import { useHubContext } from '../../../redux/Context';
+import { BtnRegistration } from './BtnRegistration';
 import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
-import { useGoogleLogin } from '@react-oauth/google';
-import { useHubContext } from '../../../redux/Context';
 import { InputСircle } from '../../../utils/common.styled';
 
 export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status } ) => {
@@ -51,12 +42,12 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
   //     console.log( credentialResponse );
   //   },
   //   onError: () => {
-  //     console.log( 'Login Failed' );
+  //     console.log( 'S.Login Failed' );
   //   },
   // } );
 
   return (
-    <Modal>
+    <S.Modal>
       <BtnClose
         xlRight="30px"
         xlTop="30px"
@@ -77,21 +68,21 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
         />
       </BtnClose>
 
-      <Article>
-        <Title>Реєстрація</Title>
+      <S.Article>
+        <S.Title>Реєстрація</S.Title>
 
         <Formik initialValues={ initialValues } onSubmit={ handleSubmit }>
-          <FormRigistration>
-            <RadioBtn>
-              <Label>
+          <S.FormRigistration>
+            <S.RadioBtn>
+              <S.Label>
                 <InputСircle type="radio" name="statusUser" value="teacher" />
 Я викладач
-              </Label>
-              <Label>
+              </S.Label>
+              <S.Label>
                 <InputСircle type="radio" name="statusUser" value="student" />
 Я учень
-              </Label>
-            </RadioBtn>
+              </S.Label>
+            </S.RadioBtn>
 
             <BtnRegistration
               xlMarginBottom="30px"
@@ -110,7 +101,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
                 smHeight="26px"
                 icon="icon-mail"
               />
-              <BtnText> Продовжити з e-mail</BtnText>
+              <S.BtnText> Продовжити з e-mail</S.BtnText>
             </BtnRegistration>
 
             <BtnRegistration
@@ -125,18 +116,18 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
               // onRegister={ () => autoRegistr() }
             >
               <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-google" />
-              <BtnText>Продовжити з Google</BtnText>
+              <S.BtnText>Продовжити з Google</S.BtnText>
             </BtnRegistration>
-          </FormRigistration>
+          </S.FormRigistration>
         </Formik>
 
-        <Login>
+        <S.Login>
           <p>Я вже зареєстрований</p>
           <button type="button" onClick={ goToLogin }>
                         Увійти
           </button>
-        </Login>
-      </Article>
-    </Modal>
+        </S.Login>
+      </S.Article>
+    </S.Modal>
   );
 };
