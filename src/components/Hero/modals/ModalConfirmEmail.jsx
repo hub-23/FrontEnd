@@ -1,23 +1,15 @@
 import React from 'react';
 
+import { useHubContext } from '../../../redux/Context';
 import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
-import {
-  Article,
-  BtnLogin,
-  Modal,
-  RegisterText,
-  TextDescr,
-  Title,
-  WrappRegister,
-} from './ModalConfirmEmail.styled';
-import { useHubContext } from '../../../redux/Context';
+import * as S from './ModalConfirmEmail.styled';
 
 export const ModalConfirmEmail = ( { onActiveModal } ) => {
   const { setShowModalThanksForJoining } = useHubContext();
 
   return (
-    <Modal>
+    <S.Modal>
       <BtnClose
         xlRight="30px"
         xlTop="30px"
@@ -45,27 +37,27 @@ export const ModalConfirmEmail = ( { onActiveModal } ) => {
           setShowModalThanksForJoining( ( prev ) => !prev );
         } }
       >
-                Show ModalThanksForJoining
+                Show ModalThanksForJoining (temp)
       </button>
 
-      <Article>
+      <S.Article>
         <IconSvg xlWidth="64px" xlHeight="64px" smWidth="40px" smHeight="40px" icon="icon-mail" />
-        <Title>Підтвердіть ваш E-mail</Title>
-        <TextDescr>
+        <S.Title>Підтвердіть ваш E-mail</S.Title>
+        <S.TextDescr>
           {`Будь ласка, перевірте вашу електронну пошту і активуйте ваш кабінет. Якщо ви не отримали
                     лист у папці `}
           <span>Вхідні</span>
           {', перевірте папку '}
           <span>Спам</span>
-        </TextDescr>
+        </S.TextDescr>
 
-        <WrappRegister>
-          <RegisterText>Не отримали лист?</RegisterText>
-          <BtnLogin type="button" onClick={ () => console.log( 'Надіслати лист повторно' ) }>
+        <S.WrappRegister>
+          <S.RegisterText>Не отримали лист?</S.RegisterText>
+          <S.BtnLogin type="button" onClick={ () => console.log( 'Надіслати лист повторно' ) }>
                         Надіслати лист повторно
-          </BtnLogin>
-        </WrappRegister>
-      </Article>
-    </Modal>
+          </S.BtnLogin>
+        </S.WrappRegister>
+      </S.Article>
+    </S.Modal>
   );
 };
