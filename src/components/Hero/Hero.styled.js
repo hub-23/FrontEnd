@@ -1,170 +1,133 @@
 import styled from 'styled-components';
 import image from '../../assets/home/hero/bg-image.jpg';
 import image2x from '../../assets/home/hero/bg-image-2x.jpg';
-import imageMobile from '../../assets/home/hero/imageMobile.png';
 import imageTablet from '../../assets/home/hero/imageTablet.png';
+import imageMobile from '../../assets/home/hero/imageMobile.png';
+import { Container } from '../../utils/common.styled';
+import { black, white } from '../../utils/variables.styled';
 import { device } from '../../styles/device';
 
-export const StyledSection = styled.section`
-    outline: 1px solid green;
+export const CountainerHero = styled( Container )`
+    margin-top: 80px;
+    padding-top: 100px;
+    padding-bottom: 146px;
+    background-image: linear-gradient(270deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.13) 100%),
+        image-set(url(${image}) 1x, url(${image2x}) 2x);
 
-    position: relative;
-    background-image: image-set(url(${image}) 1x, url(${image2x}) 2x);
-    width: 100%;
-    height: 900px;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-
-    @media ${device.lg} {
-        position: relative;
-        background-image: image-set(url(${imageTablet}));
-        background-size: 100% 100%;
-        width: 100%;
-        max-height: 1170px;
-    }
-
-    @media ${device.sm} {
-        position: relative;
-        background-image: image-set(url(${imageMobile}));
-        background-size: 100% 100%;
-        width: 100%;
-        height: 728px;
-    }
-`;
-
-export const StyledContainer = styled.div`
-    padding: 100px 160px 145px 160px;
-    height: 100%;
-    overflow: hidden;
-
-    @media ${device.lg} {
-        padding: 100px 141px 154px 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    background-color: #c4c4c4;
 
     @media ${device.md} {
-        padding: 100px 141px 154px;
+        padding-top: 141px;
+        padding-bottom: 199px;
+        background-image: url(${imageTablet});
     }
 
     @media ${device.sm} {
-        padding: 100px 20px 154px 20px;
+        padding-top: 138px;
+        padding-bottom: 154px;
+        padding-bottom: 25px;
+        background-image: url(${imageMobile});
     }
 `;
 
-export const StyledGradient = styled.div`
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 900px;
-    background: linear-gradient(270deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.13) 100%);
-
-    @media ${device.lg} {
-        max-height: 1170px;
-    }
-
-    @media ${device.sm} {
-        height: 728px;
-    }
-`;
-
-export const StyledTitle = styled.h1`
+export const Title = styled.h1`
+    margin-bottom: 20px;
     width: 333px;
-    height: 156px;
+
     font-family: Montserrat;
     font-size: 40px;
-    font-style: normal;
     font-weight: 600;
-    line-height: 130%;
+    line-height: calc(52 / 40);
     text-transform: uppercase;
-    color: #2d2d2d;
-    margin-bottom: 20px;
 
-    @media ${device.lg} {
-        max-width: 266px;
-        height: 126px;
+    color: ${black};
+
+    @media ${device.md} {
+        width: 336px;
+    }
+
+    @media ${device.sm} {
+        margin-bottom: 16px;
+        width: 266px;
         font-size: 32px;
-    }
-
-    @media ${device.sm} {
-        max-width: 200px;
-        max-height: 93px;
-        margin-bottom: 10px;
-        font-size: 24px;
+        line-height: calc(41.6 / 32);
     }
 `;
 
-export const StyledText = styled.p`
-    width: 600px;
-    height: 102px;
+export const Text = styled.h1`
     margin-bottom: 40px;
-    color: #2d2d2d;
-    font-family: Nunito;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%;
+    width: 600px;
 
-    @media ${device.lg} {
-        max-width: 320px;
-        height: 88px;
-        margin-bottom: 40px;
-        font-weight: 400;
-        font-size: 16px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: calc(33.6 / 24);
+
+    color: ${black};
+
+    @media ${device.md} {
+        width: 480px;
+        font-size: 20px;
+        line-height: calc(28 / 20);
+        letter-spacing: 0.2px;
     }
 
     @media ${device.sm} {
-        max-width: 300px;
-        max-height: 70px;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
+        width: 100%;
         font-size: 14px;
+        font-weight: 400;
+        line-height: calc(19.6 / 14);
     }
 `;
 
-export const StyledBtnContainer1 = styled.div`
+export const BtnWrapp = styled.div`
     display: flex;
     gap: 40px;
     margin-bottom: 120px;
 
-    @media ${device.lg} {
-        // flex-direction: column;
-        // justify-content: center;
-        // margin-bottom: 120px;
-        // gap: 24px;
-    }
-
     @media ${device.md} {
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: 60px;
         gap: 24px;
     }
 
     @media ${device.sm} {
         flex-direction: column;
-        justify-content: center;
-        gap: 24px;
-        margin-bottom: 20px;
+        margin-bottom: 28px;
     }
 
-    .btn {
+    & > button {
         width: 294px;
         height: 56px;
 
-        font-family: Nunito;
         font-size: 24px;
         font-weight: 600;
-        line-height: 100%;
         letter-spacing: 0.24px;
-        color: #f9f9f9;
+
+        border-radius: 20px 0px;
+        border: none;
+        color: ${white};
+
+        &:first-child {
+            background: linear-gradient(88deg, #09194d 0%, #234890 100%);
+        }
+
+        &:last-child {
+            background: linear-gradient(88deg, #b92759 0%, #e3669c 100%);
+        }
+
+        @media ${device.md} {
+            font-size: 20px;
+            letter-spacing: 0.2px;
+        }
 
         @media ${device.sm} {
-            max-width: 290px;
+            width: 100%;
 
-            color: #ffffff;
             font-size: 16px;
             font-weight: 500;
-            line-height: 140%;
+            line-height: calc(22.4 / 16);
             letter-spacing: 0.16px;
         }
     }
