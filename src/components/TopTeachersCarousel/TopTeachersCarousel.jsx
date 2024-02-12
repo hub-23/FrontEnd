@@ -19,7 +19,6 @@ import Play from './components/Button/Play.jsx';
 import Pause from './components/Button/Pause.jsx';
 import { Button } from '../../components/common/button/Button.jsx';
 
-
 export const TopTeachersCarousel = () => {
   const [ autoPlay, setAutoPlay ] = useState( true );
 
@@ -70,30 +69,41 @@ export const TopTeachersCarousel = () => {
   return (
     <>
       <StyledSection>
-        <StyledWrapper >
+        <StyledWrapper>
           <StyledContent>
             <StyledTitle>
               <StyledTitleTypography>Топові викладачі</StyledTitleTypography>
             </StyledTitle>
             <ContainerButtons>
               <StyledBtnContainer1>
-                <Button variant='secondary' background='white'>
+                <Button>
                   <ButtonTypography>Обрати викладача</ButtonTypography>
                 </Button>
+                {/* <Button variant='secondary' background='white'>
+                  <ButtonTypography>Обрати викладача</ButtonTypography>
+                </Button> */}
               </StyledBtnContainer1>
-              {autoPlay ? <Pause handlePause={ handlePause } /> : <Play handlePlay={ handlePlay } /> }
+
+              {autoPlay ? (
+                <Pause handlePause={ handlePause } />
+              ) : (
+                <Play handlePlay={ handlePlay } />
+              )}
             </ContainerButtons>
           </StyledContent>
           <Slider ref={ sliderRef } { ...settings }>
-            {teachers.map( ( teacher ) => (
-              <TopTeachersCard key={ teacher.id } teacher={ teacher }/>
+            {teachers.map( teacher => (
+              <TopTeachersCard key={ teacher.id } teacher={ teacher } />
             ) )}
           </Slider>
         </StyledWrapper>
         <StyledBtnContainer2>
-          <Button variant='secondary' background='white'>
+          <Button>
             <ButtonTypography>Обрати викладача</ButtonTypography>
           </Button>
+          {/* <Button variant='secondary' background='white'>
+            <ButtonTypography>Обрати викладача</ButtonTypography>
+          </Button> */}
         </StyledBtnContainer2>
       </StyledSection>
     </>
