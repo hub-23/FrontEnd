@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Routes, Route } from 'react-router';
 import Theme from '../../theme/Theme';
 import Home from '../../pages/HomePage';
 
 import GeneralStyles from '../../generalStyles';
 import Layout from '../Layout/Layout';
-import About from '../../pages/AboutUsPage';
-import Student from '../../pages/StudentPage';
-import Teacher from '../../pages/TeachersPage';
-import FeedbackPage from '../../pages/FeedbackPage';
+
+const Teacher = lazy( () => import( '../../pages/TeachersPage' ) );
+const About = lazy( () => import( '../../pages/AboutUsPage' ) );
+const Feedback = lazy( () => import( '../../pages/FeedbackPage' ) );
+const Student = lazy( () => import( '../../pages/StudentPage' ) );
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
             <Route index element={ <Home /> } />
             <Route path="teacher" element={ <Teacher /> } />
             <Route path="about" element={ <About /> } />
-            <Route path="feedback" element={ <FeedbackPage /> } />
+            <Route path="feedback" element={ <Feedback /> } />
             {/* <Route path="language" element={ <h1>List of language</h1> } /> */}
             <Route path="signIn" element={ <h1>Вхід</h1> } />
             <Route path="student" element={ <Student /> } />
