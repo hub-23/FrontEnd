@@ -1,71 +1,71 @@
 {
-  "name": "frontend",
-  "homepage": "https://hub-23.github.io",
-  "version": "0.10",
-  "private": true,
-  "dependencies": {
-    "@hookform/resolvers": "^3.3.1",
-    "@react-oauth/google": "^0.11.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.5.0",
-    "formik": "^2.4.5",
-    "gh-pages": "^6.0.0",
-    "joi": "^17.11.0",
-    "leaflet": "^1.9.4",
-    "leaflet-providers": "^2.0.0",
-    "lodash": "^4.17.21",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-google-recaptcha": "^3.1.0",
-    "react-hook-form": "^7.47.0",
-    "react-icons": "^4.11.0",
-    "react-leaflet": "^4.2.1",
-    "react-phone-number-input": "^3.3.9",
-    "react-router": "^6.16.0",
-    "react-router-dom": "^6.16.0",
-    "react-scripts": "5.0.1",
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1",
-    "styled-components": "^6.0.8",
-    "styled-tools": "^1.7.2",
-    "web-vitals": "^2.1.4",
-    "yup": "^1.3.2"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "eslint": "^8.38.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-react": "^7.32.2",
-    "prettier": "^2.8.7",
-    "prettier-eslint": "^16.3.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "frontend",
+    "homepage": "https://hub-23.github.io",
+    "version": "0.10",
+    "private": true,
+    "dependencies": {
+        "@hookform/resolvers": "^3.3.1",
+        "@react-oauth/google": "^0.11.1",
+        "@testing-library/jest-dom": "^5.17.0",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "axios": "^1.5.0",
+        "formik": "^2.4.5",
+        "gh-pages": "^6.0.0",
+        "joi": "^17.11.0",
+        "leaflet": "^1.9.4",
+        "leaflet-providers": "^2.0.0",
+        "lodash": "^4.17.21",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-google-recaptcha": "^3.1.0",
+        "react-hook-form": "^7.47.0",
+        "react-icons": "^4.11.0",
+        "react-leaflet": "^4.2.1",
+        "react-phone-number-input": "^3.3.9",
+        "react-router": "^6.16.0",
+        "react-router-dom": "^6.16.0",
+        "react-scripts": "5.0.1",
+        "react-slick": "^0.29.0",
+        "slick-carousel": "^1.8.1",
+        "styled-components": "^6.0.8",
+        "styled-tools": "^1.7.2",
+        "web-vitals": "^2.1.4",
+        "yup": "^1.3.2"
+    },
+    "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "eslint": "^8.38.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.32.2",
+        "prettier": "^2.8.7"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -b master -d build"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
