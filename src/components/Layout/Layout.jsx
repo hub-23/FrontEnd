@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
@@ -8,9 +8,13 @@ const Layout = () => {
   return (
     <StyledWrapper>
       <Header />
-      <StyledContent>
-        <Outlet />
-      </StyledContent>
+
+      <Suspense fallback={ <p>...Loading</p> }>
+        <StyledContent>
+          <Outlet />
+        </StyledContent>
+      </Suspense>
+
       <Footer />
     </StyledWrapper>
   );
