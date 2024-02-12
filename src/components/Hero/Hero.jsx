@@ -38,7 +38,7 @@ export const Hero = () => {
 
   const [ status, setStatus ] = useState( '' );
 
-  const toggleModalRegister = ( evt ) => {
+  const toggleModalRegister = evt => {
     setShowModalRegister( !showModalRegister );
     docVisible;
     setStatus( evt?.target.dataset.status );
@@ -75,15 +75,15 @@ export const Hero = () => {
         <StyledGradient>
           <StyledContainer>
             <StyledTitle>
-                            ПРОСТІР
+              ПРОСТІР
               <br />
-                            ТАЛАНОВИТИХ
+              ТАЛАНОВИТИХ
               <br />
-                            ЛЮДЕЙ
+              ЛЮДЕЙ
             </StyledTitle>
             <StyledText>
-                            Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до
-                            команди вчителів та склади конкуренцію в своїй ніші
+              Обирай свого викладача і прямуй до результату разом з нами або
+              доєднуйся до команди вчителів та склади конкуренцію в своїй ніші
             </StyledText>
             <StyledBtnContainer1>
               <Button
@@ -92,7 +92,7 @@ export const Hero = () => {
                 dataStatus="teacher"
                 onActiveModal={ toggleModalRegister }
               >
-                                Стати викладачем
+                Стати викладачем
               </Button>
               <Button
                 className="btn"
@@ -100,7 +100,7 @@ export const Hero = () => {
                 dataStatus="student"
                 onActiveModal={ toggleModalRegister }
               >
-                                Стати учнем
+                Стати учнем
               </Button>
             </StyledBtnContainer1>
 

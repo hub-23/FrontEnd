@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 
-import { bgColorGradientBtn, deepAccent, nameExp, passwordExp, white } from '../../../utils/variables.styled';
+import {
+  bgColorGradientBtn,
+  deepAccent,
+  nameExp,
+  passwordExp,
+  white,
+} from '../../../utils/variables.styled';
 import { IconSvg } from '../../common/IconSvg';
 import * as S from './ModalRegistrationEmail.styled';
 import reCapcha from '../../../assets/home/modal/recapcha.png';
@@ -17,18 +23,20 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
   const scheme = object( {
     name: string()
-        .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
-        .max( 30, 'Вкажіть мініімум 2 літери, але не більше 30' )
-        .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
-        .required( 'Вкажіть ваше ім’я' ),
-    email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
+      .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
+      .max( 30, 'Вкажіть мініімум 2 літери, але не більше 30' )
+      .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
+      .required( 'Вкажіть ваше ім’я' ),
+    email: string()
+      .email( 'Невірно вказано e-mail' )
+      .required( 'Вкажіть ваш e-mail' ),
     phone: string().required( 'Вкажіть ваш номер телефону' ),
     password: string()
-        .matches(
-            passwordExp,
-            'Пароль має містити більше 8 символів, велику та малу літеру латиницею, цифри і спеціальний знак',
-        )
-        .required( 'Пароль обов‘язковий' ),
+      .matches(
+        passwordExp,
+        'Пароль має містити більше 8 символів, велику та малу літеру латиницею, цифри і спеціальний знак'
+      )
+      .required( 'Пароль обов‘язковий' ),
     capcha: string().required( 'Виконайте перевірку reCAPTCHA' ),
     accept: string().required( 'Політики мають бути погоджені' ),
   } );
@@ -75,8 +83,12 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
           <p>Реєстрація</p>
         </S.Title>
 
-        <Formik initialValues={ initialValues } validationSchema={ scheme } onSubmit={ handleSubmit }>
-          {( formik ) => {
+        <Formik
+          initialValues={ initialValues }
+          validationSchema={ scheme }
+          onSubmit={ handleSubmit }
+        >
+          {formik => {
             const {
               errors: { name, email, phone, password, capcha },
               touched,
@@ -85,7 +97,8 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
             } = formik;
 
             const isCheckCapcha = formik.values.capcha;
-            const isDataUser = formik.initialValues.phone === formik.values.phone;
+            const isDataUser
+              = formik.initialValues.phone === formik.values.phone;
 
             const errName = name && touched.name;
             const errPassword = password && touched.password;
@@ -94,13 +107,16 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
             const errCapcha = capcha && touched.capcha;
 
-            const handleGetPhone = ( values ) => {
-              setValues( ( prev ) => ( {
+            const handleGetPhone = values => {
+              setValues( prev => ( {
                 ...prev,
                 phone: values.value,
               } ) );
 
-              setTouched( { ...touched, phone: values.touched } );
+              setTouched( {
+                ...touched,
+                phone: values.touched,
+              } );
 
               console.log( '💙💛 handleGetPhone', values );
             }; // значення з InputFieldPhone
@@ -150,7 +166,11 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   />
                 </S.LabelFormUser>
 
-                <S.LabelFormUser style={ { gap: '11px' } }>
+                <S.LabelFormUser
+                  style={ {
+                    gap: '11px',
+                  } }
+                >
                   <InputField
                     type={ showPassword ? 'password' : 'text' }
                     name="password"
@@ -167,22 +187,22 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     click={ () => setSowPassword( !showPassword ) }
                   >
                     {showPassword ? (
-                                            <IconSvg
-                                              xlWidth="24px"
-                                              xlHeight="24px"
-                                              smWidth="20px"
-                                              smHeight="20px"
-                                              icon="icon-eye-slash"
-                                            />
-                                        ) : (
-                                            <IconSvg
-                                              xlWidth="24px"
-                                              xlHeight="24px"
-                                              smWidth="20px"
-                                              smHeight="20px"
-                                              icon="icon-eye"
-                                            />
-                                        )}
+                      <IconSvg
+                        xlWidth="24px"
+                        xlHeight="24px"
+                        smWidth="20px"
+                        smHeight="20px"
+                        icon="icon-eye-slash"
+                      />
+                    ) : (
+                      <IconSvg
+                        xlWidth="24px"
+                        xlHeight="24px"
+                        smWidth="20px"
+                        smHeight="20px"
+                        icon="icon-eye"
+                      />
+                    )}
                   </BtnEye>
 
                   <S.WrappErrTextPassword>
@@ -194,7 +214,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     />
 
                     <S.TextErrPassword $color={ errPassword }>
-                                            Більше 8 символів, велика літера, цифри і спеціальний знак
+                      Більше 8 символів, велика літера, цифри і спеціальний знак
                     </S.TextErrPassword>
                   </S.WrappErrTextPassword>
                 </S.LabelFormUser>
@@ -204,10 +224,15 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     <S.LabelCheckbox>
                       <S.InputCheckbox type="checkbox" name="capcha" />
                       <span></span>
-                                            I’m not robot
+                      I’m not robot
                     </S.LabelCheckbox>
 
-                    <img src={ reCapcha } width="40" height="38" alt="re Capcha"></img>
+                    <img
+                      src={ reCapcha }
+                      width="40"
+                      height="38"
+                      alt="re Capcha"
+                    ></img>
                   </S.WrappCapcha>
                 </div>
 
@@ -247,11 +272,23 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
         <S.TextPolicy>
           {'Цей сайт захищено технологією reCAPTCHA, до нього застосовуються '}
           <span>
-            <S.LinkPolicy style={ { fontWeight: '600' } }>Політика конфіденційності</S.LinkPolicy>
+            <S.LinkPolicy
+              style={ {
+                fontWeight: '600',
+              } }
+            >
+              Політика конфіденційності
+            </S.LinkPolicy>
           </span>
           {' та '}
           <span>
-            <S.LinkPolicy style={ { fontWeight: '600' } }>Умови використання</S.LinkPolicy>
+            <S.LinkPolicy
+              style={ {
+                fontWeight: '600',
+              } }
+            >
+              Умови використання
+            </S.LinkPolicy>
           </span>
           {' Google.'}
         </S.TextPolicy>
