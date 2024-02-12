@@ -7,7 +7,7 @@ import { useHubContext } from '../../../redux/Context';
 import { IconSvg } from '../../common/IconSvg';
 import * as S from './ModalLastStep.staled';
 import { BtnClose } from '../../common/BtnClose';
-import { BtnRegistration } from './BtnRegistration';
+import { BtnRegistration } from '../../Hero/modals/BtnRegistration';
 import { InputFieldPhone } from '../../modalElements/InputFieldPhone';
 
 export const ModalLastStep = ( { onActiveModal } ) => {
@@ -27,7 +27,7 @@ export const ModalLastStep = ( { onActiveModal } ) => {
     console.log( '💙💛 send Data LastStep to Backend  :>> ', values );
     resetForm();
     onActiveModal();
-    setShowModalConfirmEmail( ( prev ) => !prev ); // відкрити модалку /Підтвердіть ваш E-mail/
+    setShowModalConfirmEmail( prev => !prev ); // відкрити модалку /Підтвердіть ваш E-mail/
   };
 
   return (
@@ -39,7 +39,7 @@ export const ModalLastStep = ( { onActiveModal } ) => {
         mdTop="15px"
         smRight="10px"
         smTop="10px"
-        click={ () => setShowModalLastStep( ( prev ) => !prev ) }
+        click={ () => setShowModalLastStep( prev => !prev ) }
       >
         <IconSvg
           xlWidth="60px"
@@ -55,8 +55,12 @@ export const ModalLastStep = ( { onActiveModal } ) => {
       <S.Article>
         <S.Title>Остaнній крок</S.Title>
 
-        <Formik initialValues={ initialValues } validationSchema={ scheme } onSubmit={ handleSubmit }>
-          {( formik ) => {
+        <Formik
+          initialValues={ initialValues }
+          validationSchema={ scheme }
+          onSubmit={ handleSubmit }
+        >
+          {formik => {
             const {
               errors: { phone },
               touched,
@@ -64,11 +68,12 @@ export const ModalLastStep = ( { onActiveModal } ) => {
               setTouched,
             } = formik;
 
-            const isDataUser = formik.initialValues.phone === formik.values.phone;
+            const isDataUser
+              = formik.initialValues.phone === formik.values.phone;
             const errPhone = phone && touched.phone;
 
-            const handleGetPhone = ( values ) => {
-              setValues( ( prev ) => ( {
+            const handleGetPhone = values => {
+              setValues( prev => ( {
                 ...prev,
                 phone: values.value,
               } ) );

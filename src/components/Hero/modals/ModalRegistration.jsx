@@ -2,7 +2,12 @@ import React from 'react';
 import { Formik } from 'formik';
 import { useGoogleLogin } from '@react-oauth/google';
 
-import { black, gray, grayStroke, white } from '../../../utils/variables.styled';
+import {
+  black,
+  gray,
+  grayStroke,
+  white,
+} from '../../../utils/variables.styled';
 import * as S from './ModalRegistration.styled';
 import { useHubContext } from '../../../redux/Context';
 import { BtnRegistration } from './BtnRegistration';
@@ -10,15 +15,24 @@ import { BtnClose } from '../../common/BtnClose';
 import { IconSvg } from '../../common/IconSvg';
 import { InputСircle } from '../../../utils/common.styled';
 
-export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status } ) => {
-  const { showModalRegister, setShowModalRegister, showModalLogin, setShowModalLogin } = useHubContext();
+export const ModalRegistration = ( {
+  onActiveModal,
+  onActiveModalEmail,
+  status,
+} ) => {
+  const {
+    showModalRegister,
+    setShowModalRegister,
+    showModalLogin,
+    setShowModalLogin,
+  } = useHubContext();
 
   console.log( 'status :>> ', status );
   const initialValues = {
     statusUser: `${status}`,
   };
 
-  const handleSubmit = ( values ) => {
+  const handleSubmit = values => {
     console.log( 'sent statusUser ::>>>', values );
     onActiveModal();
   };
@@ -33,8 +47,8 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
   };
 
   const loginWithGoogle = useGoogleLogin( {
-    onSuccess: ( tokenResponse ) => console.log( 'Success', tokenResponse ),
-    onError: ( onError ) => console.log( 'Error', onError ),
+    onSuccess: tokenResponse => console.log( 'Success', tokenResponse ),
+    onError: onError => console.log( 'Error', onError ),
   } );
 
   // const autoRegistr = useGoogleOneTapLogin( {
@@ -76,12 +90,14 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
             <S.RadioBtn>
               <S.Label>
                 <InputСircle type="radio" name="statusUser" value="teacher" />
-Я викладач
-              </S.Label>
+Я
+                викладач
+</S.Label>
               <S.Label>
                 <InputСircle type="radio" name="statusUser" value="student" />
-Я учень
-              </S.Label>
+Я
+                учень
+</S.Label>
             </S.RadioBtn>
 
             <BtnRegistration
@@ -124,7 +140,7 @@ export const ModalRegistration = ( { onActiveModal, onActiveModalEmail, status }
         <S.Login>
           <p>Я вже зареєстрований</p>
           <button type="button" onClick={ goToLogin }>
-                        Увійти
+            Увійти
           </button>
         </S.Login>
       </S.Article>

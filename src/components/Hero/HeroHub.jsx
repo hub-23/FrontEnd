@@ -3,9 +3,6 @@ import { BtnWrapp, CountainerHero, Text, Title } from './HeroHub.styled';
 import { Modal } from '../../components/modalElements/Modal';
 import { ModalRegistration } from './modals/ModalRegistration';
 import { ModalRegistrationEmail } from './modals/ModalRegistrationEmail';
-import { ModalLastStep } from './modals/ModalLastStep';
-import { ModalConfirmEmail } from './modals/ModalConfirmEmail';
-import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
 import { useHubContext } from '../../redux/Context';
 import { HeroField } from '../HeroField/HeroField';
 import { scrollOnOff } from '../../helpers/scrollOnOff';
@@ -16,38 +13,20 @@ export const HeroHub = () => {
     setShowModalRegister,
     showModalRegisterEmail,
     setShowModalRegisterEmail,
-    showModalLastStep,
-    setShowModalLastStep,
-    showModalConfirmEmail,
-    setShowModalConfirmEmail,
-    showModalThanksForJoining,
-    setShowModalThanksForJoining,
-    showModalLogin,
   } = useHubContext();
+  console.log( 'showModalRegister :>> ', showModalRegister );
 
   const [ status, setStatus ] = useState( '' );
-
-  scrollOnOff( showModalLogin );
 
   const toggleModalRegister = evt => {
     setShowModalRegister( !showModalRegister );
     setStatus( evt?.target.dataset.status );
+    scrollOnOff(); // re scroll
   };
 
   const toggleModalEmail = () => {
     setShowModalRegisterEmail( !showModalRegisterEmail );
-  };
-
-  const toggleModalLastStep = () => {
-    setShowModalLastStep( !showModalLastStep );
-  };
-
-  const toggleModalConfirmEmail = () => {
-    setShowModalConfirmEmail( !showModalConfirmEmail );
-  };
-
-  const toggleModalThanksForJoining = () => {
-    setShowModalThanksForJoining( !showModalThanksForJoining );
+    scrollOnOff(); // re scroll
   };
 
   return (
@@ -94,24 +73,6 @@ export const HeroHub = () => {
       {showModalRegisterEmail && (
         <Modal onActiveModal={ toggleModalEmail }>
           <ModalRegistrationEmail onActiveModal={ toggleModalEmail } />
-        </Modal>
-      )}
-
-      {showModalLastStep && (
-        <Modal onActiveModal={ toggleModalLastStep }>
-          <ModalLastStep onActiveModal={ toggleModalLastStep } />
-        </Modal>
-      )}
-
-      {showModalConfirmEmail && (
-        <Modal onActiveModal={ toggleModalConfirmEmail }>
-          <ModalConfirmEmail onActiveModal={ toggleModalConfirmEmail } />
-        </Modal>
-      )}
-
-      {showModalThanksForJoining && (
-        <Modal onActiveModal={ toggleModalThanksForJoining }>
-          <ModalThanksForJoining onActiveModal={ toggleModalThanksForJoining } />
         </Modal>
       )}
     </>

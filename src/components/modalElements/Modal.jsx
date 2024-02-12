@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Backdrop } from './Modal.styled';
 import { scrollOnOff } from '../../helpers/scrollOnOff';
-
 const modalRoot = document.querySelector( '#root' );
 
 export const Modal = ( { children, onActiveModal } ) => {
@@ -20,8 +19,7 @@ export const Modal = ( { children, onActiveModal } ) => {
     if ( evt.currentTarget === evt.target ) onActiveModal();
   };
 
-  scrollOnOff( onActiveModal );
-  // document.body.style.overflow = 'hidden';
+  scrollOnOff( onActiveModal ); // stop scroll
 
   return createPortal(
     <Backdrop onClick={ handleBackdropClick }>{children}</Backdrop>,
