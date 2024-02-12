@@ -3,61 +3,51 @@ import { BtnWrapp, CountainerHero, Text, Title } from './HeroHub.styled';
 import { Modal } from '../../components/modalElements/Modal';
 import { ModalRegistration } from './modals/ModalRegistration';
 import { ModalRegistrationEmail } from './modals/ModalRegistrationEmail';
-import { ModalLogin } from './modals/ModalLogin';
 import { ModalLastStep } from './modals/ModalLastStep';
 import { ModalConfirmEmail } from './modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
 import { useHubContext } from '../../redux/Context';
 import { HeroField } from '../HeroField/HeroField';
+import { scrollOnOff } from '../../helpers/scrollOnOff';
 
 export const HeroHub = () => {
-  const docVisible = ( document.body.style.overflow = 'visible' ); // re scroll
   const {
     showModalRegister,
     setShowModalRegister,
     showModalRegisterEmail,
     setShowModalRegisterEmail,
-    showModalLogin,
-    setShowModalLogin,
     showModalLastStep,
     setShowModalLastStep,
     showModalConfirmEmail,
     setShowModalConfirmEmail,
     showModalThanksForJoining,
     setShowModalThanksForJoining,
+    showModalLogin,
   } = useHubContext();
 
   const [ status, setStatus ] = useState( '' );
 
-  const toggleModalRegister = ( evt ) => {
+  scrollOnOff( showModalLogin );
+
+  const toggleModalRegister = evt => {
     setShowModalRegister( !showModalRegister );
-    docVisible;
     setStatus( evt?.target.dataset.status );
   };
 
   const toggleModalEmail = () => {
     setShowModalRegisterEmail( !showModalRegisterEmail );
-    docVisible;
-  };
-
-  const toggleModalLogin = () => {
-    setShowModalLogin( !showModalLogin );
-    docVisible;
   };
 
   const toggleModalLastStep = () => {
     setShowModalLastStep( !showModalLastStep );
-    docVisible;
   };
 
   const toggleModalConfirmEmail = () => {
     setShowModalConfirmEmail( !showModalConfirmEmail );
-    docVisible;
   };
 
   const toggleModalThanksForJoining = () => {
     setShowModalThanksForJoining( !showModalThanksForJoining );
-    docVisible;
   };
 
   return (
@@ -66,17 +56,25 @@ export const HeroHub = () => {
         <Title>ПРОСТІР ТАЛАНОВИТИХ ЛЮДЕЙ</Title>
 
         <Text>
-                    Обирай свого викладача і прямуй до результату разом з нами або доєднуйся до команди
-                    вчителів та склади конкуренцію в своїй ніші
+          Обирай свого викладача і прямуй до результату разом з нами або
+          доєднуйся до команди вчителів та склади конкуренцію в своїй ніші
         </Text>
 
         <BtnWrapp>
-          <button type="button" data-status="teacher" onClick={ toggleModalRegister }>
-                        Стати викладачем
+          <button
+            type="button"
+            data-status="teacher"
+            onClick={ toggleModalRegister }
+          >
+            Стати викладачем
           </button>
 
-          <button type="button" data-status="student" onClick={ toggleModalRegister }>
-                        Стати учнем
+          <button
+            type="button"
+            data-status="student"
+            onClick={ toggleModalRegister }
+          >
+            Стати учнем
           </button>
         </BtnWrapp>
 
@@ -96,12 +94,6 @@ export const HeroHub = () => {
       {showModalRegisterEmail && (
         <Modal onActiveModal={ toggleModalEmail }>
           <ModalRegistrationEmail onActiveModal={ toggleModalEmail } />
-        </Modal>
-      )}
-
-      {showModalLogin && (
-        <Modal onActiveModal={ toggleModalLogin }>
-          <ModalLogin onActiveModal={ toggleModalLogin } />
         </Modal>
       )}
 

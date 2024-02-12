@@ -4,8 +4,14 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { object, string } from 'yup';
 
 import * as S from './ModalLogin.styled';
-import { bgColorGradientBtn, black, gray, grayStroke, white } from '../../../utils/variables.styled';
-import { BtnRegistration } from './BtnRegistration';
+import {
+  bgColorGradientBtn,
+  black,
+  gray,
+  grayStroke,
+  white,
+} from '../../../utils/variables.styled';
+import { BtnRegistration } from '../../Hero/modals/BtnRegistration';
 import { IconSvg } from '../../common/IconSvg';
 import { BtnEye } from '../../common/BtnEye';
 import { BtnClose } from '../../common/BtnClose';
@@ -14,10 +20,13 @@ import { InputField } from '../../modalElements/InputField';
 
 export const ModalLogin = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
-  const { setShowModalLogin, setShowModalRegister, setShowModalLastStep } = useHubContext();
+  const { setShowModalLogin, setShowModalRegister, setShowModalLastStep }
+    = useHubContext();
 
   const schema = object( {
-    email: string().email( 'Невірно вказано e-mail' ).required( 'Вкажіть ваш e-mail' ),
+    email: string()
+      .email( 'Невірно вказано e-mail' )
+      .required( 'Вкажіть ваш e-mail' ),
     password: string().required( 'Вкажіть ваш пароль' ),
     accept: string(),
   } );
@@ -32,12 +41,12 @@ export const ModalLogin = ( { onActiveModal } ) => {
     console.log( '💙💛 send Data Login to Backend  :>> ', values );
     resetForm();
     onActiveModal();
-    setShowModalLastStep( ( prev ) => !prev );
+    setShowModalLastStep( prev => !prev );
   };
 
   const loginWithGoogle = useGoogleLogin( {
-    onSuccess: ( tokenResponse ) => console.log( 'Success', tokenResponse ),
-    onError: ( onError ) => console.log( 'Error', onError ),
+    onSuccess: tokenResponse => console.log( 'Success', tokenResponse ),
+    onError: onError => console.log( 'Error', onError ),
   } );
 
   return (
@@ -67,8 +76,12 @@ export const ModalLogin = ( { onActiveModal } ) => {
           <p>Вхід</p>
         </S.Title>
 
-        <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
-          {( formik ) => {
+        <Formik
+          initialValues={ initialValues }
+          validationSchema={ schema }
+          onSubmit={ handleSubmit }
+        >
+          {formik => {
             const {
               errors: { email, password },
               touched,
@@ -106,22 +119,22 @@ export const ModalLogin = ( { onActiveModal } ) => {
                     click={ () => setSowPassword( !showPassword ) }
                   >
                     {showPassword ? (
-                                            <IconSvg
-                                              xlWidth="24px"
-                                              xlHeight="24px"
-                                              smWidth="20px"
-                                              smHeight="20px"
-                                              icon="icon-eye-slash"
-                                            />
-                                        ) : (
-                                            <IconSvg
-                                              xlWidth="24px"
-                                              xlHeight="24px"
-                                              smWidth="20px"
-                                              smHeight="20px"
-                                              icon="icon-eye"
-                                            />
-                                        )}
+                      <IconSvg
+                        xlWidth="24px"
+                        xlHeight="24px"
+                        smWidth="20px"
+                        smHeight="20px"
+                        icon="icon-eye-slash"
+                      />
+                    ) : (
+                      <IconSvg
+                        xlWidth="24px"
+                        xlHeight="24px"
+                        smWidth="20px"
+                        smHeight="20px"
+                        icon="icon-eye"
+                      />
+                    )}
                   </BtnEye>
                 </S.LabelFormUser>
 
@@ -159,12 +172,18 @@ export const ModalLogin = ( { onActiveModal } ) => {
                     xlHeight="60px"
                     smHeight="45px"
                     onRegister={ () => {
-                      loginWithGoogle(), setShowModalLogin( ( prev ) => !prev );
+                      loginWithGoogle(), setShowModalLogin( prev => !prev );
                     } }
                     // onRegister={ () => autoRegistr() }
                   >
-                    <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-google" />
-                    <S.BtnTextGoogle $color={ black }>Продовжити з Google</S.BtnTextGoogle>
+                    <IconSvg
+                      xlWidth="24px"
+                      xlHeight="24px"
+                      icon="icon-google"
+                    />
+                    <S.BtnTextGoogle $color={ black }>
+                      Продовжити з Google
+                    </S.BtnTextGoogle>
                   </BtnRegistration>
                 </S.BtnGoogleOne>
               </S.FormLogin>
@@ -178,11 +197,11 @@ export const ModalLogin = ( { onActiveModal } ) => {
           <S.LinkRegistr
             type="button"
             onClick={ () => {
-              setShowModalRegister( ( prev ) => !prev );
-              setShowModalLogin( ( prev ) => !prev );
+              setShowModalRegister( prev => !prev );
+              setShowModalLogin( prev => !prev );
             } }
           >
-                        Зареєструватись
+            Зареєструватись
           </S.LinkRegistr>
         </S.WrappTextRegistr>
       </S.Article>
@@ -198,7 +217,7 @@ export const ModalLogin = ( { onActiveModal } ) => {
           xlHeight="60px"
           smHeight="45px"
           onRegister={ () => {
-            loginWithGoogle(), setShowModalLogin( ( prev ) => !prev );
+            loginWithGoogle(), setShowModalLogin( prev => !prev );
           } }
         >
           <IconSvg xlWidth="32px" xlHeight="32px" icon="icon-google" />

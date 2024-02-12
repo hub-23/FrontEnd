@@ -5,6 +5,8 @@ import { Language } from './Language/Language';
 import { Navigation } from './Navigation/Navigation';
 import { IconSvg } from '../common/IconSvg';
 import { useHubContext } from '../../redux/Context';
+import { Modal } from '../modalElements/Modal';
+import { ModalLogin } from './modals/ModalLogin';
 
 export const Header = () => {
   const {
@@ -14,13 +16,19 @@ export const Header = () => {
     setIsHeroFilterShown,
   } = useHubContext();
   const [ overflow, setOverflow ] = useState( 0 );
+  console.log( 'ShowModalLogin :>> ', showModalLogin );
 
-  const goToLogin = () => {
-    setShowModalLogin( !showModalLogin );
-  };
+  //     const goToLogin = () => {
+  //       setShowModalLogin( !showModalLogin );
+  //     };
 
   const handleCountryOverflow = overflowSize => {
     setOverflow( overflowSize );
+  };
+
+  const toggleModalLogin = () => {
+    setShowModalLogin( !showModalLogin );
+    document.body.style.overflow = 'visible';
   };
 
   return (
@@ -54,8 +62,14 @@ export const Header = () => {
           <Language />
         </S.LanguageWrapper>
 
-        <S.SignInBtn onClick={ goToLogin }>Вхід</S.SignInBtn>
+        <S.SignInBtn onClick={ toggleModalLogin }>Вхід</S.SignInBtn>
       </S.HeaderContainer>
+
+      {showModalLogin && (
+        <Modal onActiveModal={ toggleModalLogin }>
+          <ModalLogin onActiveModal={ toggleModalLogin } />
+        </Modal>
+      )}
     </S.Header>
   );
 };
