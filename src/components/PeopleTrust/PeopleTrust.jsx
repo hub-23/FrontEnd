@@ -36,13 +36,11 @@ export const PeopleTrust = () => {
   }, [] );
 
   useEffect( () => {
-    console.log( 'dd' );
     const checkMapWidth = () => {
       const mapContainer = mapContainerRef.current;
 
       if ( mapContainer ) {
         const mapWidth = mapContainer.clientWidth;
-        console.log( mapWidth );
         setMapWidth( mapWidth );
       }
     };

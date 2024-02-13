@@ -8,8 +8,11 @@ import { IconSvg } from '../common/IconSvg';
 import { black } from '../../utils/variables.styled';
 import dataSubject from '../../dataTemp/dataSubject';
 import { HeroFieldSelect } from './HeroFieldSelect';
+import { useHubContext } from '../../redux/Context';
 
 export const HeroField = () => {
+  const { isHeroFilterShown } = useHubContext();
+
   const schema = object( {
     subject_or_occupation: string()
         .max( 30, 'Вкажіть не більше 30 літер' )
@@ -61,7 +64,7 @@ export const HeroField = () => {
         };
 
         return (
-          <FormSearch>
+          <FormSearch $heroFilterShown={ isHeroFilterShown }>
             <Label>
               <IconSvg
                 xlWidth="24px"

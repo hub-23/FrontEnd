@@ -1,14 +1,24 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Field, Form } from 'formik';
 import { device } from '../../styles/device';
 import { accent, black, borderBlue, grayStroke, grayText, white } from '../../utils/variables.styled';
 import { InputСircle } from '../../utils/common.styled';
+
+const show = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const FormSearch = styled( Form )`
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    animation: ${ show } 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;
 
     padding: 12px 31px;
     width: 100%;
@@ -27,6 +37,7 @@ export const FormSearch = styled( Form )`
     @media ${device.sm} {
         padding: 25px 20px 20px 20px;
         border-radius: 32px 0px;
+        display: ${( props ) => ( props.$heroFilterShown === true ? 'block' : 'none' )};
     }
 `;
 

@@ -20,6 +20,7 @@ export const CountainerHero = styled( Container )`
     background-color: #c4c4c4;
 
     @media ${device.md} {
+        margin-top: 0;
         padding-top: 141px;
         padding-bottom: 199px;
         background-image: url(${imageTablet});

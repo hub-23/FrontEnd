@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './MobileMenu.styled';
 import { IconSvg } from '../../common/IconSvg';
-import { CountryFilterBtn } from '../CountryFilter/CountryFilterBtn';
 import { Navigation } from '../Navigation/Navigation';
 import { useHubContext } from '../../../redux/Context';
 import { Language } from '../Language/Language';
@@ -12,6 +11,7 @@ export const MobileMenu = ( { onActiveModal } ) => {
 
   return (
     <S.MobileMenuContainer>
+
       <S.MobileMenuHeder>
         <S.LogoLink to='/'>
           <S.Logo alt='HUB23' />
@@ -31,11 +31,7 @@ export const MobileMenu = ( { onActiveModal } ) => {
         </S.CrossBtn>
       </S.MobileMenuHeder>
 
-      <S.Content>
-        <S.CountryFilterWrapper>
-          <CountryFilterBtn />
-        </S.CountryFilterWrapper>
-
+      <div>
         <S.NavWrapper>
           <Navigation />
         </S.NavWrapper>
@@ -43,12 +39,12 @@ export const MobileMenu = ( { onActiveModal } ) => {
         <S.SignInBtn onClick={ () => setShowModalLogin( !showModalLogin ) }>
           Вхід
         </S.SignInBtn>
+      </div>
+      
+      <S.LanguageWrapper>
+        <Language />
+      </S.LanguageWrapper>
 
-        <S.LanguageWrapper>
-          <Language />
-        </S.LanguageWrapper>
-
-      </S.Content>
     </S.MobileMenuContainer>
   );
 };
