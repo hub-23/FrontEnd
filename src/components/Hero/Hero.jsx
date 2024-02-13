@@ -14,6 +14,7 @@ export const Hero = () => {
     showModalRegisterEmail,
     setShowModalRegisterEmail,
   } = useHubContext();
+  // console.log( 'showModalRegister :>> ', showModalRegister );
 
   const [ status, setStatus ] = useState( '' );
 

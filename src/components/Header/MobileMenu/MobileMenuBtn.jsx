@@ -22,9 +22,9 @@ export const MobileMenuBtn = () => {
         onClick={ () => setIsModalOpen( !isModalOpen ) }
       >
         {isModalOpen ? (
-                    <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-cross" />
+                    <IconSvg width="24px" height="24px" icon="icon-cross" />
                 ) : (
-                    <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-burger" />
+                    <IconSvg width="24px" height="24px" icon="icon-burger" />
                 )}
       </S.BurgerBtn>
 

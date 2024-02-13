@@ -17,7 +17,7 @@ export const Context = ( { children } ) => {
   } catch ( error ) {
     console.log( error.message );
   }
-
+  
   const [ selectedCountry, setSelectedCountry ] = useState( storedCountry );
 
   return (

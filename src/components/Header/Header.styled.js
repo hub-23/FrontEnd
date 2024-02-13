@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { device } from '../../styles/device';
 import { Link } from 'react-router-dom';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
@@ -12,68 +12,50 @@ export const Header = styled.header`
     padding-bottom: 16px;
     background-color: ${( props ) => props.color || props.theme.colors.white};
     box-shadow: 0 4px 4px rgba(45, 45, 45, 0.20);
-    @media screen and (max-width: 834px) {
+
+    @media ${device.md} {
         background-color: transparent;
         box-shadow: none;
     }
 `;
 
 export const HeaderContainer = styled.div`
-    width: 1440px;
-    display: flex;
-    align-items: center;
+    max-width: 1440px;
     margin: 0 auto;
     padding-left: 160px;
-    padding-right: 160px;  
-    @media ${device.xxl} { // 1440
-        width: 1200px;
+    padding-right: 160px; 
+
+    @media ${device.xl} {
         padding-left: 40px;
         padding-right: 40px;
     }
-    @media ${device.xl} { // 1200
-        width: 992px;
-        padding-left: 30px;
-        padding-right: 30px;
+    @media ${device.md} {
+        max-width: 768px;
     }
-    @media ${device.lg} { // 992  
-        width: 835px;
-    }
-    @media screen and (max-width: 834px) { // до - моб меню
-        width: 100%;
+    @media ${device.sm} {
         padding-left: 20px;
         padding-right: 20px;
     }
 `;
 
+export const HeaderContent = styled.div`
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+`;
+
 export const LogoLink = styled( Link )`
-    ${( props ) => props.$overflow
-      ? css`
-          margin-right: ${142 - props.$overflow}px;
-        `
-      : css`
-          margin-right: 142px;
-    `};
-    @media ${device.xl} {
-        ${( props ) => props.$overflow
-        ? css`
-            margin-right: ${80 - props.$overflow}px; // 30px;
-            `
-        : css`
-            margin-right: 70px;
-        `};
-    }
-    @media ${device.lg} {
-        margin-right: 40px;
-    }
-    @media screen and (max-width: 834px) {
+    @media ${device.md} {
         margin-right: auto;
     }
 `;
 
 export const Logo = styled( LogoSvg )`
+    display: flex;
+    align-items: center;
     width: 152px;
     height: 40px;
-    @media screen and (max-width: 360px) {
+    @media ${device.sm} {
         width: 93px;
         height: 23px;
     }
@@ -81,16 +63,21 @@ export const Logo = styled( LogoSvg )`
 
 export const SearchBtn = styled.button`
     display: none;
-    @media screen and (max-width: 360px) {
-        display: block;
+    @media ${device.sm} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
         margin-right: 17px;
         background-color: transparent;
         border: none;
         fill: none;
         stroke: ${( props ) => props.color || props.theme.colors.black};
+        transition: fill ${transition};
         &:hover,
         &:focus {
-            stroke: ${( props ) => props.color || '#797979'};
+            fill: ${( props ) => props.color || props.theme.colors.black};
         }
     }
 `;
@@ -100,95 +87,39 @@ export const NavWrapper = styled.div`
         display: flex;
         align-items: center;
         gap: 48px;
-        ${( props ) => props.$overflow
-        ? css`
-            margin-right: ${143 - props.$overflow}px;
-            `
-        : css`
-          margin-right: 143px;
-        `};
+
         @media ${device.xl} {
-            ${( props ) => props.$overflow
-            ? css`
-                gap: 23px;
-                margin-right: ${91 - props.$overflow}px;
-                `
-            : css`
-                gap: 32px;
-                margin-right: 71px;
-            `};
-        }
-        @media ${device.lg} {
             gap: 25px;
-            margin-right: 40px;
-        }
-        @media screen and (max-width: 834px) {
-            margin-right: 0;
         }
         > a {
             font-size: 20px;
             letter-spacing: 0.2px;
             white-space: nowrap;
-            @media ${device.lg} {
+            @media ${device.sm} {
                 font-size: 16px;
             }
-            @media screen and (max-width: 834px) {
+            @media ${device.md} {
                 display: none;
             }
         }
     }
 `;
 
-export const CountryMenuWrapper = styled.div`
-    margin-right: 23px;
-    > div {
-        gap: 8px;
-    }
-    > div > p {
-        font-size: 20px;
-        line-height: 1.4;
-        letter-spacing: 0.2px;
-        white-space: nowrap;
-        min-width: 50px;
-        max-width: 180px;
-        overflow: hidden; 
-        text-overflow: ellipsis;
-        @media ${device.lg} {
-            font-size: 16px;
-            max-width: 73px;
-        }
-    }
-    > div > button {
-        width: 12px;
-        height: 28px;
-    }
-    @media ${device.lg} {
-        margin-right: 15px;
-    }
-    @media screen and (max-width: 834px) {
-        display: none;
-    }
+export const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
 `;
 
 export const LanguageWrapper = styled.div`
-    margin-right: 40px; 
+    margin-right: 40px;
     > div > button {
         font-size: 20px;
         letter-spacing: 0.2px;
-        @media ${device.lg} {
-            font-size: 16px;
-        }
     }
     @media ${device.xl} {
-        ${( props ) => props.$overflow
-        ? css`
-            margin-right: 25px;
-        `
-        : css`
-            margin-right: 35px;
-        `};
+        margin-right: 25px;
     }
-    @media screen and (max-width: 834px) {
+    @media ${device.md} {
         display: none;
     }
 `;
@@ -217,12 +148,7 @@ export const SignInBtn = styled( Link )`
     border-color: ${( props ) => props.color || props.theme.colors.primary};
     color: ${( props ) => props.color || props.theme.colors.white};
   }
-  @media ${device.xl} {
-    width: 98px;
-    height: 43px;
-    font-size: 16px;
-  }
-  @media screen and (max-width: 834px) {
+  @media ${device.md} {
     display: none;
   }
 `;
