@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Routes, Route } from 'react-router';
 import Theme from '../../theme/Theme';
-import Home from '../../pages/Home';
+import Home from '../../pages/HomePage';
 
 import GeneralStyles from '../../generalStyles';
 import Layout from '../Layout/Layout';
-import Student from '../../pages/Student/Student';
-import Teacher from '../../pages/Teacher/Teacher';
-import NoMatch from '../NoMatch';
-import About from '../../pages/About/AboutUs';
+
+const Teacher = lazy( () => import( '../../pages/TeachersPage' ) );
+const About = lazy( () => import( '../../pages/AboutUsPage' ) );
+const Feedback = lazy( () => import( '../../pages/FeedbackPage' ) );
+const Student = lazy( () => import( '../../pages/StudentPage' ) );
 
 const App = () => {
   return (
@@ -16,15 +17,15 @@ const App = () => {
       <GeneralStyles />
       <Theme>
         <Routes>
-          <Route path='/' element = { <Layout /> }>
+          <Route path="/" element={ <Layout /> }>
             <Route index element={ <Home /> } />
-            <Route path='teacher' element={ <Teacher /> } />
-            <Route path='about' element={ <About /> } />
-            <Route path='feedback' element={ <h1>Feedback</h1> } />
-            <Route path='language' element={ <h1>List of language</h1> } />
-            <Route path='signIn' element={ <h1>Вхід</h1> } />
-            <Route path='student' element={ <Student /> } />
-            <Route path='*' element={ <NoMatch /> } />
+            <Route path="teacher" element={ <Teacher /> } />
+            <Route path="about" element={ <About /> } />
+            <Route path="feedback" element={ <Feedback /> } />
+            {/* <Route path="language" element={ <h1>List of language</h1> } /> */}
+            <Route path="signIn" element={ <h1>Вхід</h1> } />
+            <Route path="student" element={ <Student /> } />
+            <Route path="*" element={ <Home /> } />
           </Route>
         </Routes>
       </Theme>
