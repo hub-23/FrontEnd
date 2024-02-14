@@ -11,14 +11,6 @@ export const Context = ( { children } ) => {
   const [ showModalConfirmEmail, setShowModalConfirmEmail ] = useState( false );
   const [ showModalThanksForJoining, setShowModalThanksForJoining ] = useState( false );
   const [ isHeroFilterShown, setIsHeroFilterShown ] = useState( false );
-  let storedCountry = 'Україна';
-  try {
-    storedCountry = JSON.parse( localStorage.getItem( 'selectedCountry' ) ) || 'Україна';
-  } catch ( error ) {
-    console.log( error.message );
-  }
-  
-  const [ selectedCountry, setSelectedCountry ] = useState( storedCountry );
 
   return (
     <HubContext.Provider
@@ -37,8 +29,6 @@ export const Context = ( { children } ) => {
         setShowModalThanksForJoining,
         isHeroFilterShown,
         setIsHeroFilterShown,
-        selectedCountry,
-        setSelectedCountry,
       } }
     >
       {children}

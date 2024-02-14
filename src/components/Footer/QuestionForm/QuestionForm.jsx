@@ -13,6 +13,7 @@ import { SaveToLocalStorage } from './SaveToLocalStorage';
 import { grayText, deepAccent } from '../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
 
+
 export const QuestionForm = ( { onActiveModal } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
@@ -95,7 +96,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
     setIsDropdownShown( !isDropdownShown );
   };
 
-  const handleCloseForm = () => {
+  const handleCloseNotification = () => {
     onActiveModal();
     setIsNotificationShown( !isNotificationShown );
     document.body.style.overflow = 'visible';
@@ -275,9 +276,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
         </Formik>
       </div>
       {isNotificationShown && (
-        <Modal onActiveModal={ handleCloseForm }>
+        <Modal onActiveModal={ handleCloseNotification }>
           <Notification
-            onActiveModal={ handleCloseForm }
+            onActiveModal={ handleCloseNotification }
             success={ true }
             // success={ false } // залежно від status code з бекенду
           />

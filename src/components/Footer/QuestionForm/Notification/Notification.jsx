@@ -5,6 +5,7 @@ import { accent } from '../../../../utils/variables.styled';
 import * as S from './Notification.styled';
 
 export const Notification = ( { onActiveModal, success } ) => {
+
   return (
     <S.NotificationWrapper>
       <BtnClose onActiveModal={ onActiveModal }/>
