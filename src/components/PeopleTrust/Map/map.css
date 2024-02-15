@@ -14,3 +14,7 @@
 .combined-marker {
     filter: none;
 }
+
+.leaflet-control-container {
+    display: none;
+}

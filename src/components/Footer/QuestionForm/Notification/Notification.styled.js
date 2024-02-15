@@ -12,12 +12,17 @@ export const NotificationWrapper = styled.div`
     background: ${( props ) => props.color || props.theme.colors.white};  
 
     @media ${device.md} {  
-        max-width: 516px;
-        padding: 48px;
+        max-width: 480px;
+        padding: 48px 40px;
     }
     @media ${device.sm} {  
-        max-width: 360px;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        height: 100%;
+        margin: 0;
         padding: 32px 20px;
+        border-radius: 0;
     }
 `;
 
@@ -38,10 +43,6 @@ export const IconWrapper = styled.div`
         width: 60px;
         height: 60px;
     }
-    @media ${device.sm} {  
-        width: 50px;
-        height: 50px;
-    }
 `;
 
 export const KeyMessage = styled.p`
@@ -55,10 +56,13 @@ export const KeyMessage = styled.p`
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.black};
 
-    @media ${device.sm} {  
-        font-size: 20px;
+    @media ${device.md} {  
         margin-top: 20px;
-        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    @media ${device.sm} {  
+        margin-top: 32px;
+        font-size: 20px;
     }
 `;
 
@@ -69,11 +73,6 @@ export const Details = styled.p`
     line-height: 1.4;
     letter-spacing: 0.16px;
     color: ${( props ) => props.color || props.theme.colors.black};
-
-    @media ${device.sm} {  
-        font-size: 14px;
-        margin-bottom: 20px;
-    }
 `;
 
 export const LinkBtn = styled( Button )`
@@ -86,7 +85,13 @@ export const LinkBtn = styled( Button )`
     line-height: 1.4;
     letter-spacing: 1%;
 
+    @media ${device.md} {  
+        height: 60px;
+    }
     @media ${device.sm} {  
         font-size: 16px;
+        font-weight: 500;
+        height: 50px;
+        margin-top: auto;
     }
 `;
