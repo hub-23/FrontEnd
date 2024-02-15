@@ -7,18 +7,15 @@ import { IconSvg } from '../../common/IconSvg';
 import { PhoneSelect } from '../../common/PhoneSelect';
 import { DropdownTopic } from './DropdownTopic/DropdownTopic';
 import { Message } from './Message/Message';
-import { Modal } from '../../modalElements/Modal';
-import { Notification } from './Notification/Notification';
 import { SaveToLocalStorage } from './SaveToLocalStorage';
 import { grayText, deepAccent } from '../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
 
 
-export const QuestionForm = ( { onActiveModal } ) => {
+export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
   const [ codeCountry, setCodeCountry ] = useState( '+380' );
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
   const [ images, setImages ] = useState( [] );
-  const [ isNotificationShown, setIsNotificationShown ] = useState( false );
 
   const notificationTopics = [
     'Технічна підтримка',
@@ -84,7 +81,8 @@ export const QuestionForm = ( { onActiveModal } ) => {
     } );
 
     resetForm();
-    setIsNotificationShown( true );
+    onFormClose();
+    onNotificationShow();
   };
 
   const handleGetSelected = ( values ) => {
@@ -96,15 +94,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
     setIsDropdownShown( !isDropdownShown );
   };
 
-  const handleCloseNotification = () => {
-    onActiveModal();
-    setIsNotificationShown( !isNotificationShown );
-    document.body.style.overflow = 'visible';
-  };
-
   return (
-    <S.QuestionFormContainer $isNotificationShown={ isNotificationShown }>
-      <BtnClose onActiveModal={ onActiveModal } />
+    <S.QuestionFormContainer>
+      <BtnClose onActiveModal={ onFormClose } />
       <S.Title>Залишились питання?</S.Title>
       <S.Text>
                 Напишіть своє повідомлення, використовуючи форму, або зверніться напряму за електронною
@@ -139,7 +131,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       id="name"
                     />
                     <S.Label htmlFor="name">
-                                            Ім’я
+                      Ім’я
                       <S.IconContainer>
                         <IconSvg
                           xlWidth="10px"
@@ -165,7 +157,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       id="email"
                     />
                     <S.Label htmlFor="email">
-                                            Електронна адреса
+                      Електронна адреса
                       <S.IconContainer>
                         <IconSvg
                           xlWidth="10px"
@@ -217,7 +209,7 @@ export const QuestionForm = ( { onActiveModal } ) => {
                       id="topic"
                     />
                     <S.Label htmlFor="topic">
-                                            Тема повідомлення
+                      Тема повідомлення
                       <S.IconContainer>
                         <IconSvg
                           xlWidth="10px"
@@ -234,7 +226,9 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     onClick={ () => setIsDropdownShown( !isDropdownShown ) }
                     $rotate={ isDropdownShown }
                   >
-                    <IconSvg xlWidth="11px" xlHeight="6px" icon="icon-arrow-down" />
+                    <div>
+                      <IconSvg width="11px" height="11px" icon="icon-arrow-down" />
+                    </div>
                   </S.DropdownBtn>
                   <SaveToLocalStorage fieldName="topic" />
                   <FormError name="topic" isMarginLeft={ true } />
@@ -263,27 +257,18 @@ export const QuestionForm = ( { onActiveModal } ) => {
                     icon="icon-star-marker"
                   />
                   <S.WarningText $color={ errName }>
-                                        Ці поля є обов&apos;язковими до заповнення
+                    Ці поля є обов&apos;язковими до заповнення
                   </S.WarningText>
                 </S.WrappWarningText>
 
                 <S.SubmitBtn type="submit" variant="blue">
-                                    Надіслати
+                  Надіслати
                 </S.SubmitBtn>
               </S.FormFild>
             );
           }}
         </Formik>
       </div>
-      {isNotificationShown && (
-        <Modal onActiveModal={ handleCloseNotification }>
-          <Notification
-            onActiveModal={ handleCloseNotification }
-            success={ true }
-            // success={ false } // залежно від status code з бекенду
-          />
-        </Modal>
-      )}
     </S.QuestionFormContainer>
   );
 };

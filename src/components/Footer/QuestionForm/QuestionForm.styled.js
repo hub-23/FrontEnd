@@ -14,7 +14,6 @@ import {
 
 export const QuestionFormContainer = styled.div`
     position: absolute;
-    display: ${( props ) => props.$isNotificationShown && 'none' }; 
     max-width: 800px;
     margin: 0 20px;
     max-height: 95%;
@@ -169,22 +168,23 @@ export const IconContainer = styled.span`
 
 export const DropdownBtn = styled.button`
     position: absolute;
-    right: 16px;
-    top: 17px;
-    width: 24px;
-    height: 24px;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
-    transform: ${( props ) => ( props.$rotate ? 'rotate(180deg)' : '' ) };
     background-color: transparent;
+    padding-right: 23px;
     border: none;
+    border-radius: 16px 0px;
     fill: ${( props ) => props.color || props.theme.colors.black};
     -webkit-transition: rotate ${transition};
     transition: rotate ${transition};
-
-    @media ${device.sm} {
-        top: 12px;
+    > div {
+        width: fit-content;
+        transform: ${( props ) => ( props.$rotate ? 'rotate(180deg)' : '' ) };        
     }
 `;
 

@@ -4,12 +4,14 @@ import * as S from './Footer.styled';
 import { IconSvg } from '../common/IconSvg';
 import { Modal } from '../modalElements/Modal';
 import { QuestionForm } from './QuestionForm/QuestionForm';
+import { Notification } from './QuestionForm/Notification/Notification';
 
 export const Footer = () => {
-  const [ isModalOpen, setIsModalOpen ] = useState( false );
+  const [ isFormOpen, setIsFormOpen ] = useState( false );
+  const [ isNotificationShown, setIsNotificationShown ] = useState( false );
 
-  const toggleModal = ( e ) => {
-    setIsModalOpen( !isModalOpen );
+  const handleNotificationClose = () => {
+    setIsNotificationShown( false );
     document.body.style.overflow = 'visible';
   };
 
@@ -76,12 +78,27 @@ export const Footer = () => {
 
           <S.FormBtnWrapper>
             <S.Header>Залишились питання?</S.Header>
-            <S.FormBtn type="button" onClick={ () => setIsModalOpen( !isModalOpen ) }>
-                            Заповнити форму
+            <S.FormBtn
+              type="button"
+              onClick={ () => setIsFormOpen( true ) }
+            >
+              Заповнити форму
             </S.FormBtn>
-            {isModalOpen && (
-              <Modal onActiveModal={ toggleModal }>
-                <QuestionForm onActiveModal={ toggleModal } />
+            {isFormOpen && (
+              <Modal onActiveModal={ () => setIsFormOpen( false ) }>
+                <QuestionForm
+                  onFormClose={ () => setIsFormOpen( false ) }
+                  onNotificationShow={ () => setIsNotificationShown( true ) }
+                />
+              </Modal>
+            )}
+            {isNotificationShown && (
+              <Modal onActiveModal={ handleNotificationClose }>
+                <Notification
+                  onNotificationClose={ handleNotificationClose }
+                  success={ true }
+                  // success={ false } // залежно від status code з бекенду
+                />
               </Modal>
             )}
           </S.FormBtnWrapper>
