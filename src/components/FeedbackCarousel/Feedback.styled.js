@@ -251,8 +251,8 @@ export const ControlBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 26px;
-  height: 26px;
+  width: 27px;
+  height: 27px;
   background-color: transparent;
   border: none;
 

@@ -42,7 +42,7 @@ export const BtnClose = styled.button`
     }
     @media ${device.sm} {
         top: 12px;
-        right: 12px;
+        right: 20px;
         width: 24px;
         height: 24px;
         border-radius: 8px 0;

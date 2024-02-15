@@ -15,6 +15,6 @@
     filter: none;
 }
 
-.leaflet-control-zoom {
+.leaflet-control-container {
     display: none;
 }
