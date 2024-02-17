@@ -7,7 +7,6 @@ import { Input } from '../../../modalElements/Input';
 import { InputFieldPhone } from '../../../modalElements/InputFieldPhone';
 import { InputDropdown } from '../../../modalElements/InputDropdown';
 import { Message } from './Message/Message';
-import { SaveToLocalStorage } from './SaveToLocalStorage';
 import { nameExp, deepAccent } from '../../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
 
@@ -155,7 +154,6 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                       $xlFontSizeList="16px"
                     />
                   </div>
-                  <SaveToLocalStorage fieldName="phone" />
                 </>
 
                 <Input 
