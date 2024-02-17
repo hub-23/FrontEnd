@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { FormError } from '../FormError/FormError';
-import { IconSvg } from '../../../common/IconSvg';
+import { FormError } from '../../../../modalElements/FormError';
+import { IconSvg } from '../../../../common/IconSvg';
 import { UploadPopup } from '../UploadPopup/UploadPopup';
 import { ImagesList } from '../ImagesList/ImagesList';
 import { SaveToLocalStorage } from '../SaveToLocalStorage';
-import { InputLableBox, IconContainer } from '../QuestionForm.styled';
-import { grayText } from '../../../../utils/variables.styled';
+import { grayText } from '../../../../../utils/variables.styled';
 import * as S from './Message.styled';
 
 
@@ -53,8 +52,8 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
 
   return (
     <div>
-      <S.InputWrapper $error={ errMessage } $value={ values.message } >
-        <InputLableBox>
+      <S.InputContainer $error={ errMessage } $value={ values.message } >
+        <S.InputWrapper>
           <S.Textarea
             name="message"
             component="textarea"
@@ -64,16 +63,16 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
           />
           <S.Label htmlFor="message">
             Повідомлення
-            <IconContainer >
+            <S.IconWrapper >
               <IconSvg
                 xlWidth="10px"
                 xlHeight="10px"
                 $fill={ grayText }
                 icon="icon-star-marker"
               />
-            </IconContainer>
+            </S.IconWrapper>
           </S.Label>
-        </InputLableBox>
+        </S.InputWrapper>
         { images?.length > 0 && (
           <ImagesList
             images={ images }
@@ -95,9 +94,9 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
         {uploadPopupVisible && (
           <UploadPopup handleImageSelect={ handleImageSelect } />
         ) }
-      </S.InputWrapper>
+      </S.InputContainer>
       <SaveToLocalStorage fieldName="message" />
-      <FormError name="message" isMarginLeft={ true } />
+      <FormError name="message" />
     </div>
   );
 };

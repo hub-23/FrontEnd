@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
-import { device } from '../../../../styles/device';
+import { device } from '../../styles/device';
+import { transitionB } from '../../utils/variables.styled';
 
 const show = keyframes`
   from {
@@ -22,7 +23,7 @@ export const Dropdown = styled.div`
     box-shadow: 0px -1px 4px 0px rgba(45, 45, 45, 0.05),
                  4px 4px 4px 0px rgba(45, 45, 45, 0.20),
                  -2px 0px 4px 0px rgba(45, 45, 45, 0.05);   
-    animation: ${ show } 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;              
+    animation: ${ show } ${ transitionB };              
     & > ul > li {
         padding: 5px 36px;
         font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};

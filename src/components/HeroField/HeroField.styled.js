@@ -1,7 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 import { Field, Form } from 'formik';
 import { device } from '../../styles/device';
-import { accent, black, borderBlue, grayStroke, grayText, white } from '../../utils/variables.styled';
+import { 
+    accent, black, borderBlue, grayStroke, grayText, white, transitionB
+} from '../../utils/variables.styled';
 import { InputСircle } from '../../utils/common.styled';
 
 const show = keyframes`
@@ -18,7 +20,7 @@ export const FormSearch = styled( Form )`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    animation: ${ show } 0.45s cubic-bezier(0, 0.1, 0.2, 1) 1;
+    animation: ${ show } ${ transitionB };
 
     padding: 12px 31px;
     width: 100%;

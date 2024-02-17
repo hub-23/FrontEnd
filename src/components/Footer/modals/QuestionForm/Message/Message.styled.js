@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
-import { device } from '../../../../styles/device';
+import { device } from '../../../../../styles/device';
 import {
   borderBlue,
   borderError,
@@ -9,10 +9,10 @@ import {
   grayText,
   white,
   transition,
-} from '../../../../utils/variables.styled';
+} from '../../../../../utils/variables.styled';
 
 
-export const InputWrapper = styled.div`
+export const InputContainer = styled.div`
     position: relative;
 
     border-width: 1px;
@@ -29,6 +29,10 @@ export const InputWrapper = styled.div`
         outline: none;
         border-color: ${( props ) => props.$error ? props.theme.colors.accent : borderBlue };
     }
+`;
+
+export const InputWrapper = styled.div`
+    position: relative;
 `;
 
 export const Textarea = styled( Field )`
@@ -94,6 +98,11 @@ export const Label = styled.label`
         left: 24px;
         font-size: 16px;
     }
+`;
+
+export const IconWrapper = styled.span`
+    position: absolute;
+    top: -4px;
 `;
 
 export const ClipBtn = styled.button`

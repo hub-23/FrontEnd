@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconSvg } from '../../../common/IconSvg';
+import { IconSvg } from '../../../../common/IconSvg';
 import * as S from './ImagesList.styled';
 
 

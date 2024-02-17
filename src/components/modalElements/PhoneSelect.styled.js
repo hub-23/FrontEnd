@@ -3,19 +3,21 @@ import { black, grayStroke, white } from '../../utils/variables.styled';
 import { device } from '../../styles/device';
 
 export const PhoneCode = styled.div`
+    /* background-color: brown; */
     position: absolute;
-    top: ${( { $xlPositionTopList } ) => $xlPositionTopList};
+    top: ${( { $xlPositionTopList } ) => $xlPositionTopList || '0'}; //
     left: ${( { $xlPositionLeftList } ) => $xlPositionLeftList};
-    width: ${( { $isShow } ) => $isShow && '100%'};
-    z-index: 1;
+    width: ${( { $isShow, $xlPositionLeftList } ) => $isShow && `${100% - $xlPositionLeftList}` }; //
+    z-index: 3;
     cursor: pointer;
 
     @media ${device.sm} {
-        top: ${( { $smPositionTopList } ) => $smPositionTopList};
+        top: ${( { $smPositionTopList } ) => $smPositionTopList || '0'}; //
     }
 `;
 
 export const TextWrapp = styled.div`
+    /* background-color: yellow; */
     display: flex;
     align-items: center;
 `;

@@ -3,16 +3,21 @@ import { Link } from 'react-router-dom';
 import * as S from './Footer.styled';
 import { IconSvg } from '../common/IconSvg';
 import { Modal } from '../modalElements/Modal';
-import { QuestionForm } from './QuestionForm/QuestionForm';
-import { Notification } from './QuestionForm/Notification/Notification';
+import { QuestionForm } from './modals/QuestionForm/QuestionForm';
+import { Notification } from './modals/Notification/Notification';
+import { scrollOnOff } from '../../helpers/scrollOnOff';
 
 export const Footer = () => {
   const [ isFormOpen, setIsFormOpen ] = useState( false );
   const [ isNotificationShown, setIsNotificationShown ] = useState( false );
 
+  const handleFormClose = () => {
+    setIsFormOpen( false );
+    scrollOnOff();
+  };
   const handleNotificationClose = () => {
     setIsNotificationShown( false );
-    document.body.style.overflow = 'visible';
+    scrollOnOff();
   };
 
   return (
@@ -85,9 +90,9 @@ export const Footer = () => {
               Заповнити форму
             </S.FormBtn>
             {isFormOpen && (
-              <Modal onActiveModal={ () => setIsFormOpen( false ) }>
+              <Modal onActiveModal={ handleFormClose }>
                 <QuestionForm
-                  onFormClose={ () => setIsFormOpen( false ) }
+                  onFormClose={ handleFormClose }
                   onNotificationShow={ () => setIsNotificationShown( true ) }
                 />
               </Modal>

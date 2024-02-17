@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { device } from '../../../../styles/device';
-import { transition } from '../../../../utils/variables.styled';
+import { device } from '../../styles/device';
+import { transition } from '../../utils/variables.styled';
 
 export const BtnClose = styled.button`
     position: absolute;

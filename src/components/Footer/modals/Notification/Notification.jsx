@@ -1,5 +1,5 @@
 import React from 'react';
-import { BtnClose } from '../BtnClose/BtnClose';
+import { BtnClose } from '../../../modalElements/BtnClose';
 import { IconSvg } from '../../../common/IconSvg';
 import { accent } from '../../../../utils/variables.styled';
 import * as S from './Notification.styled';
