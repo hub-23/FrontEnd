@@ -1,8 +1,8 @@
 import React from 'react';
-import * as S from './DropdownTopic.styled';
+import * as S from './DropdownList.styled';
 
 
-export const DropdownTopic = ( { data, handleTopicSelect, formik } ) => {
+export const DropdownList = ( { data, handleTopicSelect, formik } ) => {
   return (
     <S.Dropdown>
       <ul>
