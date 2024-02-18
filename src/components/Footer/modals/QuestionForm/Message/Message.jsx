@@ -3,7 +3,7 @@ import { FormError } from '../../../../modalElements/FormError';
 import { IconSvg } from '../../../../common/IconSvg';
 import { UploadPopup } from '../UploadPopup/UploadPopup';
 import { ImagesList } from '../ImagesList/ImagesList';
-import { SaveToLocalStorage } from '../SaveToLocalStorage';
+import { SaveToLocalStorage } from '../../../../../helpers/SaveToLocalStorage';
 import { grayText } from '../../../../../utils/variables.styled';
 import * as S from './Message.styled';
 
