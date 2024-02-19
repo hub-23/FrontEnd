@@ -3,14 +3,14 @@ import * as S from './MobileMenu.styled';
 import { IconSvg } from '../../common/IconSvg';
 import { Modal } from '../../../components/modalElements/Modal';
 import { MobileMenu } from './MobileMenu';
-import { scrollOnOff } from '../../../helpers/scrollOnOff';
+// import { scrollOnOff } from '../../../helpers/scrollOnOff';
 
 export const MobileMenuBtn = () => {
   const [ isModalOpen, setIsModalOpen ] = useState( false );
 
   const toggleModal = ( e ) => {
     setIsModalOpen( !isModalOpen );
-    scrollOnOff();
+    // scrollOnOff();
   };
 
   return (

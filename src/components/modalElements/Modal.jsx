@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Backdrop } from './Modal.styled';
-import { scrollOnOff } from '../../helpers/scrollOnOff';
+// import { scrollOnOff } from '../../helpers/scrollOnOff';
 const modalRoot = document.querySelector( '#root' );
 
 export const Modal = ( { children, onActiveModal } ) => {
@@ -19,7 +19,22 @@ export const Modal = ( { children, onActiveModal } ) => {
     if ( evt.currentTarget === evt.target ) onActiveModal();
   };
 
-  scrollOnOff( onActiveModal ); // stop scroll
+  // scrollOnOff( onActiveModal ); // stop scroll
+
+  useEffect( () => {
+    const header = document.querySelector( 'header' );
+    const scrollWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    header.style.paddingRight = `${ scrollWidth }px`;
+    document.body.style.paddingRight = `${ scrollWidth }px`;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      header.style.paddingRight = '0';
+      document.body.style.paddingRight = '0';
+      document.body.style.overflow = 'visible';
+    }
+  }, [] );
 
   return createPortal(
     <Backdrop onClick={ handleBackdropClick }>{children}</Backdrop>,

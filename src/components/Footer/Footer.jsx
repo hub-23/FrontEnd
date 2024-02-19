@@ -5,7 +5,6 @@ import { IconSvg } from '../common/IconSvg';
 import { Modal } from '../modalElements/Modal';
 import { QuestionForm } from './modals/QuestionForm/QuestionForm';
 import { Notification } from './modals/Notification/Notification';
-import { scrollOnOff } from '../../helpers/scrollOnOff';
 
 export const Footer = () => {
   const [ isFormOpen, setIsFormOpen ] = useState( false );
@@ -13,11 +12,9 @@ export const Footer = () => {
 
   const handleFormClose = () => {
     setIsFormOpen( false );
-    scrollOnOff();
   };
   const handleNotificationClose = () => {
     setIsNotificationShown( false );
-    scrollOnOff();
   };
 
   return (
