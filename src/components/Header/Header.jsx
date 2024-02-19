@@ -9,7 +9,7 @@ import { ModalLogin } from './modals/ModalLogin';
 import { ModalLastStep } from './modals/ModalLastStep';
 import { ModalConfirmEmail } from './modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
-import { scrollOnOff } from '../../helpers/scrollOnOff';
+// import { scrollOnOff } from '../../helpers/scrollOnOff';
 
 export const Header = () => {
   const {
@@ -31,22 +31,22 @@ export const Header = () => {
 
   const toggleModalLogin = () => {
     setShowModalLogin( !showModalLogin );
-    scrollOnOff(); // re scroll
+    // scrollOnOff(); // re scroll
   };
 
   const toggleModalLastStep = () => {
     setShowModalLastStep( !showModalLastStep );
-    scrollOnOff(); // re scroll
+    // scrollOnOff(); // re scroll
   };
 
   const toggleModalConfirmEmail = () => {
     setShowModalConfirmEmail( !showModalConfirmEmail );
-    scrollOnOff(); // re scroll
+    // scrollOnOff(); // re scroll
   };
 
   const toggleModalThanksForJoining = () => {
     setShowModalThanksForJoining( !showModalThanksForJoining );
-    scrollOnOff(); // re scroll
+    // scrollOnOff(); // re scroll
   };
 
   return (
