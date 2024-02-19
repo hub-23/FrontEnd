@@ -11,15 +11,17 @@ const show = keyframes`
 `;
 
 export const ErrorText = styled.p`
-    position: absolute;
-    margin-left: ${( { $marginLeft } ) => $marginLeft || '19px'};
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  margin-left: ${( { $marginLeft } ) => $marginLeft || '19px'};
 
-    line-height: (15.82 / 14);
+  line-height: (15.82 / 14);
 
-    color: ${accent};
-    animation: ${show} ${transitionB};
+  color: ${accent};
+  animation: ${show} ${transitionB};
 
-    @media ${device.sm} {
-      position: static;
-    }
+  @media ${device.sm} {
+    position: static;
+  }
 `;

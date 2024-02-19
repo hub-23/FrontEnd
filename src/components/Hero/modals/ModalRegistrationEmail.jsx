@@ -118,7 +118,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                 phone: values.touched,
               } );
 
-              console.log( '💙💛 handleGetPhone', values );
+              {
+                /* console.log( '💙💛 handleGetPhone', values ); */
+              }
             }; // значення з InputFieldPhone
 
             return (
