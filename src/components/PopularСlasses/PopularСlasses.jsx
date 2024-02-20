@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Button, SeeMore, Title, TopLessons } from './PopularСlasses.styled';
+import {
+  Button,
+  Container,
+  SeeMore,
+  Title,
+  TopLessons,
+} from './PopularСlasses.styled';
 import sprite from '../../assets/sprite.svg';
 import { dataTopLessons } from './backend_temp';
-import { Container } from '../../utils/common.styled';
 
 export const PopularСlasses = () => {
   const [ data, setData ] = useState( [] );
@@ -23,7 +28,7 @@ export const PopularСlasses = () => {
   }, [ isSeeMore ] );
 
   const addSeeMore = () => {
-    setIsSeeMore( ( prev ) => !prev );
+    setIsSeeMore( prev => !prev );
   };
   return (
     <Container>
@@ -34,10 +39,10 @@ export const PopularСlasses = () => {
             <h2>{nameLesson}</h2>
             <div>
               <p>
-                {numTeach}
-                {' '}
+{numTeach}
+{' '}
 викладач
-              </p>
+</p>
 
               <Button
                 onClick={ () => {
