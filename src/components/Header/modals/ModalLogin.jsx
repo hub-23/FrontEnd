@@ -139,12 +139,12 @@ export const ModalLogin = ( { onActiveModal } ) => {
                 </S.LabelFormUser>
 
                 <S.WrappCheckPass>
-                  <S.LabelCheckbox>
+                  {/* <S.LabelCheckbox>
                     <S.InputCheckbox type="checkbox" name="accept" />
                     <span></span>
 
                     <S.TextCheckbox>Залишитись в системі</S.TextCheckbox>
-                  </S.LabelCheckbox>
+                  </S.LabelCheckbox> */}
 
                   <S.LinkForget>Забули пароль?</S.LinkForget>
                 </S.WrappCheckPass>

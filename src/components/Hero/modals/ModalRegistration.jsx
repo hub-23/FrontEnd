@@ -35,9 +35,6 @@ export const ModalRegistration = ( {
   const handleSubmit = values => {
     console.log( 'sent statusUser ::>>>', values );
     onActiveModal();
-  };
-
-  const registerWithEmail = () => {
     onActiveModalEmail();
   };
 
@@ -108,7 +105,6 @@ export const ModalRegistration = ( {
               strokeColor={ black }
               xlHeight="60px"
               smHeight="45px"
-              onRegister={ registerWithEmail }
             >
               <IconSvg
                 xlWidth="24px"

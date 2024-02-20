@@ -9,7 +9,6 @@ import { ModalLogin } from './modals/ModalLogin';
 import { ModalLastStep } from './modals/ModalLastStep';
 import { ModalConfirmEmail } from './modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
-// import { scrollOnOff } from '../../helpers/scrollOnOff';
 
 export const Header = () => {
   const {
@@ -25,28 +24,20 @@ export const Header = () => {
     setShowModalThanksForJoining,
   } = useHubContext();
 
-  //     const goToLogin = () => {
-  //       setShowModalLogin( !showModalLogin );
-  //     };
-
   const toggleModalLogin = () => {
     setShowModalLogin( !showModalLogin );
-    // scrollOnOff(); // re scroll
   };
 
   const toggleModalLastStep = () => {
     setShowModalLastStep( !showModalLastStep );
-    // scrollOnOff(); // re scroll
   };
 
   const toggleModalConfirmEmail = () => {
     setShowModalConfirmEmail( !showModalConfirmEmail );
-    // scrollOnOff(); // re scroll
   };
 
   const toggleModalThanksForJoining = () => {
     setShowModalThanksForJoining( !showModalThanksForJoining );
-    // scrollOnOff(); // re scroll
   };
 
   return (
@@ -62,11 +53,7 @@ export const Header = () => {
             aria-label="magnifying glass"
             onClick={ () => setIsHeroFilterShown( !isHeroFilterShown ) }
           >
-            <IconSvg
-              width="24px"
-              height="24px"
-              icon="icon-magnifying-glass"
-            />
+            <IconSvg width="24px" height="24px" icon="icon-magnifying-glass" />
           </S.SearchBtn>
 
           <S.NavWrapper>
