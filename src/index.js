@@ -15,7 +15,7 @@ root.render(
     }
   >
     <React.StrictMode>
-      <BrowserRouter basename="/frontend">
+      <BrowserRouter basename="/FrontEnd">
         <Context>
           <App />
         </Context>
