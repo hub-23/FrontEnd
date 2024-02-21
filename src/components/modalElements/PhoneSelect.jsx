@@ -5,7 +5,13 @@ import { Item, List, PhoneCode, TextWrapp, Title } from './PhoneSelect.styled';
 import data from '../modalElements/countries.json';
 import { IconSvg } from '../common/IconSvg';
 
-export const PhoneSelect = ( { valueSelect, xlHeightList, mdHeightList, smHeightList, ...props } ) => {
+export const PhoneSelect = ( {
+  valueSelect,
+  xlHeightList,
+  mdHeightList,
+  smHeightList,
+  ...props
+} ) => {
   const [ showSelect, setShowSelect ] = useState( false );
   const [ dataCountry, setDataCountry ] = useState( { flag: '🇺🇦', code: '+380' } );
 
@@ -22,7 +28,10 @@ export const PhoneSelect = ( { valueSelect, xlHeightList, mdHeightList, smHeight
           width="24px"
           height="24px"
           icon="icon-arrow-phone"
-          style={ { transform: showSelect && 'rotate(180deg)', marginRight: '12px' } }
+          style={ {
+            transform: showSelect && 'rotate(180deg)',
+            marginRight: '12px',
+          } }
         />
       </TextWrapp>
 

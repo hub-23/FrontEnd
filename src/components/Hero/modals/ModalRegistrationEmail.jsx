@@ -117,10 +117,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                 ...touched,
                 phone: values.touched,
               } );
-
-              {
-                /* console.log( '💙💛 handleGetPhone', values ); */
-              }
             }; // значення з InputFieldPhone
 
             return (
@@ -156,7 +152,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     $xlPositionTopList="15px"
                     $smPositionTopList="7px"
                     $xlPositionLeftList="32px"
-                    $xlHeightList="300px"
+                    $xlHeightList="280px"
                     $mdHeightList=""
                     $smHeightList=""
                     $xlGapList="12px"
