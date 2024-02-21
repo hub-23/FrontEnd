@@ -1,6 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
+import nunito from './fonts/Nunito.ttf';
+import montserrat from './fonts/Montserrat.ttf';
 
 const GlobalStyles = createGlobalStyle`
+
+  @font-face {
+    font-family: 'Nunito';
+    src: url(${nunito});
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url(${montserrat});
+  }
+
   * {
     font-family: Nunito;
     font-size: 14px;
