@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device } from '../../styles/device';
 
 
-export const MapSection = styled.section`
+export const Section = styled.section`
     padding-top: 120px;
     padding-bottom: 120px;
 
@@ -12,30 +12,21 @@ export const MapSection = styled.section`
     }
 `;
 
-export const MapContainerr = styled.div`
+export const Container = styled.div`
     margin: 0 auto;
+    max-width: 1440px;
     padding-left: 160px;
     padding-right: 160px;  
 
     @media ${device.md} {
+        max-width: 768px;
         padding-left: 40px;
         padding-right: 40px;
     }
     @media ${device.sm} {
+        max-width: 480px;
         padding-left: 20px;
         padding-right: 20px;
-    }
-`;
-
-export const Wrapper = styled.div`
-    max-width: 1440px;
-    margin: 0 auto;
-
-    @media ${device.md} {
-        max-width: 688px;
-    }
-    @media ${device.sm} {
-        max-width: 420px;
     }
 `;
 
@@ -88,7 +79,6 @@ export const MapWrapper = styled.div`
         height: '400px';
         width: '550px';
     }
-
     @media ${device.sm} { 
         display: none;
     }

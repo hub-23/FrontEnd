@@ -36,6 +36,7 @@ export const Input = styled( Field )`
     background-color: ${( props ) => props.color || props.theme.colors.white};
     caret-color: ${( props ) => props.$error ? props.theme.colors.accent : props.theme.colors.black };
     transition: caret-color ${transition}, border-color ${transition};
+    cursor: ${( { $dropdown } ) => $dropdown && 'pointer'};
 
     @media ${device.sm} {
         height: ${( { $smInputHeight } ) => $smInputHeight || '48px'};
@@ -93,4 +94,26 @@ export const Label = styled.label`
 export const IconWrapper = styled.span`
     position: absolute;
     top: ${( { $iconTop } ) => $iconTop || '-4px'};
+`;
+
+export const DropdownBtn = styled.button`
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: transparent;
+    padding-right: 23px;
+    border: none;
+    border-radius: 16px 0px;
+    fill: ${( props ) => props.color || props.theme.colors.black};
+    -webkit-transition: rotate ${transition};
+    transition: rotate ${transition};
+    > div {
+        width: fit-content;
+        transform: ${( props ) => ( props.$rotate ? 'rotate(180deg)' : '' ) };        
+    }
 `;

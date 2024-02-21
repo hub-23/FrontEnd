@@ -13,6 +13,24 @@ export const Section = styled.section`
   }
 `;
 
+export const TitleContainer = styled.div`
+  margin: 0 auto;
+  max-width: 1440px;
+  padding-left: 160px;
+  padding-right: 160px;
+
+  @media ${device.md} {
+    max-width: 768px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  @media ${device.sm} {
+    max-width: 480px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+`;
+
 export const Container = styled.div`
   margin: 0 auto;
   padding-left: 160px;

@@ -13,7 +13,6 @@ export const StatisticsSection = styled.section`
 `;
 
 export const StatisticsWrapper = styled.div`
-    
     padding-left: 160px;
     padding-right: 160px;
 
@@ -22,8 +21,8 @@ export const StatisticsWrapper = styled.div`
         padding-right: 40px;
     }
     @media ${device.sm} {
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 `;
 
@@ -35,8 +34,8 @@ export const StatisticsList = styled.ul`
     margin-right: auto;
     justify-content: center;
 
-    @media ${device.md} {
-        max-width: 768px;
+    @media ${device.sm} {
+        max-width: 480px;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         gap: 0;
@@ -58,10 +57,12 @@ export const StatUnit = styled.li`
     &:last-of-type {
         order: 3;
     }
-    @media ${device.xxl} { 
-        width: 150px;
-    }
+
     @media ${device.md} { 
+        width: 174px;
+    }
+    @media ${device.sm} { 
+        width: 150px;
         -ms-flex-preferred-size: calc((100% - 20px) / 2);
         flex-basis: calc((100% - 20px) / 2);
         &:nth-of-type(odd) {
@@ -80,25 +81,39 @@ export const StatUnit = styled.li`
 `;
 
 export const StatHeader = styled.p`
-    font-size: 24px;
     font-weight: 500;
+    font-size: 24px;
+    line-height: 1.4;
 
-    @media ${device.xxl} { 
+    @media ${device.lg} { 
+        font-size: 16px;
+    }
+    @media ${device.md} { 
         font-size: 14px;
-        font-weight: 400;
+    }
+    @media ${device.sm} {
+        font-weight: 400; 
+        font-size: 14px;
     }
 `;
 
 export const StatValue = styled.span`
     display: block; 
-    font-size: 36px;
     font-weight: 700;
+    font-size: 36px;
+    line-height: 1.4;
     letter-spacing: 0.36px;
     margin-bottom: 4px;
 
-    @media ${device.xxl} {  
+    @media ${device.lg} { 
+        font-size: 22px;
+    }
+    @media ${device.md} { 
+        font-size: 18px;
+    }
+    @media ${device.sm} {  
         font-size: 20px;
-        line-height: 1.4;
+        line-height: 1.5;
         letter-spacing: 0.2px;
     }
 `;
