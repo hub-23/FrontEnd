@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[811],{1811:(e,n,s)=>{s.r(n),s.d(n,{default:()=>r});s(5043);var t=s(579);const r=()=>(0,t.jsx)(t.Fragment,{children:(0,t.jsx)("h1",{style:{marginTop:"100px",fontSize:"30px"},children:"About us page"})})}}]);
+//# sourceMappingURL=811.a63abeb3.chunk.js.map
