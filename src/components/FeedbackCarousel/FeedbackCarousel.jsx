@@ -60,9 +60,11 @@ export const FeedbackCarousel = () => {
 
   return (
     <S.Section>
+      <S.TitleContainer>
+        <S.Title>Ваші відгуки</S.Title>
+      </S.TitleContainer>
       <S.Container>
         <S.Content>
-          <S.Title>Ваші відгуки</S.Title>
           <Slider ref={ sliderRef } { ...settings }>
             {feedbackData.map( ( feedback ) => (
               <FeedbackCard key={ feedback.id } feedback={ feedback } />

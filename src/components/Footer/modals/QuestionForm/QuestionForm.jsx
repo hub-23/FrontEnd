@@ -5,7 +5,7 @@ import { BtnClose } from '../../../modalElements/BtnClose';
 import { IconSvg } from '../../../common/IconSvg';
 import { Input } from '../../../modalElements/Input';
 import { InputFieldPhone } from '../../../modalElements/InputFieldPhone';
-import { InputDropdown } from '../../../modalElements/InputDropdown';
+// import { InputDropdown } from '../../../modalElements/InputDropdown';
 import { Message } from './Message/Message';
 import { nameExp, deepAccent } from '../../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
@@ -163,15 +163,12 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   isStar={ true }
                   error={ errTopic }
                   value={ values.topic }
+                  dropdown
+                  data={ notificationTopics }
+                  formik={ formik }
                   $topic
                   readOnly
-                >
-                  <InputDropdown 
-                    data={ notificationTopics }
-                    error={ errTopic }
-                    formik={ formik }
-                  />
-                </Input>
+                />
 
                 <Message
                   handleAttachmentsSelect={ setImages }

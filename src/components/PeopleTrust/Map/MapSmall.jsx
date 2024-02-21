@@ -20,7 +20,7 @@ export const MapSmall = ( { markersVisible } ) => {
       maxBounds={ maxBounds }
       maxBoundsViscosity= { 1.0 }
       scrollWheelZoom={ false }
-      style={ { height: '400px', width: '550px' } }
+      style={ { height: '350px', width: '550px' } }
     >
       <MapContent markersVisible={ markersVisible } />
     </MapContainer>
