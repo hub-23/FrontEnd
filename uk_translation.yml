@@ -1,0 +1,3 @@
+files:
+  - source: /k-basket/blob/main/README.md
+    translation: k-basket/%two_letters_code%/%original_file_name%
