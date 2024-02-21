@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[153],{9153:(e,n,t)=>{t.r(n),t.d(n,{default:()=>s});t(5043);var r=t(579);const s=()=>(0,r.jsx)(r.Fragment,{children:(0,r.jsx)("h1",{style:{marginTop:"100px",fontSize:"30px"},children:"Student Page"})})}}]);
-//# sourceMappingURL=153.2d65837e.chunk.js.map
