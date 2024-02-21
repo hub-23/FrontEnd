@@ -86,31 +86,6 @@ export const FormFild = styled( Form )`
     gap: 24px;
 `;
 
-export const WrappWarningText = styled.div`
-    position: absolute;
-    bottom: 75px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-left: 4px;
-
-    @media ${device.sm} {
-        bottom: 65px;
-        padding-left: 0;
-    }
-`;
-
-export const WarningText = styled.p`
-    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 16px;
-    line-height: calc(15.82 / 14);
-    color: ${( props ) => props.color || props.theme.colors.black};
-
-    @media ${device.sm} {
-        font-size: 14px;
-    }
-`;
-
 export const SubmitBtn = styled( Button )`
     width: 100%;
     height: 60px;

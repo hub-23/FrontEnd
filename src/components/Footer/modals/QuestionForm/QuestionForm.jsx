@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string, array } from 'yup';
 import { BtnClose } from '../../../modalElements/BtnClose';
-import { IconSvg } from '../../../common/IconSvg';
 import { Input } from '../../../modalElements/Input';
 import { InputFieldPhone } from '../../../modalElements/InputFieldPhone';
-// import { InputDropdown } from '../../../modalElements/InputDropdown';
 import { Message } from './Message/Message';
+import { Note } from '../../../modalElements/Note';
 import { nameExp, deepAccent } from '../../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
 
@@ -176,17 +175,10 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   values={ values }
                 />
 
-                <S.WrappWarningText>
-                  <IconSvg
-                    xlWidth="24px"
-                    xlHeight="24px"
-                    $fill={ deepAccent }
-                    icon="icon-star-marker"
-                  />
-                  <S.WarningText $color={ errName }>
-                    Ці поля є обов&apos;язковими до заповнення
-                  </S.WarningText>
-                </S.WrappWarningText>
+                <Note
+                  $fill={ deepAccent }
+                  text='Ці поля є обов&apos;язковими до заповнення'
+                />
 
                 <S.SubmitBtn type="submit" variant="blue">
                   Надіслати
