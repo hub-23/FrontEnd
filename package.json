@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "https://hub-23.github.io/FrontEnd",
+  "homepage": "https://hub-23.github.io/FrontEnd/",
   "version": "0.10",
   "private": true,
   "dependencies": {
@@ -48,9 +48,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:js": "eslint src/**/*.{js,jsx}",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "lint:js": "eslint src/**/*.{js,jsx}"
   },
   "eslintConfig": {
     "extends": [
