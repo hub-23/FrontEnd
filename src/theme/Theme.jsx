@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, StyleSheetManager } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid'
 
 const theme = {
   colors: {
@@ -22,10 +23,25 @@ const theme = {
 
 const Theme = ( { children } ) => {
   return (
-    <ThemeProvider theme={ theme }>
-      {children}
-    </ThemeProvider>
+    <StyleSheetManager shouldForwardProp={ shouldForwardProp } >
+      <ThemeProvider theme={ theme }>
+        {children}
+      </ThemeProvider>
+    </StyleSheetManager>
   );
 };
 
+/**
+ *  @param {int}  propName This implements the default behavior from styled-components v5 
+ *  @param {int}  target For HTML elements, forward the prop if it is a valid HTML attribute
+ * @return {int} For other elements, forward all props 
+ */
+function shouldForwardProp( propName, target ) {
+    if ( typeof target === 'string' ) {
+        // For HTML elements, forward the prop if it is a valid HTML attribute
+        return isPropValid( propName );
+    }
+    // For other elements, forward all props 
+    return true;
+}   
 export default Theme;

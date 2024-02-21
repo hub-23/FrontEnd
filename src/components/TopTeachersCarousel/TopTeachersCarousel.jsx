@@ -77,7 +77,7 @@ export const TopTeachersCarousel = () => {
             </StyledTitle>
             <ContainerButtons>
               <StyledBtnContainer1>
-                <Button variant='secondary' background='white'>
+                <Button variant='secondary'>
                   <ButtonTypography>Обрати викладача</ButtonTypography>
                 </Button>
               </StyledBtnContainer1>
@@ -91,7 +91,7 @@ export const TopTeachersCarousel = () => {
           </Slider>
         </StyledWrapper>
         <StyledBtnContainer2>
-          <Button variant='secondary' background='white'>
+          <Button variant='secondary'>
             <ButtonTypography>Обрати викладача</ButtonTypography>
           </Button>
         </StyledBtnContainer2>
