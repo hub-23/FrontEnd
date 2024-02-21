@@ -26,7 +26,7 @@ export const Input = styled( Field )`
 
     font-size: ${( { $xlInputFontSize } ) => $xlInputFontSize || '20px'};
     line-height: ${( { $xlInputLineHeight, $xlInputFontSize } ) =>
-        `calc(${$xlInputLineHeight}px / ${$xlInputFontSize})` || 'calc(28px / 20px)'};
+        `calc(${$xlInputLineHeight} / ${$xlInputFontSize})` || 'calc(28 / 20)'};
     letter-spacing: 0.2px;
 
     border-width: 1px;
@@ -44,7 +44,7 @@ export const Input = styled( Field )`
 
         font-size: ${( { $smInputFontSize } ) => $smInputFontSize || '16px'};
         line-height: ${( { $smInputLineHeight, $smInputFontSize } ) =>
-        `calc(${$smInputLineHeight}px / ${$smInputFontSize})` || 'calc(22.4 / 16)'};
+        `calc(${$smInputLineHeight} / ${$smInputFontSize})` || 'calc(22.4 / 16)'};
         letter-spacing: 0.16px;
     }
 
@@ -81,7 +81,7 @@ export const Label = styled.label`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: ${( { $xlLabelFontSize } ) => $xlLabelFontSize  || '20px'};
     line-height: ${( { $LabelLineHeight, $LabelFontSize } ) =>
-        `calc(${$LabelLineHeight}px / ${$LabelFontSize})` || 'calc(28 / 20)'};
+        `calc(${$LabelLineHeight} / ${$LabelFontSize})` || 'calc(28 / 20)'};
     letter-spacing: 0.2px;
 
     @media ${device.sm} {
