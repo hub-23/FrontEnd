@@ -3,7 +3,6 @@ import { black, grayStroke, white } from '../../utils/variables.styled';
 import { device } from '../../styles/device';
 
 export const PhoneCode = styled.div`
-  /* background-color: brown; */
   position: absolute;
   top: ${( { $xlPositionTopList } ) => $xlPositionTopList || '0'}; //
   left: ${( { $xlPositionLeftList } ) => $xlPositionLeftList};
@@ -18,14 +17,8 @@ export const PhoneCode = styled.div`
 `;
 
 export const TextWrapp = styled.div`
-  /* background-color: yellow; */
   display: flex;
   align-items: center;
-`;
-
-export const Title = styled.p`
-  margin-right: 2px;
-  font-size: 24px;
 `;
 
 export const TextCode = styled.p`
@@ -44,7 +37,7 @@ export const TextCode = styled.p`
 `;
 
 export const List = styled.ul`
-  margin-top: 16px;
+  margin-top: 23px;
   margin-left: -32px;
   padding: 20px 32px;
   /* width: 100%; */
@@ -105,7 +98,6 @@ export const Item = styled.li`
 
   & > :nth-child(1) {
     margin-right: 12px;
-    font-size: 24px; // розмір відноситься до флагу в PhoneSelect
   }
 
   & > :nth-child(2) {

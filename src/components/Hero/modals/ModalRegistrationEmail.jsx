@@ -149,7 +149,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     $isDataUser={ isDataUser }
                     $error={ errPhone }
                     // ----------- use for PhoneSelect
-                    $xlPositionTopList="15px"
+                    $xlPositionTopList="18px"
                     $smPositionTopList="7px"
                     $xlPositionLeftList="32px"
                     $xlHeightList="280px"
