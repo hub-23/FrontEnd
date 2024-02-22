@@ -160,9 +160,10 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                       $error={ errPhone }
                       // for PhoneSelect
                       $xlPositionTopList="18px"
-                      $smPositionTopList="7px"
+                      $smPositionTopList="11px"
                       $xlPositionLeftList="32px"
-                      $xlHeightList="300px"
+                      $xlHeightList="240px"
+                      $smHeightList="220px"
                       $xlGapList="12px"
                       $xlFontSizeList="16px"
                     />
