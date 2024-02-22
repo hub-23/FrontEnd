@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FormError } from '../../../../modalElements/FormError';
 import { IconSvg } from '../../../../common/IconSvg';
 import { UploadPopup } from '../UploadPopup/UploadPopup';
-import { ImagesList } from '../ImagesList/ImagesList';
+import { ImageWithDeleteBtn } from '../../../../modalElements/ImageWithDeleteBtn';
 import { SaveToLocalStorage } from '../../../../../helpers/SaveToLocalStorage';
 import { grayText } from '../../../../../utils/variables.styled';
 import * as S from './Message.styled';
@@ -51,8 +51,9 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
   }, [ uploadPopupVisible ] );
 
   return (
-    <div>
+    <S.Container>
       <S.InputContainer $error={ errMessage } $value={ values.message } >
+
         <S.InputWrapper>
           <S.Textarea
             name="message"
@@ -73,13 +74,7 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
             </S.IconWrapper>
           </S.Label>
         </S.InputWrapper>
-        { images?.length > 0 && (
-          <ImagesList
-            images={ images }
-            handleImageDelete={ handleImageDelete }
-            errMessage={ errMessage }
-          />
-        )}
+        
         <S.ClipBtn
           type='button'
           aria-label='paper-clip'
@@ -91,12 +86,24 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
             icon="icon-paper-clip"
           />
         </S.ClipBtn>
+
         {uploadPopupVisible && (
           <UploadPopup handleImageSelect={ handleImageSelect } />
         ) }
+
+        { images?.length > 0 && (
+          <S.ImagesList>
+            {images.map( ( image ) => (
+              <S.ImageItem key={ image }>
+                <ImageWithDeleteBtn image={ image } onImageDelete={ handleImageDelete } />
+              </S.ImageItem>
+            ) )}
+          </S.ImagesList>
+        )}
+
       </S.InputContainer>
       <SaveToLocalStorage fieldName="message" />
       <FormError name="message" />
-    </div>
+    </S.Container>
   );
 };

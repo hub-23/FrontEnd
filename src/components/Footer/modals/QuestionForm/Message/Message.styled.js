@@ -12,6 +12,10 @@ import {
 } from '../../../../../utils/variables.styled';
 
 
+export const Container = styled.div`
+    position: relative;
+`;
+
 export const InputContainer = styled.div`
     position: relative;
 
@@ -137,5 +141,27 @@ export const ClipBtn = styled.button`
       fill: ${( props ) => props.color || props.theme.colors.black};
       stroke: ${( props ) => props.color || props.theme.colors.black};
       transition: stroke ${transition};
+    }
+`;
+
+export const ImagesList = styled.ul`
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 16px 45px 16px 32px;
+
+    @media ${device.md} {
+        padding-left: 24px;
+    }
+`;
+
+export const ImageItem = styled.li`
+    position: relative;
+    width: 77px;
+    height: 48px;
+
+    @media ${device.md} {
+        width: 48px;
+        height: 48px;
     }
 `;
