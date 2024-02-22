@@ -6,13 +6,16 @@ export const PhoneCode = styled.div`
   position: absolute;
   top: ${( { $xlPositionTopList } ) => $xlPositionTopList || '0'}; //
   left: ${( { $xlPositionLeftList } ) => $xlPositionLeftList};
-  width: ${( { $isShow, $xlPositionLeftList } ) =>
-    $isShow && `${100 % -$xlPositionLeftList}`}; //
+  width: ${( { $isShow } ) => $isShow && '100%'};
+
   z-index: 3;
   cursor: pointer;
 
+  @media ${device.md} {
+  }
+
   @media ${device.sm} {
-    top: ${( { $smPositionTopList } ) => $smPositionTopList || '0'}; //
+    top: ${( { $smPositionTopList } ) => $smPositionTopList || '0'};
   }
 `;
 
@@ -40,8 +43,7 @@ export const List = styled.ul`
   margin-top: 23px;
   margin-left: -32px;
   padding: 20px 32px;
-  /* width: 100%; */
-  width: 480px;
+  width: 100%;
   height: ${( { $xlHeightList } ) => $xlHeightList};
 
   border-width: 1px;
@@ -70,7 +72,8 @@ export const List = styled.ul`
   }
 
   @media ${device.sm} {
-    margin-top: 12px;
+    margin-top: 15px;
+    width: 100%;
     height: ${( { $smHeightList } ) => $smHeightList};
   }
 `;
