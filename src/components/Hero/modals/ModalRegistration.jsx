@@ -27,13 +27,13 @@ export const ModalRegistration = ( {
     setShowModalLogin,
   } = useHubContext();
 
-  console.log( 'status :>> ', status );
+  // console.log( 'status :>> ', status );
   const initialValues = {
     statusUser: `${status}`,
   };
 
   const handleSubmit = values => {
-    console.log( 'sent statusUser ::>>>', values );
+    // console.log( 'sent statusUser ::>>>', values );
     onActiveModal();
     onActiveModalEmail();
   };

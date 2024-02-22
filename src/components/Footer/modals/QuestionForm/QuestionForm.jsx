@@ -9,7 +9,6 @@ import { Note } from '../../../modalElements/Note';
 import { nameExp, deepAccent } from '../../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
 
-
 export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
   const [ images, setImages ] = useState( [] );
 
@@ -24,17 +23,20 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
 
   const schema = object( {
     name: string()
-        .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
-        .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
-        .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
-        .required( 'Вкажіть ваше ім’я' ),
-    email: string().email( 'Невірно вказано e-mail' ).trim().required( 'Вкажіть ваш e-mail' ),
+      .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
+      .required( 'Вкажіть ваше ім’я' ),
+    email: string()
+      .email( 'Невірно вказано e-mail' )
+      .trim()
+      .required( 'Вкажіть ваш e-mail' ),
     phone: string().required( 'Вкажіть ваш номер телефону' ),
     topic: string()
-        .test( 'is-valid-topic', customErrorMessage, ( value ) => {
-          return notificationTopics.includes( value );
-        } )
-        .required( 'Вкажіть тему повідомлення' ),
+      .test( 'is-valid-topic', customErrorMessage, value => {
+        return notificationTopics.includes( value );
+      } )
+      .required( 'Вкажіть тему повідомлення' ),
     message: string().required( 'Опишіть проблему' ),
     attachments: array(),
   } );
@@ -65,8 +67,15 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
     }
     // console.log( ...formData );
 
-    const formFieldKeys = [ 'name', 'email', 'phone', 'topic', 'message', 'attachments' ];
-    formFieldKeys.forEach( ( key ) => {
+    const formFieldKeys = [
+      'name',
+      'email',
+      'phone',
+      'topic',
+      'message',
+      'attachments',
+    ];
+    formFieldKeys.forEach( key => {
       localStorage.removeItem( `question-form-${key}` );
     } );
 
@@ -80,12 +89,16 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
       <BtnClose onActiveModal={ onFormClose } />
       <S.Title>Залишились питання?</S.Title>
       <S.Text>
-                Напишіть своє повідомлення, використовуючи форму, або зверніться напряму за електронною
-                адресою
+        Напишіть своє повідомлення, використовуючи форму, або зверніться напряму
+        за електронною адресою
       </S.Text>
       <div>
-        <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
-          {( formik ) => {
+        <Formik
+          initialValues={ initialValues }
+          validationSchema={ schema }
+          onSubmit={ handleSubmit }
+        >
+          {formik => {
             const {
               errors: { name, email, phone, topic, message }, // повідомлення про помилки зі схеми
               touched,
@@ -94,7 +107,8 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
               setTouched,
             } = formik;
 
-            const isDataUser = formik.initialValues.phone === formik.values.phone;
+            const isDataUser
+              = formik.initialValues.phone === formik.values.phone;
 
             const errName = name && touched.name;
             // при розфокусуванні поля touched.name = true; коли є вміст - undefined
@@ -119,7 +133,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
 
             return (
               <S.FormFild autoComplete="off">
-                <Input 
+                <Input
                   type="text"
                   name="name"
                   placeholder="Ім’я"
@@ -127,7 +141,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   error={ errName }
                   value={ values.name }
                 />
-                <Input 
+                <Input
                   type="email"
                   name="email"
                   placeholder="Електронна адреса"
@@ -145,7 +159,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                       $isDataUser={ isDataUser }
                       $error={ errPhone }
                       // for PhoneSelect
-                      $xlPositionTopList="15px"
+                      $xlPositionTopList="18px"
                       $smPositionTopList="7px"
                       $xlPositionLeftList="32px"
                       $xlHeightList="300px"
@@ -155,7 +169,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   </div>
                 </>
 
-                <Input 
+                <Input
                   type="text"
                   name="topic"
                   placeholder="Тема повідомлення"

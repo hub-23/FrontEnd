@@ -1,0 +1,188 @@
+[
+  {
+    "name": "Austria",
+    "flag": "icon-flag-AT",
+    "code": "AT",
+    "dialCode": "+43"
+  },
+  {
+    "name": "Belgium",
+    "flag": "icon-flag-BE",
+    "code": "BE",
+    "dialCode": "+32"
+  },
+  {
+    "name": "Bulgaria",
+    "flag": "icon-flag-BG",
+    "code": "BG",
+    "dialCode": "+359"
+  },
+  {
+    "name": "Canada",
+    "flag": "icon-flag-CA",
+    "code": "CA",
+    "dialCode": "+1"
+  },
+  {
+    "name": "Cyprus",
+    "flag": "icon-flag-CY",
+    "code": "CY",
+    "dialCode": "+357"
+  },
+  {
+    "name": "Czech Republic",
+    "flag": "icon-flag-CZ",
+    "code": "CZ",
+    "dialCode": "+420"
+  },
+  {
+    "name": "Denmark",
+    "flag": "icon-flag-DK",
+    "code": "DK",
+    "dialCode": "+45"
+  },
+  {
+    "name": "Estonia",
+    "flag": "icon-flag-EE",
+    "code": "EE",
+    "dialCode": "+372"
+  },
+  {
+    "name": "Finland",
+    "flag": "icon-flag-FI",
+    "code": "FI",
+    "dialCode": "+358"
+  },
+  {
+    "name": "France",
+    "flag": "icon-flag-FR",
+    "code": "FR",
+    "dialCode": "+33"
+  },
+  {
+    "name": "Germany",
+    "flag": "icon-flag-DE",
+    "code": "DE",
+    "dialCode": "+49"
+  },
+  {
+    "name": "United Kingdom",
+    "flag": "icon-flag-GB",
+    "code": "GB",
+    "dialCode": "+44"
+  },
+  {
+    "name": "Greece",
+    "flag": "icon-flag-GR",
+    "code": "GR",
+    "dialCode": "+30"
+  },
+  {
+    "name": "Hungary",
+    "flag": "icon-flag-HU",
+    "code": "HU",
+    "dialCode": "+36"
+  },
+  {
+    "name": "Ireland",
+    "flag": "icon-flag-IS",
+    "code": "IS",
+    "dialCode": "+354"
+  },
+  {
+    "name": "Italy",
+    "flag": "icon-flag-IT",
+    "code": "IT",
+    "dialCode": "+39"
+  },
+  {
+    "name": "Latvia",
+    "flag": "icon-flag-LV",
+    "code": "LV",
+    "dialCode": "+371"
+  },
+  {
+    "name": "Lithuania",
+    "flag": "icon-flag-LT",
+    "code": "LT",
+    "dialCode": "+370"
+  },
+  {
+    "name": "Luxembourg",
+    "flag": "icon-flag-LU",
+    "code": "LU",
+    "dialCode": "+352"
+  },
+  {
+    "name": "Malta",
+    "flag": "icon-flag-MT",
+    "code": "MT",
+    "dialCode": "+356"
+  },
+  {
+    "name": "Netherlands",
+    "flag": "icon-flag-NL",
+    "code": "NL",
+    "dialCode": "+31"
+  },
+  {
+    "name": "Poland",
+    "flag": "icon-flag-PL",
+    "code": "PL",
+    "dialCode": "+48"
+  },
+  {
+    "name": "Portugal",
+    "flag": "icon-flag-PT",
+    "code": "PT",
+    "dialCode": "+351"
+  },
+  {
+    "name": "Republika Hrvatska",
+    "flag": "icon-flag-RH",
+    "code": "RH",
+    "dialCode": "+385"
+  },
+  {
+    "name": "Romania",
+    "flag": "icon-flag-RO",
+    "code": "RO",
+    "dialCode": "+40"
+  },
+  {
+    "name": "Slovakia",
+    "flag": "icon-flag-SK",
+    "code": "SK",
+    "dialCode": "+421"
+  },
+  {
+    "name": "Slovenia",
+    "flag": "icon-flag-SI",
+    "code": "SI",
+    "dialCode": "+386"
+  },
+  {
+    "name": "Spain",
+    "flag": "icon-flag-ES",
+    "code": "ES",
+    "dialCode": "+34"
+  },
+  {
+    "name": "Sweden",
+    "flag": "icon-flag-SE",
+    "code": "SE",
+    "dialCode": "+46"
+  },
+  {
+    "name": "Ukraine",
+    "flag": "icon-flag-UA",
+    "code": "UA",
+    "dialCode": "+380"
+  },
+  {
+    "name": "United States",
+    "flag": "icon-flag-US",
+    "code": "US",
+    "dialCode": "+1"
+  }
+]

@@ -80,7 +80,7 @@ export const ModalLastStep = ( { onActiveModal } ) => {
 
               setTouched( { ...touched, phone: values.touched } );
 
-              console.log( '💙💛 handleGetPhone', values );
+              /* console.log( '💙💛 handleGetPhone', values ); */
             }; // значення з InputFieldPhone
 
             return (
@@ -93,7 +93,7 @@ export const ModalLastStep = ( { onActiveModal } ) => {
                     $isDataUser={ isDataUser }
                     $error={ errPhone }
                     // ----------- use for PhoneSelect
-                    $xlPositionTopList="15px"
+                    $xlPositionTopList="20px"
                     $smPositionTopList="7px"
                     $xlPositionLeftList="32px"
                     $xlHeightList="300px"
