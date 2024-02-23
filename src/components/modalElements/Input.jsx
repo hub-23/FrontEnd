@@ -4,15 +4,17 @@ import React, { useState } from 'react';
 import { IconSvg } from '../common/IconSvg';
 import { FormError } from './FormError';
 import { DropdownList } from './DropdownList';
+import { BtnEye } from '../common/BtnEye';
 import { SaveToLocalStorage } from '../../helpers/SaveToLocalStorage';
 import { grayText } from '../../utils/variables.styled';
 import * as S from './Input.styled';
 
 
 export const Input = ( {
-    type, name, placeholder, error, value, isStar, dropdown, data, formik, ...props
+    type, name, placeholder, error, value, isStar, dropdown, data, formik, btnEye, ...props
 } ) => {
     const [ isDropdownShown, setIsDropdownShown ] = useState( false );
+    const [ showPassword, setSowPassword ] = useState( true );
 
     const handleTopicSelect = ( formik, value ) => {
         formik.setFieldValue( 'topic', value );
@@ -23,7 +25,7 @@ export const Input = ( {
         <S.InputContainer>
             <S.InputWrapper>
                 <S.Input
-                    type={ type }
+                    type={ !btnEye ? type : ( showPassword ? 'password' : 'text' ) }
                     name={ name }
                     placeholder={ placeholder }
                     onClick={ () => setIsDropdownShown( !isDropdownShown ) }
@@ -71,6 +73,34 @@ export const Input = ( {
                     )}                
                 </>
             )}
+            { btnEye && (
+                <BtnEye
+                    xlRight="36px"
+                    xlTop="16px"
+                    smRight="20px"
+                    smTop="13px"
+                    click={ () => setSowPassword( !showPassword ) }
+                >
+                    {showPassword ? (
+                        <IconSvg
+                            xlWidth="24px"
+                            xlHeight="24px"
+                            smWidth="20px"
+                            smHeight="20px"
+                            icon="icon-eye-slash"
+                        />
+                    ) : (
+                        <IconSvg
+                            xlWidth="24px"
+                            xlHeight="24px"
+                            smWidth="20px"
+                            smHeight="20px"
+                            icon="icon-eye"
+                        />
+                    )}
+                </BtnEye>                
+            ) }
+
             <SaveToLocalStorage fieldName={ name } />
             <FormError name={ name } />  
         </S.InputContainer>

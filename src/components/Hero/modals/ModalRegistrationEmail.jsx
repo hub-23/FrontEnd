@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 
 import {
+  accent,
   bgColorGradientBtn,
-  deepAccent,
   nameExp,
   passwordExp,
   white,
@@ -13,14 +13,12 @@ import { IconSvg } from '../../common/IconSvg';
 import * as S from './ModalRegistrationEmail.styled';
 import reCapcha from '../../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
-import { BtnEye } from '../../common/BtnEye';
 import { BtnClose } from '../../common/BtnClose';
-import { InputField } from '../../modalElements/InputField';
+import { Input } from '../../modalElements/Input';
 import { InputFieldPhone } from '../../modalElements/InputFieldPhone';
+import { Note } from '../../modalElements/Note';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
-  const [ showPassword, setSowPassword ] = useState( true );
-
   const scheme = object( {
     name: string()
       .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
@@ -92,6 +90,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
             const {
               errors: { name, email, phone, password, capcha },
               touched,
+              values,
               setValues,
               setTouched,
             } = formik;
@@ -121,25 +120,23 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
             return (
               <S.FormEmail autoComplete="on">
-                <S.LabelFormUser>
-                  <InputField
-                    type="text"
-                    name="name"
-                    placeholder="Ім’я"
-                    isStar={ true }
-                    error={ errName }
-                  />
-                </S.LabelFormUser>
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Ім’я"
+                  isStar={ true }
+                  error={ errName }
+                  value={ values.name }
+                />
 
-                <S.LabelFormUser>
-                  <InputField
-                    type="email"
-                    name="email"
-                    placeholder="Електронна адреса"
-                    isStar={ true }
-                    error={ errEmail }
-                  />
-                </S.LabelFormUser>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Електронна адреса"
+                  isStar={ true }
+                  error={ errEmail }
+                  value={ values.email }
+                />
 
                 <S.LabelFormUser>
                   <InputFieldPhone
@@ -164,58 +161,18 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   />
                 </S.LabelFormUser>
 
-                <S.LabelFormUser
-                  style={ {
-                    gap: '11px',
-                  } }
-                >
-                  <InputField
-                    type={ showPassword ? 'password' : 'text' }
-                    name="password"
-                    placeholder="Придумайте пароль"
-                    isStar={ true }
-                    $error={ errPassword }
-                  />
-
-                  <BtnEye
-                    xlRight="36px"
-                    xlTop="16px"
-                    smRight="20px"
-                    smTop="13px"
-                    click={ () => setSowPassword( !showPassword ) }
-                  >
-                    {showPassword ? (
-                      <IconSvg
-                        xlWidth="24px"
-                        xlHeight="24px"
-                        smWidth="20px"
-                        smHeight="20px"
-                        icon="icon-eye-slash"
-                      />
-                    ) : (
-                      <IconSvg
-                        xlWidth="24px"
-                        xlHeight="24px"
-                        smWidth="20px"
-                        smHeight="20px"
-                        icon="icon-eye"
-                      />
-                    )}
-                  </BtnEye>
-
-                  <S.WrappErrTextPassword>
-                    <IconSvg
-                      width="24px"
-                      height="24px"
-                      icon="icon-star-marker"
-                      $fill={ deepAccent }
-                    />
-
-                    <S.TextErrPassword $color={ errPassword }>
-                      Більше 8 символів, велика літера, цифри і спеціальний знак
-                    </S.TextErrPassword>
-                  </S.WrappErrTextPassword>
-                </S.LabelFormUser>
+                <Input
+                  name="password"
+                  placeholder="Придумайте пароль"
+                  isStar={ true }
+                  btnEye
+                  $error={ errPassword }
+                  value={ values.password }
+                />
+                <Note
+                  $fill={ accent }
+                  text='Більше 8 символів, велика літера, цифри і спеціальний знак'
+                />
 
                 <div>
                   <S.WrappCapcha $error={ errCapcha } $accept={ isCheckCapcha }>
