@@ -1,8 +1,8 @@
 // Дляя використання в компоненті InputFieldPhone.jsx
 
 import React, { useState } from 'react';
-import { Item, List, PhoneCode, TextWrapp, Title } from './PhoneSelect.styled';
-import data from '../modalElements/countries.json';
+import { Item, List, PhoneCode, TextWrapp } from './PhoneSelect.styled';
+import data from '../modalElements/PhoneSelectCountries.json';
 import { IconSvg } from '../common/IconSvg';
 
 export const PhoneSelect = ( {
@@ -13,7 +13,10 @@ export const PhoneSelect = ( {
   ...props
 } ) => {
   const [ showSelect, setShowSelect ] = useState( false );
-  const [ dataCountry, setDataCountry ] = useState( { flag: '🇺🇦', code: '+380' } );
+  const [ dataCountry, setDataCountry ] = useState( {
+    flag: 'icon-flag-UA',
+    code: '+380',
+  } );
 
   const handleShowList = () => {
     setShowSelect( !showSelect );
@@ -22,7 +25,13 @@ export const PhoneSelect = ( {
   return (
     <PhoneCode $isShow={ showSelect } onClick={ handleShowList } { ...props }>
       <TextWrapp>
-        <Title>{dataCountry.flag}</Title>
+        <IconSvg
+          xlWidth="24px"
+          xlHeight="24px"
+          smWidth="20px"
+          smHeight="20px"
+          icon={ dataCountry.flag }
+        />
 
         <IconSvg
           width="24px"
@@ -47,7 +56,13 @@ export const PhoneSelect = ( {
                 } }
                 { ...props }
               >
-                <p>{flag}</p>
+                <IconSvg
+                  xlWidth="24px"
+                  xlHeight="24px"
+                  smWidth="20px"
+                  smHeight="20px"
+                  icon={ flag }
+                />
                 <p>{dialCode}</p>
                 <p>{name}</p>
               </Item>
