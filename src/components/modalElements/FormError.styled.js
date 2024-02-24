@@ -13,7 +13,7 @@ const show = keyframes`
 export const ErrorText = styled.p`
   position: absolute;
   left: 0;
-  bottom: -20px;
+  bottom: ${( { $bottom } ) => $bottom || '-20px'};
   margin-left: ${( { $marginLeft } ) => $marginLeft || '19px'};
 
   line-height: (15.82 / 14);

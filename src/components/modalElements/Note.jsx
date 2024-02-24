@@ -4,7 +4,7 @@ import * as S from './Note.styled';
 
 export const Note = ( { text, ...props } ) => {
     return (
-        <S.WrappWarningText>
+        <S.WrappWarningText { ...props }>
             <IconSvg
                 xlWidth="24px"
                 xlHeight="24px"

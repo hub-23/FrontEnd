@@ -118,6 +118,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
               } );
             }; // значення з InputFieldPhone
 
+            const noteShown = errPassword === 'undefined'
+            || ( password && password.startsWith( 'Пароль обов‘язковий' ) );
+
             return (
               <S.FormEmail autoComplete="on">
                 <Input
@@ -160,22 +163,53 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     $smFontSizeList=""
                   />
                 </S.LabelFormUser>
-
-                <Input
-                  name="password"
-                  placeholder="Придумайте пароль"
-                  isStar={ true }
-                  btnEye
-                  $error={ errPassword }
-                  value={ values.password }
-                />
-                <Note
-                  $fill={ accent }
-                  text='Більше 8 символів, велика літера, цифри і спеціальний знак'
-                />
+                
+                <div style={ { position: 'relative' } }>
+                  <Input
+                    name="password"
+                    placeholder="Придумайте пароль"
+                    isStar={ true }
+                    btnEye
+                    $error={ errPassword }
+                    errorMessage={ password }
+                    value={ values.password }
+                  />
+                  { noteShown
+                    && <Note
+                      text='Більше 8 символів, велика літера, цифри і спеціальний знак'
+                      $fill={ accent }
+                      $xlBottom={ errPassword ? '-45px' : '-25px' }
+                      $mdBottom={ errPassword ? '-55px' : '-45px' }
+                      $smBottom={ errPassword ? '-40px' : '-40px' }
+                      $xlLeft='12px'
+                      $mdLeft='0'
+                      $xlFontSize='14px'
+                      $xlLineHeight='15.82' 
+                      $error={ errPassword }
+                    />
+                  }
+                </div>
 
                 <div>
-                  <S.WrappCapcha $error={ errCapcha } $accept={ isCheckCapcha }>
+                  <S.WrappCapcha
+                    $error={ errCapcha }
+                    $accept={ isCheckCapcha }
+                    $xlMarginTop={ 
+                      noteShown && errPassword
+                      ? '26px'
+                      : ( noteShown && '5px' ) || ( errPassword && '20px' ) 
+                    }
+                    $mdMarginTop={
+                      noteShown && errPassword 
+                      ? '35px'
+                      : ( noteShown && '30px' ) || ( errPassword && '20px' ) 
+                    }
+                    $smMarginTop={
+                      noteShown && errPassword 
+                      ? '15px'
+                      : ( noteShown && '15px' ) || ( errPassword && '0' ) 
+                    }
+                  >
                     <S.LabelCheckbox>
                       <S.InputCheckbox type="checkbox" name="capcha" />
                       <span></span>
