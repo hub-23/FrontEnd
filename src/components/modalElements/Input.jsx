@@ -11,7 +11,7 @@ import * as S from './Input.styled';
 
 
 export const Input = ( {
-    type, name, placeholder, error, value, isStar, dropdown, data, formik, btnEye, ...props
+    type, name, placeholder, error, value, isStar, dropdown, data, formik, btnEye, errorMessage, ...props
 } ) => {
     const [ isDropdownShown, setIsDropdownShown ] = useState( false );
     const [ showPassword, setSowPassword ] = useState( true );
@@ -102,7 +102,10 @@ export const Input = ( {
             ) }
 
             <SaveToLocalStorage fieldName={ name } />
-            <FormError name={ name } />  
+            <FormError
+             name={ name }
+             $bottom={ errorMessage && errorMessage.startsWith( 'Пароль має' ) && '-40px' }
+            />  
         </S.InputContainer>
     );
 };
