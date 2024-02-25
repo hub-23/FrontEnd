@@ -102,7 +102,7 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
         )}
 
       </S.InputContainer>
-      <SaveToLocalStorage fieldName="message" />
+      <SaveToLocalStorage component='question-form' fieldName="message" />
       <FormError name="message" />
     </S.Container>
   );

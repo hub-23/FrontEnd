@@ -140,6 +140,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   isStar={ true }
                   error={ errName }
                   value={ values.name }
+                  component='question-form' // for SaveToLocalStorage (частина нази ключа)
                 />
                 <Input
                   type="email"
@@ -148,6 +149,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   isStar={ true }
                   error={ errEmail }
                   value={ values.email }
+                  component='question-form'
                 />
 
                 <>
@@ -182,6 +184,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   formik={ formik }
                   $topic
                   readOnly
+                  component='question-form'
                 />
 
                 <Message
