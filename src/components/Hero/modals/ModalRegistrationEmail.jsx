@@ -40,9 +40,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   } );
 
   const initialValues = {
-    name: '',
-    email: '',
-    phone: '',
+    name: localStorage.getItem( 'registrationEmail-name' ) || '',
+    email: localStorage.getItem( 'registrationEmail-email' ) || '',
+    phone: localStorage.getItem( 'registrationEmail-phone' ) || '',
     password: '',
     capcha: '',
     accept: '',
@@ -50,6 +50,17 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
   const handleSubmit = ( values, { resetForm } ) => {
     console.log( '💙💛 send Data registrationEmail to Backend :>> ', values );
+
+    const formFieldKeys = [
+      'name',
+      'email',
+      'phone',
+    ];
+
+    formFieldKeys.forEach( key => {
+      localStorage.removeItem( `registrationEmail-${key}` );
+    } );
+
     resetForm();
     onActiveModal();
   };
@@ -130,6 +141,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   isStar={ true }
                   error={ errName }
                   value={ values.name }
+                  component='registrationEmail'
                 />
 
                 <Input
@@ -139,6 +151,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                   isStar={ true }
                   error={ errEmail }
                   value={ values.email }
+                  component='registrationEmail'
                 />
 
                 <S.LabelFormUser>
