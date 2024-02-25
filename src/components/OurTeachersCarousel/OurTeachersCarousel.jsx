@@ -65,7 +65,7 @@ export const OurTeachersCarousel = () => {
         breakpoint: 600,
         settings: {
           slidesToShow: 6,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -107,3 +107,4 @@ export const OurTeachersCarousel = () => {
     </>
   );
 };
+
