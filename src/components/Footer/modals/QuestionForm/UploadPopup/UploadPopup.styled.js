@@ -1,4 +1,3 @@
-import { Field } from 'formik';
 import styled, { keyframes } from 'styled-components';
 import { transition, transitionB } from '../../../../../utils/variables.styled';
 import { device } from '../../../../../styles/device';
@@ -74,8 +73,4 @@ export const Text = styled.p`
     font-size: 16px;
     line-height: 1.4;
     color: ${( props ) => props.color || props.theme.colors.black};
-`;
-
-export const Input = styled( Field )`
-    display: none;
 `;

@@ -26,7 +26,7 @@ export const Input = styled( Field )`
 
     font-size: ${( { $xlInputFontSize } ) => $xlInputFontSize || '20px'};
     line-height: ${( { $xlInputLineHeight, $xlInputFontSize } ) =>
-        `calc(${$xlInputLineHeight}px / ${$xlInputFontSize})` || 'calc(28px / 20px)'};
+        `calc(${$xlInputLineHeight} / ${$xlInputFontSize})` || 'calc(28 / 20)'};
     letter-spacing: 0.2px;
 
     border-width: 1px;
@@ -36,6 +36,7 @@ export const Input = styled( Field )`
     background-color: ${( props ) => props.color || props.theme.colors.white};
     caret-color: ${( props ) => props.$error ? props.theme.colors.accent : props.theme.colors.black };
     transition: caret-color ${transition}, border-color ${transition};
+    cursor: ${( { $dropdown } ) => $dropdown && 'pointer'};
 
     @media ${device.sm} {
         height: ${( { $smInputHeight } ) => $smInputHeight || '48px'};
@@ -43,7 +44,7 @@ export const Input = styled( Field )`
 
         font-size: ${( { $smInputFontSize } ) => $smInputFontSize || '16px'};
         line-height: ${( { $smInputLineHeight, $smInputFontSize } ) =>
-        `calc(${$smInputLineHeight}px / ${$smInputFontSize})` || 'calc(22.4 / 16)'};
+        `calc(${$smInputLineHeight} / ${$smInputFontSize})` || 'calc(22.4 / 16)'};
         letter-spacing: 0.16px;
     }
 
@@ -80,7 +81,7 @@ export const Label = styled.label`
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: ${( { $xlLabelFontSize } ) => $xlLabelFontSize  || '20px'};
     line-height: ${( { $LabelLineHeight, $LabelFontSize } ) =>
-        `calc(${$LabelLineHeight}px / ${$LabelFontSize})` || 'calc(28 / 20)'};
+        `calc(${$LabelLineHeight} / ${$LabelFontSize})` || 'calc(28 / 20)'};
     letter-spacing: 0.2px;
 
     @media ${device.sm} {
@@ -93,4 +94,26 @@ export const Label = styled.label`
 export const IconWrapper = styled.span`
     position: absolute;
     top: ${( { $iconTop } ) => $iconTop || '-4px'};
+`;
+
+export const DropdownBtn = styled.button`
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: transparent;
+    padding-right: 23px;
+    border: none;
+    border-radius: 16px 0px;
+    fill: ${( props ) => props.color || props.theme.colors.black};
+    -webkit-transition: rotate ${transition};
+    transition: rotate ${transition};
+    > div {
+        width: fit-content;
+        transform: ${( props ) => ( props.$rotate ? 'rotate(180deg)' : '' ) };        
+    }
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './components/app/App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Context } from './redux/Context';
@@ -15,11 +15,11 @@ root.render(
     }
   >
     <React.StrictMode>
-      <Router>
+      <BrowserRouter basename="/FrontEnd">
         <Context>
           <App />
         </Context>
-      </Router>
+      </BrowserRouter>
     </React.StrictMode>
   </GoogleOAuthProvider>
 );

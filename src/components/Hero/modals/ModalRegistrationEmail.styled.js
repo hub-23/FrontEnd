@@ -140,7 +140,8 @@ export const WrappCapcha = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    margin-top: 26px;
+    margin-top: ${( { $xlMarginTop } ) => $xlMarginTop };
+    
     margin-bottom: 7px;
 
     width: 100%;
@@ -161,10 +162,11 @@ export const WrappCapcha = styled.div`
     }
 
     @media ${device.md} {
-        margin-top: 0px;
+        margin-top: ${( { $mdMarginTop } ) => $mdMarginTop };
     }
 
     @media ${device.sm} {
+        margin-top: ${( { $smMarginTop } ) => $smMarginTop };
         height: 45px;
         padding: 15px 20px;
 

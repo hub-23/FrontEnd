@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as S from './Header.styled';
 import { Language } from './Language/Language';
 import { Navigation } from './Navigation/Navigation';
@@ -67,6 +68,7 @@ export const Header = () => {
 
             <S.SignInBtn onClick={ toggleModalLogin }>Вхід</S.SignInBtn>
           </S.Wrapper>
+          <Link to='/student' style={ { position: 'absolute', top: '0' } }>Student&apos;s page</Link>
         </S.HeaderContent>
       </S.HeaderContainer>
 

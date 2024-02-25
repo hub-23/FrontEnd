@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string, array } from 'yup';
 import { BtnClose } from '../../../modalElements/BtnClose';
-import { IconSvg } from '../../../common/IconSvg';
 import { Input } from '../../../modalElements/Input';
 import { InputFieldPhone } from '../../../modalElements/InputFieldPhone';
-import { InputDropdown } from '../../../modalElements/InputDropdown';
 import { Message } from './Message/Message';
+import { Note } from '../../../modalElements/Note';
 import { nameExp, deepAccent } from '../../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
-
 
 export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
   const [ images, setImages ] = useState( [] );
@@ -25,17 +23,20 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
 
   const schema = object( {
     name: string()
-        .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
-        .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
-        .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
-        .required( 'Вкажіть ваше ім’я' ),
-    email: string().email( 'Невірно вказано e-mail' ).trim().required( 'Вкажіть ваш e-mail' ),
+      .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
+      .required( 'Вкажіть ваше ім’я' ),
+    email: string()
+      .email( 'Невірно вказано e-mail' )
+      .trim()
+      .required( 'Вкажіть ваш e-mail' ),
     phone: string().required( 'Вкажіть ваш номер телефону' ),
     topic: string()
-        .test( 'is-valid-topic', customErrorMessage, ( value ) => {
-          return notificationTopics.includes( value );
-        } )
-        .required( 'Вкажіть тему повідомлення' ),
+      .test( 'is-valid-topic', customErrorMessage, value => {
+        return notificationTopics.includes( value );
+      } )
+      .required( 'Вкажіть тему повідомлення' ),
     message: string().required( 'Опишіть проблему' ),
     attachments: array(),
   } );
@@ -66,8 +67,15 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
     }
     // console.log( ...formData );
 
-    const formFieldKeys = [ 'name', 'email', 'phone', 'topic', 'message', 'attachments' ];
-    formFieldKeys.forEach( ( key ) => {
+    const formFieldKeys = [
+      'name',
+      'email',
+      'phone',
+      'topic',
+      'message',
+      'attachments',
+    ];
+    formFieldKeys.forEach( key => {
       localStorage.removeItem( `question-form-${key}` );
     } );
 
@@ -81,12 +89,16 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
       <BtnClose onActiveModal={ onFormClose } />
       <S.Title>Залишились питання?</S.Title>
       <S.Text>
-                Напишіть своє повідомлення, використовуючи форму, або зверніться напряму за електронною
-                адресою
+        Напишіть своє повідомлення, використовуючи форму, або зверніться напряму
+        за електронною адресою
       </S.Text>
       <div>
-        <Formik initialValues={ initialValues } validationSchema={ schema } onSubmit={ handleSubmit }>
-          {( formik ) => {
+        <Formik
+          initialValues={ initialValues }
+          validationSchema={ schema }
+          onSubmit={ handleSubmit }
+        >
+          {formik => {
             const {
               errors: { name, email, phone, topic, message }, // повідомлення про помилки зі схеми
               touched,
@@ -95,7 +107,8 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
               setTouched,
             } = formik;
 
-            const isDataUser = formik.initialValues.phone === formik.values.phone;
+            const isDataUser
+              = formik.initialValues.phone === formik.values.phone;
 
             const errName = name && touched.name;
             // при розфокусуванні поля touched.name = true; коли є вміст - undefined
@@ -120,21 +133,23 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
 
             return (
               <S.FormFild autoComplete="off">
-                <Input 
+                <Input
                   type="text"
                   name="name"
                   placeholder="Ім’я"
                   isStar={ true }
                   error={ errName }
                   value={ values.name }
+                  component='question-form' // for SaveToLocalStorage (частина нази ключа)
                 />
-                <Input 
+                <Input
                   type="email"
                   name="email"
                   placeholder="Електронна адреса"
                   isStar={ true }
                   error={ errEmail }
                   value={ values.email }
+                  component='question-form'
                 />
 
                 <>
@@ -146,32 +161,31 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                       $isDataUser={ isDataUser }
                       $error={ errPhone }
                       // for PhoneSelect
-                      $xlPositionTopList="15px"
-                      $smPositionTopList="7px"
+                      $xlPositionTopList="18px"
+                      $smPositionTopList="11px"
                       $xlPositionLeftList="32px"
-                      $xlHeightList="300px"
+                      $xlHeightList="240px"
+                      $smHeightList="220px"
                       $xlGapList="12px"
                       $xlFontSizeList="16px"
                     />
                   </div>
                 </>
 
-                <Input 
+                <Input
                   type="text"
                   name="topic"
                   placeholder="Тема повідомлення"
                   isStar={ true }
                   error={ errTopic }
                   value={ values.topic }
+                  dropdown
+                  data={ notificationTopics }
+                  formik={ formik }
                   $topic
                   readOnly
-                >
-                  <InputDropdown 
-                    data={ notificationTopics }
-                    error={ errTopic }
-                    formik={ formik }
-                  />
-                </Input>
+                  component='question-form'
+                />
 
                 <Message
                   handleAttachmentsSelect={ setImages }
@@ -179,17 +193,10 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   values={ values }
                 />
 
-                <S.WrappWarningText>
-                  <IconSvg
-                    xlWidth="24px"
-                    xlHeight="24px"
-                    $fill={ deepAccent }
-                    icon="icon-star-marker"
-                  />
-                  <S.WarningText $color={ errName }>
-                    Ці поля є обов&apos;язковими до заповнення
-                  </S.WarningText>
-                </S.WrappWarningText>
+                <Note
+                  $fill={ deepAccent }
+                  text='Ці поля є обов&apos;язковими до заповнення'
+                />
 
                 <S.SubmitBtn type="submit" variant="blue">
                   Надіслати

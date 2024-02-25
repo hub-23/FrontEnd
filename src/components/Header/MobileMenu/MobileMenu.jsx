@@ -33,7 +33,7 @@ export const MobileMenu = ( { onActiveModal } ) => {
 
       <div>
         <S.NavWrapper>
-          <Navigation />
+          <Navigation onMobileMenuClose={ onActiveModal } />
         </S.NavWrapper>
 
         <S.SignInBtn onClick={ () => setShowModalLogin( !showModalLogin ) }>

@@ -56,27 +56,25 @@ export const PeopleTrust = () => {
   }, [] );
 
   return (
-    <S.MapSection>
-      <S.MapContainerr>
-        <S.Wrapper>
-          <S.Title>Нам довіряють</S.Title>
-          <S.Text>
-              Наші викладачі знаходяться по всьому
-              світу, переважна їх кількість в Україні.
-              Вони надають послуги, як на місці, так і
-              онлайн. Тому, якщо ви знаходитесь у
-              Варшаві чи у Києві, перевірте там може
-              бути викладач, який прийме вас офлайн.
-              А якщо вам зручніше онлайн, вводьте
-              “дистанційно” в пошуковику і ми
-              знайдемо його для вас.
-          </S.Text>
-          <S.MapWrapper ref={ mapContainerRef }>
-            { ( mapWidth >= 550 && mapWidth < 1030 ) && <MapSmall markersVisible={ markersVisible } /> }
-            { ( mapWidth >= 1030 ) && <MapBig markersVisible={ markersVisible } /> }
-          </S.MapWrapper>
-        </S.Wrapper>
-      </S.MapContainerr>
-    </S.MapSection>
+    <S.Section>
+      <S.Container>
+        <S.Title>Нам довіряють</S.Title>
+        <S.Text>
+          Наші викладачі знаходяться по всьому
+          світу, переважна їх кількість в Україні.
+          Вони надають послуги, як на місці, так і
+          онлайн. Тому, якщо ви знаходитесь у
+          Варшаві чи у Києві, перевірте там може
+          бути викладач, який прийме вас офлайн.
+          А якщо вам зручніше онлайн, вводьте
+          “дистанційно” в пошуковику і ми
+          знайдемо його для вас.
+        </S.Text>
+      <S.MapWrapper ref={ mapContainerRef }>
+        { ( mapWidth >= 550 && mapWidth < 1030 ) && <MapSmall markersVisible={ markersVisible } /> }
+        { ( mapWidth >= 1030 ) && <MapBig markersVisible={ markersVisible } /> }
+      </S.MapWrapper>
+      </S.Container>
+    </S.Section>
   );
 };

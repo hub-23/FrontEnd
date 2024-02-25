@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 
 import {
+  accent,
   bgColorGradientBtn,
-  deepAccent,
   nameExp,
   passwordExp,
   white,
@@ -13,14 +13,12 @@ import { IconSvg } from '../../common/IconSvg';
 import * as S from './ModalRegistrationEmail.styled';
 import reCapcha from '../../../assets/home/modal/recapcha.png';
 import { BtnRegistration } from './BtnRegistration';
-import { BtnEye } from '../../common/BtnEye';
 import { BtnClose } from '../../common/BtnClose';
-import { InputField } from '../../modalElements/InputField';
+import { Input } from '../../modalElements/Input';
 import { InputFieldPhone } from '../../modalElements/InputFieldPhone';
+import { Note } from '../../modalElements/Note';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
-  const [ showPassword, setSowPassword ] = useState( true );
-
   const scheme = object( {
     name: string()
       .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
@@ -42,9 +40,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   } );
 
   const initialValues = {
-    name: '',
-    email: '',
-    phone: '',
+    name: localStorage.getItem( 'registrationEmail-name' ) || '',
+    email: localStorage.getItem( 'registrationEmail-email' ) || '',
+    phone: localStorage.getItem( 'registrationEmail-phone' ) || '',
     password: '',
     capcha: '',
     accept: '',
@@ -52,6 +50,17 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
   const handleSubmit = ( values, { resetForm } ) => {
     console.log( '💙💛 send Data registrationEmail to Backend :>> ', values );
+
+    const formFieldKeys = [
+      'name',
+      'email',
+      'phone',
+    ];
+
+    formFieldKeys.forEach( key => {
+      localStorage.removeItem( `registrationEmail-${key}` );
+    } );
+
     resetForm();
     onActiveModal();
   };
@@ -92,6 +101,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
             const {
               errors: { name, email, phone, password, capcha },
               touched,
+              values,
               setValues,
               setTouched,
             } = formik;
@@ -119,27 +129,30 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
               } );
             }; // значення з InputFieldPhone
 
+            const noteShown = errPassword === 'undefined'
+            || ( password && password.startsWith( 'Пароль обов‘язковий' ) );
+
             return (
               <S.FormEmail autoComplete="on">
-                <S.LabelFormUser>
-                  <InputField
-                    type="text"
-                    name="name"
-                    placeholder="Ім’я"
-                    isStar={ true }
-                    error={ errName }
-                  />
-                </S.LabelFormUser>
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Ім’я"
+                  isStar={ true }
+                  error={ errName }
+                  value={ values.name }
+                  component='registrationEmail'
+                />
 
-                <S.LabelFormUser>
-                  <InputField
-                    type="email"
-                    name="email"
-                    placeholder="Електронна адреса"
-                    isStar={ true }
-                    error={ errEmail }
-                  />
-                </S.LabelFormUser>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Електронна адреса"
+                  isStar={ true }
+                  error={ errEmail }
+                  value={ values.email }
+                  component='registrationEmail'
+                />
 
                 <S.LabelFormUser>
                   <InputFieldPhone
@@ -149,12 +162,12 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     $isDataUser={ isDataUser }
                     $error={ errPhone }
                     // ----------- use for PhoneSelect
-                    $xlPositionTopList="15px"
-                    $smPositionTopList="7px"
+                    $xlPositionTopList="18px"
+                    $smPositionTopList="11px"
                     $xlPositionLeftList="32px"
-                    $xlHeightList="280px"
+                    $xlHeightList="270px"
                     $mdHeightList=""
-                    $smHeightList=""
+                    $smHeightList="290px"
                     $xlGapList="12px"
                     $mdGapList=""
                     $smGapList=""
@@ -163,62 +176,53 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     $smFontSizeList=""
                   />
                 </S.LabelFormUser>
-
-                <S.LabelFormUser
-                  style={ {
-                    gap: '11px',
-                  } }
-                >
-                  <InputField
-                    type={ showPassword ? 'password' : 'text' }
+                
+                <div style={ { position: 'relative' } }>
+                  <Input
                     name="password"
                     placeholder="Придумайте пароль"
                     isStar={ true }
+                    btnEye
                     $error={ errPassword }
+                    errorMessage={ password }
+                    value={ values.password }
                   />
-
-                  <BtnEye
-                    xlRight="36px"
-                    xlTop="16px"
-                    smRight="20px"
-                    smTop="13px"
-                    click={ () => setSowPassword( !showPassword ) }
-                  >
-                    {showPassword ? (
-                      <IconSvg
-                        xlWidth="24px"
-                        xlHeight="24px"
-                        smWidth="20px"
-                        smHeight="20px"
-                        icon="icon-eye-slash"
-                      />
-                    ) : (
-                      <IconSvg
-                        xlWidth="24px"
-                        xlHeight="24px"
-                        smWidth="20px"
-                        smHeight="20px"
-                        icon="icon-eye"
-                      />
-                    )}
-                  </BtnEye>
-
-                  <S.WrappErrTextPassword>
-                    <IconSvg
-                      width="24px"
-                      height="24px"
-                      icon="icon-star-marker"
-                      $fill={ deepAccent }
+                  { noteShown
+                    && <Note
+                      text='Більше 8 символів, велика літера, цифри і спеціальний знак'
+                      $fill={ accent }
+                      $xlBottom={ errPassword ? '-45px' : '-25px' }
+                      $mdBottom={ errPassword ? '-55px' : '-45px' }
+                      $smBottom={ errPassword ? '-40px' : '-40px' }
+                      $xlLeft='12px'
+                      $mdLeft='0'
+                      $xlFontSize='14px'
+                      $xlLineHeight='15.82' 
+                      $error={ errPassword }
                     />
-
-                    <S.TextErrPassword $color={ errPassword }>
-                      Більше 8 символів, велика літера, цифри і спеціальний знак
-                    </S.TextErrPassword>
-                  </S.WrappErrTextPassword>
-                </S.LabelFormUser>
+                  }
+                </div>
 
                 <div>
-                  <S.WrappCapcha $error={ errCapcha } $accept={ isCheckCapcha }>
+                  <S.WrappCapcha
+                    $error={ errCapcha }
+                    $accept={ isCheckCapcha }
+                    $xlMarginTop={ 
+                      noteShown && errPassword
+                      ? '26px'
+                      : ( noteShown && '5px' ) || ( errPassword && '20px' ) 
+                    }
+                    $mdMarginTop={
+                      noteShown && errPassword 
+                      ? '35px'
+                      : ( noteShown && '30px' ) || ( errPassword && '20px' ) 
+                    }
+                    $smMarginTop={
+                      noteShown && errPassword 
+                      ? '15px'
+                      : ( noteShown && '15px' ) || ( errPassword && '0' ) 
+                    }
+                  >
                     <S.LabelCheckbox>
                       <S.InputCheckbox type="checkbox" name="capcha" />
                       <span></span>
