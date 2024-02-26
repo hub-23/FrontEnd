@@ -230,6 +230,14 @@
 <path fill="#ec1c24" style="fill: var(--color2, #ec1c24)" d="M0 21.5c0 3.037 1.687 5.5 5 5.5h22c3.313 0 5-2.463 5-5.5v-5.5h-32v5.5z"></path>
 </symbol>
 
+<symbol id="icon-add-avatar" viewBox="0 0 16 16">
+  <path d="M5.99996 6.66667C6.73634 6.66667 7.33329 6.06971 7.33329 5.33333C7.33329 4.59695 6.73634 4 5.99996 4C5.26358 4 4.66663 4.59695 4.66663 5.33333C4.66663 6.06971 5.26358 6.66667 5.99996 6.66667Z" stroke="#113268" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M8.66671 1.33301H6.00004C2.66671 1.33301 1.33337 2.66634 1.33337 5.99967V9.99967C1.33337 13.333 2.66671 14.6663 6.00004 14.6663H10C13.3334 14.6663 14.6667 13.333 14.6667 9.99967V6.66634" stroke="#113268" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M10.5 3.33301H14.1667" stroke="#113268" stroke-width="1.5" stroke-linecap="round"></path>
+  <path d="M12.3334 5.16667V1.5" stroke="#113268" stroke-width="1.5" stroke-linecap="round"></path>
+  <path d="M1.77991 12.633L5.06657 10.4264C5.59324 10.073 6.35324 10.113 6.82657 10.5197L7.04657 10.713C7.56657 11.1597 8.40657 11.1597 8.92657 10.713L11.6999 8.33305C12.2199 7.88638 13.0599 7.88638 13.5799 8.33305L14.6666 9.26638" stroke="#113268" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</symbol>
+
 <symbol id="icon-flag-PT" viewBox="0 0 24 24">
 <path fill="#137A08" d="M3.75 3.75C1.265 3.75 0 5.597 0 7.875v8.25c0 2.278 1.265 4.125 3.75 4.125h4.5V3.75h-4.5Z"/>
 <path fill="#EC1C24" d="M20.25 3.75h-12v16.5h12c2.485 0 3.75-1.847 3.75-4.125v-8.25c0-2.278-1.265-4.125-3.75-4.125Z"/>

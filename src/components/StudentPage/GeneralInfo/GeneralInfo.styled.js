@@ -1,0 +1,56 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
+    width: 580px;
+    margin-left: 317px;
+`;
+
+export const ProfilePhoto = styled.div`
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .circle {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid ${( props ) => props.color || props.theme.colors.accent};
+
+        &--text {
+            font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+            font-size: 24px;
+            font-weight: 500;
+            line-height: calc(33.6 / 24);
+            color: ${( props ) => props.color || props.theme.colors.accent};
+        }        
+    }
+
+    .text p:nth-child(1) {
+        margin-bottom: 8px;
+        font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+        font-size: 20px;
+        line-height: calc(28 / 20);
+    }
+    .text p:nth-child(2) {
+        font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+        line-height: calc(19.6 / 14);
+    }
+
+    button {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-color: transparent;
+        border-radius: 50%;
+        background-color: #F9F9F9;
+
+        svg {
+            fill: none;
+        }
+    }
+`;
