@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { transition, grayStroke } from '../../../utils/variables.styled';
 
 export const variant = variants => props => {
   const variantKey = props[ 'variant' ];
@@ -26,7 +27,7 @@ const StyledButton = styled.button`
       color: ${props => props.color || props.theme.colors.white};
       background: ${props => props.background || props.theme.colors.primary};
       border: 1px solid ${props => props.border || props.theme.colors.black};
-      transition: all 0.5s ease;
+      transition: all ${transition};
       &:hover {
         color: #2d2d2d;
         background: #ffffff;
@@ -47,7 +48,7 @@ const StyledButton = styled.button`
       color: ${props => props.color || props.theme.colors.primary};
       background: ${props => props.background || props.theme.colors.white};
       border: 1px solid ${props => props.border || props.theme.colors.black};
-      transition: all 0.5s ease;
+      transition: all ${transition};
       &:hover {
         background: #113268;
         color: #ffffff;
@@ -66,7 +67,7 @@ const StyledButton = styled.button`
       color: ${props => props.color || props.theme.colors.white};
       background: ${props => props.background || props.theme.colors.liner_pink};
       border: 1px solid ${props => props.border || 'transparent'};
-      transition: all 0.5s ease;
+      transition: all ${transition};
       &:hover {
         background: linear-gradient(267.92deg, #b92759 0%, #e3669c 100%);
       }
@@ -78,21 +79,19 @@ const StyledButton = styled.button`
       }
     `,
     blue: css`
-        color: ${props => props.color || props.theme.colors.white};
-        background: ${props =>
-          props.background || props.theme.colors.liner_blue};
-        border: 1px solid ${props => props.border || 'transparent'};
-        transition: all 0.5s ease;
-            &:hover{
-              background: linear-gradient(267.92deg, #09194D 0%, #234890 100%);
-            };
-            &:active{
-              background: rgba(17, 50, 104, 1);
-            };
-            &:disabled{
-              background: rgba(213, 213, 213, 1);
-            }
-    }
+      color: ${props => props.color || props.theme.colors.white};
+      background: ${props => props.background || props.theme.colors.liner_blue};
+      border: 1px solid ${props => props.border || 'transparent'};
+      transition: all ${transition};
+      &:hover{
+        background: linear-gradient(267.92deg, #09194D 0%, #234890 100%);
+      };
+      &:active{
+        background: rgba(17, 50, 104, 1);
+      };
+      &:disabled{
+        background: rgba(213, 213, 213, 1);
+      }
     `,
     grey: css`
       color: ${props => props.color || props.theme.colors.white};
@@ -103,6 +102,27 @@ const StyledButton = styled.button`
       color: ${props => props.color || props.theme.colors.black};
       border: 1px solid ${props => props.color || '#E3669C'};
       background: ${props => props.background || props.theme.colors.white};
+    `,
+    blueGradientedBorder: css`
+      color: ${props => props.color || props.theme.colors.primary};
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(87.92deg, #09194D 0%, #234890 100%) border-box;
+      border: 4px solid transparent;
+      transition: background ${transition}, border-color ${transition}, color ${transition};
+      &:hover,
+      &:focus {
+        background: linear-gradient(white, white) padding-box,
+                    linear-gradient(87.92deg, #234890 0%, #09194D 100%) border-box;
+      }
+      &:active {
+        background: ${( props ) => props.color || props.theme.colors.primary};
+        color: ${( props ) => props.color || props.theme.colors.white};
+        border-color: ${( props ) => props.color || props.theme.colors.primary};
+      }
+      &:disabled {
+        border: 4px solid ${grayStroke};
+        color: ${( props ) => props.color || grayStroke };
+      }
     `,
   } )}
 `;

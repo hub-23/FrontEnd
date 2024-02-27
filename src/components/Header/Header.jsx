@@ -66,7 +66,11 @@ export const Header = () => {
               <Language />
             </S.LanguageWrapper>
 
-            <S.SignInBtn onClick={ toggleModalLogin }>Вхід</S.SignInBtn>
+            <S.SignInBtn
+              variant='blueGradientedBorder'
+              onClick={ toggleModalLogin }>
+                Вхід
+            </S.SignInBtn>
           </S.Wrapper>
           <Link to='/student' style={ { position: 'absolute', top: '0' } }>Student&apos;s page</Link>
         </S.HeaderContent>

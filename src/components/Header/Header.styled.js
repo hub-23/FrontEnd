@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { device } from '../../styles/device';
 import { Link } from 'react-router-dom';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
+import { Button } from '../common/button/Button';
 import { transition } from '../../utils/variables.styled';
 
 export const Header = styled.header`
@@ -124,31 +125,13 @@ export const LanguageWrapper = styled.div`
     }
 `;
 
-export const SignInBtn = styled( Link )`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 107px;
-  height: 48px;
-  padding: 14px 32px;
-  color: ${( props ) => props.color || props.theme.colors.primary};
-  background: linear-gradient(white, white) padding-box,
-              linear-gradient(87.92deg, #09194D 0%, #234890 100%) border-box;
-  border: 4px solid transparent;
-  border-radius: 20px 0;
-  font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.2px;
-  transition: background ${transition}, border-color ${transition}, color ${transition};
-  &:hover,
-  &:focus {
-    background: ${( props ) => props.color || props.theme.colors.primary};
-    border-color: ${( props ) => props.color || props.theme.colors.primary};
-    color: ${( props ) => props.color || props.theme.colors.white};
-  }
-  @media ${device.md} {
-    display: none;
-  }
+export const SignInBtn = styled( Button )`
+    width: 107px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: calc( 20 / 20 );
+
+    @media ${device.md} {
+        display: none;
+    }
 `;
