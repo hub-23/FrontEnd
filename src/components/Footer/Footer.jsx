@@ -10,13 +10,6 @@ export const Footer = () => {
   const [ isFormOpen, setIsFormOpen ] = useState( false );
   const [ isNotificationShown, setIsNotificationShown ] = useState( false );
 
-  const handleFormClose = () => {
-    setIsFormOpen( false );
-  };
-  const handleNotificationClose = () => {
-    setIsNotificationShown( false );
-  };
-
   return (
     <S.FooterSection>
       <S.FooterContainer>
@@ -87,17 +80,17 @@ export const Footer = () => {
               Заповнити форму
             </S.FormBtn>
             {isFormOpen && (
-              <Modal onActiveModal={ handleFormClose }>
+              <Modal onActiveModal={ () => setIsFormOpen( false ) }>
                 <QuestionForm
-                  onFormClose={ handleFormClose }
+                  onFormClose={ () => setIsFormOpen( false ) }
                   onNotificationShow={ () => setIsNotificationShown( true ) }
                 />
               </Modal>
             )}
             {isNotificationShown && (
-              <Modal onActiveModal={ handleNotificationClose }>
+              <Modal onActiveModal={ () => setIsNotificationShown( false ) }>
                 <Notification
-                  onNotificationClose={ handleNotificationClose }
+                  onNotificationClose={ () => setIsNotificationShown( false ) }
                   success={ true }
                   // success={ false } // залежно від status code з бекенду
                 />

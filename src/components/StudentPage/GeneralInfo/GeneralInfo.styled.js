@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 580px;
-    margin-left: 317px;
+
 `;
 
 export const ProfilePhoto = styled.div`
@@ -11,6 +10,7 @@ export const ProfilePhoto = styled.div`
     align-items: center;
 
     .circle {
+        position: relative;
         width: 80px;
         height: 80px;
         display: flex;
@@ -40,6 +40,9 @@ export const ProfilePhoto = styled.div`
     }
 
     button {
+        position: absolute;
+        right: 0%;
+        bottom: 0;
         width: 24px;
         height: 24px;
         display: flex;
@@ -52,5 +55,17 @@ export const ProfilePhoto = styled.div`
         svg {
             fill: none;
         }
-    }
+        svg.active {
+            display: none;
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            svg.default {
+                display: none;
+            }
+            svg.active {
+                display: block;
+            }
+        }
 `;
