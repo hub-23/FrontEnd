@@ -1,8 +1,8 @@
 import React from 'react';
-import * as S from './FileUpload.styled';
+import * as S from './FileUploadInput.styled';
 
 
-export const FileUpload = ( { onImageSelect, id } ) => {
+export const FileUploadInput = ( { onImageSelect, id, ...props } ) => {
     const handleFileChange = ( e ) => {
         const inputFile = e.target.files[ 0 ];
     
@@ -44,6 +44,7 @@ export const FileUpload = ( { onImageSelect, id } ) => {
             onChange={ handleFileChange }
             accept='image/jpeg,image/png,image/gif,image/webp'
             id={ id }
+            { ...props }
         />
     );
 };

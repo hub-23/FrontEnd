@@ -53,7 +53,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
   const handleSubmit = ( values, { resetForm } ) => {
     const attachments = images;
     const questionFormData = { ...values, attachments };
-
+    console.log( attachments );
     console.log( 'Data from QuestionForm to Backend  :>> ', questionFormData );
 
     const formData = new FormData();
