@@ -10,9 +10,11 @@ export const Wrapper = styled.section`
 
 export const StyledNavLink = styled( NavLink )`
   display: block;
+  display: flex;
   width: 429px;
   height: 60px;
   color: #2d2d2d;
+  padding: 16px 0px 16px 160px;
 
   &.active {
     border-radius: 0px 56px 56px 0px;
@@ -22,6 +24,7 @@ export const StyledNavLink = styled( NavLink )`
 `;
 
 export const Image = styled.img`
+  display: inline-block;
   width: 24px;
   height: 24px;
 `;
@@ -29,7 +32,7 @@ export const Image = styled.img`
 export const Title = styled.h2`
   width: 245px;
   height: 28px;
-  padding: 16px 0px 16px 160px;
+  padding-left: 16px;
   white-space: nowrap;
   font-size: 20px;
   font-weight: 400;
