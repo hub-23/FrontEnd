@@ -6,7 +6,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     width: 800px;
-    height: 482px;
+    /* height: 482px; */
     padding-top: 64px;
     padding-bottom: 64px;
     border-radius: 20px 0;
@@ -20,16 +20,31 @@ export const Title = styled.h2`
     line-height: calc(38 / 32);
 `;
 
-export const ImageWrapper = styled.div`
+export const CircleWrapper = styled.div`
     width: 200px;
     height: 200px;
+    border: 1px solid ${props => props.color || props.theme.colors.accent};
+    border-radius: 50%;
     margin-bottom: 32px;
-    /* border: 1px solid ${props => props.color || props.theme.colors.accent}; */
 
     img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+`;
+
+export const ImageWrapper = styled.div`
+    max-width: 358px;
+    max-height: 358px;
+    margin-bottom: 32px;
+    border: 1px solid ${props => props.color || props.theme.colors.accent};
+
+    img {
+        width: 100%;
+        height: 358px;
+        object-fit: cover;
     }
 `;
 
