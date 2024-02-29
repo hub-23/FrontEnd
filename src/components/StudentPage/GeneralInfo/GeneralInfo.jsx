@@ -7,12 +7,15 @@ import * as S from './GeneralInfo.styled';
 
 export const GeneralInfo = () => {
     const [ modalOpen, setModalOpen ] = useState( false );
+    const [ avatar, setAvatar ] = useState( '' );
 
     return (
         <S.Container>
             <S.ProfilePhoto>
                 <div className="circle">
-                    <p className="circle--text">АІ</p>
+                    {!avatar && <p className="circle--text">АІ</p>}
+                    {avatar && <img src={ avatar } alt='Обрізане фото' />}
+
                     <button 
                         type='button' 
                         aria-label='add image'
@@ -44,7 +47,10 @@ export const GeneralInfo = () => {
 
             { modalOpen && (
                 <Modal onActiveModal={ () => setModalOpen( false ) }>
-                    <PhotoHandler onPhotoHandlerClose={ () => setModalOpen( false ) } />
+                    <PhotoHandler
+                        onPhotoHandlerClose={ () => setModalOpen( false ) }
+                        onAvatarReceive={ setAvatar }
+                    />
                 </Modal>
             ) }
         </S.Container>

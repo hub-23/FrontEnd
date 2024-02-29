@@ -25,7 +25,14 @@ export const ProfilePhoto = styled.div`
             font-weight: 500;
             line-height: calc(33.6 / 24);
             color: ${( props ) => props.color || props.theme.colors.accent};
-        }        
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
     }
 
     .text p:nth-child(1) {
