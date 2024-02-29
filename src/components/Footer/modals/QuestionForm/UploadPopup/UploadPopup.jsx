@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconSvg } from '../../../../common/IconSvg';
-import { FileUpload } from 'components/modalElements/FileUpload';
+import { FileUploadInput } from 'components/modalElements/FileUploadInput';
 import * as S from './UploadPopup.styled';
 
 export const UploadPopup = ( { handleImageSelect } ) => {
@@ -15,7 +15,11 @@ export const UploadPopup = ( { handleImageSelect } ) => {
           />
         </S.UploadBtn>
       </label>
-      <FileUpload onImageSelect={ handleImageSelect } id='file-input' />
+      <FileUploadInput
+        onImageSelect={ handleImageSelect }
+        id='file-input'
+        $display='none'
+      />
       <S.Text>Завантажити з комп’ютера</S.Text>
     </S.Wrapper>
   );
