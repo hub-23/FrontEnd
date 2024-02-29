@@ -1,30 +1,31 @@
 import React from 'react';
-import * as S from './Navbar.styled';
 import profile from '../../assets/student/profile.png';
 // import profile2 from '../../assets/student/profile2.png';
 import calendar from '../../assets/student/calendar.png';
 // import calendar2 from '../../assets/student/calendar2.png';
 import logout from '../../assets/student/logout.png';
+ // eslint-disable-next-line max-len
+import { Wrapper, StyledList, StyledNavLink, StyledImage, StyledTitle, StyledLine } from './Navbar.styled';
 
 export const Navbar = () => {
 
 	return (
-        <S.Wrapper>
-            <ul>
-                <S.StyledNavLink to='/student/info'>
-                    <S.Image src={ profile } alt=''/>
-                    <S.Title>Особиста інформація</S.Title> 
-                </S.StyledNavLink>
-                <S.StyledNavLink to='/student/reservation'>
-                    <S.Image src={ calendar } alt=''/>
-                    <S.Title> Мої бронювання</S.Title>
-                </S.StyledNavLink>
-                <S.StyledNavLink to='/student/out'>
-                    <S.Image src={ logout } alt=''/>
-                    <S.Title>Вийти</S.Title>
-                </S.StyledNavLink>
-            </ul>
-            <S.Line/>
-        </S.Wrapper>
+        <Wrapper>
+            <StyledList>
+                <StyledNavLink to='/student/info'>
+                    <StyledImage src={ profile } alt=''/>
+                    <StyledTitle>Особиста інформація</StyledTitle> 
+                </StyledNavLink>
+                <StyledNavLink to='/student/reservation'>
+                    <StyledImage src={ calendar } alt=''/>
+                    <StyledTitle> Мої бронювання</StyledTitle>
+                </StyledNavLink>
+                <StyledNavLink to='/student/out'>
+                    <StyledImage src={ logout } alt=''/>
+                    <StyledTitle>Вийти</StyledTitle>
+                </StyledNavLink>
+            </StyledList>
+            <StyledLine/>
+        </Wrapper>
 	)
 }

@@ -8,6 +8,8 @@ export const Wrapper = styled.section`
   min-height: 100vw;
 `;
 
+export const StyledList = styled.ul``;
+
 export const StyledNavLink = styled( NavLink )`
   display: block;
   display: flex;
@@ -23,13 +25,13 @@ export const StyledNavLink = styled( NavLink )`
   }
 `;
 
-export const Image = styled.img`
+export const StyledImage = styled.img`
   display: inline-block;
   width: 24px;
   height: 24px;
 `;
 
-export const Title = styled.h2`
+export const StyledTitle = styled.h2`
   width: 245px;
   height: 28px;
   padding-left: 16px;
@@ -39,7 +41,7 @@ export const Title = styled.h2`
   line-height: 140%;
 `;
 
-export const Line = styled.hr`
+export const StyledLine = styled.hr`
   margin-left: 482px;
   margin-top: -26%;
   height: 554px;
