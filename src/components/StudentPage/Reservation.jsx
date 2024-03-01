@@ -1,8 +1,16 @@
 import React from 'react';
+import { Container,
+    StyledTitle,
+    StyledText } from './Reservation.styled';
 
 export const Reservation = () => {
 
 	return (
-		<h1>Мої бронювання</h1>
+        <Container>
+            <StyledTitle>У Вас ще немає бронювань</StyledTitle> 
+            <StyledText>
+                Коли з’явиться нове бронювання, тут буде відображено інформаці про нього.
+            </StyledText> 
+        </Container>
 	)
 }
