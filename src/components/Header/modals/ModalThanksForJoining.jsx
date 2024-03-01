@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../../assets/home/logo.svg';
 
 import * as S from './ModalThanksForJoining.staled';
-import { BtnRegistration } from '../../Hero/modals/BtnRegistration';
+import { BtnRegistration } from '../../HomePage/Hero/modals/BtnRegistration';
 import { bgColorGradientBtn, white } from '../../../utils/variables.styled';
 
 export const ModalThanksForJoining = ( { onActiveModal } ) => {

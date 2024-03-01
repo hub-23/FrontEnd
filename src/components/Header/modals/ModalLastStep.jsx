@@ -7,8 +7,8 @@ import { useHubContext } from '../../../redux/Context';
 import { IconSvg } from '../../common/IconSvg';
 import * as S from './ModalLastStep.staled';
 import { BtnClose } from '../../common/BtnClose';
-import { BtnRegistration } from '../../Hero/modals/BtnRegistration';
-import { InputFieldPhone } from '../../modalElements/InputFieldPhone';
+import { BtnRegistration } from '../../HomePage/Hero/modals/BtnRegistration';
+import { InputFieldPhone } from '../../common/modalElements/InputFieldPhone';
 
 export const ModalLastStep = ( { onActiveModal } ) => {
   const { setShowModalLastStep, setShowModalConfirmEmail } = useHubContext();
