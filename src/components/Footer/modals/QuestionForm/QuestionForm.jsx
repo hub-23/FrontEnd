@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string, array } from 'yup';
-import { BtnClose } from '../../../modalElements/BtnClose';
-import { Input } from '../../../modalElements/Input';
-import { InputFieldPhone } from '../../../modalElements/InputFieldPhone';
+import { BtnClose } from '../../../common/modalElements/BtnClose';
+import { Input } from '../../../common/modalElements/Input';
+import { InputFieldPhone } from '../../../common/modalElements/InputFieldPhone';
 import { Message } from './Message/Message';
-import { Note } from '../../../modalElements/Note';
+import { Note } from '../../../common/modalElements/Note';
 import { nameExp, deepAccent } from '../../../../utils/variables.styled';
 import * as S from './QuestionForm.styled';
 
@@ -140,7 +140,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   isStar={ true }
                   error={ errName }
                   value={ values.name }
-                  component='question-form' // for SaveToLocalStorage (частина нази ключа)
+                  component="question-form" // for SaveToLocalStorage (частина нази ключа)
                 />
                 <Input
                   type="email"
@@ -149,7 +149,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   isStar={ true }
                   error={ errEmail }
                   value={ values.email }
-                  component='question-form'
+                  component="question-form"
                 />
 
                 <>
@@ -184,7 +184,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
                   formik={ formik }
                   $topic
                   readOnly
-                  component='question-form'
+                  component="question-form"
                 />
 
                 <Message
@@ -195,7 +195,7 @@ export const QuestionForm = ( { onFormClose, onNotificationShow } ) => {
 
                 <Note
                   $fill={ deepAccent }
-                  text='Ці поля є обов&apos;язковими до заповнення'
+                  text="Ці поля є обов'язковими до заповнення"
                 />
 
                 <S.SubmitBtn type="submit" variant="blue">

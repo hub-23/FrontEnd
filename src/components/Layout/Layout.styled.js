@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '../../styles/device';
+import { device } from '../../utils/device';
 
 export const StyledWrapper = styled.section`
   max-width: 1440px;

@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { FormError } from '../../../../modalElements/FormError';
+import { FormError } from '../../../../common/modalElements/FormError';
 import { IconSvg } from '../../../../common/IconSvg';
 import { UploadPopup } from '../UploadPopup/UploadPopup';
-import { ImageWithDeleteBtn } from '../../../../modalElements/ImageWithDeleteBtn';
+import { ImageWithDeleteBtn } from '../../../../common/modalElements/ImageWithDeleteBtn';
 import { SaveToLocalStorage } from '../../../../../helpers/SaveToLocalStorage';
 import { grayText } from '../../../../../utils/variables.styled';
 import * as S from './Message.styled';
 
-
 export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
-  const storedImages = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
+  const storedImages
+    = JSON.parse( localStorage.getItem( 'question-form-attachments' ) ) || [];
   const [ images, setImages ] = useState( storedImages );
 
-
-  const handleImageSelect = ( value ) => {
+  const handleImageSelect = value => {
     if ( !images.includes( value ) ) {
-      setImages( ( prev ) => [ ...prev, value ] );
+      setImages( prev => [ ...prev, value ] );
     } else {
       alert( 'Поточне зображення вже додано.' );
     }
   };
 
-  const handleImageDelete = ( value ) => {
+  const handleImageDelete = value => {
     if ( images.includes( value ) ) {
       const idxToDelete = images.indexOf( value );
       const updatedImages = [ ...images ];
@@ -39,7 +38,13 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
   useEffect( () => {
     const handleClickOutside = ( { target } ) => {
       const tag = target.tagName;
-      if ( tag === 'TEXTAREA' || tag === 'DIV' || tag === 'FORM' || tag === 'UL' || tag === 'IMG' ) {
+      if (
+        tag === 'TEXTAREA'
+        || tag === 'DIV'
+        || tag === 'FORM'
+        || tag === 'UL'
+        || tag === 'IMG'
+      ) {
         setUploadPopupVisible( false );
       }
     };
@@ -52,8 +57,7 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
 
   return (
     <S.Container>
-      <S.InputContainer $error={ errMessage } $value={ values.message } >
-
+      <S.InputContainer $error={ errMessage } $value={ values.message }>
         <S.InputWrapper>
           <S.Textarea
             name="message"
@@ -64,7 +68,7 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
           />
           <S.Label htmlFor="message">
             Повідомлення
-            <S.IconWrapper >
+            <S.IconWrapper>
               <IconSvg
                 xlWidth="10px"
                 xlHeight="10px"
@@ -74,35 +78,33 @@ export const Message = ( { handleAttachmentsSelect, errMessage, values } ) => {
             </S.IconWrapper>
           </S.Label>
         </S.InputWrapper>
-        
+
         <S.ClipBtn
-          type='button'
-          aria-label='paper-clip'
+          type="button"
+          aria-label="paper-clip"
           onClick={ () => setUploadPopupVisible( !uploadPopupVisible ) }
         >
-          <IconSvg
-            xlWidth="24px"
-            xlHeight="24px"
-            icon="icon-paper-clip"
-          />
+          <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-paper-clip" />
         </S.ClipBtn>
 
         {uploadPopupVisible && (
           <UploadPopup handleImageSelect={ handleImageSelect } />
-        ) }
+        )}
 
-        { images?.length > 0 && (
+        {images?.length > 0 && (
           <S.ImagesList>
-            {images.map( ( image ) => (
+            {images.map( image => (
               <S.ImageItem key={ image }>
-                <ImageWithDeleteBtn image={ image } onImageDelete={ handleImageDelete } />
+                <ImageWithDeleteBtn
+                  image={ image }
+                  onImageDelete={ handleImageDelete }
+                />
               </S.ImageItem>
             ) )}
           </S.ImagesList>
         )}
-
       </S.InputContainer>
-      <SaveToLocalStorage component='question-form' fieldName="message" />
+      <SaveToLocalStorage component="question-form" fieldName="message" />
       <FormError name="message" />
     </S.Container>
   );

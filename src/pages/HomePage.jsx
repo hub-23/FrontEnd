@@ -1,11 +1,11 @@
 import React from 'react';
-import { PopularСlasses } from '../components/PopularСlasses/PopularСlasses';
-import TopTeachersCarousel from '../components/TopTeachersCarousel';
-import { PeopleTrust } from '../components/PeopleTrust/PeopleTrust';
-import { Statistics } from '../components/Statistics/Statistics';
-import OurTeachersCarousel from '../components/OurTeachersCarousel';
-import { FeedbackCarousel } from '../components/FeedbackCarousel/FeedbackCarousel';
-import { Hero } from '../components/Hero/Hero';
+import { PopularСlasses } from '../components/HomePage/PopularСlasses/PopularСlasses';
+import TopTeachersCarousel from '../components/HomePage/TopTeachersCarousel';
+import { PeopleTrust } from '../components/HomePage/PeopleTrust/PeopleTrust';
+import { Statistics } from '../components/HomePage/Statistics/Statistics';
+import OurTeachersCarousel from '../components/HomePage/OurTeachersCarousel';
+import { FeedbackCarousel } from '../components/HomePage/FeedbackCarousel/FeedbackCarousel';
+import { Hero } from '../components/HomePage/Hero/Hero';
 
 const HomePage = () => {
   return (

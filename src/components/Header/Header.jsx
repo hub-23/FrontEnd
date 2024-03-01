@@ -5,7 +5,7 @@ import { Language } from './Language/Language';
 import { Navigation } from './Navigation/Navigation';
 import { IconSvg } from '../common/IconSvg';
 import { useHubContext } from '../../redux/Context';
-import { Modal } from '../modalElements/Modal';
+import { Modal } from '../common/modalElements/Modal';
 import { ModalLogin } from './modals/ModalLogin';
 import { ModalLastStep } from './modals/ModalLastStep';
 import { ModalConfirmEmail } from './modals/ModalConfirmEmail';
@@ -67,12 +67,15 @@ export const Header = () => {
             </S.LanguageWrapper>
 
             <S.SignInBtn
-              variant='blueGradientedBorder'
-              onClick={ toggleModalLogin }>
-                Вхід
+              variant="blueGradientedBorder"
+              onClick={ toggleModalLogin }
+            >
+              Вхід
             </S.SignInBtn>
           </S.Wrapper>
-          <Link to='/student' style={ { position: 'absolute', top: '0' } }>Student&apos;s page</Link>
+          <Link to="/student" style={ { position: 'absolute', top: '0' } }>
+            Student&apos;s page
+          </Link>
         </S.HeaderContent>
       </S.HeaderContainer>
 

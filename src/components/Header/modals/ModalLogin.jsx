@@ -11,12 +11,12 @@ import {
   grayStroke,
   white,
 } from '../../../utils/variables.styled';
-import { BtnRegistration } from '../../Hero/modals/BtnRegistration';
+import { BtnRegistration } from '../../HomePage/Hero/modals/BtnRegistration';
 import { IconSvg } from '../../common/IconSvg';
 import { BtnEye } from '../../common/BtnEye';
 import { BtnClose } from '../../common/BtnClose';
 import { useHubContext } from '../../../redux/Context';
-import { InputField } from '../../modalElements/InputField';
+import { InputField } from '../../common/modalElements/InputField';
 
 export const ModalLogin = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );

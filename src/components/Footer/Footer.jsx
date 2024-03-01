@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './Footer.styled';
 import { IconSvg } from '../common/IconSvg';
-import { Modal } from '../modalElements/Modal';
+import { Modal } from '../common/modalElements/Modal';
 import { QuestionForm } from './modals/QuestionForm/QuestionForm';
 import { Notification } from './modals/Notification/Notification';
 
@@ -41,7 +41,7 @@ export const Footer = () => {
             </S.ContactsItem>
             <S.Email href="mailto:hub23project@gmail.com">
               <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-envelope" />
-                            hub23project@gmail.com
+              hub23project@gmail.com
             </S.Email>
           </S.ContactsWrapper>
 
@@ -65,7 +65,11 @@ export const Footer = () => {
                   target="_blank"
                   title="Соціальна мережа Facebook"
                 >
-                  <IconSvg xlWidth="24px" xlHeight="24px" icon="icon-facebook" />
+                  <IconSvg
+                    xlWidth="24px"
+                    xlHeight="24px"
+                    icon="icon-facebook"
+                  />
                 </S.SocLink>
               </li>
             </S.SocList>
@@ -73,10 +77,7 @@ export const Footer = () => {
 
           <S.FormBtnWrapper>
             <S.Header>Залишились питання?</S.Header>
-            <S.FormBtn
-              type="button"
-              onClick={ () => setIsFormOpen( true ) }
-            >
+            <S.FormBtn type="button" onClick={ () => setIsFormOpen( true ) }>
               Заповнити форму
             </S.FormBtn>
             {isFormOpen && (
@@ -102,10 +103,17 @@ export const Footer = () => {
         <S.TermsRightsWrapper>
           <div>
             <S.Terms href="" $first>
-                            Політика конфіденційності
+              Політика конфіденційності
             </S.Terms>
             <svg width="1" height="20">
-              <line x1="1" y1="0" x2="1" y2="20" stroke="#fff" strokeWidth="1" />
+              <line
+                x1="1"
+                y1="0"
+                x2="1"
+                y2="20"
+                stroke="#fff"
+                strokeWidth="1"
+              />
             </svg>
             <S.Terms href="">Умови використання</S.Terms>
           </div>
