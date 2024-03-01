@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './components/App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { Provider } from 'react-redux';
+import { persistor, store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
 import { Context } from './redux/Context';
+import App from './components/App';
 
 const root = ReactDOM.createRoot( document.getElementById( 'root' ) );
 
@@ -15,11 +18,15 @@ root.render(
     }
   >
     <React.StrictMode>
-      <BrowserRouter basename="/FrontEnd">
-        <Context>
-          <App />
-        </Context>
-      </BrowserRouter>
+      <Provider store={ store }>
+        <PersistGate loading={ null } persistor={ persistor }>
+          <BrowserRouter basename="/FrontEnd">
+            <Context>
+              <App />
+            </Context>
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
     </React.StrictMode>
   </GoogleOAuthProvider>
 );

@@ -27,6 +27,7 @@ const App = () => {
             <Route path="feedback" element={ <Feedback /> } />
             {/* <Route path='language' element={ <h1>List of language</h1> } /> */}
             <Route path="signIn" element={ <h1>Вхід</h1> } />
+
             <Route path="student/" element={ <Student /> }>
               <Route path="info" element={ <PersonalInfo /> } />
               <Route path="reservation" element={ <Reservation /> } />
