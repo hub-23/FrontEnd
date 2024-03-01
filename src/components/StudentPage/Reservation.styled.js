@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.h3``;
+export const Container = styled.div``;
 
 export const StyledTitle = styled.h3`
   //   width: 489px;
@@ -11,7 +11,7 @@ export const StyledTitle = styled.h3`
   color: #2d2d2d;
 `;
 
-export const StyledText = styled.text`
+export const StyledText = styled.p`
   font-size: 20px;
   font-weight: 400;
   line-height: 140%;

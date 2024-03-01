@@ -58,6 +58,7 @@ const authSlice = createSlice( {
   reducers: {
     setToken( state, { payload } ) {
       state.token = payload;
+      state.isLoggedIn = payload; // ---------- TEMP
     },
     setRefreshToken( state, { payload } ) {
       state.refreshToken = payload;

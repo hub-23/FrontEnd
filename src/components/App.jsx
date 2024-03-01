@@ -8,6 +8,7 @@ import Layout from './Layout/Layout';
 import { PersonalInfo } from 'components/StudentPage/PersonalInfo';
 import { Reservation } from 'components/StudentPage/Reservation';
 import { Out } from 'components/StudentPage/Out';
+import { PrivateRoute } from './PrivateRoute';
 
 const Teacher = lazy( () => import( '../pages/TeachersPage' ) );
 const About = lazy( () => import( '../pages/AboutUsPage' ) );
@@ -26,9 +27,13 @@ const App = () => {
             <Route path="about" element={ <About /> } />
             <Route path="feedback" element={ <Feedback /> } />
             {/* <Route path='language' element={ <h1>List of language</h1> } /> */}
-            <Route path="signIn" element={ <h1>Вхід</h1> } />
+            {/* NOT NEEDED <Route path="signin" element={ <h1>Вхід</h1> } />  */}
 
-            <Route path="student/" element={ <Student /> }>
+            {/* <Route path="student/" element={ <Student /> }> */}
+            <Route
+              path="student/"
+              element={ <PrivateRoute component={ <Student /> } redirectTo="/" /> }
+            >
               <Route path="info" element={ <PersonalInfo /> } />
               <Route path="reservation" element={ <Reservation /> } />
               <Route path="out" element={ <Out /> } />

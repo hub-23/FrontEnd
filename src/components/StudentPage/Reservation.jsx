@@ -1,16 +1,14 @@
 import React from 'react';
-import { Container,
-    StyledTitle,
-    StyledText } from './Reservation.styled';
+import { Container, StyledTitle, StyledText } from './Reservation.styled';
 
 export const Reservation = () => {
-
-	return (
-        <Container>
-            <StyledTitle>У Вас ще немає бронювань</StyledTitle> 
-            <StyledText>
-                Коли з’явиться нове бронювання, тут буде відображено інформаці про нього.
-            </StyledText> 
-        </Container>
-	)
-}
+  return (
+    <Container>
+      <StyledTitle>У Вас ще немає бронювань</StyledTitle>
+      <StyledText>
+        Коли з’явиться нове бронювання, тут буде відображено інформаці про
+        нього.
+      </StyledText>
+    </Container>
+  );
+};

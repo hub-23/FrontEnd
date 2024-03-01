@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import * as S from './Header.styled';
 import { Language } from './Language/Language';
 import { Navigation } from './Navigation/Navigation';
@@ -10,6 +10,10 @@ import { ModalLogin } from './modals/ModalLogin';
 import { ModalLastStep } from './modals/ModalLastStep';
 import { ModalConfirmEmail } from './modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
+import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../redux/auth/slice';
+import { useNavigate } from 'react-router';
 
 export const Header = () => {
   const {
@@ -24,6 +28,10 @@ export const Header = () => {
     showModalThanksForJoining,
     setShowModalThanksForJoining,
   } = useHubContext();
+
+  const { isLoggedIn } = useAuth();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const toggleModalLogin = () => {
     setShowModalLogin( !showModalLogin );
@@ -66,16 +74,43 @@ export const Header = () => {
               <Language />
             </S.LanguageWrapper>
 
-            <S.SignInBtn
-              variant="blueGradientedBorder"
-              onClick={ toggleModalLogin }
+            {isLoggedIn ? (
+              <h2 style={ { fontSize: '20px', fontWeight: '700' } }>
+                User Avatar
+              </h2>
+            ) : (
+              <S.SignInBtn
+                variant="blueGradientedBorder"
+                onClick={ toggleModalLogin }
+              >
+                Вхід
+              </S.SignInBtn>
+            )}
+
+            <button
+              style={ { margin: '0 15px' } }
+              type="button"
+              onClick={ () => {
+                dispatch( setToken( true ) );
+                navigate( '/student/info' );
+              } }
             >
-              Вхід
-            </S.SignInBtn>
+              Signin
+            </button>
+
+            <button
+              type="button"
+              onClick={ () => {
+                dispatch( setToken( false ) );
+              } }
+            >
+              Signout
+            </button>
           </S.Wrapper>
-          <Link to="/student" style={ { position: 'absolute', top: '0' } }>
+
+          {/* <Link to="/student" style={ { position: 'absolute', top: '0' } }>
             Student&apos;s page
-          </Link>
+          </Link> */}
         </S.HeaderContent>
       </S.HeaderContainer>
 
