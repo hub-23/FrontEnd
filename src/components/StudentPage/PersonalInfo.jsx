@@ -1,71 +1,82 @@
 import React from 'react';
 import { Formik } from 'formik';
-// import { object, string, array } from 'yup';
+import { object, string } from 'yup';
+// import { selectUser } from '../../redux/auth/selectors';
 import { GeneralInfo } from './GeneralInfo/GeneralInfo';
+import { nameExp, passwordExp } from '../../utils/variables.styled';
 import * as S from './PersonalInfo.styled';
 
 
 export const PersonalInfo = () => {
-	// const schema = object( {
-	// 	name: string()
-	// 	  .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
-	// 	  .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
-	// 	  .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
-	// 	  .required( 'Вкажіть ваше ім’я' ),
-	// 	email: string()
-	// 	  .email( 'Невірно вказано e-mail' )
-	// 	  .trim()
-	// 	  .required( 'Вкажіть ваш e-mail' ),
-	// 	phone: string().required( 'Вкажіть ваш номер телефону' ),
-	// 	topic: string()
-	// 	  .test( 'is-valid-topic', customErrorMessage, value => {
-	// 		return notificationTopics.includes( value );
-	// 	  } )
-	// 	  .required( 'Вкажіть тему повідомлення' ),
-	// 	message: string().required( 'Опишіть проблему' ),
-	// 	attachments: array(),
-	// } );
+	const schema = object( {
+		surname: string()
+		  .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
+		  .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
+		  .matches( nameExp, 'Прізвище має містити українські або англійські літери' )
+		  .required( 'Вкажіть ваше прізвище' ),
+		name: string()
+		  .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
+		  .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
+		  .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
+		  .required( 'Вкажіть ваше ім’я' ),
+		email: string()
+		  .email( 'Невірно вказано e-mail' )
+		  .trim()
+		  .required( 'Вкажіть ваш e-mail' ),
+		phone: string().required( 'Вкажіть ваш номер телефону' ),
+		password: string()
+		  .matches(
+		    passwordExp,
+		    'Пароль має містити більше 8 символів, велику та малу літеру латиницею, цифри і спеціальний знак'
+		  )
+		  .required( 'Пароль обов‘язковий' ),
+	} );
 	
-	// const initialValues = {
-	// 	name: localStorage.getItem( 'question-form-name' ) || '',
-	// 	email: localStorage.getItem( 'question-form-email' ) || '',
-	// 	phone: localStorage.getItem( 'question-form-phone' ) || '',
-	// 	topic: localStorage.getItem( 'question-form-topic' ) || '',
-	// 	message: localStorage.getItem( 'question-form-message' ) || '',
-	// 	attachments: images || [],
-	// };
+	const initialValues = {
+		surname: localStorage.getItem( 'student-surname' ) || 'Бондар',
+		name: localStorage.getItem( 'student-name' ) || 'Сергій',
+		email: '',
+		phone: '',
+		password: '',
+	};
 
 	const handleSubmit = ( values, { resetForm } ) => {
 		console.log( 'submit' );
     };
 
+	// console.log( selectUser );
 	return (
 	  <>
 		<Formik
-			// initialValues={ initialValues }
-			// validationSchema={ schema }
+			initialValues={ initialValues }
+			validationSchema={ schema }
 			onSubmit={ handleSubmit }
 		>
 			{formik => {
-				// const {
-				// 	errors: { name, email, phone, topic, message },
-				// 	touched,
-				// 	values,
-				// 	setValues,
-				// 	setTouched,
-				// } = formik;
+				const {
+					errors: { surname, name, email, phone, password },
+					touched,
+					values,
+					// setValues,
+					// setTouched,
+				} = formik;
 
-				// const errName = name && touched.name;
-				// const errEmail = email && touched.email;
-				// const errPhone = phone && touched.phone;
-				// const errTopic = topic && touched.topic;
-				// const errMessage = message && touched.message;
+				// eslint-disable-next-line no-unused-vars
+				const errSurname = surname && touched.surname;
+				// eslint-disable-next-line no-unused-vars
+				const errName = name && touched.name;
+				// eslint-disable-next-line no-unused-vars
+				const errEmail = email && touched.email;
+				// eslint-disable-next-line no-unused-vars
+				const errPhone = phone && touched.phone;
+				// eslint-disable-next-line no-unused-vars
+				const errPassword = password && touched.password;
 
 		        return (
 					<S.FormFild autoComplete="off">
 						<S.Section>
 							<S.Title>Основна інформація</S.Title>
-							<GeneralInfo />
+							<GeneralInfo errSurname={ errSurname } errName={ errName } values={ values }/>
 						</S.Section>
 						<S.Section>
 							<S.Title>Контактна інформація</S.Title>

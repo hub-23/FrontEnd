@@ -6,6 +6,7 @@ export const FormFild = styled( Form )`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 16px;
 `;
 
 export const Section = styled.section`

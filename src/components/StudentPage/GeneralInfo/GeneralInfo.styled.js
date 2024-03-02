@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
 `;
 
 export const ProfilePhoto = styled.div`
@@ -75,4 +78,5 @@ export const ProfilePhoto = styled.div`
                 display: block;
             }
         }
+    }
 `;

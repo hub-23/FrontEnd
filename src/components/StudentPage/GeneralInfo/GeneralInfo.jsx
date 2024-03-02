@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Modal } from '../../common/modalElements/Modal';
 import { PhotoHandler } from './PhotoHandler';
-// import { Input } from '../../modalElements/Input';
+import { Input } from '../../common/modalElements/Input';
 import sprite from '../../../assets/sprite.svg';
 import * as S from './GeneralInfo.styled';
 
-export const GeneralInfo = () => {
+export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const [ modalOpen, setModalOpen ] = useState( false );
   const [ avatar, setAvatar ] = useState( '' );
 
@@ -13,7 +13,7 @@ export const GeneralInfo = () => {
     <S.Container>
       <S.ProfilePhoto>
         <div className="circle">
-          {!avatar && <p className="circle--text">АІ</p>}
+          {!avatar && <p className="circle--text">СБ</p>}
           {avatar && <img src={ avatar } alt="Обрізане фото" />}
 
           <button
@@ -34,16 +34,24 @@ export const GeneralInfo = () => {
           <p>Розмір файлу не менше 300px × 300px. Формат JPG чи PNG.</p>
         </div>
       </S.ProfilePhoto>
-
-      {/* <Input
-                  type="text"
-                  name="name"
-                  placeholder="Ім’я"
-                  isStar={ true }
-                  error={ errName }
-                  value={ values.name }
-                  component='student-general-info' // for SaveToLocalStorage (частина нази ключа)
-            /> */}
+      <Input
+        type="text"
+        name="surname"
+        // placeholder="Прізвище"
+        // isStar={ true }
+        error={ errSurname }
+        // value={ values.surname }
+        component='student' // for SaveToLocalStorage (частина назви ключа)
+      />
+      <Input
+        type="text"
+        name="name"
+        // placeholder="Ім’я"
+        // isStar={ true }
+        error={ errName }
+        // value={ values.name }
+        component='student'
+      />
 
       {modalOpen && (
         <Modal onActiveModal={ () => setModalOpen( false ) }>
