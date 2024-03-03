@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { current, login, logout, register } from './operations';
+import { getUserData, login, register } from './operations';
 
 const onPanding = state => {
   state.isLoading = true;
@@ -21,32 +21,24 @@ const handleRegister = ( state, { payload } ) => {
 };
 
 const handleLogin = ( state, { payload } ) => {
-  state.user = payload; // added to state name and email
-  state.token = payload.accessToken;
-  state.refreshToken = payload.refreshToken;
+  state.token = payload.access_token;
+  state.refreshToken = payload.refresh_token;
   state.isLoggedIn = true;
   state.isLoading = false;
   console.log( 'Login payload :>> ', payload );
 };
 
-const handleLogout = state => {
-  state.user = { name: null, email: null };
-  state.token = null;
-  state.refreshToken = null;
-  state.isLoggedIn = false;
-  state.isLoading = false;
-};
-
-const handleCurrent = ( state, { payload } ) => {
-  state.user = payload;
+const handleUserData = ( state, { payload } ) => {
+  state.user = { ...state.user, ...payload };
   state.isLoggedIn = true;
   state.isLoading = false;
-  console.log( 'Current payload :>> ', payload );
+  // console.log( 'UserData payload :>> ', payload );
 };
 
-const initialState = {
-  user: { name: null, email: null },
+export const initialState = {
+  user: { username: null, email: null, avatar: '' },
   token: null,
+  refreshToken: null,
   isLoggedIn: false,
   isLoading: false,
 };
@@ -58,10 +50,14 @@ const authSlice = createSlice( {
   reducers: {
     setToken( state, { payload } ) {
       state.token = payload;
-      state.isLoggedIn = payload; // ---------- TEMP
     },
     setRefreshToken( state, { payload } ) {
       state.refreshToken = payload;
+    },
+    setReset( state, { payload } ) {
+      state.user = payload.user;
+      state.token = payload.token;
+      state.isLoggedIn = payload.isLoggedIn;
     },
   },
 
@@ -69,8 +65,7 @@ const authSlice = createSlice( {
     builder
       .addCase( register.fulfilled, handleRegister )
       .addCase( login.fulfilled, handleLogin )
-      .addCase( logout.fulfilled, handleLogout )
-      .addCase( current.fulfilled, handleCurrent )
+      .addCase( getUserData.fulfilled, handleUserData )
       .addMatcher( action => {
         return action.type.endsWith( '/pending' ); // applies to all pending
       }, onPanding )
@@ -80,5 +75,5 @@ const authSlice = createSlice( {
   },
 } );
 
-export const { setToken, setRefreshToken } = authSlice.actions;
+export const { setToken, setRefreshToken, setReset } = authSlice.actions;
 export const authReducer = authSlice.reducer;

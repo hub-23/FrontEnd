@@ -17,8 +17,13 @@ import { BtnClose } from '../../../common/BtnClose';
 import { Input } from '../../../common/modalElements/Input';
 import { InputFieldPhone } from '../../../common/modalElements/InputFieldPhone';
 import { Note } from '../../../common/modalElements/Note';
+import { useDispatch } from 'react-redux';
+import { register } from '../../../../redux/auth/operations';
+import { useHubContext } from '../../../../redux/Context';
 
 export const ModalRegistrationEmail = ( { onActiveModal } ) => {
+  const { setShowModalConfirmEmail, role } = useHubContext();
+  const dispatch = useDispatch();
   const scheme = object( {
     name: string()
       .min( 2, 'Вкажіть мініімум 2 літери, але не більше 30' )
@@ -49,7 +54,11 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
-    console.log( '💙💛 send Data registrationEmail to Backend :>> ', values );
+    // console.log( '💙💛 submit :>> ', values );
+
+    // sent to Backend: name, email, phone, password, role
+    const { name: username, email, password, phone } = values;
+    dispatch( register( { username, email, password, phone, role } ) );
 
     const formFieldKeys = [ 'name', 'email', 'phone' ];
 
@@ -59,6 +68,7 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
 
     resetForm();
     onActiveModal();
+    setShowModalConfirmEmail( prev => !prev ); // відкрити модалку /Підтвердіть ваш E-mail/
   };
 
   return (

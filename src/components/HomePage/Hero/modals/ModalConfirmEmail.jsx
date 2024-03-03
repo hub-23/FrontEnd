@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useHubContext } from '../../../redux/Context';
-import { BtnClose } from '../../common/BtnClose';
-import { IconSvg } from '../../common/IconSvg';
+import { useHubContext } from '../../../../redux/Context';
+import { BtnClose } from '../../../common/BtnClose';
+import { IconSvg } from '../../../common/IconSvg';
 import * as S from './ModalConfirmEmail.styled';
 
 export const ModalConfirmEmail = ( { onActiveModal } ) => {
@@ -34,14 +34,20 @@ export const ModalConfirmEmail = ( { onActiveModal } ) => {
         type="button"
         onClick={ () => {
           onActiveModal();
-          setShowModalThanksForJoining( ( prev ) => !prev );
+          setShowModalThanksForJoining( prev => !prev );
         } }
       >
-                Show ModalThanksForJoining (temp)
+        Show ModalThanksForJoining (temp)
       </button>
 
       <S.Article>
-        <IconSvg xlWidth="64px" xlHeight="64px" smWidth="40px" smHeight="40px" icon="icon-mail" />
+        <IconSvg
+          xlWidth="64px"
+          xlHeight="64px"
+          smWidth="40px"
+          smHeight="40px"
+          icon="icon-mail"
+        />
         <S.Title>Підтвердіть ваш E-mail</S.Title>
         <S.TextDescr>
           {`Будь ласка, перевірте вашу електронну пошту і активуйте ваш кабінет. Якщо ви не отримали
@@ -53,8 +59,11 @@ export const ModalConfirmEmail = ( { onActiveModal } ) => {
 
         <S.WrappRegister>
           <S.RegisterText>Не отримали лист?</S.RegisterText>
-          <S.BtnLogin type="button" onClick={ () => console.log( 'Надіслати лист повторно' ) }>
-                        Надіслати лист повторно
+          <S.BtnLogin
+            type="button"
+            onClick={ () => console.log( 'Надіслати лист повторно' ) }
+          >
+            Надіслати лист повторно
           </S.BtnLogin>
         </S.WrappRegister>
       </S.Article>

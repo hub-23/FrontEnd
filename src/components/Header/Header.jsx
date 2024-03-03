@@ -7,13 +7,10 @@ import { IconSvg } from '../common/IconSvg';
 import { useHubContext } from '../../redux/Context';
 import { Modal } from '../common/modalElements/Modal';
 import { ModalLogin } from './modals/ModalLogin';
-import { ModalLastStep } from './modals/ModalLastStep';
-import { ModalConfirmEmail } from './modals/ModalConfirmEmail';
+import { ModalLastStep } from '../HomePage/Hero/modals/ModalLastStep';
+import { ModalConfirmEmail } from '../HomePage/Hero/modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
 import { useAuth } from 'hooks/useAuth';
-import { useDispatch } from 'react-redux';
-import { setToken } from '../../redux/auth/slice';
-import { useNavigate } from 'react-router';
 
 export const Header = () => {
   const {
@@ -29,9 +26,7 @@ export const Header = () => {
     setShowModalThanksForJoining,
   } = useHubContext();
 
-  const { isLoggedIn } = useAuth();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { isLoggedIn, user } = useAuth();
 
   const toggleModalLogin = () => {
     setShowModalLogin( !showModalLogin );
@@ -76,7 +71,7 @@ export const Header = () => {
 
             {isLoggedIn ? (
               <h2 style={ { fontSize: '20px', fontWeight: '700' } }>
-                User Avatar
+                {`Avatar ${user.avatar ? user.avatar : user.username}`}
               </h2>
             ) : (
               <S.SignInBtn
@@ -86,26 +81,6 @@ export const Header = () => {
                 Вхід
               </S.SignInBtn>
             )}
-
-            <button
-              style={ { margin: '0 15px' } }
-              type="button"
-              onClick={ () => {
-                dispatch( setToken( true ) );
-                navigate( '/student/info' );
-              } }
-            >
-              Signin
-            </button>
-
-            <button
-              type="button"
-              onClick={ () => {
-                dispatch( setToken( false ) );
-              } }
-            >
-              Signout
-            </button>
           </S.Wrapper>
 
           {/* <Link to="/student" style={ { position: 'absolute', top: '0' } }>

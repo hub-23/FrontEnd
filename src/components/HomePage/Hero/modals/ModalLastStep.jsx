@@ -2,13 +2,13 @@ import React from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 
-import { bgColorGradientBtn, white } from '../../../utils/variables.styled';
-import { useHubContext } from '../../../redux/Context';
-import { IconSvg } from '../../common/IconSvg';
+import { bgColorGradientBtn, white } from '../../../../utils/variables.styled';
+import { useHubContext } from '../../../../redux/Context';
+import { IconSvg } from '../../../common/IconSvg';
 import * as S from './ModalLastStep.staled';
-import { BtnClose } from '../../common/BtnClose';
-import { BtnRegistration } from '../../HomePage/Hero/modals/BtnRegistration';
-import { InputFieldPhone } from '../../common/modalElements/InputFieldPhone';
+import { BtnClose } from '../../../common/BtnClose';
+import { BtnRegistration } from './BtnRegistration';
+import { InputFieldPhone } from '../../../common/modalElements/InputFieldPhone';
 
 export const ModalLastStep = ( { onActiveModal } ) => {
   const { setShowModalLastStep, setShowModalConfirmEmail } = useHubContext();
