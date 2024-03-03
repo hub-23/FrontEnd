@@ -1,5 +1,5 @@
-import React, { lazy } from 'react';
-import { Routes, Route } from 'react-router';
+import React, { lazy, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router';
 import Theme from '../theme/Theme';
 import Home from '../pages/HomePage';
 
@@ -9,6 +9,9 @@ import { PersonalInfo } from 'components/StudentPage/PersonalInfo';
 import { Reservation } from 'components/StudentPage/Reservation';
 import { Out } from 'components/StudentPage/Out';
 import { PrivateRoute } from './PrivateRoute';
+import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from 'react-redux';
+import { getUserData } from '../redux/auth/operations';
 
 const Teacher = lazy( () => import( '../pages/TeachersPage' ) );
 const About = lazy( () => import( '../pages/AboutUsPage' ) );
@@ -16,6 +19,17 @@ const Feedback = lazy( () => import( '../pages/FeedbackPage' ) );
 const Student = lazy( () => import( '../pages/StudentPage' ) );
 
 const App = () => {
+  const dispatch = useDispatch();
+  const { isLoggedIn, token } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect( () => {
+    if ( isLoggedIn || token ) {
+      dispatch( getUserData() );
+      navigate( '/student/info' );
+    }
+  }, [ isLoggedIn, token ] );
+
   return (
     <>
       <GeneralStyles />

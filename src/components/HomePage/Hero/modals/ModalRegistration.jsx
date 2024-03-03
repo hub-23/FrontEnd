@@ -25,6 +25,7 @@ export const ModalRegistration = ( {
     setShowModalRegister,
     showModalLogin,
     setShowModalLogin,
+    setRole,
   } = useHubContext();
 
   // console.log( 'status :>> ', status );
@@ -34,6 +35,7 @@ export const ModalRegistration = ( {
 
   const handleSubmit = values => {
     // console.log( 'sent statusUser ::>>>', values );
+    setRole( values.statusUser );
     onActiveModal();
     onActiveModalEmail();
   };

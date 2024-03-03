@@ -17,11 +17,14 @@ import { BtnEye } from '../../common/BtnEye';
 import { BtnClose } from '../../common/BtnClose';
 import { useHubContext } from '../../../redux/Context';
 import { InputField } from '../../common/modalElements/InputField';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../redux/auth/operations';
 
 export const ModalLogin = ( { onActiveModal } ) => {
   const [ showPassword, setSowPassword ] = useState( true );
-  const { setShowModalLogin, setShowModalRegister, setShowModalLastStep }
-    = useHubContext();
+  const { setShowModalLogin, setShowModalRegister } = useHubContext();
+  const dispatch = useDispatch();
+  const formData = new FormData();
 
   const schema = object( {
     email: string()
@@ -38,10 +41,16 @@ export const ModalLogin = ( { onActiveModal } ) => {
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
-    console.log( '💙💛 send Data Login to Backend  :>> ', values );
+    const { email: username, password } = values;
+
+    formData.append( 'username', username );
+    formData.append( 'password', password );
+    dispatch( login( formData ) );
+    // console.log( 'formData :>> ', ...formData );
+
     resetForm();
     onActiveModal();
-    setShowModalLastStep( prev => !prev );
+    // setShowModalLastStep( prev => !prev );
   };
 
   const loginWithGoogle = useGoogleLogin( {

@@ -9,8 +9,10 @@ export const Context = ( { children } ) => {
   const [ showModalLogin, setShowModalLogin ] = useState( false );
   const [ showModalLastStep, setShowModalLastStep ] = useState( false );
   const [ showModalConfirmEmail, setShowModalConfirmEmail ] = useState( false );
-  const [ showModalThanksForJoining, setShowModalThanksForJoining ] = useState( false );
+  const [ showModalThanksForJoining, setShowModalThanksForJoining ]
+    = useState( false );
   const [ isHeroFilterShown, setIsHeroFilterShown ] = useState( false );
+  const [ role, setRole ] = useState( '' );
 
   return (
     <HubContext.Provider
@@ -29,6 +31,8 @@ export const Context = ( { children } ) => {
         setShowModalThanksForJoining,
         isHeroFilterShown,
         setIsHeroFilterShown,
+        role,
+        setRole,
       } }
     >
       {children}
