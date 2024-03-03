@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { useHubContext } from '../../../../redux/Context';
+// import { useHubContext } from '../../../../redux/Context';
 import { BtnClose } from '../../../common/BtnClose';
 import { IconSvg } from '../../../common/IconSvg';
 import * as S from './ModalConfirmEmail.styled';
 
 export const ModalConfirmEmail = ( { onActiveModal } ) => {
-  const { setShowModalThanksForJoining } = useHubContext();
+  // const { setShowModalThanksForJoining } = useHubContext();
 
   return (
     <S.Modal>
@@ -29,7 +29,8 @@ export const ModalConfirmEmail = ( { onActiveModal } ) => {
           icon="icon-close"
         />
       </BtnClose>
-      <button
+
+      {/* <button
         style={ { position: 'absolute', left: '20px', top: '20px' } }
         type="button"
         onClick={ () => {
@@ -38,7 +39,7 @@ export const ModalConfirmEmail = ( { onActiveModal } ) => {
         } }
       >
         Show ModalThanksForJoining (temp)
-      </button>
+      </button> */}
 
       <S.Article>
         <IconSvg

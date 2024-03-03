@@ -7,6 +7,7 @@ import {
   setToken,
 } from '../../redux/auth/slice';
 import { Button } from 'components/common/button/Button';
+import { clearAuthHeader } from '../../redux/auth/operations';
 
 export const Out = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export const Out = () => {
     dispatch( setToken( null ) );
     dispatch( setRefreshToken( null ) );
     dispatch( setReset( initialState ) );
+    clearAuthHeader();
   };
   return (
     <>

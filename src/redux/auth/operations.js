@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { setRefreshToken } from './slice';
+// import { setRefreshToken, setToken } from './slice';
 // import { store } from '../store';
 
 const instance = axios.create( {
@@ -11,23 +11,26 @@ const setAuthHeader = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// const clearAuthHeader = () => {
-//   instance.defaults.headers.common.Authorization = '';
-//   console.log( 'clearAuthHeader' );
-// };
+export const clearAuthHeader = () => {
+  // instance.defaults.headers.common.Authorization = '';
+  console.log( 'removed accessToken from header' );
+};
 
 /* 💙💛  */
 // instance.interceptors.response.use(
 //   response => response,
 //   async error => {
 //     if ( error.response.status === 401 ) {
-//       const refreshToken = store.getState().auth.refresh_token;
+//       const refreshToken = store.getState().auth.refreshToken;
+//       console.log( 'Old refreshToken :>> ', refreshToken );
+//       if ( !refreshToken ) return;
+//       setAuthHeader( refreshToken );
 
 //       try {
-//         const { data } = await instance.post( '/refresh', { refreshToken } );
-//         console.log( 'Created new accessToken & refreshToken' );
-//         setAuthHeader( data.access_token );
-//         store.dispatch(setToken(data.accessToken));
+//         const { data } = await instance.get( '/api/auth/refresh_token' );
+//         console.log( 'Created new accessToken & refreshToken', data );
+//         // setAuthHeader( data.access_token );
+//         store.dispatch( setToken( data.access_token ) );
 //         store.dispatch( setRefreshToken( data.refresh_token ) );
 
 //         return instance( error.config );
@@ -72,8 +75,10 @@ export const login = createAsyncThunk(
 export const getUserData = createAsyncThunk(
   'auth/userData',
   async ( _, thunkAPI ) => {
-    const token = await thunkAPI.getState().auth.token;
-    if ( token ) setAuthHeader( token );
+    const { token } = await thunkAPI.getState().auth;
+
+    if ( !token ) return thunkAPI.rejectWithValue( 'No valid token' );
+    setAuthHeader( token );
 
     try {
       const { data } = await instance.get( '/users/me' );
