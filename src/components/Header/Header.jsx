@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
 import * as S from './Header.styled';
 import { Language } from './Language/Language';
@@ -27,6 +27,7 @@ export const Header = () => {
   } = useHubContext();
 
   const { isLoggedIn, user } = useAuth();
+  const [ isDropdownShown, setIsDropdownShown ] = useState( false );
 
   const toggleModalLogin = () => {
     setShowModalLogin( !showModalLogin );
@@ -43,6 +44,11 @@ export const Header = () => {
   const toggleModalThanksForJoining = () => {
     setShowModalThanksForJoining( !showModalThanksForJoining );
   };
+
+  const abbreviation = user?.username
+    .split( ' ' )
+    .map( ( word ) => word[ 0 ].toUpperCase() )
+    .join( '' );
 
   return (
     <S.Header>
@@ -70,9 +76,25 @@ export const Header = () => {
             </S.LanguageWrapper>
 
             {isLoggedIn ? (
-              <h2 style={ { fontSize: '20px', fontWeight: '700' } }>
-                {`Avatar ${user.avatar ? user.avatar : user.username}`}
-              </h2>
+              // <h2 style={ { fontSize: '20px', fontWeight: '700' } }>
+              //   {`Avatar ${user.avatar ? user.avatar : user.username}`}
+              // </h2>
+              <>
+              <S.AvatarWrapper><p>{ abbreviation }</p></S.AvatarWrapper>
+              <S.DropdownBtn
+                type="button"
+                aria-label="dropdown-menu"
+                onClick={ () => setIsDropdownShown( !isDropdownShown ) }
+                $rotate={ isDropdownShown }
+              >
+                <div>
+                  <IconSvg width="11px" height="11px" icon="icon-arrow-down" />
+                </div>
+              </S.DropdownBtn>
+              {isDropdownShown && (
+                <S.Dropdown></S.Dropdown>
+              )}
+              </>
             ) : (
               <S.SignInBtn
                 variant="blueGradientedBorder"
