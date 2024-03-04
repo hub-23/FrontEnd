@@ -140,13 +140,14 @@ export const AvatarWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 32px;
-  height: 32px;
-  margin-right: 8px;
+  width: ${ ( { $dropdown } ) => $dropdown ? '64px' : '32px' }; 
+  height: ${ ( { $dropdown } ) => $dropdown ? '64px' : '32px' };
+  margin-right: ${ ( { $dropdown } ) => $dropdown ? '12px' : '8px' };
   border: 1px solid ${props => props.color || props.theme.colors.accent};
   border-radius: 50%;
   p { 
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+    font-size: ${ ( { $dropdown } ) => $dropdown ? '20px' : '14px' };
     font-weight: 500;
     line-height: calc( 19.6 / 14 );
     color: ${props => props.color || props.theme.colors.accent};
@@ -154,6 +155,7 @@ export const AvatarWrapper = styled.div`
 `;
 
 export const DropdownBtn = styled.button`
+  position: relative;
   width: 24px;
   height: 100%;
   display: flex;
@@ -169,13 +171,3 @@ export const DropdownBtn = styled.button`
     transform: ${props => ( props.$rotate ? 'rotate(180deg)' : '' )};
   }
 `;
-
-export const Dropdown = styled.div`
-  position: absolute;
-  top: 70px;
-  width: 400px;
-  height: 320px;
-  border: 1px solid green;
-  border-radius: 20px 0;
-`;
-

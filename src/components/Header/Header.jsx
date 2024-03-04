@@ -10,6 +10,7 @@ import { ModalLogin } from './modals/ModalLogin';
 import { ModalLastStep } from '../HomePage/Hero/modals/ModalLastStep';
 import { ModalConfirmEmail } from '../HomePage/Hero/modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
+import { Dropdown } from './Dropdown/Dropdown'; // student's page
 import { useAuth } from 'hooks/useAuth';
 
 export const Header = () => {
@@ -46,9 +47,11 @@ export const Header = () => {
   };
 
   const abbreviation = user?.username
+  ? user?.username
     .split( ' ' )
     .map( ( word ) => word[ 0 ].toUpperCase() )
-    .join( '' );
+    .join( '' )
+  : '';
 
   return (
     <S.Header>
@@ -91,9 +94,7 @@ export const Header = () => {
                   <IconSvg width="11px" height="11px" icon="icon-arrow-down" />
                 </div>
               </S.DropdownBtn>
-              {isDropdownShown && (
-                <S.Dropdown></S.Dropdown>
-              )}
+              {isDropdownShown && <Dropdown />}
               </>
             ) : (
               <S.SignInBtn
