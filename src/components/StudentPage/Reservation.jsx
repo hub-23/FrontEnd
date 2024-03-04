@@ -6,7 +6,7 @@ export const Reservation = () => {
     <Container>
       <StyledTitle>У Вас ще немає бронювань</StyledTitle>
       <StyledText>
-        Коли з’явиться нове бронювання, тут буде відображено інформаці про
+        Коли з’явиться нове бронювання, тут буде відображено інформацію про
         нього.
       </StyledText>
     </Container>

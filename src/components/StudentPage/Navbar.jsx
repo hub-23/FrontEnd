@@ -11,7 +11,7 @@ import {
   StyledNavLink,
   StyledImage,
   StyledTitle,
-  StyledLine,
+  StyledDivider,
 } from './Navbar.styled';
 
 export const Navbar = () => {
@@ -31,7 +31,7 @@ export const Navbar = () => {
           <StyledTitle>Вийти</StyledTitle>
         </StyledNavLink>
       </StyledList>
-      <StyledLine />
+      <StyledDivider />
     </Wrapper>
   );
 };

@@ -8,7 +8,7 @@ import Layout from './Layout/Layout';
 import { PersonalInfo } from 'components/StudentPage/PersonalInfo';
 import { Reservation } from 'components/StudentPage/Reservation';
 import { Out } from 'components/StudentPage/Out';
-import { PrivateRoute } from './PrivateRoute';
+// import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../redux/auth/operations';
@@ -43,11 +43,11 @@ const App = () => {
             {/* <Route path='language' element={ <h1>List of language</h1> } /> */}
             {/* NOT NEEDED <Route path="signin" element={ <h1>Вхід</h1> } />  */}
 
-            {/* <Route path="student/" element={ <Student /> }> */}
-            <Route
+            <Route path="student/" element={ <Student /> }>
+            {/* <Route
               path="student/"
               element={ <PrivateRoute component={ <Student /> } redirectTo="/" /> }
-            >
+            > */}
               <Route path="info" element={ <PersonalInfo /> } />
               <Route path="reservation" element={ <Reservation /> } />
               <Route path="out" element={ <Out /> } />
