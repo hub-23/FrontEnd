@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { setRefreshToken, setToken } from './slice';
-// import { store } from '../store';
 
 const instance = axios.create( {
   baseURL: 'https://hub23-9drt.onrender.com',
@@ -15,32 +13,6 @@ export const clearAuthHeader = () => {
   // instance.defaults.headers.common.Authorization = '';
   console.log( 'removed accessToken from header' );
 };
-
-/* 💙💛  */
-// instance.interceptors.response.use(
-//   response => response,
-//   async error => {
-//     if ( error.response.status === 401 ) {
-//       const refreshToken = store.getState().auth.refreshToken;
-//       console.log( 'Old refreshToken :>> ', refreshToken );
-//       if ( !refreshToken ) return;
-//       setAuthHeader( refreshToken );
-
-//       try {
-//         const { data } = await instance.get( '/api/auth/refresh_token' );
-//         console.log( 'Created new accessToken & refreshToken', data );
-//         // setAuthHeader( data.access_token );
-//         store.dispatch( setToken( data.access_token ) );
-//         store.dispatch( setRefreshToken( data.refresh_token ) );
-
-//         return instance( error.config );
-//       } catch ( error ) {
-//         return Promise.reject( error );
-//       }
-//     }
-//     return Promise.reject( error );
-//   }
-// ); // if status 401 - accessToken is not valid, then interseptors will work
 
 // signup
 export const register = createAsyncThunk(
