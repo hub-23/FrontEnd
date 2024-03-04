@@ -11,13 +11,13 @@ const handleRejected = ( state, { payload } ) => {
   state.error = payload;
   state.token = null;
   state.refreshToken = null;
-  console.warn( 'Error payload :>> ', payload );
+  // console.warn( 'Error payload :>> ', payload );
 };
 
 const handleRegister = ( state, { payload } ) => {
   state.user = payload; // added to state name and email
   state.isLoading = false;
-  console.log( 'Register payload :>> ', payload );
+  // console.log( 'Register payload :>> ', payload );
 };
 
 const handleLogin = ( state, { payload } ) => {
@@ -25,7 +25,7 @@ const handleLogin = ( state, { payload } ) => {
   state.refreshToken = payload.refresh_token;
   state.isLoggedIn = true;
   state.isLoading = false;
-  console.log( 'Login payload :>> ', payload );
+  // console.log( 'Login payload :>> ', payload );
 };
 
 const handleUserData = ( state, { payload } ) => {
