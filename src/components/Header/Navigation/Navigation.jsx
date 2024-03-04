@@ -1,10 +1,10 @@
 import React from 'react';
 import * as S from './Navigation.styled';
 import { MobileMenuBtn } from '../MobileMenu/MobileMenuBtn';
-import { useAuth } from 'hooks/useAuth';
+// import { useAuth } from 'hooks/useAuth';
 
 export const Navigation = ( { onMobileMenuClose } ) => {
-  const { isLoggedIn } = useAuth();
+  // const { isLoggedIn } = useAuth();
 
   return (
     <nav>
@@ -18,11 +18,11 @@ export const Navigation = ( { onMobileMenuClose } ) => {
         Відгуки
       </S.NavItem>
 
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <S.NavItem to="/student" onClick={ onMobileMenuClose }>
           Student
         </S.NavItem>
-      )}
+      )} */}
 
       {/* або */}
       <MobileMenuBtn />
