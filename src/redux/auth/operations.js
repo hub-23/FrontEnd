@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { setRefreshToken } from './slice';
-// import { store } from '../store';
 
 const instance = axios.create( {
   baseURL: 'https://hub23-9drt.onrender.com',
@@ -11,33 +9,10 @@ const setAuthHeader = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// const clearAuthHeader = () => {
-//   instance.defaults.headers.common.Authorization = '';
-//   console.log( 'clearAuthHeader' );
-// };
-
-/* 💙💛  */
-// instance.interceptors.response.use(
-//   response => response,
-//   async error => {
-//     if ( error.response.status === 401 ) {
-//       const refreshToken = store.getState().auth.refresh_token;
-
-//       try {
-//         const { data } = await instance.post( '/refresh', { refreshToken } );
-//         console.log( 'Created new accessToken & refreshToken' );
-//         setAuthHeader( data.access_token );
-//         store.dispatch(setToken(data.accessToken));
-//         store.dispatch( setRefreshToken( data.refresh_token ) );
-
-//         return instance( error.config );
-//       } catch ( error ) {
-//         return Promise.reject( error );
-//       }
-//     }
-//     return Promise.reject( error );
-//   }
-// ); // if status 401 - accessToken is not valid, then interseptors will work
+export const clearAuthHeader = () => {
+  // instance.defaults.headers.common.Authorization = '';
+  console.log( 'removed accessToken from header' );
+};
 
 // signup
 export const register = createAsyncThunk(
@@ -72,8 +47,10 @@ export const login = createAsyncThunk(
 export const getUserData = createAsyncThunk(
   'auth/userData',
   async ( _, thunkAPI ) => {
-    const token = await thunkAPI.getState().auth.token;
-    if ( token ) setAuthHeader( token );
+    const { token } = await thunkAPI.getState().auth;
+
+    if ( !token ) return thunkAPI.rejectWithValue( 'No valid token' );
+    setAuthHeader( token );
 
     try {
       const { data } = await instance.get( '/users/me' );
