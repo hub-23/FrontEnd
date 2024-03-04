@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  /* width: 100%; */
   min-height: 100vw;
 `;
 
@@ -41,9 +40,9 @@ export const StyledTitle = styled.h2`
   line-height: 140%;
 `;
 
-export const StyledLine = styled.hr`
+export const StyledDivider = styled.hr`
   margin-left: 482px;
-  margin-top: -26%;
+  margin-top: -40%;
   height: 554px;
   width: 1px;
   color: #f5f5f5;
