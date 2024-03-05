@@ -11,7 +11,6 @@ const setAuthHeader = token => {
 
 export const clearAuthHeader = () => {
   instance.defaults.headers.common.Authorization = '';
-  // console.log( 'removed accessToken from header' );
 };
 
 // signup

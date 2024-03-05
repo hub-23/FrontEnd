@@ -124,15 +124,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
             const errCapcha = capcha && touched.capcha;
 
             const handleGetPhone = values => {
-              setValues( prev => ( {
-                ...prev,
-                phone: values.value,
-              } ) );
-
-              setTouched( {
-                ...touched,
-                phone: values.touched,
-              } );
+              const { value, touched } = values;
+              setValues( prev => ( { ...prev, phone: value } ) );
+              setTouched( { ...touched, phone: touched } );
             }; // значення з InputFieldPhone
 
             const noteShown
