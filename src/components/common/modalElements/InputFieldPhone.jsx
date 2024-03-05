@@ -61,7 +61,7 @@ export const InputFieldPhone = ( {
   };
 
   return (
-    <>
+    <div style={ { position: 'relative' } }>
       <S.Input
         type="tel"
         value={ value }
@@ -78,6 +78,6 @@ export const InputFieldPhone = ( {
       <FormError name={ name } />
 
       <PhoneSelect valueSelect={ handleGetSelected } { ...props } />
-    </>
+    </div>
   );
 };

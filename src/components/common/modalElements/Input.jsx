@@ -61,6 +61,7 @@ export const Input = ( {
           )}
         </S.Label>
       </S.InputWrapper>
+
       {dropdown && (
         <>
           <S.DropdownBtn
@@ -73,6 +74,7 @@ export const Input = ( {
               <IconSvg width="11px" height="11px" icon="icon-arrow-down" />
             </div>
           </S.DropdownBtn>
+
           {isDropdownShown && (
             <DropdownList
               data={ data }
