@@ -1,23 +1,27 @@
 import { createGlobalStyle } from 'styled-components';
-import nunito from './fonts/Nunito.ttf';
-import montserrat from './fonts/Montserrat.ttf';
+import nunito from './fonts/Nunito.woff2';
+import montserrat from './fonts/Montserrat.woff2';
 
 const GlobalStyles = createGlobalStyle`
 
   @font-face {
     font-family: 'Nunito';
-    src: url(${nunito});
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url(${nunito}) format('woff2');
   }
   @font-face {
     font-family: 'Montserrat';
-    src: url(${montserrat});
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url(${montserrat}) format('woff2');
   }
 
   * {
     font-family: Nunito;
     font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
