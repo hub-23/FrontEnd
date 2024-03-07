@@ -8,14 +8,14 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Nunito';
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
-    src: url(${nunito}) format('woff2');
+    font-display: block;
+    src: url(${nunito}) format('woff2'); 
   }
   @font-face {
     font-family: 'Montserrat';
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
     src: url(${montserrat}) format('woff2');
   }
 

@@ -1,13 +1,15 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
-// import { selectUser } from '../../redux/auth/selectors';
 import { GeneralInfo } from './GeneralInfo/GeneralInfo';
 import { nameExp, passwordExp } from '../../utils/variables.styled';
 import * as S from './PersonalInfo.styled';
 import { ContactInfo } from './ContactInfo/ContactInfo';
+import { useAuth } from '../../hooks/useAuth';
 
 export const PersonalInfo = () => {
+  const { user } = useAuth();
+
   const schema = object( {
     surname: string()
       .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
@@ -33,8 +35,8 @@ export const PersonalInfo = () => {
   } );
 
   const initialValues = {
-    surname: localStorage.getItem( 'student-surname' ) || 'Бондар',
-    name: localStorage.getItem( 'student-name' ) || 'Сергій',
+    surname: localStorage.getItem( 'student-surname' ) || '',
+    name: localStorage.getItem( 'student-name' ) || user?.username,
     email: '',
     phone: '',
     password: '',
@@ -44,7 +46,6 @@ export const PersonalInfo = () => {
     console.log( 'submit' );
   };
 
-  // console.log( selectUser );
   return (
     <>
       <Formik
@@ -74,11 +75,14 @@ export const PersonalInfo = () => {
           // eslint-disable-next-line no-unused-vars
           const errPassword = password && touched.password;
 
+          // setValues( prev => ( { ...prev, name: value } ) );
+
           const handleGetPhone = values => {
             const { value, touched } = values;
             setValues( prev => ( { ...prev, phone: value } ) );
             setTouched( { ...touched, phone: touched } );
           }; // значення з ContactInfi.jsx
+          
 
           return (
             <S.FormFild autoComplete="off">
