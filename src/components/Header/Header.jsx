@@ -12,6 +12,7 @@ import { ModalConfirmEmail } from '../HomePage/Hero/modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
 import { Dropdown } from './Dropdown/Dropdown'; // student's page
 import { useAuth } from 'hooks/useAuth';
+import { Abbreviation } from '../common/Abbreviation';
 
 export const Header = () => {
   const {
@@ -27,7 +28,7 @@ export const Header = () => {
     setShowModalThanksForJoining,
   } = useHubContext();
 
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn } = useAuth();
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
 
   const toggleModalLogin = () => {
@@ -45,13 +46,6 @@ export const Header = () => {
   const toggleModalThanksForJoining = () => {
     setShowModalThanksForJoining( !showModalThanksForJoining );
   };
-
-  const abbreviation = user?.username
-  ? user?.username
-    .split( ' ' )
-    .map( ( word ) => word[ 0 ].toUpperCase() )
-    .join( '' )
-  : '';
 
   return (
     <S.Header>
@@ -83,7 +77,9 @@ export const Header = () => {
               //   {`Avatar ${user.avatar ? user.avatar : user.username}`}
               // </h2>
               <>
-              <S.AvatarWrapper><p>{ abbreviation }</p></S.AvatarWrapper>
+              <S.AvatarWrapper>
+                <Abbreviation $fontSize='14px' />
+              </S.AvatarWrapper>
               <S.DropdownBtn
                 type="button"
                 aria-label="dropdown-menu"

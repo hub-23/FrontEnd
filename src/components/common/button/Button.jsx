@@ -9,7 +9,8 @@ export const Button = ( { children, type = 'button', color, size, dataStatus, on
       size={ size }
       onClick={ onActiveModal }
       data-status={ dataStatus }
-      { ...props }>
+      { ...props }
+    >
       {children}
     </StyledButton> );
 };

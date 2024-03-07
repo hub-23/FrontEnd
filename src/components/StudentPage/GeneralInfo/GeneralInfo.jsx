@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 import { Modal } from '../../common/modalElements/Modal';
 import { PhotoHandler } from './PhotoHandler';
 import { Input } from '../../common/modalElements/Input';
+// import { useAuth } from 'hooks/useAuth';
+import { Abbreviation } from '../../common/Abbreviation';
 import sprite from '../../../assets/sprite.svg';
 import * as S from './GeneralInfo.styled';
 
 export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const [ modalOpen, setModalOpen ] = useState( false );
   const [ avatar, setAvatar ] = useState( '' );
+  // const { user } = useAuth();
+  
 
   return (
     <S.Container>
       <S.ProfilePhoto>
         <div className="circle">
-          {!avatar && <p className="circle--text">СБ</p>}
+          {!avatar && <Abbreviation $fontSize='24px' />} 
           {avatar && <img src={ avatar } alt="Обрізане фото" />}
 
           <button
