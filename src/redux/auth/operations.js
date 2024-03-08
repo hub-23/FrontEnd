@@ -2,7 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const instance = axios.create( {
-  baseURL: 'https://hub23-9drt.onrender.com',
+  // baseURL: 'https://hub23-9drt.onrender.com',
+  baseURL: 'https://hub23-84u3.onrender.com',
 } );
 
 const setAuthHeader = token => {
