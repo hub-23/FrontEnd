@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vw;
-`;
-
 export const StyledList = styled.ul`
   a {
     display: block;
@@ -41,12 +35,4 @@ export const StyledTitle = styled.h2`
   font-size: 20px;
   font-weight: 400;
   line-height: 140%;
-`;
-
-export const StyledDivider = styled.hr`
-  margin-left: 482px;
-  margin-top: -40%;
-  height: 554px;
-  width: 1px;
-  color: #f5f5f5;
 `;
