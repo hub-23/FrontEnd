@@ -14,20 +14,17 @@ export const StyledNavLink = styled( NavLink )`
   display: flex;
   width: 429px;
   height: 60px;
-  color: #2d2d2d;
+  color: ${props => props.color || props.theme.colors.black};
   padding: 16px 0px 16px 160px;
 
   &.active {
     border-radius: 0px 56px 56px 0px;
     background-color: #f9f9f9;
-    color: #e3669c;
+    color: ${props => props.color || props.theme.colors.accent};
+    // &.logo {
+    //   stroke: ${props => props.color || props.theme.colors.accent};
+    // }
   }
-`;
-
-export const StyledImage = styled.img`
-  display: inline-block;
-  width: 24px;
-  height: 24px;
 `;
 
 export const StyledTitle = styled.h2`
