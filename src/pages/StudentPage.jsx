@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Navbar } from 'components/StudentPage/Navbar';
+import Navbar from 'components/StudentPage/Navbar';
 import styled from 'styled-components';
 
 const Container = styled.section`
