@@ -23,11 +23,11 @@ export const Dropdown = styled.div`
     4px 4px 4px 0px rgba(45, 45, 45, 0.2),
     -2px 0px 4px 0px rgba(45, 45, 45, 0.05);
   animation: ${show} ${transitionB};
-  }
 `;
 
 export const PersonalData = styled.div`
   display: flex;
+  margin-bottom: 20px;
 
   .meta-wrapper {
     display: flex;

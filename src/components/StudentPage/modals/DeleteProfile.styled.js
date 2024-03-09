@@ -1,4 +1,13 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
+
+
+export const FormFild = styled( Form )`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
 
 export const Container = styled.div`
     position: relative;
@@ -12,6 +21,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
+    margin-bottom: 32px;
     text-align: center;
     font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};    
     font-size: 24px;

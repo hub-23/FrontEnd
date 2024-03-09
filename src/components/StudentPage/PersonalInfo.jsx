@@ -78,9 +78,6 @@ export const PersonalInfo = () => {
           // eslint-disable-next-line no-unused-vars
           const errPassword = password && touched.password;
 
-          console.log( touched.name );
-          // setValues( prev => ( { ...prev, name: value } ) );
-
           const handleGetPhone = values => {
             const { value, touched } = values;
             setValues( prev => ( { ...prev, phone: value } ) );
@@ -120,22 +117,23 @@ export const PersonalInfo = () => {
               >
                 Зберегти зміни
               </S.SaveBtn>
-            </S.FormFild>
+
+              <S.DelAccauntSec>
+                <button
+                  type="button"
+                  onClick={ () => setDeleteProfileModalShown( true ) }
+                >
+                  Видалити аккаунт
+                </button>
+                <p>Ви не зможете відновити профіль після його видалення</p>
+              </S.DelAccauntSec>
+            </S.FormFild>        
           );
         }}
       </Formik>
-      <S.DelAccauntSec>
-        <button
-          type="button"
-          onClick={ () => setDeleteProfileModalShown( true ) }
-        >
-          Видалити аккаунт
-        </button>
-        <p>Ви не зможете відновити профіль після його видалення</p>
-      </S.DelAccauntSec>
       {deleteProfileModalShown && (
         <Modal onActiveModal={ () => setDeleteProfileModalShown( false ) }>
-          <DeleteProfile onDeleteProfileModalClose={ () => setDeleteProfileModalShown( false ) } />
+            <DeleteProfile onDeleteProfileModalClose={ () => setDeleteProfileModalShown( false ) } />
         </Modal>
       )}
     </>

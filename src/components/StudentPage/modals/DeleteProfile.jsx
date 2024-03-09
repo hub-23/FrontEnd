@@ -1,11 +1,13 @@
 import React from 'react';
+import { Formik } from 'formik';
+import { object, string } from 'yup';
 import { BtnClose } from '../../common/modalElements/BtnClose';
-// import { Input } from 'components/common/modalElements/Input';
+import { Input } from 'components/common/modalElements/Input';
 import * as S from './DeleteProfile.styled';
 
 
 export const DeleteProfile = ( { onDeleteProfileModalClose } ) => {
-    // eslint-disable-next-line no-unused-vars
+    // onDeleteProfileModalClose, errDeleteProfileReason, values, reasonsToDelete, formik
     const reasonsToDelete = [
         'Незадоволеність послугами',
         'Надмірний спам',
@@ -14,26 +16,67 @@ export const DeleteProfile = ( { onDeleteProfileModalClose } ) => {
         'Технічні проблеми',
         'Інше'
     ];
+    
+    const customErrorMessage = 'Оберіть причину видалення профілю';
+
+    const schema = object( {
+        reason: string()
+          .test( 'is-valid-reason', customErrorMessage, value => {
+            return reasonsToDelete.includes( value );
+          } )
+          .required( 'Вкажіть тему повідомлення' ),
+    } );
+    
+    const initialValues = {
+        reason: localStorage.getItem( 'delete-profile-reason' ) || '',
+    };
+
+    const handleSubmit = ( values, { resetForm } ) => {
+        console.log( 'submit' );
+    };
 
     return (
-        <S.Container>
-            <BtnClose onActiveModal={ onDeleteProfileModalClose } />
-            <S.Title>Видалення профілю</S.Title>
-            {/* <Input
-                type="text"
-                name="topic"
-                placeholder="Причина видалення"
-                // isStar={ true }
-                // error={ errTopic }
-                // value={ values.topic }
-                dropdown
-                data={ reasonsToDelete }
-                // formik={ formik }
-                $topic
-                readOnly
-                // component="delete-profile"
-            /> */}
-            
-        </S.Container>
-    );
+        <Formik
+            initialValues={ initialValues }
+            validationSchema={ schema }
+            onSubmit={ handleSubmit }
+        >
+          {formik => {
+            const {
+                errors: { reason },
+                touched,
+                values,
+                // setValues,
+                // setTouched,
+            } = formik;
+
+            // eslint-disable-next-line no-unused-vars
+            const errReason = reason && touched.reason;
+
+            return (
+                <S.FormFild autoComplete="off">
+                    <S.Container>
+                        <BtnClose onActiveModal={ onDeleteProfileModalClose } />
+                        <S.Title>Видалення профілю</S.Title>
+                        <Input
+                            type="text"
+                            name="reason"
+                            placeholder="Причина видалення"
+                            // isStar={ true }
+                            error={ errReason }
+                            value={ values.reason }
+                            dropdown
+                            data={ reasonsToDelete }
+                            formik={ formik }
+                            $topic
+                            readOnly
+                            component="delete-profile"
+                        />
+                        
+                    </S.Container>
+                </S.FormFild>
+            );
+          }}
+        </Formik>
+    )
 };
