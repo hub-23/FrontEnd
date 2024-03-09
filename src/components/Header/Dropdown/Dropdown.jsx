@@ -3,6 +3,7 @@ import { useAuth } from 'hooks/useAuth';
 import { Abbreviation } from '../../common/Abbreviation';
 import * as S from './Dropdown.styled';
 import { AvatarWrapper } from '../Header.styled';
+import { Navigation } from 'components/StudentPage/Navbar/Navigation';
 
 export const Dropdown = () => {
     const { user } = useAuth();
@@ -18,6 +19,7 @@ export const Dropdown = () => {
             <p className='email'>{ user?.email }</p>
           </div>
         </S.PersonalData>
+        <Navigation />
       </S.Dropdown>
     );
 };

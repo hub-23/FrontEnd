@@ -22,7 +22,8 @@ export const Dropdown = styled.div`
   box-shadow: 0px -1px 4px 0px rgba(45, 45, 45, 0.05),
     4px 4px 4px 0px rgba(45, 45, 45, 0.2),
     -2px 0px 4px 0px rgba(45, 45, 45, 0.05);
-    animation: ${show} ${transitionB};
+  animation: ${show} ${transitionB};
+  }
 `;
 
 export const PersonalData = styled.div`
@@ -33,16 +34,18 @@ export const PersonalData = styled.div`
     flex-direction: column;
     justify-content: center;
     .name {
-      font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+      font-family: ${props =>
+        props.fontFamily || props.theme.fontFamily.primary};
       font-size: 20px;
       font-weight: 500;
-      line-height: calc( 28 / 20 );
+      line-height: calc(28 / 20);
     }
     .email {
-      font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+      font-family: ${props =>
+        props.fontFamily || props.theme.fontFamily.primary};
       font-size: 14px;
       font-weight: 400;
-      line-height: calc( 19.6 /14 );
+      line-height: calc(19.6 / 14);
     }
   }
 `;
