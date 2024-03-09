@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.section`
   display: flex;
@@ -7,27 +7,34 @@ export const Wrapper = styled.section`
   min-height: 100vw;
 `;
 
-export const StyledList = styled.ul``;
-
 export const StyledNavLink = styled( NavLink )`
   display: block;
   display: flex;
   width: 429px;
   height: 60px;
-  color: #2d2d2d;
+  color: ${props => props.color || props.theme.colors.black};
   padding: 16px 0px 16px 160px;
 
   &.active {
     border-radius: 0px 56px 56px 0px;
     background-color: #f9f9f9;
-    color: #e3669c;
+    color: ${props => props.color || props.theme.colors.accent};
+
+    svg {
+      path {
+        stroke: ${props => props.color || props.theme.colors.accent};
+      }
+    }
   }
 `;
+export const StyledList = styled.ul``;
 
-export const StyledImage = styled.img`
-  display: inline-block;
-  width: 24px;
-  height: 24px;
+export const StyledNavLinkDrop = styled( StyledNavLink )`
+  width: 360px;
+  padding: 16px 0px 16px 16px;
+  &.active {
+    border-radius: 56px 0px 0px 56px;
+  }
 `;
 
 export const StyledTitle = styled.h2`
