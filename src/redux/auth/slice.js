@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUserData, login, register } from './operations';
+import { getStudentProfile, login, register } from './operations';
 
 const onPanding = state => {
   state.isLoading = true;
@@ -15,7 +15,7 @@ const handleRejected = ( state, { payload } ) => {
 };
 
 const handleRegister = ( state, { payload } ) => {
-  state.user = payload; // added to state name and email
+  // state.user = payload; // added to state name and email
   state.isLoading = false;
   // console.log( 'Register payload :>> ', payload );
 };
@@ -25,18 +25,18 @@ const handleLogin = ( state, { payload } ) => {
   state.refreshToken = payload.refresh_token;
   state.isLoggedIn = true;
   state.isLoading = false;
-  // console.log( 'Login payload :>> ', payload );
+  console.log( 'Login payload :>> ', payload );
 };
 
-const handleUserData = ( state, { payload } ) => {
+const handleStudentProfile = ( state, { payload } ) => {
   state.user = { ...state.user, ...payload };
   state.isLoggedIn = true;
   state.isLoading = false;
-  // console.log( 'UserData payload :>> ', payload );
+  console.log( 'UserData payload :>> ', payload );
 };
 
 export const initialState = {
-  user: { username: null, email: null, avatar: '' },
+  user: { name: null, email: null, avatar: '' },
   token: null,
   refreshToken: null,
   isLoggedIn: false,
@@ -65,7 +65,7 @@ const authSlice = createSlice( {
     builder
       .addCase( register.fulfilled, handleRegister )
       .addCase( login.fulfilled, handleLogin )
-      .addCase( getUserData.fulfilled, handleUserData )
+      .addCase( getStudentProfile.fulfilled, handleStudentProfile )
       .addMatcher( action => {
         return action.type.endsWith( '/pending' ); // applies to all pending
       }, onPanding )
