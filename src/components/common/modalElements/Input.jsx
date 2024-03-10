@@ -28,7 +28,7 @@ export const Input = ( {
   const [ showPassword, setSowPassword ] = useState( true );
 
   const handleTopicSelect = ( formik, value ) => {
-    formik.setFieldValue( 'topic', value );
+    formik.setFieldValue( name, value );
     setIsDropdownShown( !isDropdownShown );
   };
 

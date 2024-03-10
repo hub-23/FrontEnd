@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 import { GeneralInfo } from './GeneralInfo/GeneralInfo';
 import { nameExp, passwordExp } from '../../utils/variables.styled';
 import * as S from './PersonalInfo.styled';
 import { ContactInfo } from './ContactInfo/ContactInfo';
+import { Modal } from '../common/modalElements/Modal';
+import { DeleteProfile } from './modals/DeleteProfile';
 import { useAuth } from '../../hooks/useAuth';
 
 export const PersonalInfo = () => {
+  const [ deleteProfileModalShown, setDeleteProfileModalShown ] = useState( false );
   const { user } = useAuth();
 
   const schema = object( {
@@ -75,8 +78,6 @@ export const PersonalInfo = () => {
           // eslint-disable-next-line no-unused-vars
           const errPassword = password && touched.password;
 
-          // setValues( prev => ( { ...prev, name: value } ) );
-
           const handleGetPhone = values => {
             const { value, touched } = values;
             setValues( prev => ( { ...prev, phone: value } ) );
@@ -116,21 +117,25 @@ export const PersonalInfo = () => {
               >
                 Зберегти зміни
               </S.SaveBtn>
-            </S.FormFild>
+
+              <S.DelAccauntSec>
+                <button
+                  type="button"
+                  onClick={ () => setDeleteProfileModalShown( true ) }
+                >
+                  Видалити аккаунт
+                </button>
+                <p>Ви не зможете відновити профіль після його видалення</p>
+              </S.DelAccauntSec>
+            </S.FormFild>        
           );
         }}
       </Formik>
-      <S.DelAccauntSec>
-        <button
-          type="button"
-          onClick={ () => {
-            console.log( 'click' );
-          } }
-        >
-          Видалити аккаунт
-        </button>
-        <p>Ви не зможете відновити профіль після його видалення</p>
-      </S.DelAccauntSec>
+      {deleteProfileModalShown && (
+        <Modal onActiveModal={ () => setDeleteProfileModalShown( false ) }>
+            <DeleteProfile onDeleteProfileModalClose={ () => setDeleteProfileModalShown( false ) } />
+        </Modal>
+      )}
     </>
   );
 };

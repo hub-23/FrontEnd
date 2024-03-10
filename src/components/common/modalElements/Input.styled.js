@@ -60,7 +60,7 @@ export const Input = styled( Field )`
       $value
         ? $error
           ? borderError
-          : borderGreen
+          : borderGreen // знач є, помилки немає, треба сірий по дефолту, при + зміні - зелений
         : $error
         ? borderError
         : grayStroke};

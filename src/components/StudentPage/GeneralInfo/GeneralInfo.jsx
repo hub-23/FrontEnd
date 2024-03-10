@@ -11,7 +11,6 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const [ modalOpen, setModalOpen ] = useState( false );
   const [ avatar, setAvatar ] = useState( '' );
   // const { user } = useAuth();
-  
 
   return (
     <S.Container>
@@ -41,8 +40,6 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
       <Input
         type="text"
         name="surname"
-        // placeholder="Прізвище"
-        // isStar={ true }
         error={ errSurname }
         // value={ values.surname }
         component='student' // for SaveToLocalStorage (частина назви ключа)
@@ -50,10 +47,8 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
       <Input
         type="text"
         name="name"
-        // placeholder="Ім’я"
-        // isStar={ true }
         error={ errName }
-        // value={ values.name }
+        value={ values.name }
         component='student'
       />
 
