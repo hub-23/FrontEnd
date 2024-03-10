@@ -11,7 +11,7 @@ import { Out } from 'components/StudentPage/Out';
 import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
-import { getUserData } from '../redux/auth/operations';
+import { getStudentProfile } from '../redux/auth/operations';
 
 const Teacher = lazy( () => import( '../pages/TeachersPage' ) );
 const About = lazy( () => import( '../pages/AboutUsPage' ) );
@@ -25,7 +25,7 @@ const App = () => {
 
   useEffect( () => {
     if ( isLoggedIn || token ) {
-      dispatch( getUserData() );
+      dispatch( getStudentProfile() );
       navigate( '/student/info' );
     }
   }, [ isLoggedIn, token ] );

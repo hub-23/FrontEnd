@@ -2,11 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const instance = axios.create( {
-  // baseURL: 'https://hub23-9drt.onrender.com',
   baseURL: 'https://hub23-84u3.onrender.com',
 } );
 
-const setAuthHeader = token => {
+export const setAuthHeader = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -43,9 +42,9 @@ export const login = createAsyncThunk(
   }
 );
 
-// UserData
-export const getUserData = createAsyncThunk(
-  'auth/userData',
+// Student Profile
+export const getStudentProfile = createAsyncThunk(
+  'auth/studentProfile',
   async ( _, thunkAPI ) => {
     const { token } = await thunkAPI.getState().auth;
 
@@ -53,7 +52,7 @@ export const getUserData = createAsyncThunk(
     setAuthHeader( token );
 
     try {
-      const { data } = await instance.get( '/users/me' );
+      const { data } = await instance.get( '/customers/student_profile' );
 
       return data;
     } catch ( error ) {
