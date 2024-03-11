@@ -73,24 +73,21 @@ export const Header = () => {
             </S.LanguageWrapper>
 
             {isLoggedIn ? (
-              // <h2 style={ { fontSize: '20px', fontWeight: '700' } }>
-              //   {`Avatar ${user.avatar ? user.avatar : user.username}`}
-              // </h2>
               <>
-              <S.AvatarWrapper>
-                <Abbreviation $fontSize='14px' />
-              </S.AvatarWrapper>
-              <S.DropdownBtn
-                type="button"
-                aria-label="dropdown-menu"
-                onClick={ () => setIsDropdownShown( !isDropdownShown ) }
-                $rotate={ isDropdownShown }
-              >
-                <div>
-                  <IconSvg width="11px" height="11px" icon="icon-arrow-down" />
-                </div>
-              </S.DropdownBtn>
-              {isDropdownShown && <Dropdown />}
+                <S.AvatarWrapper>
+                  <Abbreviation $fontSize='14px' />
+                </S.AvatarWrapper>
+                <S.DropdownBtn
+                  type="button"
+                  aria-label="dropdown-menu"
+                  onClick={ () => setIsDropdownShown( !isDropdownShown ) }
+                  $rotate={ isDropdownShown }
+                >
+                  <div>
+                    <IconSvg width="11px" height="11px" icon="icon-arrow-down" />
+                  </div>
+                </S.DropdownBtn>
+                {isDropdownShown && <Dropdown />}
               </>
             ) : (
               <S.SignInBtn
@@ -102,9 +99,6 @@ export const Header = () => {
             )}
           </S.Wrapper>
 
-          {/* <Link to="/student" style={ { position: 'absolute', top: '0' } }>
-            Student&apos;s page
-          </Link> */}
         </S.HeaderContent>
       </S.HeaderContainer>
 
