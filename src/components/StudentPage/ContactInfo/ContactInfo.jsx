@@ -15,7 +15,8 @@ export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
   return (
     <S.Wrapp>
       <div>
-        <S.Email color={ white }>{user.email}</S.Email>
+        {/* <S.Email color={ white }>{user.email}</S.Email> */}
+        <S.Email color={ white }>{user?.email ?? user.name}</S.Email>
 
         <div style={ { position: 'relative' } }>
           <Note

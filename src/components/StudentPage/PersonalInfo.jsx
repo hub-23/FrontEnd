@@ -80,10 +80,10 @@ export const PersonalInfo = () => {
 
           const handleGetPhone = values => {
             const { value, touched } = values;
+
             setValues( prev => ( { ...prev, phone: value } ) );
             setTouched( { ...touched, phone: touched } );
           }; // значення з ContactInfi.jsx
-          
 
           return (
             <S.FormFild autoComplete="off">
@@ -127,13 +127,15 @@ export const PersonalInfo = () => {
                 </button>
                 <p>Ви не зможете відновити профіль після його видалення</p>
               </S.DelAccauntSec>
-            </S.FormFild>        
+            </S.FormFild>
           );
         }}
       </Formik>
       {deleteProfileModalShown && (
         <Modal onActiveModal={ () => setDeleteProfileModalShown( false ) }>
-            <DeleteProfile onDeleteProfileModalClose={ () => setDeleteProfileModalShown( false ) } />
+          <DeleteProfile
+            onDeleteProfileModalClose={ () => setDeleteProfileModalShown( false ) }
+          />
         </Modal>
       )}
     </>
