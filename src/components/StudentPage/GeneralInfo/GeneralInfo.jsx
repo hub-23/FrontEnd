@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../common/modalElements/Modal';
-import { PhotoHandler } from './PhotoHandler';
+import { PhotoHandler } from '../modals/PhotoHandler';
 import { Input } from '../../common/modalElements/Input';
 // import { useAuth } from 'hooks/useAuth';
 import { Abbreviation } from '../../common/Abbreviation';

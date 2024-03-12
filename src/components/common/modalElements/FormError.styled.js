@@ -12,7 +12,7 @@ const show = keyframes`
 
 export const ErrorText = styled.p`
   position: absolute;
-  left: 0;
+  left: ${( { $left } ) => $left || 0 };
   bottom: ${( { $bottom } ) => $bottom || '-20px'};
   margin-left: ${( { $marginLeft } ) => $marginLeft || '19px'};
 

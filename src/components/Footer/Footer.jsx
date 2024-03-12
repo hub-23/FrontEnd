@@ -4,11 +4,13 @@ import * as S from './Footer.styled';
 import { IconSvg } from '../common/IconSvg';
 import { Modal } from '../common/modalElements/Modal';
 import { QuestionForm } from './modals/QuestionForm/QuestionForm';
-import { Notification } from './modals/Notification/Notification';
+import { Notification } from '../common/modalElements/Notification';
 
 export const Footer = () => {
   const [ isFormOpen, setIsFormOpen ] = useState( false );
   const [ isNotificationShown, setIsNotificationShown ] = useState( false );
+  const success = true; 
+  // const success = false; // залежно від status code з бекенду
 
   return (
     <S.FooterSection>
@@ -92,8 +94,13 @@ export const Footer = () => {
               <Modal onActiveModal={ () => setIsNotificationShown( false ) }>
                 <Notification
                   onNotificationClose={ () => setIsNotificationShown( false ) }
-                  success={ true }
-                  // success={ false } // залежно від status code з бекенду
+                  success={ success }
+                  title={ success ? 'Форму успішно надіслано' : 'Сталась помилка' }
+                  description={ success
+                    // eslint-disable-next-line max-len
+                    ? 'Ваше повідомлення буде опрацьовано протягом 72 годин та надано фідбек за телефоном або на пошту'
+                    : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
+                  }
                 />
               </Modal>
             )}

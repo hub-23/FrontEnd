@@ -1,13 +1,13 @@
 import React from 'react';
-import { Formik, Field } from 'formik';
-import { object, string } from 'yup';
+import { Formik, Field, ErrorMessage } from 'formik';
+import { object, string, boolean } from 'yup';
 import { BtnClose } from '../../common/modalElements/BtnClose';
 import { Input } from '../../common/modalElements/Input';
 import sprite from '../../../assets/sprite.svg';
 import * as S from './DeleteProfile.styled';
 
 
-export const DeleteProfile = ( { onDeleteProfileModalClose } ) => {
+export const DeleteProfile = ( { onDeleteProfileModalClose, onNotificationShow } ) => {
     const reasonsToDelete = [
         'Незадоволеність послугами',
         'Надмірний спам',
@@ -25,14 +25,23 @@ export const DeleteProfile = ( { onDeleteProfileModalClose } ) => {
             return reasonsToDelete.includes( value );
           } )
           .required( 'Вкажіть тему повідомлення' ),
+        accept: boolean()
+          .oneOf( [ true ], 'Підтвердіть, що ви згодні з умовами видалення' )
+          .required( 'Підтвердіть, що ви згодні з умовами видалення' ),
     } );
     
     const initialValues = {
         reason: localStorage.getItem( 'delete-profile-reason' ) || '',
+        accept: false,
     };
 
     const handleSubmit = ( values, { resetForm } ) => {
-        console.log( 'submit' );
+        console.log( 'submit - values:', values );
+
+        localStorage.removeItem( 'delete-profile-reason' );    
+        resetForm();
+        onDeleteProfileModalClose();
+        onNotificationShow();
     };
 
     return (
@@ -43,15 +52,16 @@ export const DeleteProfile = ( { onDeleteProfileModalClose } ) => {
         >
           {formik => {
             const {
-                errors: { reason },
+                errors: { reason, accept },
                 touched,
                 values,
                 // setValues,
                 // setTouched,
             } = formik;
 
-            // eslint-disable-next-line no-unused-vars
             const errReason = reason && touched.reason;
+            // eslint-disable-next-line no-unused-vars
+            const errAccept = accept && touched.accept;
 
             return (
                 <S.FormFild autoComplete="off">
@@ -69,31 +79,36 @@ export const DeleteProfile = ( { onDeleteProfileModalClose } ) => {
                             data={ reasonsToDelete }
                             formik={ formik }
                             $topic
+                            $left='12px'
                             readOnly
                             component="delete-profile"
                         />
                         <S.CheckboxLabel>
                             <div>
-                                <Field type="checkbox" name="accept" />
+                                <Field
+                                    type="checkbox"
+                                    name="accept"
+                                />
                                 <svg aria-label="mark" width="20px" height="20px">
                                     <use href={ `${sprite}#icon-check-mark` }></use>
                                 </svg>
                             </div>
                             <div>
-                                Видаляючи свій обліковий запис, я розумію,
-                                що втрачу доступ до контактних данних вчителів,
-                                можливості писати коментарі та інших розширених функцій сайту
+                                <p>
+                                    Видаляючи свій обліковий запис, я розумію,
+                                    що втрачу доступ до контактних данних вчителів,
+                                    можливості писати коментарі та інших розширених функцій сайту     
+                                </p>
+                                <ErrorMessage name="accept" component="span" />
                             </div>
                         </S.CheckboxLabel>
-                        <S.DeleteBtn
-                            variant="blue"
-                            // onClick={  }
-                        >
+                        
+                        <S.DeleteBtn type='submit' variant="blue">
                             Видалити профіль
                         </S.DeleteBtn>
                         <S.CancelBtn
                             variant="blueGradientedBorder"
-                            // onClick={  }
+                            onClick={ onDeleteProfileModalClose }
                         >
                             Скасувати
                         </S.CancelBtn>
