@@ -41,12 +41,15 @@ export const TopTeachersCarousel = () => {
     autoplay: true,
     autoplaySpeed: 0,
     pauseOnHover: true,
+    centerMode: false,
+    
     responsive: [
       {
         breakpoint: 1100,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
+          centerMode: false,
         },
       },
       {
@@ -54,13 +57,15 @@ export const TopTeachersCarousel = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          centerMode: false,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 560,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,
         },
       },
     ],
