@@ -5,5 +5,5 @@ export const Abbreviation = styled.p`
     font-size: ${ ( { $fontSize } ) => $fontSize};
     font-weight: 500;
     line-height: 1.4;
-    color: ${( props ) => props.color || props.theme.colors.accent};
+    color: ${( props ) => props.color || props.theme.colors.white};
 `;

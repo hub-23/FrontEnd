@@ -73,7 +73,7 @@ export const Header = () => {
             </S.LanguageWrapper>
 
             {isLoggedIn ? (
-              <>
+              <S.PrivateField>
                 <S.AvatarWrapper>
                   <Abbreviation $fontSize='14px' />
                 </S.AvatarWrapper>
@@ -88,7 +88,7 @@ export const Header = () => {
                   </div>
                 </S.DropdownBtn>
                 {isDropdownShown && <Dropdown />}
-              </>
+              </S.PrivateField>
             ) : (
               <S.SignInBtn
                 variant="blueGradientedBorder"
