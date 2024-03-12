@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../../../../utils/device';
+import { white, primary } from 'utils/variables.styled';
 
 export const StyledCard = styled.div`
   max-width: 360px;
@@ -32,7 +33,7 @@ export const StyledHoverCard = styled.div`
   font-weight: 600;
   line-height: 20px;
   letter-spacing: 0.2px;
-  color: #113268;
+  color: ${primary};
   white-space: nowrap;
 
   @media ${device.xxxl} {
@@ -111,7 +112,7 @@ export const TypographyLocation = styled.div`
   text-align: left;
   line-height: 140%;
   letter-spacing: 0.16px;
-  color: #ffffff;
+  color:${white};
   white-space: nowrap;
 
   @media ${device.sm} {
@@ -153,7 +154,7 @@ export const TypographyName = styled.div`
   letter-spacing: 0.2px;
   line-height: 140%;
   text-align: left;
-  color: #ffffff;
+  color:${white};
   white-space: nowrap;
 
   @media ${device.sm} {
@@ -176,7 +177,7 @@ export const TypographySubject = styled.div`
   font-weight: 400;
   line-height: 140%;
   text-align: left;
-  color: #ffffff;
+  color:${white};
   white-space: nowrap;
 
   @media ${device.sm} {

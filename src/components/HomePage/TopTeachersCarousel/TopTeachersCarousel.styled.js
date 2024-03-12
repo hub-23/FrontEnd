@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../../utils/device';
+import { primary, white } from 'utils/variables.styled';
 
 export const StyledSection = styled.section`
   min-width: 100%;
@@ -7,8 +8,8 @@ export const StyledSection = styled.section`
   min-height: 100%;
   padding-bottom: 78px;
   overflow: hidden;
-  background: #113268;
-  color: #ffffff;
+  background: ${primary};
+  color: ${white};
 
   @media ${device.sm} {
     max-width: 360px;
@@ -65,21 +66,26 @@ export const StyledTitle = styled.div`
 `;
 
 export const StyledTitleTypography = styled.h2`
-  font-family: Nunito;
+  font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
   font-size: 48px;
   font-weight: 600;
   line-height: 130%;
   letter-spacing: 0.48px;
   line-height: 62px;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.48px;
   text-align: left;
-  color: #ffffff;
+  color: ${white};
   white-space: nowrap;
 
   @media ${device.lg} {
     font-size: 40px;
-    line-height: 50px;
   }
+
+  @media ${device.md} {
+    font-size: 32px;
+    letter-spacing: 0.26px;
+  }
+
   @media ${device.sm} {
     font-size: 24px;
     line-height: 130%;

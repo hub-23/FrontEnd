@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { device } from '../../../utils/device';
+import { white, black, primary } from 'utils/variables.styled';
 
 export const StyledSection = styled.section`
   min-width: 100%;
   max-height: 400px;
   min-height: 100%;
   overflow: hidden;
-  color: #ffffff;
+  color: ${white};
 
   @media ${device.sm} {
     min-width: 100%;
@@ -28,18 +29,18 @@ export const StyledWrapper = styled.div`
 `;
 
 export const StyledContent = styled.div`
-  // width: 100%;
   margin-top: 80px;
-  margin-bottom: 20px;
+  //   margin-bottom: 20px;
+  margin-bottom: 32px;
   display: flex;
   justify-content: space-between;
 
   @media ${device.lg} {
-    margin-top: 48px;
+    // margin-top: 48px;
   }
 
   @media ${device.sm} {
-    margin-top: 28px;
+    // margin-top: 28px;
     margin-bottom: 14px;
   }
 `;
@@ -49,17 +50,15 @@ export const StyledTitle = styled.div`
   height: 62px;
   padding-left: 160px;
 
-  @media ${device.xl} {
-    padding-left: 80px;
-  }
-
   @media ${device.lg} {
     max-width: 300px;
     height: 46px;
-    padding-left: 40px;
   }
 
-  @media ${device.sm} {
+  @media ${device.md} {
+    padding-left: 40px;
+  }
+  40 @media ${device.sm} {
     max-width: 200px;
     height: 31px;
     padding-left: 20px;
@@ -67,8 +66,8 @@ export const StyledTitle = styled.div`
 `;
 
 export const StyledTitleTypography = styled.h2`
-  color: #2d2d2d;
-  font-family: Nunito;
+  color: ${black};
+  font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
   font-size: 48px;
   font-style: normal;
   font-weight: 600;
@@ -77,9 +76,15 @@ export const StyledTitleTypography = styled.h2`
   white-space: nowrap;
 
   @media ${device.lg} {
-    font-size: 32px;
-    line-height: 50px;
+    // font-size: 40px;
+    // line-height: 50px;
   }
+
+  @media ${device.md} {
+    font-size: 32px;
+    letter-spacing: 0.26px;
+  }
+
   @media ${device.sm} {
     font-size: 24px;
     line-height: 130%;
@@ -90,6 +95,6 @@ export const StyledTitleTypography = styled.h2`
 export const ContainerButtons = styled.div`
   display: flex;
   justify-content: flex-end;
-  background: #ffffff;
-  color: #113268;
+  background: ${white};
+  color: ${primary};
 `;

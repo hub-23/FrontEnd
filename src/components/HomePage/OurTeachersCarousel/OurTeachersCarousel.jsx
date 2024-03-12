@@ -72,7 +72,7 @@ export const OurTeachersCarousel = () => {
         breakpoint: 500,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
