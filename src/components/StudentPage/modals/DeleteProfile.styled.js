@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
+import { Button } from '../../common/button/Button';
+// import { device } from '../../../utils/device';
+import { grayText } from '../../../utils/variables.styled';
 
 
 export const FormFild = styled( Form )`
@@ -27,4 +30,55 @@ export const Title = styled.h2`
     font-size: 24px;
     font-weight: 500;
     line-height: calc(33.6 / 24);
+`;
+
+export const CheckboxLabel = styled.label`
+  margin-top: 28px;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 10px;
+  font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+  color: ${( props ) => props.color || grayText };
+
+  svg {
+    stroke: none;
+    fill: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #0C0507;
+    border-radius: 6px;
+    padding: 5px 4px;
+  }
+
+  input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  } 
+
+  input:checked + svg {
+    stroke: #0C0507;
+  }      
+`;
+
+export const DeleteBtn = styled( Button )`
+  width: 100%;
+  height: 52px;
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: calc( 20/20 );
+`;
+
+export const CancelBtn = styled( Button )`
+  width: 100%;
+  height: 52px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: calc( 20/20 );
 `;

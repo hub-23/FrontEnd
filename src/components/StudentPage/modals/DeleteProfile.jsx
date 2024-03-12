@@ -1,13 +1,13 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 import { object, string } from 'yup';
 import { BtnClose } from '../../common/modalElements/BtnClose';
-import { Input } from 'components/common/modalElements/Input';
+import { Input } from '../../common/modalElements/Input';
+import sprite from '../../../assets/sprite.svg';
 import * as S from './DeleteProfile.styled';
 
 
 export const DeleteProfile = ( { onDeleteProfileModalClose } ) => {
-    // onDeleteProfileModalClose, errDeleteProfileReason, values, reasonsToDelete, formik
     const reasonsToDelete = [
         'Незадоволеність послугами',
         'Надмірний спам',
@@ -72,7 +72,31 @@ export const DeleteProfile = ( { onDeleteProfileModalClose } ) => {
                             readOnly
                             component="delete-profile"
                         />
-                        
+                        <S.CheckboxLabel>
+                            <div>
+                                <Field type="checkbox" name="accept" />
+                                <svg aria-label="mark" width="20px" height="20px">
+                                    <use href={ `${sprite}#icon-check-mark` }></use>
+                                </svg>
+                            </div>
+                            <div>
+                                Видаляючи свій обліковий запис, я розумію,
+                                що втрачу доступ до контактних данних вчителів,
+                                можливості писати коментарі та інших розширених функцій сайту
+                            </div>
+                        </S.CheckboxLabel>
+                        <S.DeleteBtn
+                            variant="blue"
+                            // onClick={  }
+                        >
+                            Видалити профіль
+                        </S.DeleteBtn>
+                        <S.CancelBtn
+                            variant="blueGradientedBorder"
+                            // onClick={  }
+                        >
+                            Скасувати
+                        </S.CancelBtn>
                     </S.Container>
                 </S.FormFild>
             );
