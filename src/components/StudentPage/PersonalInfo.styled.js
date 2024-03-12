@@ -6,7 +6,7 @@ export const FormFild = styled( Form )`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 16px;
+  margin-left: 16px;
 `;
 
 export const Section = styled.section`
@@ -17,7 +17,6 @@ export const Section = styled.section`
 
 export const Title = styled.h2`
   width: 172px;
-  padding-left: 16px;
   padding-top: 12px;
   font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
   font-size: 24px;
