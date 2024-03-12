@@ -185,7 +185,8 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     isStar={ true }
                     btnEye
                     $error={ errPassword }
-                    errorMessage={ password }
+                    $bottom={ password && password.startsWith( 'Пароль має' ) && '-40px' }
+                    // errorMessage={ password }
                     value={ values.password }
                   />
                   {noteShown && (

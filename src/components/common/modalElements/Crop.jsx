@@ -27,10 +27,10 @@ export const Crop = ( { image, clickCrop, onCroppedAvatar } ) => {
       width,
       height
     );
-    console.log( crop, width, height );
+    // console.log( crop, width, height );
 
     const centredCrop = centerCrop( crop, width, height );
-    console.log( centredCrop );
+    // console.log( centredCrop );
     setCrop( centredCrop );
   };
 

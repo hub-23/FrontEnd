@@ -32,7 +32,7 @@ const handleStudentProfile = ( state, { payload } ) => {
   state.user = { ...state.user, ...payload };
   state.isLoggedIn = true;
   state.isLoading = false;
-  console.log( 'UserData payload :>> ', payload );
+  // console.log( 'UserData payload :>> ', payload );
 };
 
 export const initialState = {

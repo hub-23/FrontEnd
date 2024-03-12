@@ -5,8 +5,8 @@ import * as S from './Abbreviation.styled';
 export const Abbreviation = ( { ...props } ) => { 
     const { user } = useAuth();
 
-    const abbreviation = user?.username
-        ? user.username
+    const abbreviation = user?.name
+        ? user.name
           .split( ' ' )
           .map( ( word ) => word[ 0 ].toUpperCase() )
           .join( '' )

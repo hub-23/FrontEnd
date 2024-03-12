@@ -20,7 +20,6 @@ export const Input = ( {
   data,
   formik,
   btnEye,
-  errorMessage,
   component,
   ...props
 } ) => {
@@ -116,12 +115,7 @@ export const Input = ( {
       {name !== 'password' && (
         <SaveToLocalStorage component={ component } fieldName={ name } />
       )}
-      <FormError
-        name={ name }
-        $bottom={
-          errorMessage && errorMessage.startsWith( 'Пароль має' ) && '-40px'
-        }
-      />
+      <FormError name={ name } { ...props } />
     </S.InputContainer>
   );
 };

@@ -7,7 +7,7 @@ import { Navigation } from 'components/StudentPage/Navbar/Navigation';
 
 export const Dropdown = () => {
     const { user } = useAuth();
-
+  
     return (
         <S.Dropdown>
         <S.PersonalData>
@@ -15,7 +15,7 @@ export const Dropdown = () => {
             <Abbreviation $fontSize='20px' />
           </AvatarWrapper>
           <div className='meta-wrapper'>
-            <p className='name'>{ user?.username }</p>
+            <p className='name'>{ user?.name }</p>
             <p className='email'>{ user?.email }</p>
           </div>
         </S.PersonalData>

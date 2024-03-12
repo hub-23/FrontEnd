@@ -7,11 +7,15 @@ import * as S from './PersonalInfo.styled';
 import { ContactInfo } from './ContactInfo/ContactInfo';
 import { Modal } from '../common/modalElements/Modal';
 import { DeleteProfile } from './modals/DeleteProfile';
+import { Notification } from '../common/modalElements/Notification';
 import { useAuth } from '../../hooks/useAuth';
 
 export const PersonalInfo = () => {
   const [ deleteProfileModalShown, setDeleteProfileModalShown ] = useState( false );
+  const [ isNotificationShown, setIsNotificationShown ] = useState( false );
   const { user } = useAuth();
+  const success = true; 
+  // const success = false; // для Notification - залежно від status code з бекенду
 
   const schema = object( {
     surname: string()
@@ -39,9 +43,9 @@ export const PersonalInfo = () => {
 
   const initialValues = {
     surname: localStorage.getItem( 'student-surname' ) || '',
-    name: localStorage.getItem( 'student-name' ) || user?.username,
-    email: '',
-    phone: '',
+    name: localStorage.getItem( 'student-name' ) || user?.name,
+    email: localStorage.getItem( 'student-email' ) || user?.email,
+    phone: localStorage.getItem( 'student-phone' ) || user?.phone,
     password: '',
   };
 
@@ -135,6 +139,21 @@ export const PersonalInfo = () => {
         <Modal onActiveModal={ () => setDeleteProfileModalShown( false ) }>
           <DeleteProfile
             onDeleteProfileModalClose={ () => setDeleteProfileModalShown( false ) }
+            onNotificationShow={ () => setIsNotificationShown( true ) }
+          />
+        </Modal>
+      )}
+      {isNotificationShown && (
+        <Modal onActiveModal={ () => setIsNotificationShown( false ) }>
+          <Notification
+            onNotificationClose={ () => setIsNotificationShown( false ) }
+            success={ success }
+            title={ success ? 'Ваш профіль успішно видалено' : 'Сталась помилка' }
+            description={ success
+              // eslint-disable-next-line max-len
+              ? 'Ви можете користуватися послугами HUB23, які доступні для незареєстрованих користувачів сайту'
+              : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
+            }
           />
         </Modal>
       )}

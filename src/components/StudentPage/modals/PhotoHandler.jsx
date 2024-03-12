@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import { useAuth } from '../../../hooks/useAuth';
 import * as S from './PhotoHandler.styled';
 import { BtnClose } from '../../common/modalElements/BtnClose';
 import { Button } from '../../common/button/Button';
@@ -9,6 +11,7 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
   const [ avatar, setAvatar ] = useState( '' );
   const [ cropBtnClick, setCropBtnClick ] = useState( false );
   const [ croppedAvatar, setCroppedAvatar ] = useState( '' );
+  // const { token } = useAuth();
 
   const handleImageSelect = value => {
     if ( avatar !== value ) {
@@ -24,6 +27,21 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
     }
   }, [ croppedAvatar ] );
 
+  // const instance = axios.create( {
+  //   baseURL: 'https://hub23-84u3.onrender.com',
+  // } );
+
+  const handleSubmit = async () => {
+    console.log( croppedAvatar );
+    // try {
+    //   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    //   const { data } = await instance.post( '/customers/update_avatar', 'croppedAvatar' );
+    //   console.log( data );
+    // } catch ( error ) {
+    //   console.log( error.message );
+    // }
+  };
+
   return (
     <S.Container>
       <BtnClose onActiveModal={ onPhotoHandlerClose } />
@@ -35,6 +53,7 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
           </S.CircleWrapper>
           <Button
             variant="blueGradientedBorder"
+            onClick={ handleSubmit }
             onActiveModal={ onPhotoHandlerClose }
           >
             Зберегти

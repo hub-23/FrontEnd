@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { device } from '../../../../utils/device';
-import { borderGreen, accent } from '../../../../utils/variables.styled';
-import { Button } from '../../../common/button/Button';
+import { device } from '../../../utils/device';
+import { borderGreen, accent } from '../../../utils/variables.styled';
+import { Button } from '../button/Button';
 
 export const NotificationWrapper = styled.div`
   position: absolute;

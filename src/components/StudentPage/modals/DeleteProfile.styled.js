@@ -63,7 +63,15 @@ export const CheckboxLabel = styled.label`
 
   input:checked + svg {
     stroke: #0C0507;
-  }      
+  }
+  
+  p {
+    margin-bottom: 4px;
+  }
+  
+  span {
+    color: ${props => props.color || props.theme.colors.accent};
+  }
 `;
 
 export const DeleteBtn = styled( Button )`
