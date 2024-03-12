@@ -36,7 +36,7 @@ export const DeleteProfile = ( { onDeleteProfileModalClose, onNotificationShow }
     };
 
     const handleSubmit = ( values, { resetForm } ) => {
-        console.log( 'submit - values:', values );
+        console.log( 'submit - values:', values ); // відправка на бек
 
         localStorage.removeItem( 'delete-profile-reason' );    
         resetForm();
