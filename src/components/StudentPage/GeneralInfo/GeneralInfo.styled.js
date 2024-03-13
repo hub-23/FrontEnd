@@ -20,7 +20,7 @@ export const ProfilePhoto = styled.div`
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        border: 1px solid ${( props ) => props.color || props.theme.colors.accent};        
+        background-color: ${props => props.color || props.theme.colors.accent};
         img {
             width: 100%;
             height: 100%;

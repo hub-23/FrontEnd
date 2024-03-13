@@ -33,6 +33,7 @@ export const Title = styled.h2`
 `;
 
 export const CheckboxLabel = styled.label`
+  position: relative;
   margin-top: 28px;
   margin-bottom: 40px;
   display: flex;
@@ -65,11 +66,9 @@ export const CheckboxLabel = styled.label`
     stroke: #0C0507;
   }
   
-  p {
-    margin-bottom: 4px;
-  }
-  
   span {
+    position: absolute;
+    bottom: -22px;
     color: ${props => props.color || props.theme.colors.accent};
   }
 `;

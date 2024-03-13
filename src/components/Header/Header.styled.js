@@ -136,6 +136,13 @@ export const SignInBtn = styled( Button )`
   }
 `;
 
+export const PrivateField = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const AvatarWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -143,19 +150,11 @@ export const AvatarWrapper = styled.div`
   width: ${ ( { $dropdown } ) => $dropdown ? '64px' : '32px' }; 
   height: ${ ( { $dropdown } ) => $dropdown ? '64px' : '32px' };
   margin-right: ${ ( { $dropdown } ) => $dropdown ? '12px' : '8px' };
-  border: 1px solid ${props => props.color || props.theme.colors.accent};
+  background-color: ${props => props.color || props.theme.colors.accent};
   border-radius: 50%;
-  p { 
-    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: ${ ( { $dropdown } ) => $dropdown ? '20px' : '14px' };
-    font-weight: 500;
-    line-height: calc( 19.6 / 14 );
-    color: ${props => props.color || props.theme.colors.accent};
-  }
 `;
 
 export const DropdownBtn = styled.button`
-  position: relative;
   width: 24px;
   height: 100%;
   display: flex;
