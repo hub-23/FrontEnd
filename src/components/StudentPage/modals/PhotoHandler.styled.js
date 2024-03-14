@@ -23,16 +23,19 @@ export const Title = styled.h2`
 export const CircleWrapper = styled.div`
     width: 200px;
     height: 200px;
-    border: 1px solid ${props => props.color || props.theme.colors.accent};
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     margin-bottom: 32px;
+    background-color: ${props => props.color || props.theme.colors.accent};
 
-    img {
+    /* img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
-    }
+    } */
 `;
 
 export const ImageWrapper = styled.div`

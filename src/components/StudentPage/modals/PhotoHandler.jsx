@@ -6,6 +6,7 @@ import { BtnClose } from '../../common/modalElements/BtnClose';
 import { Button } from '../../common/button/Button';
 import { FileUploadInput } from '../../common/modalElements/FileUploadInput';
 import { Crop } from '../../common/modalElements/Crop';
+import { Abbreviation } from '../../common/Abbreviation';
 
 export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
   const [ avatar, setAvatar ] = useState( '' );
@@ -49,7 +50,8 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
       {croppedAvatar ? (
         <>
           <S.CircleWrapper>
-            <img src={ croppedAvatar } alt="Обрізане фото" />
+            <Abbreviation $fontSize='48px' $fontWeight='600' $lineHeight='1.3' />
+            {/* <img src={ croppedAvatar } alt="Обрізане фото" /> */}
           </S.CircleWrapper>
           <Button
             variant="blueGradientedBorder"
