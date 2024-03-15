@@ -52,16 +52,12 @@ export const DeleteProfile = ( { onDeleteProfileModalClose, onNotificationShow }
         >
           {formik => {
             const {
-                errors: { reason, accept },
+                errors: { reason },
                 touched,
                 values,
-                // setValues,
-                // setTouched,
             } = formik;
 
             const errReason = reason && touched.reason;
-            // eslint-disable-next-line no-unused-vars
-            const errAccept = accept && touched.accept;
 
             return (
                 <S.FormFild autoComplete="off">
