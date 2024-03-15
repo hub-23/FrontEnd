@@ -14,7 +14,7 @@ export const Crop = ( { image, configuration, onDataToCrop } ) => {
 
     const cropWidthInPercent = ( targetWidth / width ) * 100;
     const cropHeightInPercent = ( targetHeight / height ) * 100;
-    console.log( '1' );
+
     const crop = makeAspectCrop(
       {
         unit: '%',
@@ -26,11 +26,10 @@ export const Crop = ( { image, configuration, onDataToCrop } ) => {
       height
     );
     // console.log( crop, width, height );
-    console.log( '2' );
+
     const centredCrop = centerCrop( crop, width, height );
     // console.log( centredCrop );
     setCrop( centredCrop );
-    console.log( '3' );
   };
 
   useEffect( () => (

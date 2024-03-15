@@ -3,7 +3,7 @@ import * as S from './FileUploadInput.styled';
 
 
 export const FileUploadInput = ( { onImageSelect, id, ...props } ) => {
-    const handleFileChange = ( e ) => {
+    const handleFileChange = async( e ) => {
         const inputFile = e.target.files[ 0 ];
     
         if ( !inputFile ) {

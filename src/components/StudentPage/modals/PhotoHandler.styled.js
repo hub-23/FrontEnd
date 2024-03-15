@@ -76,6 +76,10 @@ export const CancelBtn = styled.button`
     line-height: calc(20 / 20);
 `;
 
+export const DeleteBtn = styled( CancelBtn )`
+    color: ${props => props.color || props.theme.colors.accent};
+`;
+
 export const SaveButton = styled( Button )` 
     font-size: 20px;
     font-weight: 600;

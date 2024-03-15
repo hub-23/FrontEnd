@@ -9,6 +9,8 @@ import { FileUploadInput } from '../../common/modalElements/FileUploadInput';
 import { Crop } from '../../common/modalElements/Crop';
 import { Abbreviation } from '../../common/Abbreviation';
 import { setCanvasPreview } from '../../../helpers/setCanvasPreview';
+// eslint-disable-next-line no-unused-vars
+import defaultPhoto from '../../../assets/home/students-photos/image 3.png';
 
 
 export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
@@ -18,6 +20,8 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
   const [ croppedBlobAvatar, setCroppedBlobAvatar ] = useState( '' );
   const { imgRef, previewCanvasRef, crop } = dataToCrop;
   // const { token } = useAuth();
+  const backendAvatar = defaultPhoto;
+  // const backendAvatar = '';
 
   const handleImageSelect = value => {
     if ( avatar !== value ) {
@@ -58,22 +62,33 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
   // } );
 
   const handleSubmit = async () => {
-    console.log( 'croppedAvatar:', croppedAvatar );
+    // console.log( 'croppedAvatar:', croppedAvatar );
     console.log( 'croppedBlobAvatar:', croppedBlobAvatar );
+
     onPhotoHandlerClose();
     // try {
     //   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-    //   const { data } = await instance.post( '/customers/update_avatar', 'croppedAvatar' );
+    //   const { data } = await instance.post( '/customers/update_avatar', avatar );
     //   console.log( data );
     // } catch ( error ) {
     //   console.log( error.message );
     // }
   };
 
+  const handlePhotoDelete = () => {
+    // Delete-запит на бек
+    onPhotoHandlerClose();
+  };
+
   return (
     <S.Container>
       <BtnClose onActiveModal={ onPhotoHandlerClose } />
-      <S.Title>Додати зображення профілю</S.Title>
+      <S.Title> 
+        {!backendAvatar
+          ? 'Додати зображення профілю'
+          : 'Змінити зображення профілю'
+        }
+      </S.Title>
       
       {croppedAvatar ? (
           <S.CircleWrapper>
@@ -93,9 +108,12 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
             />
           </S.ImageWrapper>
       ) : ( // 1ше відкриття модалки
-          <S.CircleWrapper>
-            <Abbreviation $fontSize='48px' $fontWeight='600' $lineHeight='1.3' />
-          </S.CircleWrapper>
+            <S.CircleWrapper>
+              { backendAvatar
+                ? <img src={ backendAvatar } alt="Фото користувача" />
+                : <Abbreviation $fontSize='48px' $fontWeight='600' $lineHeight='1.3' />
+              }
+            </S.CircleWrapper>    
       ) }
       
       { avatar ? (
@@ -116,15 +134,26 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
       ) : (
           <S.BtnsWrapper>
             <S.AddButton htmlFor="file-input">
-              <Button variant="blue">Завантажити фото</Button>
+              <Button variant="blue">
+                {!backendAvatar
+                  ? 'Завантажити фото'
+                  : 'Завантажити нове'
+                }
+              </Button>
               <FileUploadInput
                 onImageSelect={ handleImageSelect }
                 id="file-input"
               />
             </S.AddButton>
-            <S.CancelBtn onClick={ onPhotoHandlerClose }>
-              Скасувати
-            </S.CancelBtn>          
+            {!backendAvatar ? (
+              <S.CancelBtn onClick={ onPhotoHandlerClose }>
+                Скасувати
+              </S.CancelBtn>  
+            ) : (
+              <S.DeleteBtn onClick={ handlePhotoDelete }>
+                Видалити фото
+              </S.DeleteBtn>  
+            )}            
           </S.BtnsWrapper>        
       ) }
     </S.Container>
