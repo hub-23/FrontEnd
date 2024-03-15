@@ -12,7 +12,7 @@ export const Dropdown = () => {
         <S.Dropdown>
         <S.PersonalData>
           <AvatarWrapper $dropdown>
-            <Abbreviation $fontSize='20px' $fontWeight='500' />
+            <Abbreviation $fontSize='20px' $fontWeight='500' $lineHeight='1.4' />
           </AvatarWrapper>
           <div className='meta-wrapper'>
             <p className='name'>{ user?.name }</p>

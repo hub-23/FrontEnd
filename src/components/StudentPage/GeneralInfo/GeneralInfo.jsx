@@ -16,7 +16,7 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
     <S.Container>
       <S.ProfilePhoto>
         <div className="circle">
-          {!avatar && <Abbreviation $fontSize='24px' />} 
+          {!avatar && <Abbreviation $fontSize='24px' $fontWeight='500' $lineHeight='1.4' />} 
           {avatar && <img src={ avatar } alt="Обрізане фото" />}
 
           <button
