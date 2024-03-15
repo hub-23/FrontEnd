@@ -1,81 +1,62 @@
-import React, { useRef, useState } from 'react';
-import ReactCrop, {
-  centerCrop,
-  makeAspectCrop,
-  convertToPixelCrop,
-} from 'react-image-crop';
+import React, { useRef, useState, useEffect } from 'react';
+import ReactCrop, { centerCrop, makeAspectCrop, } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
-import { setCanvasPreview } from '../../../helpers/setCanvasPreview';
 
-export const Crop = ( { image, clickCrop, onCroppedAvatar } ) => {
+
+export const Crop = ( { image, configuration, onDataToCrop } ) => {
+  const { targetWidth, targetHeight, circularCrop, aspect } = configuration;
   const imgRef = useRef( null );
   const previewCanvasRef = useRef( null );
-  const [ crop, setCrop ] = useState( {} );
+  const [ crop, setCrop ] = useState();
 
   const handleImageLoad = e => {
     const { width, height } = e.currentTarget;
 
-    const targetWidth = 300;
     const cropWidthInPercent = ( targetWidth / width ) * 100;
-
+    const cropHeightInPercent = ( targetHeight / height ) * 100;
+    console.log( '1' );
     const crop = makeAspectCrop(
       {
         unit: '%',
         width: cropWidthInPercent,
+        height: cropHeightInPercent,
       },
-      1,
+      aspect,
       width,
       height
     );
     // console.log( crop, width, height );
-
+    console.log( '2' );
     const centredCrop = centerCrop( crop, width, height );
     // console.log( centredCrop );
     setCrop( centredCrop );
+    console.log( '3' );
   };
 
-  const handleImageCrop = () => {
-    setCanvasPreview(
-      imgRef.current,
-      previewCanvasRef.current,
-      convertToPixelCrop( crop, imgRef.current.width, imgRef.current.height )
-    );
-
-    const dataUrl = previewCanvasRef.current.toDataURL(); // довгий рядок
-    onCroppedAvatar( dataUrl );
-
-    previewCanvasRef.current.toBlob(
-      blob => {
-        //   setBlobPhoto( blob );
-        console.log( 'blob:', blob );
-      },
-      'image/jpeg',
-      0.8
-    );
-  };
-
-  if ( clickCrop ) {
-    handleImageCrop();
-  }
+  useEffect( () => (
+    onDataToCrop( { imgRef, previewCanvasRef, crop } )
+  ), [ crop ] );
 
   return (
-    <div className="image-container">
+    <>
       <ReactCrop
         crop={ crop }
-        circularCrop
+        circularCrop={ circularCrop } // true or false
         keepSelection
-        aspect={ 1 }
+        aspect={ aspect }
+        width={ targetWidth }
+        height={ targetHeight }
         onChange={ ( pixelCrop, percentCrop ) => setCrop( percentCrop ) }
       >
         <img
-          className="prosedure_image"
           ref={ imgRef }
           src={ image }
           alt="Обране фото"
           onLoad={ handleImageLoad }
         />
+      </ReactCrop>
 
-        {crop && (
+      {crop && (
           <canvas
             ref={ previewCanvasRef }
             style={ {
@@ -86,8 +67,7 @@ export const Crop = ( { image, clickCrop, onCroppedAvatar } ) => {
               height: 150,
             } }
           />
-        )}
-      </ReactCrop>
-    </div>
+      ) }
+    </>
   );
 };

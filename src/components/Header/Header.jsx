@@ -75,7 +75,7 @@ export const Header = () => {
             {isLoggedIn ? (
               <S.PrivateField>
                 <S.AvatarWrapper>
-                  <Abbreviation $fontSize='14px' $fontWeight='500' />
+                  <Abbreviation $fontSize='14px' $fontWeight='500' $lineHeight='1.4' />
                 </S.AvatarWrapper>
                 <S.DropdownBtn
                   type="button"

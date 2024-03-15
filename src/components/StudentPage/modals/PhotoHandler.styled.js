@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from 'components/common/button/Button';
 
 export const Container = styled.div`
     position: relative;
@@ -30,35 +31,53 @@ export const CircleWrapper = styled.div`
     margin-bottom: 32px;
     background-color: ${props => props.color || props.theme.colors.accent};
 
-    /* img {
+    img { // cropped photo
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
-    } */
+    }
 `;
 
 export const ImageWrapper = styled.div`
-    max-width: 358px;
-    max-height: 358px;
     margin-bottom: 32px;
-    border: 1px solid ${props => props.color || props.theme.colors.accent};
 
-    img {
-        width: 100%;
-        height: 358px;
+    img { // uploaded but not cropped pphoto
+        width: 400px;
+        height: 400px;
         object-fit: cover;
     }
+`;
+
+export const BtnsWrapper = styled.div`
+    display: flex;
+    gap: 12px;
 `;
 
 export const AddButton = styled.label`
     position: relative;
 
     button {
-        font-family: ${props => props.fontFamily || props.theme.fontFamily.primary}; 
+        width: 248px;
         font-size: 20px;
         font-weight: 600;
         line-height: calc(20 / 20);
-        color: ${props => props.color || props.theme.colors.primary};
     }
+`;
+
+export const CancelBtn = styled.button`
+    padding: 14px 32px;
+    background-color: transparent;
+    border-color: transparent;
+    color: ${props => props.color || props.theme.colors.primary};
+    font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};    
+    font-size: 20px;
+    font-weight: 600;
+    line-height: calc(20 / 20);
+`;
+
+export const SaveButton = styled( Button )` 
+    font-size: 20px;
+    font-weight: 600;
+    line-height: calc(20 / 20);
 `;
