@@ -77,6 +77,7 @@ export const Header = () => {
                 <S.AvatarWrapper>
                   <Abbreviation $fontSize='14px' $fontWeight='500' $lineHeight='1.4' />
                 </S.AvatarWrapper>
+                <p>Моя сторінка</p>
                 <S.DropdownBtn
                   type="button"
                   aria-label="dropdown-menu"
