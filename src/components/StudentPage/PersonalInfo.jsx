@@ -11,6 +11,7 @@ import { Notification } from '../common/modalElements/Notification';
 import { useAuth } from '../../hooks/useAuth';
 
 export const PersonalInfo = () => {
+  const [ isSendNotificationShown, setIsSendNotificationShown ] = useState( false );
   const [ deleteProfileModalShown, setDeleteProfileModalShown ] = useState( false );
   const [ isNotificationShown, setIsNotificationShown ] = useState( false );
   const { user } = useAuth();
@@ -51,6 +52,7 @@ export const PersonalInfo = () => {
 
   const handleSubmit = ( values, { resetForm } ) => {
     console.log( 'submit' );
+    setIsSendNotificationShown( true );
   };
 
   return (
@@ -135,6 +137,20 @@ export const PersonalInfo = () => {
           );
         }}
       </Formik>
+      {isSendNotificationShown && (
+        <Modal onActiveModal={ () => setIsSendNotificationShown( false ) }>
+          <Notification
+            onNotificationClose={ () => setIsSendNotificationShown( false ) }
+            success={ success }
+            title={ success ? 'Зміни успішно збережено' : 'Сталась помилка' }
+            description={ success
+              // eslint-disable-next-line max-len
+              ? 'Оновлено особисту інформацію. Будьте уважні, при оновленні пароля автоматично відбудеться вихід із профілю з усіх пристроїв на яких відкрито сторінку.'
+              : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
+            }
+          />
+        </Modal>
+      )}
       {deleteProfileModalShown && (
         <Modal onActiveModal={ () => setDeleteProfileModalShown( false ) }>
           <DeleteProfile

@@ -141,6 +141,13 @@ export const PrivateField = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  p {
+    margin-right: 8px;
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
+    font-size: 20px;
+    line-height: calc( 28/20 );
+  }
 `;
 
 export const AvatarWrapper = styled.div`
