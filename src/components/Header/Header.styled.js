@@ -142,7 +142,7 @@ export const PrivateField = styled.div`
   justify-content: center;
   align-items: center;
 
-  p {
+  .my-page {
     margin-right: 8px;
     font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 20px;

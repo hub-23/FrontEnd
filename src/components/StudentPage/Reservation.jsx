@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import  { backendData } from './ReservationTypes/data';
-import { NotActiveReservations } from './ReservationTypes/NotActiveReservations';
-import { ActiveReservations } from './ReservationTypes/ActiveReservations';
-import { Card } from './ReservationTypes/Card';
+import  { backendDataNotActive } from './ReservationCard/dataNotActive';
+import  { backendDataActive } from './ReservationCard/dataActive';
+import { Card } from './ReservationCard/Card';
 import * as S from './Reservation.styled';
 
 export const Reservation = () => {
@@ -43,12 +42,12 @@ export const Reservation = () => {
             </li>
           </S.NavList>
 
-          { tabStatus === 'notActive' && <NotActiveReservations /> }
-          { tabStatus === 'active' && <ActiveReservations /> }
-
           <S.CardList>
-            { backendData.map( data => (
-              <Card key={ data.id } data={ data } /> 
+            { tabStatus === 'notActive' && backendDataNotActive.map( data => (
+              <Card key={ data.id } data={ data } status='notActive' /> 
+            ) )}
+            { tabStatus === 'active' && backendDataActive.map( data => (
+              <Card key={ data.id } data={ data } status='active' /> 
             ) )}
           </S.CardList>
         </>

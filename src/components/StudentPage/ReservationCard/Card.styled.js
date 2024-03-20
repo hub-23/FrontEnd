@@ -3,13 +3,14 @@ import { Button } from '../../common/button/Button';
 import { grayStroke, grayText } from '../../../utils/variables.styled';
 
 export const Container = styled.li`
+    display: flex;
     width: 740px;
     height: 268px;
-    border: 1px solid ${props => props.color || props.theme.colors.black};
-    border-radius: 0px 20px 0px 20px;
-    border-left: 8px solid ${props => props.color || props.theme.colors.primary};
     padding: 32px;
-    display: flex;
+    border: 1px solid ${props => props.color || props.theme.colors.black};
+    border-left: 8px solid ${ ( { theme, $status  } ) =>
+        $status === 'active' ? theme.colors.accent : theme.colors.primary };
+    border-radius: 0px 20px 0px 20px;
 `;
 
 export const GeneralInfo = styled.div`

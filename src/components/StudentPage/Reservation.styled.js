@@ -36,7 +36,8 @@ export const NavList = styled.ul`
     font-size: 24px;
     font-weight: 500;
     line-height: calc( 33.6 / 24 );
-    transition: background-color ${transition}, border-color ${transition}, color ${transition};
+    border: 1px solid ${props => props.color || props.theme.colors.black};
+    transition: background-color ${transition}, color ${transition};
   }
 
   li:first-child button {
