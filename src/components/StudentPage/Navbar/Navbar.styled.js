@@ -47,6 +47,21 @@ export const StyledTitle = styled.h2`
   line-height: 140%;
 `;
 
+export const StyledButton = styled.button`
+  width: 245px;
+  height: 28px;
+  display: flex;
+  justify-content: start;
+  background-color: transparent;
+  border: none;
+  padding-left: 16px;
+  white-space: nowrap;
+  font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+  font-size: 20px;
+  font-weight: 400;
+  line-height: calc( 28 / 20 );
+`;
+
 export const StyledDivider = styled.hr`
   margin-left: 482px;
   margin-top: -40%;
