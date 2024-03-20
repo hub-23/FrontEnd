@@ -1,4 +1,4 @@
-export const backendData = [
+export const backendDataNotActive = [
     {
       id: 1,
       teacherName: 'Олександр',

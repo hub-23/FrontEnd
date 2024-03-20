@@ -4,8 +4,8 @@ import { transition } from '../../../utils/variables.styled';
 
 export const BtnClose = styled.button`
   position: absolute;
-  top: 50px;
-  right: 40px;
+  top: ${ ( { $xlTop } ) => $xlTop || '50px' };
+  right: ${ ( { $xlRight } ) => $xlRight || '40px' };
   width: 56px;
   height: 56px;
   display: flex;
