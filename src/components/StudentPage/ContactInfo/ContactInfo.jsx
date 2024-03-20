@@ -3,7 +3,7 @@ import { useAuth } from 'hooks/useAuth';
 import { InputFieldPhone } from 'components/common/modalElements/InputFieldPhone';
 import { Note } from 'components/common/modalElements/Note';
 import * as S from './ContactInfo.styled';
-import { white } from 'utils/variables.styled';
+import { deepAccent, white } from 'utils/variables.styled';
 
 export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
   const { user } = useAuth();
@@ -21,7 +21,7 @@ export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
         <div style={ { position: 'relative' } }>
           <Note
             text="Вносити зміни в це поле не можна"
-            $fill="red"
+            $fill={ deepAccent }
             $xlBottom="-26px"
             $xlLeft="12px"
             $mdLeft="0"

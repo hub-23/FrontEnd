@@ -5,12 +5,17 @@ import { object, string } from 'yup';
 import * as S from './Feedback.styled';
 import { BtnClose } from 'components/common/BtnClose';
 import { IconSvg } from 'components/common/IconSvg';
+import { Note } from 'components/common/modalElements/Note';
+import { deepAccent } from 'utils/variables.styled';
+
+const tempBackend = {
+  lesson: 'Німецька мова',
+  teachersName: 'Белла Микифорівна',
+};
 
 export const Feedback = ( { onFormClose, onShownSentModal } ) => {
   const initialValues = {
     rating: '',
-    lessonTitle: '',
-    teachersName: '',
     feedback: '',
   };
 
@@ -18,37 +23,57 @@ export const Feedback = ( { onFormClose, onShownSentModal } ) => {
     rating: string(),
     lessonTitle: string(),
     teachersName: string(),
-    feedback: string(),
+    feedback: string().min( 5 ).max( 1000 ).required(),
   } );
 
   const handleSubmit = ( values, { resetForm } ) => {
-    const { rating, lessonTitle, teachersName, feedback } = values;
-    console.log( rating, lessonTitle, teachersName, feedback );
-    // dispatch( reviewStudent( { rating, lessonTitle, teachersName, feedback } ) );
+    // eslint-disable-next-line no-unused-vars
+    const { rating, feedback } = values;
+    // dispatch( reviewStudent( { rating,  feedback } ) );
 
     resetForm();
     onFormClose();
-    // onShownSentModal( prev => !prev ); // відкрити модалку /Відгук успішно надіслано/
-    onShownSentModal();
+    onShownSentModal(); // відкрити модалку /Відгук успішно надіслано/
   };
 
   const formikForm = formik => {
     const {
-      errors: { message },
+      errors: { feedback },
       touched,
       // eslint-disable-next-line no-unused-vars
       values,
     } = formik;
 
     // eslint-disable-next-line no-unused-vars
-    const errMessage = message && touched.message;
+    const errfeedback = feedback && touched.feedback;
 
     return (
-      <Form style={ { outline: '1px solid salmon' } }>
-        <p>*** STARS ***</p>
-        <div>Німецька мова</div>
-        <div>Повідомлення</div>
-        <button type="submit">submit</button>
+      <Form style={ { position: 'relative' } }>
+        <p>*** STARS *** в розробці &#128512;</p>
+
+        <S.Classes>{tempBackend.lesson}</S.Classes>
+        <S.Classes>{tempBackend.teachersName}</S.Classes>
+
+        <S.FeedbackFild
+          name="feedback"
+          component="textarea"
+          placeholder="Повідомлення"
+          $error={ errfeedback }
+        >
+          Повідомлення
+        </S.FeedbackFild>
+
+        <Note
+          text="Введіть не більше 1000 символів"
+          $position="initial"
+          $fill={ deepAccent }
+          $xlFontSize="14px"
+          $xlLineHeight="15.82"
+        />
+
+        <S.Btn type="submit" variant="blue">
+          Надіслати
+        </S.Btn>
       </Form>
     );
   };
@@ -56,7 +81,7 @@ export const Feedback = ( { onFormClose, onShownSentModal } ) => {
   return (
     <S.Modal>
       <BtnClose
-        xlRight="50px"
+        xlRight="48px"
         xlTop="40px"
         mdRight="15px"
         mdTop="15px"

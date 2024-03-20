@@ -3,7 +3,9 @@ import { device } from 'utils/device';
 import { accent } from 'utils/variables.styled';
 
 export const WrappWarningText = styled.div`
-  position: absolute;
+  /* position: absolute; */
+  position: ${( { $position } ) => $position || 'absolute'};
+
   bottom: ${( { $xlBottom } ) => $xlBottom || '75px'};
   left: ${( { $xlLeft } ) => $xlLeft || '4px'};
   display: flex;
