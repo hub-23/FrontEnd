@@ -25,7 +25,6 @@ export const Card = ( { data, status } ) => {
     = useState( false );
   const [ isCancelationNotifShown, setIsCancelationNotifShown ] = useState( false );
   const [ isFeedbackNotifShown, setIsFeedbackNotifShown ] = useState( false );
-  console.log( 'isFeedbackNotifShown :>> ', isFeedbackNotifShown );
   const success = true;
   // const success = false; // для Notification - залежно від status code з бекенду
 
