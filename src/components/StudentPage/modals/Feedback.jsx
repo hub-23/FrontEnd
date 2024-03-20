@@ -2,11 +2,11 @@
 import { Form, Formik } from 'formik';
 import React from 'react';
 import { object, string } from 'yup';
-import * as S from './LeaveReview.styled';
+import * as S from './Feedback.styled';
 import { BtnClose } from 'components/common/BtnClose';
 import { IconSvg } from 'components/common/IconSvg';
 
-export const LeaveReview = ( { onFormClose, onShownSentModal } ) => {
+export const Feedback = ( { onFormClose, onShownSentModal } ) => {
   const initialValues = {
     rating: '',
     lessonTitle: '',

@@ -4,7 +4,7 @@ import { ClassCancelation } from '../modals/ClassCancelation';
 import { Modal } from '../../common/modalElements/Modal';
 import { Notification } from '../../common/modalElements/Notification';
 import * as S from './Card.styled';
-import { LeaveReview } from '../modals/LeaveReview';
+import { Feedback } from '../modals/Feedback';
 
 export const Card = ( { data, status } ) => {
   // eslint-disable-next-line max-len
@@ -27,10 +27,6 @@ export const Card = ( { data, status } ) => {
   const [ isFeedbackNotifShown, setIsFeedbackNotifShown ] = useState( false );
   const success = true;
   // const success = false; // для Notification - залежно від status code з бекенду
-
-  const toggleFeedbackModal = () => setFeedbackModalShown( !feedbackModalShown );
-  const toggleFeedbackNotifModal = () =>
-    setIsFeedbackNotifShown( !isFeedbackNotifShown );
 
   return (
     <S.Container $status={ status }>
@@ -111,15 +107,11 @@ export const Card = ( { data, status } ) => {
         </Modal>
       )}
       {feedbackModalShown && (
-        <Modal onActiveModal={ toggleFeedbackModal }>
-          <LeaveReview
-            onFormClose={ toggleFeedbackModal }
-            onShownSentModal={ toggleFeedbackNotifModal }
+        <Modal onActiveModal={ () => setFeedbackModalShown( false ) }>
+          <Feedback
+            onFormClose={ () => setFeedbackModalShown( false ) }
+            onShownSentModal={ () => setIsFeedbackNotifShown( true ) }
           />
-          {/* <Feedback
-                        onActiveModal={ () => setFeedbackModalShown( false ) }
-                        onNotificationShow={ () => setIsFeedbackNotifShown( true ) }
-                    /> */}
         </Modal>
       )}
       {isFeedbackNotifShown && (
