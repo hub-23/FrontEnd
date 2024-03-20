@@ -5,6 +5,7 @@ import { PhoneSelect } from './PhoneSelect';
 import * as S from './InputFieldPhone.styled';
 import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 import { FormError } from './FormError';
+import { useAuth } from 'hooks/useAuth';
 
 const validateNumber = number => {
   if ( Number( number.replaceAll( ' ', '' ) ) ) return true;
@@ -19,12 +20,21 @@ export const InputFieldPhone = ( {
   submitPhone,
   ...props
 } ) => {
+  const { user } = useAuth();
+
   const [ codeLetter, setCodeLetter ] = useState( { code: '', dialCode: '' } );
 
   const [ value, setValue ] = useState( '+380' );
   const [ valid, setValid ] = useState();
   const [ dataPhone, setDataPhone ] = useState( { value: '', touched: false } );
   const [ codeLength, setCodeLength ] = useState( 4 );
+
+  useEffect( () => {
+    if ( user.phone ) {
+      const userPhone = parsePhoneNumber( user.phone ).formatInternational();
+      setValue( userPhone );
+    }
+  }, [ user.phone ] ); // додає тел. з backend
 
   useEffect( () => {
     setValid( isValidPhoneNumber( `${value}` ) );

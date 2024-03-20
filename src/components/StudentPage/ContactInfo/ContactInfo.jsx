@@ -9,7 +9,7 @@ export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
   const { user } = useAuth();
 
   const handleGetPhone = values => {
-    getPhone( values );
+    getPhone( values.value );
   }; // значення з InputFieldPhone
 
   return (
