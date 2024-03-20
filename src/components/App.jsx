@@ -7,7 +7,6 @@ import GeneralStyles from '../generalStyles';
 import Layout from './Layout/Layout';
 import { PersonalInfo } from 'components/StudentPage/PersonalInfo';
 import { Reservation } from 'components/StudentPage/Reservation';
-import { Out } from 'components/StudentPage/Out';
 import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
@@ -50,7 +49,6 @@ const App = () => {
             >
               <Route path="info" element={ <PersonalInfo /> } />
               <Route path="reservation" element={ <Reservation /> } />
-              <Route path="out" element={ <Out /> } />
             </Route>
             <Route path="*" element={ <Home /> } />
           </Route>
