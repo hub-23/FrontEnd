@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-// import { Notification } from '';
 import { ClassCancelation } from '../modals/ClassCancelation';
 import { Modal } from '../../common/modalElements/Modal';
 import { Notification } from '../../common/modalElements/Notification';
 import * as S from './Card.styled';
 import { Feedback } from '../modals/Feedback';
+
 
 export const Card = ( { data, status } ) => {
   // eslint-disable-next-line max-len
@@ -24,6 +24,7 @@ export const Card = ( { data, status } ) => {
   const [ classCancelationModalShown, setClassCancelationModalShown ]
     = useState( false );
   const [ isCancelationNotifShown, setIsCancelationNotifShown ] = useState( false );
+  const [ isCancelBanNotifShown, setIsCancelBanNotifShown  ] = useState( false );
   const [ isFeedbackNotifShown, setIsFeedbackNotifShown ] = useState( false );
   const success = true;
   // const success = false; // для Notification - залежно від status code з бекенду
@@ -83,25 +84,40 @@ export const Card = ( { data, status } ) => {
           <S.Dynamic>{price}</S.Dynamic>
         </div>
       </S.TimeTable>
+
       {classCancelationModalShown && (
         <Modal onActiveModal={ () => setClassCancelationModalShown( false ) }>
           <ClassCancelation
             onActiveModal={ () => setClassCancelationModalShown( false ) }
             onNotificationShow={ () => setIsCancelationNotifShown( true ) }
+            onCancelBanNotifShown={ () => setIsCancelBanNotifShown( true ) }
           />
         </Modal>
       )}
       {isCancelationNotifShown && (
-        <Modal onActiveModal={ () => setIsCancelationNotifShown( false ) }>
+        <Modal onActiveModal={ () => {
+            setIsCancelationNotifShown( false );
+            setIsCancelBanNotifShown( false );           
+        } }>
           <Notification
-            onNotificationClose={ () => setIsCancelationNotifShown( false ) }
-            success={ success }
-            title={ success ? 'Заняття успішно скасовано' : 'Сталась помилка' }
+            onNotificationClose={ () => {
+              setIsCancelationNotifShown( false );
+              setIsCancelBanNotifShown( false );           
+            } }
+            success={ isCancelBanNotifShown ? false : success }
+            title={ isCancelBanNotifShown
+              ? 'Цю дію виконати не можливо'
+              : success
+                  ? 'Заняття успішно скасовано'
+                  : 'Сталась помилка'
+            }
             description={
-              // eslint-disable-next-line max-len
-              success
-                ? 'Дякуємо за використання наших послуг. Ми сподіваємося побачити Вас знову найближчим часом!'
-                : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
+              isCancelBanNotifShown
+                ? 'Скасувати заняття не можливо пізніше ніж за 3 години до його початку'
+                : success
+                    // eslint-disable-next-line max-len
+                    ? 'Дякуємо за використання наших послуг. Ми сподіваємося побачити Вас знову найближчим часом!'
+                    : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
             }
           />
         </Modal>
