@@ -24,6 +24,7 @@ export const ClassCancelation = ( { onActiveModal, onNotificationShow, onCancelB
         onActiveModal();   
     };
 
+
     return (
         <S.Container>
             <BtnClose onActiveModal={ onActiveModal } $xlTop='48px' $xlRight='48px' />
