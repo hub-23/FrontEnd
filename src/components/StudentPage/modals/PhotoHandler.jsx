@@ -20,8 +20,8 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
   const [ croppedBlobAvatar, setCroppedBlobAvatar ] = useState( '' );
   const { imgRef, previewCanvasRef, crop } = dataToCrop;
   // const { token } = useAuth();
-  const backendAvatar = defaultPhoto;
-  // const backendAvatar = '';
+  // const backendAvatar = defaultPhoto;
+  const backendAvatar = '';
 
   const handleImageSelect = value => {
     if ( avatar !== value ) {
