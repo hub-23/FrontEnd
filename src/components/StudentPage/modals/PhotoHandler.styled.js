@@ -18,18 +18,16 @@ export const Container = styled.div`
         width: 100%;
         height: 100%;
         border-radius: 0;
-        padding: 32px 20px;
+        padding: 40px 20px 32px 20px;
     }
 `;
 
 export const Title = styled.h2`
-    margin-bottom: 32px;
     font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};    
     font-size: 32px;
     line-height: calc(38 / 32);
 
     @media ${device.sm} {
-        margin-bottom: 54px;
         font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};    
         font-size: 20px;
         font-weight: 500;
@@ -44,6 +42,7 @@ export const CircleWrapper = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    margin-top: 32px;
     margin-bottom: 32px;
     background-color: ${props => props.color || props.theme.colors.accent};
 
@@ -60,6 +59,7 @@ export const CircleWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
+    margin-top: 40px;
     margin-bottom: 32px;
 
     img { // uploaded but not cropped photo
@@ -68,15 +68,15 @@ export const ImageWrapper = styled.div`
         object-fit: cover;
     }
 
-    /* @media ${device.sm} {
-        margin-bottom: 0;
+    @media ${device.sm} {
+        margin-top: auto;
+        margin-bottom: auto;
 
         img { // uploaded but not cropped photo
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            width: 280px;
+            height: 280px;
         }
-    } */
+    }
 `;
 
 export const BtnsWrapper = styled.div`
