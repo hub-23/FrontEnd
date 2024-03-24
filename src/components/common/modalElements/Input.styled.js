@@ -114,6 +114,7 @@ export const DropdownBtn = styled.button`
   justify-content: end;
   align-items: center;
   background-color: transparent;
+  
   padding-right: 23px;
   border: none;
   border-radius: 16px 0px;
@@ -121,6 +122,9 @@ export const DropdownBtn = styled.button`
   -webkit-transition: rotate ${transition};
   transition: rotate ${transition};
   > div {
+    background-color: white;
+    display: flex;
+    align-items: center;
     width: fit-content;
     transform: ${props => ( props.$rotate ? 'rotate(180deg)' : '' )};
   }

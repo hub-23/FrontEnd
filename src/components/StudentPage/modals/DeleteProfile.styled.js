@@ -1,26 +1,21 @@
 import styled from 'styled-components';
-import { Form } from 'formik';
 import { Button } from '../../common/button/Button';
-// import { device } from '../../../utils/device';
+import { device } from '../../../utils/device';
 import { grayText } from '../../../utils/variables.styled';
-
-
-export const FormFild = styled( Form )`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
 
 export const Container = styled.div`
     position: relative;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
     width: 800px;
     padding: 48px 160px;
     border-radius: 20px 0;
     background-color: ${props => props.color || props.theme.colors.white};
+
+    @media ${device.sm} {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      padding: 40px 20px 32px 20px;
+    }
 `;
 
 export const Title = styled.h2`
@@ -30,6 +25,13 @@ export const Title = styled.h2`
     font-size: 24px;
     font-weight: 500;
     line-height: calc(33.6 / 24);
+
+    @media ${device.sm} {
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: calc(28 / 20);
+    }
 `;
 
 export const CheckboxLabel = styled.label`
@@ -71,6 +73,16 @@ export const CheckboxLabel = styled.label`
     bottom: -22px;
     color: ${props => props.color || props.theme.colors.accent};
   }
+
+  @media ${device.sm} {
+    margin-top: 24px;
+    margin-bottom: 45%;
+    gap: 8px;
+
+    span {
+      position: static;
+    }
+  }
 `;
 
 export const DeleteBtn = styled( Button )`
@@ -80,6 +92,14 @@ export const DeleteBtn = styled( Button )`
   font-size: 20px;
   font-weight: 600;
   line-height: calc( 20/20 );
+
+  @media ${device.sm} {
+    height: 50px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: calc( 22.4/16 );
+  }
 `;
 
 export const CancelBtn = styled( Button )`
@@ -88,4 +108,11 @@ export const CancelBtn = styled( Button )`
   font-size: 20px;
   font-weight: 600;
   line-height: calc( 20/20 );
+
+  @media ${device.sm} {
+    height: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: calc( 22.4/16 );
+  }
 `;

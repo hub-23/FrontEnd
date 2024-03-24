@@ -1,6 +1,7 @@
 import React from 'react';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
 import { object, string, boolean } from 'yup';
+import { useAuth } from '../../../hooks/useAuth';
 import { BtnClose } from '../../common/modalElements/BtnClose';
 import { Input } from '../../common/modalElements/Input';
 import sprite from '../../../assets/sprite.svg';
@@ -8,6 +9,8 @@ import * as S from './DeleteProfile.styled';
 
 
 export const DeleteProfile = ( { onDeleteProfileModalClose, onNotificationShow } ) => {
+    const { user } = useAuth();
+
     const reasonsToDelete = [
         'Незадоволеність послугами',
         'Надмірний спам',
@@ -36,7 +39,7 @@ export const DeleteProfile = ( { onDeleteProfileModalClose, onNotificationShow }
     };
 
     const handleSubmit = ( values, { resetForm } ) => {
-        console.log( 'submit - values:', values ); // відправка на бек
+        console.log( 'submit - values:', { email: user.email, ...values } ); // відправка на бек
 
         localStorage.removeItem( 'delete-profile-reason' );    
         resetForm();
@@ -45,6 +48,9 @@ export const DeleteProfile = ( { onDeleteProfileModalClose, onNotificationShow }
     };
 
     return (
+      <S.Container>
+        <BtnClose onActiveModal={ onDeleteProfileModalClose } />
+        <S.Title>Видалення профілю</S.Title>
         <Formik
             initialValues={ initialValues }
             validationSchema={ schema }
@@ -60,58 +66,54 @@ export const DeleteProfile = ( { onDeleteProfileModalClose, onNotificationShow }
             const errReason = reason && touched.reason;
 
             return (
-                <S.FormFild autoComplete="off">
-                    <S.Container>
-                        <BtnClose onActiveModal={ onDeleteProfileModalClose } />
-                        <S.Title>Видалення профілю</S.Title>
-                        <Input
-                            type="text"
-                            name="reason"
-                            placeholder="Причина видалення"
-                            // isStar={ true }
-                            error={ errReason }
-                            value={ values.reason }
-                            dropdown
-                            data={ reasonsToDelete }
-                            formik={ formik }
-                            $topic
-                            $left='12px'
-                            readOnly
-                            component="delete-profile"
-                        />
-                        <S.CheckboxLabel>
-                            <div>
-                                <Field
-                                    type="checkbox"
-                                    name="accept"
-                                />
-                                <svg aria-label="mark" width="20px" height="20px">
-                                    <use href={ `${sprite}#icon-check-mark` }></use>
-                                </svg>
-                            </div>
-                            <div>
-                                <p>
-                                    Видаляючи свій обліковий запис, я розумію,
-                                    що втрачу доступ до контактних данних вчителів,
-                                    можливості писати коментарі та інших розширених функцій сайту     
-                                </p>
-                                <ErrorMessage name="accept" component="span" />
-                            </div>
-                        </S.CheckboxLabel>
+                <Form autoComplete="off">
+                    <Input
+                        type="text"
+                        name="reason"
+                        placeholder="Причина видалення"
+                        error={ errReason }
+                        value={ values.reason }
+                        dropdown
+                        data={ reasonsToDelete }
+                        formik={ formik }
+                        $topic
+                        $left='12px'
+                        readOnly
+                        component="delete-profile"
+                    />
+                    <S.CheckboxLabel>
+                        <div>
+                            <Field
+                                type="checkbox"
+                                name="accept"
+                            />
+                            <svg aria-label="mark" width="20px" height="20px">
+                                <use href={ `${sprite}#icon-check-mark` }></use>
+                            </svg>
+                        </div>
+                        <div>
+                            <p>
+                                Видаляючи свій обліковий запис, я розумію,
+                                що втрачу доступ до контактних данних вчителів,
+                                можливості писати коментарі та інших розширених функцій сайту     
+                            </p>
+                            <ErrorMessage name="accept" component="span" />
+                        </div>
+                    </S.CheckboxLabel>
                         
-                        <S.DeleteBtn type='submit' variant="blue">
-                            Видалити профіль
-                        </S.DeleteBtn>
-                        <S.CancelBtn
-                            variant="blueGradientedBorder"
-                            onClick={ onDeleteProfileModalClose }
-                        >
-                            Скасувати
-                        </S.CancelBtn>
-                    </S.Container>
-                </S.FormFild>
+                    <S.DeleteBtn type='submit' variant="blue">
+                        Видалити профіль
+                    </S.DeleteBtn>
+                    <S.CancelBtn
+                        variant="blueGradientedBorder"
+                        onClick={ onDeleteProfileModalClose }
+                    >
+                        Скасувати
+                    </S.CancelBtn>
+                </Form>
             );
           }}
         </Formik>
+      </S.Container>
     )
 };
