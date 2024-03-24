@@ -120,6 +120,7 @@ export const CancelBtn = styled.button`
     line-height: calc(20 / 20);
 
     @media ${device.sm} {
+        height: 50px;
         padding: 14px 0;
         font-size: 16px;
         font-weight: 500;
@@ -138,6 +139,7 @@ export const SaveButton = styled( Button )`
 
     @media ${device.sm} {
         width: 100%;
+        height: 50px;
         font-size: 16px;
         font-weight: 500;
         line-height: calc(22.4 / 16);
