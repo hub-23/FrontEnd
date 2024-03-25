@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
 import { Button } from '../../common/button/Button';
 import { device } from '../../../utils/device';
 import { grayText } from '../../../utils/variables.styled';
@@ -6,6 +7,7 @@ import { grayText } from '../../../utils/variables.styled';
 export const Container = styled.div`
     position: relative;
     width: 800px;
+    margin: 0 20px;
     padding: 48px 160px;
     border-radius: 20px 0;
     background-color: ${props => props.color || props.theme.colors.white};
@@ -13,6 +15,7 @@ export const Container = styled.div`
     @media ${device.sm} {
       width: 100%;
       height: 100%;
+      margin: 0;
       border-radius: 0;
       padding: 40px 20px 32px 20px;
     }
@@ -31,6 +34,15 @@ export const Title = styled.h2`
       font-size: 20px;
       font-weight: 500;
       line-height: calc(28 / 20);
+    }
+`;
+
+export const FormField = styled( Form )`
+    @media ${device.sm} {
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 `;
 
@@ -76,7 +88,7 @@ export const CheckboxLabel = styled.label`
 
   @media ${device.sm} {
     margin-top: 24px;
-    margin-bottom: 45%;
+    margin-bottom: 0;
     gap: 8px;
 
     span {
