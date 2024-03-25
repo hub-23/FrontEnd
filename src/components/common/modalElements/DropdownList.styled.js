@@ -26,12 +26,14 @@ export const Dropdown = styled.div`
   animation: ${show} ${transitionB};
   & > ul > li {
     padding: 5px 36px;
-    font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
-    font-size: 16px;
-    line-height: 1.4;
-    color: ${props => props.color || props.theme.colors.black};
     &:not(:last-child) {
       margin-bottom: 2px;
+    }
+    p {
+      font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+      font-size: 16px;
+      line-height: 1.4;
+      color: ${props => props.color || props.theme.colors.black};
     }
   }
 

@@ -28,15 +28,15 @@ export const ClassCancelation = ( { onActiveModal, onNotificationShow, onCancelB
     return (
         <S.Container>
             <BtnClose onActiveModal={ onActiveModal } $xlTop='48px' $xlRight='48px' />
-            <S.Title>Бажаєте скасувати заняття?</S.Title>
-            <S.Text>
-                Підтвердіть скасування вашого заняття
-                <br />
-                &quot;німецька мова&quot; з викладачем Олександр Олешко,
-                запланованого на 27.11.23 о 9:00
-                <br />
-                у форматі онлайн / за адресою: &quot;...&quot;
-            </S.Text>
+            <div>
+                <S.Title>Бажаєте скасувати заняття?</S.Title>
+                <S.Text>
+                    Підтвердіть скасування вашого заняття
+                    &quot;німецька мова&quot; з викладачем Олександр Олешко,
+                    запланованого на 27.11.23 о 9:00
+                    у форматі онлайн / за адресою: &quot;...&quot;
+                </S.Text>                
+            </div>
             <S.BtnsWrapper>
                 <S.Btn
                     variant="blue"
