@@ -11,11 +11,13 @@ import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { getStudentProfile } from '../redux/auth/operations';
+import { Booking, Calendar, ProfileDetails, Responses, Tarrifs } from './TeacherProfilePage';
 
 const Teacher = lazy( () => import( '../pages/TeachersPage' ) );
 const About = lazy( () => import( '../pages/AboutUsPage' ) );
 const Feedback = lazy( () => import( '../pages/FeedbackPage' ) );
 const Student = lazy( () => import( '../pages/StudentPage' ) );
+const TeacherProfilePage = lazy( () => import( '../pages/TeacherProfilePage' ) );
 
 const App = () => {
   const dispatch = useDispatch();
@@ -39,10 +41,21 @@ const App = () => {
             <Route path="teacher" element={ <Teacher /> } />
             <Route path="about" element={ <About /> } />
             <Route path="feedback" element={ <Feedback /> } />
+            
             {/* <Route path='language' element={ <h1>List of language</h1> } /> */}
             {/* NOT NEEDED <Route path="signin" element={ <h1>Вхід</h1> } />  */}
 
             {/* <Route path="student/" element={ <Student /> }> */}
+            <Route path="teacher/"
+            element={ <TeacherProfilePage /> }
+              // element={ <PrivateRoute component={ <TeacherProfilePage /> } redirectTo="/" /> }
+            >
+                <Route path="profile" element={ <ProfileDetails /> } />
+                <Route path="booking" element={ <Booking /> } />
+                <Route path="calendar" element={ <Calendar /> } />
+                <Route path="responses" element={ <Responses /> } />
+                <Route path="tarrifs" element={ <Tarrifs /> } />
+            </Route>
             <Route
               path="student/"
               element={ <PrivateRoute component={ <Student /> } redirectTo="/" /> }
