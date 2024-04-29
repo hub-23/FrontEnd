@@ -14,13 +14,12 @@ export const СontrollersItems = styled.li`
     }
 `;
 export const BtnСontroller = styled.button`
-
     padding: 8px 141px;
     font-weight: 500;
     font-size: 24px;
     line-height: 34px;
     text-align: center;
-    border: 1px solid ${ ( { theme, isActive } ) => isActive ? theme.colors.black : 'none' };
+    border: 1px solid ${ ( { theme } ) =>  theme.colors.black};
     background-color: ${ ( { theme, isActive } ) => isActive ? theme.colors.black : theme.colors.white };
     color: ${ ( { theme, isActive } ) => isActive ? theme.colors.white : theme.colors.black };
 `;

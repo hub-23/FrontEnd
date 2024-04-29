@@ -26,7 +26,7 @@ export const Button = styled.button`
   
   border-width: 4px;
   border-style: solid;
-  border-image: linear-gradient(87.92deg, #09194D 0%, #234890 100%);
+  border-image: ${ ( { theme } ) => theme.colors.liner_blue };
   border-image-slice: ${( { yesBtn } ) => yesBtn ? 0 : 1 };
   
   border-top-left-radius: 20px;

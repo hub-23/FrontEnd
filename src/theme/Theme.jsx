@@ -10,6 +10,7 @@ const theme = {
     accent: '#E3669C',
     grey: '#2D2D2D33',
     grayStroke: '#D5D5D5',
+    grayText: '#797979',
     liner_pink: 'linear-gradient(88deg, #B92759 0%, #E3669C 100%)',
     liner_blue: 'linear-gradient(87.92deg, #09194D 0%, #234890 100%)',
     // eslint-disable-next-line max-len

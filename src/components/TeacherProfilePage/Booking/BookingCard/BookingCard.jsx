@@ -7,38 +7,48 @@ import createLessonDetailsList from './createLessonDetailsList';
 const BookingCard = ( { classData, selectedType } ) => {
     const [ isModalOpen, setIsModalOpen ] = useState( false );
     
-    const { studentName, studentPhoto } = classData;
+    const { studentName, studentPhoto, studentPhone, studentSurname } = classData;
+
         const handleModalOpen = ( e ) => {
         setIsModalOpen( !isModalOpen )
         }
 
   return (
     <S.Item selectedType={ selectedType === 'active' }>
-        <div>
-             <div>
-                  <img src={ studentPhoto } alt={ studentName } width={ 80 } height={ 80 }/>
-                  <p>{studentName}</p>
-             </div>
-              <button
+        <S.StudentInfo>
+             <S.StudentInfoBox>
+                  <S.StudentImage
+                   selectedType={ selectedType === 'active' }
+                      src={ studentPhoto } alt={ studentName } width={ 80 } height={ 80 } />
+                  <div>
+                      <S.StudentName>
+                          {studentName}
+                          {' '}
+                          {studentSurname}
+                      </S.StudentName>
+                      <p>{studentPhone}</p>
+                  </div>
+             </S.StudentInfoBox>
+              <S.CancelBtn
+              selectedType={ selectedType === 'active' }
                   title='Скасувати заняття не можливо, пізніше ніж за 3 години до його початку.'
                   type="button"
                   onClick={ handleModalOpen }
               >
-                  
                   Скасувати заняття
-              </button>
-          </div>
-          <ul>
+              </S.CancelBtn>
+          </S.StudentInfo>
+          <S.LessonDetails>
               {createLessonDetailsList( classData ).map( ( { title, value } ) => {
-                  return <li key={ title }>
-                      <p>
+                  return <S.LessonDetailsItem key={ title }>
+                      <S.LessonDetailsTitle>
                           {title}
                           :
-                      <span>{value}</span>
-                      </p>
-                  </li>
+                      </S.LessonDetailsTitle>
+                          <S.LessonDetailsValue>{value}</S.LessonDetailsValue>
+                  </S.LessonDetailsItem>
             } ) }
-          </ul>
+          </S.LessonDetails>
           {isModalOpen && <Modal>
               <DefaultModal>
                   <CancelModal classData={ classData } />
