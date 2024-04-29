@@ -6,7 +6,7 @@ import BookinControls from './BookinControls/BookinControls ';
 import * as S from './Booking.styled'
 
 const Booking = () => {
-  const [ bookingList, setBookingList ] = useState( [] );
+  const [ bookingList, setBookingList ] = useState( bookingData.active );
   const [ selectedType, setSelectedType ] = useState( 'active' ); 
   
   const chooseLessonList = ( type ) => {
@@ -20,7 +20,7 @@ const Booking = () => {
       <>
         <BookinControls chooseLessonList={ chooseLessonList } selectedType={ selectedType } />
           <ul>
-            <BookingList data={ bookingList } />
+            <BookingList data={ bookingList } selectedType={ selectedType } />
           </ul>
       </>
       ) : (
