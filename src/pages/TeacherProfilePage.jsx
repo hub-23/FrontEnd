@@ -7,12 +7,11 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     display: flex;
+    justify-content: center;
     padding-top: 144px;
-    gap: 8px;
-    margin: 0 auto;
+    gap: 57px;
 `;
 export const Content = styled.div`
-    margin: 0 auto;
 `;
 
 

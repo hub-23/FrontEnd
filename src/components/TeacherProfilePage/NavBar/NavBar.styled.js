@@ -4,7 +4,7 @@ import { device } from 'utils/device';
 
 
 export const Navigation = styled.nav`
-    margin: 0 auto;
+    /* margin: 0 auto; */
     padding-right: 77px;
     border-right: 1px solid ${( { theme } ) => theme.colors.grayStroke };
 `;

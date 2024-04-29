@@ -3,9 +3,10 @@ import bookingData from './placeholderData';
 import { isArray } from 'lodash';
 import BookingList from './BookingList/BookingList';
 import BookinControls from './BookinControls/BookinControls ';
+import * as S from './Booking.styled'
 
 const Booking = () => {
-  const [ bookingList, setBookingList ] = useState( bookingData.active );
+  const [ bookingList, setBookingList ] = useState( [] );
   const [ selectedType, setSelectedType ] = useState( 'active' ); 
   
   const chooseLessonList = ( type ) => {
@@ -15,16 +16,18 @@ const Booking = () => {
 
   return (
     <div>
-      <BookinControls chooseLessonList={ chooseLessonList } selectedType={ selectedType } />
       {isArray( bookingList ) && bookingList.length !== 0 ? (
-        <ul>
-          <BookingList data={ bookingList } />
-        </ul>
+      <>
+        <BookinControls chooseLessonList={ chooseLessonList } selectedType={ selectedType } />
+          <ul>
+            <BookingList data={ bookingList } />
+          </ul>
+      </>
       ) : (
-        <div>
-          <h4>У Вас ще немає бронювань</h4>
-          <p>Коли з’явиться нове бронювання, тут буде відображено інформацію про нього.</p>
-        </div>
+        <S.EmptyBookingMessageBox>
+          <S.EmptyBookingMessageTitle>У Вас ще немає бронювань</S.EmptyBookingMessageTitle>
+            <p> Коли з’явиться нове бронювання, тут буде відображено інформацію про нього.</p>
+        </S.EmptyBookingMessageBox>
       )}
     </div>
   );

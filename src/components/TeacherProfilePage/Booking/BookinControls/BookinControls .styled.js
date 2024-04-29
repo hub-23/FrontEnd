@@ -20,7 +20,7 @@ export const BtnСontroller = styled.button`
     font-size: 24px;
     line-height: 34px;
     text-align: center;
-    border-color: ${( { theme } ) => theme.colors.black };
+    border: 1px solid ${ ( { theme, isActive } ) => isActive ? theme.colors.black : 'none' };
     background-color: ${ ( { theme, isActive } ) => isActive ? theme.colors.black : theme.colors.white };
     color: ${ ( { theme, isActive } ) => isActive ? theme.colors.white : theme.colors.black };
 `;
