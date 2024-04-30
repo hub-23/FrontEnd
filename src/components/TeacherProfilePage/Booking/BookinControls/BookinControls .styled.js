@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { transition } from '../../../../utils/variables.styled';
+
 
 export const СontrollersList = styled.ul`
     display: flex;
@@ -19,6 +21,7 @@ export const BtnСontroller = styled.button`
     font-size: 24px;
     line-height: 34px;
     text-align: center;
+    transition: background-color ${transition}, color ${transition};
     border: 1px solid ${ ( { theme } ) =>  theme.colors.black};
     background-color: ${ ( { theme, isActive } ) => isActive ? theme.colors.black : theme.colors.white };
     color: ${ ( { theme, isActive } ) => isActive ? theme.colors.white : theme.colors.black };

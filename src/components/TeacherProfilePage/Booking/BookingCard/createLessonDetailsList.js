@@ -21,4 +21,6 @@ const createLessonDetailsList = ( classData ) => {
             value: price ?? '' },
         ];
 }
+
+
 export default createLessonDetailsList;
