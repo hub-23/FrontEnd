@@ -3,9 +3,7 @@ import * as S from './DefaultModal.styled'
 import { BtnClose } from 'components/common/BtnClose'
 import { IconSvg } from 'components/common/IconSvg'
 import transformDate from '../../transformDate';
-import ErrorNotify from '../ErrorNotify';
-import SuccessNotify from '../SuccessNotify';
-import CannotCancelNotify from '../CannotCancelNotify';
+import Notification from '../Notification';
 
 const DefaultModal = ( { toggleModal, classData } ) => {
   const [ result, setResult ] = useState( 'default' );
@@ -13,9 +11,9 @@ const DefaultModal = ( { toggleModal, classData } ) => {
   const { subject, studentName, studentSurname, date, time, venue } = classData;
 
   const cancelLesson = () => {
-    // setResult('error')
+    setResult( 'error' )
     // setResult( 'success' )
-    setResult( 'decline' )
+    // setResult( 'decline' )
   }
   
     return (
@@ -41,7 +39,7 @@ const DefaultModal = ( { toggleModal, classData } ) => {
         </BtnClose>
         <>
           {result === 'default' 
-            && <>
+            ? <>
               <S.Title>
                 Бажаєте скасувати заняття?
               </S.Title>
@@ -61,10 +59,9 @@ const DefaultModal = ( { toggleModal, classData } ) => {
                 </S.VarButton>
               </S.ButtonBox>
             </>
+            :<Notification result={ result } />
           }
-          {result === 'success' && <SuccessNotify />}
-          {result === 'error' && <ErrorNotify />}
-          {result === 'decline' && <CannotCancelNotify />}
+          
         </>
       </S.ModalWindow>
     )
