@@ -3,7 +3,7 @@ import * as S from './DefaultModal.styled'
 import { BtnClose } from 'components/common/BtnClose'
 import { IconSvg } from 'components/common/IconSvg'
 
-const DefaultModal = ( {  children } ) => {
+const DefaultModal = ( { toggleModal,  children } ) => {
   return (
       <S.ModalWindow>
          <BtnClose
@@ -13,7 +13,7 @@ const DefaultModal = ( {  children } ) => {
         mdTop="15px"
         smRight="10px"
         smTop="10px"
-        // click={ onFormClose }
+        click={ toggleModal }
       >
         <IconSvg
           xlWidth="60px"

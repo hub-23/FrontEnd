@@ -8,7 +8,7 @@ const BookingCard = ( { classData, selectedType } ) => {
     const [ isModalOpen, setIsModalOpen ] = useState( false );
     const { studentName, studentPhoto, studentPhone, studentSurname } = classData;
 
-    const handleModalOpen = ( e ) => {
+    const toggleModal = ( e ) => {
         setIsModalOpen( !isModalOpen )
     }
     
@@ -31,7 +31,7 @@ const BookingCard = ( { classData, selectedType } ) => {
                   variant = { selectedType === 'active' ? 'pink' : 'grey' }
                   title='Скасувати заняття не можливо, пізніше ніж за 3 години до його початку.'
                   type="button"
-                  onClick={ handleModalOpen }
+                  onClick={ toggleModal }
               >
                   Скасувати заняття
               </S.CancelBtn>
@@ -47,8 +47,8 @@ const BookingCard = ( { classData, selectedType } ) => {
                       </S.LessonDetailsItem>
                 } ) }
           </S.LessonDetails>
-          {isModalOpen && <Modal>
-              <DefaultModal>
+          {isModalOpen && <Modal onActiveModal={ toggleModal }>
+              <DefaultModal toggleModal={ toggleModal }>
                   <CancelModal classData={ classData } />
           </DefaultModal>
           </Modal>}
