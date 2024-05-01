@@ -8,22 +8,28 @@ import * as S from './Booking.styled';
 
 const Booking = () => {
   const [ bookingList, setBookingList ] = useState( [] );
-  const [ viewMore, setViewMore ] = useState( false );
+  const [ viewMore, setViewMore ] = useState( true );
   const [ selectedType, setSelectedType ] = useState( 'active' );
   const [ increaseCount, setIncreaseCount ] = useState( 3 );
 
+  const isIncreserMore = increaseCount >= bookingData[ selectedType ].length;
+  const updateViewMore = () => setViewMore( isIncreserMore ? false : true ); 
+  
   useEffect( () => {
-     setBookingList( [ ...bookingData[ selectedType ] ].splice( 0, increaseCount ) );
-  }, [ viewMore, selectedType ] );
+   updateViewMore()
+    const updatedBookingList = [ ...bookingData[ selectedType ] ].splice( 0, increaseCount );
+    setBookingList( updatedBookingList );
+  }, [ viewMore, selectedType, increaseCount ] );
 
   const handleViewMore = () => {
-    setIncreaseCount( increaseCount + 3 );
-    setViewMore( !viewMore );
+    updateViewMore()
+    setIncreaseCount( !viewMore ? 3 : increaseCount + 3 );
   };
 
   const chooseLessonList = ( type ) => {
     setSelectedType( type );
-    setIncreaseCount( 3 )
+    setIncreaseCount( 3 ); 
+    setViewMore( false );
   };
 
   return (
@@ -41,14 +47,15 @@ const Booking = () => {
           <p>Коли з’явиться нове бронювання, тут буде відображено інформацію про нього.</p>
         </S.EmptyBookingMessageBox>
       )}
-      <>
-        <p>Дивитися більше</p>
-        <button type="button" onClick={ handleViewMore }>
+      <S.ViewMoreBox>
+        {viewMore ? <S.ViewMoreMessage>Дивитися більше</S.ViewMoreMessage>
+          : <S.ViewMoreMessage>Дивитися менше</S.ViewMoreMessage>}
+        <S.ViewMoreButton type="button" onClick={ handleViewMore } viewMore={ viewMore }>
           <svg width="24px" height="24px">
             <use href={ `${sprite}#icon-arow_down` }></use>
           </svg>
-        </button>
-      </>
+        </S.ViewMoreButton>
+      </S.ViewMoreBox>
     </div>
   );
 };

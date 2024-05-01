@@ -10,6 +10,7 @@ export const Container = styled.div`
     justify-content: center;
     padding-top: 144px;
     gap: 57px;
+    margin-bottom: 80px;
 `;
 export const Content = styled.div`
 `;
