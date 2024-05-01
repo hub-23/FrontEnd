@@ -1,8 +1,8 @@
 import React from 'react'
-import * as S from './BookinControls .styled';
+import * as S from './BookingControls .styled';
 
 
-const BookinControls  = ( { chooseLessonList, selectedType } ) => {
+const BookingControls  = ( { chooseLessonList, selectedType } ) => {
   return (
     <S.СontrollersList>
         <S.СontrollersItems>
@@ -27,4 +27,4 @@ const BookinControls  = ( { chooseLessonList, selectedType } ) => {
   )
 }
 
-export default BookinControls 
+export default BookingControls 

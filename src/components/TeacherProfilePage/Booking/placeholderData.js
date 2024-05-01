@@ -60,6 +60,18 @@ const bookingData = {
         venue: 'Онлайн',
         subject: 'Хімія',
         price: '270 грн',
+        },
+    {
+        id: 6,
+        studentName: 'Антон',
+        studentSurname: 'Сидоров',
+        studentPhoto: require( '../../../assets/home/our-teachers/1.png' ),
+        studentPhone: '+390922222222',
+        date: '30-06-2023',
+        time: '10:00',
+        venue: 'Онлайн',
+        subject: 'Хімія',
+        price: '320 грн',
     }
         ],
         inactive: [
