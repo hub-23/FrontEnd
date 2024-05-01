@@ -1,14 +1,14 @@
 import React, {  useState } from 'react'
 import * as S from './BookingCard.styled'
 import { Modal } from 'components/common/modalElements/Modal';
-import { CancelModal, DefaultModal } from '../BookingModals';
 import createLessonDetailsList from './createLessonDetailsList';
+import DefaultModal from '../Notifications/DefaultModal/DefaultModal';
 
 const BookingCard = ( { classData, selectedType } ) => {
     const [ isModalOpen, setIsModalOpen ] = useState( false );
     const { studentName, studentPhoto, studentPhone, studentSurname } = classData;
 
-    const toggleModal = ( e ) => {
+    const toggleModal = (  ) => {
         setIsModalOpen( !isModalOpen )
     }
     
@@ -48,9 +48,7 @@ const BookingCard = ( { classData, selectedType } ) => {
                 } ) }
           </S.LessonDetails>
           {isModalOpen && <Modal onActiveModal={ toggleModal }>
-              <DefaultModal toggleModal={ toggleModal }>
-                  <CancelModal classData={ classData } />
-          </DefaultModal>
+              <DefaultModal classData={ classData } toggleModal={ toggleModal } />
           </Modal>}
     </S.Item>
   )
