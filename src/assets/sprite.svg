@@ -2520,5 +2520,9 @@
 <symbol id="icon-close-circle" viewBox="0 0 32 32">
 <path fill="none" stroke="#e3669c" style="stroke: var(--color1, #e3669c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.6" d="M16 29.333c7.334 0 13.334-6 13.334-13.334s-6-13.333-13.334-13.333c-7.333 0-13.333 6-13.333 13.333s6 13.334 13.333 13.334zM12.226 19.773l7.547-7.547M19.773 19.773l-7.547-7.547"></path>
 </symbol>
+<symbol id="icon-tick-circle" viewBox="0 0 32 32">
+<path fill="none" stroke="#01a47f" style="stroke: var(--color1, #01a47f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.6" d="M16 29.333c7.334 0 13.334-6 13.334-13.334s-6-13.333-13.334-13.333c-7.333 0-13.333 6-13.333 13.333s6 13.334 13.333 13.334z"></path>
+<path fill="none" stroke="#01a47f" style="stroke: var(--color1, #01a47f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.6" d="M10.333 16l3.773 3.773 7.56-7.547"></path>
+</symbol>
 </defs>
 </svg>

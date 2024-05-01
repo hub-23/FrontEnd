@@ -32,6 +32,7 @@ const BookingCard = ( { classData, selectedType } ) => {
                   title='Скасувати заняття не можливо, пізніше ніж за 3 години до його початку.'
                   type="button"
                   onClick={ toggleModal }
+                  disabled={ selectedType === 'inactive' }
               >
                   Скасувати заняття
               </S.CancelBtn>

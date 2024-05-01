@@ -33,7 +33,6 @@ export const ButtonBox = styled.div`
 export const VarButton = styled( Button )`
   width: 230px;
   height: 52px;
-padding: 16px 40px;
   text-align: center;
   font-size: 20px;
   line-height: 20px;
