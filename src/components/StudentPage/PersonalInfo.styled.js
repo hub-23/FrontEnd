@@ -12,7 +12,7 @@ export const FormFild = styled( Form )`
 export const Section = styled.section`
   display: flex;
   gap: 48px;
-  border: 1px dashed blue;
+  /* border: 1px dashed blue; */
 `;
 
 export const Title = styled.h2`
@@ -22,7 +22,7 @@ export const Title = styled.h2`
   font-size: 24px;
   font-weight: 500;
   line-height: calc(33.6 / 24);
-  border: 1px dashed red;
+  /* border: 1px dashed red; */
 `;
 
 export const SaveBtn = styled( Button )`
