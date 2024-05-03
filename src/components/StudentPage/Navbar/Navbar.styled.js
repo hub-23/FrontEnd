@@ -59,7 +59,7 @@ export const StyledButton = styled.button`
   font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
   font-size: 20px;
   font-weight: 400;
-  line-height: calc( 28 / 20 );
+  line-height: calc(28 / 20);
 `;
 
 export const StyledDivider = styled.hr`

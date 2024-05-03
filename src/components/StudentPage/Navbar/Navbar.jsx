@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import {
   initialState,
   setReset,
-  setRefreshToken,
-  setToken,
+  // setRefreshToken,
+  // setToken,
 } from '../../../redux/auth/slice';
 import { clearAuthHeader } from '../../../redux/auth/operations';
 
@@ -25,8 +25,8 @@ export const Navbar = () => {
   const dispatch = useDispatch();
 
   const signout = () => {
-    dispatch( setToken( null ) );
-    dispatch( setRefreshToken( null ) );
+    // dispatch( setToken( null ) );
+    // dispatch( setRefreshToken( null ) );
     dispatch( setReset( initialState ) );
     clearAuthHeader();
   };
@@ -35,16 +35,20 @@ export const Navbar = () => {
     <Wrapper>
       <StyledList>
         <StyledNavLink to="/student/info">
-           <ProfileIcon />
-           <StyledTitle>Особиста інформація</StyledTitle>
-        </ StyledNavLink>
+          <ProfileIcon />
+          <StyledTitle>Особиста інформація</StyledTitle>
+        </StyledNavLink>
+
         <StyledNavLink to="/student/reservation">
-            <CalendarIcon/>
-            <StyledTitle> Мої бронювання</StyledTitle>
-        </ StyledNavLink>
+          <CalendarIcon />
+          <StyledTitle> Мої бронювання</StyledTitle>
+        </StyledNavLink>
+
         <StyledNavLink to="/">
-            <LogoutIcon />
-            <StyledButton type="button" onClick={ signout } >Вийти</StyledButton>
+          <LogoutIcon />
+          <StyledButton type="button" onClick={ signout }>
+            Вийти
+          </StyledButton>
         </StyledNavLink>
       </StyledList>
       <StyledDivider />
