@@ -21,7 +21,7 @@ export const NotificationWrapper = styled.div`
     max-width: 100%;
     height: 100%;
     margin: 0;
-    padding: 32px 20px;
+    padding: 40px 20px 32px 20px;
     border-radius: 0;
   }
 `;
