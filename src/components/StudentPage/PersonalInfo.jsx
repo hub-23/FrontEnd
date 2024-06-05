@@ -1,137 +1,58 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import { object, string, ref } from 'yup';
+import { object, string } from 'yup';
 import { GeneralInfo } from './GeneralInfo/GeneralInfo';
-import { passwordExp } from '../../utils/variables.styled';
+import { nameExp, passwordExp } from '../../utils/variables.styled';
 import * as S from './PersonalInfo.styled';
 import { ContactInfo } from './ContactInfo/ContactInfo';
 import { Modal } from '../common/modalElements/Modal';
 import { DeleteProfile } from './modals/DeleteProfile';
 import { Notification } from '../common/modalElements/Notification';
 import { useAuth } from '../../hooks/useAuth';
-import { ChangePassword } from './ChangePassword/ChangePassword';
-import { useDispatch } from 'react-redux';
-import {
-  updateStudentDetails,
-  changePassword,
-  deleteAccountStudent,
-} from '../../redux/auth/operations';
 
 export const PersonalInfo = () => {
   const [ isSendNotificationShown, setIsSendNotificationShown ] = useState( false );
   const [ deleteProfileModalShown, setDeleteProfileModalShown ] = useState( false );
   const [ isNotificationShown, setIsNotificationShown ] = useState( false );
-  const [ success, setSuccess ] = useState( null ); // для Notification - залежно від status code з бекенду
-
   const { user } = useAuth();
-
-  const dispatch = useDispatch();
-
-  const splitFullName = fullName => {
-    const [ name, surname ] = fullName.split( ' ' );
-    return { name: name || '', surname: surname || '' };
-  };
-
-  const { name, surname } = splitFullName( user?.name || '' );
-
-  const getUpdatedFullName = () => {
-    const name = localStorage.getItem( 'student-name' ) || '';
-    const surname = localStorage.getItem( 'student-surname' ) || '';
-    return `${name} ${surname}`.trim();
-  };
+  const success = true; 
+  // const success = false; // для Notification - залежно від status code з бекенду
 
   const schema = object( {
     surname: string()
       .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
       .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
-      .matches( /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\s]*$/, 'Прізвище не може містити цифри' )
+      .matches( nameExp, 'Прізвище має містити українські або англійські літери' )
       .required( 'Вкажіть ваше прізвище' ),
     name: string()
       .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
       .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
-      .matches( /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\s]*$/, 'Ім’я не може містити цифри' )
+      .matches( nameExp, 'Ім’я має містити українські або англійські літери' )
       .required( 'Вкажіть ваше ім’я' ),
     email: string()
       .email( 'Невірно вказано e-mail' )
       .trim()
       .required( 'Вкажіть ваш e-mail' ),
-    currentPassword: string().required( 'Введіть поточний пароль' ),
-    newPassword: string().matches( passwordExp, ' ' ),
-    repeatNewPassword: string().oneOf(
-      [ ref( 'newPassword' ), null ],
-      'Пароль не співпадає з вище вказаним'
-    ),
+    phone: string().required( 'Вкажіть ваш номер телефону' ),
+    password: string()
+      .matches(
+        passwordExp,
+        'Пароль має містити більше 8 символів, велику та малу літеру латиницею, цифри і спеціальний знак'
+      )
+      .required( 'Пароль обов‘язковий' ),
   } );
 
   const initialValues = {
-    surname: surname || localStorage.getItem( 'student-surname' ) || '',
-    name: name || localStorage.getItem( 'student-name' ),
+    surname: localStorage.getItem( 'student-surname' ) || '',
+    name: localStorage.getItem( 'student-name' ) || user?.name,
     email: localStorage.getItem( 'student-email' ) || user?.email,
     phone: localStorage.getItem( 'student-phone' ) || user?.phone,
-    currentPassword: '',
-    newPassword: '',
-    repeatNewPassword: '',
+    password: '',
   };
 
-  const handleSubmit = async () => {
-    const updatedPassword = localStorage.getItem( 'student-newPassword' );
-    const updatedPhone = localStorage.getItem( 'student-phone' );
-
-    const updatedFullname = getUpdatedFullName();
-
-    const updatedUser = {
-      ...user,
-      username: updatedFullname,
-      phone: updatedPhone,
-    };
-
-    try {
-      const updateResponse = await dispatch( updateStudentDetails( updatedUser ) );
-      let passwordResponse;
-      if ( updatedPassword ) {
-        const params = new URLSearchParams();
-        params.append( 'new_password', updatedPassword );
-
-        passwordResponse = await dispatch( changePassword( params ) );
-      }
-
-      if (
-        updateResponse?.meta?.requestStatus === 'fulfilled'
-        && ( !updatedPassword
-          || passwordResponse?.meta?.requestStatus === 'fulfilled' )
-      ) {
-        setSuccess( true );
-      } else {
-        setSuccess( false );
-      }
-    } catch ( error ) {
-      setSuccess( false );
-    }
-
-    const formFieldKeys = [ 'newPassword', 'repeatNewPassword' ];
-
-    formFieldKeys.forEach( key => {
-      localStorage.removeItem( `student-${key}` );
-    } );
-
+  const handleSubmit = ( values, { resetForm } ) => {
+    console.log( 'submit' );
     setIsSendNotificationShown( true );
-  };
-
-  const handleDeleteAccount = async () => {
-    try {
-      const deleteResponse = await dispatch( deleteAccountStudent() );
-
-      if ( deleteResponse?.meta?.requestStatus === 'fulfilled' ) {
-        localStorage.clear();
-        setSuccess( true );
-      } else {
-        setSuccess( false );
-      }
-    } catch ( error ) {
-      setSuccess( false );
-    }
-
-    setIsNotificationShown( true );
   };
 
   return (
@@ -143,21 +64,11 @@ export const PersonalInfo = () => {
       >
         {formik => {
           const {
-            errors: {
-              surname,
-              name,
-              email,
-              phone,
-              currentPassword,
-              newPassword,
-              repeatNewPassword,
-            },
+            errors: { surname, name, email, phone, password },
             touched,
             values,
-            // setValues,
-            // setTouched,
-            isSubmitting,
-            dirty,
+            setValues,
+            setTouched,
           } = formik;
 
           // eslint-disable-next-line no-unused-vars
@@ -171,18 +82,14 @@ export const PersonalInfo = () => {
           // eslint-disable-next-line no-unused-vars
           const errPhone = phone && touched.phone;
           // eslint-disable-next-line no-unused-vars
-          const errCurrentPassword = currentPassword && touched.currentPassword;
-          const errNewPassword = newPassword && touched.newPassword;
-          const errRepeatNewPassword
-            = repeatNewPassword && touched.repeatNewPassword;
+          const errPassword = password && touched.password;
 
           const handleGetPhone = values => {
-            if ( values !== null ) {
-              localStorage.setItem( 'student-phone', values );
-            }
-          }; // значення з ContactInfi.jsx
+            const { value, touched } = values;
 
-          const isFormChanged = dirty;
+            setValues( prev => ( { ...prev, phone: value } ) );
+            setTouched( { ...touched, phone: touched } );
+          }; // значення з ContactInfi.jsx
 
           return (
             <S.FormFild autoComplete="off">
@@ -205,12 +112,6 @@ export const PersonalInfo = () => {
               </S.Section>
               <S.Section>
                 <S.Title>Зміна пароля</S.Title>
-                <ChangePassword
-                  errCurrentPassword={ errCurrentPassword }
-                  errNewPassword={ errNewPassword }
-                  errRepeatNewPassword={ errRepeatNewPassword }
-                  values={ values }
-                />
               </S.Section>
 
               <S.SaveBtn
@@ -219,8 +120,6 @@ export const PersonalInfo = () => {
                 onActiveModal={ () => {
                   console.log( 'click' );
                 } }
-                onClick={ handleSubmit }
-                disabled={ !isFormChanged || isSubmitting } // Disabled if no changes or submitting
               >
                 Зберегти зміни
               </S.SaveBtn>
@@ -244,11 +143,10 @@ export const PersonalInfo = () => {
             onNotificationClose={ () => setIsSendNotificationShown( false ) }
             success={ success }
             title={ success ? 'Зміни успішно збережено' : 'Сталась помилка' }
-            description={
-              success
-                 // eslint-disable-next-line max-len
-                ?  'Оновлено особисту інформацію. Будьте уважні, при оновленні пароля автоматично відбудеться вихід із профілю з усіх пристроїв на яких відкрито сторінку.'
-                : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
+            description={ success
+              // eslint-disable-next-line max-len
+              ? 'Оновлено особисту інформацію. Будьте уважні, при оновленні пароля автоматично відбудеться вихід із профілю з усіх пристроїв на яких відкрито сторінку.'
+              : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
             }
           />
         </Modal>
@@ -257,7 +155,7 @@ export const PersonalInfo = () => {
         <Modal onActiveModal={ () => setDeleteProfileModalShown( false ) }>
           <DeleteProfile
             onDeleteProfileModalClose={ () => setDeleteProfileModalShown( false ) }
-            onNotificationShow={ () => handleDeleteAccount() }
+            onNotificationShow={ () => setIsNotificationShown( true ) }
           />
         </Modal>
       )}
@@ -267,11 +165,10 @@ export const PersonalInfo = () => {
             onNotificationClose={ () => setIsNotificationShown( false ) }
             success={ success }
             title={ success ? 'Ваш профіль успішно видалено' : 'Сталась помилка' }
-            description={
-              success
-                 // eslint-disable-next-line max-len
-                ?  'Ви можете користуватися послугами HUB23, які доступні для незареєстрованих користувачів сайту'
-                : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
+            description={ success
+              // eslint-disable-next-line max-len
+              ? 'Ви можете користуватися послугами HUB23, які доступні для незареєстрованих користувачів сайту'
+              : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
             }
           />
         </Modal>

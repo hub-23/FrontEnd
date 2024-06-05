@@ -15,6 +15,7 @@ export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
   return (
     <S.Wrapp>
       <div>
+        {/* <S.Email color={ white }>{user.email}</S.Email> */}
         <S.Email color={ white }>{user?.email ?? user.name}</S.Email>
 
         <div style={ { position: 'relative' } }>
@@ -22,15 +23,10 @@ export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
             text="Вносити зміни в це поле не можна"
             $fill={ deepAccent }
             $xlBottom="-26px"
-            $smBottom="-26px"
             $xlLeft="12px"
             $mdLeft="0"
             $xlFontSize="14px"
-            $smFontSize="12px"
             $xlLineHeight="15.82"
-            $smLineHeight="16.8"
-            $mdWidth="16px"
-            $mdHeight="16px"
           />
         </div>
       </div>

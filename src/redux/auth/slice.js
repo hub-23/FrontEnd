@@ -1,12 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  changePassword,
-  updateStudentDetails,
-  getStudentProfile,
-  login,
-  register,
-  deleteAccountStudent,
-} from './operations';
+import { getStudentProfile, login, register } from './operations';
 
 const onPanding = state => {
   state.isLoading = true;
@@ -35,27 +28,11 @@ const handleLogin = ( state, { payload } ) => {
   // console.log( 'Login payload :>> ', payload );
 };
 
-const handleChangePassword = ( state, { payload } ) => {
-  state.token = '';
-  state.refreshToken = '';
-  state.isLoggedIn = false;
-  state.isLoading = false;
-  console.log( 'Change Password :>> ', payload );
-};
-
 const handleStudentProfile = ( state, { payload } ) => {
   state.user = { ...state.user, ...payload };
   state.isLoggedIn = true;
   state.isLoading = false;
   // console.log( 'UserData payload :>> ', payload );
-};
-
-const handleDeleteAccountStudent = ( state, { payload } ) => {
-  state.token = '';
-  state.refreshToken = '';
-  state.isLoggedIn = false;
-  state.isLoading = false;
-  console.log( 'DeleteAccount :>> ', payload );
 };
 
 export const initialState = {
@@ -89,9 +66,6 @@ const authSlice = createSlice( {
       .addCase( register.fulfilled, handleRegister )
       .addCase( login.fulfilled, handleLogin )
       .addCase( getStudentProfile.fulfilled, handleStudentProfile )
-      .addCase( updateStudentDetails.fulfilled, handleStudentProfile )
-      .addCase( changePassword.fulfilled, handleChangePassword )
-      .addCase( deleteAccountStudent.fulfilled, handleDeleteAccountStudent )
       .addMatcher( action => {
         return action.type.endsWith( '/pending' ); // applies to all pending
       }, onPanding )

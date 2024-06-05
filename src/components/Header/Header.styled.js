@@ -30,11 +30,9 @@ export const HeaderContainer = styled.div`
     padding-left: 40px;
     padding-right: 40px;
   }
-
   @media ${device.md} {
     max-width: 768px;
   }
-
   @media ${device.sm} {
     padding-left: 20px;
     padding-right: 20px;
@@ -58,7 +56,6 @@ export const Logo = styled( LogoSvg )`
   align-items: center;
   width: 152px;
   height: 40px;
-
   @media ${device.sm} {
     width: 93px;
     height: 23px;
@@ -67,7 +64,6 @@ export const Logo = styled( LogoSvg )`
 
 export const SearchBtn = styled.button`
   display: none;
-
   @media ${device.sm} {
     display: flex;
     justify-content: center;
@@ -100,11 +96,9 @@ export const NavWrapper = styled.div`
       font-size: 20px;
       letter-spacing: 0.2px;
       white-space: nowrap;
-
       @media ${device.sm} {
         font-size: 16px;
       }
-
       @media ${device.md} {
         display: none;
       }
@@ -123,11 +117,9 @@ export const LanguageWrapper = styled.div`
     font-size: 20px;
     letter-spacing: 0.2px;
   }
-
   @media ${device.xl} {
     margin-right: 25px;
   }
-
   @media ${device.md} {
     display: none;
   }
@@ -145,10 +137,6 @@ export const SignInBtn = styled( Button )`
 `;
 
 export const PrivateField = styled.div`
-  @media ${device.xl} {
-    display: none;
-  }
-
   position: relative;
   display: flex;
   justify-content: center;
@@ -156,9 +144,9 @@ export const PrivateField = styled.div`
 
   .my-page {
     margin-right: 8px;
-    font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+    font-family: ${( props ) => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 20px;
-    line-height: calc(28 / 20);
+    line-height: calc( 28/20 );
   }
 `;
 
@@ -166,19 +154,11 @@ export const AvatarWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${( { $dropdown } ) => ( $dropdown ? '64px' : '32px' )};
-  height: ${( { $dropdown } ) => ( $dropdown ? '64px' : '32px' )};
-  margin-right: ${( { $dropdown } ) => ( $dropdown ? '12px' : '8px' )};
+  width: ${ ( { $dropdown } ) => $dropdown ? '64px' : '32px' }; 
+  height: ${ ( { $dropdown } ) => $dropdown ? '64px' : '32px' };
+  margin-right: ${ ( { $dropdown } ) => $dropdown ? '12px' : '8px' };
   background-color: ${props => props.color || props.theme.colors.accent};
   border-radius: 50%;
-`;
-
-export const AvatarWrapperMobile = styled( AvatarWrapper )`
-  display: none;
-
-  @media ${device.md} {
-    display: flex;
-  }
 `;
 
 export const DropdownBtn = styled.button`
