@@ -22,15 +22,11 @@ export const FormFild = styled( Form )`
 export const Section = styled.section`
   display: flex;
   gap: 48px;
-<<<<<<< student_account
 
   @media ${device.md} {
     flex-direction: column;
     gap: 20px;
   }
-=======
-  /* border: 1px dashed blue; */
->>>>>>> dev
 `;
 
 export const Title = styled.h2`
@@ -40,7 +36,6 @@ export const Title = styled.h2`
   font-size: 24px;
   font-weight: 500;
   line-height: calc(33.6 / 24);
-<<<<<<< student_account
 
   @media ${device.md} {
     width: auto;
@@ -54,9 +49,6 @@ export const Title = styled.h2`
     font-weight: 600;
     line-height: calc(22.4 / 16);
   }
-=======
-  /* border: 1px dashed red; */
->>>>>>> dev
 `;
 
 export const SaveBtn = styled( Button )`
