@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import * as S from './Header.styled';
 import { Language } from './Language/Language';
 import { Navigation } from './Navigation/Navigation';
@@ -13,6 +12,7 @@ import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
 import { Dropdown } from './Dropdown/Dropdown'; // student's page
 import { useAuth } from 'hooks/useAuth';
 import { Abbreviation } from '../common/Abbreviation';
+import { useLocation } from 'react-router';
 
 export const Header = () => {
   const {
@@ -30,6 +30,15 @@ export const Header = () => {
 
   const { isLoggedIn } = useAuth();
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
+  const [ isHomePage, setIsHomePage ] = useState( false );
+
+  const location = useLocation();
+
+  useEffect( () => {
+    if ( location.pathname === '/' ) {
+      return setIsHomePage( true );
+    } else setIsHomePage( false );
+  }, [ location ] );
 
   const toggleModalLogin = () => {
     setShowModalLogin( !showModalLogin );
@@ -55,14 +64,27 @@ export const Header = () => {
             <S.Logo alt="HUB23" />
           </S.LogoLink>
 
-          <S.SearchBtn
-            type="button"
-            aria-label="magnifying glass"
-            onClick={ () => setIsHeroFilterShown( !isHeroFilterShown ) }
-          >
-            <IconSvg width="24px" height="24px" icon="icon-magnifying-glass" />
-          </S.SearchBtn>
-
+          {isHomePage ? (
+            <S.SearchBtn
+              type="button"
+              aria-label="magnifying glass"
+              onClick={ () => setIsHeroFilterShown( !isHeroFilterShown ) }
+            >
+              <IconSvg
+                width="24px"
+                height="24px"
+                icon="icon-magnifying-glass"
+              />
+            </S.SearchBtn>
+          ) : (
+            <S.AvatarWrapperMobile>
+              <Abbreviation
+                $fontSize="14px"
+                $fontWeight="500"
+                $lineHeight="1.4"
+              />
+            </S.AvatarWrapperMobile>
+          )}
           <S.NavWrapper>
             <Navigation />
           </S.NavWrapper>
@@ -75,9 +97,13 @@ export const Header = () => {
             {isLoggedIn ? (
               <S.PrivateField>
                 <S.AvatarWrapper>
-                  <Abbreviation $fontSize='14px' $fontWeight='500' $lineHeight='1.4' />
+                  <Abbreviation
+                    $fontSize="14px"
+                    $fontWeight="500"
+                    $lineHeight="1.4"
+                  />
                 </S.AvatarWrapper>
-                <p className='my-page'>Моя сторінка</p>
+                <p className="my-page">Моя сторінка</p>
                 <S.DropdownBtn
                   type="button"
                   aria-label="dropdown-menu"
@@ -85,7 +111,11 @@ export const Header = () => {
                   $rotate={ isDropdownShown }
                 >
                   <div>
-                    <IconSvg width="11px" height="11px" icon="icon-arrow-down" />
+                    <IconSvg
+                      width="11px"
+                      height="11px"
+                      icon="icon-arrow-down"
+                    />
                   </div>
                 </S.DropdownBtn>
                 {isDropdownShown && <Dropdown />}
@@ -99,7 +129,6 @@ export const Header = () => {
               </S.SignInBtn>
             )}
           </S.Wrapper>
-
         </S.HeaderContent>
       </S.HeaderContainer>
 

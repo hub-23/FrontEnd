@@ -4,14 +4,14 @@ import { device } from '../../utils/device';
 export const StyledWrapper = styled.section`
   max-width: 1440px;
   min-width: 100%;
-  min-height: 100vw;
+  min-height: 100vh;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 
   @media ${device.sm} {
-    min-height: 100vw;
+    min-height: 100vh;
   }
 `;
 

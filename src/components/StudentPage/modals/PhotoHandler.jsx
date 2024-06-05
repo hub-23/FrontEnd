@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { convertToPixelCrop } from 'react-image-crop';
-// import axios from 'axios';
-// import { useAuth } from '../../../hooks/useAuth';
+import axios from 'axios';
+import { useAuth } from '../../../hooks/useAuth';
 import * as S from './PhotoHandler.styled';
 import { BtnClose } from '../../common/modalElements/BtnClose';
 import { Button } from '../../common/button/Button';
@@ -12,16 +12,17 @@ import { setCanvasPreview } from '../../../helpers/setCanvasPreview';
 // eslint-disable-next-line no-unused-vars
 import defaultPhoto from '../../../assets/home/students-photos/image 3.png';
 
-
-export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
+export const PhotoHandler = ( {
+  onPhotoHandlerClose,
+  onAvatarReceive,
+  backendAvatar,
+} ) => {
   const [ avatar, setAvatar ] = useState( '' );
   const [ dataToCrop, setDataToCrop ] = useState( {} );
   const [ croppedAvatar, setCroppedAvatar ] = useState( '' );
   const [ croppedBlobAvatar, setCroppedBlobAvatar ] = useState( '' );
   const { imgRef, previewCanvasRef, crop } = dataToCrop;
-  // const { token } = useAuth();
-  // const backendAvatar = defaultPhoto;
-  const backendAvatar = '';
+  const { token } = useAuth();
 
   const handleImageSelect = value => {
     if ( avatar !== value ) {
@@ -43,7 +44,6 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
 
     previewCanvasRef.current.toBlob(
       blob => {
-        // console.log( 'blob:', blob );
         setCroppedBlobAvatar( blob );
       },
       'image/jpeg',
@@ -57,105 +57,116 @@ export const PhotoHandler = ( { onPhotoHandlerClose, onAvatarReceive } ) => {
     }
   }, [ croppedAvatar ] );
 
-  // const instance = axios.create( {
-  //   baseURL: 'https://hub23-84u3.onrender.com',
-  // } );
+  const instance = axios.create( {
+    baseURL: 'https://hub23-84u3.onrender.com',
+  } );
 
   const handleSubmit = async () => {
-    // console.log( 'croppedAvatar:', croppedAvatar );
-    console.log( 'croppedBlobAvatar:', croppedBlobAvatar );
-
     onPhotoHandlerClose();
-    // try {
-    //   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-    //   const { data } = await instance.post( '/customers/update_avatar', avatar );
-    //   console.log( data );
-    // } catch ( error ) {
-    //   console.log( error.message );
-    // }
+    try {
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+      const formData = new FormData();
+      formData.append( 'file', croppedBlobAvatar, 'avatar.jpg' ); // Додаємо blob в FormData
+
+      const { data } = await instance.post(
+        '/customers/update_avatar',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      console.log( data );
+    } catch ( error ) {
+      console.log( error.message );
+    }
   };
 
-  const handlePhotoDelete = () => {
-    // Delete-запит на бек
+  const handlePhotoDelete = async () => {
+    try {
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const { data } = await instance.post( '/customers/set_null_avatar' );
+      console.log( data );
+      onAvatarReceive( '' ); // Очищаємо аватар після видалення
+    } catch ( error ) {
+      console.log( error.message );
+    }
     onPhotoHandlerClose();
   };
 
   return (
     <S.Container>
       <BtnClose onActiveModal={ onPhotoHandlerClose } />
-      <S.Title> 
+      <S.Title>
         {!backendAvatar
           ? 'Додати зображення профілю'
-          : 'Змінити зображення профілю'
-        }
+          : 'Зміна зображення профілю'}
       </S.Title>
-      
+
       {croppedAvatar ? (
-          <S.CircleWrapper>
-            <img src={ croppedAvatar } alt="Обрізане фото" />
-          </S.CircleWrapper>             
+        <S.CircleWrapper>
+          <img src={ croppedAvatar } alt="Обрізане фото" />
+        </S.CircleWrapper>
       ) : avatar ? ( // необрізане фото
-          <S.ImageWrapper>
-            <Crop
-              image={ avatar }
-              configuration={ {
-                targetWidth: 400, // ширина і висота кропу (тут - на максимальний розмір зображення)
-                targetHeight: 400,
-                circularCrop: true,
-                aspect: 1, // targetWidth / targetHeight,
-              } }
-              onDataToCrop={ setDataToCrop }
-            />
-          </S.ImageWrapper>
-      ) : ( // 1ше відкриття модалки
-            <S.CircleWrapper>
-              { backendAvatar
-                ? <img src={ backendAvatar } alt="Фото користувача" />
-                : <Abbreviation $fontSize='48px' $fontWeight='600' $lineHeight='1.3' />
-              }
-            </S.CircleWrapper>    
-      ) }
-      
-      { avatar ? (
-          <S.BtnsWrapper>
-            <S.SaveButton
-              variant="blueGradientedBorder"
-              onClick={ () => croppedAvatar
-                ? handleSubmit()
-                : handleImageCrop() 
-              }
-            >
-              Зберегти зміни
-            </S.SaveButton>
-            <S.CancelBtn onClick={ onPhotoHandlerClose }>
-              Відхилити зміни
-            </S.CancelBtn>
-          </S.BtnsWrapper>
+        <S.ImageWrapper>
+          <Crop
+            image={ avatar }
+            configuration={ {
+              targetWidth: 400, // ширина і висота кропу (тут - на максимальний розмір зображення)
+              targetHeight: 400,
+              circularCrop: true,
+              aspect: 1, // targetWidth / targetHeight,
+            } }
+            onDataToCrop={ setDataToCrop }
+          />
+        </S.ImageWrapper>
       ) : (
-          <S.BtnsWrapper>
-            <S.AddButton htmlFor="file-input">
-              <Button variant="blue">
-                {!backendAvatar
-                  ? 'Завантажити фото'
-                  : 'Завантажити нове'
-                }
-              </Button>
-              <FileUploadInput
-                onImageSelect={ handleImageSelect }
-                id="file-input"
-              />
-            </S.AddButton>
-            {!backendAvatar ? (
-              <S.CancelBtn onClick={ onPhotoHandlerClose }>
-                Скасувати
-              </S.CancelBtn>  
-            ) : (
-              <S.DeleteBtn onClick={ handlePhotoDelete }>
-                Видалити фото
-              </S.DeleteBtn>  
-            )}            
-          </S.BtnsWrapper>        
-      ) }
+        // 1ше відкриття модалки
+        <S.CircleWrapper>
+          {backendAvatar ? (
+            <img src={ backendAvatar } alt="Фото користувача" />
+          ) : (
+            <Abbreviation
+              $fontSize="48px"
+              $fontWeight="600"
+              $lineHeight="1.3"
+            />
+          )}
+        </S.CircleWrapper>
+      )}
+
+      {avatar ? (
+        <S.BtnsWrapper>
+          <S.SaveButton
+            variant="blueGradientedBorder"
+            onClick={ () => ( croppedAvatar ? handleSubmit() : handleImageCrop() ) }
+          >
+            Зберегти зміни
+          </S.SaveButton>
+          <S.CancelBtn onClick={ onPhotoHandlerClose }>
+            Відхилити зміни
+          </S.CancelBtn>
+        </S.BtnsWrapper>
+      ) : (
+        <S.BtnsWrapper>
+          <S.AddButton htmlFor="file-input">
+            <Button variant="blue">
+              {!backendAvatar ? 'Завантажити фото' : 'Завантажити нове'}
+            </Button>
+            <FileUploadInput
+              onImageSelect={ handleImageSelect }
+              id="file-input"
+            />
+          </S.AddButton>
+          {!backendAvatar ? (
+            <S.CancelBtn onClick={ onPhotoHandlerClose }>Скасувати</S.CancelBtn>
+          ) : (
+            <S.DeleteBtn onClick={ handlePhotoDelete }>Видалити фото</S.DeleteBtn>
+          )}
+        </S.BtnsWrapper>
+      )}
     </S.Container>
   );
 };
