@@ -32,7 +32,7 @@ const handleLogin = ( state, { payload } ) => {
   state.refreshToken = payload.refresh_token;
   state.isLoggedIn = true;
   state.isLoading = false;
-  console.log( 'Login payload :>> ', payload );
+  // console.log( 'Login payload :>> ', payload );
 };
 
 const handleChangePassword = ( state, { payload } ) => {
