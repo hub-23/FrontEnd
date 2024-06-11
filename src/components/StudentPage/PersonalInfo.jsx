@@ -194,6 +194,7 @@ export const PersonalInfo = () => {
                   values={ values }
                 />
               </S.Section>
+
               <S.Section>
                 <S.Title>Контактна інформація</S.Title>
                 <ContactInfo
@@ -203,6 +204,7 @@ export const PersonalInfo = () => {
                   error={ errPhone }
                 />
               </S.Section>
+
               <S.Section>
                 <S.Title>Зміна пароля</S.Title>
                 <ChangePassword
@@ -245,9 +247,8 @@ export const PersonalInfo = () => {
             success={ success }
             title={ success ? 'Зміни успішно збережено' : 'Сталась помилка' }
             description={
-              success
-                 // eslint-disable-next-line max-len
-                ?  'Оновлено особисту інформацію. Будьте уважні, при оновленні пароля автоматично відбудеться вихід із профілю з усіх пристроїв на яких відкрито сторінку.'
+              success // eslint-disable-next-line max-len
+                ? 'Оновлено особисту інформацію. Будьте уважні, при оновленні пароля автоматично відбудеться вихід із профілю з усіх пристроїв на яких відкрито сторінку.'
                 : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
             }
           />
@@ -268,9 +269,8 @@ export const PersonalInfo = () => {
             success={ success }
             title={ success ? 'Ваш профіль успішно видалено' : 'Сталась помилка' }
             description={
-              success
-                 // eslint-disable-next-line max-len
-                ?  'Ви можете користуватися послугами HUB23, які доступні для незареєстрованих користувачів сайту'
+              success // eslint-disable-next-line max-len
+                ? 'Ви можете користуватися послугами HUB23, які доступні для незареєстрованих користувачів сайту'
                 : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
             }
           />

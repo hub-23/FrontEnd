@@ -8,7 +8,7 @@ export const Navigation = ( { onMobileMenuClose } ) => {
 
   return (
     <nav>
-      <S.NavItem to="/teacher" onClick={ onMobileMenuClose }>
+      <S.NavItem to="/teachers" onClick={ onMobileMenuClose }>
         Викладачі
       </S.NavItem>
       <S.NavItem to="/about" onClick={ onMobileMenuClose }>

@@ -3,6 +3,7 @@ import {
   changePassword,
   updateStudentDetails,
   getStudentProfile,
+  getTeacherProfile,
   login,
   register,
   deleteAccountStudent,
@@ -24,7 +25,7 @@ const handleRejected = ( state, { payload } ) => {
 const handleRegister = ( state, { payload } ) => {
   // state.user = payload; // added to state name and email
   state.isLoading = false;
-  // console.log( 'Register payload :>> ', payload );
+  console.log( 'Register payload :>> ', payload );
 };
 
 const handleLogin = ( state, { payload } ) => {
@@ -32,7 +33,8 @@ const handleLogin = ( state, { payload } ) => {
   state.refreshToken = payload.refresh_token;
   state.isLoggedIn = true;
   state.isLoading = false;
-  // console.log( 'Login payload :>> ', payload );
+  state.role = 'student';
+  // state.role = 'teacher';
 };
 
 const handleChangePassword = ( state, { payload } ) => {
@@ -44,10 +46,9 @@ const handleChangePassword = ( state, { payload } ) => {
 };
 
 const handleStudentProfile = ( state, { payload } ) => {
-  state.user = { ...state.user, ...payload };
+  state.user = { ...state.user, ...payload }; // ???
   state.isLoggedIn = true;
   state.isLoading = false;
-  // console.log( 'UserData payload :>> ', payload );
 };
 
 const handleDeleteAccountStudent = ( state, { payload } ) => {
@@ -58,12 +59,19 @@ const handleDeleteAccountStudent = ( state, { payload } ) => {
   console.log( 'DeleteAccount :>> ', payload );
 };
 
+const handleTeacherProfile = ( state, { payload } ) => {
+  state.user = payload;
+  state.isLoggedIn = true;
+  state.isLoading = false;
+};
+
 export const initialState = {
   user: { name: null, email: null, avatar: '' },
   token: null,
   refreshToken: null,
   isLoggedIn: false,
   isLoading: false,
+  role: null,
 };
 
 const authSlice = createSlice( {
@@ -78,9 +86,11 @@ const authSlice = createSlice( {
       state.refreshToken = payload;
     },
     setReset( state, { payload } ) {
-      state.user = payload.user;
-      state.token = payload.token;
-      state.isLoggedIn = payload.isLoggedIn;
+      state.user = initialState.user;
+      state.token = initialState.token;
+      state.refreshToken = initialState.refreshToken;
+      state.isLoggedIn = initialState.isLoggedIn;
+      state.role = initialState.role;
     },
   },
 
@@ -92,6 +102,7 @@ const authSlice = createSlice( {
       .addCase( updateStudentDetails.fulfilled, handleStudentProfile )
       .addCase( changePassword.fulfilled, handleChangePassword )
       .addCase( deleteAccountStudent.fulfilled, handleDeleteAccountStudent )
+      .addCase( getTeacherProfile.fulfilled, handleTeacherProfile )
       .addMatcher( action => {
         return action.type.endsWith( '/pending' ); // applies to all pending
       }, onPanding )

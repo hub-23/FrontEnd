@@ -35,6 +35,11 @@ export const login = createAsyncThunk(
       const { data } = await instance.post( '/api/auth/login', credentials );
       setAuthHeader( data.access_token );
 
+      console.log( 'dataLogin :>> ', data );
+
+      // const { data: dataUsersRole } = await instance.get( '/users/me/role' );
+      // console.log( 'dataUsersRole :>> ', dataUsersRole );
+
       return data;
     } catch ( error ) {
       return thunkAPI.rejectWithValue( error.message );
@@ -53,6 +58,7 @@ export const getStudentProfile = createAsyncThunk(
 
     try {
       const { data } = await instance.get( '/customers/student_profile' );
+      console.log( 'data :>> ', data );
 
       return data;
     } catch ( error ) {
@@ -71,6 +77,26 @@ export const updateStudentDetails = createAsyncThunk(
         credentials
       );
       return res.data;
+    } catch ( error ) {
+      return thunkAPI.rejectWithValue( error.message );
+    }
+  }
+);
+
+// Teacher Profile
+export const getTeacherProfile = createAsyncThunk(
+  'auth/teacherProfile',
+  async ( _, thunkAPI ) => {
+    const { token } = await thunkAPI.getState().auth;
+
+    if ( !token ) return thunkAPI.rejectWithValue( 'No valid token' );
+    setAuthHeader( token );
+
+    try {
+      const { data } = await instance.get( '/customers_teacher/teacher_profile' ); // Route doesn't work !!!
+      console.log( 'dataTeacherProfile :>> ', data );
+
+      return data;
     } catch ( error ) {
       return thunkAPI.rejectWithValue( error.message );
     }
@@ -100,7 +126,9 @@ export const deleteAccountStudent = createAsyncThunk(
   'auth/deleteAccountStudent',
   async ( _, { rejectWithValue } ) => {
     try {
-      const response = await instance.delete( '/customers/delete_account_student' );
+      const response = await instance.delete(
+        '/customers/delete_account_student'
+      );
       clearAuthHeader();
       return response.data;
     } catch ( error ) {

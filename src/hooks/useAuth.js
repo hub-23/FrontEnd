@@ -5,6 +5,7 @@ import {
   selectIsLoggedIn,
   selectToken,
   selectUser,
+  selectUserRole,
 } from '../redux/auth/selectors';
 
 export const useAuth = () => {
@@ -14,5 +15,6 @@ export const useAuth = () => {
     isLoading: useSelector( selectIsLoading ),
     token: useSelector( selectToken ),
     isError: useSelector( selectIsError ),
+    userRole: useSelector( selectUserRole ),
   };
 };
