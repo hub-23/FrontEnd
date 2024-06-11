@@ -28,7 +28,7 @@ export const Navigation = () => {
       <StyledNavLinkDrop to="/">
         <LogoutIcon />
         <StyledButton type="button" onClick={ signout }>
-          Вийти (випадаючий)
+          Вийти
         </StyledButton>
       </StyledNavLinkDrop>
     </StyledList>
