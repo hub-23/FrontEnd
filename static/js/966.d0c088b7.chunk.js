@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[966],{7966:(e,n,r)=>{r.r(n),r.d(n,{default:()=>t});r(5043);var s=r(579);const t=()=>(0,s.jsx)(s.Fragment,{children:(0,s.jsx)("h1",{style:{marginTop:"100px",fontSize:"30px"},children:"TeachersPage"})})}}]);
+//# sourceMappingURL=966.d0c088b7.chunk.js.map
