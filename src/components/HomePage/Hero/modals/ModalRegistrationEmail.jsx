@@ -54,9 +54,6 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
   };
 
   const handleSubmit = ( values, { resetForm } ) => {
-    // console.log( '💙💛 submit :>> ', values );
-
-    // sent to Backend: name, email, phone, password, role
     const { name: username, email, password, phone } = values;
     dispatch( register( { username, email, password, phone, role } ) );
 
@@ -185,7 +182,9 @@ export const ModalRegistrationEmail = ( { onActiveModal } ) => {
                     isStar={ true }
                     btnEye
                     $error={ errPassword }
-                    $bottom={ password && password.startsWith( 'Пароль має' ) && '-40px' }
+                    $bottom={
+                      password && password.startsWith( 'Пароль має' ) && '-40px'
+                    }
                     value={ values.password }
                   />
                   {noteShown && (

@@ -8,26 +8,36 @@ import Layout from './Layout/Layout';
 import { PersonalInfo } from 'components/StudentPage/PersonalInfo';
 import { Reservation } from 'components/StudentPage/Reservation';
 import { PrivateRoute } from './PrivateRoute';
-import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
 import { getStudentProfile } from '../redux/auth/operations';
 
-const Teacher = lazy( () => import( '../pages/TeachersPage' ) );
+const Teachers = lazy( () => import( '../pages/TeacherPage' ) );
 const About = lazy( () => import( '../pages/AboutUsPage' ) );
 const Feedback = lazy( () => import( '../pages/FeedbackPage' ) );
 const Student = lazy( () => import( '../pages/StudentPage' ) );
+const Teacher = lazy( () => import( '../pages/TeacherProfilePage' ) );
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn, token } = useAuth();
   const navigate = useNavigate();
+  const { userRole, token } = useAuth();
+  const isStudent = userRole === 'student';
+  const isTeacher = userRole === 'teacher';
 
   useEffect( () => {
-    if ( isLoggedIn || token ) {
+    if ( !token ) return;
+
+    if ( isStudent ) {
       dispatch( getStudentProfile() );
       navigate( '/student/info' );
     }
-  }, [ isLoggedIn, token ] );
+
+    if ( isTeacher ) {
+      // dispatch( getTeacherProfile() );
+      navigate( '/teacher/info' );
+    }
+  }, [ userRole ] );
 
   return (
     <>
@@ -36,20 +46,33 @@ const App = () => {
         <Routes>
           <Route path="/" element={ <Layout /> }>
             <Route index element={ <Home /> } />
-            <Route path="teacher" element={ <Teacher /> } />
+            <Route path="teachers" element={ <Teachers /> } />
             <Route path="about" element={ <About /> } />
-            <Route path="feedback" element={ <Feedback /> } />
-            {/* <Route path='language' element={ <h1>List of language</h1> } /> */}
-            {/* NOT NEEDED <Route path="signin" element={ <h1>Вхід</h1> } />  */}
+            <Route path=" " element={ <Feedback /> } />
 
-            {/* <Route path="student/" element={ <Student /> }> */}
-            <Route
-              path="student/"
-              element={ <PrivateRoute component={ <Student /> } redirectTo="/" /> }
-            >
-              <Route path="info" element={ <PersonalInfo /> } />
-              <Route path="reservation" element={ <Reservation /> } />
-            </Route>
+            {isStudent && (
+              <Route
+                path="student/"
+                element={ <PrivateRoute component={ <Student /> } /> }
+              >
+                <Route path="info" element={ <PersonalInfo /> } />
+                <Route path="reservation" element={ <Reservation /> } />
+              </Route>
+            )}
+
+            {isTeacher && (
+              <Route
+                path="teacher/"
+                element={ <PrivateRoute component={ <Teacher /> } /> }
+              >
+                <Route path="info" element=<h1>PersonalInfo</h1> />
+                <Route path="reservation" element=<h1>Reservation</h1> />
+                <Route path="calendar" element=<h1>Calendar</h1> />
+                <Route path="feedback" element=<h1>Feedback</h1> />
+                <Route path="tariff" element=<h1>Tariff</h1> />
+              </Route>
+            )}
+
             <Route path="*" element={ <Home /> } />
           </Route>
         </Routes>
