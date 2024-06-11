@@ -19,13 +19,11 @@ const handleRejected = ( state, { payload } ) => {
   state.error = payload;
   state.token = null;
   state.refreshToken = null;
-  // console.warn( 'Error payload :>> ', payload );
 };
 
 const handleRegister = ( state, { payload } ) => {
   // state.user = payload; // added to state name and email
   state.isLoading = false;
-  console.log( 'Register payload :>> ', payload );
 };
 
 const handleLogin = ( state, { payload } ) => {
@@ -85,7 +83,7 @@ const authSlice = createSlice( {
     setRefreshToken( state, { payload } ) {
       state.refreshToken = payload;
     },
-    setReset( state, { payload } ) {
+    setReset( state ) {
       state.user = initialState.user;
       state.token = initialState.token;
       state.refreshToken = initialState.refreshToken;
