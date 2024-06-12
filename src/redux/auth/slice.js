@@ -31,8 +31,7 @@ const handleLogin = ( state, { payload } ) => {
   state.refreshToken = payload.refresh_token;
   state.isLoggedIn = true;
   state.isLoading = false;
-  state.role = 'student';
-  // state.role = 'teacher';
+  state.role = payload.role;
 };
 
 const handleChangePassword = ( state, { payload } ) => {
