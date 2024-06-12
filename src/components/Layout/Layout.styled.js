@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from '../../utils/device';
 
-export const StyledWrapper = styled.section`
+export const StyledWrapper = styled.div`
   max-width: 1440px;
   min-width: 100%;
   min-height: 100vh;

@@ -9,7 +9,7 @@ import { Notification } from '../common/modalElements/Notification';
 export const Footer = () => {
   const [ isFormOpen, setIsFormOpen ] = useState( false );
   const [ isNotificationShown, setIsNotificationShown ] = useState( false );
-  const success = true; 
+  const success = true;
   // const success = false; // залежно від status code з бекенду
 
   return (
@@ -95,11 +95,13 @@ export const Footer = () => {
                 <Notification
                   onNotificationClose={ () => setIsNotificationShown( false ) }
                   success={ success }
-                  title={ success ? 'Форму успішно надіслано' : 'Сталась помилка' }
-                  description={ success
-                    // eslint-disable-next-line max-len
-                    ? 'Ваше повідомлення буде опрацьовано протягом 72 годин та надано фідбек за телефоном або на пошту'
-                    : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
+                  title={
+                    success ? 'Форму успішно надіслано' : 'Сталась помилка'
+                  }
+                  description={
+                    success // eslint-disable-next-line max-len
+                      ? 'Ваше повідомлення буде опрацьовано протягом 72 годин та надано фідбек за телефоном або на пошту'
+                      : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
                   }
                 />
               </Modal>
@@ -124,7 +126,7 @@ export const Footer = () => {
             </svg>
             <S.Terms href="">Умови використання</S.Terms>
           </div>
-          <S.Rights>Усі права захищені 2023</S.Rights>
+          <S.Rights>Усі права захищені 2024</S.Rights>
         </S.TermsRightsWrapper>
       </S.FooterContainer>
     </S.FooterSection>
