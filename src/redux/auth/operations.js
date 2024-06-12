@@ -88,7 +88,23 @@ export const getTeacherProfile = createAsyncThunk(
     setAuthHeader( token );
 
     try {
-      const { data } = await instance.get( '/customers_teacher/teacher_profile' ); // Route doesn't work !!!
+      // Route doesn't work !!!
+      // const { data } = await instance.get( '/customers_teacher/teacher_profile' );
+
+      const data = {
+        name: 'Name Teacher',
+        email: 'email Teacher',
+        avatar: ':))',
+        subject: 'string',
+        service_types: [ 'string' ],
+        rating: 0,
+        country_id: 0,
+        city_id: 0,
+        birthday: '2024-06-11',
+        bio: 'string',
+        subscription_plan: 'string',
+        work_photos: [],
+      };
 
       return data;
     } catch ( error ) {

@@ -10,7 +10,12 @@ import { Reservation } from 'components/StudentPage/Reservation';
 import { PrivateRoute } from './PrivateRoute';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
-import { getStudentProfile } from '../redux/auth/operations';
+import { getStudentProfile, getTeacherProfile } from '../redux/auth/operations';
+import { PersonalInfoTeacher } from './TeacherProfilePage/PersonalInfo/PersonalInfoTeacher';
+import { ReservationTeacher } from './TeacherProfilePage/Reservation/ReservationTeacher';
+import { CalendarTeacher } from './TeacherProfilePage/Calendar/CalendarTeacher';
+import { FeedbackTeacher } from './TeacherProfilePage/Feedback/FeedbackTeacher';
+import { TariffsTeacher } from './TeacherProfilePage/Tariffs/TariffsTeacher';
 
 const Teachers = lazy( () => import( '../pages/TeacherPage' ) );
 const About = lazy( () => import( '../pages/AboutUsPage' ) );
@@ -34,7 +39,7 @@ const App = () => {
     }
 
     if ( isTeacher ) {
-      // dispatch( getTeacherProfile() );
+      dispatch( getTeacherProfile() );
       navigate( '/teacher/info' );
     }
   }, [ userRole ] );
@@ -65,11 +70,11 @@ const App = () => {
                 path="teacher/"
                 element={ <PrivateRoute component={ <Teacher /> } /> }
               >
-                <Route path="info" element=<h1>PersonalInfo</h1> />
-                <Route path="reservation" element=<h1>Reservation</h1> />
-                <Route path="calendar" element=<h1>Calendar</h1> />
-                <Route path="feedback" element=<h1>Feedback</h1> />
-                <Route path="tariff" element=<h1>Tariff</h1> />
+                <Route path="info" element={ <PersonalInfoTeacher /> } />
+                <Route path="reservation" element={ <ReservationTeacher /> } />
+                <Route path="calendar" element={ <CalendarTeacher /> } />
+                <Route path="feedback" element={ <FeedbackTeacher /> } />
+                <Route path="tariff" element={ <TariffsTeacher /> } />
               </Route>
             )}
 

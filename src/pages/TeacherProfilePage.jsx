@@ -1,27 +1,19 @@
 import React from 'react';
-import { useSignout } from 'hooks/useSignout';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Navbar } from 'components/TeacherProfilePage/Navbar/Navbar';
+import * as S from './TeacherProfilePage.styled';
 
 const TeacherProfilePage = () => {
-  const signout = useSignout();
-
   return (
-    <>
-      <h2 style={ { marginTop: '100px', fontSize: '30px' } }>
-        TeacherProfilePage
-      </h2>
+    <S.ContainerPage>
+      <S.Wrap>
+        <Navbar />
 
-      <NavLink to="/teacher/info">Особиста інформація</NavLink>
-      <NavLink to="/teacher/reservation">МоЇ бронювання</NavLink>
-      <NavLink to="/teacher/calendar">Календар</NavLink>
-      <NavLink to="/teacher/feedback">Відгуки</NavLink>
-      <NavLink to="/teacher/tariff">Тарифи</NavLink>
-      <button type="button" onClick={ signout }>
-        Вийти
-      </button>
-
-      <Outlet />
-    </>
+        <S.Content>
+          <Outlet />
+        </S.Content>
+      </S.Wrap>
+    </S.ContainerPage>
   );
 };
 

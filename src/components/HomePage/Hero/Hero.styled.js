@@ -39,21 +39,21 @@ export const CountainerHero = styled.div`
   }
 `;
 
-export const Container = styled.section`
-  width: 100%;
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 120px 160px;
+// export const Container = styled.section`
+//   width: 100%;
+//   max-width: 1440px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   padding: 120px 160px;
 
-  @media ${device.md} {
-    padding: 80px 40px;
-  }
+//   @media ${device.md} {
+//     padding: 80px 40px;
+//   }
 
-  @media ${device.sm} {
-    padding: 80px 20px;
-  }
-`;
+//   @media ${device.sm} {
+//     padding: 80px 20px;
+//   }
+// `;
 
 export const Title = styled.h1`
   margin-bottom: 20px;
