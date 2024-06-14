@@ -7,7 +7,6 @@ export const Link = styled( NavLink )`
   gap: 16px;
   align-items: center;
   padding: 16px 24px 16px 160px;
-  margin-right: 53px;
 
   border-radius: 0 56px 56px 0;
   color: ${black};

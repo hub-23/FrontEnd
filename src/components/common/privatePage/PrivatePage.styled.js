@@ -3,17 +3,19 @@ import { Container } from 'utils/common.styled';
 import { grayStroke } from 'utils/variables.styled';
 
 export const ContainerPage = styled( Container )`
+  display: flex;
   padding: 144px 160px 80px 0px;
 `;
 
-export const Wrap = styled.div`
-  display: flex;
-  width: 100%;
+export const Navbar = styled.ul`
+  min-width: 482px;
+  padding-right: 53px;
 `;
 
 export const Content = styled.section`
-  /* width: 72%; */
+  flex-grow: 1;
   padding-left: 16px;
+
   border-left-width: 1px;
   border-left-style: solid;
   border-left-color: ${grayStroke};
