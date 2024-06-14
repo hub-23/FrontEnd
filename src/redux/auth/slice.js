@@ -42,6 +42,12 @@ const handleChangePassword = ( state, { payload } ) => {
   console.log( 'Change Password :>> ', payload );
 };
 
+const handleTeacherProfile = ( state, { payload } ) => {
+  state.user = payload;
+  state.isLoggedIn = true;
+  state.isLoading = false;
+};
+
 const handleStudentProfile = ( state, { payload } ) => {
   state.user = { ...state.user, ...payload }; // ???
   state.isLoggedIn = true;
@@ -54,12 +60,6 @@ const handleDeleteAccountStudent = ( state, { payload } ) => {
   state.isLoggedIn = false;
   state.isLoading = false;
   console.log( 'DeleteAccount :>> ', payload );
-};
-
-const handleTeacherProfile = ( state, { payload } ) => {
-  state.user = payload;
-  state.isLoggedIn = true;
-  state.isLoading = false;
 };
 
 export const initialState = {
