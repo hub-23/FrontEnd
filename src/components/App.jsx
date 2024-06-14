@@ -17,11 +17,11 @@ import { CalendarTeacher } from './TeacherProfilePage/Calendar/CalendarTeacher';
 import { FeedbackTeacher } from './TeacherProfilePage/Feedback/FeedbackTeacher';
 import { TariffsTeacher } from './TeacherProfilePage/Tariffs/TariffsTeacher';
 
-const Teachers = lazy( () => import( '../pages/TeacherPage' ) );
+const Teachers = lazy( () => import( '../pages/TeachersPage' ) );
 const About = lazy( () => import( '../pages/AboutUsPage' ) );
 const Feedback = lazy( () => import( '../pages/FeedbackPage' ) );
 const Student = lazy( () => import( '../pages/StudentPage' ) );
-const Teacher = lazy( () => import( '../pages/TeacherProfilePage' ) );
+const Teacher = lazy( () => import( '../pages/TeacherPage' ) );
 
 const App = () => {
   const dispatch = useDispatch();

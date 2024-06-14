@@ -6,16 +6,14 @@ import * as S from './PrivatePage.styled';
 const PrivatePage = ( { children } ) => {
   return (
     <S.ContainerPage>
-      <S.Wrap>
-        <ul>
-          {children}
-          <BtnNavbar />
-        </ul>
+      <S.Navbar>
+        {children}
+        <BtnNavbar />
+      </S.Navbar>
 
-        <S.Content>
-          <Outlet />
-        </S.Content>
-      </S.Wrap>
+      <S.Content>
+        <Outlet />
+      </S.Content>
     </S.ContainerPage>
   );
 };
