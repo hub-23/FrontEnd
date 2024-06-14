@@ -104,6 +104,7 @@ export const Header = () => {
                   />
                 </S.AvatarWrapper>
                 <p className="my-page">Моя сторінка</p>
+
                 <S.DropdownBtn
                   type="button"
                   aria-label="dropdown-menu"
@@ -118,6 +119,7 @@ export const Header = () => {
                     />
                   </div>
                 </S.DropdownBtn>
+
                 {isDropdownShown && <Dropdown />}
               </S.PrivateField>
             ) : (

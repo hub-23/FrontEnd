@@ -4,12 +4,12 @@ import { IconSvg } from '../IconSvg';
 import * as S from './BtnNavbar.styled';
 import * as I from './ItemNavbar.styled';
 
-export const BtnNavbar = () => {
+export const BtnNavbar = ( { ...props } ) => {
   const signout = useSignout();
 
   return (
     <li>
-      <S.Btn type="button" onClick={ signout }>
+      <S.Btn type="button" onClick={ signout } { ...props }>
         <IconSvg
           xlWidth="24px"
           xlHeight="24px"
