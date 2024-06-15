@@ -6,6 +6,8 @@ export const Svg = styled.svg`
   height: ${( { $xlHeight } ) => $xlHeight};
   stroke: ${( { $stroke } ) => $stroke};
   fill: ${( { $fill } ) => $fill};
+  transform: ${( { $transformRotate } ) =>
+    $transformRotate ? 'rotate(180deg)' : ''};
 
   @media ${device.md} {
     width: ${( { $mdWidth } ) => $mdWidth};

@@ -14,7 +14,7 @@ export const Dropdown = () => {
   return (
     <S.Dropdown>
       <S.DataUser>
-        <Avatar />
+        <Avatar $widthHeight="64px" $fontSize="20px" />
         <div>
           <S.Name>{name}</S.Name>
           <S.Email>{email}</S.Email>

@@ -3,9 +3,9 @@ import { Modal } from '../../common/modalElements/Modal';
 import { PhotoHandler } from '../modals/PhotoHandler';
 import { Input } from '../../common/modalElements/Input';
 import { useAuth } from 'hooks/useAuth';
-import { Abbreviation } from '../../common/Abbreviation';
 import sprite from '../../../assets/sprite.svg';
 import * as S from './GeneralInfo.styled';
+import { Avatar } from 'components/common/avatar/Avatar';
 
 export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const [ modalOpen, setModalOpen ] = useState( false );
@@ -28,13 +28,8 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
     <S.Container>
       <S.ProfilePhoto>
         <div className="circle">
-          {!avatar && (
-            <Abbreviation
-              $fontSize="24px"
-              $fontWeight="500"
-              $lineHeight="1.4"
-            />
-          )}
+          {!avatar && <Avatar />}
+
           {avatar && <img src={ avatar } alt="Обрізане фото" />}
 
           <button

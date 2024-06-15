@@ -13,6 +13,7 @@ import { Dropdown } from './Dropdown/Dropdown'; // student's page
 import { useAuth } from 'hooks/useAuth';
 import { Abbreviation } from '../common/Abbreviation';
 import { useLocation } from 'react-router';
+import { Avatar } from 'components/common/avatar/Avatar';
 
 export const Header = () => {
   const {
@@ -96,28 +97,21 @@ export const Header = () => {
 
             {isLoggedIn ? (
               <S.PrivateField>
-                <S.AvatarWrapper>
-                  <Abbreviation
-                    $fontSize="14px"
-                    $fontWeight="500"
-                    $lineHeight="1.4"
-                  />
-                </S.AvatarWrapper>
-                <p className="my-page">Моя сторінка</p>
-
                 <S.DropdownBtn
                   type="button"
                   aria-label="dropdown-menu"
                   onClick={ () => setIsDropdownShown( !isDropdownShown ) }
-                  $rotate={ isDropdownShown }
                 >
-                  <div>
+                  <S.ContentBtnDropdown>
+                    <Avatar $widthHeight="32px" $fontSize="14px" />
+                    <S.TextBtn>Моя сторінка</S.TextBtn>
                     <IconSvg
                       width="11px"
                       height="11px"
                       icon="icon-arrow-down"
+                      $transformRotate={ isDropdownShown }
                     />
-                  </div>
+                  </S.ContentBtnDropdown>
                 </S.DropdownBtn>
 
                 {isDropdownShown && <Dropdown />}
