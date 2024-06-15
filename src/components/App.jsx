@@ -1,5 +1,6 @@
 import React, { lazy, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 import Theme from '../theme/Theme';
 import Home from '../pages/HomePage';
 
@@ -8,7 +9,6 @@ import Layout from './Layout/Layout';
 import { PersonalInfo } from 'components/StudentPage/PersonalInfo';
 import { Reservation } from 'components/StudentPage/Reservation';
 import { PrivateRoute } from './PrivateRoute';
-import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { getStudentProfile, getTeacherProfile } from '../redux/auth/operations';
 import { PersonalInfoTeacher } from './TeacherProfilePage/PersonalInfo/PersonalInfoTeacher';
@@ -26,9 +26,7 @@ const Teacher = lazy( () => import( '../pages/TeacherPage' ) );
 const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userRole, token } = useAuth();
-  const isStudent = userRole === 'student';
-  const isTeacher = userRole === 'teacher';
+  const { isStudent, isTeacher, token } = useAuth();
 
   useEffect( () => {
     if ( !token ) return;
@@ -42,7 +40,7 @@ const App = () => {
       dispatch( getTeacherProfile() );
       navigate( '/teacher/info' );
     }
-  }, [ userRole ] );
+  }, [ isStudent, isTeacher ] );
 
   return (
     <>
