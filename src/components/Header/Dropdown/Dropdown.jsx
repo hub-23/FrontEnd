@@ -1,40 +1,23 @@
 import React from 'react';
 import { useAuth } from 'hooks/useAuth';
-// import { Abbreviation } from '../../common/Abbreviation';
-// import { AvatarWrapper } from '../Header.styled';
-import * as S from './Dropdown.styled';
 import { ItemNavbar } from 'components/common/privatePage/ItemNavbar';
 import { Navigation } from 'components/common/privatePage/Navigation';
-import { AvatarLeters } from 'components/common/avatar/AvatarLeters';
+import { Avatar } from 'components/common/avatar/Avatar';
+import * as S from './Dropdown.styled';
 
 export const Dropdown = () => {
   const { user, isStudent, isTeacher } = useAuth();
   const { name, email } = user;
-  // const isStudent = userRole === 'student';
-  // const isTeacher = userRole === 'teacher';
   const paddingNav = '16px 0 16px 20px';
   const borderRadiusNav = '60px 0 0 60px';
 
   return (
     <S.Dropdown>
-      {/* !!! Replaced !!! */}
-      {/* <S.PersonalData>
-        <AvatarWrapper $dropdown>
-          <Abbreviation $fontSize="20px" $fontWeight="500" $lineHeight="1.4" />
-        </AvatarWrapper>
-        <div className="meta-wrapper">
-          <p className="name">{user?.name}</p>
-          <p className="email">{user?.email}</p>
-        </div>
-      </S.PersonalData> */}
-
       <S.DataUser>
-        <AvatarLeters />
+        <Avatar />
         <div>
           <S.Name>{name}</S.Name>
           <S.Email>{email}</S.Email>
-          {/* <S.Name>{user?.name}</S.Name>
-          <S.Email>{user?.email}</S.Email> */}
         </div>
       </S.DataUser>
 

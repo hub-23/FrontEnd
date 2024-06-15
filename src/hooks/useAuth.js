@@ -15,7 +15,6 @@ export const useAuth = () => {
     isLoading: useSelector( selectIsLoading ),
     token: useSelector( selectToken ),
     isError: useSelector( selectIsError ),
-    userRole: useSelector( selectUserRole ),
     isStudent: useSelector( selectUserRole ) === 'student',
     isTeacher: useSelector( selectUserRole ) === 'teacher',
   };
