@@ -16,5 +16,7 @@ export const useAuth = () => {
     token: useSelector( selectToken ),
     isError: useSelector( selectIsError ),
     userRole: useSelector( selectUserRole ),
+    isStudent: useSelector( selectUserRole ) === 'student',
+    isTeacher: useSelector( selectUserRole ) === 'teacher',
   };
 };

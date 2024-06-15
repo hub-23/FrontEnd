@@ -51,3 +51,25 @@ export const PersonalData = styled.div`
     }
   }
 `;
+
+// K-Basket
+
+export const DataUser = styled.div`
+  display: flex;
+  gap: 12px;
+  align-items: center;
+`;
+
+export const Name = styled.p`
+  font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+  font-size: 20px;
+  font-weight: 500;
+  line-height: calc(28 / 20);
+`;
+
+export const Email = styled.p`
+  font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+  font-size: 14px;
+  font-weight: 400;
+  line-height: calc(19.6 / 14);
+`;
