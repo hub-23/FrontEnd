@@ -17,9 +17,10 @@ export const Dropdown = styled.div`
   right: 0px;
   width: 400px;
   /* height: 320px; */
-  border-radius: 20px 0;
   padding: 36px 40px;
   padding-right: 0;
+
+  border-radius: 20px 0;
   background-color: ${props => props.color || props.theme.colors.white};
   box-shadow: 0px -1px 4px 0px rgba(45, 45, 45, 0.05),
     4px 4px 4px 0px rgba(45, 45, 45, 0.2),

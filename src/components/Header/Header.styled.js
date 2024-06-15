@@ -154,12 +154,12 @@ export const PrivateField = styled.div`
   justify-content: center;
   align-items: center;
 
-  .my-page {
+  /* .my-page {
     margin-right: 8px;
     font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
     font-size: 20px;
     line-height: calc(28 / 20);
-  }
+  } */
 `;
 
 export const AvatarWrapper = styled.div`
@@ -182,18 +182,22 @@ export const AvatarWrapperMobile = styled( AvatarWrapper )`
 `;
 
 export const DropdownBtn = styled.button`
-  width: 24px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
   border: none;
+  background-color: transparent;
   fill: ${props => props.color || props.theme.colors.black};
   -webkit-transition: rotate ${transition};
   transition: rotate ${transition};
-  > div {
-    width: fit-content;
-    transform: ${props => ( props.$rotate ? 'rotate(180deg)' : '' )};
-  }
+`;
+
+export const ContentBtnDropdown = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const TextBtn = styled.p`
+  margin-right: 8px;
+  font-family: ${props => props.fontFamily || props.theme.fontFamily.primary};
+  font-size: 20px;
+  line-height: calc(28 / 20);
 `;
