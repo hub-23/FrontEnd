@@ -13,7 +13,7 @@ const show = keyframes`
 export const Dropdown = styled.div`
   position: absolute;
   /* bottom: -345px; */
-  top: 80px;
+  top: 60px;
   right: 0px;
   width: 400px;
 
