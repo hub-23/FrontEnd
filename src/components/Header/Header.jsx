@@ -9,11 +9,12 @@ import { ModalLogin } from './modals/ModalLogin';
 import { ModalLastStep } from '../HomePage/Hero/modals/ModalLastStep';
 import { ModalConfirmEmail } from '../HomePage/Hero/modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
-import { Dropdown } from './Dropdown/Dropdown'; // student's page
+// import { Dropdown } from './Dropdown/Dropdown'; // student's page
 import { useAuth } from 'hooks/useAuth';
 import { Abbreviation } from '../common/Abbreviation';
 import { useLocation } from 'react-router';
 import { Avatar } from 'components/common/avatar/Avatar';
+import { DropdownMenu } from './Dropdown/DropdownMenu';
 
 export const Header = () => {
   const {
@@ -97,24 +98,38 @@ export const Header = () => {
 
             {isLoggedIn ? (
               <S.PrivateField>
-                <S.DropdownBtn
-                  type="button"
-                  aria-label="dropdown-menu"
-                  onClick={ () => setIsDropdownShown( !isDropdownShown ) }
-                >
-                  <S.ContentBtnDropdown>
-                    <Avatar $widthHeight="32px" $fontSize="14px" />
-                    <S.TextBtn>Моя сторінка</S.TextBtn>
-                    <IconSvg
-                      width="11px"
-                      height="11px"
-                      icon="icon-arrow-down"
-                      $transformRotate={ isDropdownShown }
-                    />
-                  </S.ContentBtnDropdown>
-                </S.DropdownBtn>
+                {!isLoggedIn && (
+                  <S.DropdownBtn
+                    type="button"
+                    aria-label="dropdown-menu"
+                    onClick={ () => setIsDropdownShown( !isDropdownShown ) }
+                  >
+                    <S.ContentBtnDropdown>
+                      <Avatar $widthHeight="32px" $fontSize="14px" />
+                      <S.TextBtn>Моя сторінка</S.TextBtn>
+                      <IconSvg
+                        width="11px"
+                        height="11px"
+                        icon="icon-arrow-down"
+                        $transformRotate={ isDropdownShown }
+                      />
+                    </S.ContentBtnDropdown>
+                  </S.DropdownBtn>
+                )}
 
-                {isDropdownShown && <Dropdown />}
+                {/* <Dropdown
+                // setDropDown={ () => setIsDropdownShown( !isDropdownShown ) }
+                // isDropdown={ isDropdownShown }
+                /> */}
+
+                {/* {isDropdownShown && (
+                  <Dropdown
+                    setDropDown={ () => setIsDropdownShown( !isDropdownShown ) }
+                    isDropdown={ isDropdownShown }
+                  />
+                )} */}
+
+                <DropdownMenu />
               </S.PrivateField>
             ) : (
               <S.SignInBtn
