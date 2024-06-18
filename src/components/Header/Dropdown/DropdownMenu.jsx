@@ -20,7 +20,7 @@ export const DropdownMenu = () => {
   const dropdownRef = useRef( null );
 
   useClickOutside( dropdownRef, () => {
-    if ( isShow ) setTimeout( () => setIsShow( false ), 50 );
+    if ( isShow ) setTimeout( () => setIsShow( false ), 150 );
   } );
 
   // useEffect( () => {
