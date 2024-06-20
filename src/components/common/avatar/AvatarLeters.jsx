@@ -7,7 +7,6 @@ export const AvatarLeters = ( { ...props } ) => {
   return (
     <S.Wrapp { ...props }>
       <Abbreviation { ...props } />
-      {/* <Abbreviation $fontSize="20px" $fontWeight="500" $lineHeight="1.4" /> */}
     </S.Wrapp>
   );
 };

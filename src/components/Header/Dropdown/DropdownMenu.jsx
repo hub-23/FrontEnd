@@ -3,11 +3,11 @@ import { useAuth } from 'hooks/useAuth';
 import { ItemNavbar } from 'components/common/privatePage/ItemNavbar';
 import { Navigation } from 'components/common/privatePage/Navigation';
 import { Avatar } from 'components/common/avatar/Avatar';
-import * as S from './DropdownMenu.styled';
-import * as H from '../Header.styled';
 import { IconSvg } from 'components/common/IconSvg';
 import { useCloseDropdown } from 'hooks/useCloseDropdown';
 import { toggleState } from 'helpers/toggleState';
+import * as S from './DropdownMenu.styled';
+import * as H from '../Header.styled';
 
 export const DropdownMenu = () => {
   const { user, isStudent, isTeacher } = useAuth();
@@ -69,7 +69,7 @@ export const DropdownMenu = () => {
                 />
                 <ItemNavbar
                   linkTo="/student/reservation"
-                  text="МоЇ бронювання"
+                  text="Мої бронювання"
                   icon="icon-calendar-tick"
                   setState={ setIsShow }
                   $padding={ paddingNav }
@@ -90,7 +90,7 @@ export const DropdownMenu = () => {
                 />
                 <ItemNavbar
                   linkTo="/teacher/reservation"
-                  text="МоЇ бронювання"
+                  text="Мої бронювання"
                   icon="icon-calendar-tick"
                   setState={ setIsShow }
                   $padding={ paddingNav }
