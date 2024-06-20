@@ -7,6 +7,7 @@ import * as S from './DropdownMenu.styled';
 import * as H from '../Header.styled';
 import { IconSvg } from 'components/common/IconSvg';
 import { useCloseDropdown } from 'hooks/useCloseDropdown';
+import { toggleState } from 'helpers/toggleState';
 
 export const DropdownMenu = () => {
   const { user, isStudent, isTeacher } = useAuth();
@@ -20,10 +21,6 @@ export const DropdownMenu = () => {
 
   const dropdownRef = useRef( null );
 
-  const toggleIsShow = () => {
-    setIsShow( !isShow );
-  };
-
   clickOutside( dropdownRef, () => {
     if ( isShow ) setTimeout( () => setIsShow( false ), 150 );
   } );
@@ -35,7 +32,7 @@ export const DropdownMenu = () => {
       <H.DropdownBtn
         type="button"
         aria-label="dropdown-menu"
-        onClick={ toggleIsShow }
+        onClick={ toggleState( isShow, setIsShow ) }
       >
         <H.ContentBtnDropdown>
           <Avatar $widthHeight="32px" $fontSize="14px" />
