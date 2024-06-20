@@ -12,7 +12,7 @@ const TeacherPage = () => {
       />
       <ItemNavbar
         linkTo="/teacher/reservation"
-        text="МоЇ бронювання"
+        text="Мої бронювання"
         icon="icon-calendar-tick"
       />
       <ItemNavbar
