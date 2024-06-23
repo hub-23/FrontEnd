@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { Container } from 'utils/common.styled';
+// import { Contain } from 'utils/common.styled';
 import { grayStroke } from 'utils/variables.styled';
+
+// export const ContainerPage = styled( Contain )`
+//   display: flex;
+//   padding: 144px 160px 80px 0px;
+// `;
 
 export const ContainerPage = styled( Container )`
   display: flex;

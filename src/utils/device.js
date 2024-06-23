@@ -16,4 +16,8 @@ export const device = {
   xl: `(max-width: ${size.xl})`,
   xxl: `(max-width: ${size.xxl})`,
   xxxl: `(max-width: ${size.xxl})`,
+
+  mobile: `(min-width: ${size.sm})`,
+  tablet: `(min-width: ${size.md})`,
+  desktop: `(min-width: ${size.xxl})`,
 };

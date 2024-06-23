@@ -18,6 +18,41 @@ export const Container = styled.section`
     padding: 80px 20px;
   }
 `;
+// K-Basket
+export const Section = styled.section`
+  padding: 80px 40px;
+
+  @media ${device.tablet} {
+    padding: 80px 20px;
+  }
+
+  @media ${device.desktop} {
+    padding: 120px 160px;
+  }
+`;
+
+export const Contain = styled.div`
+  outline: 2px solid aqua;
+
+  margin-left: auto;
+  margin-right: auto;
+  /* padding: 80px 40px; */
+
+  @media ${device.mobile} {
+    width: 480px;
+  }
+
+  @media ${device.tablet} {
+    width: 768px;
+    /* padding: 80px 20px; */
+  }
+
+  @media ${device.desktop} {
+    /* width: 1440px; */
+    width: 1120px;
+    /* padding: 120px 160px; */
+  }
+`;
 
 export const InputСircle = styled( Field )`
   position: relative;
