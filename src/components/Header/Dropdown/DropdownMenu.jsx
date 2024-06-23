@@ -5,7 +5,6 @@ import { Navigation } from 'components/common/privatePage/Navigation';
 import { Avatar } from 'components/common/avatar/Avatar';
 import { IconSvg } from 'components/common/IconSvg';
 import { useCloseDropdown } from 'hooks/useCloseDropdown';
-import { toggleState } from 'helpers/toggleState';
 import * as S from './DropdownMenu.styled';
 import * as H from '../Header.styled';
 
@@ -32,7 +31,7 @@ export const DropdownMenu = () => {
       <H.DropdownBtn
         type="button"
         aria-label="dropdown-menu"
-        onClick={ toggleState( isShow, setIsShow ) }
+        onClick={ () => setIsShow( !isShow ) }
       >
         <H.ContentBtnDropdown>
           <Avatar $widthHeight="32px" $fontSize="14px" />
