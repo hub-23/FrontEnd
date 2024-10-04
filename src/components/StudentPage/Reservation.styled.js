@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 import { transition } from '../../utils/variables.styled';
+import { device } from 'utils/device';
 
 export const Container = styled.div`
   margin-left: 16px;
+
+  @media ${device.xl} {
+    margin-left: 0px;
+  }
 `;
 
 export const Title = styled.h3`
-  //   width: 489px;
-  //   height: 50px;
   white-space: nowrap;
   font-size: 36px;
   line-height: 140%;
@@ -25,6 +28,17 @@ export const NavList = styled.ul`
   display: flex;
   margin-bottom: 20px;
 
+  @media ${device.md} {
+    width:100%;
+  }
+
+li{
+
+@media ${device.md} {
+      flex-grow: 1;
+    }
+}
+
   button {
     display: flex;
     justify-content: center;
@@ -38,6 +52,12 @@ export const NavList = styled.ul`
     line-height: calc( 33.6 / 24 );
     border: 1px solid ${props => props.color || props.theme.colors.black};
     transition: background-color ${transition}, color ${transition};
+
+    @media ${device.md} {
+      width: 100%;
+      height: 44px;
+      font-size: 20px;
+    }
   }
 
   li:first-child button {
@@ -63,4 +83,8 @@ export const CardList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+    @media ${device.md} {
+      gap: 16px;
+    }
 `;

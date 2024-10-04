@@ -84,6 +84,22 @@ export const Card = ( { data, status } ) => {
           <S.Dynamic>{price}</S.Dynamic>
         </div>
       </S.TimeTable>
+      {status === 'notActive' && (
+          <S.FeedbackButtonMobile
+            variant="blue"
+            onClick={ () => setFeedbackModalShown( true ) }
+          >
+            Залишити відгук
+          </S.FeedbackButtonMobile>
+        )}
+        {status === 'active' && (
+          <S.FeedbackButtonMobile
+            variant="pink"
+            onClick={ () => setClassCancelationModalShown( true ) }
+          >
+            Скасувати заняття
+          </S.FeedbackButtonMobile>
+        )}
 
       {classCancelationModalShown && (
         <Modal onActiveModal={ () => setClassCancelationModalShown( false ) }>
@@ -97,12 +113,12 @@ export const Card = ( { data, status } ) => {
       {isCancelationNotifShown && (
         <Modal onActiveModal={ () => {
             setIsCancelationNotifShown( false );
-            setIsCancelBanNotifShown( false );           
+            setIsCancelBanNotifShown( false );
         } }>
           <Notification
             onNotificationClose={ () => {
               setIsCancelationNotifShown( false );
-              setIsCancelBanNotifShown( false );           
+              setIsCancelBanNotifShown( false );
             } }
             success={ isCancelBanNotifShown ? false : success }
             title={ isCancelBanNotifShown
