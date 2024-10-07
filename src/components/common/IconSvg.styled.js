@@ -7,7 +7,7 @@ export const Svg = styled.svg`
   stroke: ${( { $stroke } ) => $stroke};
   fill: ${( { $fill } ) => $fill};
   transform: ${( { $transformRotate } ) =>
-    $transformRotate ? 'rotate(180deg)' : ''};
+    $transformRotate };
 
   @media ${device.md} {
     width: ${( { $mdWidth } ) => $mdWidth};

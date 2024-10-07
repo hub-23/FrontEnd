@@ -40,7 +40,7 @@ export const DropdownMenu = () => {
             width="11px"
             height="11px"
             icon="icon-arrow-down"
-            $transformRotate={ isShow }
+            $transformRotate={ isShow ? 'rotate(180deg)' : null }
           />
         </H.ContentBtnDropdown>
       </H.DropdownBtn>
