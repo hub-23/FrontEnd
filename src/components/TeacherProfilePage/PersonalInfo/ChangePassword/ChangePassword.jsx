@@ -46,8 +46,6 @@ export const ChangePassword = ( {
           }
           value={ newPassword }
           component="student"
-          // onSubmit= { handleSubmit }
-          // onChange={ handleSubmit }
         />
         <div style={ { position: 'relative' } }>
           <Note
@@ -82,7 +80,6 @@ export const ChangePassword = ( {
           }
           value={ repeatNewPassword }
           component="student"
-          // onChange={ handleChange }
         />
       </div>
     </S.Wrapp>

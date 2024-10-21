@@ -14,11 +14,13 @@ import { useAuth } from 'hooks/useAuth';
 import {
   updateStudentDetails,
   changePassword,
-  deleteAccountStudent } from '../../../redux/auth/operations';
+  deleteAccountStudent,
+} from '../../../redux/auth/operations';
 import { AboutMe } from './AboutMe/AboutMe';
 import { Expertise } from './Expertise/Expertise';
 import { Adress } from './Address/Adress';
 import { SocialNetwork } from './SocialNetwork/SocialNetwork';
+import { PhotoGallery } from './PhotoGallery/PhotoGallery';
 
 export const PersonalInfoTeacher = () => {
   const [ isSendNotificationShown, setIsSendNotificationShown ] = useState( false );
@@ -64,6 +66,21 @@ export const PersonalInfoTeacher = () => {
       [ ref( 'newPassword' ), null ],
       'Пароль не співпадає з вище вказаним'
     ),
+    country: string()
+      .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .matches( /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\s]*$/, 'Країну введено не вірно' )
+      .required( 'Вкажіть вашу країну' ),
+    city: string()
+      .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .matches( /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\s]*$/, 'Місто введено не вірно' )
+      .required( 'Вкажіть ваше місто' ),
+    street: string()
+      .min( 2, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .max( 30, 'Вкажіть мінімум 2 літери, але не більше 30' )
+      .matches( /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\s]*$/, 'Адресу введено не вірно' )
+      .required( 'Вкажіть вашу адресу' ),
   } );
 
   const initialValues = {
@@ -74,6 +91,12 @@ export const PersonalInfoTeacher = () => {
     currentPassword: '',
     newPassword: '',
     repeatNewPassword: '',
+    country: 'Ukraine' || localStorage.getItem( 'teacher-country' ) || '',
+    city: 'Kyiv' || localStorage.getItem( 'teacher-city' ) || '',
+    street: 'T.Shevchenko' || localStorage.getItem( 'teacher-street' ) || '',
+    instagram: 'o_oleshko' || localStorage.getItem( 'teacher-instagram' ) || '',
+    facebook:
+      'Олександр Олешко' || localStorage.getItem( 'teacher-facebook' ) || '',
   };
 
   const handleSubmit = async () => {
@@ -154,11 +177,12 @@ export const PersonalInfoTeacher = () => {
               currentPassword,
               newPassword,
               repeatNewPassword,
+              country,
+              city,
+              street,
             },
             touched,
             values,
-            // setValues,
-            // setTouched,
             isSubmitting,
             dirty,
           } = formik;
@@ -178,6 +202,9 @@ export const PersonalInfoTeacher = () => {
           const errNewPassword = newPassword && touched.newPassword;
           const errRepeatNewPassword
             = repeatNewPassword && touched.repeatNewPassword;
+          const errCountry = country && touched.country;
+          const errCity = city && touched.city;
+          const errStreet = street && touched.street;
 
           const handleGetPhone = values => {
             if ( values !== null ) {
@@ -209,35 +236,32 @@ export const PersonalInfoTeacher = () => {
 
               <S.Section>
                 <S.Title>Предмет викладання</S.Title>
-                <Expertise
-
-                />
+                <Expertise />
               </S.Section>
 
               <S.Section>
                 <S.Title>Адреси</S.Title>
                 <Adress
-                  // valueInput={ values.phone }
-                  getPhone={ handleGetPhone }
-                  isDataUser={ isDataUser }
-                  error={ errPhone }
+                  values={ values }
+                  country={ values.country }
+                  city={ values.city }
+                  street={ values.street }
+                  errCountry={ errCountry }
+                  errCity={ errCity }
+                  errStreet={ errStreet }
                 />
               </S.Section>
 
               <S.Section>
                 <S.Title>Фотогалерея</S.Title>
-                <ChangePassword
-                  errCurrentPassword={ errCurrentPassword }
-                  errNewPassword={ errNewPassword }
-                  errRepeatNewPassword={ errRepeatNewPassword }
-                  values={ values }
-                />
+                <PhotoGallery />
               </S.Section>
 
               <S.Section>
                 <S.Title>Соціальні мережі</S.Title>
                 <SocialNetwork
-
+                  instagram={ values.instagram }
+                  facebook={ values.facebook }
                 />
               </S.Section>
 
