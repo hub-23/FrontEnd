@@ -8,7 +8,7 @@ export const PhoneCode = styled.div`
   left: ${( { $xlPositionLeftList } ) => $xlPositionLeftList};
   width: ${( { $isShow } ) => $isShow && '100%'};
 
-  z-index: 3;
+  z-index: ${( { $isShow } ) => $isShow ? '4' : '3'};;
   cursor: pointer;
 
   @media ${device.md} {
