@@ -6,6 +6,9 @@ import * as S from './InputFieldPhone.styled';
 import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 import { FormError } from './FormError';
 import { useAuth } from 'hooks/useAuth';
+import { IconBtn } from '../IconBtn';
+import { IconSvg } from '../IconSvg';
+import { black } from 'utils/variables.styled';
 
 const validateNumber = number => {
   if ( Number( number.replaceAll( ' ', '' ) ) ) return true;
@@ -18,6 +21,7 @@ export const InputFieldPhone = ( {
   isDataUser,
   error,
   submitPhone,
+  customIcon,
   ...props
 } ) => {
   const { user } = useAuth();
@@ -84,6 +88,17 @@ export const InputFieldPhone = ( {
         { ...props }
         style={ { paddilgLeft: '90px' } }
       />
+      { customIcon && (
+        <IconBtn xlRight="36px" xlTop="18px" smRight="20px" smTop="13px">
+          <IconSvg
+            xlWidth="24px"
+            xlHeight="24px"
+            $fill={ black }
+            icon={ customIcon }
+            { ...props }
+          />
+        </IconBtn>
+      )}
 
       <FormError name={ name } />
 
