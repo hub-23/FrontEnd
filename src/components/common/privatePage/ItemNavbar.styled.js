@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { accent, black, lightGrey, primary, transition } from 'utils/variables.styled';
+import {
+  accent,
+  black,
+  lightGrey,
+  primary,
+  transition,
+} from 'utils/variables.styled';
 import { device } from 'utils/device';
 
 export const Link = styled( NavLink )`
@@ -39,7 +45,7 @@ export const Link = styled( NavLink )`
       background-color: transparent;
     }
 
-    &:hover{
+    &:hover {
       color: ${primary};
       border-color: ${primary};
     }
@@ -55,8 +61,8 @@ export const Text = styled.h3`
   line-height: calc( 28 / 20 );
   font-weight: 400;
 
-  @media ${device.md} {
+  @media ${device.sm} {
     font-size: 16px;
-    line-height: calc( 28 / 16 );
+    line-height: calc(22.4 / 16);
   }
 `;
