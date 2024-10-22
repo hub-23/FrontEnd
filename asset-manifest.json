@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/FrontEnd/static/css/main.49cea260.css",
-    "main.js": "/FrontEnd/static/js/main.b15280a6.js",
+    "main.js": "/FrontEnd/static/js/main.58e40c85.js",
     "static/js/709.a0696424.chunk.js": "/FrontEnd/static/js/709.a0696424.chunk.js",
     "static/js/811.a63abeb3.chunk.js": "/FrontEnd/static/js/811.a63abeb3.chunk.js",
     "static/js/965.5e0efb11.chunk.js": "/FrontEnd/static/js/965.5e0efb11.chunk.js",
@@ -18,7 +18,7 @@
     "static/media/image9.png": "/FrontEnd/static/media/image9.1a1b4c3694ceed65eb09.png",
     "static/media/image5.png": "/FrontEnd/static/media/image5.d58d2e5a780571a80eba.png",
     "static/media/image10.png": "/FrontEnd/static/media/image10.3ac1bacdefd000185301.png",
-    "static/media/sprite.svg": "/FrontEnd/static/media/sprite.8b7e2e5bda815470055842f59a4aa5de.svg",
+    "static/media/sprite.svg": "/FrontEnd/static/media/sprite.da8d2c6ee08aa021427758b8c0ce9dcd.svg",
     "static/media/image12.png": "/FrontEnd/static/media/image12.10cd473c1494414a3c1e.png",
     "static/media/image4.png": "/FrontEnd/static/media/image4.e2c0c04230ff897d23ba.png",
     "static/media/image3.png": "/FrontEnd/static/media/image3.87871ee9aa49f452641f.png",
@@ -27,6 +27,7 @@
     "static/media/Nunito.woff2": "/FrontEnd/static/media/Nunito.bcfaf5e91f47a2ab2f96.woff2",
     "static/media/Montserrat.woff2": "/FrontEnd/static/media/Montserrat.54589f6cdd8d619e994c.woff2",
     "static/media/bg-image.jpg": "/FrontEnd/static/media/bg-image.8b89fe957b609dd9fe16.jpg",
+    "static/media/banner_hub23.png": "/FrontEnd/static/media/banner_hub23.3acb1ff959ccbaed1cd3.png",
     "static/media/35.png": "/FrontEnd/static/media/35.6fd0bbad1f1a5b1af8b9.png",
     "static/media/13.png": "/FrontEnd/static/media/13.f1c3b83e51292c121de8.png",
     "static/media/19.png": "/FrontEnd/static/media/19.e0b978313330b681d0d5.png",
@@ -76,7 +77,7 @@
     "static/media/pinIcon.svg": "/FrontEnd/static/media/pinIcon.d212070aead272a667a0ed12d8980399.svg",
     "static/media/circleIcon.svg": "/FrontEnd/static/media/circleIcon.e84ed7448ba266138149650023ed69a6.svg",
     "main.49cea260.css.map": "/FrontEnd/static/css/main.49cea260.css.map",
-    "main.b15280a6.js.map": "/FrontEnd/static/js/main.b15280a6.js.map",
+    "main.58e40c85.js.map": "/FrontEnd/static/js/main.58e40c85.js.map",
     "709.a0696424.chunk.js.map": "/FrontEnd/static/js/709.a0696424.chunk.js.map",
     "811.a63abeb3.chunk.js.map": "/FrontEnd/static/js/811.a63abeb3.chunk.js.map",
     "965.5e0efb11.chunk.js.map": "/FrontEnd/static/js/965.5e0efb11.chunk.js.map",
@@ -85,6 +86,6 @@
   },
   "entrypoints": [
     "static/css/main.49cea260.css",
-    "static/js/main.b15280a6.js"
+    "static/js/main.58e40c85.js"
   ]
 }
