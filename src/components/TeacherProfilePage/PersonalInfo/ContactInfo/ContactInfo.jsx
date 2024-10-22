@@ -49,8 +49,10 @@ export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
         $smHeightList="290px"
         $xlGapList="12px"
         $xlFontSizeList="16px"
+        customIcon="icon-phone"
+        $stroke="none"
       />
-            <InputFieldPhone
+      <InputFieldPhone
         name="phone"
         valueInput={ valueInput }
         submitPhone={ handleGetPhone }
@@ -64,8 +66,10 @@ export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
         $smHeightList="290px"
         $xlGapList="12px"
         $xlFontSizeList="16px"
+        customIcon="icon-viber"
+        $stroke="none"
       />
-            <InputFieldPhone
+      <InputFieldPhone
         name="phone"
         valueInput={ valueInput }
         submitPhone={ handleGetPhone }
@@ -79,8 +83,9 @@ export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
         $smHeightList="290px"
         $xlGapList="12px"
         $xlFontSizeList="16px"
+        customIcon="icon-telegram"
+        $stroke="none"
       />
     </S.Wrapp>
   );
 };
-

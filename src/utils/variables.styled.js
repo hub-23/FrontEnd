@@ -12,6 +12,12 @@ export const borderBlue = '#0360AB';
 export const borderGreen = '#01A47F';
 export const borderError = '#E3669C';
 export const bgColorGradientBtn = '268deg, #234890 0%, #08184c 100%';
+export const bgColorGradientNotactiveBtn
+= 'linear-gradient(rgba(9, 25, 77, 1), rgba(35, 72, 144, 1));';
+export const bgColorGradientBtnActive
+= 'linear-gradient(rgba(185, 39, 89, 1), rgba(227, 102, 156, 1))';
+
+
 
 export const transition = '250ms cubic-bezier(0.4, 0, 0.2, 1) 0s';
 export const transitionB = '500ms cubic-bezier(0, 0.1, 0.2, 1) 1';

@@ -8,6 +8,7 @@ import { BtnEye } from '../BtnEye';
 import { SaveToLocalStorage } from '../../../helpers/SaveToLocalStorage';
 import { grayText } from '../../../utils/variables.styled';
 import * as S from './Input.styled';
+import { IconBtn } from '../IconBtn';
 
 export const Input = ( {
   type,
@@ -21,6 +22,7 @@ export const Input = ( {
   formik,
   btnEye,
   component,
+  customIcon,
   ...props
 } ) => {
   const [ isDropdownShown, setIsDropdownShown ] = useState( false );
@@ -112,6 +114,22 @@ export const Input = ( {
           )}
         </BtnEye>
       )}
+        { customIcon && !isStar && (
+        <IconBtn
+            xlRight="36px"
+            xlTop="18px"
+            smRight="20px"
+            smTop="13px"
+            click={ () => setSowPassword( !showPassword ) }>
+              <IconSvg
+                xlWidth="24px"
+                xlHeight="24px"
+                // $fill={ grayText }
+                icon={ customIcon }
+                { ...props }
+              />
+            </IconBtn>
+          )}
       {name !== 'password' && (
         <SaveToLocalStorage component={ component } fieldName={ name } />
       )}

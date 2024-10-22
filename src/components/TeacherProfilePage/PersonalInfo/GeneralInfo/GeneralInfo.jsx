@@ -7,18 +7,18 @@ import * as S from './GeneralInfo.styled';
 import { Avatar } from '../../../../components/common/avatar/Avatar';
 import { PhotoHandler } from 'components/StudentPage/modals/PhotoHandler';
 import { IconSvg } from 'components/common/IconSvg';
-import { grayText } from 'utils/variables.styled';
 import { Rating } from './Rating';
 import { Button } from 'components/common/button/Button';
+import defoultBaner from '../../../../assets/banner_hub23.png';
 
 export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const [ modalOpen, setModalOpen ] = useState( false );
   const [ avatar, setAvatar ] = useState( '' );
+  const [ isActive, setIsActive ] = useState( false );
   const { user } = useAuth();
 
   const rating = 4; // fake rating
-  const status = 'нективний';
-  const views = 222;
+  const views = 222; // fake views
 
   useEffect( () => {
     const storedAvatar = localStorage.getItem( 'student-avatar' ) || user?.avatar;
@@ -30,6 +30,10 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const handleAvatarReceive = newAvatar => {
     setAvatar( newAvatar );
     localStorage.setItem( 'student-avatar', newAvatar );
+  };
+
+  const toggleStatus = () => {
+    setIsActive( prevStatus => !prevStatus );
   };
 
   return (
@@ -55,18 +59,20 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
         </div>
         <div className="text">
           <p>Завантажте зображення профілю</p>
-          <p>Розмір файлу не менше 300px × 300px. Формат JPG чи PNG.</p>
-          <S.InfoWrapper>
+          <p>
+            <span>Розмір файлу не менше 300px × 300px.</span>
+            <span>Формат JPG чи PNG.</span>
+          </p>
+          <S.InfoWrapper isActive={ isActive }>
             <Rating rating={ rating } />
-            <p>{status}</p>
+            <p>
+              {isActive ? 'активний' : 'неактивний'}
+            </p>
             <div>
               <IconSvg
                 xlWidth="16px"
                 xlHeight="16px"
-                smWidth="20px"
-                smHeight="20px"
-                $fill={ grayText }
-                icon="icon-eye"
+                icon="icon-eye-view"
               />
               <p>{views}</p>
             </div>
@@ -74,27 +80,39 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
         </div>
       </S.ProfilePhoto>
       <S.ButtonWrapper>
-        <Button>Деактивувати профіль</Button>
-        <Button>Активувати профіль</Button>
+        <Button
+          onClick={ toggleStatus }
+          isActive={ isActive }
+        >
+          Деактивувати профіль
+        </Button>
+        <Button
+          onClick={ toggleStatus }
+          isActive={ !isActive }
+        >
+          Активувати профіль
+        </Button>
       </S.ButtonWrapper>
       <S.BannerWrapper>
-          {!avatar && <Avatar />}
+        {avatar ? (
+          <img src={ avatar } alt="Обрізане фото" />
+        ) : (
+          <img src={ defoultBaner } />
+        )}
 
-          {avatar && <img src={ avatar } alt="Обрізане фото" />}
-
-          <button
-            type="button"
-            aria-label="add image"
-            onClick={ () => setModalOpen( true ) }
-          >
-            <svg width="16px" height="16px" className="default">
-              <use href={ `${sprite}#icon-add-avatar` }></use>
-            </svg>
-            <svg width="16px" height="16px" className="active">
-              <use href={ `${sprite}#icon-add-avatar-hover` }></use>
-            </svg>
-          </button>
-        </S.BannerWrapper>
+        <button
+          type="button"
+          aria-label="add image"
+          onClick={ () => setModalOpen( true ) }
+        >
+          <svg width="16px" height="16px" className="default">
+            <use href={ `${sprite}#icon-add-avatar` }></use>
+          </svg>
+          <svg width="16px" height="16px" className="active">
+            <use href={ `${sprite}#icon-add-avatar-hover` }></use>
+          </svg>
+        </button>
+      </S.BannerWrapper>
 
       <Input
         type="text"

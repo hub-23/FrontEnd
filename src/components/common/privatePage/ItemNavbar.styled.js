@@ -58,7 +58,8 @@ export const Link = styled( NavLink )`
 
 export const Text = styled.h3`
   font-size: 20px;
-  line-height: calc(28 / 20);
+  line-height: calc( 28 / 20 );
+  font-weight: 400;
 
   @media ${device.sm} {
     font-size: 16px;
