@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string, ref } from 'yup';
-import * as S from './PersonalInfoTeacher.styled';
 import { useDispatch } from 'react-redux';
-import { GeneralInfo } from './GeneralInfo/GeneralInfo';
-import { ContactInfo } from './ContactInfo/ContactInfo';
-import { ChangePassword } from './ChangePassword/ChangePassword';
 import { passwordExp } from 'utils/variables.styled';
 import { Modal } from 'components/common/modalElements/Modal';
 import { DeleteProfile } from 'components/StudentPage/modals/DeleteProfile';
 import { Notification } from 'components/common/modalElements/Notification';
 import { useAuth } from 'hooks/useAuth';
+
+import { ChangePassword } from './ChangePassword/ChangePassword';
+import { ContactInfo } from './ContactInfo/ContactInfo';
+import { GeneralInfo } from './GeneralInfo/GeneralInfo';
+import * as S from './PersonalInfoTeacher.styled';
 import {
   updateStudentDetails,
   changePassword,
