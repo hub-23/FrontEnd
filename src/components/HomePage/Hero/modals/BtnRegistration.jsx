@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Button } from './BtnRegistration.styled';
 
 export const BtnRegistration = ( {

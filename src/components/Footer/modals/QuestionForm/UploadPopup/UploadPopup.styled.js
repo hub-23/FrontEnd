@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+
 import { transition, transitionB } from '../../../../../utils/variables.styled';
 import { device } from '../../../../../utils/device';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapContainer } from 'react-leaflet';
 import L from 'leaflet';
+
 import { MapContent } from './MapContent';
 import 'leaflet/dist/leaflet.css';
 import './map.css'; // to override leaflet styles

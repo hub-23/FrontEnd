@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconSvg } from 'components/common/IconSvg';
+
 import * as S from './ImageWithDeleteBtn.styled';
 
 export const ImageWithDeleteBtn = ( { image, onImageDelete, ...props } ) => {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { device } from '../../../../../utils/device';
 import { white, primary } from 'utils/variables.styled';
+
+import { device } from '../../../../../utils/device';
 
 export const StyledCard = styled.div`
   max-width: 360px;

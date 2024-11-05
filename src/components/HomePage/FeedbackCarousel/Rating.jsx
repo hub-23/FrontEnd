@@ -1,4 +1,5 @@
 import React from 'react';
+
 import sprite from '../../../assets/sprite.svg';
 import * as S from './Feedback.styled';
 

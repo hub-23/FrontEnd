@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useState } from 'react';
 import _ from 'lodash';
+
 import { MapSmall } from './Map/MapSmall';
 import { MapBig } from './Map/MapBig';
 import * as S from './PeopleTrust.styled';

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { convertToPixelCrop } from 'react-image-crop';
 import axios from 'axios';
+
 import { useAuth } from '../../../hooks/useAuth';
 import * as S from './PhotoHandler.styled';
 import { BtnClose } from '../../common/modalElements/BtnClose';

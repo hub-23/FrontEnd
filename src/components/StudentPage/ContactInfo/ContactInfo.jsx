@@ -2,8 +2,9 @@ import React from 'react';
 import { useAuth } from 'hooks/useAuth';
 import { InputFieldPhone } from 'components/common/modalElements/InputFieldPhone';
 import { Note } from 'components/common/modalElements/Note';
-import * as S from './ContactInfo.styled';
 import { deepAccent, white } from 'utils/variables.styled';
+
+import * as S from './ContactInfo.styled';
 
 export const ContactInfo = ( { error, isDataUser, valueInput, getPhone } ) => {
   const { user } = useAuth();

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import {
   black,
   borderBlue,
@@ -8,7 +9,6 @@ import {
   grayText,
   white,
 } from '../../../utils/variables.styled';
-
 import 'react-phone-number-input/style.css';
 import { device } from '../../../utils/device';
 

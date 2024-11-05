@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { device } from '../../utils/device';
 import { Link } from 'react-router-dom';
+
+import { device } from '../../utils/device';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
 import { Button } from '../common/button/Button';
 import { transition } from '../../utils/variables.styled';

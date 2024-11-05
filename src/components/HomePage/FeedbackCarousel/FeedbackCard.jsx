@@ -1,5 +1,6 @@
 import React, { useRef, useState, useLayoutEffect } from 'react';
 import _ from 'lodash';
+
 import { Rating } from './Rating';
 import sprite from '../../../assets/sprite.svg';
 import * as S from './Feedback.styled';

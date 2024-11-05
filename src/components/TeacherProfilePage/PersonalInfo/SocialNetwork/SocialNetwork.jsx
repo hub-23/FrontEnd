@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input } from 'components/common/modalElements/Input';
+
 import { Wrapp } from '../ContactInfo/ContactInfo.styled';
 
 export const SocialNetwork = ( { instagram, facebook } ) => {

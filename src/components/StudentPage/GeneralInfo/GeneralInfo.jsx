@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from 'hooks/useAuth';
+import { Avatar } from 'components/common/avatar/Avatar';
+
 import { Modal } from '../../common/modalElements/Modal';
 import { PhotoHandler } from '../modals/PhotoHandler';
 import { Input } from '../../common/modalElements/Input';
-import { useAuth } from 'hooks/useAuth';
 import sprite from '../../../assets/sprite.svg';
 import * as S from './GeneralInfo.styled';
-import { Avatar } from 'components/common/avatar/Avatar';
+
 
 export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const [ modalOpen, setModalOpen ] = useState( false );

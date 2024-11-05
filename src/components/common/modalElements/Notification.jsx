@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { BtnClose } from './BtnClose';
 import { IconSvg } from '../IconSvg';
 import { accent } from '../../../utils/variables.styled';

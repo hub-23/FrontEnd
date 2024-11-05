@@ -1,4 +1,5 @@
 import React from 'react';
+
 // import { AvatarWrapper } from 'components/Header/Header.styled';
 import { Abbreviation } from '../Abbreviation';
 import * as S from './AvatarLeters.styled';

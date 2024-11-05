@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as S from './MobileMenu.styled';
 import { IconSvg } from '../../common/IconSvg';
 import { Navigation } from '../Navigation/Navigation';

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { ClassCancelation } from '../modals/ClassCancelation';
 import { Modal } from '../../common/modalElements/Modal';
 import { Notification } from '../../common/modalElements/Notification';

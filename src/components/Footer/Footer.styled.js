@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import { transition } from '../../utils/variables.styled';
 import { ReactComponent as LogoSvg } from '../../assets/home/logo.svg';
-import { Link } from 'react-router-dom';
 import { grayText } from '../../utils/variables.styled';
 
 export const FooterSection = styled.footer`

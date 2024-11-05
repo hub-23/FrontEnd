@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as S from './Feedback.styled';
 
 export const ControlBtn = ( { handlePlay, pathD } ) => {

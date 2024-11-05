@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { IconSvg } from '../IconSvg';
 import * as S from './BtnClose.styled';
 

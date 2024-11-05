@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { PopularСlasses } from '../components/HomePage/PopularСlasses/PopularСlasses';
 import TopTeachersCarousel from '../components/HomePage/TopTeachersCarousel';
 import { PeopleTrust } from '../components/HomePage/PeopleTrust/PeopleTrust';

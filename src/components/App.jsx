@@ -1,15 +1,15 @@
 import React, { lazy, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import Theme from '../theme/Theme';
-import Home from '../pages/HomePage';
-
-import GeneralStyles from '../generalStyles';
-import Layout from './Layout/Layout';
 import { PersonalInfo } from 'components/StudentPage/PersonalInfo';
 import { Reservation } from 'components/StudentPage/Reservation';
-import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
+
+import Theme from '../theme/Theme';
+import Home from '../pages/HomePage';
+import GeneralStyles from '../generalStyles';
+import Layout from './Layout/Layout';
+import { PrivateRoute } from './PrivateRoute';
 import { getStudentProfile, getTeacherProfile } from '../redux/auth/operations';
 import { PersonalInfoTeacher } from './TeacherProfilePage/PersonalInfo/PersonalInfoTeacher';
 import { ReservationTeacher } from './TeacherProfilePage/Reservation/ReservationTeacher';

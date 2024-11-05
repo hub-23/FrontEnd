@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { useGoogleLogin } from '@react-oauth/google';
 import { object, string } from 'yup';
+import { useDispatch } from 'react-redux';
 
 import * as S from './ModalLogin.styled';
 import {
@@ -17,7 +18,6 @@ import { BtnEye } from '../../common/BtnEye';
 import { BtnClose } from '../../common/BtnClose';
 import { useHubContext } from '../../../redux/Context';
 import { InputField } from '../../common/modalElements/InputField';
-import { useDispatch } from 'react-redux';
 import { login } from '../../../redux/auth/operations';
 
 export const ModalLogin = ( { onActiveModal } ) => {

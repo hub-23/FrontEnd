@@ -5,6 +5,7 @@ import { Navigation } from 'components/common/privatePage/Navigation';
 import { Avatar } from 'components/common/avatar/Avatar';
 import { IconSvg } from 'components/common/IconSvg';
 import { useCloseDropdown } from 'hooks/useCloseDropdown';
+
 import * as S from './DropdownMenu.styled';
 import * as H from '../Header.styled';
 

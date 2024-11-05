@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 import { grayText, transition } from '../../../utils/variables.styled';
 import { ReactComponent as LogoSvg } from '../../../assets/home/logo.svg';
 import { device } from '../../../utils/device';

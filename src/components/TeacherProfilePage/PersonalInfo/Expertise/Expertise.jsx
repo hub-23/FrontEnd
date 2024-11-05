@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import * as S from './Expertise.styled';
 import { IconSvg } from 'components/common/IconSvg';
 import { grayText } from 'utils/variables.styled';
 import { white } from 'utils/variables.styled';
 import { ImgDeleteBtn } from 'components/common/modalElements/ImageWithDeleteBtn.styled';
 import { UploadPopup } from 'components/Footer/modals/QuestionForm/UploadPopup/UploadPopup';
+
+import * as S from './Expertise.styled';
 
 export const Expertise = ( { props } ) => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );

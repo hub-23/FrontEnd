@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyledPhoto, Photo } from './OurTeachersCard.styled';
 
 const OurTeachersCard = ( { teacher } ) => {

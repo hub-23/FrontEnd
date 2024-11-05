@@ -1,4 +1,5 @@
 import React from 'react';
+
 import pause from '../../../../../assets/home/top-teachers/Pause.svg';
 import { ButtonToggle } from './ButtonToggle';
 

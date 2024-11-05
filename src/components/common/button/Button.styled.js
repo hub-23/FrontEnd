@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import { transition, grayStroke } from '../../../utils/variables.styled';
 
 export const variant = variants => props => {

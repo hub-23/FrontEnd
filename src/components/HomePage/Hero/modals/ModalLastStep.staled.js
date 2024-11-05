@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
+import { Link } from 'react-router-dom';
+
 import {
   accent,
   black,
@@ -9,8 +12,6 @@ import {
   grayText,
   white,
 } from '../../../../utils/variables.styled';
-import { Field, Form } from 'formik';
-import { Link } from 'react-router-dom';
 import checkbox0 from '../../../../assets/home/modal/checkbox0.svg';
 import checkbox1 from '../../../../assets/home/modal/checkbox1.svg';
 import { device } from '../../../../utils/device';

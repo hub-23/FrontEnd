@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router';
+
 import { BtnNavbar } from './BtnNavbar';
 import * as S from './PrivatePage.styled';
 // import { Section } from 'utils/common.styled';

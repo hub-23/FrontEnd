@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { device } from 'utils/device';
+
 import { Button } from '../../common/button/Button';
 import { grayStroke, grayText } from '../../../utils/variables.styled';
-import { device } from 'utils/device';
 
 export const Container = styled.li`
     display: flex;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { bgModal } from '../../../utils/variables.styled';
 import { device } from '../../../utils/device';
 

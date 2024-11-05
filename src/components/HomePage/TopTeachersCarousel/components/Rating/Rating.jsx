@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyledRating } from './Rating.styled';
 import Star from './Star';
 

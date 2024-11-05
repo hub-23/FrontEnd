@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 // import image from '../../assets/home/hero/bg-image.jpg';
 import image from '../../../assets/home/hero/bg-image.jpg';
 import image2x from '../../../assets/home/hero/bg-image-2x.jpg';
