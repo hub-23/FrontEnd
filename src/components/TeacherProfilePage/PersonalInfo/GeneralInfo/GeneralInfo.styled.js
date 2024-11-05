@@ -41,7 +41,7 @@ export const ProfilePhoto = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: ${props => props.color || props.theme.colors.accent};
+    background-color: ${props => !props.avatar ? props.color || props.theme.colors.accent : ' ' };
 
     @media ${device.md} {
       width: 96px;
@@ -214,7 +214,7 @@ export const BannerWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 20px 0;
-  background-color: ${props => props.color || props.theme.colors.accent};
+  /* background-color: ${props => props.color || props.theme.colors.accent}; */
 
   img {
     width: 100%;
@@ -230,7 +230,7 @@ export const BannerWrapper = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 20px 0;
-    background-color: ${props => props.color || props.theme.colors.accent};
+    /* background-color: ${props => props.color || props.theme.colors.accent}; */
     img {
       width: 100%;
       height: 100%;
