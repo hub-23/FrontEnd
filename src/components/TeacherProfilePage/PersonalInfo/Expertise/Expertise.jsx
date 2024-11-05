@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import * as S from './Expertise.styled';
 import { IconSvg } from 'components/common/IconSvg';
 import { grayText } from 'utils/variables.styled';
 import { white } from 'utils/variables.styled';
 import { ImgDeleteBtn } from 'components/common/modalElements/ImageWithDeleteBtn.styled';
 import { UploadPopup } from 'components/Footer/modals/QuestionForm/UploadPopup/UploadPopup';
+import { Modal } from 'components/common/modalElements/Modal';
+import { Notification } from 'components/common/modalElements/Notification';
+
+import * as S from './Expertise.styled';
+import { DeleteLesson } from '../../modals/DeleteLesson';
 
 export const Expertise = ( { props } ) => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
+  const [ isSendNotificationShown, setIsSendNotificationShown ] = useState( false );
+  const [ deleteLessonModalShown, setDeleteLessonModalShown ] = useState( false );
+  const [ lessonToDelete, setLessonToDelete ] = useState( null );
 
   const fakeLessons = [
     { name: 'Німецька мова', price: '300 грн' },
@@ -22,7 +29,7 @@ export const Expertise = ( { props } ) => {
   const [ lessons, setLessons ] = useState( storedLessons );
 
   const handleLessonSelect = value => {
-    if ( !lessons.includes( value ) ) {
+    if ( !lessons.some( lesson => lesson.name === value.name ) ) {
       setLessons( prev => [ ...prev, value ] );
     } else {
       alert( 'Поточне зображення вже додано.' );
@@ -30,8 +37,12 @@ export const Expertise = ( { props } ) => {
   };
 
   const handleLessonDelete = value => {
-    const updatedLessons = lessons.filter( lesson => lesson.name !== value.name );
-    setLessons( updatedLessons );
+    if ( lessonToDelete ) {
+      const updatedLessons = lessons.filter( lesson => lesson.name !== value.name );
+      setLessons( updatedLessons );
+      setDeleteLessonModalShown ( true )
+      setIsSendNotificationShown ( true )
+    }
   };
 
   useEffect( () => {
@@ -55,7 +66,10 @@ export const Expertise = ( { props } ) => {
               <ImgDeleteBtn
                 type="button"
                 aria-label="delete"
-                onClick={ () => handleLessonDelete( lesson ) }
+                onClick={ () => { setLessonToDelete( lesson );
+                  setDeleteLessonModalShown( true );
+                }
+                 }
                 { ...props }
               >
                 <IconSvg
@@ -86,6 +100,30 @@ export const Expertise = ( { props } ) => {
       </S.AddButton>
       {uploadPopupVisible && (
         <UploadPopup handleLessonSelect={ handleLessonSelect } />
+      )}
+            {deleteLessonModalShown && (
+        <Modal onActiveModal={ () => setDeleteLessonModalShown( false ) }>
+          <DeleteLesson
+            onDeleteLessonModalClose={ () => setDeleteLessonModalShown( false ) }
+            // onNotificationShow={ () => handleLessonDelete() }
+            onDeleteLesson={ handleLessonDelete }
+          />
+        </Modal>
+      )}
+            {isSendNotificationShown && (
+        <Modal onActiveModal={ () => setIsSendNotificationShown( false ) }>
+          <Notification
+            onNotificationClose={ () => setIsSendNotificationShown( false ) }
+            // success={ success }
+            // title={ success ? 'Зміни успішно збережено' : 'Сталась помилка' }
+            // description={
+            // success
+            // eslint-disable-next-line max-len
+            //     ? 'Оновлено особисту інформацію. Будьте уважні, при оновленні пароля автоматично відбудеться вихід із профілю з усіх пристроїв на яких відкрито сторінку.'
+            //     : 'Щось пішло не так, тому спробуйте ще раз або виконайте цю дію пізніше'
+            // }
+          />
+        </Modal>
       )}
     </S.Container>
   );
