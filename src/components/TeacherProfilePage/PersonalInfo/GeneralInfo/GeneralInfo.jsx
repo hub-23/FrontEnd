@@ -15,6 +15,7 @@ import defoultBaner from '../../../../assets/banner_hub23.png';
 export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const [ modalOpen, setModalOpen ] = useState( false );
   const [ avatar, setAvatar ] = useState( '' );
+  const [ banner, setBanner ] = useState( '' );
   const [ isActive, setIsActive ] = useState( false );
   const { user } = useAuth();
 
@@ -23,8 +24,13 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
 
   useEffect( () => {
     const storedAvatar = localStorage.getItem( 'student-avatar' ) || user?.avatar;
+    const storedBanner = localStorage.getItem( 'student-banner' || defaultBanner );
     if ( storedAvatar ) {
       setAvatar( storedAvatar );
+    }
+
+    if ( storedBanner ) {
+      setBanner( storedBanner );
     }
   }, [ user ] );
 
@@ -33,13 +39,18 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
     localStorage.setItem( 'student-avatar', newAvatar );
   };
 
+  const handleBannerReceive  = newBanner => {
+    setBanner( newBanner );
+    localStorage.setItem( 'student-banner', newBanner );
+  }
+
   const toggleStatus = () => {
     setIsActive( prevStatus => !prevStatus );
   };
 
   return (
     <S.Container>
-      <S.ProfilePhoto>
+      <S.ProfilePhoto avatar={ avatar }>
         <div className="circle">
           {!avatar && <Avatar />}
 
@@ -48,7 +59,7 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
           <button
             type="button"
             aria-label="add image"
-            onClick={ () => setModalOpen( true ) }
+            onClick={ () => setModalOpen( { type: 'avatar' } ) }
           >
             <svg width="16px" height="16px" className="default">
               <use href={ `${sprite}#icon-add-avatar` }></use>
@@ -98,13 +109,13 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
         {avatar ? (
           <img src={ avatar } alt="Обрізане фото" />
         ) : (
-          <img src={ defoultBaner } />
+          <img src={ defaultBanner } />
         )}
 
         <button
           type="button"
-          aria-label="add image"
-          onClick={ () => setModalOpen( true ) }
+          aria-label="add banner"
+          onClick={ () => setModalOpen( { type: 'banner' } ) }
         >
           <svg width="16px" height="16px" className="default">
             <use href={ `${sprite}#icon-add-avatar` }></use>
@@ -134,8 +145,13 @@ export const GeneralInfo = ( { errSurname, errName, values } ) => {
         <Modal onActiveModal={ () => setModalOpen( false ) }>
           <PhotoHandler
             onPhotoHandlerClose={ () => setModalOpen( false ) }
-            onAvatarReceive={ handleAvatarReceive }
-            backendAvatar={ avatar }
+            // onAvatarReceive={ handleAvatarReceive }
+            // backendAvatar={ avatar }
+
+            onPhotoRecive={ modalOpen.type === 'avatar' ? handleAvatarReceive : handleBannerReceive }
+            backendPhoto={ modalOpen.type === 'avatar' ? avatar : banner }
+            photoType={ modalOpen.type }
+            defaultBanner={ defaultBanner }
           />
         </Modal>
       )}
