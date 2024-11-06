@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import * as S from './PhotoGallery.styled';
 import { IconSvg } from 'components/common/IconSvg';
 import { UploadPopup } from 'components/Footer/modals/QuestionForm/UploadPopup/UploadPopup';
 import { ImageWithDeleteBtn } from 'components/common/modalElements/ImageWithDeleteBtn';
-import { AddButton } from '../Expertise/Expertise.styled';
 import { grayText } from 'utils/variables.styled';
+
+import { AddButton } from '../Expertise/Expertise.styled';
+import * as S from './PhotoGallery.styled';
 
 export const PhotoGallery = () => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );

@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Form } from 'formik';
+
 import { device } from '../../../../utils/device';
 import { Button } from '../../../common/button/Button';
 import { transitionB } from '../../../../utils/variables.styled';

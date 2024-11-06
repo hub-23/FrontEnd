@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { transition } from '../../utils/variables.styled';
 import { device } from 'utils/device';
+
+import { transition } from '../../utils/variables.styled';
 
 export const Container = styled.div`
   margin-left: 16px;

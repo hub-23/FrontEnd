@@ -1,6 +1,7 @@
 import React from 'react';
-import { IconSvg } from '../../../../common/IconSvg';
 import { FileUploadInput } from 'components/common/modalElements/FileUploadInput';
+
+import { IconSvg } from '../../../../common/IconSvg';
 import * as S from './UploadPopup.styled';
 
 export const UploadPopup = ( { handleImageSelect } ) => {

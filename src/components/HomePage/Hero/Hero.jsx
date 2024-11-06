@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Container } from 'utils/common.styled';
+
 import {
   BtnWrapp,
   // Container,
@@ -11,7 +13,6 @@ import { ModalRegistration } from './modals/ModalRegistration';
 import { ModalRegistrationEmail } from './modals/ModalRegistrationEmail';
 import { useHubContext } from '../../../redux/Context';
 import { HeroField } from './HeroField';
-import { Container } from 'utils/common.styled';
 
 export const Hero = () => {
   const {

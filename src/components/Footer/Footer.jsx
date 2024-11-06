@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import * as S from './Footer.styled';
 import { IconSvg } from '../common/IconSvg';
 import { Modal } from '../common/modalElements/Modal';

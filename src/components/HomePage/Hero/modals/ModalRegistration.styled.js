@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
+
 import {
   accent,
   black,
   grayText,
   white,
 } from '../../../../utils/variables.styled';
-import { Field, Form } from 'formik';
 import { device } from '../../../../utils/device';
 
 export const Modal = styled.div`

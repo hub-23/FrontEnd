@@ -1,14 +1,16 @@
 // Для використання в формах створених в Formik
 
 import React, { useEffect, useState } from 'react';
+import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
+import { useAuth } from 'hooks/useAuth';
+import { black } from 'utils/variables.styled';
+
 import { PhoneSelect } from './PhoneSelect';
 import * as S from './InputFieldPhone.styled';
-import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 import { FormError } from './FormError';
-import { useAuth } from 'hooks/useAuth';
 import { IconBtn } from '../IconBtn';
 import { IconSvg } from '../IconSvg';
-import { black } from 'utils/variables.styled';
+
 
 const validateNumber = number => {
   if ( Number( number.replaceAll( ' ', '' ) ) ) return true;

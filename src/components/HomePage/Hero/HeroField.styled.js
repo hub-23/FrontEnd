@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Field, Form } from 'formik';
+
 import { device } from '../../../utils/device';
 import {
   accent,

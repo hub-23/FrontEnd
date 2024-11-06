@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { object, string, boolean } from 'yup';
+
 import { useAuth } from '../../../hooks/useAuth';
 import { BtnClose } from '../../common/modalElements/BtnClose';
 import { Input } from '../../common/modalElements/Input';

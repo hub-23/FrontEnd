@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { BtnClose } from '../../common/modalElements/BtnClose';
 import * as S from './ClassCancelation.styled';
 

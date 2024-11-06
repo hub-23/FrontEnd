@@ -1,6 +1,7 @@
 import React from 'react';
-import * as S from './AboutMe.styled';
 import { FeedbackFild } from 'components/StudentPage/modals/Feedback.styled';
+
+import * as S from './AboutMe.styled';
 
 export const AboutMe = () => {
   return (

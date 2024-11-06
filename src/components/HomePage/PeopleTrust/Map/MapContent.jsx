@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TileLayer, GeoJSON } from 'react-leaflet';
+
 import geojsonData from './geojsonData.json';
 import { fetchCountry } from './api';
 import { IconMarker } from './IconMarker';

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyledStar, StarImage } from './Rating.styled';
 import star from '../../../../../assets/home/top-teachers/star.png';
 

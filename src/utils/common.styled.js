@@ -1,5 +1,6 @@
 import { Field } from 'formik';
 import styled from 'styled-components';
+
 import { accent, white } from './variables.styled';
 import { device } from './device';
 

@@ -2,11 +2,12 @@
 import { Form, Formik } from 'formik';
 import React from 'react';
 import { object, string } from 'yup';
-import * as S from './Feedback.styled';
 import { BtnClose } from 'components/common/BtnClose';
 import { IconSvg } from 'components/common/IconSvg';
 import { Note } from 'components/common/modalElements/Note';
 import { deepAccent } from 'utils/variables.styled';
+
+import * as S from './Feedback.styled';
 
 const tempBackend = {
   lesson: 'Німецька мова',

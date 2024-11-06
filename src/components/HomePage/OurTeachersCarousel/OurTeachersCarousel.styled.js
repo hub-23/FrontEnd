@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { device } from '../../../utils/device';
 import { white, black, primary } from 'utils/variables.styled';
+
+import { device } from '../../../utils/device';
 
 export const StyledSection = styled.section`
   min-width: 100%;

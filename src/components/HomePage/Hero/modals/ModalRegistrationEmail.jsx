@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
+import { useDispatch } from 'react-redux';
 
 import {
   accent,
@@ -17,7 +18,6 @@ import { BtnClose } from '../../../common/BtnClose';
 import { Input } from '../../../common/modalElements/Input';
 import { InputFieldPhone } from '../../../common/modalElements/InputFieldPhone';
 import { Note } from '../../../common/modalElements/Note';
-import { useDispatch } from 'react-redux';
 import { register } from '../../../../redux/auth/operations';
 import { useHubContext } from '../../../../redux/Context';
 

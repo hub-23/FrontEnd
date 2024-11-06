@@ -1,8 +1,9 @@
 import React from 'react';
 import { Note } from 'components/common/modalElements/Note';
-import * as S from '../ContactInfo/ContactInfo.styled';
 import { deepAccent, white } from 'utils/variables.styled';
 import { Input } from 'components/common/modalElements/Input';
+
+import * as S from '../ContactInfo/ContactInfo.styled';
 
 export const ChangePassword = ( {
   errNewPassword,

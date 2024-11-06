@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
-import { Button } from '../common/button/Button';
 import { device } from 'utils/device';
+
+import { Button } from '../common/button/Button';
 
 export const FormFild = styled( Form )`
   display: flex;

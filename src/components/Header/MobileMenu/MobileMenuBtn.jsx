@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import * as S from './MobileMenu.styled';
 import { IconSvg } from '../../common/IconSvg';
 import { Modal } from '../../common/modalElements/Modal';

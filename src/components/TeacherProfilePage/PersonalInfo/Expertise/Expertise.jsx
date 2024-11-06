@@ -10,6 +10,8 @@ import { Notification } from 'components/common/modalElements/Notification';
 import * as S from './Expertise.styled';
 import { DeleteLesson } from '../../modals/DeleteLesson';
 
+import * as S from './Expertise.styled';
+
 export const Expertise = ( { props } ) => {
   const [ uploadPopupVisible, setUploadPopupVisible ] = useState( false );
   const [ isSendNotificationShown, setIsSendNotificationShown ] = useState( false );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string, array } from 'yup';
+
 import { BtnClose } from '../../../common/modalElements/BtnClose';
 import { Input } from '../../../common/modalElements/Input';
 import { InputFieldPhone } from '../../../common/modalElements/InputFieldPhone';

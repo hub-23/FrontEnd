@@ -1,9 +1,9 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import { ThreeCircles } from 'react-loader-spinner';
+import { white } from 'utils/variables.styled';
 
 import { Backdrop } from './Loader.styled';
-import { white } from 'utils/variables.styled';
 
 const loaderRoot = document.querySelector( '#root' );
 

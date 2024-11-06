@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+
 import { transitionB } from '../../../utils/variables.styled';
 
 const show = keyframes`

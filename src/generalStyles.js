@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+
 import nunito from './fonts/Nunito.woff2';
 import montserrat from './fonts/Montserrat.woff2';
 

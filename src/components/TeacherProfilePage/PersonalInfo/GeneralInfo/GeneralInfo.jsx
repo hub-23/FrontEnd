@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from 'hooks/useAuth';
+import { PhotoHandler } from 'components/StudentPage/modals/PhotoHandler';
+import { IconSvg } from 'components/common/IconSvg';
+import { Button } from 'components/common/button/Button';
+
 import { Modal } from '../../../common/modalElements/Modal';
 import { Input } from '../../../common/modalElements/Input';
-import { useAuth } from 'hooks/useAuth';
 import sprite from '../../../../assets/sprite.svg';
 import * as S from './GeneralInfo.styled';
 import { Avatar } from '../../../../components/common/avatar/Avatar';
-// import { PhotoHandler } from 'components/StudentPage/modals/PhotoHandler';
-import { IconSvg } from 'components/common/IconSvg';
 import { Rating } from './Rating';
-import { Button } from 'components/common/button/Button';
-import defaultBanner from '../../../../assets/banner_hub23.png';
-import { PhotoHandler } from 'components/TeacherProfilePage/modals/PhotoHandler';
+import defoultBaner from '../../../../assets/banner_hub23.png';
 
 export const GeneralInfo = ( { errSurname, errName, values } ) => {
   const [ modalOpen, setModalOpen ] = useState( false );

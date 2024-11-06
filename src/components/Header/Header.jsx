@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import { useAuth } from 'hooks/useAuth';
+
 import * as S from './Header.styled';
 import { Language } from './Language/Language';
 import { Navigation } from './Navigation/Navigation';
@@ -10,7 +12,6 @@ import { ModalLogin } from './modals/ModalLogin';
 import { ModalLastStep } from '../HomePage/Hero/modals/ModalLastStep';
 import { ModalConfirmEmail } from '../HomePage/Hero/modals/ModalConfirmEmail';
 import { ModalThanksForJoining } from './modals/ModalThanksForJoining';
-import { useAuth } from 'hooks/useAuth';
 import { Abbreviation } from '../common/Abbreviation';
 import { DropdownMenu } from './Dropdown/DropdownMenu';
 
